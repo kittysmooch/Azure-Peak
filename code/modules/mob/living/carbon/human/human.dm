@@ -285,6 +285,18 @@
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
 
+///Checking if the unit can bite
+/mob/living/carbon/human/proc/can_bite()
+	//if(mouth?.muteinmouth && mouth?.type != /obj/item/grabbing/bite) //This one allows continued first biting rather than having to chew
+	if(mouth?.muteinmouth)
+		return FALSE
+	for(var/obj/item/grabbing/grab in grabbedby) //Grabbed by the mouth
+		if(grab.sublimb_grabbed == BODY_ZONE_PRECISE_MOUTH)
+			return FALSE
+			
+	return TRUE
+
+
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone, penetrate_thick = 0)
 	. = 1 // Default to returning true.
 	if(user && !target_zone)
@@ -397,6 +409,12 @@
 /mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(!(mobility_flags & MOBILITY_UI))
 		to_chat(src, span_warning("I can't do that right now!"))
+		return FALSE
+	if(incapacitated())
+		to_chat(src, span_warning("I can't do that right now!"))
+		return FALSE
+	if(be_close && !in_range(M, src))
+		to_chat(src, span_warning("I am too far away!"))
 		return FALSE
 	return TRUE
 

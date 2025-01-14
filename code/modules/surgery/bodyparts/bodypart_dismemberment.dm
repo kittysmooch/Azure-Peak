@@ -43,7 +43,7 @@
 	if(body_zone == BODY_ZONE_HEAD)
 		C.visible_message(span_danger("<B>[C] is [pick("BRUTALLY","VIOLENTLY","BLOODILY","MESSILY")] DECAPITATED!</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "seperated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
 	C.emote("painscream")
 	src.add_mob_blood(C)
 	SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "dismembered", /datum/mood_event/dismembered)
@@ -287,12 +287,6 @@
 
 	name = "[owner.real_name]'s head"
 	. = ..()
-	if(brainmob)
-		QDEL_NULL(brainmob)
-	var/obj/item/organ/brain/BR = locate(/obj/item/organ/brain) in contents
-	if(BR)
-		if(BR.brainmob)
-			QDEL_NULL(BR.brainmob)
 
 //Attach a limb to a human and drop any existing limb of that type.
 /obj/item/bodypart/proc/replace_limb(mob/living/carbon/C, special)

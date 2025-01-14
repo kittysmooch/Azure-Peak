@@ -33,15 +33,8 @@
 		ping_sound(source)
 
 	var/list/muffled_listeners = list() //this is very rudimentary list of muffled listeners above and below to mimic sound muffling (this is done through modifying the playsounds for them)
-	if(!ignore_walls) //these sounds don't carry through walls
+	if(!ignore_walls) //these sounds don't carry through walls or vertically
 		listeners = listeners & hearers(maxdistance,turf_source)
-
-		if(above_turf)
-			muffled_listeners += hearers(maxdistance,above_turf)
-
-		if(below_turf)
-			muffled_listeners += hearers(maxdistance,below_turf)
-
 	else
 		if(above_turf)
 			listeners += SSmobs.clients_by_zlevel[above_turf.z]
@@ -380,9 +373,29 @@
 				soundin = pick('sound/combat/wooshes/blunt/wooshlarge (1).ogg','sound/combat/wooshes/blunt/wooshlarge (2).ogg','sound/combat/wooshes/blunt/wooshlarge (3).ogg')
 			if("punchwoosh")
 				soundin = pick('sound/combat/wooshes/punch/punchwoosh (1).ogg','sound/combat/wooshes/punch/punchwoosh (2).ogg','sound/combat/wooshes/punch/punchwoosh (3).ogg')
-
-
-
-
-
+			if(SFX_CHAIN_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/chain (1).ogg',
+							'sound/foley/footsteps/armor/chain (2).ogg',
+							'sound/foley/footsteps/armor/chain (3).ogg',
+							)
+			if(SFX_PLATE_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/plate (1).ogg',
+							'sound/foley/footsteps/armor/plate (2).ogg',
+							'sound/foley/footsteps/armor/plate (3).ogg',
+							)
+			if(SFX_PLATE_COAT_STEP)
+				soundin = pick(
+							'sound/foley/footsteps/armor/coatplates (1).ogg',
+							'sound/foley/footsteps/armor/coatplates (2).ogg',
+							'sound/foley/footsteps/armor/coatplates (3).ogg',
+							)
+			if(SFX_JINGLE_BELLS)
+				soundin = pick(
+							'sound/items/jinglebell1.ogg',
+							'sound/items/jinglebell2.ogg',
+							'sound/items/jinglebell3.ogg',
+							'sound/items/jinglebell4.ogg',
+							)
 	return soundin

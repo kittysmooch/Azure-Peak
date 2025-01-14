@@ -163,6 +163,7 @@
 	if(m_intent == MOVE_INTENT_RUN && dir == get_dir(src, M))
 		if(isliving(M))
 			var/sprint_distance = sprinted_tiles
+			var/instafail = FALSE
 			toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 
 			var/mob/living/L = M
@@ -173,14 +174,17 @@
 			switch(sprint_distance)
 				// Point blank
 				if(0 to 1)
-					self_points -= 4
+					self_points -= 99
+					instafail = TRUE
 				// One to two tile between the people
 				if(2 to 3)
 					self_points -= 2
 				// Five or above tiles between people
 				if(6 to INFINITY)
 					self_points += 1
-
+			// If we have Giant virtue
+			if(HAS_TRAIT(src,TRAIT_BIGGUY))
+				self_points += 2
 			// If charging into the BACK of the enemy (facing away)
 			if(L.dir == get_dir(src, L))
 				self_points += 2
@@ -199,11 +203,15 @@
 			var/playsound = FALSE
 			if(apply_damage(15, BRUTE, "head", run_armor_check("head", "blunt", damage = 20)))
 				playsound = TRUE
-			if(L.apply_damage(15, BRUTE, "chest", L.run_armor_check("chest", "blunt", damage = 10)))
-				playsound = TRUE
+			if(!instafail)
+				if(L.apply_damage(15, BRUTE, "chest", L.run_armor_check("chest", "blunt", damage = 10)))
+					playsound = TRUE
 			if(playsound)
 				playsound(src, "genblunt", 100, TRUE)
-			visible_message(span_warning("[src] charges into [L]!"), span_warning("I charge into [L]!"))
+			if(!instafail)
+				visible_message(span_warning("[src] charges into [L]!"), span_warning("I charge into [L]!"))
+			else
+				visible_message(span_warning("[src] smashes into [L] with no headstart!"), span_warning("I charge into [L] too early!"))
 			return TRUE
 
 	//okay, so we didn't switch. but should we push?
@@ -723,7 +731,7 @@
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
 	if(stat == DEAD && (admin_revive || can_be_revived())) //in some cases you can't revive (e.g. no brain)
-		GLOB.dead_mob_list -= src
+		GLOB.dead_mob_list -= src  //If any more forms of revival are added, better to use a proc to do this - easier to search
 		GLOB.alive_mob_list += src
 		set_suicide(FALSE)
 		stat = CONSCIOUS
@@ -1213,6 +1221,9 @@
 		if(L.surrendering)
 			surrender_mod = 0.5
 
+	if(!who.Adjacent(src))
+		return
+		
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_danger("[src] tries to remove my [what.name]."), null, null, src)
 	to_chat(src, span_danger("I try to remove [who]'s [what.name]..."))
@@ -1413,6 +1424,8 @@
 //Mobs on Fire
 /mob/living/proc/IgniteMob()
 	if(fire_stacks > 0 && !on_fire)
+		if(HAS_TRAIT(src, TRAIT_NOFIRE) && prob(90)) // Nofire is described as nonflammable, not immune. 90% chance of avoiding ignite
+			return
 		testing("ignis")
 		on_fire = 1
 		src.visible_message(span_warning("[src] catches fire!"), \
@@ -1514,6 +1527,12 @@
 			stickstand = TRUE
 
 	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyzed && ( ignore_legs || ((has_legs >= 2) || (has_legs == 1 && stickstand)) ) && !(buckled && buckled.buckle_lying)
+
+	if(canstand_involuntary)
+		mobility_flags |= MOBILITY_CANSTAND
+	else
+		mobility_flags &= ~MOBILITY_CANSTAND
+
 	var/canstand = canstand_involuntary && !resting
 
 	var/should_be_lying = !canstand

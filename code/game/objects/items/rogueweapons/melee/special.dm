@@ -4,7 +4,7 @@
 	possible_item_intents = list(/datum/intent/lordbash, /datum/intent/lord_electrocute, /datum/intent/lord_silence)
 	gripped_intents = list(/datum/intent/lordbash)
 	name = "master's rod"
-	desc = "Bend the knee."
+	desc = "Bend the knee. Can't be used outside of the manor."
 	icon_state = "scepter"
 	icon = 'icons/roguetown/weapons/32.dmi'
 	sharpness = IS_BLUNT
@@ -66,18 +66,26 @@
 
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
+			var/area/target_area = get_area(H)
+
+			if(!istype(target_area, /area/rogue/indoors/town/manor))
+				to_chat(user, span_danger("The rod cannot be used on targets outside of the manor!"))
+				return
 
 			if(H == HU)
 				return
 
 			if(H.anti_magic_check())
+				to_chat(user, span_danger("Something is disrupting the rod's power!"))
 				return
 		
 			if(!(H in SStreasury.bank_accounts))
+				to_chat(user, span_danger("The target must have a Meister account!"))
 				return
 
 			if(istype(user.used_intent, /datum/intent/lord_electrocute))
 				HU.visible_message(span_warning("[HU] electrocutes [H] with the [src]."))
+				user.Beam(target,icon_state="lightning[rand(1,12)]",time=5)
 				H.electrocute_act(5, src)
 				to_chat(H, span_danger("I'm electrocuted by the scepter!"))
 				return

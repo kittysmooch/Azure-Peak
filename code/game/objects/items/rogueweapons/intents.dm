@@ -321,6 +321,7 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
+	var/strength_check = FALSE //used when we fire HEAVY bows
 
 /datum/intent/shoot/prewarning()
 	if(masteritem && mastermob)
@@ -337,7 +338,8 @@
 	noaa = TRUE
 	charging_slowdown = 3
 	warnoffset = 20
-
+	var/strength_check = FALSE //used when we fire HEAVY bows
+	
 /datum/intent/proc/arc_check()
 	return FALSE
 
@@ -384,8 +386,23 @@
 	return
 
 /datum/intent/unarmed/claw
+	name = "claw"
+	//icon_state
+	attack_verb = list("mauls", "scratches", "claws")
+	chargetime = 0
+	animname = "blank22"
+	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
+	misscost = 5
+	releasedrain = 5
+	swingdelay = 0
+	penfactor = 10
+	candodge = TRUE
+	canparry = TRUE
 	blade_class = BCLASS_CUT
+	miss_text = "claw at the air"
+	miss_sound = "punchwoosh"
 	item_d_type = "slash"
+	
 
 /datum/intent/unarmed/shove
 	name = "shove"
@@ -515,7 +532,7 @@
 /datum/intent/simple/spear
 	name = "spear"
 	icon_state = "instrike"
-	attack_verb = list("stabs", "skewers", "bashes")
+	attack_verb = list("stabs", "skewers")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")
