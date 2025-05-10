@@ -816,6 +816,16 @@
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 
+/obj/structure/mineral_door/wood/donjon/stone/broken // no repair
+	icon_state = "stonebr"
+	base_state = "stone"
+	density = 0
+	opacity = 0
+	obj_integrity = 0
+	gc_destroyed = 1
+	brokenstate = 1
+	obj_broken = 1
+
 /obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
 	if(user.get_active_held_item())
 		..()

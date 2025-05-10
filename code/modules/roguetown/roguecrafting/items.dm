@@ -285,6 +285,27 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/quarterstaff
+	name = "quarterstaff"
+	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff)
+	reqs = list(/obj/item/grown/log/tree = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/quarterstaff_iron
+	name = "iron-reinforced quarterstaff"
+	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/iron)
+	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff, /obj/item/ingot/iron = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/quarterstaff_steel
+	name = "steel-reinforced quarterstaff"
+	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/steel)
+	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff, /obj/item/ingot/steel = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/woodsword
 	name = "wood sword"
 	result = list(/obj/item/rogueweapon/mace/wsword,
@@ -1022,6 +1043,23 @@
 /datum/crafting_recipe/roguetown/rucksack/crafted
 	reqs = list(/obj/item/storage/roguebag/crafted = 1,
 				/obj/item/rope = 1)
+
+/datum/crafting_recipe/roguetown/woodshaft
+	name = "wood shaft x2"
+	result = /obj/item/shaft/wood
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	reqs = list(/obj/item/grown/log/tree/small = 1)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/reinforcedshaft
+	name = "reinforced shaft"
+	result = /obj/item/shaft/reinforced
+	tools = list(/obj/item/rogueweapon/hammer)
+	reqs = list(/obj/item/shaft/wood = 1,
+				/obj/item/natural/whetstone = 2)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/peasantry
 	tools = list(/obj/item/rogueweapon/hammer)

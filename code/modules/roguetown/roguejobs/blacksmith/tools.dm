@@ -177,6 +177,13 @@
 	force = 18
 	max_integrity = 15
 
+/obj/item/rogueweapon/hammer/copper
+	name = "copper hammer"
+	desc = "A copper hammer, slightly better than a stone hammer."
+	icon_state = "hammer_c"
+	force = 20
+	max_integrity = 100
+
 /obj/item/rogueweapon/hammer/iron	// iron hammer
 	name = "hammer"
 	desc = "Each strikes reverberate loudly chanting war!"

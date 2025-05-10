@@ -211,7 +211,7 @@
 	icon_state = "tablewood1"
 	},
 /obj/item/rope/chain,
-/obj/item/kitchen/fork/ironfork,
+/obj/item/kitchen/fork/iron,
 /turf/open/floor/rogue/twig,
 /area/rogue/indoors/shelter/woods)
 "bD" = (

@@ -100,6 +100,12 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 		icon_state = "[base_state]1"
 		obj_flags = BLOCK_Z_OUT_DOWN | BLOCK_Z_IN_UP
 
+/obj/structure/floordoor/open
+		icon_state = "floorhatch0"
+		base_state = "floorhatch"
+		togg = TRUE
+		obj_flags = null
+
 /obj/structure/floordoor/gatehatch
 	name = ""
 	desc = ""

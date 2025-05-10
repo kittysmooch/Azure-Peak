@@ -214,14 +214,14 @@
 /datum/supply_pack/rogue/tools/alch_bottle
 	name = "Alchemy Bottle"
 	cost = 1
-	contains = list(/obj/item/reagent_containers/glass/alchemical,)
+	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical,)
 
 /datum/supply_pack/rogue/tools/alch_bottles
 	name = "Bulk Alchemy Bottles" //Buy 8 now get 1 free!
 	cost = 8
-	contains = list(/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical,
-	/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical,
-	/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical,/obj/item/reagent_containers/glass/alchemical)
+	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,
+	/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,
+	/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical,/obj/item/reagent_containers/glass/bottle/alchemical)
 	
 
 /datum/supply_pack/rogue/tools/gwstrap

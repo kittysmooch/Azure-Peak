@@ -236,6 +236,8 @@
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/crabcakeraw(loc)
 				qdel(I)
 				qdel(src)
+		return TRUE
+	. = ..()
 
 /obj/item/reagent_containers/food/snacks/fish/salmon
 	name = "salmon"

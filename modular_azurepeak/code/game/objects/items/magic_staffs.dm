@@ -93,7 +93,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/toper(loc)
+			new /obj/item/rogueweapon/woodstaff/toper(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -104,7 +104,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/amethyst(loc)
+			new /obj/item/rogueweapon/woodstaff/amethyst(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -115,7 +115,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/emerald(loc)
+			new /obj/item/rogueweapon/woodstaff/emerald(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -126,7 +126,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/sapphire(loc)
+			new /obj/item/rogueweapon/woodstaff/sapphire(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -137,7 +137,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/quartz(loc)
+			new /obj/item/rogueweapon/woodstaff/quartz(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -148,7 +148,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/quartz(loc)
+			new /obj/item/rogueweapon/woodstaff/quartz(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -159,7 +159,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/diamond(loc)
+			new /obj/item/rogueweapon/woodstaff/diamond(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -170,7 +170,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/ruby(loc)
+			new /obj/item/rogueweapon/woodstaff/ruby(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else
@@ -181,7 +181,7 @@
 			playsound(loc, 'modular_azurepeak/sound/spellbooks/crystal.ogg', 100, TRUE)
 			user.visible_message(span_warning("[user] slots [user.p_their()] [arcyne_focus] into the staff!"), \
 				span_notice("I empower the staff with an arcyne-focus!"))
-			new /obj/item/rogueweapon/woodstaff/riddle_of_steel(loc)
+			new /obj/item/rogueweapon/woodstaff/riddle_of_steel(drop_location())
 			qdel(arcyne_focus)
 			qdel(src)
 		else

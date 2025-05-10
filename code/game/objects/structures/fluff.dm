@@ -306,6 +306,9 @@
 	icon_state = "barsbent"
 	layer = BELOW_OBJ_LAYER
 
+/obj/structure/bars/shop/bronze
+	color = "#ff9c1a"
+
 /obj/structure/bars/chainlink
 	icon_state = "chainlink"
 
@@ -778,6 +781,9 @@
 
 /obj/structure/fluff/statue/knight/interior/r
 	icon_state = "oknightstatue_r"
+
+/obj/structure/fluff/statue/knight/interior/r/bronze
+	color = "#ff9c1a"
 
 /obj/structure/fluff/statue/knightalt
 	icon_state = "knightstatue2_l"

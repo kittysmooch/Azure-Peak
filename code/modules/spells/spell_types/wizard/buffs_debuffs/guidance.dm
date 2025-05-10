@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/guidance
 	name = "Guidance"
 	overlay_state = "guidance"
-	desc = "Makes one's hand travel true, blessing them with arcyne luck in combat. (+15% chance to bypass parry / dodge, +15% chance to parry / dodge)"
+	desc = "Makes one's hand travel true, blessing them with arcyne luck in combat. (+20% chance to bypass parry / dodge, +20% chance to parry / dodge)"
 	cost = 1
 	xp_gain = TRUE
 	releasedrain = 60

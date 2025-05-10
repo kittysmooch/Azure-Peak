@@ -6913,36 +6913,36 @@
 "TC" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7;
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 0;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 0
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7;
 	pixel_y = -5
 	},

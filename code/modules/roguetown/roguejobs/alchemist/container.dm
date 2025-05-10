@@ -33,25 +33,25 @@
 /obj/item/reagent_containers/glass/bottle/rogue/strongstampoison
 	list_reagents = list(/datum/reagent/strongstampoison = 15)
 
-/obj/item/reagent_containers/glass/alchemical/strpot
+/obj/item/reagent_containers/glass/bottle/alchemical/strpot
 	list_reagents = list(/datum/reagent/buff/strength = 27)
 
-/obj/item/reagent_containers/glass/alchemical/perpot
+/obj/item/reagent_containers/glass/bottle/alchemical/perpot
 	list_reagents = list(/datum/reagent/buff/perception = 27)
 
-/obj/item/reagent_containers/glass/alchemical/endpot
+/obj/item/reagent_containers/glass/bottle/alchemical/endpot
 	list_reagents = list(/datum/reagent/buff/endurance = 27)
 
-/obj/item/reagent_containers/glass/alchemical/conpot
+/obj/item/reagent_containers/glass/bottle/alchemical/conpot
 	list_reagents = list(/datum/reagent/buff/constitution = 27)
 
-/obj/item/reagent_containers/glass/alchemical/intpot
+/obj/item/reagent_containers/glass/bottle/alchemical/intpot
 	list_reagents = list(/datum/reagent/buff/intelligence = 27)
 
-/obj/item/reagent_containers/glass/alchemical/spdpot
+/obj/item/reagent_containers/glass/bottle/alchemical/spdpot
 	list_reagents = list(/datum/reagent/buff/speed = 27)
 
-/obj/item/reagent_containers/glass/alchemical/lucpot
+/obj/item/reagent_containers/glass/bottle/alchemical/lucpot
 	list_reagents = list(/datum/reagent/buff/fortune = 27)
 
 //////////////////////////

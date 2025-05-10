@@ -29,7 +29,7 @@
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HEAD
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|HAIR|EARS|HEAD
-	armor = list("blunt" = 33, "slash" = 12, "stab" = 22, "piercing" = 2, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 40, "slash" = 12, "stab" = 22, "piercing" = 2, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
@@ -114,7 +114,7 @@
 	desc = "A more durable, thicker, piece of chain neck protection, though, this one only covers the neck and mouth when pulled up."
 	icon_state = "chainmantle"
 	max_integrity = 300
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 	body_parts_covered = NECK|MOUTH
 	slot_flags = ITEM_SLOT_NECK
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
@@ -188,7 +188,7 @@
 /obj/item/clothing/neck/roguetown/bevor
 	name = "bevor"
 	icon_state = "bevor"
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 20, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 
@@ -202,7 +202,7 @@
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
 	icon_state = "gorget"
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 40, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
 	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 150
@@ -213,10 +213,17 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 
+/obj/item/clothing/neck/roguetown/gorget/copper
+	name = "neck protector"
+	icon_state = "copperneck"
+	desc = "An antique and simple protection for the neck, used more as an accessory by the common folk. But poor protection is still better than nothing."
+	armor = list("blunt" = 50, "slash" = 50, "stab" = 40, "piercing" = 20, "fire" = 0, "acid" = 0)
+	smeltresult = /obj/item/ingot/copper
+
 /obj/item/clothing/neck/roguetown/fencerguard
 	name = "fencer neckguard"
 	icon_state = "fencercollar"
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 10, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
 	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 150
@@ -255,7 +262,7 @@
 	desc = "A metal collar that seems to radiate an ominous aura."
 	icon_state = "cursed_collar"
 	item_state = "cursed_collar"
-	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 10, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
 	smeltresult = /obj/item/ingot/iron
 	anvilrepair = /datum/skill/craft/armorsmithing
 	max_integrity = 150

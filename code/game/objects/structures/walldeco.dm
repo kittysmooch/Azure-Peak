@@ -138,6 +138,9 @@
 	icon_state = "walldec1"
 	mouse_opacity = 0
 
+/obj/structure/fluff/walldeco/stone/bronze
+	color = "#ff9c1a"
+	
 /obj/structure/fluff/walldeco/church/line
 	name = ""
 	desc = ""

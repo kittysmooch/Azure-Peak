@@ -624,32 +624,32 @@
 "wF" = (
 /obj/structure/rack/rogue/shelf/biggest,
 /obj/effect/decal/cleanable/dirt/cobweb,
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = 7;
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical,
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical,
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7
 	},
-/obj/item/reagent_containers/glass/alchemical{
+/obj/item/reagent_containers/glass/bottle/alchemical{
 	pixel_x = -7;
 	pixel_y = -5
 	},
@@ -915,16 +915,16 @@
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
 /obj/structure/closet/crate/roguecloset,
-/obj/item/kitchen/fork/ironfork,
-/obj/item/kitchen/fork/ironfork,
-/obj/item/kitchen/fork/ironfork,
-/obj/item/kitchen/fork/ironfork,
-/obj/item/kitchen/fork/ironfork,
-/obj/item/kitchen/spoon/ironspoon,
-/obj/item/kitchen/spoon/ironspoon,
-/obj/item/kitchen/spoon/ironspoon,
-/obj/item/kitchen/spoon/ironspoon,
-/obj/item/kitchen/spoon/ironspoon,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/fork/iron,
+/obj/item/kitchen/spoon/iron,
+/obj/item/kitchen/spoon/iron,
+/obj/item/kitchen/spoon/iron,
+/obj/item/kitchen/spoon/iron,
+/obj/item/kitchen/spoon/iron,
 /turf/open/floor/rogue/ruinedwood/herringbone,
 /area/rogue/indoors)
 "LF" = (

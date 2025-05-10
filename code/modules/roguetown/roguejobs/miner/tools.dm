@@ -68,3 +68,12 @@
 	gripped_intents = list(/datum/intent/pick)
 	max_integrity = 250
 	smeltresult = null
+
+/obj/item/rogueweapon/pick/copper
+	name = "copper pick"
+	desc = "A copper pick, slightly better than a stone pick."
+	force = 15
+	force_wielded = 19
+	icon_state = "cpick"
+	max_integrity = 325
+	smeltresult = /obj/item/ingot/copper

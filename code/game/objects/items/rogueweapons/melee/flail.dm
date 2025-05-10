@@ -15,11 +15,13 @@
 	smeltresult = /obj/item/ingot/iron
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	swingsound = BLUNTWOOSH_MED
+	blade_dulling = DULLING_SHAFT_WOOD
 	throwforce = 5
 	wdefense = 0
 	minstr = 4
 	grid_width = 32
 	grid_height = 96
+	intdamage_factor = 1.1
 
 /datum/intent/flail/strike
 	name = "strike"
@@ -27,9 +29,9 @@
 	attack_verb = list("strikes", "hits")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
-	penfactor = 5
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	icon_state = "instrike"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/flail/strikerange
 	name = "ranged strike"
@@ -38,19 +40,19 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 15
-	penfactor = 5
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	reach = 2
 	icon_state = "instrike"
-	item_d_type = "slash"
+	item_d_type = "blunt"
 
 /datum/intent/flail/strike/smash
 	name = "smash"
 	chargetime = 5
 	chargedrain = 2
 	no_early_release = TRUE
-	penfactor = 80
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	recovery = 10
-	damfactor = 1.2
+	damfactor = 1.6
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
 	icon_state = "insmash"
@@ -60,7 +62,7 @@
 	item_d_type = "blunt"
 
 /datum/intent/flail/strike/smash/militia
-	penfactor = 50
+	damfactor = 1.35
 
 /datum/intent/flail/strike/smash/golgotha
 	hitsound = list('sound/items/beartrap2.ogg')
@@ -70,9 +72,9 @@
 	chargetime = 10
 	chargedrain = 2
 	no_early_release = TRUE
-	penfactor = 50
 	recovery = 30
-	damfactor = 1.2
+	damfactor = 1.5
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	reach = 2
 	chargedloop = /datum/looping_sound/flailswing
 	keep_looping = TRUE
@@ -120,7 +122,8 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
-	penfactor = 10
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	damfactor = 1.1
 	reach = 2
 	icon_state = "inlash"
 	item_d_type = "slash"
@@ -144,7 +147,7 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 10
-	penfactor = 0
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	reach = 2
 	icon_state = "inpunish"
 	item_d_type = "blunt"
@@ -233,7 +236,7 @@
 	associated_skill = /datum/skill/combat/polearms
 	anvilrepair = /datum/skill/craft/carpentry
 	dropshrink = 0.9
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	wdefense = 4
 	resistance_flags = FLAMMABLE
 

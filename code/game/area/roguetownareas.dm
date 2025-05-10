@@ -160,6 +160,22 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	ambush_times = list("night","dawn","dusk","day")
 	converted_type = /area/rogue/indoors/shelter/mountains/decap
 
+/area/rogue/outdoors/mountains/decap/gunduzirak
+	name = "mt decapitation gundu-zirak"
+	icon_state = "decap"
+	ambush_types = list(
+				/turf/open/floor/rogue/dirt)
+	ambush_mobs = list(
+				/mob/living/simple_animal/hostile/retaliate/rogue/bigrat = 30,
+				/mob/living/carbon/human/species/dwarfskeleton/ambush = 30)
+	droning_sound = 'sound/music/area/prospector.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	first_time_text = "Ruins of Gundu-Zirak"
+	ambush_times = list("night","dawn","dusk","day")
+	converted_type = /area/rogue/indoors/shelter/mountains/decap
+	ceiling_protected = TRUE
+
 /area/rogue/outdoors/rtfield
 	name = "azure basin"
 	icon_state = "rtfield"

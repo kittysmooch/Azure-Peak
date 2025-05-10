@@ -46,7 +46,8 @@
 	animname = "strike"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
-	damfactor = 0.5
+	damfactor = 1
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	clickcd = 14
 	recovery = 10
 	item_d_type = "blunt"
@@ -111,6 +112,13 @@
 				return list("shrink" = 0.4,"sx" = -10,"sy" = 0,"nx" = 11,"ny" = 0,"wx" = -4,"wy" = 0,"ex" = 2,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+
+/obj/item/rogueweapon/huntingknife/copper
+	name = "copper knife"
+	desc = "A knife made of copper. Lacking in durability."
+	icon_state = "cdagger"
+	max_integrity = 75
+	smeltresult = null // TODO: We don't have partial melt so coping time
 
 /obj/item/rogueweapon/huntingknife/cleaver
 	force = 15
@@ -202,6 +210,7 @@
 	desc = "This is a common dagger of iron."
 	icon_state = "idagger"
 	smeltresult = /obj/item/ingot/iron
+	blade_dulling = DULLING_SHAFT_REINFORCED
 
 /obj/item/rogueweapon/huntingknife/idagger/steel
 	name = "steel dagger"

@@ -1160,6 +1160,9 @@
 	icon_state = "concretefloor[rand(1,2)]"
 	dir = pick(GLOB.cardinals)
 
+/turf/open/floor/rogue/concrete/bronze
+	color = "#ff9100"
+
 /turf/open/floor/rogue/metal
 	icon_state = "plating1"
 	landsound = 'sound/foley/jumpland/metalland.wav'

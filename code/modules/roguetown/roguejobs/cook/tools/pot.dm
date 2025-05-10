@@ -44,3 +44,8 @@
 	name = "stone pot"
 	desc = "A pot made out of stone. It can hold less than a metal pot."
 	volume = 99 // 99 is the max volume for a stone pot
+
+/obj/item/reagent_containers/glass/bucket/pot/copper
+	name = "copper pot"
+	desc = "A pot made out of copper. It can hold a lot of liquid."
+	icon_state = "pote_copper"

@@ -91,6 +91,16 @@
 	recovery = 20
 	clickcd = 10
 
+/datum/intent/sword/bash
+	name = "pommel bash"
+	blade_class = BCLASS_BLUNT
+	icon_state = "inbash"
+	attack_verb = list("bashes", "strikes")
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	damfactor = 1.3
+	item_d_type = "blunt"
+
+
 /datum/intent/rend
 	name = "rend"
 	icon_state = "inrend"
@@ -98,7 +108,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
-	penfactor = -60
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 2.5
 	chargetime = 10
 	no_early_release = TRUE
@@ -108,7 +118,7 @@
 
 /datum/intent/rend/reach
 	name = "long rend"
-	penfactor = -30
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	misscost = 5
 	chargetime = 5
 	damfactor = 2
@@ -128,7 +138,7 @@
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	sharpness = IS_BLUNT
 	walking_stick = TRUE
 	pixel_y = -16
@@ -188,7 +198,7 @@
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
 	name = "spear"
-	desc = "This iron spear is great to impale goblins."
+	desc = "This iron spear is great to impale goblins. However its lack of reinforcements means it is ill prepared for combat against someone aiming to hew it in two!"
 	icon_state = "spear"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -204,7 +214,7 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	walking_stick = TRUE
 	wdefense = 5
 	thrown_bclass = BCLASS_STAB
@@ -248,7 +258,7 @@
 	max_blade_int = 70
 	smeltresult = null
 	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	walking_stick = TRUE
 	wdefense = 4
 	max_integrity = 60
@@ -256,7 +266,7 @@
 
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
-	desc = "A neat hook. Used to pull riders from horses, as well as defend against said horses when used in a proper formation."
+	desc = "A neat hook. Used to pull riders from horses, as well as defend against said horses when used in a proper formation. The reinforcements along it's shaft grant it higher durability against attacks."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 200
@@ -268,7 +278,7 @@
 	force = 12
 	force_wielded = 25
 	name = "improvised billhook"
-	desc = "Looks hastily made."
+	desc = "Looks hastily made, even a little flimsy."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 100
@@ -292,11 +302,23 @@
 	max_blade_int = 50
 	smeltresult = null
 	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	walking_stick = TRUE
 	wdefense = 4
 	max_integrity = 50
 	throwforce = 20
+
+// Copper spear, no point to adjust force just slightly better integrity
+/obj/item/rogueweapon/spear/stone/copper
+	name = "copper spear"
+	desc = "A simple spear with a copper tip. More durable than stone, but not much better."
+	pixel_y = 0
+	pixel_x = 0
+	max_integrity = 100
+	icon = 'icons/roguetown/weapons/32.dmi'
+	dam_icon = 'icons/effects/item_damage32.dmi'
+	icon_state = "cspear"
+	smeltresult = null
 
 /obj/item/rogueweapon/fishspear
 	force = 20
@@ -318,7 +340,7 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	walking_stick = TRUE
 	wdefense = 4
 	thrown_bclass = BCLASS_STAB
@@ -515,7 +537,7 @@
 	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
 	name = "halberd"
-	desc = "A steel halberd, the pinnicle of all cumulative melee weapon knowledge to some, but commonly seen in a guardsman's hands none-the-less."
+	desc = "A steel halberd, the pinnicle of all cumulative melee weapon knowledge to some, but commonly seen in a guardsman's hands none-the-less. The reinforcments along the shaft provide greater durability."
 	icon_state = "halberd"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -531,7 +553,7 @@
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_WOOD
 	walking_stick = TRUE
 	wdefense = 6
 
@@ -548,7 +570,7 @@
 
 /obj/item/rogueweapon/halberd/holysee
 	name = "eclipsum halberd"
-	desc = "A mutual effort of Noc and Astrata's followers, this halberd was forged with both Silver and Gold alike. Blessed to hold strength and bring hope. Whether dae or nite."
+	desc = "A mutual effort of Noc and Astrata's followers, this halberd was forged with both Silver and Gold alike. Blessed to hold strength and bring hope. Whether dae or nite. The reinforced shaft provides greater durability."
 	icon_state = "gsspear"
 	max_integrity = 300
 	force = 20
@@ -558,7 +580,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
 	name = "bardiche"
-	desc = "A beautiful variant of the halberd."
+	desc = "A beautiful variant of the halberd. Its reinforced shaft provides it with greater durability against attacks."
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
@@ -583,7 +605,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/thrust/glaive, /datum/intent/spear/cut/glaive, /datum/intent/axe/chop/scythe, SPEAR_BASH)
 	name = "glaive"
-	desc = "A curved blade on a pole, specialised in durability and defence, but expensive to manufacture."
+	desc = "A curved blade on a pole, specialised in defence, but expensive to manufacture."
 	icon_state = "glaive"
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -624,12 +646,12 @@
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/polearms
 	max_blade_int = 300
-	blade_dulling = DULLING_BASHCHOP
+	blade_dulling = DULLING_SHAFT_REINFORCED
 	walking_stick = TRUE
 	wdefense = 5
 	wbalance = -1
 	sellprice = 60
-	intdamage_factor = 0.7
+	intdamage_factor = 1.2
 
 /obj/item/rogueweapon/eaglebeak/getonmobprop(tag)
 	. = ..()
@@ -645,7 +667,7 @@
 
 /obj/item/rogueweapon/eaglebeak/lucerne
 	name = "lucerne"
-	desc = "A polehammer of simple iron. Fracture bone and dissent with simple brute force."
+	desc = "A polehammer of simple iron. Fracture bone and dissent with simple brute force. The studding along its shaft makes for a slightly more reinforced weapon."
 	force = 12
 	force_wielded = 25
 	icon_state = "polehammer"
@@ -681,6 +703,8 @@
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/thrust/zwei, /datum/intent/sword/peel/big)
+	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
+	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "piercing" = 0)
 	name = "greatsword"
 	desc = "Might be able to chop anything in half!"
 	icon_state = "gsw"
@@ -715,6 +739,8 @@
 				return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+			if("altgrip")
+				return list("shrink" = 0.6,"sx" = 4,"sy" = 0,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 
 
 /obj/item/rogueweapon/greatsword/zwei
@@ -724,6 +750,7 @@
 	smeltresult = /obj/item/ingot/iron
 	smelt_bar_num = 3
 	max_blade_int = 200
+	blade_dulling = DULLING_SHAFT_METAL
 	wdefense = 4
 	force = 14
 	force_wielded = 35
@@ -848,3 +875,44 @@
 				return list("shrink" = 0.8,"sx" = -9,"sy" = 5,"nx" = 9,"ny" = 5,"wx" = -4,"wy" = 4,"ex" = 4,"ey" = 4,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
 			if("wielded")
 				return list("shrink" = 0.8,"sx" = 8,"sy" = 0,"nx" = -1,"ny" = 0,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+
+
+/datum/intent/spear/bash/ranged/quarterstaff
+	damfactor = 1
+
+/datum/intent/spear/thrust/quarterstaff
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
+	penfactor = 20
+
+/datum/intent/spear/thrust/quarterstaff/metal
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
+	penfactor = 40
+
+/obj/item/rogueweapon/woodstaff/quarterstaff
+	name = "wooden quarterstaff"
+	desc = "A staff that makes any journey easier. Durable and swift, capable of bludgeoning stray volves and ruffians alike. Its length allow it to be used for a thrusting attack."
+	force = 15
+	force_wielded = 20
+	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
+	icon_state = "quarterstaff"
+	max_integrity = 300
+
+/obj/item/rogueweapon/woodstaff/quarterstaff/iron
+	name = "iron quarterstaff"
+	desc = "A quarterstaff reinforced with iron tips. It is capable of dealing more damage than a wooden one, and its blunt ends make for a decent blunt thrusting weapon."
+	force = 16
+	force_wielded = 22
+	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff/metal)
+	icon_state = "quarterstaff_iron"
+	max_integrity = 300
+
+/obj/item/rogueweapon/woodstaff/quarterstaff/steel
+	name = "steel quarterstaff"
+	desc = "A quarterstaff reinforced with steel tips and steel rings, blurring the line between a light polehammer and a reinforced quarterstaff. Extremely durable, and more than capable of bludgeoning brigands to death."
+	force = 18
+	force_wielded = 25
+	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff/metal)
+	icon_state = "quarterstaff_steel"
+	max_integrity = 500

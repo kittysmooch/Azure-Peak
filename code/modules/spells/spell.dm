@@ -280,8 +280,12 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if((invocation_type == "whisper" || invocation_type == "shout") && !H.can_speak_vocal())
+		if((invocation_type == "whisper" || invocation_type == "shout") && (!H.can_speak_vocal() || !H.getorganslot(ORGAN_SLOT_TONGUE)))
 			to_chat(user, span_warning("I can't get the words out!"))
+			return FALSE
+
+		if(HAS_TRAIT(H, TRAIT_PARALYSIS))
+			to_chat(user, span_warning("My body is paralyzed!"))
 			return FALSE
 
 		if(miracle && !H.devotion?.check_devotion(src))
@@ -674,10 +678,16 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return FALSE
 		if(nonabstract_req && (isbrain(user)))
 			return FALSE
+	
 	if((invocation_type == "whisper" || invocation_type == "shout") && isliving(user))
 		var/mob/living/living_user = user
 		if(!living_user.can_speak_vocal())
 			return FALSE
+		if(ishuman(user) && !living_user.getorganslot(ORGAN_SLOT_TONGUE)) // Shapeshifter has no tongue yeah
+			return FALSE
+
+	if(HAS_TRAIT(user, TRAIT_PARALYSIS))
+		return FALSE
 
 	return TRUE
 

@@ -43,9 +43,9 @@
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	chargetime = 0
-	penfactor = 30
+	penfactor = BLUNT_DEFAULT_PENFACTOR
 	swingdelay = 0
-	damfactor = 0.6
+	damfactor = 1
 	item_d_type = "blunt"
 
 /datum/intent/sword/peel
@@ -93,8 +93,8 @@
 	force_wielded = 25
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/peel)
-	armor = list("blunt" = 50, "slash" = 50, "stab" = 50, "piercing" = 0)
-	damage_deflection = 15
+	armor = list("blunt" = 60, "slash" = 50, "stab" = 50, "piercing" = 0)
+	damage_deflection = 14
 	name = "sword"
 	desc = "A simple steel sword, clean and effective."
 	icon_state = "sword1"
@@ -117,6 +117,7 @@
 	flags_1 = CONDUCT_1
 	throwforce = 10
 	thrown_bclass = BCLASS_CUT
+	blade_dulling = DULLING_SHAFT_METAL
 	//dropshrink = 0.75
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/steel
@@ -209,8 +210,9 @@
 /obj/item/rogueweapon/sword/long
 	force = 25
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/peel)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/chop)
+	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
 	icon_state = "longsword"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	item_state = "longsword"
@@ -244,6 +246,7 @@
 			if("wielded") return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 			if("onback") return list("shrink" = 0.5, "sx" = -1, "sy" = 2, "nx" = 0, "ny" = 2, "wx" = 2, "wy" = 1, "ex" = 0, "ey" = 1, "nturn" = 0, "sturn" = 0, "wturn" = 70, "eturn" = 15, "nflip" = 1, "sflip" = 1, "wflip" = 1, "eflip" = 1, "northabove" = 1, "southabove" = 0, "eastabove" = 0, "westabove" = 0)
 			if("onbelt") return list("shrink" = 0.4, "sx" = -4, "sy" = -6, "nx" = 5, "ny" = -6, "wx" = 0, "wy" = -6, "ex" = -1, "ey" = -6, "nturn" = 100, "sturn" = 156, "wturn" = 90, "eturn" = 180, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
+			if("altgrip") return list("shrink" = 0.6,"sx" = 2,"sy" = 3,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 
 /obj/item/rogueweapon/sword/long/malumflamm
 	name = "forgefiend"
@@ -256,9 +259,11 @@
 	desc = "A wicked and red blade. Called forth from the edge of what should be known. In Her name."
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/chop)
+	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
 	force = 30
 	force_wielded = 35
 	icon_state = "zizosword"
+	blade_dulling = DULLING_SHAFT_GRAND
 
 /obj/item/rogueweapon/sword/long/zizo/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_CABAL))
@@ -383,6 +388,7 @@
 	force_wielded = 55
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
 	icon_state = "vlord"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	item_state = "vlord"
@@ -403,6 +409,7 @@
 	max_integrity = 9999
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
+	blade_dulling = DULLING_SHAFT_GRAND
 	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
 	sellprice = 363
@@ -561,7 +568,7 @@
 	name = "short sword"
 	desc = "An archaic iron sword."
 	icon_state = "iswordshort"
-	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short)
+	possible_item_intents = list(/datum/intent/sword/cut/short, /datum/intent/sword/thrust/short, /datum/intent/sword/peel)
 	gripped_intents = null
 	minstr = 4
 	wdefense = 3
@@ -569,6 +576,13 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	grid_width = 32
 	grid_height = 96
+
+/obj/item/rogueweapon/sword/iron/short/gladius
+	name = "gladius"
+	desc = "A bronze short sword with a slightly wider end, and no guard. Best used together with a shield, thrusted directly into your enemy's guts."
+	icon_state = "gladius"
+	max_integrity = 200
+	wdefense = 3
 
 /obj/item/rogueweapon/sword/iron/short/chipped
 	force = 17
@@ -595,6 +609,17 @@
 	gripped_intents = null
 	minstr = 4
 	wdefense = 2
+
+// This typepath is so fucked bruh but I am not repeating code and not dropping a massive merge conflict for now
+/obj/item/rogueweapon/sword/iron/messer/copper 
+	name = "copper messer"
+	desc = "A copper hunting sword. Less durable than its iron counterpart."
+	force = 20 // Slightly worse
+	icon_state = "cmesser"
+	max_integrity = 150
+	minstr = 4
+	wdefense = 2
+	smeltresult = /obj/item/ingot/copper
 
 /obj/item/rogueweapon/sword/short/messer
 	name = "messer"
@@ -804,19 +829,6 @@
 	wdefense = 6
 	wbalance = 1
 
-/obj/item/rogueweapon/sword/gladius
-	force = 22
-	name = "gladius"
-	desc = "A bronze short sword with a slightly wider end, and no guard. Compliments a shield."
-	icon_state = "gladius"
-	gripped_intents = null
-	smeltresult = /obj/item/ingot/bronze
-	smelt_bar_num = 2
-	max_blade_int = 100
-	max_integrity = 200
-	dropshrink = 0.80
-	wdefense = 2
-
 /obj/item/rogueweapon/sword/silver
 	force = 24
 	name = "silver sword"
@@ -934,18 +946,18 @@
 				"westabove" = 0,
 				)
 
-/obj/item/rogueweapon/sword/long/romphaia
+/obj/item/rogueweapon/sword/long/rhomphaia
 	force = 25
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
 	gripped_intents = list(/datum/intent/sword/cut/falx, /datum/intent/sword/strike, /datum/intent/sword/chop/falx, /datum/intent/sword/peel)
-	icon_state = "romphaia"
-	name = "romphaia"
+	icon_state = "rhomphaia"
+	name = "rhomphaia"
 	desc = "A longsword with a hooked end for punching through armour."
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = 125
 
-/obj/item/rogueweapon/sword/long/romphaia/getonmobprop(tag)
+/obj/item/rogueweapon/sword/long/rhomphaia/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -1041,6 +1053,16 @@
 				"eastabove" = 1,
 				"westabove" = 0,
 				)
+
+/obj/item/rogueweapon/sword/long/rhomphaia/copper
+	name = "copper rhomphaia"
+	desc = "A rhomphaia made of copper. Less durable and powerful than its steel counterpart. It has great cutting power."
+	icon_state = "crhomphaia"
+	force = 22
+	force_wielded = 26
+	max_integrity = 100
+	smeltresult = /obj/item/ingot/copper
+
 /obj/item/rogueweapon/sword/long/oathkeeper
 	name = "Oathkeeper"
 	desc = "An ornate golden blade with a ruby embedded in the hilt. Granted to the Knight Commander for their valiant service to the crown."

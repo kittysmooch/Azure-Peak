@@ -199,7 +199,7 @@
 	qdel(src)
 
 /obj/item/reagent_containers/powder/ozium
-	name = "powder"
+	name = "ozium"
 	desc = ""
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "ozium"

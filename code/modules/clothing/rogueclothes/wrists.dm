@@ -17,7 +17,7 @@
 	body_parts_covered = ARMS
 	icon_state = "bracers"
 	item_state = "bracers"
-	armor = list("blunt" = 90, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
+	armor = list("blunt" = 30, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
@@ -51,6 +51,14 @@
 	max_integrity = 250
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
+
+/obj/item/clothing/wrists/roguetown/bracers/copper
+	name = "copper bracers"
+	desc = "Copper forearm guards that offer some protection while looking rather stylish"
+	icon_state = "copperarm"
+	item_state = "copperarm"
+	smeltresult = /obj/item/ingot/copper
+	armor = list("blunt" = 50, "slash" = 50, "stab" = 40,  "piercing" = 50, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/wrists/roguetown/wrappings
 	name = "solar wrappings"

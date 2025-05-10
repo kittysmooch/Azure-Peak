@@ -260,3 +260,12 @@
 	var/spider_to_spawn = pickweight(newspider)
 	new spider_to_spawn(get_turf(src))
 	qdel(src)
+
+/mob/living/simple_animal/hostile/retaliate/rogue/mirespider/angry
+    faction = list("mad", "zombie")
+
+/mob/living/simple_animal/hostile/rogue/mirespider_paralytic/angry
+    faction = list("mad", "zombie")
+
+/mob/living/simple_animal/hostile/rogue/mirespider_lurker/angry
+    faction = list("mad", "zombie")

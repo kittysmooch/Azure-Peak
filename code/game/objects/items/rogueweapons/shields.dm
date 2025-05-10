@@ -9,6 +9,7 @@
 	icon = 'icons/roguetown/weapons/32.dmi'
 	slot_flags = ITEM_SLOT_BACK
 	flags_1 = null
+	armor = list("blunt" = 50, "slash" = 25, "stab" = 0, "piercing" = 0)
 	force = 10
 	throwforce = 5
 	throw_speed = 1

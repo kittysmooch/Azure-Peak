@@ -5,9 +5,6 @@
  *						*
  * * * * * * * * * * * **/
 
-// CONTAINMENT ZONE - marked for death
-/obj/item/reagent_containers/powder/flour/salt // salt being subtype of flour is terrible for so many reasons repath to  /obj/item/reagent_containers/powder/salt
-
 
 /*	........   Templates / Base items   ................ */
 /obj/item/reagent_containers // added vars used in neu cooking, might be used for other things too in the future. How it works is in each items attackby code.
@@ -97,22 +94,27 @@
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/kitchen/spoon/ironspoon
+/obj/item/kitchen/spoon/iron
 	name = "iron spoon"
-	desc = "Traditional utensil for shoveling soup into your mouth, now made with iron for that metallic taste!"
+	icon_state = "spoon_iron"
+
+/obj/item/kitchen/spoon/tin
+	name = "pewter spoon"
 	icon_state = "spoon_iron"
 
 /obj/item/kitchen/fork
-	name = "wooden fork"
-	desc = "Traditional utensil for stabbing your food in order to shove it into your mouth."
+	name = "wooden fork"	
 	icon = 'modular/Neu_Food/icons/cooking.dmi'
 	icon_state = "fork_wooden"
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/kitchen/fork/ironfork
+/obj/item/kitchen/fork/iron
 	name = "iron fork"
-	desc = "Traditional utensil for stabbing your food, now made with iron for extra stabbiness!"
+	icon_state = "fork_iron"
+
+/obj/item/kitchen/fork/tin
+	name = "pewter fork"
 	icon_state = "fork_iron"
 
 /obj/item/kitchen/rollingpin
@@ -269,19 +271,37 @@
 	grid_height = 32
 	var/datum/platter_sprites/sprite_choice = new /datum/platter_sprites/
 
+/obj/item/cooking/platter/copper
+	name = "copper platter"
+	desc = "A platter made from a sheet of copper. Known to impart a metallic taste when combined with acidic food."
+	icon_state = "platter_copper"
+	resistance_flags = FIRE_PROOF
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	sellprice = 5
 
 /obj/item/cooking/platter/pewter
 	name = "pewter platter"
-	desc = "Made from an alloy of tin and mercury. Rolls off the tongue quite nicely."
-	icon_state = "p_platter"
+	desc = "A tin plate that contains just a tinge of lead."
+	icon_state = "platter_tin"
+	resistance_flags = FIRE_PROOF
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	sellprice = 10
 
 /obj/item/cooking/platter/silver
 	name = "silver platter"
-	desc = "Made from polished silver. Fancy!"
-	icon_state = "s_platter"
+	desc = "A fancy silver plate often used by the nobility as a symbol of class."
+	icon_state = "platter_silver"
 	sellprice = 30
+	smeltresult = /obj/item/ingot/silver
 
+/obj/item/cooking/platter/gold
+	name = "gold platter"
+	desc = "A fancy gold plate often used by the nobility as a symbol of class."
+	icon_state = "platter_gold"
+	resistance_flags = FIRE_PROOF
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	sellprice = 25
+	smeltresult = /obj/item/ingot/gold
 
 
 /obj/item/book/rogue/yeoldecookingmanual // new book with some tips to learn
@@ -298,9 +318,9 @@
  *								*
  * * * * * * * * * * * * * * * 	*/
 
-// -------------- POWDER (flour) -----------------
+// -------------- Flour -----------------
 /obj/item/reagent_containers/powder/flour
-	name = "powder"
+	name = "flour"
 	desc = "With this ambition, we build an empire."
 	gender = PLURAL
 	icon_state = "flour"
@@ -330,7 +350,7 @@
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
 		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-		name = "wet powder"
+		name = "wet flour"
 		desc = "Destined for greatness, at your hands."
 		R.reagents.remove_reagent(/datum/reagent/water, 10)
 		water_added = TRUE

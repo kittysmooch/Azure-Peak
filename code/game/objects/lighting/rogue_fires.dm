@@ -56,6 +56,11 @@
 				icon_state = "[base_state]0"
 			return
 
+/obj/machinery/light/rogue/firebowl/off
+	icon_state = "stonefire0"
+	base_state = "stonefire"
+	status = LIGHT_BURNED
+
 /obj/machinery/light/rogue/firebowl/stump
 	icon_state = "stumpfire1"
 	base_state = "stumpfire"
@@ -64,6 +69,11 @@
 	icon_state = "churchfire1"
 	base_state = "churchfire"
 
+/obj/machinery/light/rogue/firebowl/church/off
+	icon_state = "churchfire0"
+	base_state = "churchfire"
+	soundloop = null
+	status = LIGHT_BURNED
 
 /obj/machinery/light/rogue/firebowl/standing
 	name = "standing fire"
@@ -125,6 +135,23 @@
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
+
+/obj/machinery/light/rogue/wallfire/candle/off
+	name = "candles"
+	icon_state = "wallcandle0"
+	base_state = "wallcandle"
+	crossfire = FALSE
+	cookonme = FALSE
+	pixel_y = 32
+	soundloop = null
+	status = LIGHT_BURNED
+
+/obj/machinery/light/rogue/wallfire/candle/off/r
+	pixel_y = 0
+	pixel_x = 32
+/obj/machinery/light/rogue/wallfire/candle/off/l
+	pixel_y = 0
+	pixel_x = -32
 
 /obj/machinery/light/rogue/wallfire/candle/OnCrafted(dirin)
 	pixel_x = 0
