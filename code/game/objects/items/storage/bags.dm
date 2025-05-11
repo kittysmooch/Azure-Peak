@@ -3,7 +3,7 @@
 
 /obj/item/storage/bag/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage)
+	create_storage(component_type = /datum/component/storage)
 
 /*
  * Trays - Agouri
@@ -28,7 +28,7 @@
 
 /obj/item/storage/bag/tray/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/storage)
+	create_storage(component_type = /datum/component/storage)
 	update_icon()
 
 /obj/item/storage/bag/tray/Moved()
