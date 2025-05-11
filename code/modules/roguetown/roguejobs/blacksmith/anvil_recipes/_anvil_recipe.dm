@@ -142,7 +142,7 @@
 			I.name = "masterwork [I.name]"
 			modifier = 1.3
 			I.polished = 4
-			I._AddComponent(/datum/component/metal_glint)
+			I.AddComponent(/datum/component/metal_glint)
 
 	if(!modifier) // Sanity.
 		return

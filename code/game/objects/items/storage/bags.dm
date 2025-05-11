@@ -1,7 +1,7 @@
 /obj/item/storage/bag
 	slot_flags = ITEM_SLOT_BELT
 
-/obj/item/storage/bag/ComponentInitialize()
+/obj/item/storage/bag/Initialize()
 	. = ..()
 	create_storage(component_type = /datum/component/storage)
 
@@ -26,7 +26,7 @@
 	icon_state = "tray_psy"
 	desc = ""
 
-/obj/item/storage/bag/tray/ComponentInitialize()
+/obj/item/storage/bag/tray/Initialize()
 	. = ..()
 	create_storage(component_type = /datum/component/storage)
 	update_icon()
