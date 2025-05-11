@@ -6,18 +6,18 @@
 	var/list/populate_contents = list()
 	obj_flags = CAN_BE_HIT
 
-/obj/item/storage/get_dumping_location(obj/item/storage/source,mob/user)
+/obj/item/storage/get_dumping_location(obj/item/storage/source, mob/user)
 	return src
 
-/obj/item/storage/Initialize()
+/obj/item/storage/Initialize(mapload)
 	. = ..()
-	create_storage(component_type)
+	AddComponent(component_type)
 	PopulateContents()
 
 	for (var/obj/item/item in src)
 		item.item_flags |= IN_STORAGE
 	
-/obj/item/storage/create_storage(
+/*/obj/item/storage/create_storage(
 	max_items,
 	max_w_class,
 	max_combined_w_class,
@@ -28,7 +28,7 @@
 	// If no type was passed in, default to what we already have
 	component_type ||= src.component_type
 	return ..()
-
+*/
 /obj/item/storage/AllowDrop()
 	return FALSE
 

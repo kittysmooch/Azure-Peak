@@ -1,10 +1,6 @@
 /obj/item/storage/bag
 	slot_flags = ITEM_SLOT_BELT
 
-/obj/item/storage/bag/Initialize()
-	. = ..()
-	create_storage(component_type = /datum/component/storage)
-
 /*
  * Trays - Agouri
  *///wip
@@ -28,7 +24,6 @@
 
 /obj/item/storage/bag/tray/Initialize()
 	. = ..()
-	create_storage(component_type = /datum/component/storage)
 	update_icon()
 
 /obj/item/storage/bag/tray/Moved()
