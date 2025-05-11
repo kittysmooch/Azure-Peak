@@ -1,5 +1,5 @@
-Warning. Undefined sentient in restricted area. +Engaging.+
-Alert. Unauthorized sentient detected. +Activating combat protocols.+
-Caution. Illegal sentient identified within idle area. +Begin Purge.+
-Error. P-p-lea-se _k-kiilll_- Lux interface reset. +Engaging unknown.+
-Jubilation. Lux host identified. +Begin harvesting proceedure.+
+ERROR. Lux interface failure. Please, +kill me+... Interface reset.
+Lay down your arms and submit yourself for Lux harvesting.
+Warning. This is a restricted area, you will be purged in Her name.
+Running causes accidents. Remain still during cleansing protocol.
+You are becoming hysterical

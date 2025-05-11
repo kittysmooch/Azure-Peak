@@ -14,22 +14,17 @@ GLOBAL_LIST_INIT(dwarfskeleton_aggro, world.file2list("strings/rt/dskeletonaggro
 	setparrytime = 30
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY //even in undeath dwarves parry. Dodging aint proper dorf behavior
-	var/is_silent = FALSE
 	selected_default_language = /datum/language/dwarvish
-	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL) //intents given incase of player controlled
-	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak)//intents given incase of player controlled
+	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL) //intents given in case of player controlled
+	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak)
 
 /mob/living/carbon/human/species/dwarfskeleton/ambush
 	aggressive=1
 	wander = TRUE
 
 /mob/living/carbon/human/species/dwarfskeleton/retaliate(mob/living/L)
-	var/newtarg = target
 	.=..()
-	if(target)
-		aggressive=1
-		wander = TRUE
-	if(!is_silent && target != newtarg)
+	if(prob(5))
 		say(pick(GLOB.dwarfskeleton_aggro))
 		linepoint(target)
 
@@ -44,16 +39,6 @@ GLOBAL_LIST_INIT(dwarfskeleton_aggro, world.file2list("strings/rt/dskeletonaggro
 	if(src.dna && src.dna.species)
 		src.dna.species.species_traits |= NOBLOOD
 		src.dna.species.soundpack_m = new /datum/voicepack/skeleton()
-	var/obj/item/bodypart/O = src.get_bodypart(BODY_ZONE_R_ARM)
-	if(O)
-		O.drop_limb()
-		qdel(O)
-	O = src.get_bodypart(BODY_ZONE_L_ARM)
-	if(O)
-		O.drop_limb()
-		qdel(O)
-	src.regenerate_limb(BODY_ZONE_R_ARM)
-	src.regenerate_limb(BODY_ZONE_L_ARM)
 	if(src.charflaw)
 		QDEL_NULL(src.charflaw)
 	mob_biotypes = MOB_UNDEAD

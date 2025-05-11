@@ -44,6 +44,18 @@
 	sewrepair = TRUE
 	blocksound = SOFTHIT
 
+/obj/item/clothing/head/roguetown/spellcasterhat
+	name = "spellsinger hat"
+	desc = "An oddly shaped hat made of tightly-sewn leather, commonly worn by spellswords."
+	icon_state = "spellcasterhat"
+	item_state = "spellcasterhat"
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0)
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	sewrepair = TRUE
+
 /obj/item/clothing/head/roguetown/roguehood
 	name = "hood"
 	desc = ""

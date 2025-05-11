@@ -51,10 +51,12 @@
 	var/mob/attacker
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
 		var/obj/item/I = hitby
-		attacker = I.thrownby
+		if(I?.thrownby)
+			attacker = I.thrownby
 	if(attack_type == PROJECTILE_ATTACK)
 		var/obj/projectile/P = hitby
-		attacker = P.firer
+		if(P?.firer)
+			attacker = P.firer
 	if(attacker && istype(attacker))
 		if (!owner.can_see_cone(attacker))
 			return FALSE

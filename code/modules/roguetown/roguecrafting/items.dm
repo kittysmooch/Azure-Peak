@@ -295,14 +295,14 @@
 /datum/crafting_recipe/roguetown/quarterstaff_iron
 	name = "iron-reinforced quarterstaff"
 	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/iron)
-	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff, /obj/item/ingot/iron = 1)
+	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff = 1, /obj/item/ingot/iron = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/quarterstaff_steel
 	name = "steel-reinforced quarterstaff"
 	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/steel)
-	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff, /obj/item/ingot/steel = 1)
+	reqs = list(/obj/item/rogueweapon/woodstaff/quarterstaff = 1, /obj/item/ingot/steel = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 3
 

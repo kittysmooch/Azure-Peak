@@ -31,7 +31,6 @@
 	damage = 40
 	woundclass = BCLASS_BLUNT
 	nodamage = FALSE
-	flag = "blunt"
 	npc_damage_mult = 1.5 // Makes it more effective against NPCs.
 	hitsound = 'sound/combat/hits/blunt/shovel_hit2.ogg'
 	speed = 1

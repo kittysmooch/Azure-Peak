@@ -15,7 +15,6 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	setparrytime = 30
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY //knocks your weapon away with with their big scary metal arms
-	var/is_silent = FALSE
 	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL) //intents given incase of player controlled
 	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak)
 	resize = 1.2
@@ -23,14 +22,10 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 /mob/living/carbon/human/species/construct/metal/zizoconstruct/ambush
 	aggressive=1
 	wander = TRUE
-	
+
 /mob/living/carbon/human/species/construct/metal/zizoconstruct/retaliate(mob/living/L)
-	var/newtarg = target
 	.=..()
-	if(target)
-		aggressive=1
-		wander = TRUE
-	if(!is_silent && target != newtarg)
+	if(prob(5))
 		say(pick(GLOB.zizoconstruct_aggro))
 		linepoint(target)
 

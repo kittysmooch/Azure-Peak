@@ -417,7 +417,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		
 		if(force)
 			inspec += "\n<b>FORCE:</b> [get_force_string(force)]"
-		if(force_wielded && !wielded)
+		if(gripped_intents && !wielded)
 			inspec += "\n<b>WIELDED FORCE:</b> [get_force_string(force_wielded)]"
 
 		if(wbalance)

@@ -4,6 +4,7 @@
 	icon = 'icons/roguetown/misc/alchemy.dmi'
 	icon_state = "vial_bottle"
 	amount_per_transfer_from_this = 9
+	amount_per_gulp = 9
 	possible_transfer_amounts = list(9)
 	volume = 27
 	fill_icon_thresholds = list(0, 33, 66, 100)

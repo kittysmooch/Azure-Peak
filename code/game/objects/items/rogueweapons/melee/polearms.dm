@@ -722,6 +722,7 @@
 	gripsprite = TRUE
 	wlength = WLENGTH_GREAT
 	w_class = WEIGHT_CLASS_BULKY
+	blade_dulling = DULLING_SHAFT_METAL
 	minstr = 9
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
@@ -750,7 +751,6 @@
 	smeltresult = /obj/item/ingot/iron
 	smelt_bar_num = 3
 	max_blade_int = 200
-	blade_dulling = DULLING_SHAFT_METAL
 	wdefense = 4
 	force = 14
 	force_wielded = 35
@@ -761,6 +761,8 @@
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
 	max_blade_int = 300
+	force = 14
+	force_wielded = 35
 
 /obj/item/rogueweapon/greatsword/psygsword
 	name = "Apocrypha"
@@ -797,6 +799,7 @@
 	gripsprite = TRUE
 	wlength = WLENGTH_GREAT
 	w_class = WEIGHT_CLASS_BULKY
+	blade_dulling = DULLING_SHAFT_METAL
 	minstr = 8
 	smeltresult = /obj/item/ingot/steel
 	associated_skill = /datum/skill/combat/swords
@@ -907,6 +910,7 @@
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff/metal)
 	icon_state = "quarterstaff_iron"
 	max_integrity = 300
+	blade_dulling = DULLING_SHAFT_REINFORCED
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/steel
 	name = "steel quarterstaff"
@@ -916,3 +920,4 @@
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff/metal)
 	icon_state = "quarterstaff_steel"
 	max_integrity = 500
+	blade_dulling = DULLING_SHAFT_REINFORCED
