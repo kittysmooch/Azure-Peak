@@ -558,7 +558,7 @@
 /obj/item/rogueweapon/sword/long/martyr/Destroy()
 	var/datum/component/martyr = GetComponent(/datum/component/martyrweapon)
 	if(martyr)
-		martyr.RemoveComponent()
+		martyr.ClearFromParent()
 	return ..()
 
 
