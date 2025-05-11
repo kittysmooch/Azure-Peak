@@ -585,7 +585,7 @@
 /datum/anvil_recipe/weapons/blackflamb
 	name = "Flamberge"
 	req_bar = /obj/item/ingot/blacksteel
-	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem)
+	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/blackflamb
 	craftdiff = 5
 

@@ -72,7 +72,7 @@
 /datum/anvil_recipe/valuables/rubyg
 	name = "Rontz Ring (+1 Rontz)"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/roguegem)
+	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/ruby
 
 /datum/anvil_recipe/valuables/topazg
@@ -116,7 +116,7 @@
 /datum/anvil_recipe/valuables/rubys
 	name = "Rontz Ring (+1 Rontz)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/roguegem)
+	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/rubys
 
 /datum/anvil_recipe/valuables/topazs
@@ -146,7 +146,7 @@
 /datum/anvil_recipe/valuables/terminus
 	name = "Terminus Est (+1 Gold Bar, +1 Steel, +1 Rontz)"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem)
+	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
 	craftdiff = 3
 	i_type = "Weapons"

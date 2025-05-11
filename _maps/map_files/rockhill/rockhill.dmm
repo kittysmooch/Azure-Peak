@@ -2654,7 +2654,7 @@
 /turf/open/floor/rogue/concrete,
 /area/rogue/under/town/basement)
 "bNz" = (
-/obj/item/roguegem,
+/obj/item/roguegem/ruby,
 /turf/open/floor/rogue/cobble,
 /area/rogue/under/town/basement)
 "bOh" = (

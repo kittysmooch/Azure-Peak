@@ -31704,8 +31704,8 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors)
 "wqG" = (
-/obj/item/roguegem,
-/obj/item/roguegem,
+/obj/item/roguegem/ruby,
+/obj/item/roguegem/ruby,
 /obj/item/roguegem/violet,
 /obj/item/roguegem/yellow,
 /obj/item/roguegem/green,

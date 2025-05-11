@@ -3645,7 +3645,7 @@
 /area/rogue/outdoors/beach)
 "xN" = (
 /obj/structure/table/vtable,
-/obj/item/roguegem{
+/obj/item/roguegem/ruby{
 	pixel_y = 10
 	},
 /obj/item/roguegem/blue,
