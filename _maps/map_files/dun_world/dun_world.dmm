@@ -62013,7 +62013,8 @@
 "wIK" = (
 /obj/structure/table/vtable,
 /obj/item/roguegem/ruby{
-	pixel_y = 10
+	pixel_y = 10;
+	pixel_x = -1
 	},
 /obj/item/roguegem/blue,
 /turf/open/floor/rogue/churchbrick,
