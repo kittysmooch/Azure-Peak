@@ -7,7 +7,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_OUTLANDER)
 	cmode_music = 'sound/music/combat_steppe.ogg'
-
+	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/tame/saddled
 
 /datum/outfit/job/roguetown/mercenary/steppesman/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -21,11 +21,11 @@
 	beltr = /obj/item/rogueweapon/shield/buckler
 	beltl= /obj/item/quiver/arrows
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 	backr = /obj/item/storage/backpack/rogue/satchel
-	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/whip)
+	backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/whip, /obj/item/flashlight/flare/torch, /obj/item/rogueweapon/huntingknife/idagger/steel)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/bows, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -44,7 +44,7 @@
 		H.mind.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)
+		H.mind.adjust_skillrank(/datum/skill/misc/tracking, 2, TRUE)
 	H.change_stat("perception", 3)
 	H.change_stat("endurance", 2)
 	H.change_stat("speed", 2)

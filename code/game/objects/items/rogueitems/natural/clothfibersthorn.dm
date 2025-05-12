@@ -113,7 +113,7 @@
 	resistance_flags = FLAMMABLE
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	body_parts_covered = null
-	experimental_onhip = TRUE
+	experimental_onhip = FALSE //rip
 	max_integrity = 20
 	muteinmouth = TRUE
 	w_class = WEIGHT_CLASS_TINY

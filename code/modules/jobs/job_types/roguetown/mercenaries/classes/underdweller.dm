@@ -15,7 +15,7 @@
 /datum/outfit/job/roguetown/mercenary/underdweller/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/helmet/leather/minershelm
-	pants = /obj/item/clothing/under/roguetown/trou/leather
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor/red
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather

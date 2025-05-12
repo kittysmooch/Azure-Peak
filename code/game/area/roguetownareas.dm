@@ -616,6 +616,16 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/dungeon1
 
+/area/rogue/under/cave/fishmandungeon //idk what the fish guys are called in lore
+	name = "fishmandungeon"
+	icon_state = "under"
+	first_time_text = "INVASION STAGING AREA"
+	droning_sound = 'sound/music/area/dungeon.ogg'
+	droning_sound_dusk = null
+	droning_sound_night = null
+	converted_type = /area/rogue/outdoors/dungeon1
+	ceiling_protected = TRUE
+
 //////
 /////
 ////     TOWN AREAS
