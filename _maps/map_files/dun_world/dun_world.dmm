@@ -29282,8 +29282,7 @@
 "kBL" = (
 /obj/structure/table/vtable,
 /obj/item/roguegem{
-	pixel_y = 10;
-	pixel_x = -1
+	pixel_y = 10
 	},
 /obj/item/roguegem/blue,
 /turf/open/floor/rogue/churchbrick,
