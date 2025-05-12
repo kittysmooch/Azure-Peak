@@ -116,6 +116,18 @@
 	importexport_amt = 10
 	passive_generation = 4
 
+/datum/roguestock/stockpile/silk
+	name = "Silk"
+	desc = "Strands of spider silk used to make exotic clothes."
+	item_type = /obj/item/natural/silk
+	held_items = list(0, 2)
+	payout_price = 2
+	withdraw_price = 3
+	transport_fee = 1
+	export_price = 4
+	importexport_amt = 10
+	passive_generation = 1
+
 //natural/hide/cured must be defined/populated in sstreasury before natural/hide, for istype stockpile check to work
 /datum/roguestock/stockpile/cured
 	name = "Cured Leather"

@@ -89,11 +89,11 @@
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/swords) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/swords, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/knives) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else	
-		added_skills = list(list(/datum/skill/combat/knives, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 
 /datum/virtue/combat/executioner
 	name = "Executioner Apprentice"
@@ -105,11 +105,11 @@
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/whipsflails) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/whipsflails, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/axes) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/axes, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 
 /datum/virtue/combat/militia
 	name = "Militiaman Apprentice"
@@ -121,11 +121,11 @@
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/polearms) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/polearms, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/maces) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/maces, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 
 /datum/virtue/combat/brawler
 	name = "Brawler Apprentice"
@@ -137,11 +137,11 @@
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/unarmed) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/unarmed, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 	if(recipient.mind?.get_skill_level(/datum/skill/combat/wrestling) < SKILL_LEVEL_APPRENTICE)
 		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
-		added_skills = list(list(/datum/skill/combat/wrestling, 1, 3))
+		recipient.mind?.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 
 
 /datum/virtue/combat/bowman
