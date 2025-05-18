@@ -22,40 +22,40 @@
 /obj/item/natural/fibers/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/stonehoe,
-		/datum/crafting_recipe/roguetown/woodhammer,
-		/datum/crafting_recipe/roguetown/tneedle,
-		/datum/crafting_recipe/roguetown/recurvepartial,
-		/datum/crafting_recipe/roguetown/longbowpartial,
-		/datum/crafting_recipe/roguetown/wickercloak,
-		/datum/crafting_recipe/roguetown/torch,
-		/datum/crafting_recipe/roguetown/woodhammer,
-		/datum/crafting_recipe/roguetown/stonehoe,
-		/datum/crafting_recipe/roguetown/stonesword,
-		/datum/crafting_recipe/roguetown/woodsword,
-		/datum/crafting_recipe/roguetown/bag,
-		/datum/crafting_recipe/roguetown/bagx5,
-		/datum/crafting_recipe/roguetown/rod,
-		/datum/crafting_recipe/roguetown/pearlcross,
-		/datum/crafting_recipe/roguetown/bpearlcross,
-		/datum/crafting_recipe/roguetown/shellnecklace,
-		/datum/crafting_recipe/roguetown/shellbracelet,
-		/datum/crafting_recipe/roguetown/abyssoramulet,
-		/datum/crafting_recipe/roguetown/broom,
-		/datum/crafting_recipe/roguetown/woodcross,
-		/datum/crafting_recipe/roguetown/mantrap,
-		/datum/crafting_recipe/roguetown/tribalrags,
-		/datum/crafting_recipe/roguetown/skullmask,
-		/datum/crafting_recipe/roguetown/bonespear,
-		/datum/crafting_recipe/roguetown/boneaxe,
-		/datum/crafting_recipe/roguetown/goodluckcharm,
-		/datum/crafting_recipe/roguetown/bouquet_rosa,
-		/datum/crafting_recipe/roguetown/bouquet_salvia,
-		/datum/crafting_recipe/roguetown/bouquet_matricaria,
-		/datum/crafting_recipe/roguetown/bouquet_calendula,
-		/datum/crafting_recipe/roguetown/flowercrown_rosa,
-		/datum/crafting_recipe/roguetown/flowercrown_salvia,
-		/datum/crafting_recipe/roguetown/slingpouchcraft,
+		/datum/crafting_recipe/roguetown/survival/stonehoe,
+		/datum/crafting_recipe/roguetown/survival/woodhammer,
+		/datum/crafting_recipe/roguetown/survival/tneedle,
+		/datum/crafting_recipe/roguetown/survival/recurvepartial,
+		/datum/crafting_recipe/roguetown/survival/longbowpartial,
+		/datum/crafting_recipe/roguetown/survival/wickercloak,
+		/datum/crafting_recipe/roguetown/survival/torch,
+		/datum/crafting_recipe/roguetown/survival/woodhammer,
+		/datum/crafting_recipe/roguetown/survival/stonehoe,
+		/datum/crafting_recipe/roguetown/survival/stonesword,
+		/datum/crafting_recipe/roguetown/survival/woodsword,
+		/datum/crafting_recipe/roguetown/survival/bag,
+		/datum/crafting_recipe/roguetown/survival/bagx5,
+		/datum/crafting_recipe/roguetown/survival/rod,
+		/datum/crafting_recipe/roguetown/survival/pearlcross,
+		/datum/crafting_recipe/roguetown/survival/bpearlcross,
+		/datum/crafting_recipe/roguetown/survival/shellnecklace,
+		/datum/crafting_recipe/roguetown/survival/shellbracelet,
+		/datum/crafting_recipe/roguetown/survival/abyssoramulet,
+		/datum/crafting_recipe/roguetown/survival/broom,
+		/datum/crafting_recipe/roguetown/survival/woodcross,
+		/datum/crafting_recipe/roguetown/survival/mantrap,
+		/datum/crafting_recipe/roguetown/survival/tribalrags,
+		/datum/crafting_recipe/roguetown/survival/skullmask,
+		/datum/crafting_recipe/roguetown/survival/bonespear,
+		/datum/crafting_recipe/roguetown/survival/boneaxe,
+		/datum/crafting_recipe/roguetown/survival/goodluckcharm,
+		/datum/crafting_recipe/roguetown/survival/bouquet_rosa,
+		/datum/crafting_recipe/roguetown/survival/bouquet_salvia,
+		/datum/crafting_recipe/roguetown/survival/bouquet_matricaria,
+		/datum/crafting_recipe/roguetown/survival/bouquet_calendula,
+		/datum/crafting_recipe/roguetown/survival/flowercrown_rosa,
+		/datum/crafting_recipe/roguetown/survival/flowercrown_salvia,
+		/datum/crafting_recipe/roguetown/survival/slingpouchcraft,
 		)
 
 	AddElement(
@@ -172,11 +172,11 @@
 /obj/item/natural/cloth/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/longbowpartial,
-		/datum/crafting_recipe/roguetown/bag,
-		/datum/crafting_recipe/roguetown/bagx5,
-		/datum/crafting_recipe/roguetown/book_crafting_kit,
-		/datum/crafting_recipe/roguetown/slingpouchcraft,
+		/datum/crafting_recipe/roguetown/survival/longbowpartial,
+		/datum/crafting_recipe/roguetown/survival/bag,
+		/datum/crafting_recipe/roguetown/survival/bagx5,
+		/datum/crafting_recipe/roguetown/survival/book_crafting_kit,
+		/datum/crafting_recipe/roguetown/survival/slingpouchcraft,
 		)
 
 	AddElement(
@@ -309,7 +309,7 @@
 /obj/item/natural/thorn/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/tneedle,
+		/datum/crafting_recipe/roguetown/survival/tneedle,
 		)
 
 	AddElement(
@@ -535,9 +535,9 @@
 /obj/item/natural/bowstring/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/bow,
-		/datum/crafting_recipe/roguetown/recurvebow,
-		/datum/crafting_recipe/roguetown/longbow,
+		/datum/crafting_recipe/roguetown/survival/bow,
+		/datum/crafting_recipe/roguetown/survival/recurvebow,
+		/datum/crafting_recipe/roguetown/survival/longbow,
 		)
 
 	AddElement(

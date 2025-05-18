@@ -44,7 +44,7 @@
 	icon_state = "clod[rand(1,2)]"
 	..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/wickercloak,
+		/datum/crafting_recipe/roguetown/survival/wickercloak,
 		)
 
 	AddElement(

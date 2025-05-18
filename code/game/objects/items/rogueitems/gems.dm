@@ -187,7 +187,7 @@
 /obj/item/pearl/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/pearlcross,
+		/datum/crafting_recipe/roguetown/survival/pearlcross,
 		)
 
 	AddElement(
@@ -204,6 +204,6 @@
 /obj/item/pearl/blue/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/bpearlcross,
-		/datum/crafting_recipe/roguetown/abyssoramulet
+		/datum/crafting_recipe/roguetown/survival/bpearlcross,
+		/datum/crafting_recipe/roguetown/survival/abyssoramulet
 		)

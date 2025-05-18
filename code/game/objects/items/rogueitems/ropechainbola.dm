@@ -23,21 +23,21 @@
 /obj/item/rope/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/ropebelt,
-		/datum/crafting_recipe/roguetown/net,
-		/datum/crafting_recipe/roguetown/billhook,
-		/datum/crafting_recipe/roguetown/goedendag,
-		/datum/crafting_recipe/roguetown/rucksack,
-		/datum/crafting_recipe/roguetown/peasantry/thresher/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/shovel/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/hoe/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/pitchfork/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/peasantwarflail,
-		/datum/crafting_recipe/roguetown/peasantry/goedendag,
-		/datum/crafting_recipe/roguetown/peasantry/waraxe,
-		/datum/crafting_recipe/roguetown/peasantry/warspear_hoe,
-		/datum/crafting_recipe/roguetown/peasantry/warspear_pitchfork,
-		/datum/crafting_recipe/roguetown/peasantry/scythe,
+		/datum/crafting_recipe/roguetown/survival/ropebelt,
+		/datum/crafting_recipe/roguetown/survival/net,
+		/datum/crafting_recipe/roguetown/survival/billhook,
+		/datum/crafting_recipe/roguetown/survival/goedendag,
+		/datum/crafting_recipe/roguetown/survival/rucksack,
+		/datum/crafting_recipe/roguetown/survival/peasantry/thresher/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/shovel/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/hoe/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/pitchfork/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/peasantwarflail,
+		/datum/crafting_recipe/roguetown/survival/peasantry/goedendag,
+		/datum/crafting_recipe/roguetown/survival/peasantry/waraxe,
+		/datum/crafting_recipe/roguetown/survival/peasantry/warspear_hoe,
+		/datum/crafting_recipe/roguetown/survival/peasantry/warspear_pitchfork,
+		/datum/crafting_recipe/roguetown/survival/peasantry/scythe,
 		)
 
 	AddElement(

@@ -172,12 +172,12 @@
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/structure/plough,
-		/datum/crafting_recipe/roguetown/peasantry/thresher,
-		/datum/crafting_recipe/roguetown/peasantry/shovel,
-		/datum/crafting_recipe/roguetown/peasantry/hoe,
-		/datum/crafting_recipe/roguetown/peasantry/pitchfork,
-		/datum/crafting_recipe/roguetown/quarterstaff_iron,
-		/datum/crafting_recipe/roguetown/mantrap,
+		/datum/crafting_recipe/roguetown/survival/peasantry/thresher,
+		/datum/crafting_recipe/roguetown/survival/peasantry/shovel,
+		/datum/crafting_recipe/roguetown/survival/peasantry/hoe,
+		/datum/crafting_recipe/roguetown/survival/peasantry/pitchfork,
+		/datum/crafting_recipe/roguetown/survival/quarterstaff_iron,
+		/datum/crafting_recipe/roguetown/survival/mantrap,
 		)
 
 	AddElement(

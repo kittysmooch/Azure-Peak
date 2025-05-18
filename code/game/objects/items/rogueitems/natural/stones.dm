@@ -149,16 +149,16 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	stone_lore()
 
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/stoneaxe,
-		/datum/crafting_recipe/roguetown/stonehammer,
-		/datum/crafting_recipe/roguetown/stonepick,
-		/datum/crafting_recipe/roguetown/stonehoe,
-		/datum/crafting_recipe/roguetown/stonetongs,
-		/datum/crafting_recipe/roguetown/stoneknife,
-		/datum/crafting_recipe/roguetown/stonespear,
-		/datum/crafting_recipe/roguetown/stonesword,
-		/datum/crafting_recipe/roguetown/pot,
-		/datum/crafting_recipe/roguetown/net,
+		/datum/crafting_recipe/roguetown/survival/stoneaxe,
+		/datum/crafting_recipe/roguetown/survival/stonehammer,
+		/datum/crafting_recipe/roguetown/survival/stonepick,
+		/datum/crafting_recipe/roguetown/survival/stonehoe,
+		/datum/crafting_recipe/roguetown/survival/stonetongs,
+		/datum/crafting_recipe/roguetown/survival/stoneknife,
+		/datum/crafting_recipe/roguetown/survival/stonespear,
+		/datum/crafting_recipe/roguetown/survival/stonesword,
+		/datum/crafting_recipe/roguetown/survival/pot,
+		/datum/crafting_recipe/roguetown/survival/net,
 		)
 
 	AddElement(
@@ -184,18 +184,18 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 /obj/item/natural/whetstone/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/reinforcedshaft,
-		/datum/crafting_recipe/roguetown/peasantry/thresher/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/shovel/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/hoe/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/pitchfork/whetstone,
-		/datum/crafting_recipe/roguetown/peasantry/goedendag,
-		/datum/crafting_recipe/roguetown/peasantry/scythe,
-		/datum/crafting_recipe/roguetown/peasantry/warflail,
-		/datum/crafting_recipe/roguetown/peasantry/warpick,
-		/datum/crafting_recipe/roguetown/peasantry/warpick_steel,
-		/datum/crafting_recipe/roguetown/peasantry/maciejowski_knife,
-		/datum/crafting_recipe/roguetown/peasantry/maciejowski_messer,
+		/datum/crafting_recipe/roguetown/survival/reinforcedshaft,
+		/datum/crafting_recipe/roguetown/survival/peasantry/thresher/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/shovel/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/hoe/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/pitchfork/whetstone,
+		/datum/crafting_recipe/roguetown/survival/peasantry/goedendag,
+		/datum/crafting_recipe/roguetown/survival/peasantry/scythe,
+		/datum/crafting_recipe/roguetown/survival/peasantry/warflail,
+		/datum/crafting_recipe/roguetown/survival/peasantry/warpick,
+		/datum/crafting_recipe/roguetown/survival/peasantry/warpick_steel,
+		/datum/crafting_recipe/roguetown/survival/peasantry/maciejowski_knife,
+		/datum/crafting_recipe/roguetown/survival/peasantry/maciejowski_messer,
 		)
 
 	AddElement(

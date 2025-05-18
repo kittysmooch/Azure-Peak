@@ -14,10 +14,10 @@
 /obj/item/natural/hide/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/woodshield,
-		/datum/crafting_recipe/roguetown/book_crafting_kit,
-		/datum/crafting_recipe/roguetown/tribalrags,
-		/datum/crafting_recipe/roguetown/antlerhood,
+		/datum/crafting_recipe/roguetown/survival/woodshield,
+		/datum/crafting_recipe/roguetown/survival/book_crafting_kit,
+		/datum/crafting_recipe/roguetown/survival/tribalrags,
+		/datum/crafting_recipe/roguetown/survival/antlerhood,
 		)
 
 	AddElement(
@@ -165,8 +165,8 @@
 /obj/item/natural/bone/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/recurvepartial,
-		/datum/crafting_recipe/roguetown/longbowpartial,
+		/datum/crafting_recipe/roguetown/survival/recurvepartial,
+		/datum/crafting_recipe/roguetown/survival/longbowpartial,
 		)
 
 	AddElement(
@@ -184,9 +184,9 @@
 /obj/item/natural/hide/cured/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/heatershield,
-		/datum/crafting_recipe/roguetown/collar,
-		/datum/crafting_recipe/roguetown/bell_collar,
+		/datum/crafting_recipe/roguetown/survival/heatershield,
+		/datum/crafting_recipe/roguetown/survival/collar,
+		/datum/crafting_recipe/roguetown/survival/bell_collar,
 		)
 
 /obj/item/natural/bundle/curred_hide

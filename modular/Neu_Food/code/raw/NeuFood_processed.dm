@@ -49,11 +49,11 @@
 /obj/item/reagent_containers/food/snacks/tallow/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/soap,
-		/datum/crafting_recipe/roguetown/candle,
-		/datum/crafting_recipe/roguetown/candle/eora,
-		/datum/crafting_recipe/roguetown/recurvepartial,
-		/datum/crafting_recipe/roguetown/longbowpartial,
+		/datum/crafting_recipe/roguetown/survival/soap,
+		/datum/crafting_recipe/roguetown/survival/candle,
+		/datum/crafting_recipe/roguetown/survival/candle/eora,
+		/datum/crafting_recipe/roguetown/survival/recurvepartial,
+		/datum/crafting_recipe/roguetown/survival/longbowpartial,
 		/datum/crafting_recipe/roguetown/leather/javelinbag,
 		/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves,
 		/datum/crafting_recipe/roguetown/leather/heavy_leather_pants,
