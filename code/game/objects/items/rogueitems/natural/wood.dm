@@ -19,6 +19,21 @@
 	var/lumber = /obj/item/grown/log/tree/small //These are solely for lumberjack calculations
 	var/lumber_amount = 1
 
+/obj/item/grown/log/tree/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/woodstaff,
+		/datum/crafting_recipe/roguetown/quarterstaff,
+		/datum/crafting_recipe/roguetown/recurvepartial,
+		/datum/crafting_recipe/roguetown/longbowpartial,
+
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/grown/log/tree/attacked_by(obj/item/I, mob/living/user) //This serves to reward woodcutting
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/labor/lumberjacking)
@@ -338,6 +353,17 @@
 	gripped_intents = null
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	lumber_amount = 0
+
+/obj/item/grown/log/tree/stake/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/whetstone,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
 
 /////////////
 // Planks //

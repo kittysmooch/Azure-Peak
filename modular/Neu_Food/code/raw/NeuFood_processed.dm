@@ -46,6 +46,32 @@
 	bitesize = 1
 	dropshrink = 0.3
 
+/obj/item/reagent_containers/food/snacks/tallow/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/soap,
+		/datum/crafting_recipe/roguetown/candle,
+		/datum/crafting_recipe/roguetown/candle/eora,
+		/datum/crafting_recipe/roguetown/recurvepartial,
+		/datum/crafting_recipe/roguetown/longbowpartial,
+		/datum/crafting_recipe/roguetown/leather/javelinbag,
+		/datum/crafting_recipe/roguetown/leather/fingerless_leather_gloves,
+		/datum/crafting_recipe/roguetown/leather/heavy_leather_pants,
+		/datum/crafting_recipe/roguetown/leather/heavy_leather_pants/shorts,
+		/datum/crafting_recipe/roguetown/leather/helmet/advanced,
+		/datum/crafting_recipe/roguetown/leather/heavy_leather_armor,
+		/datum/crafting_recipe/roguetown/leather/heavy_leather_armor/coat,
+		/datum/crafting_recipe/roguetown/leather/heavy_leather_armor/jacket,
+		/datum/crafting_recipe/roguetown/leather/hidebikini,
+		/datum/crafting_recipe/roguetown/leather/otavanleatherpants,
+		/datum/crafting_recipe/roguetown/leather/otavanboots,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 // -------------- RAISINS -----------------
 /obj/item/reagent_containers/food/snacks/rogue/raisins
 	name = "raisins"

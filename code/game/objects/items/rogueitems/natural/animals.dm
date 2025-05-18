@@ -11,6 +11,20 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	sellprice = 8
 
+/obj/item/natural/hide/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/woodshield,
+		/datum/crafting_recipe/roguetown/book_crafting_kit,
+		/datum/crafting_recipe/roguetown/tribalrags,
+		/datum/crafting_recipe/roguetown/antlerhood,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+	)
+
 /obj/item/natural/fur
 	name = "fur"
 	icon_state = "wool1"
@@ -154,6 +168,14 @@
 	desc = "A hide piece that has been cured and may now be worked."
 	sellprice = 7
 	bundletype = /obj/item/natural/bundle/curred_hide
+
+/obj/item/natural/hide/cured/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/heatershield,
+		/datum/crafting_recipe/roguetown/collar,
+		/datum/crafting_recipe/roguetown/bell_collar,
+		)
 
 /obj/item/natural/bundle/curred_hide
 	name = "bundle of cured leather"
