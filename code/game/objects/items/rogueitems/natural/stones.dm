@@ -181,7 +181,7 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	sharpening_factor = 0.4
 	spark_chance = 80
 
-/obj/item/natural/whetstoneInitialize()
+/obj/item/natural/whetstone/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
 		/datum/crafting_recipe/roguetown/reinforcedshaft,
