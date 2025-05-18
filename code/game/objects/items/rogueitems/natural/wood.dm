@@ -21,12 +21,7 @@
 
 /obj/item/grown/log/tree/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/woodstaff,
-		/datum/crafting_recipe/roguetown/survival/quarterstaff,
-		/datum/crafting_recipe/roguetown/survival/recurvepartial,
-		/datum/crafting_recipe/roguetown/survival/longbowpartial,
-		)
+	var/static/list/slapcraft_recipe_list = list()
 
 	AddElement(
 		/datum/element/slapcrafting,\
@@ -88,53 +83,7 @@
 
 /obj/item/grown/log/tree/small/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/stoneaxe,
-		/datum/crafting_recipe/roguetown/survival/stonehammer,
-		/datum/crafting_recipe/roguetown/survival/stonepick,
-		/datum/crafting_recipe/roguetown/survival/stonehoe,
-		/datum/crafting_recipe/roguetown/survival/woodspade,
-		/datum/crafting_recipe/roguetown/survival/woodhammer,
-		/datum/crafting_recipe/roguetown/survival/stonesword,
-		/datum/crafting_recipe/roguetown/survival/woodclub,
-		/datum/crafting_recipe/roguetown/survival/fishingcage,
-		/datum/crafting_recipe/roguetown/survival/rod,
-		/datum/crafting_recipe/roguetown/survival/bowpartial,
-		/datum/crafting_recipe/roguetown/survival/recurvepartial,
-		/datum/crafting_recipe/roguetown/survival/longbowpartial,
-		/datum/crafting_recipe/roguetown/survival/billhook,
-		/datum/crafting_recipe/roguetown/survival/goedendag,
-		/datum/crafting_recipe/roguetown/survival/woodsword,
-		/datum/crafting_recipe/roguetown/survival/woodshield,
-		/datum/crafting_recipe/roguetown/survival/spoon,
-		/datum/crafting_recipe/roguetown/survival/fork,
-		/datum/crafting_recipe/roguetown/survival/platter,
-		/datum/crafting_recipe/roguetown/survival/rollingpin,
-		/datum/crafting_recipe/roguetown/survival/woodbucket,
-		/datum/crafting_recipe/roguetown/survival/woodcup,
-		/datum/crafting_recipe/roguetown/survival/woodtray,
-		/datum/crafting_recipe/roguetown/survival/woodbowl,
-		/datum/crafting_recipe/roguetown/survival/pipe,
-		/datum/crafting_recipe/roguetown/survival/mantrap,
-		/datum/crafting_recipe/roguetown/survival/paperscroll,
-		/datum/crafting_recipe/roguetown/survival/boneaxe,
-		/datum/crafting_recipe/roguetown/survival/prosthetic/woodleftarm,
-		/datum/crafting_recipe/roguetown/survival/prosthetic/woodrightarm,
-		/datum/crafting_recipe/roguetown/survival/prosthetic/woodleftleft,
-		/datum/crafting_recipe/roguetown/survival/prosthetic/woodrightleg,
-		/datum/crafting_recipe/roguetown/survival/tarot_deck,
-		/datum/crafting_recipe/roguetown/survival/heatershield,
-		/datum/crafting_recipe/roguetown/survival/woodshaft,
-		/datum/crafting_recipe/roguetown/survival/peasantry/thresher/whetstone,
-		/datum/crafting_recipe/roguetown/survival/peasantry/shovel/whetstone,
-		/datum/crafting_recipe/roguetown/survival/peasantry/hoe/whetstone,
-		/datum/crafting_recipe/roguetown/survival/peasantry/pitchfork/whetstone,
-		/datum/crafting_recipe/roguetown/survival/peasantry/peasantwarflail,
-		/datum/crafting_recipe/roguetown/survival/peasantry/waraxe,
-		/datum/crafting_recipe/roguetown/survival/peasantry/warspear_hoe,
-		/datum/crafting_recipe/roguetown/survival/peasantry/warspear_pitchfork,
-		/datum/crafting_recipe/roguetown/survival/peasantry/scythe,
-		)
+	var/static/list/slapcraft_recipe_list = list()
 
 	AddElement(
 		/datum/element/slapcrafting,\
@@ -175,9 +124,7 @@
 
 /obj/item/grown/log/tree/bowpartial/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/bow,
-		)
+	var/static/list/slapcraft_recipe_list = list()
 
 	AddElement(
 		/datum/element/slapcrafting,\
@@ -192,9 +139,7 @@
 
 /obj/item/grown/log/tree/bowpartial/recurve/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/recurvebow,
-		)
+	var/static/list/slapcraft_recipe_list = list()
 
 /obj/item/grown/log/tree/bowpartial/longbow
 	name = "long bowstave"
@@ -204,9 +149,7 @@
 
 /obj/item/grown/log/tree/bowpartial/longbow/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/longbow,
-		)
+	var/static/list/slapcraft_recipe_list = list()
 
 /obj/item/grown/log/tree/stick
 	name = "stick"
