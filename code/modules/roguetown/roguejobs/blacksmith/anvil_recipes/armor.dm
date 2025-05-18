@@ -1,4 +1,5 @@
 /datum/anvil_recipe/armor
+	abstract_type = /datum/anvil_recipe/armor
 	appro_skill = /datum/skill/craft/armorsmithing
 	i_type = "Armor"
 	craftdiff = 1
@@ -132,6 +133,13 @@
 	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
+
+/datum/anvil_recipe/armor/iron/helmethorned
+	name = "Horned Helmet"
+	req_bar = /obj/item/ingot/iron
+	created_item = /obj/item/clothing/head/roguetown/helmet/horned
+	craftdiff = 2
+	
 /*
 /datum/anvil_recipe/armor/helmetgoblin
 	name = "Goblin Helmet (+1 Iron)"
@@ -353,12 +361,6 @@
 	name = "Nasal Helmet"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/clothing/head/roguetown/helmet
-	craftdiff = 2
-
-/datum/anvil_recipe/armor/steel/helmethorned
-	name = "Horned Helmet"
-	req_bar = /obj/item/ingot/steel
-	created_item = /obj/item/clothing/head/roguetown/helmet/horned
 	craftdiff = 2
 
 /datum/anvil_recipe/armor/steel/helmetwinged

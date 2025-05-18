@@ -90,7 +90,7 @@
 
 			head = /obj/item/clothing/head/roguetown/roguehood/hierophant
 			cloak = /obj/item/clothing/cloak/hierophant
-			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/hierophant
+			armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/hierophant
 			shirt = /obj/item/clothing/suit/roguetown/shirt/robe/hierophant
 			pants = /obj/item/clothing/under/roguetown/trou/leather
 			backpack_contents = list(/obj/item/roguekey/mercenary, /obj/item/rogueweapon/huntingknife/idagger, /obj/item/spellbook_unfinished/pre_arcyne)

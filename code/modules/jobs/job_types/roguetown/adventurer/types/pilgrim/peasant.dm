@@ -38,6 +38,7 @@
 						/obj/item/seeds/apple=1,
 						/obj/item/ash=1,
 						/obj/item/flashlight/flare/torch = 1,
+						/obj/item/recipe_book/survival = 1,
 						)
 	beltl = /obj/item/rogueweapon/sickle
 	backr = /obj/item/rogueweapon/hoe

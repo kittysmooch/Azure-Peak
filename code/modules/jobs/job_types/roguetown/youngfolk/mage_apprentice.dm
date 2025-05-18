@@ -26,7 +26,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	belt = /obj/item/storage/belt/rogue/leather
-	beltr = /obj/item/storage/keyring/mage
+	beltr = /obj/item/storage/keyring/mageapprentice
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backr = /obj/item/rogueweapon/woodstaff
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
@@ -49,7 +49,11 @@
 /datum/outfit/job/roguetown/wapprentice/associate/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
-	backpack_contents = list(/obj/item/roguegem/amethyst = 1, /obj/item/spellbook_unfinished/pre_arcyne = 1)
+	backpack_contents = list(
+		/obj/item/roguegem/amethyst = 1, 
+		/obj/item/spellbook_unfinished/pre_arcyne = 1,
+		/obj/item/recipe_book/alchemy = 1
+		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
@@ -87,7 +91,12 @@
 	category_tags = list(CTAG_WAPPRENTICE)
 	
 /datum/outfit/job/roguetown/wapprentice/alchemist/pre_equip(mob/living/carbon/human/H)
-	backpack_contents = list(/obj/item/roguegem/amethyst = 1, /obj/item/seeds/sweetleaf = 1, /obj/item/seeds/pipeweed = 1)
+	backpack_contents = list(
+		/obj/item/roguegem/amethyst = 1, 
+		/obj/item/seeds/sweetleaf = 1, 
+		/obj/item/seeds/pipeweed = 1,
+		/obj/item/recipe_book/alchemy = 1
+		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -125,7 +134,10 @@
 	category_tags = list(CTAG_WAPPRENTICE)
 	
 /datum/outfit/job/roguetown/wapprentice/apprentice/pre_equip(mob/living/carbon/human/H)
-	backpack_contents = list(/obj/item/roguegem/amethyst = 1)
+	backpack_contents = list(
+		/obj/item/roguegem/amethyst = 1, 
+		/obj/item/recipe_book/alchemy = 1
+		)
 	if(H.mind)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
