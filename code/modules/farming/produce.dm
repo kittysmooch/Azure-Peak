@@ -318,9 +318,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/sigdry,
-		)
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/roguetown/sigdry,)
 
 	AddElement(
 		/datum/element/slapcrafting,\
@@ -340,9 +338,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/sigsweet,
-		)
+	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/roguetown/sigsweet,)
 
 	AddElement(
 		/datum/element/slapcrafting,\
