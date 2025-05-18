@@ -26,7 +26,6 @@
 		/datum/crafting_recipe/roguetown/quarterstaff,
 		/datum/crafting_recipe/roguetown/recurvepartial,
 		/datum/crafting_recipe/roguetown/longbowpartial,
-
 		)
 
 	AddElement(

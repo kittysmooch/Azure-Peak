@@ -162,6 +162,18 @@
 	slot_flags = ITEM_SLOT_MOUTH|ITEM_SLOT_HIP
 	bundletype = /obj/item/natural/bundle/bone
 
+/obj/item/natural/bone/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/recurvepartial,
+		/datum/crafting_recipe/roguetown/longbowpartial,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/natural/hide/cured
 	name = "cured leather"
 	icon_state = "leather"

@@ -104,6 +104,17 @@
 	grid_height = 64
 	grid_width = 32
 
+/obj/item/rogueweapon/huntingknife/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/peasantry/maciejowski_knife,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/rogueweapon/huntingknife/getonmobprop(tag)
 	. = ..()
 	if(tag)
