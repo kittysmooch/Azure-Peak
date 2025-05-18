@@ -168,6 +168,23 @@
 	smeltresult = /obj/item/ingot/iron
 	sellprice = 25
 
+/obj/item/ingot/iron/Initialize(mapload, smelt_quality)
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/structure/plough,
+		/datum/crafting_recipe/roguetown/peasantry/thresher,
+		/datum/crafting_recipe/roguetown/peasantry/shovel,
+		/datum/crafting_recipe/roguetown/peasantry/hoe,
+		/datum/crafting_recipe/roguetown/peasantry/pitchfork,
+		/datum/crafting_recipe/roguetown/quarterstaff_iron,
+		/datum/crafting_recipe/roguetown/mantrap,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/ingot/copper
 	name = "copper bar"
 	desc = "This bar causes a gentle tingling sensation when touched."

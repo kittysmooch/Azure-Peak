@@ -72,6 +72,61 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 
+/obj/item/grown/log/tree/small/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/stoneaxe,
+		/datum/crafting_recipe/roguetown/stonehammer,
+		/datum/crafting_recipe/roguetown/stonepick,
+		/datum/crafting_recipe/roguetown/stonehoe,
+		/datum/crafting_recipe/roguetown/woodspade,
+		/datum/crafting_recipe/roguetown/woodhammer,
+		/datum/crafting_recipe/roguetown/stonesword,
+		/datum/crafting_recipe/roguetown/woodclub,
+		/datum/crafting_recipe/roguetown/fishingcage,
+		/datum/crafting_recipe/roguetown/rod,
+		/datum/crafting_recipe/roguetown/bowpartial,
+		/datum/crafting_recipe/roguetown/recurvepartial,
+		/datum/crafting_recipe/roguetown/longbowpartial,
+		/datum/crafting_recipe/roguetown/billhook,
+		/datum/crafting_recipe/roguetown/goedendag,
+		/datum/crafting_recipe/roguetown/woodsword,
+		/datum/crafting_recipe/roguetown/woodshield,
+		/datum/crafting_recipe/roguetown/spoon,
+		/datum/crafting_recipe/roguetown/fork,
+		/datum/crafting_recipe/roguetown/platter,
+		/datum/crafting_recipe/roguetown/rollingpin,
+		/datum/crafting_recipe/roguetown/woodbucket,
+		/datum/crafting_recipe/roguetown/woodcup,
+		/datum/crafting_recipe/roguetown/woodtray,
+		/datum/crafting_recipe/roguetown/woodbowl,
+		/datum/crafting_recipe/roguetown/pipe,
+		/datum/crafting_recipe/roguetown/mantrap,
+		/datum/crafting_recipe/roguetown/paperscroll,
+		/datum/crafting_recipe/roguetown/boneaxe,
+		/datum/crafting_recipe/roguetown/prosthetic/woodleftarm,
+		/datum/crafting_recipe/roguetown/prosthetic/woodrightarm,
+		/datum/crafting_recipe/roguetown/prosthetic/woodleftleft,
+		/datum/crafting_recipe/roguetown/prosthetic/woodrightleg,
+		/datum/crafting_recipe/roguetown/tarot_deck,
+		/datum/crafting_recipe/roguetown/heatershield,
+		/datum/crafting_recipe/roguetown/woodshaft,
+		/datum/crafting_recipe/roguetown/peasantry/thresher/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/shovel/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/hoe/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/pitchfork/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/peasantwarflail,
+		/datum/crafting_recipe/roguetown/peasantry/waraxe,
+		/datum/crafting_recipe/roguetown/peasantry/warspear_hoe,
+		/datum/crafting_recipe/roguetown/peasantry/warspear_pitchfork,
+		/datum/crafting_recipe/roguetown/peasantry/scythe,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/grown/log/tree/small/attackby(obj/item/I, mob/living/user, params)
 	if(item_flags & IN_STORAGE)
 		return
@@ -104,17 +159,40 @@
 	smeltresult = /obj/item/rogueore/coal
 	lumber_amount = 0
 
+/obj/item/grown/log/tree/bowpartial/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/bow,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/grown/log/tree/bowpartial/recurve
 	name = "recurve bowstave"
 	desc = "An incomplete recurve bow, waiting to be strung."
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "recurve_bowstave"
 
+/obj/item/grown/log/tree/bowpartial/recurve/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/recurvebow,
+		)
+
 /obj/item/grown/log/tree/bowpartial/longbow
 	name = "long bowstave"
 	desc = "An incomplete longbow, waiting to be strung."
 	icon = 'icons/roguetown/items/64x.dmi'
 	icon_state = "long_bowstave"
+
+/obj/item/grown/log/tree/bowpartial/longbow/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/longbow,
+		)
 
 /obj/item/grown/log/tree/stick
 	name = "stick"
@@ -153,6 +231,28 @@
 /obj/item/grown/log/tree/stick/Initialize()
 	icon_state = "stick[rand(1,2)]"
 	..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/fishingcage,
+		/datum/crafting_recipe/roguetown/woodspade,
+		/datum/crafting_recipe/roguetown/stonetongs,
+		/datum/crafting_recipe/roguetown/stoneknife,
+		/datum/crafting_recipe/roguetown/broom,
+		/datum/crafting_recipe/roguetown/woodcross,
+		/datum/crafting_recipe/roguetown/dye_brush,
+		/datum/crafting_recipe/roguetown/peasantry/thresher,
+		/datum/crafting_recipe/roguetown/peasantry/shovel,
+		/datum/crafting_recipe/roguetown/peasantry/hoe,
+		/datum/crafting_recipe/roguetown/peasantry/pitchfork,
+		/datum/crafting_recipe/roguetown/wickercloak,
+		/datum/crafting_recipe/roguetown/torch,
+		/datum/crafting_recipe/roguetown/stonearrow,
+		/datum/crafting_recipe/roguetown/stonearrow_five,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
 
 /obj/item/grown/log/tree/stick/attack_self(mob/living/user)
 	user.visible_message(span_warning("[user] snaps [src]."))

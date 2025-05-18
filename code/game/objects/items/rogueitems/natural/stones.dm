@@ -144,6 +144,28 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	sharpening_factor = 0.1
 	spark_chance = 35
 
+/obj/item/natural/stone/Initialize()
+	. = ..()
+	stone_lore()
+
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/stoneaxe,
+		/datum/crafting_recipe/roguetown/stonehammer,
+		/datum/crafting_recipe/roguetown/stonepick,
+		/datum/crafting_recipe/roguetown/stonehoe,
+		/datum/crafting_recipe/roguetown/stonetongs,
+		/datum/crafting_recipe/roguetown/stoneknife,
+		/datum/crafting_recipe/roguetown/stonespear,
+		/datum/crafting_recipe/roguetown/stonesword,
+		/datum/crafting_recipe/roguetown/pot,
+		/datum/crafting_recipe/roguetown/net,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/natural/whetstone
 	name = "whetstone"
 	icon_state = "whetstone"
@@ -159,9 +181,27 @@ GLOBAL_LIST_INIT(stone_personality_descs, list(
 	sharpening_factor = 0.4
 	spark_chance = 80
 
-/obj/item/natural/stone/Initialize()
+/obj/item/natural/whetstoneInitialize()
 	. = ..()
-	stone_lore()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/reinforcedshaft,
+		/datum/crafting_recipe/roguetown/peasantry/thresher/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/shovel/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/hoe/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/pitchfork/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/goedendag,
+		/datum/crafting_recipe/roguetown/peasantry/scythe,
+		/datum/crafting_recipe/roguetown/peasantry/warflail,
+		/datum/crafting_recipe/roguetown/peasantry/warpick,
+		/datum/crafting_recipe/roguetown/peasantry/warpick_steel,
+		/datum/crafting_recipe/roguetown/peasantry/maciejowski_knife,
+		/datum/crafting_recipe/roguetown/peasantry/maciejowski_messer,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
 
 /*
 	This right here is stone lore,

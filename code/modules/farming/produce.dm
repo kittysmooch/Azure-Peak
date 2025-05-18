@@ -281,7 +281,7 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleaf
 	seed = /obj/item/seeds/sweetleaf
 	name = "swampweed"
-	desc = "A 'foggy' pipe weed."
+	desc = "A pipeweed with pungent odor and a sparkling surface."
 	icon_state = "swampweed"
 	filling_color = "#008000"
 	bitesize_mod = 1
@@ -294,7 +294,7 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweed
 	seed = /obj/item/seeds/pipeweed
 	name = "westleach leaf"
-	desc = "A generic kind of pipe weed."
+	desc = "A pipeweed prized for its rich flavor."
 	icon_state = "westleach"
 	filling_color = "#008000"
 	bitesize_mod = 1
@@ -308,7 +308,7 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry
 	seed = null
 	name = "westleach leaf"
-	desc = "A dried leaf."
+	desc = "A dried pipeweed, ready to smoke."
 	icon_state = "westleachd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/nicotine = 30)
@@ -316,16 +316,38 @@
 	list_reagents = list(/datum/reagent/drug/nicotine = 5, /datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/nicotine = 10)
 
+/obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/sigdry,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry
 	seed = null
 	name = "swampweed"
-	desc = "It's dried."
+	desc = "A prepared pipeweed prized for its foggy effects."
 	icon_state = "swampweedd"
 	dry = TRUE
 	pipe_reagents = list(/datum/reagent/drug/space_drugs = 30)
 	list_reagents = list(/datum/reagent/drug/space_drugs = 2,/datum/reagent/consumable/nutriment = 1)
 	grind_results = list(/datum/reagent/drug/space_drugs = 5)
 	eat_effect = /datum/status_effect/debuff/badmeal
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/sweetleafdry/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/sigsweet,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
 
 /obj/item/reagent_containers/food/snacks/grown/onion/rogue
 	name = "onion"

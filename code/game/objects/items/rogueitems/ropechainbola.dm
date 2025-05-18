@@ -20,6 +20,31 @@
 	grid_width = 32
 	grid_height = 64
 
+/obj/item/rope/Initialize()
+	. = ..()
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/ropebelt,
+		/datum/crafting_recipe/roguetown/net,
+		/datum/crafting_recipe/roguetown/billhook,
+		/datum/crafting_recipe/roguetown/goedendag,
+		/datum/crafting_recipe/roguetown/rucksack,
+		/datum/crafting_recipe/roguetown/peasantry/thresher/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/shovel/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/hoe/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/pitchfork/whetstone,
+		/datum/crafting_recipe/roguetown/peasantry/peasantwarflail,
+		/datum/crafting_recipe/roguetown/peasantry/goedendag,
+		/datum/crafting_recipe/roguetown/peasantry/waraxe,
+		/datum/crafting_recipe/roguetown/peasantry/warspear_hoe,
+		/datum/crafting_recipe/roguetown/peasantry/warspear_pitchfork,
+		/datum/crafting_recipe/roguetown/peasantry/scythe,
+		)
+
+	AddElement(
+		/datum/element/slapcrafting,\
+		slapcraft_recipes = slapcraft_recipe_list,\
+		)
+
 /datum/intent/tie
 	name = "tie"
 	chargetime = 0
