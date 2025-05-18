@@ -160,7 +160,9 @@
 
 /obj/item/reagent_containers/powder/rocknut/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/roguetown/rocknutdry,)
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/rocknutdry,
+		)
 
 	AddElement(
 		/datum/element/slapcrafting,\
