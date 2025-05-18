@@ -68,3 +68,4 @@
 		shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
 		belt = /obj/item/storage/belt/rogue/leather/rope
 		beltl = /obj/item/roguekey/farm
+	backpack_contents = list(/obj/item/recipe_book/survival)

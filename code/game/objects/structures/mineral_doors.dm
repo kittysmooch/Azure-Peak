@@ -545,7 +545,7 @@
 					to_chat(user, "<span class='deadsay'>The locking mechanism gives.</span>")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
-						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name]. [ADMIN_JMP(src)]")
+						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] & [locked ? "unlocked" : "locked"] it. [ADMIN_JMP(src)]")
 						log_admin("[H.real_name]([key_name(user)]) successfully lockpicked [src.name].")
 						var/obj/effect/track/structure/new_track = new(get_turf(src))
 						new_track.handle_creation(user)

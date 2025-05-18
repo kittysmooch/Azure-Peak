@@ -120,6 +120,7 @@
 				icon_state = "[initial(icon_state)]_t"
 			flags_inv = HIDEEARS|HIDEHAIR|HIDEFACIALHAIR
 			body_parts_covered = NECK|HAIR|EARS|HEAD
+			body_parts_covered_dynamic = NECK|HAIR|EARS|HEAD
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
@@ -277,6 +278,7 @@
 			if(hidesnoutADJ == TRUE)
 				flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 			body_parts_covered = NECK|HAIR|EARS|HEAD
+			body_parts_covered_dynamic = NECK|HAIR|EARS|HEAD // Magically heal from peeling but whatever
 			if(ishuman(user))
 				var/mob/living/carbon/H = user
 				H.update_inv_head()
@@ -367,7 +369,7 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/bardhat
-	name = "hat"
+	name = "bard's hat"
 	icon_state = "bardhat"
 	sewrepair = TRUE
 
@@ -527,29 +529,6 @@
 /obj/item/clothing/head/roguetown/headband/red
 	color = CLOTHING_RED
 
-/obj/item/clothing/head/roguetown/crown/serpcrown
-	name = "crown of azure peak"
-	desc = ""
-	icon_state = "serpcrown"
-	//dropshrink = 0
-	dynamic_hair_suffix = null
-	sellprice = 200
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	anvilrepair = /datum/skill/craft/armorsmithing
-	visual_replacement = /obj/item/clothing/head/roguetown/crown/fakecrown
-
-/obj/item/clothing/head/roguetown/crown/serpcrown/Initialize()
-	. = ..()
-	if(SSroguemachine.crown)
-		qdel(src)
-	else
-		SSroguemachine.crown = src
-
-/obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
-	src.visible_message(span_warning("The Crown of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))
-	SSroguemachine.crown = null //Do not harddel.
-	qdel(src) //Anti-stall
-
 /obj/item/clothing/head/roguetown/crown/fakecrown
 	name = "fake crown"
 	desc = "You shouldn't be seeing this."
@@ -697,16 +676,17 @@
 
 /obj/item/clothing/head/roguetown/helmet/skullcap
 	name = "skull cap"
-	desc = "A helmet which covers the top of the head."
+	desc = "An iron helmet which covers the top of the head."
 	icon_state = "skullcap"
 	body_parts_covered = HEAD|HAIR
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/horned
 	name = "horned cap"
-	desc = "A helmet with two horns poking out of the sides."
+	desc = "An iron helmet with two horns poking out of the sides."
 	icon_state = "hornedcap"
 	body_parts_covered = HEAD|HAIR
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/head/roguetown/helmet/winged
 	name = "winged cap"
@@ -1717,6 +1697,7 @@
 	icon_state = "shawl"
 
 /obj/item/clothing/head/roguetown/articap
+	name = "artificer's cap"
 	desc = "A sporting cap with a small gear adornment. Popular fashion amongst engineers."
 	icon_state = "articap"
 
@@ -1784,9 +1765,10 @@
 	desc = "My cure is most effective."
 	icon_state = "physhat"
 
+// Grenzel unique drip head. Pretend it is a secrete (A type of hat with a hidden helmet underneath). Same stats as kettle
 /obj/item/clothing/head/roguetown/grenzelhofthat
 	name = "grenzelhoft plume hat"
-	desc = "Slaying monsters or fair maidens: Grenzelhoft stands."
+	desc = "Slaying monsters or fair maidens: Grenzelhoft stands. Contains a hidden metallic cap underneath to protect the head from blows."
 	icon_state = "grenzelhat"
 	item_state = "grenzelhat"
 	icon = 'icons/roguetown/clothing/head.dmi'
@@ -1795,7 +1777,9 @@
 	detail_tag = "_detail"
 	dynamic_hair_suffix = ""
 	max_integrity = 150
-	armor = list("blunt" = 10, "slash" = 20, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = HEAD|HAIR|EARS
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0) // spellsinger hat stats
 	sewrepair = TRUE
 	var/picked = FALSE
 
@@ -1912,12 +1896,15 @@
 
 /obj/item/clothing/head/roguetown/roguehood/psydon
 	name = "psydonian hood"
-	desc = "A hood worn by Psydon's disciples, oft-worn in conjunction with its matching tabard."
+	desc = "A hood worn by Psydon's disciples, oft-worn in conjunction with its matching tabard. Made with spell-laced fabric to provide some protection."
 	icon_state = "psydonhood"
 	item_state = "psydonhood"
 	color = null
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
+	max_integrity = 100
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
@@ -1926,14 +1913,20 @@
 
 /obj/item/clothing/head/roguetown/roguehood/hierophant
 	name = "hierophant's pashmina"
-	desc = "A thick hood that covers one's entire head, should they desire, or merely acts as a scarf otherwise."
+	desc = "A thick hood that covers one's entire head, should they desire, or merely acts as a scarf otherwise. Made with spell-laced fabric to provide some protection against daemons and mortals alike."
+	max_integrity = 100
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0)
 	icon_state = "deserthood"
 	item_state = "deserthood"
 	naledicolor = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/pontifex
 	name = "pontifex's pashmina"
-	desc = "A slim hood with thin, yet dense fabric. Stretchy and malleable, allowing for full flexibility and mobility."
+	desc = "A slim hood with thin, yet dense fabric. Stretchy and malleable, allowing for full flexibility and mobility. Made with spell-laced fabric to provide some protection against daemons and mortals alike."
+	max_integrity = 100
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = list("blunt" = 70, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0)
 	icon_state = "monkhood"
 	item_state = "monkhood"
 	naledicolor = TRUE

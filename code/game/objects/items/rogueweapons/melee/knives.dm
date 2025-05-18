@@ -222,7 +222,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/holysee
 	name = "eclipsum dagger"
-	desc = "A mutual effort of Noc and Astrata's followers, this dagger was forged with both Silver and Gold alike. Blessed to hold strength and bring hope. Whether dae or nite."
+	desc = "A blade forged from the Holy metals of the twinned gods Noc and Astrata, Silver and Gold fused under an Eclipse and blessed, these daggers are very grudgingly given out by the Grenzelhoftian See to ordained Priests of the Ten."
 	force = 25
 	max_integrity = 200
 	icon_state = "gsdagger"
@@ -484,7 +484,7 @@
 					var/new_style = input(user, "Choose their hairstyle", "Hair Styling") as null|anything in valid_hairstyles
 					if(new_style)
 						user.visible_message(span_notice("[user] begins styling [H]'s hair..."), span_notice("You begin styling [H == user ? "your" : "[H]'s"] hair..."))
-						if(!do_after(user, 60 SECONDS, target = H))
+						if(!do_after(user, 30 SECONDS, target = H))
 							to_chat(user, span_warning("The styling was interrupted!"))
 							return
 						

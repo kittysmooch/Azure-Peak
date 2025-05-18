@@ -437,8 +437,7 @@
 				if(COMPONENT_DUPE_UNIQUE_PASSARGS)
 					if(!new_comp)
 						var/list/arguments = raw_args.Copy(2)
-						arguments.Insert(1, null, TRUE)
-						old_comp.InheritComponent(arglist(arguments))
+						old_comp.InheritComponent(null, TRUE, arguments)
 					else
 						old_comp.InheritComponent(new_comp, TRUE)
 		else if(!new_comp)

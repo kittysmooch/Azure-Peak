@@ -155,7 +155,7 @@
 			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/eora)
-			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 		if(H.patron?.type == /datum/patron/divine/abyssor)
 			H.mind.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 			ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)

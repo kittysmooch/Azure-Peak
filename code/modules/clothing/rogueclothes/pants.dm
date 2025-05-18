@@ -83,7 +83,7 @@
 	..()
 
 /obj/item/clothing/under/roguetown/tights/sailor
-	name = "pants"
+	name = "sailor's pants"
 	icon_state = "sailorpants"
 
 /obj/item/clothing/under/roguetown/webs
@@ -156,6 +156,38 @@
 	icon_state = "fencerpants"
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
+	name = "grenzelhoftian paumpers"
+	desc = "Padded pants for extra comfort and protection, adorned in vibrant colors."
+	icon_state = "grenzelpants"
+	item_state = "grenzelpants"
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
+	detail_tag = "_detail"
+	var/picked = FALSE
+	armor_class = ARMOR_CLASS_LIGHT
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colorlist
+		var/playerchoice = colorlist[choice]
+		picked = TRUE
+		detail_color = playerchoice
+		detail_tag = "_detail"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_pants()
+
+/obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
 /obj/item/clothing/under/roguetown/trou/leather/mourning
 	name = "mourning trousers"
 	icon_state = "leathertrou"
@@ -214,6 +246,9 @@
 
 /obj/item/clothing/under/roguetown/skirt/red
 	color = CLOTHING_RED
+
+/obj/item/clothing/under/roguetown/skirt/brown
+	color = CLOTHING_BROWN
 
 /obj/item/clothing/under/roguetown/chainlegs
 	name = "steel chain chausses"
@@ -385,40 +420,6 @@
 
 /obj/item/clothing/under/roguetown/loincloth/pink
 	color = "#b98ae3"
-
-/obj/item/clothing/under/roguetown/grenzelpants
-	name = "grenzelhoftian paumpers"
-	desc = "Padded pants for extra comfort and protection, adorned in vibrant colors."
-	icon_state = "grenzelpants"
-	item_state = "grenzelpants"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	detail_tag = "_detail"
-	armor = list("blunt" = 30, "slash" = 10, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_BLUNT)
-	var/picked = FALSE
-	armor_class = ARMOR_CLASS_LIGHT
-
-/obj/item/clothing/under/roguetown/grenzelpants/attack_right(mob/user)
-	..()
-	if(!picked)
-		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colorlist
-		var/playerchoice = colorlist[choice]
-		picked = TRUE
-		detail_color = playerchoice
-		detail_tag = "_detail"
-		update_icon()
-		if(loc == user && ishuman(user))
-			var/mob/living/carbon/H = user
-			H.update_inv_pants()
-
-/obj/item/clothing/under/roguetown/grenzelpants/update_icon()
-	cut_overlays()
-	if(get_detail_tag())
-		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
-		pic.appearance_flags = RESET_COLOR
-		if(get_detail_color())
-			pic.color = get_detail_color()
-		add_overlay(pic)
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt
 	name = "steel chain kilt"

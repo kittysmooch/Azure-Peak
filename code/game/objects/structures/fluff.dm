@@ -11,14 +11,30 @@
 	max_integrity = 150
 	var/deconstructible = TRUE
 
-/obj/structure/fluff/empty_sleeper/nanotrasen
-	name = "broken hypersleep chamber"
-	desc = "A Nanotrasen hypersleep chamber - this one appears broken. \
-		There are exposed bolts for easy disassembly using a wrench."
-	icon_state = "sleeper-o"
+/obj/structure/fluff/pillow
+	name = "pillows"
+	desc = ""
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "pillow"
+	density = FALSE
 
-/obj/structure/fluff/empty_sleeper/syndicate
-	icon_state = "sleeper_s-open"
+/obj/structure/fluff/pillow/red
+	color = CLOTHING_RED
+
+/obj/structure/fluff/pillow/blue
+	color = CLOTHING_BLUE
+
+/obj/structure/fluff/pillow/green
+	color = CLOTHING_GREEN
+
+/obj/structure/fluff/pillow/magenta
+	color = CLOTHING_MAGENTA
+
+/obj/structure/fluff/pillow/purple
+	color = CLOTHING_PURPLE
+
+/obj/structure/fluff/pillow/black
+	color = CLOTHING_BLACK
 
 /obj/structure/fluff/drake_statue //Ash drake status spawn on either side of the necropolis gate in lavaland.
 	name = "drake statue"
@@ -827,6 +843,30 @@
 	M.Scale(0.7,0.7)
 	src.transform = M
 
+/obj/structure/fluff/statue/femalestatue1
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "2"
+	pixel_x = -32
+	pixel_y = -16
+
+/obj/structure/fluff/statue/femalestatue1/Initialize()
+	. = ..()
+	var/matrix/M = new
+	M.Scale(0.7,0.7)
+	src.transform = M
+
+/obj/structure/fluff/statue/femalestatue2
+	icon = 'icons/roguetown/misc/ay.dmi'
+	icon_state = "5"
+	pixel_x = -32
+	pixel_y = -16
+
+/obj/structure/fluff/statue/femalestatue2/Initialize()
+	. = ..()
+	var/matrix/M = new
+	M.Scale(0.7,0.7)
+	src.transform = M
+
 /obj/structure/fluff/statue/femalestatue/zizo
 	icon = 'icons/roguetown/misc/ay.dmi'
 	icon_state = "4"
@@ -1206,6 +1246,12 @@
 	plane = GAME_PLANE_UPPER
 	blade_dulling = DULLING_BASH
 	max_integrity = 300
+
+/obj/structure/fluff/statue/shisha/hookah
+	name = "shisha pipe"
+	desc = "A traditional shisha pipe, this one is broken."
+	icon = 'icons/roguetown/misc/structure.dmi'
+	icon_state = "hookah"
 
 /obj/structure/fluff/headstake
 	name = "head on a stake"

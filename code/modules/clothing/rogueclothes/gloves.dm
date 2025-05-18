@@ -185,7 +185,7 @@
 	qdel(src)
 
 
-/obj/item/clothing/gloves/roguetown/grenzelgloves
+/obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 	name = "grenzelhoft gloves"
 	desc = ""
 	icon_state = "grenzelgloves"
@@ -201,8 +201,9 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	anvilrepair = null
 	sewrepair = TRUE
+	salvage_result = null
 
-/obj/item/clothing/gloves/roguetown/grenzelgloves/blacksmith
+/obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith
 	name = "forge gauntlets"
 
 //---------------- BLACKSTEEL ---------------------

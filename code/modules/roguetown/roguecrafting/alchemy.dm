@@ -1,4 +1,5 @@
 /datum/crafting_recipe/roguetown/alchemy
+	abstract_type = /datum/crafting_recipe/roguetown/alchemy
 	req_table = FALSE
 	verbage_simple = "mix"
 	skillcraft = /datum/skill/craft/alchemy

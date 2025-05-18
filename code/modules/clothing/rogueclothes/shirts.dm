@@ -207,12 +207,17 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
 	name = "silky dress"
 	desc = "Despite not actually being made of silk, the legendary expertise needed to sew this puts the quality on par."
-	body_parts_covered = null
-	slot_flags = ITEM_SLOT_ARMOR
+	body_parts_covered = CHEST|GROIN|ARMS|VITALS
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	icon_state = "silkydress"
 	item_state = "silkydress"
 	sleevetype = null
 	sleeved = null
+	flags_inv = HIDECROTCH|HIDEBOOB
+
+/obj/item/clothing/suit/roguetown/shirt/dress/silkydress/random/Initialize()
+	color = pick("#e6e5e5", "#249589", "#a32121", "#428138", "#8747b1", "#007fff")
+	..()
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gown
 	icon = 'icons/roguetown/clothing/shirts_gown.dmi'
@@ -439,18 +444,18 @@
 	color = pick("#e6e5e5", "#52BE80", "#C39BD3", "#EC7063","#5DADE2")
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy
-	slot_flags = ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "sheer dress"
 	desc = "A scandalously short dress made of extra fine fibers, making it semi-sheer."
 	body_parts_covered = null
 	icon_state = "sexydress"
 	sleevetype = null
 	sleeved = null
-	color = "#a90707"
+	flags_inv = HIDECROTCH|HIDEBOOB
 
-/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/Initialize()
+/obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/random/Initialize()
 	. = ..()
-	color = pick("#a90707", "#16239a", "#d68fbd", CLOTHING_BLACK)
+	color = pick(CLOTHING_WHITE, CLOTHING_RED, CLOTHING_PURPLE, CLOTHING_MAGENTA, CLOTHING_TEAL, CLOTHING_BLACK)
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/black/Initialize()
 	. = ..()
@@ -510,47 +515,6 @@
 /obj/item/clothing/suit/roguetown/shirt/jester/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
-
-/obj/item/clothing/suit/roguetown/shirt/grenzelhoft
-	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "grenzelhoftian hip-shirt"
-	desc = "Padded shirt for extra comfort and protection, adorned in vibrant colors."
-	body_parts_covered = CHEST|GROIN|ARMS|VITALS
-	icon_state = "grenzelshirt"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	boobed = TRUE
-	detail_tag = "_detail"
-	detail_color = CLOTHING_WHITE
-	armor = list("blunt" = 60, "slash" = 40, "stab" = 30, "piercing" = 50, "fire" = 0, "acid" = 0) //Actually has gambeson stats now
-	max_integrity = 250
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	var/picked = FALSE
-
-/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/attack_right(mob/user)
-	..()
-	if(!picked)
-		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colorlist
-		var/playerchoice = colorlist[choice]
-		picked = TRUE
-		detail_color = playerchoice
-		detail_tag = "_detail"
-		update_icon()
-		if(loc == user && ishuman(user))
-			var/mob/living/carbon/H = user
-			H.update_inv_shirt()
-
-
-
-
-/obj/item/clothing/suit/roguetown/shirt/grenzelhoft/update_icon()
-	cut_overlays()
-	if(get_detail_tag())
-		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
-		pic.appearance_flags = RESET_COLOR
-		if(get_detail_color())
-			pic.color = get_detail_color()
-		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/steward
 	color = null

@@ -1307,7 +1307,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		obj_destroyed = TRUE
 		burn()
 		return TRUE
-	if (ismob(loc))
+	if (ismob(loc) && !always_destroy)
 		return FALSE
 
 	obj_destroyed = TRUE

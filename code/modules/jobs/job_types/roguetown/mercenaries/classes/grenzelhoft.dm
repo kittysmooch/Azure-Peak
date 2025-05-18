@@ -71,12 +71,12 @@
 	beltl = /obj/item/flashlight/flare/torch
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	shirt = /obj/item/clothing/suit/roguetown/shirt/grenzelhoft
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate
-	pants = /obj/item/clothing/under/roguetown/grenzelpants
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
-	gloves = /obj/item/clothing/gloves/roguetown/grenzelgloves
+	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backl = /obj/item/gwstrap
 

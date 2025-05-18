@@ -834,6 +834,7 @@
 	item_state = "bear_cloak"
 
 /obj/item/clothing/cloak/darkcloak/bear/light
+	name = "light direbear cloak"
 	icon_state = "bbear_cloak"
 	item_state = "bbear_cloak"
 
@@ -908,7 +909,7 @@
 	return TRUE*/
 
 /obj/item/clothing/cloak/raincloak
-	name = "cloak"
+	name = "rain cloak"
 	desc = "This one will help against the rainy weather."
 	color = null
 	icon_state = "rain_cloak"
