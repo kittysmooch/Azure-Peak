@@ -118,9 +118,9 @@
 	update_icon_state()
 	updateinfolinks()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/sigsweet,
-		/datum/crafting_recipe/roguetown/sigdry,
-		/datum/crafting_recipe/roguetown/rocknutdry,
+		/datum/crafting_recipe/roguetown/survival/sigsweet,
+		/datum/crafting_recipe/roguetown/survival/sigdry,
+		/datum/crafting_recipe/roguetown/survival/rocknutdry,
 		)
 
 	AddElement(

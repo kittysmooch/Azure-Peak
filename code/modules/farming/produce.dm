@@ -318,7 +318,9 @@
 
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry/Initialize()
 	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/roguetown/sigdry,)
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/survival/sigdry,
+		)
 
 	AddElement(
 		/datum/element/slapcrafting,\
