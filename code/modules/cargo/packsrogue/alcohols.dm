@@ -53,7 +53,7 @@
 	cost = 25
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/beer/voddena)
 
-/datum/supply_pack/rogue/alcohol/winezybantia
+/datum/supply_pack/rogue/alcohol/wineraneshen
 	name = "Ranesheni Wine"
 	cost = 20
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/wine)

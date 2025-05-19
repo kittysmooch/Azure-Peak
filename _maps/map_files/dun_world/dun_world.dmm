@@ -43265,7 +43265,7 @@
 /turf/open/floor/rogue/grassyel,
 /area/rogue/outdoors/exposed/town/keep)
 "pyK" = (
-/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+/obj/item/clothing/head/roguetown/helmet/kettle/minershelm,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap/gunduzirak)
 "pyL" = (

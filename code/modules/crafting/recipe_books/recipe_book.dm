@@ -11,6 +11,7 @@
 	var/open
 	var/base_icon_state
 	var/can_spawn = TRUE
+	resistance_flags = FLAMMABLE
 
 
 /obj/item/recipe_book/dropped(mob/user, silent)

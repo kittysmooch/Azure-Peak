@@ -94,6 +94,21 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 
+/obj/item/rogueweapon/flail/aflail
+	name = "decrepit flail"
+	desc = "This is a swift, ancient flail. Strikes hard and far. Aeon's grasp is upon its form."
+	icon_state = "aflail"
+	force = 22
+	max_integrity = 175
+	smeltresult = /obj/item/ingot/aalloy
+	blade_dulling = DULLING_SHAFT_CONJURED
+
+/obj/item/rogueweapon/flail/sflail/paflail
+	name = "ancient flail"
+	desc = "This is a swift, ancient flail. Strikes hard and far. Aeon's grasp has been molded away from its form."
+	icon_state = "aflail"
+	smeltresult = /obj/item/ingot/aaslag
+
 /obj/item/rogueweapon/flail/sflail
 	force = 30
 	icon_state = "flail"
@@ -183,6 +198,23 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+//Ranged mace-like mode
+/datum/intent/whip/crack/blunt
+	name = "bludgen"
+	blade_class = BCLASS_BLUNT
+	recovery = 6
+	damfactor = 1.2 	//20% bonus because no pen, and it doesn't get smash crits.
+	reach = 2			//Less range than a normal whip by 1
+	icon_state = "instrike"
+	item_d_type = "blunt"
+
+/obj/item/rogueweapon/whip/nagaika
+	name = "nagaika whip"
+	desc = "A short but heavy leather whip, sporting a blunt reinforced tip and a longer handle."
+	icon_state = "nagaika"
+	force = 25		//Same as a cudgel/sword for intent purposes. Basically a 2 range cudgel while one-handing.
+	possible_item_intents = list(/datum/intent/whip/crack/blunt, /datum/intent/whip/lash, /datum/intent/whip/punish, /datum/intent/sword/strike)
+	wdefense = 1	//Akin to a cudgel, still terrible at parrying though.
 
 /obj/item/rogueweapon/whip/xylix
 	name = "cackle lash"

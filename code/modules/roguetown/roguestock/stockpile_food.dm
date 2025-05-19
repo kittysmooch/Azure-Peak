@@ -282,3 +282,16 @@
 	importexport_amt = 10
 	passive_generation = 2
 	category = "Foodstuffs"
+
+/datum/roguestock/stockpile/tea
+	name = "Dried Tea Leaves"
+	desc = "Dried tea leaves from the tea plant. Can be grounded and brewed to make tea."
+	item_type = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
+	held_items = list(0, 0)
+	payout_price = 3
+	withdraw_price = 4
+	transport_fee = 1
+	export_price = 3
+	importexport_amt = 10
+	passive_generation = 2
+	category = "Foodstuffs"

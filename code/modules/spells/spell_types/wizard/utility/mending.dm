@@ -33,7 +33,7 @@
 				I.obj_integrity = I.max_integrity
 				I.obj_fix()
 		else
-			user.visible_message(span_info("[I] appears to be in perfect condition."))
+			to_chat(user, span_info("[I] appears to be in perfect condition."))
 			revert_cast()
 	else
 		to_chat(user, span_warning("There is no item here!"))

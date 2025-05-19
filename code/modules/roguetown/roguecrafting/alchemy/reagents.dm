@@ -209,6 +209,7 @@
 		if(istype(R, /datum/reagent/buff) && R != src)
 			holder.remove_reagent(R.type, 10)
 			// Rapidly purge stacking buffs
+	..()
 
 /datum/reagent/buff/strength
 	name = "Strength"

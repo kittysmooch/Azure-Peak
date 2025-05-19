@@ -419,3 +419,13 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans
 	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/grown/tea
+	name = "tea leaves"
+	desc = "Tea leaves plucked from the plant. It is still fresh and needs to be dried before use."
+	icon_state = "tea"
+	seed = /obj/item/seeds/tea
+	tastes = list("grass" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	rotprocess = null

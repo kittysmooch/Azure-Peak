@@ -49,3 +49,12 @@
 	taste_description = "caramelized bitterness" // coffee has so many flavors I am going for one
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+
+/datum/reagent/consumable/caffeine/tea
+	name = "Tea"
+	description = "Tea leaves brewed into a hot drink. Slight hint of bitterness. Smooth."
+	reagent_state = LIQUID
+	color = "#508141" // Deeper green to make it look better
+	taste_description = "smooth grassiness" // Yeah, uh.
+	metabolization_rate = REAGENTS_METABOLISM
+	alpha = 173

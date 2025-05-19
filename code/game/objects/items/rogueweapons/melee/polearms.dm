@@ -48,15 +48,12 @@
 	damfactor = 1
 
 /datum/intent/spear/cut/bardiche
-    damfactor = 1.0
-    chargetime = 1
+    damfactor = 1.2
+    chargetime = 0
 
 /datum/intent/spear/cut/glaive
 	damfactor = 1.2
 	chargetime = 0
-
-/datum/intent/spear/cut/bardiche/scythe
-	reach = 2
 
 /datum/intent/spear/cast
 	name = "cast"
@@ -221,6 +218,23 @@
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
 	resistance_flags = FLAMMABLE
+
+/obj/item/rogueweapon/spear/aalloy
+	name = "decrepit spear"
+	desc = "A decrepit old spear. Aeon's grasp is upon it."
+	icon_state = "ancient_spear"
+	smeltresult = /obj/item/ingot/aalloy
+	force = 13
+	force_wielded = 22
+	max_integrity = 180
+	blade_dulling = DULLING_SHAFT_CONJURED
+
+/obj/item/rogueweapon/spear/paalloy
+	name = "ancient spear"
+	desc = "A spear made of ancient alloys. Aeon's grasp has been lifted from it."
+	smeltresult = /obj/item/ingot/aaslag
+	icon_state = "ancient_spear"
+
 
 /obj/item/rogueweapon/spear/psyspear
 	name = "psydonian spear"
@@ -587,11 +601,28 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
 
+/obj/item/rogueweapon/halberd/bardiche/aalloy
+	name = "decrepit bardiche"
+	desc = "A decrepit bardiche. Aeon's grasp upon it."
+	max_integrity = 180
+	force = 12
+	force_wielded = 22
+	icon_state = "ancient_bardiche"
+	smeltresult = /obj/item/ingot/aalloy
+	blade_dulling = DULLING_SHAFT_CONJURED
+
+/obj/item/rogueweapon/halberd/bardiche/paalloy
+	name = "ancient bardiche"
+	desc = "A bardiche made of ancient alloys. Aeon's grasp lifted from its form."
+	icon_state = "ancient_bardiche"
+	smeltresult = /obj/item/ingot/aaslag
+
+
 /obj/item/rogueweapon/halberd/bardiche/scythe
 	name = "summer scythe"
 	desc = "Summer's verdancy runs through the head of this scythe. All the more to sow."
 	icon_state = "dendorscythe"
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche/scythe, /datum/intent/axe/chop/scythe, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop/scythe, SPEAR_BASH)
 
 /obj/item/rogueweapon/halberd/psyhalberd
 	name = "Stigmata"
@@ -744,6 +775,23 @@
 			if("altgrip")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = 0,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 
+
+/obj/item/rogueweapon/greatsword/aalloy
+	name = "decrepit greatsword"
+	desc = "A decrepit old greatsword. You'd be lucky if it chopped anything in half. Aeon's grasp is upon its form."
+	force = 10
+	force_wielded = 25
+	max_integrity = 180
+	icon_state = "ancient_gsw"
+	smeltresult = /obj/item/ingot/aalloy
+	blade_dulling = DULLING_SHAFT_CONJURED
+
+
+/obj/item/rogueweapon/greatsword/paalloy
+	name = "ancient greatsword"
+	desc = "An ancient greatsword. Aeon's grasp lifted from its form."
+	icon_state = "ancient_gsw"
+	smeltresult = /obj/item/ingot/aaslag
 
 /obj/item/rogueweapon/greatsword/zwei
 	name = "zweihander"

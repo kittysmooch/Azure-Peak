@@ -781,7 +781,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/hcake
 	name = "ranesheni cake"
-	desc = "Cake glazed with honey, in the famous Zybantu fashion, a delicious sweet treat."
+	desc = "Cake glazed with honey, in the famous ranesheni fashion, a delicious sweet treat."
 	icon_state = "honeycake"
 	slices_num = 8
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/hcakeslice

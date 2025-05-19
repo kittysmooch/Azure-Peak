@@ -79,4 +79,10 @@
 	output = /datum/reagent/consumable/caffeine/coffee
 	cooktime = STEW_COOKING_TIME / 4
 
+
+/datum/stew_recipe/tea
+	inputs = list(/obj/item/reagent_containers/food/snacks/grown/)
+	output = /datum/reagent/consumable/caffeine/tea
+	cooktime = STEW_COOKING_TIME / 4
+
 #undef STEW_COOKING_TIME

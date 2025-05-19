@@ -14,9 +14,9 @@
 
 /datum/supply_pack/rogue/armor/minerhelmet
 	name = "Miner's Helm"
-	cost = 25
+	cost = 65
 	contains = list(
-					/obj/item/clothing/head/roguetown/helmet/leather/minershelm,
+					/obj/item/clothing/head/roguetown/helmet/kettle/minershelm,
 				)
 
 /datum/supply_pack/rogue/armor/heavyhelmet

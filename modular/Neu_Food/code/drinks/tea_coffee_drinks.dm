@@ -44,3 +44,27 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_dry
+	name = "dried tea leaves"
+	desc = "Dried tea leaves. Edible. Seeds can be extracted from them. Needs to be processed in a millstone." 
+	icon = 'modular/Neu_Food/icons/drinks.dmi'
+	icon_state = "teadry"
+	tastes = list("bitterness" = 1)
+	seed = /obj/item/seeds/tea
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	rotprocess = null
+	w_class = WEIGHT_CLASS_TINY
+	mill_result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground
+
+/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground
+	name = "ground tea leaves"
+	desc = "Ground tea leaves that can be used to brew tea"
+	icon = 'modular/Neu_Food/icons/drinks.dmi'
+	icon_state = "teaground"
+	tastes = list("bitterness" = 1)
+	bitesize = 1
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	rotprocess = null
+	w_class = WEIGHT_CLASS_TINY
