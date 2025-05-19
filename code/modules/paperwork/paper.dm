@@ -117,7 +117,11 @@
 	pixel_x = rand(-9, 9)
 	update_icon_state()
 	updateinfolinks()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/roguetown/sigsweet, /datum/crafting_recipe/roguetown/sigdry, /datum/crafting_recipe/roguetown/rocknutdry,)
+	var/static/list/slapcraft_recipe_list = list(
+		/datum/crafting_recipe/roguetown/sigsweet,
+		/datum/crafting_recipe/roguetown/sigdry,
+		/datum/crafting_recipe/roguetown/rocknutdry,
+		)
 
 	AddElement(
 		/datum/element/slapcrafting,\
