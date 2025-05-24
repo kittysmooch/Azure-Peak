@@ -316,7 +316,7 @@
 /area/rogue/indoors)
 "ju" = (
 /obj/structure/roguemachine/atm,
-/obj/structure/roguemachine/merchantvend,
+/obj/structure/roguemachine/goldface,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors)
 "jM" = (
@@ -875,7 +875,7 @@
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors)
 "KW" = (
-/obj/item/reagent_containers/glass/bucket/wooden{
+/obj/item/reagent_containers/glass/bucket{
 	pixel_y = 5;
 	pixel_x = 15
 	},
@@ -1029,7 +1029,7 @@
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
 /obj/item/natural/cloth,
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors)
 "Og" = (

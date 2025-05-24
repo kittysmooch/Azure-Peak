@@ -306,6 +306,14 @@
 	created_item = /obj/item/rogueweapon/huntingknife/scissors
 	i_type = "Tools"
 
+/datum/anvil_recipe/tools/headhook
+	name = "Iron Headhook (+2 Fibers)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/natural/fibers = 2)
+	created_item = /obj/item/storage/hip/headhook
+	craftdiff = 3
+	i_type = "Tools"
+
 // --------- Steel -----------
 
 /datum/anvil_recipe/tools/steel/hammer
@@ -364,7 +372,6 @@
 	createditem_num = 3
 	craftdiff = 2
 
-// --------- BRONZE RECIPES -----------
 
 // --------- COOKING RECIPES -----------
 /datum/anvil_recipe/tools/iron/pot

@@ -25,7 +25,7 @@
 	antimagic_allowed = FALSE
 
 	charging_slowdown = 3
-	cost = 1
+	cost = 2 // Slightly discounted as it is mostly buff.
 	spell_tier = 2 // Spellblade tier.
 
 	invocation = "Gladius Incantatus"

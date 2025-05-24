@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/shadowstep
 	name = "Shadowstep"
 	desc = "Project your shadow to swap places with it, teleporting several feet away."
-	cost = 1
+	cost = 3
 	xp_gain = TRUE
 	releasedrain = 30
 	warnie = "spellwarning"

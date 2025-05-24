@@ -144,7 +144,7 @@
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/rtoper
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/rtoper = 48)
-	desc = "A bottle with the Rockhill-crest cork-seal. An especially tart cider from the kingdom of Rockhill. Myths say the brewers let the barrels age in the bog, which results in that especially stong flavour."
+	desc = "A bottle with the Lirvas-crest cork-seal. An especially tart cider from the petty kingdom of Lirvas. Myths say the brewers let the barrels age in the bog, which results in that especially stong flavour."
 
 /obj/item/reagent_containers/glass/bottle/rogue/beer/nred
 	list_reagents = list(/datum/reagent/consumable/ethanol/beer/nred = 48)

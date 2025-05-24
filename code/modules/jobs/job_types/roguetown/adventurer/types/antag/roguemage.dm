@@ -63,12 +63,12 @@
 			H.mind.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 			H.change_stat("intelligence", 1)
 			H.change_stat("perception", 1)
-			H.mind.adjust_spellpoints(2)
+			H.mind.adjust_spellpoints(6)
 		H.change_stat("intelligence", 3)
 		H.change_stat("constitution", 1)
 		H.change_stat("perception", 2) // Adv mage get 2 perception so whatever. It is useful for aiming body parts but have no direct synergy with spells. 
 		H.change_stat("endurance", 3)
 		H.change_stat("fortune", 2)
 		H.change_stat("speed", 1)
-		H.mind.adjust_spellpoints(6) // On par with Mage Associate
+		H.mind.adjust_spellpoints(21) // On par with Mage Associate
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

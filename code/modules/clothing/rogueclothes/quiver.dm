@@ -142,13 +142,18 @@
 		arrows += A
 	update_icon()
 
+/obj/item/quiver/bodkin/Initialize()
+	. = ..()
+	for(var/i in 1 to max_storage)
+		var/obj/projectile/bullet/reusable/arrow/steel/A = new()
+		arrows += A
+	update_icon()
 
 /obj/item/quiver/javelin
 	name = "javelinbag"
 	desc = ""
 	icon_state = "javelinbag0"
 	item_state = "javelinbag"
-	slot_flags = ITEM_SLOT_BACK
 	max_storage = 4
 
 /obj/item/quiver/javelin/attack_turf(turf/T, mob/living/user)

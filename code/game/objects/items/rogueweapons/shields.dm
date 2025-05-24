@@ -49,8 +49,10 @@
 /obj/item/rogueweapon/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	var/mob/attacker
+	var/obj/item/I
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
-		var/obj/item/I = hitby
+		if(istype(hitby, /obj/item)) // can't trust mob -> item assignments
+			I = hitby
 		if(I?.thrownby)
 			attacker = I.thrownby
 	if(attack_type == PROJECTILE_ATTACK)

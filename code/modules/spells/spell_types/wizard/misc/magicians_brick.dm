@@ -13,7 +13,7 @@
 	warnie = "spellwarning"
 	antimagic_allowed = FALSE
 	charging_slowdown = 3
-	cost = 1
+	cost = 3
 	spell_tier = 2 // Spellblade tier.
 
 	invocation = "Valtarem!"

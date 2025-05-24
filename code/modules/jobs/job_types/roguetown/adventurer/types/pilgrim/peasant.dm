@@ -6,6 +6,7 @@
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/peasant
 	category_tags = list(CTAG_PILGRIM, CTAG_TOWNER)
+	cmode_music = 'sound/music/combat_soilson.ogg'
 
 /datum/outfit/job/roguetown/adventurer/peasant/pre_equip(mob/living/carbon/human/H)
 	..()

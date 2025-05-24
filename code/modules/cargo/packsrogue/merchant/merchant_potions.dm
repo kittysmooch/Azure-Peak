@@ -70,43 +70,46 @@
 					/obj/item/reagent_containers/glass/bottle/alchemical/strpot,
 				)
 
-// 25% discount due to it being more situational, even though duration is 2x as long
+// lower cost due to it being more situational, even though duration is 2x as long
 /datum/supply_pack/rogue/potions/perpot
 	name = "Perception Potion"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/perpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/perpot,
 				)
 
-// 25% discount again, not as powerful as strength or speed.
+// lower cost again, not as powerful as strength or speed.
 /datum/supply_pack/rogue/potions/endpot
 	name = "Endurance Potion"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/endpot,
 				)
 
-/datum/supply_pack/rogue/potions/endpot
+// also lower cost
+/datum/supply_pack/rogue/potions/conpot
 	name = "Constitution Potion"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/conpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/conpot,
 				)
 			
+// Not THAT useful tbh			
 /datum/supply_pack/rogue/potions/intpot
 	name = "Intelligence Potion"
-	cost = 60
+	cost = 40
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/intpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/intpot,
 				)
 
+// Speed potion are cheap af to make despite being one of the stronger potions
 /datum/supply_pack/rogue/potions/spdpot
 	name = "Speed Potion"
-	cost = 80
+	cost = 40
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/spdpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/spdpot,
@@ -114,7 +117,7 @@
 
 /datum/supply_pack/rogue/potions/lucpot
 	name = "Luck Potion"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/reagent_containers/glass/bottle/alchemical/lucpot,
 					/obj/item/reagent_containers/glass/bottle/alchemical/lucpot,

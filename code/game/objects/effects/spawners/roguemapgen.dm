@@ -69,24 +69,7 @@
 	probby = 50
 	spawned = list(/obj/item/restraints/legcuffs/beartrap/armed/camouflage)
 
-/obj/effect/spawner/lootdrop/Initialize(mapload)
-	..()
-	do_spawn()
-	return INITIALIZE_HINT_QDEL
-
 // Potions n shit
-/obj/effect/spawner/lootdrop/proc/do_spawn()
-	if(prob(probby))
-		if(!spawned)
-			return
-		var/obj/new_type = pick(spawned)
-		new new_type(get_turf(src))
-
-/obj/effect/spawner/lootdrop
-	fan_out_items = TRUE
-	icon = 'icons/obj/lootdrop.dmi'
-	var/probby = 100
-	var/list/spawned
 
 /obj/effect/spawner/lootdrop/potion_vitals
 	icon_state = "lootpotion"

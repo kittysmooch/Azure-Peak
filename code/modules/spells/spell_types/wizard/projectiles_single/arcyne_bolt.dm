@@ -23,7 +23,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 3
 
 /obj/projectile/energy/rogue3
 	name = "Arcyne Bolt"

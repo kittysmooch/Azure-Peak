@@ -78,36 +78,6 @@
 	icon_state = "wool2"
 	color = "#cecac4"
 
-/obj/item/natural/head/volf
-	name = "volf head"
-	desc = "the head of a fearsome volf."
-	icon_state = "volfhead"
-	layer = 3.1
-
-/obj/item/natural/head/goat
-	name = "goat head"
-	desc = "the head of a simple goat."
-	icon_state = "goathead"
-	layer = 3.1
-
-/obj/item/natural/head/saiga
-	name = "saiga head"
-	desc = "the head of a proud saiga."
-	icon_state = "saigahead"
-	layer = 3.1
-
-/obj/item/natural/head/direbear
-	name = "direbear head"
-	desc = "the head of a terrifying direbear."
-	icon_state = "direbearhead"
-	layer = 3.1
-
-/obj/item/natural/head/fox
-	name = "venard head"
-	desc = "the head of a majestic venard."
-	icon_state = "foxhead"
-	layer = 3.1
-
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle
 	name = "saddle"

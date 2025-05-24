@@ -143,6 +143,7 @@
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut // Technical main weapon?
 			backpack_contents = list(/obj/item/rogueweapon/huntingknife = 1, /obj/item/flashlight/flare/torch/lantern = 1)
+			H.cmode_music = 'sound/music/combat_condottiero.ogg'
 			H.mind.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
 			H.mind.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE) // Base skill, if not wanted, pick another weapon.
 			H.mind.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
@@ -158,7 +159,7 @@
 			H.mind.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE) // Won't really equate to much.
 			H.mind.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 			ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
-			var/weapons = list("Recurve Bow","Billhook","Sling")
+			var/weapons = list("Recurve Bow","Billhook","Sling","Crossbow")
 			var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Recurve Bow")
@@ -173,6 +174,10 @@
 					H.mind.adjust_skillrank(/datum/skill/combat/slings, 3, TRUE)
 					beltl = /obj/item/quiver/sling/iron
 					r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+				if("Crossbow") // Hunting crossbows were a thing in these times, shame we don't have an item for it.
+					H.mind.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+					backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+					beltl = /obj/item/quiver/bolts
 			var/armors = list("Light Armor","Medium Armor")
 			var/armor_choice = input("Choose your armor.", "TAKE UP ARMS") as anything in armors
 			switch(armor_choice)
@@ -181,13 +186,14 @@
 					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 					gloves = /obj/item/clothing/gloves/roguetown/fingerless_leather
 					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+					H.change_stat("speed", 1)
 				if("Medium Armor")
 					armor = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 					pants = /obj/item/clothing/under/roguetown/chainlegs/iron
 					gloves = /obj/item/clothing/gloves/roguetown/chain/iron
 					ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+					H.change_stat("strength", 1)
 					H.set_blindness(0)
 			H.change_stat("perception", 2) // Look far, but not too far.
-			H.change_stat("speed", 1)
 			H.change_stat("endurance", 2)
 			H.change_stat("intelligence", 1) // Adaptive to their surroundings.

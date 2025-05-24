@@ -1413,7 +1413,7 @@
 	},
 /area/rogue/outdoors/mountains/decap/stepbelow)
 "sS" = (
-/obj/item/reagent_containers/glass/bucket/wooden/alter,
+/obj/item/reagent_containers/glass/bucket/alter,
 /obj/item/natural/cloth,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/mountains/decap/stepbelow)

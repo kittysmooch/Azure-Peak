@@ -24,7 +24,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 3
 
 /obj/projectile/magic/aoe/fireball/rogue2
 	name = "spitfire"

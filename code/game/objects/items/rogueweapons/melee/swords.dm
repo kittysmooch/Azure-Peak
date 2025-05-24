@@ -675,8 +675,8 @@
 	wbalance = 1
 
 /datum/intent/sword/cut/sabre
-	clickcd = 10		//Faster than sword by 2, slower than rapier stab by 2
-	damfactor = 1.25	//Opposite of rapier, 15% better than base (Base is 1.1 for swords)
+	clickcd = 8		//Faster than sword by 4
+	damfactor = 1.25	//Better than rapier (Base is 1.1 for swords)
 	penfactor = 10		//Very slight buff to pen on cut mode. Still weaker then sword-chop mode.
 
 /datum/intent/sword/thrust/sabre
@@ -871,10 +871,12 @@
 	name = "cutlass"
 	desc = "Used by pirates and deckhands."
 	icon_state = "cutlass"
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/peel)
+	force = 23
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/peel)
 	gripped_intents = null
 	wdefense = 6
 	wbalance = 1
+	
 
 /obj/item/rogueweapon/sword/silver
 	force = 24

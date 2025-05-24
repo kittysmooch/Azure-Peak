@@ -14,6 +14,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	reagent_flags = OPENCONTAINER
 	throwforce = 10
+	dropshrink = 1 // Override for bucket
 	volume = 198
 
 /obj/item/reagent_containers/glass/bucket/pot/update_icon()

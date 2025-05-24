@@ -124,10 +124,12 @@
 				if(get_dist(get_turf(user), get_turf(M)) <= user.used_intent.reach)
 					user.do_attack_animation(M, visual_effect_icon = user.used_intent.animname)
 			return
-	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		user.rogfat_add(10)
-	if(istype(user.rmb_intent, /datum/rmb_intent/swift))
-		user.rogfat_add(10)
+	var/rmb_stam_penalty = 0
+	if(istype(user.rmb_intent, /datum/rmb_intent/strong) || istype(user.rmb_intent, /datum/rmb_intent/swift))
+		rmb_stam_penalty = 10
+	// Release drain on attacks besides unarmed attacks/grabs is 1, so it'll just be whatever the penalty is + 1.
+	// Unarmed attacks are the only ones right now that have differing releasedrain, see unarmed attacks for their calc.
+	user.rogfat_add(user.used_intent.releasedrain + rmb_stam_penalty)
 	if(M.checkdefense(user.used_intent, user))
 		if(M.d_intent == INTENT_DODGE)
 			if(!user.used_intent.swingdelay)

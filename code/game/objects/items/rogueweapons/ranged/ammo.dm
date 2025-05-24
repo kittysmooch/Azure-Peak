@@ -185,6 +185,7 @@
 	speed = 0.6
 	npc_damage_mult = 3
 
+
 // POISON AMMO
 
 
@@ -206,29 +207,22 @@
 
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "poison iron arrow"
-	damage = 20				//You deal a bunch of posion damage as it is, regardless of armor protection.
+	damage = 20	
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	poisontype = /datum/reagent/berrypoison //Support for future variations of poison for arrow-crafting
-	poisonfeel = "burning" //Ditto
-	poisonamount = 5 //Support and balance for bodkins, which will hold less poison due to how
+	poisontype = /datum/reagent/stampoison
+	poisonamount = 2
+	slur = 10
+	eyeblur = 10
+	drowsy = 5
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
 	name = "poison stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
-
-/obj/projectile/bullet/reusable/arrow/poison/on_hit(atom/target, blocked = FALSE)
-	..()
-	if(!istype(target, /mob/living/simple_animal)) //On-hit for carbon mobs has been moved to projectile act in living_defense.dm, to ensure poison is not applied if armor prevents damage.
-		return
-	var/mob/living/simple_animal/M = target
-	M.show_message(span_danger("You feel an intense burning sensation spreading swiftly from the puncture!")) //In case a player is in control of the mob.
-	addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, adjustToxLoss), 100), 10 SECONDS)
-	addtimer(CALLBACK(M, TYPE_PROC_REF(/atom, visible_message), span_danger("[M] appears greatly weakened by the poison!")), 10 SECONDS)
 
 
 // PYRO AMMO
@@ -389,6 +383,7 @@
 	var/turf/T = get_turf(target)
 	for(var/obj/O in T)
 		O.extinguish()
+
 /obj/projectile/bullet/reusable/arrow/poison/stone
 	name = "stone arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone

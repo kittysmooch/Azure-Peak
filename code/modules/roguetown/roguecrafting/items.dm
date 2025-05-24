@@ -415,7 +415,7 @@
 
 /datum/crafting_recipe/roguetown/survival/woodbucket
 	name = "wooden bucket"
-	result = /obj/item/reagent_containers/glass/bucket/wooden
+	result = /obj/item/reagent_containers/glass/bucket
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 0
@@ -482,18 +482,18 @@
 	name = "poisoned arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/poison
 	reqs = list(
-		/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
-		/datum/reagent/berrypoison = 5,
-		)
+				/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
+				/datum/reagent/stampoison = 5
+				)
 	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/survival/poisonarrow_stone
 	name = "poisoned stone arrow"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	reqs = list(
-		/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
-		/datum/reagent/berrypoison = 5,
-		)
+				/obj/item/ammo_casing/caseless/rogue/arrow/stone = 1,
+				/datum/reagent/stampoison = 5
+				)
 	req_table = TRUE
 
 /*

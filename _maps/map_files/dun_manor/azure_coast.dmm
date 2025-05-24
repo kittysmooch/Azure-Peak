@@ -1699,7 +1699,7 @@
 /area/rogue/under/cave/dukecourt)
 "kJ" = (
 /obj/structure/rack/rogue,
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter)
 "kK" = (
@@ -2218,7 +2218,7 @@
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
 "ou" = (
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/indoors/cave)
 "ov" = (
@@ -3722,7 +3722,7 @@
 /turf/open/water/sewer,
 /area/rogue/under/cave/dukecourt)
 "yq" = (
-/obj/item/reagent_containers/glass/bucket/wooden,
+/obj/item/reagent_containers/glass/bucket,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/rogue/blocks,
 /area/rogue/indoors/shelter)

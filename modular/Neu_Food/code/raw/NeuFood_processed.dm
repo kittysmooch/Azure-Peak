@@ -335,7 +335,7 @@
 			qdel(I)
 
 /*	............   Churning butter   ................ */
-/obj/item/reagent_containers/glass/bucket/wooden/attackby(obj/item/I, mob/living/user, params)
+/obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
 	if(istype(I, /obj/item/kitchen/spoon))
 		if(!reagents.has_reagent(/datum/reagent/consumable/milk/salted, 15))
@@ -409,7 +409,7 @@
 
 
 /*	............   Making fresh cheese   ................ */
-/obj/item/reagent_containers/glass/bucket/wooden/attackby(obj/item/I, mob/living/user, params)
+/obj/item/reagent_containers/glass/bucket/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
 	if(istype(I, /obj/item/natural/cloth))
 		if(reagents.has_reagent(/datum/reagent/consumable/milk/salted, 5))

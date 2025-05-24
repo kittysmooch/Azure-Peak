@@ -17,7 +17,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	recharge_time = 15 SECONDS
-	cost = 1
+	cost = 3
 
 /obj/effect/proc_holder/spell/invoked/blindness/miracle
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -59,7 +59,7 @@
 	associated_skill = /datum/skill/magic/arcane
 	antimagic_allowed = TRUE
 	hide_charge_effect = TRUE
-	cost = 1
+	cost = 3 // Very useful
 
 /obj/effect/proc_holder/spell/invoked/invisibility/miracle
 	miracle = TRUE

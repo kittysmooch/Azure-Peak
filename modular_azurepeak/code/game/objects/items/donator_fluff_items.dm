@@ -76,28 +76,6 @@
 			pic.color = get_detail_color()
 		add_overlay(pic)
 
-/obj/item/clothing/head/roguetown/helmet/sallet/visored/gilded/AdjustClothes(mob/user)
-	if(loc == user)
-		playsound(user, "sound/items/visor.ogg", 100, TRUE, -1)
-		if(adjustable == CAN_CADJUST)
-			adjustable = CADJUSTED
-			icon_state = "[initial(icon_state)]_raised"
-			body_parts_covered = HEAD|EARS|HAIR
-			flags_cover = null
-			flags_inv = HIDEHAIR
-			if(ishuman(user))
-				var/mob/living/carbon/H = user
-				H.update_inv_head()
-			block2add = null
-		else if(adjustable == CADJUSTED)
-			ResetAdjust(user)
-			flags_inv = HIDEFACE|HIDESNOUT|HIDEHAIR
-			if(user)
-				if(ishuman(user))
-					var/mob/living/carbon/H = user
-					H.update_inv_head()
-		user.update_fov_angles()
-
 //Zydras donator item - bathmatron padded dress
 /obj/item/clothing/suit/roguetown/armor/armordress/alt/zydrasdress //armor dress worn by Bathmatrons/Bathmasters
 	name = "padded silky dress"

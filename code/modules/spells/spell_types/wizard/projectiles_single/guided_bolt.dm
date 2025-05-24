@@ -23,7 +23,7 @@
 	charging_slowdown = 3
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
+	cost = 2 // slightly less useful than Arcyne Bolt and supportish, so 2 cost
 
 /obj/projectile/energy/guided_bolt
 	name = "Guided Bolt"

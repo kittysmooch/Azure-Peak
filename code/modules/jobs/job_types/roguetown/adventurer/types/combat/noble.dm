@@ -90,7 +90,7 @@
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 			wrists = /obj/item/clothing/wrists/roguetown/bracers
 			shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-			belt = /obj/item/storage/belt/rogue/leather/plaquegold
+			belt = /obj/item/storage/belt/rogue/leather/steel/tasset
 			backl = /obj/item/storage/backpack/rogue/satchel
 			beltl = /obj/item/flashlight/flare/torch/lantern
 			backpack_contents = list(/obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/recipe_book/survival = 1)

@@ -146,6 +146,19 @@
 				if(newtax < D.withdraw_price)
 					scom_announce("The withdraw price for [D.name] was decreased.")
 				D.withdraw_price = newtax
+	if(href_list["setlimit"])
+		var/datum/roguestock/D = locate(href_list["setlimit"]) in SStreasury.stockpile_datums
+		if(!D)
+			return
+		var/newlimit = input(usr, "Set a new limit for [D.name]", src, D.stockpile_limit) as null|num
+		if(newlimit)
+			if(!usr.canUseTopic(src, BE_CLOSE) || locked)
+				return
+			if(findtext(num2text(newlimit), "."))
+				return
+			newlimit = CLAMP(newlimit, 0, 999)
+			scom_announce("The stockpile limit for [D.name] was changed to [newlimit].")
+			D.stockpile_limit = newlimit
 	if(href_list["givemoney"])
 		var/X = locate(href_list["givemoney"])
 		if(!X)
@@ -300,6 +313,7 @@
 					contents += " [A.held_items[1] + A.held_items[2]]"
 					contents += " | SELL: <a href='?src=\ref[src];setbounty=\ref[A]'>[A.payout_price]m</a>"
 					contents += " / BUY: <a href='?src=\ref[src];setprice=\ref[A]'>[A.withdraw_price]m</a>"
+					contents += " / LIMIT: <a href='?src=\ref[src];setlimit=\ref[A]'>[A.stockpile_limit]</a>"
 					if(A.importexport_amt)
 						contents += " <a href='?src=\ref[src];import=\ref[A]'>\[IMP [A.importexport_amt] ([A.get_import_price()])\]</a> <a href='?src=\ref[src];export=\ref[A]'>\[EXP [A.importexport_amt] ([A.get_export_price()])\]</a> <BR>"
 			else
@@ -371,7 +385,7 @@
 
 	if(!canread)
 		contents = stars(contents)
-	var/datum/browser/popup = new(user, "VENDORTHING", "", 500, 800)
+	var/datum/browser/popup = new(user, "VENDORTHING", "", 700, 800)
 	popup.set_content(contents)
 	popup.open()
 

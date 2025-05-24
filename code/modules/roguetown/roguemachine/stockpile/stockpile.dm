@@ -76,7 +76,7 @@
 	for(var/datum/roguestock/stockpile/R in SStreasury.stockpile_datums)
 		if(R.category != current_category)
 			continue
-		contents += "[R.name] - [R.payout_price] - [R.demand2word()]"
+		contents += "[R.name] - [R.payout_price] - ([R.held_items[stockpile_index]]/[R.stockpile_limit]) - [R.demand2word()]"
 		contents += "<BR>"
 
 	return contents
@@ -105,20 +105,25 @@
 		if(istype(I, /obj/item/natural/bundle))
 			var/obj/item/natural/bundle/B = I
 			if(B.stacktype == R.item_type)
+				var/nopay = R.held_items[stockpile_index] >= R.stockpile_limit // Check whether it is overflowed BEFORE nopaying them
 				R.held_items[stockpile_index] += B.amount
 				if(message == TRUE)
 					stock_announce("[B.amount] units of [R.name] has been stockpiled.")
 				qdel(B)
 				if(sound == TRUE)
 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
-				var/amt = R.payout_price * B.amount
-				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
-					say("No account found. Submit your fingers to a Meister for inspection.")
+				if(nopay)
+					say("Stockpile is full, no payment.")
+				else
+					var/amt = R.payout_price * B.amount
+					if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
+						say("No account found. Submit your fingers to a Meister for inspection.")
 			continue
 		else if(istype(I,R.item_type))
 			if(!R.check_item(I))
 				continue
 			var/amt = R.get_payout_price(I)
+			var/nopay = !R.transport_item && R.held_items[stockpile_index] >= R.stockpile_limit // Check whether it is overflowed BEFORE nopaying them
 			if(!R.transport_item)
 				R.held_items[stockpile_index] += 1 //stacked logs need to check for multiple
 				qdel(I)
@@ -140,7 +145,9 @@
 				if(sound == TRUE)
 					playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 					playsound(loc, 'sound/misc/disposalflush.ogg', 100, FALSE, -1)
-			if(amt)
+			if(nopay)
+				say("Stockpile is full, no payment.")
+			else if(amt)
 				if(!SStreasury.give_money_account(amt, H, "+[amt] from [R.name] bounty") && message == TRUE)
 					say("No account found. Submit your fingers to a Meister for inspection.")
 			return

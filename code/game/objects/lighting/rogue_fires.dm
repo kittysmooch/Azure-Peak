@@ -142,6 +142,7 @@
 	base_state = "wallcandle"
 	crossfire = FALSE
 	cookonme = FALSE
+	light_outer_range = 0
 	pixel_y = 32
 	soundloop = null
 	status = LIGHT_BURNED

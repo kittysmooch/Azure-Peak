@@ -18,7 +18,9 @@
     base_intents = list(/datum/intent/simple/bite/mirespider)
     butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,
                         /obj/item/natural/hide = 1,
-                        /obj/item/natural/silk = 2, /obj/item/alch/viscera = 1)
+                        /obj/item/natural/silk = 2, 
+						/obj/item/alch/viscera = 1,
+						/obj/item/natural/head/mirespider = 1)
 
     health = MIRESPIDER_CRAWLER_HEALTH
     maxHealth = MIRESPIDER_CRAWLER_HEALTH
@@ -149,7 +151,9 @@
     base_intents = list(/datum/intent/simple/bite/mirespider_lurker)
     butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 4,
                         /obj/item/natural/hide = 3,
-                        /obj/item/natural/silk = 4, /obj/item/alch/viscera = 4)
+                        /obj/item/natural/silk = 4, 
+						/obj/item/alch/viscera = 4,
+						/obj/item/natural/head/mirelurker = 1)
 
     health = MIRESPIDER_LURKER_HEALTH
     maxHealth = MIRESPIDER_LURKER_HEALTH
@@ -219,7 +223,10 @@
     base_intents = list(/datum/intent/simple/bite/mirespider_paralytic)
     butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 2,
                         /obj/item/natural/hide = 1,
-                        /obj/item/natural/silk = 1, /obj/item/alch/viscera = 1, /obj/item/reagent_containers/spidervenom_inert = 1)
+                        /obj/item/natural/silk = 1, 
+						/obj/item/alch/viscera = 1, 
+						/obj/item/reagent_containers/spidervenom_inert = 1, 
+						/obj/item/natural/head/mirespider_paralytic = 1)
 
     health = MIRESPIDER_ARAGN_HEALTH
     maxHealth = MIRESPIDER_ARAGN_HEALTH
