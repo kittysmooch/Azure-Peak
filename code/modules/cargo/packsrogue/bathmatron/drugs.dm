@@ -34,10 +34,20 @@
 	cost = 5
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis)
 
+/datum/supply_pack/rogue/drugs/swampweed_cheroot
+	name = "Swampweeed Cheroot"
+	cost = 10
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/cannabis/cheroot)
+
 /datum/supply_pack/rogue/drugs/pipezig
 	name = "Pipeweed Zig"
 	cost = 2
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
+
+/datum/supply_pack/rogue/drugs/cheroot
+	name = "Cheroot"
+	cost = 4
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine/cheroot)
 
 /datum/supply_pack/rogue/drugs/starsugar
 	name = "Starsugar"

@@ -10,6 +10,11 @@
 	cost = 3
 	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine)
 
+/datum/supply_pack/rogue/luxury/cheroots
+	name = "Cheroot"
+	cost = 6
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/nicotine/cheroot)
+
 /datum/supply_pack/rogue/luxury/ozium
 	name = "Ozium"
 	cost = 5
