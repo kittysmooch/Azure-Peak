@@ -248,14 +248,24 @@
 	if(!evil_person)
 		return
 
-	for(var/datum/bounty/evil_person_bounty)
-		if(evil_person_bounty.target == evil_person)
+	for(var/mob/living/carbon/human/john_evilman in GLOB.actors_list)
+		if(john_evilman.real_name == evil_person)
 			say("Printing [evil_person_bounty.target] to wanted flyposter...")
-			var/icon/mugshot  = evil_person_bounty.target.get_flat_human_icon()
+			var/icon/mugshot = john_evilman.get_flat_human_icon()
 			//new /obj/item/poster/wanted(loc, mugshot.picture_image, evil_person.target)
 			playsound(src, 'sound/items/scroll_open.ogg', 100, TRUE)
 			visible_message(span_notice("The [src] prints out a wanted flyposter."))
 			say("Your flyposter is ready.")
+
+	/*for(var/datum/bounty/evil_person_bounty)
+		if(evil_person_bounty.target == evil_person)
+			say("Printing [evil_person_bounty.target] to wanted flyposter...")
+			var/mob/living/carbon/john_evilman = evil_person_bounty.target
+			var/icon/mugshot = john_evilman.get_flat_human_icon()
+			//new /obj/item/poster/wanted(loc, mugshot.picture_image, evil_person.target)
+			playsound(src, 'sound/items/scroll_open.ogg', 100, TRUE)
+			visible_message(span_notice("The [src] prints out a wanted flyposter."))
+			say("Your flyposter is ready.")*/
 
 /obj/structure/chair/freedomchair
 	name = "LIBERTAS"
