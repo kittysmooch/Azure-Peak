@@ -1923,6 +1923,8 @@
 #include "code\modules\reagents\reagent_containers\powderspice.dm"
 #include "code\modules\roguetown\floorinteraction.dm"
 #include "code\modules\roguetown\heretic_commune.dm"
+#include "code\modules\roguetown\rogue_poster.dm"
+#include "code\modules\roguetown\wanted_poster.dm"
 #include "code\modules\roguetown\mapgen\ambushmarkers.dm"
 #include "code\modules\roguetown\mapgen\beach.dm"
 #include "code\modules\roguetown\mapgen\bog.dm"

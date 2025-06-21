@@ -9,9 +9,13 @@
 	max_integrity = 999999
 
 /datum/bounty
+	//Who's got a bounty?
 	var/target
+	//For how much?
 	var/amount
+	//For what purpose?
 	var/reason
+	//And who took out the bounty?
 	var/employer
 
 	/// Whats displayed when consulting the bounties
@@ -27,7 +31,9 @@
 	var/mob/living/carbon/human/H = user
 
 	// Main Menu
-	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties", "Remove Bounty")
+	var/list/choices = list("Consult Bounties", "Set Bounty", "Print List of Bounties", "Remove Bounty",)
+	if(user.job in list("Man at Arms","Inquisitor", "Knight", "Sergeant", "Knight Captain", "Orthodoxist"))
+		choices += "Print Wanted Flyposter"
 	var/selection = input(user, "The Excidium listens", src) as null|anything in choices
 
 	switch(selection)
@@ -43,6 +49,9 @@
 
 		if("Remove Bounty")
 			remove_bounty(H)
+
+		if("Print Wanted Flyposter")
+			print_poster(H)
 
 /obj/structure/roguemachine/bounty/attackby(obj/item/P, mob/user, params)
 
@@ -229,6 +238,24 @@
 		scroll_text += "<br>"
 
 	info = scroll_text
+
+/obj/structure/roguemachine/bounty/proc/print_poster(mob/living/carbon/human/user)
+	var/list/bounty_list = GLOB.head_bounties
+	if(!bounty_list.len)
+		say("No bounties are currently active.")
+		return
+	var/evil_person = input(user, "Whose bounty shall be printed?", src) as null|anything in bounty_list
+	if(!evil_person)
+		return
+
+	for(var/datum/bounty/evil_person_bounty)
+		if(evil_person_bounty.target == evil_person)
+			say("Printing [evil_person_bounty.target] to wanted flyposter...")
+			var/icon/mugshot  = evil_person_bounty.target.get_flat_human_icon()
+			//new /obj/item/poster/wanted(loc, mugshot.picture_image, evil_person.target)
+			playsound(src, 'sound/items/scroll_open.ogg', 100, TRUE)
+			visible_message(span_notice("The [src] prints out a wanted flyposter."))
+			say("Your flyposter is ready.")
 
 /obj/structure/chair/freedomchair
 	name = "LIBERTAS"
