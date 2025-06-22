@@ -37,7 +37,8 @@
 		H.mind.adjust_skillrank(/datum/skill/craft/traps, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 		H.mind.adjust_skillrank(/datum/skill/misc/ceramics, 3, TRUE)	//Just for basic pottery/glass stuff.
-
+		H.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/alchemy/bbomb)
+		
 	head = /obj/item/clothing/head/roguetown/articap
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
 	cloak = /obj/item/clothing/cloak/apron/waist/brown

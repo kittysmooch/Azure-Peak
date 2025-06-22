@@ -72,6 +72,7 @@
 		/obj/item/mundane/puzzlebox/medium = 3,
 		/obj/item/mundane/puzzlebox/easy = 1,
 		/obj/item/mundane/puzzlebox/impossible = 2,
+		/obj/item/book/granter/crafting_recipe/agricultural_society = 1,
 
 		//medical
 		/obj/item/needle = 4,

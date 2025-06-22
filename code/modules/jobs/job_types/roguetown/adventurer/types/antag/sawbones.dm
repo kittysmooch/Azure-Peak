@@ -42,6 +42,7 @@
 	H.mind.adjust_skillrank(/datum/skill/misc/medicine, 6, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
 	H.mind.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
+	H.mind.teach_crafting_recipe(/datum/crafting_recipe/roguetown/alchemy/bbomb)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)

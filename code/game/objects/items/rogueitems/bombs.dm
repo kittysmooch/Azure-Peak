@@ -9,9 +9,9 @@
 	throwforce = 0
 	slot_flags = ITEM_SLOT_HIP
 	throw_speed = 0.5
-	var/fuze = 50
+	var/fuze = rand(30,60)
 	var/lit = FALSE
-	var/prob2fail = 23
+	var/prob2fail = 5
 	grid_width = 32
 	grid_height = 64
 

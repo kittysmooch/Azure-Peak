@@ -58,6 +58,7 @@
 		/obj/item/storage/bag/tray = 6,
 		/obj/item/mundane/puzzlebox/medium = 2,
 		/obj/item/mundane/puzzlebox/easy = 4,
+		/obj/item/book/granter/crafting_recipe/agricultural_society = 1,
 
 		//medical
 		/obj/item/needle = 4,

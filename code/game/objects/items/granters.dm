@@ -143,6 +143,20 @@
 		user.mind.teach_crafting_recipe(crafting_recipe_type)
 		to_chat(user,span_notice("I learned how to make [initial(R.name)]."))
 
+/obj/item/book/granter/crafting_recipe/agricultural_society
+	name = "Agricultural Society and Its Future"
+	desc = "A hastily scrawled tome on the supposed dangers that growing food represents to the mortal races. \
+	Likely the mere ravings of a madman, but there's some interesting marginalia about offensive alchemy."
+	crafting_recipe_types = list(
+		/datum/crafting_recipe/roguetown/alchemy/bbomb
+	)
+	remarks = list(
+		"Agricultural society and its consequences have been a disaster for the mortal races...",
+		"The toil of the fields make life unfulfilling...",
+		"Wait, what's this part about saltpetre?",
+		"Those putrid curs will pay...",
+	)
+
 //! --BLACKSTONE SCROLLS-- !/
 /obj/item/book/granter/spell/blackstone/
     desc = "A scroll of potential known only to those that can decipher its secrets."

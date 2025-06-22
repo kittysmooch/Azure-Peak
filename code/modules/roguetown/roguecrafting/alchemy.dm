@@ -10,7 +10,13 @@
 	name = "bottle bomb"
 	category = "Table"
 	result = list(/obj/item/bomb)
-	reqs = list(/obj/item/reagent_containers/glass/bottle = 1, /obj/item/ash = 2, /obj/item/rogueore/coal = 1, /obj/item/natural/cloth = 1)
+	always_availible = FALSE
+	reqs = list(
+		/obj/item/reagent_containers/glass/bottle = 1,
+		/obj/item/ash = 2,
+		/obj/item/rogueore/coal = 1,
+		/obj/item/natural/cloth = 1,
+		)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/alchemy/ozium
