@@ -147,6 +147,8 @@
 	name = "Agricultural Society and Its Future"
 	desc = "A hastily scrawled tome on the supposed dangers that growing food represents to the mortal races. \
 	Likely the mere ravings of a madman, but there's some interesting marginalia about offensive alchemy."
+	icon = 'icons/roguetown/items/books.dmi'
+	icon_state = "basic_book_0"
 	crafting_recipe_types = list(
 		/datum/crafting_recipe/roguetown/alchemy/bbomb
 	)

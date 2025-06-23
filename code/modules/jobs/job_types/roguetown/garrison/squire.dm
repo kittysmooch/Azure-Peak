@@ -156,7 +156,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/light
 	gloves = /obj/item/clothing/gloves/roguetown/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
-	backr = /obj/item/storage/backpack/rogue/backpack
+	backl = /obj/item/storage/backpack/rogue/backpack
 	backpack_contents = list(
 		/obj/item/storage/belt/rogue/pouch = 1,
 		/obj/item/clothing/neck/roguetown/coif = 1,
