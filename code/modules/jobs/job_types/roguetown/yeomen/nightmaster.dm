@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	f_title = "Bathmatron"
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = ACCEPTED_RACES
 	tutorial = "You are renting out the bathhouse in a joint operation with the Innkeep. You provide security for the bathwenches and help them to find work--when you're not being a trouble-making rake that others suffer to tolerate."
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/niteman
@@ -18,7 +18,11 @@
 	round_contrib_points = 3
 	cmode_music = 'sound/music/cmode/nobility/combat_spymaster.ogg'
 
-	job_traits = list(TRAIT_SEEPRICES_SHITTY, TRAIT_CICERONE, TRAIT_NUTCRACKER, TRAIT_GOODLOVER)
+	job_traits = list(TRAIT_SEEPRICES, 
+		TRAIT_CICERONE, 
+		TRAIT_NUTCRACKER,
+		TRAIT_GOODLOVER, 
+		TRAIT_HOMESTEAD_EXPERT)
 
 	advclass_cat_rolls = list(CTAG_BATHMOM = 2)
 	job_subclasses = list(
@@ -51,6 +55,8 @@
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 	)
 
 /datum/outfit/job/roguetown/niteman/basic/pre_equip(mob/living/carbon/human/H)
@@ -77,3 +83,6 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/zeth()
 	else if(should_wear_femme_clothes(H))
 		armor = /obj/item/clothing/suit/roguetown/armor/armordress/alt
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/takeapprentice)

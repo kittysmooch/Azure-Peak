@@ -59,6 +59,13 @@
 /datum/intent/sword/thrust/krieg
 	damfactor = 0.9
 
+/datum/intent/sword/thrust/blunt
+	blade_class = BCLASS_BLUNT
+	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
+	attack_verb = list("prods", "pokes")
+	penfactor = BLUNT_DEFAULT_PENFACTOR
+	item_d_type = "blunt"
+
 /datum/intent/sword/strike
 	name = "pommel strike"
 	icon_state = "instrike"
@@ -90,6 +97,10 @@
 	name = "big sword armor peel"
 	reach = 2
 	peel_divisor = 5
+
+/datum/intent/sword/peel/weak
+	name = "weak armor peel"
+	peel_divisor = 8
 
 /datum/intent/sword/chop
 	name = "chop"
@@ -138,7 +149,7 @@
 	damage_deflection = 14
 	icon_state = "sword1"
 	sheathe_icon = "sword1"
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/swords32.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/rogue_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/rogue_righthand.dmi'
 	parrysound = list(
@@ -270,6 +281,18 @@
 	wdefense_wbonus = 4
 	dropshrink = 0.75
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/rogueweapon/sword/long/training
+	name = "training sword"
+	desc = "Swords like these, with blunted tips and dull edges, are often used for practice without much risk of injury."
+	force = 5
+	force_wielded = 8
+	sharpness = IS_BLUNT
+	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt, /datum/intent/sword/peel/weak)
+	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/sword/thrust/blunt, /datum/intent/sword/peel/weak)
+	icon_state = "feder"
+	throwforce = 5
+	thrown_bclass = BCLASS_BLUNT
 
 /obj/item/rogueweapon/sword/long/church
 	name = "see longsword"
@@ -520,14 +543,6 @@
 	force_wielded = 27
 	wdefense = 5		//+1
 	wbalance = WBALANCE_SWIFT
-
-/obj/item/rogueweapon/sword/long/malumflamm
-	name = "forgefiend flamberge"
-	desc = "This sword's creation took a riddle in its own making. A great sacrifice was made for a blade of perfect quality."
-	icon_state = "malumflamberge"
-	force = 28 // +3 force as a unique sword. Longsword isn't THAT good anyway
-	force_wielded = 33 // Also +3
-	max_integrity = 200
 
 /obj/item/rogueweapon/sword/long/zizo
 	name = "avantyne longsword"
@@ -977,25 +992,23 @@
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	force = 25
+	force_wielded = 25
+	minstr = 7
+	wdefense = 9
+	last_used = 0
+	is_silver = FALSE
+	smeltresult = /obj/item/ingot/gold
+	smelt_bar_num = 2
+
+/obj/item/rogueweapon/sword/sabre/stalker
+	name = "stalker sabre"
+	desc = "A once elegant blade of mythril, diminishing under the suns gaze"
+	icon_state = "spidersaber"
 	force = 17
 	force_wielded = 20
 	minstr = 7
 	wdefense = 9
-	last_used = 0
-	is_silver = TRUE
-	smeltresult = /obj/item/ingot/silver
-	smelt_bar_num = 2
-
-/obj/item/rogueweapon/sword/sabre/elf/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_TENNITE,\
-		added_force = 0,\
-		added_blade_int = 100,\
-		added_int = 100,\
-		added_def = 2,\
-	)
 
 /obj/item/rogueweapon/sword/sabre/shamshir
 	name = "shamshir"
@@ -1190,7 +1203,7 @@
 /obj/item/rogueweapon/sword/rapier/eora
 	name = "\"Heartstring\""
 	desc = "A specialty-made bilbo hilt rapier made in service to Lady Eora. For the time when soft words can no longer be spoken, and hearts are to be pierced."
-	icon = 'icons/roguetown/weapons/32.dmi'
+	icon = 'icons/roguetown/weapons/swords32.dmi'
 	icon_state = "eorarapier"
 	sheathe_icon = "eorarapier"
 	grid_width = 32
@@ -1238,16 +1251,7 @@
 		added_def = 2,\
 	)
 
-/obj/item/rogueweapon/sword/long/blackflamb
-	name = "blacksteel flamberge"
-	desc = "An uncommon kind of sword with a characteristically undulating style of blade, made with an equally rare metal. The wave in the blade is considered to contribute a flame-like quality to its appearance, turning it into a menacing sight. \"Flaming swords\" are often the protagonists of Otavan epics and other knights' tales."
-	force = 20
-	force_wielded = 32
-	icon_state = "blackflamb"
-	smeltresult = /obj/item/ingot/blacksteel
-	max_integrity = 200
-
-/obj/item/rogueweapon/sword/long/blackflamb/getonmobprop(tag)
+/obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)

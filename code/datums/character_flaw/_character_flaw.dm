@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Colorblind"=/datum/charflaw/colorblind,
 	"Smoker"=/datum/charflaw/addiction/smoker,
 	"Junkie"=/datum/charflaw/addiction/junkie,
+	"Unintelligible"=/datum/charflaw/unintelligible,
 	"Greedy"=/datum/charflaw/greedy,
 	"Narcoleptic"=/datum/charflaw/narcoleptic,
 	"Nymphomaniac"=/datum/charflaw/addiction/lovefiend,
@@ -282,6 +283,21 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	..()
 	user.add_client_colour(/datum/client_colour/monochrome)
 
+/datum/charflaw/unintelligible
+	name = "Unintelligible"
+	desc = "I cannot speak the common tongue!"
+
+/datum/charflaw/unintelligible/on_mob_creation(mob/user)
+	var/mob/living/carbon/human/recipient = user
+	addtimer(CALLBACK(src, .proc/unintelligible_apply, recipient), 5 SECONDS)
+
+/datum/charflaw/unintelligible/proc/unintelligible_apply(mob/living/carbon/human/user)
+	if(user.advsetup)
+		addtimer(CALLBACK(src, .proc/unintelligible_apply, user), 5 SECONDS)
+		return
+	user.remove_language(/datum/language/common)
+	user.adjust_skillrank(/datum/skill/misc/reading, -6, TRUE)
+
 /datum/charflaw/greedy
 	name = "Greedy"
 	desc = "I can't get enough of mammons, I need more and more! I've also become good at knowing how much things are worth"
@@ -444,11 +460,3 @@ GLOBAL_LIST_INIT(character_flaws, list(
 
 /datum/charflaw/critweakness/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-
-/datum/charflaw/dnr
-	name = "Unrevivable"
-	desc = "My lux has always been weaker than that of my peers. There is no hope for me after I go down."
-
-/datum/charflaw/dnr/apply_post_equipment(mob/user)
-	if(user.client.prefs.dnr_pref)
-		ADD_TRAIT(user, TRAIT_DNR, TRAIT_GENERIC)
