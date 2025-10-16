@@ -141,14 +141,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 	return
 
 /datum/antagonist/proc/give_antag_moodies()
-	if(!antag_moodlet)
-		return
-	SEND_SIGNAL(owner.current, COMSIG_ADD_MOOD_EVENT, "antag_moodlet", antag_moodlet)
+	return
 
 /datum/antagonist/proc/clear_antag_moodies()
-	if(!antag_moodlet)
-		return
-	SEND_SIGNAL(owner.current, COMSIG_CLEAR_MOOD_EVENT, "antag_moodlet")
+	return
 
 //Returns the team antagonist belongs to if any.
 /datum/antagonist/proc/get_team()

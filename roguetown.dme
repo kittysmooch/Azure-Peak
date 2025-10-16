@@ -611,7 +611,6 @@
 #include "code\datums\components\magic_item.dm"
 #include "code\datums\components\magnetic_catch.dm"
 #include "code\datums\components\mirage_border.dm"
-#include "code\datums\components\mood.dm"
 #include "code\datums\components\movable_lighting.dm"
 #include "code\datums\components\orbiter.dm"
 #include "code\datums\components\pollutant.dm"
