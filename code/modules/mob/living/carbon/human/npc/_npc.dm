@@ -947,6 +947,9 @@
 
 /mob/living/carbon/human/proc/on_client_exit(datum/source, datum/exited)
 	SIGNAL_HANDLER
+	if(mode == NPC_AI_OFF)
+		return
+
 	consider_wakeup()
 
 /mob/living/carbon/human/proc/set_new_cells()
