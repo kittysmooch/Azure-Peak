@@ -13,7 +13,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/replace_banned = TRUE //Should replace jobbanned player with ghosts if granted.
 	var/list/objectives = list()
 	var/antag_memory = ""//These will be removed with antag datum
-	var/antag_moodlet //typepath of moodlet that the mob will gain with their status
 	var/can_hijack = HIJACK_NEUTRAL //If these antags are alone on shuttle hijack happens.
 	var/antag_hud_type
 	var/antag_hud_name
@@ -97,7 +96,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 //		if(!silent)
 //			greet()
 		apply_innate_effects()
-		give_antag_moodies()
 		if(is_banned(owner.current) && replace_banned)
 			replace_banned_player()
 		else if(owner.current.client?.holder && (CONFIG_GET(flag/auto_deadmin_antagonists) || owner.current.client.prefs?.toggles & DEADMIN_ANTAGONIST))
@@ -124,7 +122,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 /datum/antagonist/proc/on_removal()
 	remove_innate_effects()
-	clear_antag_moodies()
 	if(owner)
 		LAZYREMOVE(owner.antag_datums, src)
 		if(!silent && owner.current)
@@ -138,12 +135,6 @@ GLOBAL_LIST_EMPTY(antagonists)
 	return
 
 /datum/antagonist/proc/farewell()
-	return
-
-/datum/antagonist/proc/give_antag_moodies()
-	return
-
-/datum/antagonist/proc/clear_antag_moodies()
 	return
 
 //Returns the team antagonist belongs to if any.
