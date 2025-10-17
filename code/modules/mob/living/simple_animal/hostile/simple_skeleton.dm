@@ -153,23 +153,6 @@
 	if(!target)
 		if(prob(60))
 			emote(pick("idle"), TRUE)
-	/*  //////////////////////////////////////////////I FIX IT LATER///////////////////////////////////////////////////
-	var/list/mobs_in_range
-	mobs_in_range = oview(8, src)
-	if(world.time > damage_check + 10 SECONDS)
-		for(user in mobs_in_range)
-			if(HAS_TRAIT(user, TRAIT_CABAL)) //any zizo-lover near him
-				if(user && user.mind && user.mind.current)
-					wither = 8
-					src.remove_filter(NECRO_SEE)
-					if(start_take_damage == TRUE)
-						src.add_atom_colour(newcolor, TEMPORARY_COLOUR_PRIORITY)
-			else
-				wither = 0
-				src.add_filter(NECRO_SEE, 2, list("type" = "outline", "color" = "#8a0deaff", "alpha" = 80, "size" = 1))
-				if(start_take_damage == TRUE)
-					src.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
-	*/  //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	if(start_take_damage == TRUE)
 		if(world.time > damage_check + 5 SECONDS)
 			src.adjustFireLoss(8) //+- one minute for 100 HP (any skeleton) and two minute for guard skeleton (200 HP)
