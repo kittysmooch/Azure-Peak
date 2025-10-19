@@ -278,7 +278,8 @@
 /mob/living/proc/badluck(multi = 3, ignore_effects = FALSE)
 	if(ignore_effects)
 		var/truefor = get_true_stat(STATKEY_LCK)
-		return prob((10 - truefor) * multi)
+		if(truefor < 10)
+			return prob((10 - truefor) * multi)
 	else if(STALUC < 10)
 		return prob((10 - STALUC) * multi)
 

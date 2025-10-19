@@ -212,9 +212,8 @@
 	for(var/obj/item/grabbing/G in grabbedby)
 		if(G.chokehold == TRUE)
 			combat_modifier += 0.15
-	var/mob/living/carbon/human/HU = user
 	if(!instant && !surrendering && !restrained() && !compliance)
-		if(user.badluck(10, (HU.statpack.type == /datum/statpack/physical/struggler) ? TRUE : FALSE))
+		if(user.badluck(10))
 			badluckmessage(user)
 			return
 	var/probby
@@ -235,7 +234,7 @@
 		user.changeNext_move(2 SECONDS)
 		src.Immobilize(1 SECONDS)
 		src.changeNext_move(1 SECONDS)
-		if(user.badluck(5, (HU.statpack.type == /datum/statpack/physical/struggler) ? TRUE : FALSE))
+		if(user.badluck(5))
 			badluckmessage(user)
 			user.stop_pulling()
 		return
