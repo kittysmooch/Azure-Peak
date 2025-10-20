@@ -141,6 +141,9 @@
 	if(is_summoned) //check, if it NOT summoned skeleton, he lifetime - infinity. For mapping-spawned skeltons
 		addtimer(CALLBACK(src, PROC_REF(deathtime)), 1 MINUTES)
 
+/mob/living/simple_animal/hostile/rogue/skeleton/proc/deathtime()
+	target.add_atom_colour(newcolor, ADMIN_COLOUR_PRIORITY)
+	start_take_damage = TRUE
 
 /mob/living/simple_animal/hostile/rogue/skeleton/Life(mob/user)
 	. = ..()
