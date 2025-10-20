@@ -299,7 +299,7 @@
 			else if(istype(user.rmb_intent, /datum/rmb_intent/aimed))
 				used += 10
 		if(prob(used))
-			if((zone_precise == BODY_ZONE_PRECISE_STOMACH) && !resistance)
+			if(zone_precise == BODY_ZONE_PRECISE_STOMACH)
 				attempted_wounds += /datum/wound/slash/disembowel
 			if(owner.has_wound(/datum/wound/fracture/chest) || (bclass in GLOB.artery_heart_bclasses) || HAS_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS))
 				attempted_wounds += /datum/wound/artery/chest
@@ -351,7 +351,7 @@
 		if(prob(used))
 			if(HAS_TRAIT(src, TRAIT_BRITTLE))
 				attempted_wounds += /datum/wound/fracture/neck
-			else if (!resistance)
+			else
 				attempted_wounds += /datum/wound/dislocation/neck
 	if(bclass in GLOB.fracture_bclasses)
 		used = round(damage_dividend * 20 + (dam / 3) - 10 * resistance, 1)
@@ -360,7 +360,7 @@
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/strong) || (user.m_intent == MOVE_INTENT_SNEAK))
 				used += 10
-		if(!owner.stat && !resistance && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP && bclass != BCLASS_PIERCE) && prob(used))
+		if(!owner.stat && (zone_precise in knockout_zones) && (bclass != BCLASS_CHOP && bclass != BCLASS_PIERCE) && prob(used))
 			owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 			owner.flash_fullscreen("whiteflash3")
 			owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
@@ -370,9 +370,7 @@
 		var/dislocation_type
 		var/fracture_type = /datum/wound/fracture/head
 		var/necessary_damage = 0.9
-		if(resistance)
-			fracture_type = /datum/wound/fracture
-		else if(zone_precise == BODY_ZONE_PRECISE_SKULL)
+		if(zone_precise == BODY_ZONE_PRECISE_SKULL)
 			fracture_type = /datum/wound/fracture/head/brain
 		else if(zone_precise== BODY_ZONE_PRECISE_EARS)
 			fracture_type = /datum/wound/fracture/head/ears
@@ -404,7 +402,7 @@
 			artery_type = /datum/wound/artery/neck
 		if(prob(used))
 			attempted_wounds += artery_type
-			if((bclass in GLOB.stab_bclasses) && !resistance)
+			if(bclass in GLOB.stab_bclasses)
 				if(zone_precise in earstab_zones)
 					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
 					if(!my_ears || has_wound(/datum/wound/facial/ears))
