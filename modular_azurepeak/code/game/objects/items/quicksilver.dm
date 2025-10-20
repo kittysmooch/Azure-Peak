@@ -125,7 +125,7 @@
 			to_chat(M, span_userdanger("THE FOUL SILVER! IT BURNS ME TO MY CORE!"))
 			Were.on_removal()
 			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, POULTICE_TRAIT)
-			ADD_TRAIT(M, TRAIT_PACIFISM, POULTICE_TRAIT)
+			M.poultice_pacify()
 			M.Stun(30)
 			M.Knockdown(30)
 			M.Jitter(30)
@@ -150,12 +150,11 @@
 			M.emote("agony", forced = TRUE)
 			to_chat(M, span_userdanger("THE FOUL SILVER! MY STILL HEART QUICKENS ONCE MORE!"))
 			Vamp.on_removal()
+			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, POULTICE_TRAIT)
+			M.poultice_pacify()
 			M.Stun(30)
 			M.Knockdown(30)
 			M.Jitter(30)
-			ADD_TRAIT(M, TRAIT_SILVER_BLESSED, POULTICE_TRAIT)
-			ADD_TRAIT(M, TRAIT_PACIFISM, POULTICE_TRAIT)
-
 			return
 		
 
@@ -176,3 +175,16 @@
 		of Vampyre and Werevolf- we ascertain even this method cannot save them, and it will be a waste! (Albeit humbling.)<br><br>Share of this missive with any agents or 
 		employs that need direction in this rite.<br><br><b>PSYDON ENDURES,</b><br><i>Holy Fellowship of Research, the Grand Cathedral, the Sovereignty of Otava.</i></font>
 		"}
+
+//Pacifism callback, like adventurer spawn
+
+/mob/living/carbon/human/proc/poultice_pacify()
+	to_chat(src, span_warning("My mind is a silvered fog... I cannot muster the will to fight."))
+	ADD_TRAIT(src, TRAIT_PACIFISM, POULTICE_TRAIT)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, poultice_unpacify)), 30 MINUTES)
+
+/mob/living/carbon/human/proc/poultice_unpacify()
+	if(QDELETED(src))
+		return
+	REMOVE_TRAIT(src, TRAIT_PACIFISM, POULTICE_TRAIT)
+	to_chat(src, span_warning("The silvered fog in my mind has cleared. My will to fight has returned."))
