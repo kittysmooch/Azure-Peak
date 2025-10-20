@@ -41,6 +41,9 @@
 
 	check_cremation()
 
+	if(HAS_TRAIT(src, TRAIT_IN_FRENZY))
+		handle_automated_frenzy()
+
 	if(stat != DEAD)
 		return 1
 
@@ -63,9 +66,6 @@
 	if(HAS_TRAIT(src, TRAIT_NOPAIN))
 		return
 	if(!stat)
-		var/pain_threshold = HAS_TRAIT(src, TRAIT_ADRENALINE_RUSH) ? ((STAWIL + 5) * 10) : (STAWIL * 10)
-		if(has_flaw(/datum/charflaw/addiction/masochist)) // Masochists handle pain better by about 1 endurance point
-			pain_threshold += 10
 		var/painpercent = get_complex_pain() / pain_threshold
 		painpercent = painpercent * 100
 
@@ -551,10 +551,13 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 */
 
 /mob/living/carbon/proc/handle_sleep()
-	if(HAS_TRAIT(src, TRAIT_NOSLEEP) && !(mobility_flags & MOBILITY_STAND))
-		energy_add(5)
-		if(mind?.has_antag_datum(/datum/antagonist/vampirelord/lesser))
-			energy_add(10)
+	if(HAS_TRAIT(src, TRAIT_NOSLEEP))
+		if(!(mobility_flags & MOBILITY_STAND))
+			energy_add(5)
+		if(mind?.has_antag_datum(/datum/antagonist/vampire))
+			if(!(mobility_flags & MOBILITY_STAND))
+				energy_add(10)
+			energy_add(4)
 		return
 	//Healing while sleeping in a bed
 	if(IsSleeping())
@@ -606,7 +609,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 				var/armor_blocked = FALSE
 				if(ishuman(src) && stat == CONSCIOUS)
 					var/mob/living/carbon/human/H = src
-					if(H.head && H.head.armor?.blunt > 70)
+					if(H.head && H.head.armor?.stab > 70)
 						armor_blocked = TRUE
 					if(H.wear_armor && (H.wear_armor.armor_class in list(ARMOR_CLASS_HEAVY, ARMOR_CLASS_MEDIUM)))
 						armor_blocked = TRUE
@@ -630,7 +633,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 				var/armor_blocked = FALSE
 				if(ishuman(src) && stat == CONSCIOUS)
 					var/mob/living/carbon/human/H = src
-					if(H.head && H.head.armor?.blunt > 70)
+					if(H.head && H.head.armor?.stab > 70)
 						armor_blocked = TRUE
 					if(H.wear_armor && (H.wear_armor.armor_class in list(ARMOR_CLASS_HEAVY, ARMOR_CLASS_MEDIUM)))
 						armor_blocked = TRUE

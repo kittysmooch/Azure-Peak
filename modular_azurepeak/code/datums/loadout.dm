@@ -166,6 +166,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Rapscallion's Shawl"
 	path = /obj/item/clothing/cloak/thief_cloak
 
+/datum/loadout_item/poncho
+	name = "Poncho"
+	path = /obj/item/clothing/cloak/poncho
+
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
@@ -219,6 +223,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/robe
 	name = "Robe"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe
+
+/datum/loadout_item/phys_robe
+	name = "Physicker's Robe"
+	path = /obj/item/clothing/suit/roguetown/shirt/robe/phys
+
+/datum/loadout_item/feld_robe
+	name = "Feldsher's Robe"
+	path = /obj/item/clothing/suit/roguetown/shirt/robe/feld
 
 /datum/loadout_item/formalsilks
 	name = "Formal Silks"
@@ -421,6 +433,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/cloth_blindfold
 	name = "Cloth Blindfold"
 	path = /obj/item/clothing/mask/rogue/blindfold
+
+/datum/loadout_item/fake_blindfold
+	name = "Fake Blindfold"
+	path = /obj/item/clothing/mask/rogue/blindfold/fake
 
 /datum/loadout_item/bases
 	name = "Cloth military skirt"
