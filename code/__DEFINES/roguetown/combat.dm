@@ -16,3 +16,9 @@ Medical defines
  Misc. Category. Spin it out if needed
 */
 #define CRIT_DISMEMBER_DAMAGE_THRESHOLD 0.75 // 75% damage threshold for dismemberment / crit
+
+/*
+	Critical Resistance Defines 
+*/
+#define CRIT_RESISTANCE_BLOCK_CHANCE 75 // Chance to outright not roll a crit 
+#define CRIT_RESISTANCE_EFFECTIVE_BLEEDRATE 0.5 // How much CR reduce bleedrate by
