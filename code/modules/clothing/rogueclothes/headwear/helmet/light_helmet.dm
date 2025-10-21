@@ -135,6 +135,15 @@
 			pic2.color = get_altdetail_color()
 		add_overlay(pic2)
 
+/obj/item/clothing/head/roguetown/grenzelhofthat/upped
+	name = "bascinet with plume hat"
+	desc = "A Grenzelhoftian plume hat worn over a common steel bascinet, protecting the wearer's head to a higher degree while continuing to stay garish and fashionable."
+	max_integrity = ARMOR_INT_HELMET_STEEL + 25		//Since you went out of your way for it.
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_HEAD_HELMET
+	anvilrepair = /datum/skill/craft/armorsmithing
+	sewrepair = FALSE
+
 //................ Briar Thorns ............... //	- Dendor Briar
 /obj/item/clothing/head/roguetown/padded/briarthorns
 	name = "briar thorns"
