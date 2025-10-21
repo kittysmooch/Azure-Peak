@@ -257,7 +257,7 @@
 		return FALSE
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
 
 	// Probabilistic resistance (75% chance)
 	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
@@ -350,7 +350,7 @@
 		return FALSE
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
 
 	// Probabilistic resistance (75% chance)
 	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
@@ -484,7 +484,7 @@
 		return FALSE
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
 
 	var/resist_msg = " [owner] resists"
 	if(attempted_wounds && try_knockout)
