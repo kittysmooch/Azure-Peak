@@ -141,6 +141,7 @@
 	max_integrity = ARMOR_INT_HELMET_STEEL + 25		//Since you went out of your way for it.
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = ARMOR_HEAD_HELMET
+	body_parts_covered = HEAD|HAIR|EARS
 	anvilrepair = /datum/skill/craft/armorsmithing
 	sewrepair = FALSE
 
