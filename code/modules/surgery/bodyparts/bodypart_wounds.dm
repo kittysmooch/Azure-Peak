@@ -250,12 +250,29 @@
 			used = round(damage_dividend * 20 + (dam / 2))
 			if(prob(used))
 				attempted_wounds += /datum/wound/sunder
-	
-	if(length(attempted_wounds) && resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+
+	// Check if critical resistance applies
+	var/has_crit_attempt = length(attempted_wounds)
+	if(!has_crit_attempt)
+		return FALSE
+
+	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
+	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+
+	// Probabilistic resistance (75% chance)
+	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
-		return TRUE // Otherwise message don't show
+		return TRUE
+
+	// Guaranteed resistance when cooldown is ready
+	if(resistance && cooldown_expired)
+		owner.mob_timers["crit_resist_cd"] = world.time
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Guaranteed critical resistance! [owner] resists a wound!</span>")
+		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)
@@ -327,11 +344,28 @@
 			if(prob(used))
 				attempted_wounds += list(/datum/wound/sunder/chest)
 
-	if(length(attempted_wounds) && resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+	// Check if critical resistance applies
+	var/has_crit_attempt = length(attempted_wounds)
+	if(!has_crit_attempt)
+		return FALSE
+
+	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
+	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+
+	// Probabilistic resistance (75% chance)
+	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
-		return TRUE // Otherwise message don't show
+		return TRUE
+
+	// Guaranteed resistance when cooldown is ready
+	if(resistance && cooldown_expired)
+		owner.mob_timers["crit_resist_cd"] = world.time
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Guaranteed critical resistance! [owner] resists a wound!</span>")
+		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)
@@ -444,17 +478,34 @@
 			used = round(damage_dividend * 20 + (dam / 2), 1)
 			if(prob(used))
 				attempted_wounds += /datum/wound/sunder/head
-	
-	if((length(attempted_wounds) || try_knockout) && resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+
+	var/has_crit_attempt = length(attempted_wounds) || try_knockout
+	if(!has_crit_attempt)
+		return FALSE
+
+	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
+	var/cooldown_expired = !last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD)
+
+	var/resist_msg = " [owner] resists"
+	if(attempted_wounds && try_knockout)
+		resist_msg += " a wound and a knockout!</span>"
+	else if(attempted_wounds)
+		resist_msg += " a wound!</span>"
+	else if(try_knockout)
+		resist_msg += " a knockout!</span>"
+
+	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
-			var/msg = " Critical resistance! [owner] resists a"
-			if(attempted_wounds)
-				msg += " wound[try_knockout ? " and a knockout": ""]!</span>"
-			else if(try_knockout)
-				msg += " knockout!</span>"
-			owner.next_attack_msg += span_crit(msg)
-		return TRUE // Otherwise message don't show
+			owner.next_attack_msg += span_crit(" Critical resistance!" + resist_msg)
+		return TRUE
+
+	if(resistance && cooldown_expired)
+		owner.mob_timers["crit_resist_cd"] = world.time
+		if(crit_message)
+			owner.next_attack_msg.Cut()
+			owner.next_attack_msg += span_crit(" Guaranteed critical resistance!" + resist_msg)
+		return TRUE
 
 	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
 	if(try_knockout)
