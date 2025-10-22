@@ -1,5 +1,5 @@
 #define T1SELLPRICE 2
-#define T2SELLPRICE 20
+#define T2SELLPRICE 15
 #define T3SELLPRICE 50
 #define T4SELLPRICE 250
 
