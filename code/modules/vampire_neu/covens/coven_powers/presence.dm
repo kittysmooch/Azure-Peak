@@ -117,6 +117,7 @@
 	target.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 	target.apply_overlay(MUTATIONS_LAYER)
 
+	target.Immobilize(3 SECONDS)
 	to_chat(target, "<span class='userlove'><b>KNEEL</b></span>")
 	owner.say("KNEEL!!")
 	target.set_resting(TRUE, TRUE)
