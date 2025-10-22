@@ -206,6 +206,8 @@
 /datum/coven_power/quietus/baals_caress/activate(obj/item/rogueweapon/target)
 	. = ..()
 	target.AddElement(/datum/element/one_time_poison, list(/datum/reagent/strongpoison = 2))
+	to_chat(target, span_userdanger("I'VE BEEN POISONED!"))
+	playsound(target, 'sound/stressaffliction.ogg', 50)
 
 /datum/coven_power/quietus/taste_of_death
 	name = "Taste of Death"
