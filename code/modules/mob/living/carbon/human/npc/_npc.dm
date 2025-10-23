@@ -953,6 +953,8 @@
 	consider_wakeup()
 
 /mob/living/carbon/human/proc/set_new_cells()
+	if(QDELETED(src)) // Move to nullspace causes move and causes this.
+		return
 	var/turf/our_turf = get_turf(src)
 	if(isnull(our_turf))
 		return
