@@ -41,6 +41,7 @@
 	icon_state = "grenzelheavy"
 	item_state = "grenzelheavy"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/grenzelhats.dmi'
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	resistance_flags = FIRE_PROOF
@@ -72,6 +73,7 @@
 	icon_state = "grenzelblack"
 	item_state = "grenzelblack"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/grenzelhats.dmi'
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	resistance_flags = FIRE_PROOF
