@@ -78,10 +78,10 @@
 		to_chat(HU, span_notice("[HT] fell for my bait <b>perfectly</b>! One more!"))
 		to_chat(HT, span_danger("I fall for [HU]'s bait <b>perfectly</b>! I'm losing my footing! <b>I can't let this happen again!</b>"))
 	
-	if(HU.has_duelist_ring() && HT.has_duelist_ring() || HT.bait_stacks >= 2)	//We're explicitly (hopefully non-lethally) dueling. Flavor.
+	if((HU.has_duelist_ring() && HT.has_duelist_ring()) || HT.bait_stacks >= 2)	//We're explicitly (hopefully non-lethally) dueling. Flavor.
 		HT.emote("gasp")
-		HT.OffBalance(2 SECONDS)
-		HT.Immobilize(2 SECONDS)
+		HT.OffBalance(2.5 SECONDS)
+		HT.Immobilize(2.5 SECONDS)
 		to_chat(HU, span_notice("[HT] fell for it again and is off-balanced! NOW!"))
 		to_chat(HT, span_danger("I fall for [HU]'s bait <b>perfectly</b>! My balance is GONE!</b>"))
 		HT.bait_stacks = 0
