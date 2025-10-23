@@ -9,6 +9,7 @@
 	icon_state = "grenzelmid"
 	item_state = "grenzelmid"
 	icon = 'icons/roguetown/clothing/special/grenzelhats.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/grenzelhats.dmi'
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	resistance_flags = FIRE_PROOF
