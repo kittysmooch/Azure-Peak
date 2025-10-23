@@ -179,7 +179,7 @@
 	name = "Baal's Caress"
 	desc = "Transmute your vitae into a toxin that destroys all flesh it touches."
 
-	level = 1
+	level = 3
 	research_cost = 2
 	check_flags = COVEN_CHECK_CAPABLE | COVEN_CHECK_CONSCIOUS | COVEN_CHECK_IMMOBILE | COVEN_CHECK_LYING
 	vitae_cost = 150
