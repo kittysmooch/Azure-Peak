@@ -107,11 +107,23 @@
 	            /obj/item/clothing/head/roguetown/helmet/sallet = 1)
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/grenzelhelm/off
+	name = "take hat off steel sallet"
+	result = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1, /obj/item/clothing/head/roguetown/helmet/sallet = 1)
+	reqs = list(/obj/item/clothing/head/roguetown/helmet/sallet/grenzelhoft = 1)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/grenzelklapper
 	name = "grenzelhoftian hat with klappvisier"
 	result = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/grenzelhoft)
 	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
 	            /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan = 1)
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/sewing/grenzelklapper/off
+	name = "take hat off etruscan bascinet"
+	result = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1, /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan = 1)
+	reqs = list(/obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/grenzelhoft = 1)
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/sewing/grenzelblack
