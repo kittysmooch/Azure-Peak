@@ -992,14 +992,6 @@
 	craftdiff = 5
 	sellprice = 15
 
-/datum/crafting_recipe/roguetown/sewing/grenzelhatupped
-	name = "grenzelhoftian hat w/steel bascinet"
-	result = /obj/item/clothing/head/roguetown/grenzelhofthat/upped
-	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
-				/obj/item/clothing/head/roguetown/helmet/bascinet = 1)
-	craftdiff = 0
-	sellprice = 15
-
 /datum/crafting_recipe/roguetown/sewing/articap
 	name = "artificer's cap"
 	result = list(/obj/item/clothing/head/roguetown/articap)
