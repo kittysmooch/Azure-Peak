@@ -179,7 +179,7 @@
 	name = "Baal's Caress"
 	desc = "Transmute your vitae into a toxin that destroys all flesh it touches."
 
-	level = 3
+	level = 1
 	research_cost = 2
 	check_flags = COVEN_CHECK_CAPABLE | COVEN_CHECK_CONSCIOUS | COVEN_CHECK_IMMOBILE | COVEN_CHECK_LYING
 	vitae_cost = 150
@@ -205,9 +205,7 @@
 
 /datum/coven_power/quietus/baals_caress/activate(obj/item/rogueweapon/target)
 	. = ..()
-	target.AddElement(/datum/element/one_time_poison, list(/datum/reagent/strongpoison = 2))
-	to_chat(target, span_userdanger("I'VE BEEN POISONED!"))
-	playsound(target, 'sound/stressaffliction.ogg', 50)
+	target.AddElement(/datum/element/one_time_poison, list(/datum/reagent/bloodacid = 2))
 
 /datum/coven_power/quietus/taste_of_death
 	name = "Taste of Death"
