@@ -219,9 +219,12 @@
 		if(mob.pulledby == mob)
 			return FALSE
 		if(mob.pulledby == mob.pulling)			//Don't autoresist grabs if we're grabbing them too.
-			move_delay = world.time + 10
-			to_chat(src, span_warning("I can't move!"))
-			return TRUE
+			var/mob/living/L = mob.pulledby
+			var/mob/living/M = mob
+			if(L.grab_state > M.grab_state)	//Our grabber has a higher grab state than we do.
+				move_delay = world.time + 10
+				to_chat(src, span_warning("I can't move!"))
+				return TRUE
 		if(mob.incapacitated(ignore_restraints = 1))
 			move_delay = world.time + 10
 			to_chat(src, span_warning("I can't move!"))
