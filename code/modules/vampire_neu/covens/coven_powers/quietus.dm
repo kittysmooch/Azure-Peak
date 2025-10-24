@@ -143,7 +143,7 @@
 
 /datum/coven_power/quietus/scorpions_touch
 	name = "Scorpion's Touch"
-	desc = "Create a powerful venom to apply to your enemies."
+	desc = "Create a powerful substance to set your enemies on fire."
 
 	level = 2
 	research_cost = 1

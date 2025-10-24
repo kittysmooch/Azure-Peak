@@ -294,7 +294,7 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 			M.adjustToxLoss(4.5) // just enough so 5u will kill you dead with no help
 	return ..()
 
-/datum/reagent/bloodacid // QUIETUS POISON
+/datum/reagent/bloodacid // Quietus Poison for Vampires
 	name = "Vitae Acid"
 	description = ""
 	reagent_state = LIQUID
