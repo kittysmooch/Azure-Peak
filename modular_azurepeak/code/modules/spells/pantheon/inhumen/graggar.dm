@@ -79,7 +79,7 @@
 	miracle = TRUE
 	devotion_cost = 70
 
-/obj/effect/proc_holder/spell/invoked/revel_in_slaughter/cast(atom/A, list/targets, mob/living/user = usr)
+/obj/effect/proc_holder/spell/invoked/revel_in_slaughter/cast(list/targets, mob/living/user = usr)
 	var/mob/living/carbon/human/human = targets[1]
 
 	if(!istype(human) || human == user)
