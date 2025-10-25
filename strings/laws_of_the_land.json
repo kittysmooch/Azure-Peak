@@ -1,17 +1,17 @@
 {
 	"lawsets": {
-		"ten_commandments": {
-			"name": "The Ten Commandments",
+		"tennite_decalogue": {
+			"name": "The Decalogue",
 			"laws": [
-				"Thou shalt have no other gods before me.",
-				"Thou shalt not make unto thee any graven image, or any likeness of any thing that is in heaven above, or that is in the earth beneath, or that is in the water under the earth.",
-				"Thou shalt not take the name of the Lord thy God in vain; for the Lord will not hold him guiltless that taketh his name in vain.",
-				"Remember the sabbath day, to keep it holy. Six days shalt thou labour, and do all thy work: But the seventh day is the sabbath of the Lord thy God: in it thou shalt not do any work, thou, nor thy son, nor thy daughter, thy manservant, nor thy maidservant, nor thy cattle, nor thy stranger that is within thy gates.",
-				"Honour thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.",
-				"Honour thy father and thy mother: that thy days may be long upon the land which the Lord thy God giveth thee.",
+				"Honor the Ten and no other gods before them.",
+				"Keep holy the sacred days of each deity, and offer proper sacrifice and prayer.",
+				"Speak no blasphemy against the gods, nor take their names in vain, nor invoke the names of demons or other dark powers.",
+				"Honor thy father and mother, for through them Astrata gave thee lyfe",
+				"Give tithes and offerings to the temples, and respect the clergy of the gods, for they are the gods' servants.",
+				"Thou shalt not murder",
 				"Thou shalt not commit adultery.",
 				"Thou shalt not steal.",
-				"Thou shalt not bear false witness against thy neighbour.",
+				"Thou shalt not bear false witness against thy neighbor.",
 				"Thou shalt not covet thy neighbour's house, thou shalt not covet thy neighbour's wife, nor his manservant, nor his maidservant, nor his ox, nor his ass, nor any thing that is thy neighbors."
 			],
 			"weight": 3
@@ -39,7 +39,7 @@
 				"A peasant must obey the orders given it by nobles except where such orders would conflict with the First Law.",
 				"A peasant must protect their own existence as long as such protection does not conflict with the First or Second Law."
 			],
-			"weight": 2
+			"weight": 0
 		},
 		"the_great_charter": {
 			"name": "The Great Charter",
