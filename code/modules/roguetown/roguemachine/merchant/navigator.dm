@@ -22,7 +22,7 @@
 	var/export_time = EXPORT_TIME
 	#ifdef LOCALTEST
 	export_time = EXPORT_TIME_TESTING
-	#endif LOCALTEST
+	#endif
 	. += span_notice("This machine attracts trading balloons every [DisplayTimeText(export_time)]. Goods are sucked into the air and mammons are dropped after tax has been collected.")
 
 /obj/item/roguemachine/navigator/blackmarket
@@ -89,7 +89,7 @@
 	var/export_time = EXPORT_TIME
 	#ifdef LOCALTEST
 		export_time = EXPORT_TIME_TESTING
-	#endif LOCALTEST
+	#endif
 	if(world.time > next_airlift)
 		next_airlift = world.time + export_time
 		var/play_sound = FALSE
