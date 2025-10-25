@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 
 /obj/structure/dungeon_entry/New(loc, ...)
 	GLOB.dungeon_entries |= src
-	if(!dungeon_id)
+	if(!dungeon_id || claim_free_exit)
 		GLOB.unlinked_dungeon_entries |= src
 	return ..()
 
@@ -48,12 +48,26 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		for(var/obj/structure/dungeon_exit/exit as anything in GLOB.dungeon_exits)
 			if(exit.dungeon_id != dungeon_id)
 				continue
-			dungeon_exits |= exit
 			linked = TRUE
+			dungeon_exits |= exit
 			exit.entry = src
 			exit.target_exit_id = target_exit_id
+		if(!linked && claim_free_exit)
+			for(var/obj/structure/dungeon_exit/free_exit as anything in GLOB.dungeon_exits)
+				if(free_exit.entry)
+					continue
+				if(free_exit.dungeon_id && free_exit.dungeon_id != dungeon_id)
+					continue
+				dungeon_exits |= free_exit
+				free_exit.entry = src
+				free_exit.target_exit_id = target_exit_id
+				if(dungeon_id)
+					free_exit.dungeon_id = dungeon_id
+				linked = TRUE
+				break
+		if(linked)
 			GLOB.unlinked_dungeon_entries -= src
-		if(!linked)
+		else
 			GLOB.unlinked_dungeon_entries |= src
 		return
 	shuffle_inplace(GLOB.dungeon_exits)
@@ -123,6 +137,7 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 			if(exit.dungeon_id != dungeon_id)
 				continue
 			exit.dungeon_exits |= src
+			target_exit_id = exit.target_exit_id
 			entry = exit
 			GLOB.unlinked_dungeon_entries -= exit
 		return
@@ -132,6 +147,8 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 			continue
 		exit.dungeon_exits |= src
 		target_exit_id = exit.target_exit_id
+		if(exit.dungeon_id)
+			dungeon_id = exit.dungeon_id
 		entry = exit
 		GLOB.unlinked_dungeon_entries -= exit
 		break
@@ -145,10 +162,10 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 		if(exit.dungeon_id == target_exit_id)
 			the_other_exit = exit
 			break
-		break
 	if(the_other_exit)
-		var/dir = get_dir(get_turf(src), get_turf(the_other_exit))
-		. += "The exit seems to hum with a faint magical energy, pulling you toward the [dir]."
+		var/direction = get_dir(get_turf(src), get_turf(the_other_exit))
+		var/direction_text = dir2text(direction)
+		. += "The exit seems to hum with a faint magical energy, pulling you toward the [direction_text]."
 
 /obj/structure/dungeon_exit/Destroy()
 	entry = null
