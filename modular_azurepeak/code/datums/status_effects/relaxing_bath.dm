@@ -77,6 +77,7 @@ dreaming. Still have to go to sleep to learn skills. Also gives healing tickrate
 		if(soak_count >= soak_threshold && !ultimate_soak && src.has_status_effect(/datum/status_effect/debuff/sleepytime))
 			to_chat(src, span_green("I feel completely refreshed from my soak!"))
 			src.visible_message(span_info("[src] looks completely refreshed, the exhaustion lifting from [src.p_them()]."))
+			src.remove_status_effect(/datum/status_effect/debuff/sleepytime)
 			src.remove_stress(/datum/stressevent/sleepytime)
 			src.adjust_triumphs(1)
 			if(src.mind?.sleep_adv)
