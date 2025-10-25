@@ -34,10 +34,12 @@
 
 		if(!in_valid_location)
 			to_chat(massager, span_warning("My client must be laying down, or standing in water suitable for bathing."))
+			revert_cast()
 			return
 	if(isliving(massagee)) //target needs to be living
 		if(massagee == massager)
 			to_chat(massager, span_warning("Sadly, I can't give myself a pat on the back"))
+			revert_cast()
 			return
 		else
 			if(massagee in range(1, massager))
@@ -100,3 +102,6 @@
 				else
 					to_chat(massagee, span_bad("Oh no, I can feel it, A CRAMP!"))
 					massagee.apply_status_effect(/datum/status_effect/debuff/muscle_sore)
+	else
+		to_chat(massager, span_warning("My I don't think I can massage that."))
+		revert_cast()
