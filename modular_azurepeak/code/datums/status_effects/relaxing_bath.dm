@@ -73,7 +73,7 @@ Also gives campfire healing tickrate.
 		if(src.energy < src.max_energy)
 			src.energy_add(100) // Refilling our blue bar
 
-		if(soak_count >= 18 && !ultimate_soak && src.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		if(soak_count >= 15 && !ultimate_soak && src.has_status_effect(/datum/status_effect/debuff/sleepytime))
 			to_chat(src, span_green("I feel completely refreshed from my soak!"))
 			src.visible_message(span_info("[src] looks completely refreshed, the exhaustion lifting from [src.p_them()]."))
 			src.remove_stress(/datum/stressevent/sleepytime)

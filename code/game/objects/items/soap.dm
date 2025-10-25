@@ -87,7 +87,7 @@
 
 /obj/item/soap/attack(mob/target, mob/user)
 	var/turf/bathspot = get_turf(target)
-	if(!istype(bathspot, /turf/open/water/bath))
+	if(!istype(bathspot, /turf/open/water/bath) && !locate(/obj/structure/hotspring) in bathspot)
 		return
 	if(ishuman(target))
 		visible_message(span_info("[user] begins washing [target] with the [src]."))
