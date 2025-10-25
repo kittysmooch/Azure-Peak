@@ -1,4 +1,4 @@
-//A kill for bath attendants to help their clients relax
+//A skill for bath attendants to help their clients relax
 /obj/effect/proc_holder/spell/invoked/massage
 	name = "Massage"
 	desc = "Massage a client, working out the soreness in their muscles"
@@ -18,6 +18,23 @@
 	var/chance = rand(0,100)
 	var/chance_append = max((massager.get_stat(STATKEY_LCK) - 10) * 5, 0)
 	chance = min(chance + chance_append, 100)
+
+	if((massagee.mobility_flags & MOBILITY_STAND))
+		// Check if they're in bathing water or at a hotspring
+		var/turf/massage_spot = get_turf(massagee)
+		var/in_valid_location = FALSE
+
+		// Check for bath/water tile
+		if(istype(massage_spot, /turf/open/water/bath))
+			in_valid_location = TRUE
+
+		// Check for hotspring structure
+		if(locate(/obj/structure/hotspring) in massage_spot)
+			in_valid_location = TRUE
+
+		if(!in_valid_location)
+			to_chat(massager, span_warning("My client must be laying down, or standing in water suitable for bathing."))
+			return
 	if(isliving(massagee)) //target needs to be living
 		if(massagee == massager)
 			to_chat(massager, span_warning("Sadly, I can't give myself a pat on the back"))
@@ -34,11 +51,6 @@
 					else
 						to_chat(massager, span_warning("I decided not to"))
 						return
-
-				if((massagee.mobility_flags & MOBILITY_STAND))
-					to_chat(massager, span_warning("My client must be laying down."))
-					return
-				
 
 				switch(alert(massagee, "Do you want to be given a massage by [massager.name]?", "Do you want a Massage?", "No", "Yes"))
 					if("No")
