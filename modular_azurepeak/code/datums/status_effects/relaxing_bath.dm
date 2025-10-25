@@ -1,7 +1,7 @@
-/*Code for relaxing bath, which is a soft, "active roleplay" alternative to sleeping. 
+/*
+Code for relaxing bath, which is a soft, "active roleplay" alternative to sleeping. 
 Removes the tired moodlet, gives a triumph, gives dream points without opportunity of
-dreaming. Still have to go to sleep to learn skills.
-Also gives campfire healing tickrate. 
+dreaming. Still have to go to sleep to learn skills. Also gives healing tickrate + energy regen. 
 */
 
 /mob/living/carbon/human/proc/relaxing_bath(source_type)
@@ -24,11 +24,12 @@ Also gives campfire healing tickrate.
 		to_chat(src, span_green("I am taking a relaxing bath."))
 
 	var/soak_count = 0
+	var/soak_threshold = 12 // 2 minutes
 	var/ticks = 105 // 10.5 seconds per loop, like campfire
 	var/first_clean = TRUE
 	var/buff_strength = 1
 	var/ultimate_soak = FALSE
-	var/soapy
+	var/soapy = FALSE
 
 	if(src.patron?.type == /datum/patron/divine/eora || src.patron?.type == /datum/patron/inhumen/baotha) //BAoTHa
 		buff_strength = 2
@@ -73,7 +74,7 @@ Also gives campfire healing tickrate.
 		if(src.energy < src.max_energy)
 			src.energy_add(100) // Refilling our blue bar
 
-		if(soak_count >= 15 && !ultimate_soak && src.has_status_effect(/datum/status_effect/debuff/sleepytime))
+		if(soak_count >= soak_threshold && !ultimate_soak && src.has_status_effect(/datum/status_effect/debuff/sleepytime))
 			to_chat(src, span_green("I feel completely refreshed from my soak!"))
 			src.visible_message(span_info("[src] looks completely refreshed, the exhaustion lifting from [src.p_them()]."))
 			src.remove_stress(/datum/stressevent/sleepytime)
