@@ -444,6 +444,11 @@
 	desc = "A large and decorated pumpkin shell. Usually seasonal, yet it ENDURES."
 	icon_state = "pumpkinlamppsy"
 
+/obj/item/flashlight/flare/torch/lantern/pumpkin/ten
+	name = "tennite pumpkin lamptern"
+	desc = "A large and decorated pumpkin shell. It looks like a lot of work to make it stay in one piece."
+	icon_state = "pumpkinlampten"
+
 /obj/item/flashlight/flare/torch/lantern/pumpkin/zizo
 	name = "zumpkin lamptern"
 	desc = "A large and decorated pumpkin shell. Its strangely gloomy."
