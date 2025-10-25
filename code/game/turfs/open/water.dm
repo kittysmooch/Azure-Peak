@@ -237,7 +237,7 @@
 		playsound(user, pick_n_take(wash), 100, FALSE)
 		var/obj/item2wash = user.get_active_held_item()
 		if(!item2wash)
-			if(istype(src, /turf/open/water/bath) && src.loc == user.loc && istype(/mob/living/carbon/human, user))
+			if(istype(src, /turf/open/water/bath) && ishuman(user))
 				var/mob/living/carbon/human/bather = user
 				bather.relaxing_bath(1)
 				return
