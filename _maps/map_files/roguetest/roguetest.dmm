@@ -1428,7 +1428,7 @@
 /turf/open/floor/rogue/blocks/stonered/tiny,
 /area/rogue/indoors)
 "XN" = (
-/obj/structure/dungeon_entry,
+/obj/structure/dungeon_entry/hamlet,
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors)
 "XU" = (
