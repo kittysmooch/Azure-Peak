@@ -317,7 +317,7 @@
 	produce_type = /obj/item/natural/shellplant/pumpkin
 	produce_amount_min = 2
 	produce_amount_max = 4
-	uproot_loot = list(/obj/item/natural/fibers, /obj/item/natural/fibers, /obj/item/natural/fibers)
+	uproot_loot = list(/obj/item/natural/fibers = 3)
 	maturation_nutrition = HUNGRINESS_DEMANDING
 	maturation_time = SLOW_GROWING
 	produce_time = 3 MINUTES
