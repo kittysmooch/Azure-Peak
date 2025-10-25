@@ -559,6 +559,7 @@
 			data += "<div style='margin-bottom: 4px;'><font color='#dfbf57'>Trade Value Imported: </font>[GLOB.azure_round_stats[STATS_TRADE_VALUE_IMPORTED]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#c0b283'>GOLDFACE Imports: </font>[GLOB.azure_round_stats[STATS_GOLDFACE_VALUE_SPENT]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#c0b283'>SILVERFACE Imports: </font>[GLOB.azure_round_stats[STATS_SILVERFACE_VALUE_SPENT]]</div>"
+			data += "<div style='margin-bottom: 4px;'><font color='#c0b283'>COPPERFACE Imports: </font>[GLOB.azure_round_stats[STATS_COPPERFACE_VALUE_SPENT]]</div>"
 			data += "<div style='margin-bottom: 4px;'><font color='#b5a642'>PURITY Imports: </font>[GLOB.azure_round_stats[STATS_PURITY_VALUE_SPENT]]</div>"
 			data += "<div><font color='#7495d3'>Peddler Revenue: </font>[GLOB.azure_round_stats[STATS_PEDDLER_REVENUE]]</div>"
 			data += "</div></div>"
