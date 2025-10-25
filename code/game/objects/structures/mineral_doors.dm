@@ -551,9 +551,9 @@
 		pickchance *= P.picklvl
 		pickchance = clamp(pickchance, 1, 95)
 		
-		if (lockdifficulty > 0) //each time the difficulty goes up, the harder the lock
-			picktime = picktime*lockdifficulty/2
-			pickchance = pickchance/lockdifficulty
+		if (lockdifficulty > 1) //each time the difficulty goes up, the harder the lock
+			picktime = picktime+(10*lockdifficulty)//add a flat 10 per level
+			pickchance = pickchance/(lockdifficulty*0.75)//reduce the chance by .75 per level
 
 		if(lockdifficulty > 2 && P.picklvl < 1) //disallowing lesser knock and poor locks from being used
 			to_chat(user, "<span class='warning'>my lockpick is too poor to handle this lock</span>")

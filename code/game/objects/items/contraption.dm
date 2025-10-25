@@ -232,9 +232,11 @@
 	icon_state = "metalizer"
 	on_icon = "metalizer_flick"
 	off_icon = "metalizer_off"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	misfire_chance = 15
 	charge_per_source = 5
+	grid_height = 64
+	grid_width = 64
 
 /obj/item/contraption/wood_metalizer/attack_obj(obj/O, mob/living/user)
 	..()
@@ -291,7 +293,7 @@
 	qdel(src)
 
 /obj/item/contraption/shears
-	possible_item_intents = list(/datum/intent/snip)
+	possible_item_intents = list(/datum/intent/use,/datum/intent/snip)
 	max_integrity = 150
 	name = "auto shears"
 	desc = "A powered shear used for achieving a clean separation between limb and patient. Keeping the patient still is imperative to aligning the blades."
@@ -299,9 +301,11 @@
 	icon_state = "shears"
 	on_icon = "shears"
 	off_icon = "shears"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/bronze
 	charge_per_source = 4
+	grid_height = 32
+	grid_width = 64
 
 /obj/item/contraption/shears/hammer_action(obj/item/I, mob/user)
 	return
@@ -384,7 +388,11 @@
 	if(patient.stat != DEAD && (patient.jitteriness || patient.mobility_flags & MOBILITY_STAND)) //jittering will make it harder to secure the shears, even if you can't otherwise move
 		amputation_speed_mod *= 1.5 //15*0.5*1.5=11.25
 
-	var/skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/craft/engineering) / 6)
+	var/skill_modifier = 1
+	if(user.get_skill_level(/datum/skill/craft/engineering)>(user.get_skill_level(/datum/skill/misc/medicine))) //use the higher skill
+		skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/craft/engineering) / 6)
+	else //default to using medicine with no engineering skill
+		skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/misc/medicine) / 6)
 	if(do_after(user, 15 SECONDS * amputation_speed_mod * skill_modifier, target = patient))
 		playsound(get_turf(patient), 'sound/misc/guillotine.ogg', 20, TRUE)
 		limb_snip_candidate.drop_limb(TRUE)
@@ -398,7 +406,11 @@
 			var/salvage_time = 70
 			var/skill_level = user.get_skill_level(/datum/skill/craft/sewing)
 			skill_level = clamp((skill_level+1),1,6)
-			salvage_time = (70 - ((user.get_skill_level(/datum/skill/craft/sewing)) * 10))
+			if(user.get_skill_level(/datum/skill/craft/engineering)>(user.get_skill_level(/datum/skill/craft/sewing))) //use the higher skill
+				salvage_time = (70 - ((user.get_skill_level(/datum/skill/craft/engineering)) * 10))
+			else //default to using sewing with no engineering skill
+				salvage_time = (70 - ((user.get_skill_level(/datum/skill/craft/sewing)) * 10))
+
 			if(!do_after(user, salvage_time, target = user))
 				return
 
@@ -430,11 +442,13 @@
 	icon_state = "imprinter"
 	on_icon = "imprinter_flick"
 	off_icon = "imprinter_off"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	accepted_power_source = /obj/item/customlock
 	misfire_chance = 0
 	sneaky_misfire_chance = 20
 	charge_per_source = 2
+	grid_height = 32
+	grid_width = 64
 
 /obj/item/contraption/lock_imprinter/attack_obj(obj/O, mob/living/user)
 	..()

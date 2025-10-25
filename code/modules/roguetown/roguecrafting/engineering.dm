@@ -395,7 +395,7 @@
 	name = "conflagaration smoke grenade"
 	category = "Explosives"
 	result = /obj/item/impact_grenade/smoke/fire_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/coaldust, /obj/item/alch/firedust, /datum/reagent/water = 48)
+	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 2, /obj/item/ash = 1, /obj/item/alch/firedust = 2, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -404,7 +404,7 @@
 	name = "blinding smoke grenade"
 	category = "Explosives"
 	result = /obj/item/impact_grenade/smoke/blind_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/airdust = 1, /obj/item/natural/dirtclod = 1, /datum/reagent/water = 48)
+	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1, /obj/item/natural/dirtclod = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
