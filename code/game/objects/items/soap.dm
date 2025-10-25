@@ -47,7 +47,7 @@
 /obj/item/soap/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	var/turf/bathspot = get_turf(target)
-	if(ishuman(target) && istype(bathspot, /turf/open/water/bath))
+	if(ishuman(target) && (istype(bathspot, /turf/open/water/bath) || locate(/obj/structure/hotspring) in bathspot))
 		return
 	if(!proximity || !check_allowed_items(target, target_self=1))
 		return
