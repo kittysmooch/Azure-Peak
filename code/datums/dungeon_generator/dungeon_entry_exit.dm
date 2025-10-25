@@ -163,9 +163,9 @@ GLOBAL_LIST_INIT(dungeon_exits, list())
 			the_other_exit = exit
 			break
 	if(the_other_exit)
-		var/direction = get_dir(get_turf(src), get_turf(the_other_exit))
-		var/direction_text = dir2text(direction)
-		. += "The exit seems to hum with a faint magical energy, pulling you toward the [direction_text]."
+		var/direction_text = get_precise_direction_between(src, the_other_exit)
+		if(direction_text)
+			. += "The exit seems to hum with a faint magical energy, pulling you toward the [direction_text]."
 
 /obj/structure/dungeon_exit/Destroy()
 	entry = null
