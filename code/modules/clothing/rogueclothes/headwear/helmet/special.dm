@@ -130,5 +130,5 @@
 	name = "grenzelhoftian hat with blacksteel armet"
 	result = list(/obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet/grenzelhoft)
 	reqs = list(/obj/item/clothing/head/roguetown/grenzelhofthat = 1,
-	            /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan = 1)
+	            /obj/item/clothing/head/roguetown/helmet/blacksteel/modern/armet = 1)
 	craftdiff = 0
