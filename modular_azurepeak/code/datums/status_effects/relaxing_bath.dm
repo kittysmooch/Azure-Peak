@@ -62,7 +62,8 @@ dreaming. Still have to go to sleep to learn skills. Also gives healing tickrate
 			if(prob(10))
 				to_chat(src, span_warning("I'm not getting the most out of this with my outer clothes on."))
 			if(!soapy)
-				continue //No healing for you
+				to_chat(src, span_warning("I'm not getting anything out of this. I should at least remove my armor and my helmet, or use some soap."))
+				break //No healing for you
 
 
 		// Play occasional water sounds
