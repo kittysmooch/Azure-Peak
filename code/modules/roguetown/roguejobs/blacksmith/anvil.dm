@@ -10,6 +10,7 @@
 	density = TRUE
 	damage_deflection = 25
 	climbable = TRUE
+	//interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
 	var/previous_material_quality = 0
 	var/advance_multiplier = 1 // Lower for auto striking
 
@@ -89,7 +90,7 @@
 			return
 
 		var/datum/component/forging/forging_comp = current_workpiece.GetComponent(/datum/component/forging)
-		if(!forging_comp || forging_comp.forging_stage != FORGING_STAGE_ACTIVE)
+		if(!forging_comp)
 			ui_interact(user)
 			return
 
@@ -175,13 +176,11 @@
 	var/list/recipes = list()
 	var/datum/asset/spritesheet/spritesheet = get_asset_datum(/datum/asset/spritesheet/anvil_recipes)
 
-	to_chat(world, span_danger("[current_workpiece] - HELP"))
 	for(var/datum/anvil_recipe/R in GLOB.anvil_recipes)
 		var/valid_recipe = FALSE
 
 		if(current_workpiece)
 			if((R.req_bar && istype(current_workpiece, R.req_bar)) || (R.req_blade && istype(current_workpiece, R.req_blade)))
-				// to_chat(world, span_danger("[current_workpiece] - VALIDAS FOR [R]"))
 				valid_recipe = TRUE
 		if(!current_workpiece || valid_recipe || (!R.req_bar && !R.req_blade))
 			UNTYPED_LIST_ADD(recipes, list(
@@ -239,7 +238,6 @@
 				quality_value = blade_ref.quality
 
 			forging_comp.bar_health = 50 * (quality_value + 1)
-			//forging_comp.max_progress = 100
 			forging_comp.material_quality += quality_value
 			previous_material_quality = quality_value
 

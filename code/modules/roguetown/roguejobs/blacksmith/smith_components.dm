@@ -41,7 +41,6 @@
 	if(!original_recipe)
 		return
 	current_recipe = new original_recipe.type()
-	to_chat(world, span_danger("RECIPE IS [current_recipe]"))
 	if(current_recipe)
 		if(istype(parent, /obj/item/blade))
 			current_recipe.using_blade = TRUE
@@ -51,13 +50,12 @@
 					// Make sure we're ONLY removing ingots, nothing else
 					if(ispath(path, /obj/item/ingot))
 						current_recipe.additional_items.Cut(i, i+1)
-						to_chat(world, span_danger("REMOVED INGOT: [path]"))
 						break // Only remove ONE ingot
 		else
 			current_recipe.using_blade = FALSE
 		material_quality = current_recipe.material_quality
 		progress = 0
-		forging_stage = FORGING_STAGE_READY
+		forging_stage = FORGING_STAGE_ACTIVE
 
 /datum/component/forging/proc/on_placed_on_anvil(datum/source, obj/machinery/anvil/anvil)
 	SIGNAL_HANDLER
@@ -187,7 +185,6 @@
 
 /datum/component/forging/proc/complete_forging(mob/living/user, obj/machinery/anvil/anvil)
 	forging_stage = FORGING_STAGE_COMPLETE
-	to_chat(world, span_danger("HEY-HO COMPLETE FORGING GOT CALLED, IT SHOULD BE QUENCHABLE!! - [current_recipe]"))
 	var/if_created = FALSE
 
 	if(current_recipe.using_blade)
@@ -199,10 +196,9 @@
 		to_chat(user, span_notice("The [parent] is ready to be quenched in a water bin."))
 
 	// Clean up anvil
-	if(anvil.current_workpiece == parent)
-		if(if_created)
-			anvil.current_workpiece = null
-		anvil.update_icon()
+	if(if_created)
+		anvil.current_workpiece = null
+	anvil.update_icon()
 
 /datum/component/forging/proc/handle_creation(turf/create_turf, mob/living/user)
 	// Calculate the quality once (copied from original anvil_recipe)
