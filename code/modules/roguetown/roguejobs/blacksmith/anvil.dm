@@ -227,19 +227,34 @@
 				return TRUE
 
 			// Add forging component to the workpiece
-			var/datum/component/forging/forging_comp = current_workpiece.AddComponent(/datum/component/forging, recipe.type)
+			var/datum/component/forging/existing_forging = current_workpiece.GetComponent(/datum/component/forging)
+			var/recipe_reset = FALSE
+			if(existing_forging)
+				if(alert(user, "This item already has an active recipe ([existing_forging.current_recipe.name]). Change to [recipe.name]?","CHANGE RECIPE?","CONFIRM","CANCEL") != "CONFIRM")
+					return TRUE
 
-			var/quality_value = 1
-			if(istype(current_workpiece, /obj/item/ingot))
-				var/obj/item/ingot/ingot_ref = current_workpiece
-				quality_value = ingot_ref.quality
-			else if(istype(current_workpiece, /obj/item/blade))
-				var/obj/item/blade/blade_ref = current_workpiece
-				quality_value = blade_ref.quality
+				// Remove existing forging component and any quenchable components
+				qdel(existing_forging)
+				var/datum/component/anvil_quenchable/existing_quench = current_workpiece.GetComponent(/datum/component/anvil_quenchable)
+				if(existing_quench)
+					qdel(existing_quench)
+				recipe_reset = TRUE
 
-			forging_comp.bar_health = 50 * (quality_value + 1)
-			forging_comp.material_quality += quality_value
-			previous_material_quality = quality_value
+			// Add forging component to the workpiece
+			if(!existing_forging || recipe_reset)
+				var/datum/component/forging/forging_comp = current_workpiece.AddComponent(/datum/component/forging, recipe.type)
+
+				var/quality_value = 1
+				if(istype(current_workpiece, /obj/item/ingot))
+					var/obj/item/ingot/ingot_ref = current_workpiece
+					quality_value = ingot_ref.quality
+				else if(istype(current_workpiece, /obj/item/blade))
+					var/obj/item/blade/blade_ref = current_workpiece
+					quality_value = blade_ref.quality
+
+				forging_comp.bar_health = 50 * (quality_value + 1)
+				forging_comp.material_quality += quality_value
+				previous_material_quality = quality_value
 
 			ui.close()
 			return TRUE
