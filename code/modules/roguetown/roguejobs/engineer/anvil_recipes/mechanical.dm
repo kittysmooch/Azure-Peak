@@ -213,7 +213,7 @@
 	name = "steel prosthetic (+2 cogs)"
 	req_bar = /obj/item/ingot/steel
 	additional_items = list(/obj/item/roguegear, /obj/item/roguegear)
-	created_item = /obj/item/contraption/goldprosthetic
+	created_item = /obj/item/contraption/steelprosthetic
 	craftdiff = 4
 
 /datum/anvil_recipe/engineering/bronze/prosthetic/goldprosthetic
