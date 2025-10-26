@@ -30,8 +30,8 @@
 
 	// Auto-detect if we're using a blade by checking what's on the anvil
 	var/obj/machinery/anvil/anvil = P
-	if(anvil && anvil.hingot != null)
-		if(!using_blade && req_blade && istype(anvil.hingot, req_blade))
+	if(anvil && anvil.current_workpiece != null)
+		if(!using_blade && req_blade && istype(anvil.current_workpiece, req_blade))
 			using_blade = TRUE
 
 	src.using_blade = using_blade
@@ -52,7 +52,7 @@
 
 /datum/anvil_recipe/proc/advance(mob/user, breakthrough = FALSE, advance_multiplier = 1)
 	var/obj/machinery/anvil/anvil = parent
-	if(!anvil.hingot)
+	if(!anvil.current_workpiece)
 		return FALSE
 	if(!isliving(user))
 		return
@@ -118,8 +118,8 @@
 							bar_health -= craftdiff
 				if(bar_health <= 0)
 					user.visible_message(span_danger("[user] destroys the bar!"))
-					qdel(P.hingot)
-					P.hingot = null
+					qdel(P.current_workpiece)
+					P.current_workpiece = null
 			return FALSE
 		else
 			user.visible_message(span_warning("[user] fumbles the bar!"))
@@ -142,7 +142,7 @@
 				// Create the item(s)
 				handle_creation(anvil.loc)
 			else
-				anvil.hingot.AddComponent(/datum/component/anvil_quenchable, src, anvil.hingot)
+				//anvil.hingot.AddComponent(/datum/component/anvil_quenchable, src, anvil.hingot)
 				to_chat(user, span_notice("The bar is ready to be quenched in a bin filled with clean water."))
 			return FALSE
 		return TRUE
@@ -214,8 +214,8 @@
 
 	if(parent)
 		var/obj/machinery/anvil/anvil = parent
-		anvil.hingot = null
-		anvil.currecipe = null
+		anvil.current_workpiece = null
+		//anvil.currecipe = null
 		anvil.hott = null
 		anvil.update_icon()
 
