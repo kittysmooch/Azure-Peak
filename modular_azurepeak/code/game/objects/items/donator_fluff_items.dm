@@ -79,3 +79,29 @@
 	desc = "A recreation of a gilbronze greatsword, wrought in steel. Inscribed on the blade is a declaration: \"I HAVE ONLY A SHORT TYME TO LYVE, BUT I AM NOT AFRAID TO DIE.\"" 
 	icon_state = "weeperslathe"
 	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
+
+/obj/item/clothing/cloak/raincloak/feather_cloak
+	name = "Shroud of the Undermaiden"
+	desc = "A fine cloak made from the feathers of Necra's servants, each gifted to a favoured child of the Lady of Veils. While it offers no physical protection, perhaps it ensures that the Undermaiden's gaze is never far from its wearer..."
+	icon_state = "feather_cloak"
+	item_state = "feather_cloak"
+	icon = 'modular_azurepeak/icons/clothing/donor_clothes.dmi'
+	mob_overlay_icon = 'modular_azurepeak/icons/clothing/onmob/donor_clothes.dmi'
+	boobed = FALSE
+	sleeved = 'modular_azurepeak/icons/clothing/onmob/donor_sleeves_armor.dmi'
+	sleevetype = "feather_cloak"
+	hoodtype = /obj/item/clothing/head/hooded/rainhood/feather_hood
+
+/obj/item/clothing/head/hooded/rainhood/feather_hood
+	name = "feather hood"
+	desc = "This one will shelter me from the weather and my identity too."
+	icon_state = "feather_hood"
+	item_state = "feather_hood"
+	slot_flags = ITEM_SLOT_HEAD
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	body_parts_covered = HEAD
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDETAIL
+	block2add = FOV_BEHIND
+	icon = 'modular_azurepeak/icons/clothing/donor_clothes.dmi'
+	mob_overlay_icon = 'modular_azurepeak/icons/clothing/onmob/donor_clothes.dmi'
