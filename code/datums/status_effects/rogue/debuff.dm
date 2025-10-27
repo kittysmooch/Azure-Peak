@@ -633,7 +633,6 @@
 /datum/status_effect/debuff/vampbite
 	id = "Vampire Bite"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/vampbite
-	effectedstats = list(STATKEY_WIL = -2, STAT_SPEED = -2, STATKEY_CON = -2)
 	duration = 30 SECONDS
 
 /datum/status_effect/debuff/vampbite/on_apply()
