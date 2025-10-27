@@ -105,3 +105,10 @@
 	desc = "A recreation of a gilbronze greatsword, wrought in steel. Inscribed on the blade is a declaration: \"I HAVE ONLY A SHORT TYME TO LYVE, BUT I AM NOT AFRAID TO DIE.\"" 
 	icon_state = "weeperslathe"
 	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
+
+//inverserun's claymore
+/obj/item/rogueweapon/greatsword/zwei/inverserun
+	name = "Votive Thorns"
+	desc = "Promises hurt, but so does plucking rosa. Hoping hurts, but so does looking at the beauty of Astrata's light. Pick yourself back up. Remember your promise, despite the thorns."
+	icon_state = "inverse"
+	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
