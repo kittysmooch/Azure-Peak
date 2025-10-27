@@ -262,8 +262,6 @@
 	var/mob/living/carbon/human/victim = owner
 	victim?.dna?.species?.handle_fire(victim, no_protection)
 	victim.adjustFireLoss(10)
-	if(victim.surrendering)
-		victim.adjust_fire_stacks(-1,/datum/status_effect/fire_handler/fire_stacks/divine)
 
 /datum/status_effect/fire_handler/fire_stacks/sunder
 	id = "fire_stacks_sunder"
@@ -274,8 +272,6 @@
 	if(istype(victim))
 		victim?.dna?.species?.handle_fire(victim, no_protection)
 	victim.adjustFireLoss((owner.getFireLoss() >= 100) ? 4 : 2)
-	if(victim.surrendering)
-		victim.adjust_fire_stacks(-1,/datum/status_effect/fire_handler/fire_stacks/sunder)
 
 /datum/status_effect/fire_handler/fire_stacks/sunder/blessed
 	id = "fire_stacks_sunder_blessed"
