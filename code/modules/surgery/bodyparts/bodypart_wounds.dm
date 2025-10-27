@@ -258,9 +258,10 @@
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
 	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
+	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
 
 	// Probabilistic resistance (75% chance)
-	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+	if(resistance && prob(block_chance))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
@@ -351,9 +352,9 @@
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
 	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
+	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
 
-	// Probabilistic resistance (75% chance)
-	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+	if(resistance && prob(block_chance))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
@@ -485,6 +486,7 @@
 
 	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
 	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
+	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
 
 	var/resist_msg = " [owner] resists"
 	if(attempted_wounds && try_knockout)
@@ -494,7 +496,7 @@
 	else if(try_knockout)
 		resist_msg += " a knockout!</span>"
 
-	if(resistance && prob(CRIT_RESISTANCE_BLOCK_CHANCE))
+	if(resistance && prob(block_chance))
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance!" + resist_msg)

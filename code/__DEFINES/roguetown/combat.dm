@@ -21,5 +21,6 @@ Medical defines
 	Critical Resistance Defines 
 */
 #define CRIT_RESISTANCE_BLOCK_CHANCE 75 // Chance to outright not roll a crit 
+#define CRIT_RESISTANCE_BLOCK_CHANCE_NPC 50  // Chance for NPCs, lower than players
 #define CRIT_RESISTANCE_EFFECTIVE_BLEEDRATE 0.5 // How much CR reduce bleedrate by
 #define CRIT_RESISTANCE_TIMER_CD 30 SECONDS // Cooldown between guaranteed CR procs. DOES NOT APPLY TO DISMEMBERMENT.
