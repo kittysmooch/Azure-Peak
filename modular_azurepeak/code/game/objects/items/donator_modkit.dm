@@ -97,3 +97,9 @@
 	name = "'Votive Thorns' morphing elixir"
 	target_items = list(/obj/item/rogueweapon/greatsword/zwei)
 	result_item = /obj/item/rogueweapon/greatsword/zwei/inverserun
+
+//Zoe - Tytos Blackwood cloak
+/obj/item/enchantingkit/zoe
+	name = "'Shroud of the Undermaiden' morphing elixir"
+	target_items = list(/obj/item/clothing/cloak/darkcloak/bear)
+	result_item = /obj/item/clothing/cloak/raincloak/feather_cloak
