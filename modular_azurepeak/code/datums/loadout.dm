@@ -589,6 +589,12 @@ GLOBAL_LIST_EMPTY(loadout_items)
 
 /datum/loadout_item/donator_bigfoot
 	name = "Donator Kit - Gilded Knight Helm"
+	path = /obj/item/enchantingkit/bigfoot
+	ckeywhitelist = list("bigfoot02")
+
+/datum/loadout_item/donator_bigfoot_axe
+	name = "Donator kit - Gilded Greataxe"
+	path = /obj/item/enchantingkit/bigfoot_axe
 	ckeywhitelist = list("bigfoot02")
 
 /datum/loadout_item/donator_zydras
