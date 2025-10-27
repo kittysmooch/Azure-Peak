@@ -575,3 +575,13 @@
 	name = "Critical Resistance"
 	desc = "My body is temporarily resisting critical wounds."
 	icon_state = "debuff"
+
+/datum/status_effect/debuff/yeetcd
+	id = "yeetcd"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/yeetcd
+	duration = 5 SECONDS
+
+/atom/movable/screen/alert/status_effect/debuff/yeetcd
+	name = "Knockback Cooldown"
+	desc = "I have been knocked back recently by an attack and cannot be knocked back again"
+	icon_state = "debuff" // Placeholder
