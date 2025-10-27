@@ -106,6 +106,13 @@
 	icon_state = "weeperslathe"
 	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
 
+//inverserun's claymore
+/obj/item/rogueweapon/greatsword/zwei/inverserun
+	name = "Votive Thorns"
+	desc = "Promises hurt, but so does plucking rosa. Hoping hurts, but so does looking at the beauty of Astrata's light. Pick yourself back up. Remember your promise, despite the thorns."
+	icon_state = "inverse"
+	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
+
 /obj/item/clothing/cloak/raincloak/feather_cloak
 	name = "Shroud of the Undermaiden"
 	desc = "A fine cloak made from the feathers of Necra's servants, each gifted to a favoured child of the Lady of Veils. While it offers no physical protection, perhaps it ensures that the Undermaiden's gaze is never far from its wearer..."

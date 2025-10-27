@@ -92,6 +92,12 @@
 	target_items = list(/obj/item/rogueweapon/greatsword)		// i, uh. i really do promise i'm only gonna use it on steel greatswords.
 	result_item = /obj/item/rogueweapon/greatsword/weeperslathe
 
+//inverserun claymore
+/obj/item/enchantingkit/inverserun
+	name = "'Votive Thorns' morphing elixir"
+	target_items = list(/obj/item/rogueweapon/greatsword/zwei)
+	result_item = /obj/item/rogueweapon/greatsword/zwei/inverserun
+
 //Zoe - Tytos Blackwood cloak
 /obj/item/enchantingkit/zoe
 	name = "'Shroud of the Undermaiden' morphing elixir"
