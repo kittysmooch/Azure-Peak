@@ -640,6 +640,7 @@
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_DRUQK, id)
 	owner.add_stress(/datum/stressevent/high)
+	to_chat(owner, span_love("Momentarily, you feel a sharp pain but it quickly shifts into a pleasant feeling washing over you..."))
 	owner.overlay_fullscreen("vampirebite", /atom/movable/screen/fullscreen/weedsm)
 	if(owner?.client)
 		if(owner.client.screen && owner.client.screen.len)
