@@ -83,6 +83,11 @@
 	if(!HAS_TRAIT(user, TRAIT_STRONGBITE))
 		if(!affecting.has_wound(/datum/wound/bite))
 			nodmg = TRUE
+	if(HAS_TRAIT(user, TRAIT_VAMPBITE))
+		var/ramount = 15
+		var/rid = /datum/reagent/vampsolution
+		reagents.add_reagent(rid, ramount)
+		rid = /datum/reagent/vampsolution
 	if(!nodmg)
 		var/armor_block = run_armor_check(user.zone_selected, "stab",blade_dulling=BCLASS_BITE)
 		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
