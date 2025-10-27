@@ -203,7 +203,7 @@
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
-			if(user.badluck(7))
+			if(user.badluck(5))
 				badluckmessage(user)
 				user.stop_pulling()
 				return FALSE
@@ -257,7 +257,7 @@
 			if(user.buckled)
 				to_chat(user, span_warning("I can't do this while buckled!"))
 				return FALSE
-			if(user.badluck(7))
+			if(user.badluck(5))
 				badluckmessage(user)
 				user.stop_pulling()
 				return FALSE
@@ -389,7 +389,7 @@
 				return
 
 /obj/item/grabbing/proc/twistlimb(mob/living/user) //implies limb_grabbed and sublimb are things
-	if(user.badluck(7))
+	if(user.badluck(5))
 		badluckmessage(user)
 		user.stop_pulling()
 		return
@@ -514,7 +514,7 @@
 /obj/item/grabbing/attack_turf(turf/T, mob/living/user)
 	if(!valid_check())
 		return
-	if(user.badluck(7))
+	if(user.badluck(5))
 		badluckmessage(user)
 		user.stop_pulling()
 		return
@@ -550,7 +550,7 @@
 /obj/item/grabbing/attack_obj(obj/O, mob/living/user)
 	if(!valid_check())
 		return
-	if(user.badluck(7))
+	if(user.badluck(5))
 		badluckmessage(user)
 		user.stop_pulling()
 		return
