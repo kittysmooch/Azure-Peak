@@ -111,7 +111,7 @@
 	name = "Votive Thorns"
 	desc = "Promises hurt, but so does plucking rosa. Hoping hurts, but so does looking at the beauty of Astrata's light. Pick yourself back up. Remember your promise, despite the thorns."
 	icon_state = "inverse"
-	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi
+	icon = 'modular_azurepeak/icons/obj/items/donor_weapons_64.dmi'
 
 /obj/item/clothing/cloak/raincloak/feather_cloak
 	name = "Shroud of the Undermaiden"
