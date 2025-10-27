@@ -48,9 +48,7 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_DISMEMBER, src) & COMPONENT_CANCEL_DISMEMBER)
 		return FALSE //signal handled the dropping
 	
-	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
-
-	if(HAS_TRAIT(C, TRAIT_CRITICAL_RESISTANCE) && prob(block_chance))
+	if(C.try_resist_critical())
 		C.visible_message(span_danger("Critical resistance! [C]'s [src.name] hangs on by a thread!</span>"))
 		return FALSE
 

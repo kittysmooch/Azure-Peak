@@ -200,7 +200,7 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
+
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
@@ -256,23 +256,10 @@
 	if(!has_crit_attempt)
 		return FALSE
 
-	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
-	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
-
-	// Probabilistic resistance (75% chance)
-	if(resistance && prob(block_chance))
+	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
-		return TRUE
-
-	// Guaranteed resistance when cooldown is ready
-	if(resistance && cooldown_expired)
-		owner.mob_timers["crit_resist_cd"] = world.time
-		if(crit_message)
-			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Guaranteed critical resistance! [owner] resists a wound!</span>")
 		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -290,7 +277,6 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	if(user && dam)
 		if(user.goodluck(2))
 			dam += 10
@@ -350,22 +336,10 @@
 	if(!has_crit_attempt)
 		return FALSE
 
-	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
-	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
-
-	if(resistance && prob(block_chance))
+	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance! [owner] resists a wound!</span>")
-		return TRUE
-
-	// Guaranteed resistance when cooldown is ready
-	if(resistance && cooldown_expired)
-		owner.mob_timers["crit_resist_cd"] = world.time
-		if(crit_message)
-			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Guaranteed critical resistance! [owner] resists a wound!</span>")
 		return TRUE
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -386,7 +360,6 @@
 	var/used
 	var/total_dam = get_damage()
 	var/damage_dividend = (total_dam / max_damage)
-	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
 	var/from_behind = FALSE
 	var/try_knockout = FALSE
 	if(user && (owner.dir == turn(get_dir(owner,user), 180)))
@@ -484,10 +457,6 @@
 	if(!has_crit_attempt)
 		return FALSE
 
-	var/last_guaranteed_resist = owner.mob_timers["crit_resist_cd"]
-	var/cooldown_expired = owner?.mind && (!last_guaranteed_resist || (world.time >= last_guaranteed_resist + CRIT_RESISTANCE_TIMER_CD))
-	var/block_chance = owner?.mind ? CRIT_RESISTANCE_BLOCK_CHANCE : CRIT_RESISTANCE_BLOCK_CHANCE_NPC
-
 	var/resist_msg = " [owner] resists"
 	if(attempted_wounds && try_knockout)
 		resist_msg += " a wound and a knockout!</span>"
@@ -496,17 +465,10 @@
 	else if(try_knockout)
 		resist_msg += " a knockout!</span>"
 
-	if(resistance && prob(block_chance))
+	if(owner.try_resist_critical())
 		if(crit_message)
 			owner.next_attack_msg.Cut()
 			owner.next_attack_msg += span_crit(" Critical resistance!" + resist_msg)
-		return TRUE
-
-	if(resistance && cooldown_expired)
-		owner.mob_timers["crit_resist_cd"] = world.time
-		if(crit_message)
-			owner.next_attack_msg.Cut()
-			owner.next_attack_msg += span_crit(" Guaranteed critical resistance!" + resist_msg)
 		return TRUE
 
 	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
@@ -688,3 +650,21 @@
 	if(skeletonized)
 		returned_flags |= SURGERY_INCISED | SURGERY_RETRACTED | SURGERY_DRILLED //ehh... we have access to whatever organ is there
 	return returned_flags
+
+/* Check for critical resistance and trigger its effects.
+	Return TRUE if critical resistance was triggered, false if it don't work
+*/
+/mob/living/proc/try_resist_critical()
+	var/resistance = HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE)
+	if(!resistance)
+		return FALSE
+
+	var/crit_resist_tracker = has_status_effect(/datum/status_effect/debuff/crit_resistance_cd)
+
+	if(!crit_resist_tracker)
+		apply_status_effect(/datum/status_effect/debuff/crit_resistance_cd)
+		return TRUE // One chance were used and it was added
+	else
+		var/datum/status_effect/debuff/crit_resistance_cd/crit_resist_tracker_actual = crit_resist_tracker
+		// Iterate stack by 1 and then see if we can crit this hit
+		return !crit_resist_tracker_actual.try_crit()
