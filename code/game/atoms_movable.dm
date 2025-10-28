@@ -184,7 +184,8 @@
 				var/clickcd = CLICK_CD_TRACKING
 				var/spdbonus = (10 - L.get_stat(STATKEY_SPD)) * 2
 				clickcd -= spdbonus
-				L.changeNext_move(clickcd)
+				if(M.mind)	//No clickcd if we're grabbing a mindless mob, just frag the stupid AI
+					L.changeNext_move(clickcd)
 				M.changeNext_move(CLICK_CD_HEAVY)
 	if(istype(AM, /mob/living/simple_animal))
 		var/mob/living/simple_animal/simple_animal = AM
