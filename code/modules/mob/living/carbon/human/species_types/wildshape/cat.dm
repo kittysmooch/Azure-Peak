@@ -209,10 +209,10 @@
         if(target.mind.has_antag_datum(/datum/antagonist/werewolf))
             target.visible_message(span_green("[user] is licking [target]'s wounds with its tongue!"), span_notice("My kin has covered my wounds..."))
             ramount = 20
-            rid = /datum/reagent/water
+            rid = /datum/reagent/medicine/healthpot
             target.reagents.add_reagent(rid, ramount)
         else
             target.visible_message(span_green("[user] is licking [target]'s wounds with its tongue!"), span_notice("That thing... Did it lick my wounds?"))
-            ramount = 20
-            rid = /datum/reagent/water
+            ramount = 10
+            rid = /datum/reagent/medicine/healthpot
             target.reagents.add_reagent(rid, ramount)

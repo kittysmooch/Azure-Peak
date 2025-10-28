@@ -29,7 +29,8 @@
 		TRAIT_ZJUMP,
 		TRAIT_NOSLEEP,
 		TRAIT_GRABIMMUNE,
-		TRAIT_STRONGBITE
+		TRAIT_STRONGBITE,
+		TRAIT_LYCANRESILENCE,
 	)
 	confess_lines = list(
 		"THE BEAST INSIDE ME!",
@@ -150,20 +151,22 @@
 	to_chat(src, span_warning("I feed on succulent flesh. I feel reinvigorated."))
 	return src.reagents.add_reagent(/datum/reagent/medicine/healthpot, healing_amount)
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/werewolf_skin
+/obj/item/clothing/suit/roguetown/armor/regenerating/skin/werewolf_skin
 	slot_flags = null
 	name = "verewolf's skin"
-	desc = ""
+	desc = "an impenetrable hide of dendor's fury"
 	icon_state = null
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY
 	armor = ARMOR_WWOLF
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PICK, BCLASS_SMASH)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE
 	max_integrity = 550
 	item_flags = DROPDEL
+	repair_time = 15 SECONDS
+
 
 /datum/intent/simple/werewolf
 	name = "claw"
@@ -172,12 +175,39 @@
 	attack_verb = list("claws", "mauls", "eviscerates")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 50
+	penfactor = 60
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "slashes the air!"
 	miss_sound = "bluntwooshlarge"
 	item_d_type = "slash"
+
+
+/datum/intent/simple/werewolf/thrash
+	name = "thrash"
+	icon_state = "insmash"
+
+
+/datum/intent/simple/werewolf/thrash/spec_on_apply_effect(mob/living/H, mob/living/user, params)
+	var/chungus_khan_str = user.STASTR // reusing smash but raising the cap since werewolves can get pretty beefy
+	if(H.has_status_effect(/datum/status_effect/debuff/yeetcd))
+		return
+	if(chungus_khan_str < 10)
+		return
+	var/scaling = CLAMP((chungus_khan_str - 10), 1, 5) // the big kahoona
+	H.apply_status_effect(/datum/status_effect/debuff/yeetcd)
+	H.Slowdown(scaling)
+	var/knockback_tiles = scaling // 1 to 8 tiles based on strength(woof)
+	if(H.resting)
+		knockback_tiles = max(1, knockback_tiles / 2)
+	var/turf/edge_target_turf = get_edge_target_turf(H, get_dir(user, H))
+	if(istype(edge_target_turf))
+		H.safe_throw_at(edge_target_turf, \
+		knockback_tiles, \
+		scaling, \
+		user, \
+		spin = FALSE, \
+		force = H.move_force)
 
 /obj/item/rogueweapon/werewolf_claw
 	name = "Verevolf Claw"
@@ -200,7 +230,7 @@
 	sharpness = IS_SHARP
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_MED
-	possible_item_intents = list(/datum/intent/simple/werewolf)
+	possible_item_intents = list(/datum/intent/simple/werewolf, /datum/intent/simple/werewolf/thrash)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	embedding = list("embedded_pain_multiplier" = 0, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	item_flags = DROPDEL
