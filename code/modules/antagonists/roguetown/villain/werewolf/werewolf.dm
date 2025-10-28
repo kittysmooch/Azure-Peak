@@ -183,31 +183,14 @@
 	item_d_type = "slash"
 
 
-/datum/intent/simple/werewolf/thrash
+/datum/intent/mace/smash/werewolf
 	name = "thrash"
+	desc = "A powerful, smash of lycan muscle that deals normal damage but can throw a standing opponent back and slow them down, based on your strength. Ineffective below 10 strength. Slowdown & Knockback scales to your Strength up to 15 (1 - 5 tiles). Cannot be used consecutively more than every 5 seconds on the same target. Prone targets halve the knockback distance."
 	icon_state = "insmash"
+	maxrange = 5
+	chargetime = 1
+	penfactor = 60
 
-
-/datum/intent/simple/werewolf/thrash/spec_on_apply_effect(mob/living/H, mob/living/user, params)
-	var/chungus_khan_str = user.STASTR // reusing smash but raising the cap since werewolves can get pretty beefy
-	if(H.has_status_effect(/datum/status_effect/debuff/yeetcd))
-		return
-	if(chungus_khan_str < 10)
-		return
-	var/scaling = CLAMP((chungus_khan_str - 10), 1, 5) // the big kahoona
-	H.apply_status_effect(/datum/status_effect/debuff/yeetcd)
-	H.Slowdown(scaling)
-	var/knockback_tiles = scaling // 1 to 8 tiles based on strength(woof)
-	if(H.resting)
-		knockback_tiles = max(1, knockback_tiles / 2)
-	var/turf/edge_target_turf = get_edge_target_turf(H, get_dir(user, H))
-	if(istype(edge_target_turf))
-		H.safe_throw_at(edge_target_turf, \
-		knockback_tiles, \
-		scaling, \
-		user, \
-		spin = FALSE, \
-		force = H.move_force)
 
 /obj/item/rogueweapon/werewolf_claw
 	name = "Verevolf Claw"
@@ -230,7 +213,7 @@
 	sharpness = IS_SHARP
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_MED
-	possible_item_intents = list(/datum/intent/simple/werewolf, /datum/intent/simple/werewolf/thrash)
+	possible_item_intents = list(/datum/intent/simple/werewolf, /datum/intent/mace/smash/werewolf)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	embedding = list("embedded_pain_multiplier" = 0, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	item_flags = DROPDEL
