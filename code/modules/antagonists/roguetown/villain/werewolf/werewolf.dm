@@ -204,7 +204,6 @@
 	force = 25
 	block_chance = 0
 	wdefense = 2
-	armor_penetration = 15
 	associated_skill = /datum/skill/combat/unarmed
 	wlength = WLENGTH_NORMAL
 	wbalance = WBALANCE_HEAVY
