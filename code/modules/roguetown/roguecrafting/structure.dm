@@ -771,7 +771,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/longtable
-	name = "nice long table(DIRECTIONAL!)"
+	name = "nice long table"
 	result = /obj/structure/table/wood/long_table
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	verbage_simple = "construct"
@@ -780,7 +780,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/longtablealt
-	name = "nice long table(DIRECTIONAL! middle piece)"
+	name = "nice long table(middle)"
 	result = /obj/structure/table/wood/long_table/mid/alt
 	reqs = list(/obj/item/natural/wood/plank = 2)
 	verbage_simple = "construct"
