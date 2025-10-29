@@ -117,7 +117,10 @@
 
 	var/list/L = params2list(params)
 	if (L["right"])
-		mob.face_atom(object, location, control, params)
+		if(mob.buckled)
+			mob.buckled.face_atom(object, location, control, params)
+		else
+			mob.face_atom(object, location, control, params)
 		if(L["left"])
 			return
 		mob.atkswinging = "right"
@@ -151,7 +154,10 @@
 			mouse_pointer_icon = 'icons/effects/mousemice/human_looking.dmi'
 		else
 			if(mob.mmb_intent.get_chargetime() && mob.mmb_intent.can_charge() && !AD.blockscharging)
-				mob.face_atom(object, location, control, params)
+				if(mob.buckled)
+					mob.buckled.face_atom(object, location, control, params)
+				else
+					mob.face_atom(object, location, control, params)
 				updateprogbar()
 			else
 				mouse_pointer_icon = mob.mmb_intent.pointer
@@ -356,7 +362,11 @@
 		else
 			middragtime = 0
 			middragatom = null
-	mob.face_atom(over_object, over_location, over_control, params)
+
+	if(mob.buckled)
+		mob.buckled.face_atom(over_object, over_location, over_control, params)
+	else
+		mob.face_atom(over_object, over_location, over_control, params)
 
 	mouseParams = params
 	mouseLocation = over_location
