@@ -18,6 +18,7 @@ SUBSYSTEM_DEF(vote)
 	var/list/voted = list()
 	var/list/voting = list()
 	var/list/generated_actions = list()
+	var/static/list/everyone_is_equal = list("custom")
 
 /datum/controller/subsystem/vote/fire()	//called by master_controller
 	if(mode)
@@ -181,7 +182,6 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/submit_vote(vote)
 	// Voting where vote power is equal for all
-	var/list/everyone_is_equal = list("custom")
 	if(mode)
 //		if(CONFIG_GET(flag/no_dead_vote) && usr.stat == DEAD && !usr.client.holder)
 //			return 0
