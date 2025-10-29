@@ -732,13 +732,17 @@
 			else if(can_piggyback(target))
 				// if the user dragged themselves onto the person, prompt the person
 				if(user == target)
+					to_chat(user, span_notice("You request a piggyback ride from [src]..."))
 					var/response = tgui_alert(src, "[user.name] is requesting a piggyback ride.", "Piggyback Ride", list("Yes, let them on", "No"))
 					if(response == "No")
+						to_chat(user, span_warning("[src] has denied you a piggyback ride!"))
 						return TRUE
 				// if the person dragged the user onto themselves, prompt the user
 				else
+					to_chat(src, span_notice("You offer a piggyback ride to [target]..."))
 					var/response = tgui_alert(target, "[src.name] is offering to give you a piggyback ride.", "Piggyback Ride", list("Yes, get on", "No"))
 					if(response == "No")
+						to_chat(src, span_warning("[target] has denied your piggyback ride!"))
 						return TRUE
 				piggyback(target)
 				return TRUE
