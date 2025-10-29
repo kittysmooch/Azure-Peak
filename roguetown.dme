@@ -2281,6 +2281,7 @@
 #include "code\modules\roguetown\roguejobs\alchemist\herb_seeds.dm"
 #include "code\modules\roguetown\roguejobs\artificer\artificer_table.dm"
 #include "code\modules\roguetown\roguejobs\artificer\handsaw_chisel.dm"
+#include "code\modules\roguetown\roguejobs\blacksmith\_ANVIL_DEFINES.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\anvil.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\casting.dm"
 #include "code\modules\roguetown\roguejobs\blacksmith\forge.dm"
