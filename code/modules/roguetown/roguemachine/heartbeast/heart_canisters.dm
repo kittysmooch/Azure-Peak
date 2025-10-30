@@ -165,6 +165,8 @@
 		. += span_notice("Use in-hand to attune this canister to an aspect.")
 	else if (filled)
 		. += span_notice("It is attuned to [current_aspect_name]")
+	ui_interact(user)
+	return .
 
 /obj/item/heart_canister/proc/attune_to_aspect(mob/user, datum/A)
 	var/datum/flesh_archetype/archetype
@@ -281,3 +283,72 @@
 	name = "Full heartblood vial"
 	desc = "A vial full of viscous blood, despite being closed it somehow still exudes a putrid smell. Highly valued, due to their ability to purify lux."
 	icon_state = "blood_vial_filled"
+
+/obj/item/heart_canister/ui_interact(mob/user, datum/tgui/ui)
+	if(!isliving(user))
+		return
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "HeartCanister", "Aspect Canister Examination")
+		ui.open()
+
+/obj/item/heart_canister/ui_data(mob/user)
+	. = ..()
+	.["filled"] = filled
+	.["aspect_data"] = list()
+
+	if(aspect_datum_ref)
+		var/list/aspect_data = list(
+			"name" = current_aspect_name,
+			"color" = expected_color,
+		)
+
+		if(istype(aspect_datum_ref, /datum/flesh_quirk))
+			var/datum/flesh_quirk/Q = aspect_datum_ref
+			aspect_data["type"] = "Quirk"
+			aspect_data["desc"] = Q.description
+
+			// Resolve conflicting quirk paths to names
+			var/list/conflicting_names = list()
+			for(var/conflicting_path in Q.conflicting_quirks)
+				var/datum/flesh_quirk/conflicting_quirk = conflicting_path
+				if(conflicting_quirk)
+					UNTYPED_LIST_ADD(conflicting_names, conflicting_quirk.name)
+			aspect_data["conflicting_quirks"] = conflicting_names
+
+		else if(istype(aspect_datum_ref, /datum/flesh_trait))
+			var/datum/flesh_trait/T = aspect_datum_ref
+			aspect_data["type"] = "Trait"
+			aspect_data["desc"] = T.description
+			
+			// 1. Resolve LIKED CONCEPTS to NAMES (Strings)
+			var/list/concept_names = list()
+			for(var/concept_path in T.liked_concepts)
+				var/datum/flesh_concept/concept_datum = concept_path
+				if(concept_datum)
+					UNTYPED_LIST_ADD(concept_names, concept_datum.name)
+				else // Include the path itself as a fallback string
+					UNTYPED_LIST_ADD(concept_names, "[concept_path]") 
+			aspect_data["liked_concepts"] = concept_names
+			
+			// 2. Serialize PREFERRED APPROACHES map into a single summary string
+			var/list/approach_summaries = list()
+			if(islist(T.preferred_approaches))
+				var/list/approach_map = T.preferred_approaches
+				for(var/key in approach_map)
+					// Format as "Key: Value" (e.g., "min_words: 3")
+					UNTYPED_LIST_ADD(approach_summaries, "[key]: [approach_map[key]]")
+			aspect_data["preferred_approaches_summary"] = approach_summaries.Join(", ") // Send as a single formatted string
+
+			// Resolve conflicting trait paths to names (Already correct)
+			var/list/conflicting_names = list()
+			for(var/conflicting_path in T.conflicting_traits)
+				var/datum/flesh_trait/conflicting_trait = conflicting_path
+				if(conflicting_trait)
+					UNTYPED_LIST_ADD(conflicting_names, conflicting_trait.name)
+			aspect_data["conflicting_traits"] = conflicting_names
+			
+		// Add the compiled data to the UI data
+		.["aspect_data"] = aspect_data
+	return .
