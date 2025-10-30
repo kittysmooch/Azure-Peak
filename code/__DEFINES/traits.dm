@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"),
 	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
 	TRAIT_EQUESTRIAN = span_warning("I am a capable rider. My mount is an extension of me."),
-	TRAIT_BLOODPOOL_BORN = span_bloody("I emerged from the bloodpool of a Vampire Lord. There is no possibility for redemption for me in this land.")
+	TRAIT_BLOODPOOL_BORN = span_bloody("I emerged from the bloodpool of a Vampire Lord. There is no possibility for redemption for me in this land."),
 	TRAIT_ROYALSERVANT = span_greentext("I've been serving the royal family for long enough to know their exotic tastes."),
 ))
 
