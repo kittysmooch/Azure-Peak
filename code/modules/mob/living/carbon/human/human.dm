@@ -62,7 +62,6 @@
 #ifdef MATURESERVER
 	sexcon = new /datum/sex_controller(src)
 #endif
-	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 
 	icon_state = ""		//Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
@@ -450,7 +449,7 @@
 			else
 				. = INFINITY
 			return
-		
+
 	. = ..()
 	if(glasses)
 		. += glasses.tint
@@ -895,6 +894,12 @@
 /mob/living/carbon/human/proc/is_virile()
 	var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
 	return testicles.virility
+
+/mob/living/carbon/human/update_mobility()
+	. = ..()
+	if(!(mobility_flags & MOBILITY_CANSTAND) && mouth?.spitoutmouth)
+		visible_message(span_warning("[src] spits out [mouth]."))
+		dropItemToGround(mouth, silent = FALSE)
 
 /*/mob/living/carbon/human/proc/update_heretic_commune()
 	if(HAS_TRAIT(src, TRAIT_COMMIE) || HAS_TRAIT(src, TRAIT_CABAL) || HAS_TRAIT(src, TRAIT_HORDE) || HAS_TRAIT(src, TRAIT_DEPRAVED))

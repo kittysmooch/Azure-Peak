@@ -604,7 +604,7 @@
 			SSdroning.play_combat_music(L.cmode_music_override, client)
 		else if(L.cmode_music)
 			SSdroning.play_combat_music(L.cmode_music, client)
-		if(client && HAS_TRAIT(src, TRAIT_SCHIZO_AMBIENCE))
+		if(client && HAS_TRAIT(src, TRAIT_PSYCHOSIS))
 			animate(client, pixel_y = 1, time = 1, loop = -1, flags = ANIMATION_RELATIVE)
 			animate(pixel_y = -1, time = 1, flags = ANIMATION_RELATIVE)
 	if(hud_used)
@@ -981,7 +981,7 @@
 		var/datum/job/J = SSjob.GetJob(job)
 		if(!J)
 			return "unknown"
-		used_title = J.title
+		used_title =  J.display_title || J.title
 		if(J.f_title && (pronouns == SHE_HER || pronouns == THEY_THEM_F))
 			used_title = J.f_title
 		if(J.advjob_examine)
