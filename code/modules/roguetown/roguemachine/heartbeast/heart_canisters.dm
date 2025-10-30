@@ -28,11 +28,29 @@
 		to_chat(user, span_warning("This canister is already filled!"))
 		return
 
-	if(attuned)
-		to_chat(user, span_warning("This canister is already attuned to [current_aspect_name]!"))
+	if(attuned && !filled)
+		var/reset_choice = alert(user, "This canister is already attuned to [current_aspect_name]. Do you want to reset it?", "Canister Reset", "Reset", "Keep")
+		if(reset_choice == "Reset")
+			reset_canister(user)
 		return
 
 	show_aspect_menu(user)
+
+/obj/item/heart_canister/proc/reset_canister(mob/user)
+	attuned = FALSE
+	filled = FALSE
+	current_aspect_name = ""
+	current_aspect_type = null
+	required_item_type = null
+	expected_color = "#ffffff"
+	aspect_datum_ref = null
+	calibrated = FALSE
+	calibration_progress = 0
+	calibration_required = 0
+	name = initial(name)
+	desc = initial(desc)
+	update_icon()
+	to_chat(user, span_notice("You reset the canister, clearing its attunement."))
 
 /obj/item/heart_canister/proc/show_aspect_menu(mob/user)
 	var/list/categories = list(

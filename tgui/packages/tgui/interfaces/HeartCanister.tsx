@@ -57,7 +57,7 @@ export const HeartCanister = (props) => {
   return (
     <Window width={450} height={400} title="Aspect Canister Examination">
       <Window.Content>
-        {!filled ? (
+        {!filled && type === "Unknown" ? (
           <NoticeBox>This canister is empty.</NoticeBox>
         ) : (
           <>
