@@ -303,13 +303,11 @@
 			"name" = current_aspect_name,
 			"color" = expected_color,
 		)
-
 		if(istype(aspect_datum_ref, /datum/flesh_quirk))
 			var/datum/flesh_quirk/Q = aspect_datum_ref
 			aspect_data["type"] = "Quirk"
 			aspect_data["desc"] = Q.description
 
-			// Resolve conflicting quirk paths to names
 			var/list/conflicting_names = list()
 			for(var/conflicting_path in Q.conflicting_quirks)
 				var/datum/flesh_quirk/conflicting_quirk = conflicting_path
@@ -321,34 +319,50 @@
 			var/datum/flesh_trait/T = aspect_datum_ref
 			aspect_data["type"] = "Trait"
 			aspect_data["desc"] = T.description
-			
-			// 1. Resolve LIKED CONCEPTS to NAMES (Strings)
+
 			var/list/concept_names = list()
 			for(var/concept_path in T.liked_concepts)
 				var/datum/flesh_concept/concept_datum = concept_path
 				if(concept_datum)
 					UNTYPED_LIST_ADD(concept_names, concept_datum.name)
-				else // Include the path itself as a fallback string
+				else
 					UNTYPED_LIST_ADD(concept_names, "[concept_path]") 
 			aspect_data["liked_concepts"] = concept_names
-			
-			// 2. Serialize PREFERRED APPROACHES map into a single summary string
+
 			var/list/approach_summaries = list()
 			if(islist(T.preferred_approaches))
 				var/list/approach_map = T.preferred_approaches
 				for(var/key in approach_map)
-					// Format as "Key: Value" (e.g., "min_words: 3")
 					UNTYPED_LIST_ADD(approach_summaries, "[key]: [approach_map[key]]")
-			aspect_data["preferred_approaches_summary"] = approach_summaries.Join(", ") // Send as a single formatted string
+			aspect_data["preferred_approaches_summary"] = approach_summaries.Join(", ")
 
-			// Resolve conflicting trait paths to names (Already correct)
 			var/list/conflicting_names = list()
 			for(var/conflicting_path in T.conflicting_traits)
 				var/datum/flesh_trait/conflicting_trait = conflicting_path
 				if(conflicting_trait)
 					UNTYPED_LIST_ADD(conflicting_names, conflicting_trait.name)
 			aspect_data["conflicting_traits"] = conflicting_names
-			
+
+		else if(istype(aspect_datum_ref, /datum/flesh_archetype))
+			var/datum/flesh_archetype/A = aspect_datum_ref
+			aspect_data["type"] = "Archetype"
+			aspect_data["desc"] = A.description
+
+			var/list/trait_names = list()
+			for(var/trait_path in A.possible_traits)
+				var/datum/flesh_trait/trait_datum = trait_path
+				if(trait_datum)
+					UNTYPED_LIST_ADD(trait_names, trait_datum.name)
+			aspect_data["possible_traits"] = trait_names
+
+			var/list/quirk_names = list()
+			for(var/quirk_path in A.possible_quirks)
+				var/datum/flesh_quirk/quirk_datum = quirk_path
+				if(quirk_datum)
+					UNTYPED_LIST_ADD(quirk_names, quirk_datum.name)
+			aspect_data["possible_quirks"] = quirk_names
+			aspect_data["discharge_colors"] = A.discharge_colors
+
 		// Add the compiled data to the UI data
 		.["aspect_data"] = aspect_data
 	return .

@@ -21,6 +21,10 @@ type AspectData = {
   conflicting_traits?: string[];
   // Quirk-specific data
   conflicting_quirks?: string[];
+  // Archetype-specific data
+  possible_traits?: string[];
+  possible_quirks?: string[];
+  discharge_colors?: string[];
 };
 
 type Data = {
@@ -44,6 +48,10 @@ export const HeartCanister = (props) => {
     preferred_approaches_summary = "N/A",
     conflicting_traits = [],
     conflicting_quirks = [],
+    // Archetype-specific defaults
+    possible_traits = [],
+    possible_quirks = [],
+    discharge_colors = [],
   } = aspect_data || {};
 
   return (
@@ -66,6 +74,53 @@ export const HeartCanister = (props) => {
                 </LabeledList.Item>
               </LabeledList>
             </Section>
+
+            {/* --- Archetype-Specific Information --- */}
+            {type === "Archetype" && (
+              <Section title="Archetype Specifics">
+                <LabeledList>
+                  <LabeledList.Item label="Possible Traits">
+                    {possible_traits.length
+                      ? possible_traits.join(', ')
+                      : 'None'}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Possible Quirks">
+                    {possible_quirks.length
+                      ? possible_quirks.join(', ')
+                      : 'None'}
+                  </LabeledList.Item>
+                  <LabeledList.Item label="Discharge Colors">
+                    <Box>
+                      {discharge_colors.length ? (
+                        <Box>
+                          {discharge_colors.map((dischargeColor, index) => (
+                            <Box
+                              key={index}
+                              inline
+                              style={{
+                                width: '16px',
+                                height: '16px',
+                                backgroundColor: dischargeColor,
+                                border: '1px solid #000',
+                                margin: '2px',
+                                display: 'inline-block',
+                                verticalAlign: 'middle',
+                              }}
+                            />
+                          ))}
+                          <Box inline ml={1}>
+                            ({discharge_colors.join(', ')})
+                          </Box>
+                        </Box>
+                      ) : (
+                        'None'
+                      )}
+                    </Box>
+                  </LabeledList.Item>
+                </LabeledList>
+              </Section>
+            )}
+
             {/* --- Quirk-Specific Information --- */}
             {type === "Quirk" && (
               <Section title="Quirk Specifics">
