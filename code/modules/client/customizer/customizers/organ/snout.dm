@@ -266,6 +266,7 @@
 		/datum/sprite_accessory/snout/alienlizard,
 		/datum/sprite_accessory/snout/alienlizardteeth,
 		/datum/sprite_accessory/snout/skulldog,
+		/datum/sprite_accessory/snout/front/skulldog,
 		/datum/sprite_accessory/snout/hanubus,
 		/datum/sprite_accessory/snout/hpanda,
 		/datum/sprite_accessory/snout/hjackal,
