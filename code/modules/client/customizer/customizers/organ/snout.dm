@@ -142,6 +142,7 @@
 		/datum/sprite_accessory/snout/bird,
 		/datum/sprite_accessory/snout/bigbeak,
 		/datum/sprite_accessory/snout/bigbeakshort,
+		/datum/sprite_accessory/snout/skulldog,
 		/datum/sprite_accessory/snout/slimbeak,
 		/datum/sprite_accessory/snout/slimbeakshort,
 		/datum/sprite_accessory/snout/slimbeakalt,
@@ -223,7 +224,7 @@
 		)
 
 /datum/customizer_choice/organ/snout/anthro/dullahan
-	name = "Wild-Kin Snout"
+	name = "Dullahan Snout"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
