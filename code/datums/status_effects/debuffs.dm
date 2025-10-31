@@ -552,6 +552,7 @@
 /datum/status_effect/debuff/crit_resistance_cd
 	id = "crit_resist_cd"
 	duration = CRIT_RESISTANCE_TIMER_CD
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/crit_resistance_cd
 	var/my_stack = 1 // How many time it was triggered. Default to 1 because this is only created when it triggers
 
 // Helper, call this everytime you try to crit
