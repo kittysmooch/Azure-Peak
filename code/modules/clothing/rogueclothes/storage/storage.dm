@@ -127,7 +127,6 @@
 	icon_state = "clothsash"
 	item_state = "clothsash"
 
-
 /obj/item/storage/backpack/rogue/satchel
 	name = "satchel"
 	desc = "Modest, easy on the shoulders, and holds a respectable amount."
