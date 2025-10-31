@@ -220,6 +220,33 @@
 		// No coins were collected (storage full)
 		to_chat(user, span_warning("[src] is too full to collect any more coins!"))
 
+//Special pouch for merchants / stewards, holds a lot of coin stacks but nothing else.
+/obj/item/storage/belt/rogue/pouch/merchant
+	name = "merchant pouch"
+	desc = "A small sack with a drawstring that allows it to be worn around the neck. Or at the hips, provided you have a belt. Specifically constructed by the Guild to carry mammon efficiently; and nothing else."
+	icon_state = "pouch_merchant"
+	item_state = "pouch_merchant"
+	sellprice = 50
+	grid_height = 64
+	grid_width = 32
+	component_type = /datum/component/storage/concrete/roguetown/coin_pouch/merchant
+
+/obj/item/storage/belt/rogue/pouch/merchant/coins/Initialize() //Same as coins/rich
+	. = ..()
+	var/obj/item/roguecoin/silver/pile/H = new(loc)
+	if(istype(H))
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+			qdel(H)
+	H = new(loc)
+	if(istype(H))
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+			qdel(H)
+	if(prob(50))
+		H = new(loc)
+		if(istype(H))
+			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+				qdel(H)
+
 /obj/item/storage/belt/rogue/pouch/coins
 
 /obj/item/storage/belt/rogue/pouch/coins/mid/Initialize()
