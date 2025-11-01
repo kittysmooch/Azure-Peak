@@ -203,6 +203,7 @@
 /obj/item/seeds/sunflower
 	seed_identity = "sunflower seeds"
 	plant_def_type = /datum/plant_def/sunflower
+	cooked_type = /obj/item/reagent_containers/food/snacks/roastseeds/sunflower
 
 /obj/item/seeds/onion
 	seed_identity = "onion seeds"
@@ -239,3 +240,4 @@
 /obj/item/seeds/pumpkin
 	seed_identity = "pumpkin seeds"
 	plant_def_type = /datum/plant_def/pumpkin
+	cooked_type = /obj/item/reagent_containers/food/snacks/roastseeds/pumpkin

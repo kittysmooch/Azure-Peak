@@ -261,3 +261,11 @@
 	color = "#e5b175"
 	foodtype = VEGETABLES
 	rotprocess = null
+
+/obj/item/reagent_containers/food/snacks/roastseeds/sunflower
+	name = "roasted sunflower seeds"
+	tastes = list("toasted sunflower seeds" = 1)
+
+/obj/item/reagent_containers/food/snacks/roastseeds/pumpkin
+	name = "roasted pumpkin seeds"
+	tastes = list("toasted pumpkin seeds" = 1)
