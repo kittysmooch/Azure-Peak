@@ -124,6 +124,22 @@
 			playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 		return
 
+	if(istype(I, /obj/item/roguebin)) // Handle roguebins specially - sell their contents, leave the empty bin
+		var/obj/item/roguebin/bin = I
+		var/turf/bin_location = get_turf(bin)
+		var/datum/component/storage/STR = bin.GetComponent(/datum/component/storage)
+		if(STR)
+			var/list/bin_contents = STR.contents()
+			for(var/obj/item/bin_item in bin_contents) // Process all items inside the bin first
+				attemptsell(bin_item, H, message, FALSE)
+
+			for(var/obj/item/remaining_item in bin_contents) // Any items that weren't sold (still exist) go to the ground
+				if(!QDELETED(remaining_item))
+					STR.remove_from_storage(remaining_item, bin_location)
+		if(sound == TRUE)
+			playsound(loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+		return
+
 	for(var/datum/roguestock/R in SStreasury.stockpile_datums)
 		if(istype(I, /obj/item/natural/bundle))
 			var/obj/item/natural/bundle/B = I
