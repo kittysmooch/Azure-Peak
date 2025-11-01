@@ -74,8 +74,15 @@
 	if(attachment_component)
 		var/datum/component/storage/storage_component = GetComponent(attachment_component)
 		if(storage_component)
-			storage_component.rmb_show(user)
-			return TRUE
+			var/open_rmb_menu = TRUE
+			var/datum/component/adjustable_clothing/adjustable_component = GetComponent(/datum/component/adjustable_clothing)
+			if(adjustable_component)
+				var/selected_option = tgui_alert(user, "Do you want to access your accessory storage or adjust your clothing?", "Option", list("Adjust Clothing", "Accessory Storage"))
+				if(selected_option != "Accessory Storage")
+					open_rmb_menu = FALSE
+			if(open_rmb_menu)
+				storage_component.rmb_show(user)
+				return TRUE
 	return ..()
 
 ///Special throw_impact for hats to frisbee hats at people to place them on their heads/attempt to de-hat them.
