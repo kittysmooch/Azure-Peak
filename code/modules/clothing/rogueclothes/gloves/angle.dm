@@ -14,6 +14,7 @@
 	anvilrepair = null
 	sewrepair = TRUE
 	salvage_result = /obj/item/natural/fur
+	color = "#4d4d4d"
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 	name = "grenzelhoft gloves"
