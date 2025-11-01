@@ -4,7 +4,8 @@
 	max_w_class = WEIGHT_CLASS_GIGANTIC
 
 	cant_hold = list(
-		/obj/item/storage
+		/obj/item/storage,
+		/obj/item/rogueweapon
 	)
 
 	attack_hand_interact = FALSE
