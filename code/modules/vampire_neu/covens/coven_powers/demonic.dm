@@ -156,7 +156,7 @@
 	icon_state = "claws"
 	max_blade_int = 900
 	max_integrity = 900
-	force = 6
+	force = 11
 	wdefense = 9
 	armor_penetration = 100
 	block_chance = 20
@@ -174,10 +174,3 @@
 	item_flags = DROPDEL
 	//masquerade_violating = TRUE
 
-/obj/item/rogueweapon/gangrel/afterattack(atom/target, mob/living/carbon/user, proximity)
-	if(!proximity)
-		return
-	if(isliving(target))
-		var/mob/living/L = target
-		L.apply_damage(30, BURN)
-	. = ..()
