@@ -5,7 +5,10 @@
 
 	cant_hold = list(
 		/obj/item/storage,
-		/obj/item/rogueweapon
+		/obj/item/rogueweapon,
+		/obj/item/bomb,
+		/obj/item/flashlight,
+		/obj/item/recipe_book,
 	)
 
 	attack_hand_interact = FALSE
@@ -14,6 +17,11 @@
 
 	insert_preposition = "onto"
 	allow_big_nesting = TRUE
+
+/datum/component/storage/concrete/roguetown/hat/attackby(datum/source, obj/item/attacking_item, mob/user, params, storage_click)
+	if(is_type_in_list(attacking_item, cant_hold))
+		return FALSE
+	return ..()
 
 /datum/component/storage/concrete/roguetown/hat/update_icon()
 	. = ..()
