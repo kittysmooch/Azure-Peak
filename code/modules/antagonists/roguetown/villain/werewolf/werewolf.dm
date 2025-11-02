@@ -166,6 +166,7 @@
 	max_integrity = 550
 	item_flags = DROPDEL
 	repair_time = 15 SECONDS
+	interrupt_damount = 35
 
 
 /datum/intent/simple/werewolf
