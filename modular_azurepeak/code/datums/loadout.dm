@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(loadout_items)
 //TOOLS
 
 /datum/loadout_item/bauernwehr
-	name = "Bauernwehr (3 TRI)"
+	name = "Bauernwehr (-3 TRI)"
 	path = /obj/item/rogueweapon/huntingknife/throwingknife/bauernwehr
 	triumph_cost = 3
 

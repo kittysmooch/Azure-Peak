@@ -24,8 +24,8 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"Critical Weakness"=/datum/charflaw/critweakness,
 	"Hunted"=/datum/charflaw/hunted,
 	"Random or No Flaw"=/datum/charflaw/randflaw,
-	"No Flaw (3 TRIUMPHS)"=/datum/charflaw/noflaw,
-	"Disfigured (2 TRIUMPHS)"=/datum/charflaw/disfigured,
+	"No Flaw (-3 TRIUMPHS)"=/datum/charflaw/noflaw,
+	"Leper (+1 TRIUMPHS)"=/datum/charflaw/leprosy,
 	))
 
 /datum/charflaw
@@ -89,7 +89,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	desc = "I'm a normal person, how rare!"
 
 /datum/charflaw/noflaw
-	name = "No Flaw (3 TRI)"
+	name = "No Flaw (-3 TRI)"
 	desc = "I'm a normal person, how rare! (Consumes 3 triumphs or gives a random flaw.)"
 
 /datum/charflaw/noflaw/apply_post_equipment(mob/user)
@@ -466,14 +466,13 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/critweakness/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 
-/datum/charflaw/disfigured
-	name = "Disfigured (2 TRI)"
-	desc = "In the past, I had barely managed to escape death's grasp. Though I still lyve, it is not without consequence. I am revolting to look upon, and misfortune seems to follow my every step."
+/datum/charflaw/leprosy
+	name = "Leper (+1 TRI)"
+	desc = "I am cursed with leprosy! Too poor to afford treatment, my skin now lays violated by lesions, my extremities are numb, and my presence disturbs even the most stalwart men."
 
-/datum/charflaw/disfigured/apply_post_equipment(mob/user)
+/datum/charflaw/leprosy/apply_post_equipment(mob/user)
 	var/mob/living/carbon/human/H = user
-	if(H.get_triumphs() < 2)
-		to_chat(user, "I am cursed with leprosy! Too poor to afford treatment, my skin now lays violated by lesions, my extremities are numb, and my presence disturbs even the most stalwart men.")
+		to_chat(user, "I am afflicted. I am outcast and weak. I am a pox on this world.")
 		ADD_TRAIT(user, TRAIT_LEPROSY, TRAIT_GENERIC)
 		H.change_stat(STATKEY_STR, -1)
 		H.change_stat(STATKEY_INT, -1)
@@ -482,6 +481,4 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		H.change_stat(STATKEY_WIL, -1)
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_LCK, -1)
-	else
-		ADD_TRAIT(user, TRAIT_UNSEEMLY, TRAIT_GENERIC)
-		H.adjust_triumphs(-2)
+		H.adjust_triumphs(1)

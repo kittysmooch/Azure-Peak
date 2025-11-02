@@ -327,9 +327,9 @@
 	timer = 3 MINUTES
 
 /datum/stressevent/leprosy
-	stressadd = 5
-	desc = span_red("Their face is disgusting and deformed!")
-	timer = 5 MINUTES
+	stressadd = 1
+	desc = span_red("A disgusting leper. Better keep my distance.")
+	timer = 3 MINUTES
 
 /datum/stressevent/uncanny
 	stressadd = 2
