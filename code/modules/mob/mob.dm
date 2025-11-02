@@ -503,7 +503,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 	var/list/result = A.examine(src)
 	if(result)
-		to_chat(src, examine_block(result.Join("\n")))
+		to_chat(src, usr.client.prefs.no_examine_blocks ? result.Join("\n") : examine_block(result.Join("\n")))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 /**
