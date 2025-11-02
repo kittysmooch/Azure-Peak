@@ -105,7 +105,7 @@
 	name = "Terrifying Howl"
 	desc = "Let loose a howl of dread, repelling anyone around you."
 	overlay_state = "howl"
-	recharge_time = 2 MINUTES
+	recharge_time = 6 MINUTES
 	ignore_cockblock = TRUE
 	chargetime = 0
 	warnie = null
