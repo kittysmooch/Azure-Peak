@@ -4,18 +4,14 @@
 /mob/living/carbon/human/proc/wildshape_transformation(shapepath)
 	if(!mind)
 		log_runtime("NO MIND ON [src.name] WHEN TRANSFORMING")
-
 	Paralyze(1, ignore_canstun = TRUE)
-
 	for(var/obj/item/I in src)
 		dropItemToGround(I)
-
 	regenerate_icons()
 	icon = null
 	var/oldinv = invisibility
 	invisibility = INVISIBILITY_MAXIMUM
 	cmode = FALSE
-
 	if(client)
 		SSdroning.play_area_sound(get_area(src), client)
 
@@ -85,7 +81,6 @@
 		return
 	if(!mind)
 		log_runtime("NO MIND ON [src.name] WHEN UNTRANSFORMING")
-
 	Paralyze(1, ignore_canstun = TRUE)
 	for(var/obj/item/W in src)
 		dropItemToGround(W)
