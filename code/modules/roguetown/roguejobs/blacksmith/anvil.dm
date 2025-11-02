@@ -289,7 +289,7 @@
 
 /obj/machinery/anvil/process()
 	if(hott)
-		if(world.time > hott + 10 SECONDS)
+		if(world.time > hott + 20 SECONDS)
 			hott = null
 			STOP_PROCESSING(SSmachines, src)
 	else
