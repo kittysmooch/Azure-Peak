@@ -75,13 +75,13 @@
 	ai_controller = /datum/ai_controller/volf
 	melee_cooldown = WOLF_ATTACK_SPEED
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/AttackingTarget() //7+1d4 vs con to knock ppl down
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/AttackingTarget() //7+1d6 vs con to knock ppl down
 	. = ..()
 
 	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(world.time >= chomp_cd + 45 SECONDS)
-			src.chomp_roll = STASTR + (rand(0,4))
+		if(world.time >= chomp_cd + 120 SECONDS) //they can do it Once basically
+			src.chomp_roll = STASTR + (rand(0,6))
 			if(src.chomp_roll > C.STACON)
 				C.Knockdown(20)
 				C.visible_message(span_danger("\The [src] chomps \the [C]'s legs, knocking them down!"))
