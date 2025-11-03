@@ -75,21 +75,22 @@
 	ai_controller = /datum/ai_controller/volf
 	melee_cooldown = WOLF_ATTACK_SPEED
 
-/mob/living/simple_animal/hostile/retaliate/rogue/wolf/AttackingTarget() //7+1d6 vs con to knock ppl down
+/mob/living/simple_animal/hostile/retaliate/rogue/wolf/AttackingTarget() //7+1d4 vs con to knock ppl down
 	. = ..()
-	if(. && prob(20) && iscarbon(target))
+
+	if(. && prob(8) && iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(world.time >= src.chomp_cd + 45 SECONDS)
-			chomp_roll = src.STASTR + (rand(1,6))
-				if(chomp_roll > C.STACON)
-					C.Knockdown(20)
-					C.visible_message(span_danger("\The [src] chomps \the [C]'s legs, knocking them down!"))
-					span_danger("\The [src] tugs me to the ground! I'm winded!")
-					C.adjustOxyLoss(20) //less punishing than zfall bc simplemob
-					C.emote("gasp")
-					playsound(C, 'sound/foley/zfall.ogg', 100, FALSE)
-				else
-					C.visible_message(span_danger("\The [src] fails to drag \the [C] down!"))
+		if(world.time >= chomp_cd + 45 SECONDS)
+			src.chomp_roll = STASTR + (rand(0,4))
+			if(src.chomp_roll > C.STACON)
+				C.Knockdown(20)
+				C.visible_message(span_danger("\The [src] chomps \the [C]'s legs, knocking them down!"))
+				span_danger("\The [src] tugs me to the ground! I'm winded!")
+				C.adjustOxyLoss(10) //less punishing than zfall bc simplemob
+				C.emote("gasp")
+				playsound(C, 'sound/foley/zfall.ogg', 100, FALSE)
+			else
+				C.visible_message(span_danger("\The [src] fails to drag \the [C] down!"))
 		src.chomp_cd = world.time //this goes here i think? ...sure
 
 
