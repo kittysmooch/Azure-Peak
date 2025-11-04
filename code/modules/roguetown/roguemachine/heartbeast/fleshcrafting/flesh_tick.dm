@@ -234,7 +234,7 @@
 /datum/status_effect/debuff/leech_schizophrenia/on_creation(mob/living/new_owner, ...)
 	. = ..()
 
-	duration = rand(15 MINUTES, 30 MINUTES) 
+	duration = rand(20 MINUTES, 40 MINUTES) 
 	current_cooldown = world.time + message_cooldown
 	return .
 
