@@ -33,6 +33,17 @@
 	if(target.has_status_effect(/datum/status_effect/debuff/devitalised))
 		return FALSE
 
+	var/datum/component/leechtick_attachment/existing = target.GetComponent(/datum/component/leechtick_attachment)
+	if(existing)
+		return FALSE
+
+	if(target.cmode && prob(66))
+		target.visible_message(
+			span_warning("[src] bounces off [target]!"),
+			span_notice("[src] bounces off of you, because you're too feisty to let it latch on!")
+		)
+		return FALSE
+
 	// Add the component to the target
 	var/datum/component/leechtick_attachment/attachment = target.AddComponent(/datum/component/leechtick_attachment, type)
 	if(!attachment)
