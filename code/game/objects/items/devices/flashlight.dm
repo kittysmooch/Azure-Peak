@@ -415,6 +415,8 @@
 	name = "pumpkin lamptern"
 	desc = "A decorated pumpkin shell. Usually seasonal, a frightful beacon in the night."
 	icon_state = "pumpkinlamp"
+	grid_width = 64
+	grid_height = 32
 	w_class = WEIGHT_CLASS_SMALL
 	light_color = "#ffb272ff"
 	on = FALSE

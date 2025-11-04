@@ -3,6 +3,8 @@
 	desc = "You shouldn't be seeing this."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = ""
+	grid_height = 32
+	grid_width = 32
 	var/foodamt = 1 //how much food can be extracted
 	var/foodextracted = null //the food item to extract from the plant
 	var/seed = null
@@ -13,6 +15,8 @@
 	name = "pumpkin"
 	desc = "The thick pumpkin rind shields a surprisingly dense fleshy interior."
 	icon_state = "pumpkin"
+	grid_width = 64
+	grid_height = 32
 	w_class = WEIGHT_CLASS_NORMAL
 	foodamt = 6
 	foodextracted = /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced
@@ -91,6 +95,8 @@
 	desc = "The emptied shell of a pumpkin, without its flesh and seeds."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "pumpkinshell"
+	grid_width = 64
+	grid_height = 32
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/pumpkinshell/examine(mob/user)
