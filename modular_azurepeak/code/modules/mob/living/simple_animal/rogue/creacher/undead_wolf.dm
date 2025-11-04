@@ -60,7 +60,7 @@
 	var/max_head_health = 75
 	var/reinimation_timer = 15 MINUTES
 	var/is_downed = FALSE
-	var/legs_broken = FALSE\
+	var/legs_broken = FALSE
 
 	var/chomp_cd = 0
 	var/chomp_roll = 0
