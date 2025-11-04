@@ -28,7 +28,7 @@
 	. = ..()
 	
 	if(open)
-		. += span_smallnotice("It is open and I could use a spoon to extract its flesh.\n")
+		. += span_smallnotice("It is open and I could use a spoon to extract its flesh.")
 		. += span_smallnotice("It has [foodamt] chunks remaining.")
 	else
 		. += span_smallnotice("I could cut it open to reach inside, chop it into slices or squash it for seeds.")
