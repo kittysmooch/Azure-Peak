@@ -76,7 +76,7 @@
 	name = "Traditionalist"
 	desc = "I have trained extensively in both sword and shield, the most illustrious combination of attack and defence. I have one of each hidden away."
 	custom_text = "Guaranteed Journeyman for Swords & Shields."
-	added_stashed_items = list("Shield" = /obj/item/rogueweapon/shield/iron,
+	added_stashed_items = list("Shield" = /obj/item/rogueweapon/shield/wood,
 								"Arming Sword" = /obj/item/rogueweapon/sword/iron)
 
 /datum/virtue/combat/shielder/apply_to_human(mob/living/carbon/human/recipient)
