@@ -150,9 +150,9 @@
 	ADD_TRAIT(src, TRAIT_NODROP, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
 
-// WOLF SPELLS //
+// FOX SPELLS //
 /obj/effect/proc_holder/spell/self/wolfclaws
-	name = "Lupine Claws"
+	name = "Vernard Claws"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
