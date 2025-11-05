@@ -50,23 +50,22 @@
 			w_BP.add_wound(wound.type)
 			c_BP.remove_wound(wound.type)
 
+	//removing damage from our сurrent body
 	W.adjustBruteLoss(getBruteLoss())
 	W.adjustFireLoss(getFireLoss())
 	W.adjustOxyLoss(getOxyLoss())
 
+	//transfering damage/bleedings/blood volume/thirst/hunger to our new body
 	src.adjustBruteLoss(-src.getBruteLoss())
 	src.adjustFireLoss(-src.getFireLoss())
 	src.adjustOxyLoss(-src.getOxyLoss())
-
-	W.set_nutrition(nutrition)
-	W.set_hydration(hydration)
-
 	W.blood_volume = blood_volume
 	W.bleed_rate = bleed_rate
 	W.bleedsuppress = bleedsuppress
-
 	bleed_rate = 0
 	bleedsuppress = TRUE
+	W.set_nutrition(nutrition)
+	W.set_hydration(hydration)
 
 	mind.transfer_to(W)
 	skills?.known_skills = list()
@@ -75,12 +74,13 @@
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
 
+	//temporal traits so our body won't die or snore
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_SOURCE_WILDSHAPE)	
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_SOURCE_WILDSHAPE)
-	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE) //If we don't do this, the original body will fall asleep and snore on us or die
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
 	invisibility = oldinv
 
 	W.gain_inherent_skills()
@@ -121,18 +121,18 @@
 			w_BP.add_wound(wound.type)
 			c_BP.remove_wound(wound.type)
 
+	//removing damage from our body
 	W.adjustBruteLoss(getBruteLoss())
 	W.adjustFireLoss(getFireLoss())
 	W.adjustOxyLoss(getOxyLoss())
 
+	//transfering damage/bleeding/blood/thirst/hunger volume to our new body
 	src.adjustBruteLoss(-src.getBruteLoss())
 	src.adjustFireLoss(-src.getFireLoss())
 	src.adjustOxyLoss(-src.getOxyLoss())
-
 	W.blood_volume = blood_volume
 	W.bleed_rate = bleed_rate
 	W.bleedsuppress = bleedsuppress
-
 	W.set_nutrition(nutrition)
 	W.set_hydration(hydration)
 
