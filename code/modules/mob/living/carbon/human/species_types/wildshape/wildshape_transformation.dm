@@ -1,3 +1,5 @@
+#define TRAIT_SOURCE_WILDSHAPE "wildshape_transform"
+
 /mob/living/carbon/human/species/wildshape/death(gibbed, nocutscene = FALSE)
 	werewolf_untransform(TRUE, gibbed)
 
@@ -56,6 +58,9 @@
 	src.adjustFireLoss(-src.getFireLoss())
 	src.adjustOxyLoss(-src.getOxyLoss())
 
+	W.set_nutrition(nutrition)
+	W.set_hydration(hydration)
+
 	W.blood_volume = blood_volume
 	W.bleed_rate = bleed_rate
 	W.bleedsuppress = bleedsuppress
@@ -70,8 +75,12 @@
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
 
-	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_GENERIC) //If we don't do this, the original body will fall asleep and snore on us
-
+	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_TOXIMMUNE, TRAIT_SOURCE_WILDSHAPE)	
+	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE) //If we don't do this, the original body will fall asleep and snore on us or die
 	invisibility = oldinv
 
 	W.gain_inherent_skills()
@@ -90,7 +99,12 @@
 	var/mob/living/carbon/human/W = stored_mob
 	stored_mob = null
 
-	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_GENERIC)
+	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOBREATH, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOPAIN, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_TOXIMMUNE, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOHUNGER, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
 
 	if(dead)
 		W.death()
@@ -118,6 +132,9 @@
 	W.blood_volume = blood_volume
 	W.bleed_rate = bleed_rate
 	W.bleedsuppress = bleedsuppress
+
+	W.set_nutrition(nutrition)
+	W.set_hydration(hydration)
 
 	W.forceMove(get_turf(src))
 	mind.transfer_to(W)
