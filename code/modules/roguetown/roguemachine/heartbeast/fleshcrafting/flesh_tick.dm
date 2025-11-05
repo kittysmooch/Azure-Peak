@@ -11,6 +11,7 @@
 	icon = 'icons/obj/structures/heart_items.dmi'
 	name = "bloated leech tick"
 	desc = "This leechtick has feasted on lux and digested it. A crazy person might use this for revival..."
+	sellprice = 40
 
 /obj/item/leechtick/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -202,7 +203,7 @@
 
 /datum/component/leechtick_attachment/proc/start_removal_async(mob/living/L)
 	// This runs in its own thread, so do_after is safe here
-	if(do_after(L, 1 SECONDS, target = L))
+	if(move_after(L, 1 SECONDS, target = L))
 		// Call back to the component to complete the removal
 		complete_removal()
 
