@@ -19,6 +19,8 @@
 		/mob/living/carbon/human/species/wildshape/volf,
 		/mob/living/carbon/human/species/wildshape/fox,
 		/mob/living/carbon/human/species/wildshape/cat,
+		/mob/living/carbon/human/species/wildshape/bear,
+		/mob/living/carbon/human/species/wildshape/cabbit,
 		/mob/living/carbon/human/species/wildshape/saiga,
 		/mob/living/carbon/human/species/wildshape/spider
 	)
