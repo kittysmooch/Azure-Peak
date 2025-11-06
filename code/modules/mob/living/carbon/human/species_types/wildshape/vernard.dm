@@ -6,7 +6,7 @@
 	skin_armor = new /obj/item/clothing/suit/roguetown/armor/skin_armor/wolf_skin
 	//This is basically just Wolf & Cat form combined, think rogue form
 
-/mob/living/carbon/human/species/wildshape/volf/gain_inherent_skills()
+/mob/living/carbon/human/species/wildshape/fox/gain_inherent_skills()
 	. = ..()
 	if(src.mind)
 		src.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
@@ -133,7 +133,7 @@
 	sharpness = IS_SHARP
 	parrysound = "bladedmedium"
 	swingsound = list('sound/vo/mobs/vw/attack (1).ogg','sound/vo/mobs/vw/attack (2).ogg','sound/vo/mobs/vw/attack (3).ogg','sound/vo/mobs/vw/attack (4).ogg')
-	possible_item_intents = list(/datum/intent/simple/volf)
+	possible_item_intents = list(/datum/intent/simple/fox)
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	embedding = list("embedded_pain_multiplier" = 0, "embed_chance" = 0, "embedded_fall_chance" = 0)
 	item_flags = DROPDEL
