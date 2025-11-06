@@ -50,12 +50,10 @@
 			w_BP.add_wound(wound.type)
 			c_BP.remove_wound(wound.type)
 
-	//removing damage from our сurrent body
 	W.adjustBruteLoss(getBruteLoss())
 	W.adjustFireLoss(getFireLoss())
 	W.adjustOxyLoss(getOxyLoss())
 
-	//transfering damage/bleedings/blood volume/thirst/hunger to our new body
 	src.adjustBruteLoss(-src.getBruteLoss())
 	src.adjustFireLoss(-src.getFireLoss())
 	src.adjustOxyLoss(-src.getOxyLoss())
@@ -74,7 +72,7 @@
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
 
-	//temporal traits so our body won't die or snore
+	// temporal traits so our body won't die or snore
 	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_NOBREATH, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_NOPAIN, TRAIT_SOURCE_WILDSHAPE)
@@ -82,7 +80,7 @@
 	ADD_TRAIT(src, TRAIT_NOHUNGER, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
 	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_SOURCE_WILDSHAPE) // just an extra layer of protection in case something will go wrong
-	src.status_flags |= GODMODE // so they won't die in any means
+	src.status_flags |= GODMODE // so they won't die by any means
 	invisibility = oldinv
 
 	W.gain_inherent_skills()
@@ -125,12 +123,10 @@
 			w_BP.add_wound(wound.type)
 			c_BP.remove_wound(wound.type)
 
-	//removing damage from our body
 	W.adjustBruteLoss(getBruteLoss())
 	W.adjustFireLoss(getFireLoss())
 	W.adjustOxyLoss(getOxyLoss())
 
-	//transfering damage/bleeding/blood/thirst/hunger volume to our new body
 	src.adjustBruteLoss(-src.getBruteLoss())
 	src.adjustFireLoss(-src.getFireLoss())
 	src.adjustOxyLoss(-src.getOxyLoss())
