@@ -1,7 +1,7 @@
 #define TRAIT_SOURCE_WILDSHAPE "wildshape_transform"
 
 /mob/living/carbon/human/species/wildshape/death(gibbed, nocutscene = FALSE)
-	werewolf_untransform(TRUE, gibbed)
+	wildshape_untransform(TRUE, gibbed)
 
 /mob/living/carbon/human/proc/wildshape_transformation(shapepath)
 	if(!mind)
