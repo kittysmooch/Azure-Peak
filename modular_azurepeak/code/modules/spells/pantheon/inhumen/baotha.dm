@@ -104,7 +104,7 @@
 	if(!physiology)
 		return
 
-	physiology.pain_mod /= 1.5
+	physiology.pain_mod /= 0.5
 
 //T0 that tells the user the person's vice.
 /obj/effect/proc_holder/spell/invoked/baothavice
