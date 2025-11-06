@@ -69,7 +69,7 @@
 /datum/species/shapefox/regenerate_icons(mob/living/carbon/human/H)
 	H.icon = 'icons/roguetown/mob/monster/fox.dmi'
 	H.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
-	H.icon_state = "vv"
+	H.icon_state = "fox"
 	H.update_damage_overlays()
 	return TRUE
 
