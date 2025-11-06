@@ -160,7 +160,7 @@
 
 /obj/item/rogueweapon/mace/steel/silver
 	force = 30
-	force_wielded = 37
+	force_wielded = 35
 	name = "silver-plated mace"
 	desc = "A long and heavy flanged mace, forged from pure silver covering a dense blacksteel core. For a lord, it's the perfect symbol of authority; a decorative piece for the courts. For a paladin, however, there's no better implement for shattering avantyne-maille into a putrid pile of debris."
 	icon_state = "silvermace"
