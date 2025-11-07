@@ -326,7 +326,6 @@
 	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
 	icon_state = "bucklehat"
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
 	name = "duelist's hat"
@@ -336,7 +335,6 @@
 	color = COLOR_ALMOST_BLACK	
 	detail_tag = "_detail"
 	detail_color = COLOR_SILVER
-	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
