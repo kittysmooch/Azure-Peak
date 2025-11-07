@@ -577,6 +577,8 @@
 	sewrepair = TRUE
 	adjustable = CAN_CADJUST
 	toggle_icon_state = FALSE
+	salvage_result = /obj/item/natural/silk
+	salvage_amount = 2
 
 /obj/item/clothing/mask/rogue/exoticsilkmask/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/rummaging-03.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
