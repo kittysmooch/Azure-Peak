@@ -1007,3 +1007,11 @@
 
 /mob/living/carbon/human/Topic(href, href_list)
 	..()
+
+/mob/living/carbon/human/do_attack_animation(atom/A, visual_effect_icon, obj/item/used_item, no_effect, item_animation_override, datum/intent/used_intent, simplified)
+	update_proj_parry_timer()
+	. = ..()
+
+/mob/living/carbon/human/proc/update_proj_parry_timer()
+	if(projectile_parry_timer < world.time)
+		projectile_parry_timer = (world.time + PROJ_PARRY_TIMER)

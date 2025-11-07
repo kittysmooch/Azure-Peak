@@ -203,7 +203,29 @@
 		hitpush = FALSE
 		skipcatch = TRUE
 		blocked = TRUE
-	else if(I)
+	
+	var/obj/item/W = get_active_held_item()
+	if(!blocked && I)
+		if(W && get_dir(src, AM) == turn(get_dir(AM, src), 180))	//We are directly facing the thrown item.
+			var/diceroll = (get_skill_level(W.associated_skill)) * 10
+			if(projectile_parry_timer > world.time)
+				diceroll *= 2
+			if(prob(diceroll))
+				var/turnangle = (prob(50) ? 270 : 90)
+				if(prob(10))	
+					turnangle = 0 //Right back at thee
+				var/turndir = turn(dir, turnangle)
+				var/dist = rand(3, 7)
+				var/current_turf = get_turf(I)
+				var/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
+				do_sparks(2, TRUE, current_turf)
+				var/soundin = pick(list('sound/combat/parry/deflect_1.ogg','sound/combat/parry/deflect_2.ogg','sound/combat/parry/deflect_3.ogg','sound/combat/parry/deflect_4.ogg','sound/combat/parry/deflect_5.ogg','sound/combat/parry/deflect_6.ogg'))
+				playsound(src, soundin, 100, TRUE)
+				visible_message(span_warning("[src] deflects \the [I]!"))
+				I.safe_throw_at(target_turf, dist, 1, spin = TRUE)
+				return
+
+	if(I && !blocked)
 		if(((throwingdatum ? throwingdatum.speed : I.throw_speed) >= EMBED_THROWSPEED_THRESHOLD) || I.embedding.embedded_ignore_throwspeed_threshold)
 			if(can_embed(I) && prob(I.embedding.embed_chance) && !HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 				//throw_alert("embeddedobject", /atom/movable/screen/alert/embeddedobject)

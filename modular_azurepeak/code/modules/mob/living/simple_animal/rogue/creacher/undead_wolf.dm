@@ -81,8 +81,7 @@
 			src.chomp_roll = STASTR + (rand(1,6))
 			if(src.chomp_roll > C.STACON)
 				C.Knockdown(20)
-				C.visible_message(span_danger("\The [src] chomps \the [C]'s legs, knocking them down!"))
-				span_danger("\The [src] tugs me to the ground! I'm winded!")
+				C.visible_message(span_danger("\The [src] chomps \the [C]'s legs, knocking them down!"), span_danger("\The [src] tugs me to the ground! I'm winded!"))
 				C.adjustOxyLoss(10) //less punishing than zfall bc simplemob
 				C.emote("gasp")
 				playsound(C, 'sound/foley/zfall.ogg', 100, FALSE)
