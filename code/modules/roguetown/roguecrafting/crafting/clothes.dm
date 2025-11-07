@@ -219,7 +219,7 @@
 		)
 
 /datum/crafting_recipe/roguetown/survival/wickercloak
-	name = "wickercloak"
+	name = "wicker cloak"
 	category = "Clothes"
 	result = /obj/item/clothing/cloak/wickercloak
 	reqs = list(

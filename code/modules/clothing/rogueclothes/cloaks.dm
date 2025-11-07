@@ -1053,6 +1053,8 @@
 /obj/item/clothing/cloak/cape/puritan
 	icon_state = "puritan_cape"
 	allowed_race = CLOTHED_RACES_TYPES
+	salvage_result = /obj/item/natural/silk
+	salvage_amount = 1
 
 /obj/item/clothing/cloak/cape/archivist
 	icon_state = "puritan_cape"
@@ -1409,6 +1411,8 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 2
 
 /obj/item/clothing/cloak/tribal
 	name = "tribal pelt"
