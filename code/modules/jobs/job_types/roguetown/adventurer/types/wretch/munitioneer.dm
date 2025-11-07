@@ -10,7 +10,8 @@
 	subclass_stats = list(
 		STATKEY_STR = 2,
 		STATKEY_CON = 2,
-		STATKEY_PER = 1 // heretic that trades armor for crafting skills. 7 statspread.
+		STATKEY_INT = 2,
+		STATKEY_PER = 1 // heretic that trades armor for crafting skills. 9 statspread, like guildsmaster.
 	)
 	subclass_skills = list(
 		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
