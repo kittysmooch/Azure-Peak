@@ -442,6 +442,8 @@
 	name = "amulet of Abyssor"
 	desc = "To fear the unknown is to turn away from the greatest mysteries of all."
 	icon_state = "abyssor"
+	salvage_result = /obj/item/pearl/blue
+	salvage_amount = 1
 
 /obj/item/clothing/neck/roguetown/psicross/dendor
 	name = "amulet of Dendor"
@@ -479,6 +481,8 @@
 	icon_state = "psycross_w"
 	item_state = "psycross_w"
 	sellprice = 0
+	salvage_result = /obj/item/grown/log/tree/stick
+	salvage_amount = 1
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
