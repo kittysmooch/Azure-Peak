@@ -107,7 +107,7 @@
 	armor = ARMOR_SPELLSINGER //basically the same as a warscholar hood
 	item_state = "hijab"
 	icon_state = "deserthood"
-	naledicolor = TRUE1
+	naledicolor = TRUE
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 	name = "heavy hood"
