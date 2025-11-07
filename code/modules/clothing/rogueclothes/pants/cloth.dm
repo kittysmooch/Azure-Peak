@@ -42,6 +42,7 @@
 /obj/item/clothing/under/roguetown/tights/sailor
 	name = "sailor's pants"
 	icon_state = "sailorpants"
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/tights/puritan
 	name = "formal breeches"

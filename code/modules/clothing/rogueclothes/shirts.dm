@@ -271,6 +271,8 @@
 	icon_state = "summergown"
 	boobed = TRUE
 	detail_color = "#e395bb"
+	salvage_result = /obj/item/natural/silk
+	salvage_amount = 2
 
 /obj/item/clothing/suit/roguetown/shirt/dress/gown/fallgown
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -287,6 +289,8 @@
 	icon_state = "wintergown"
 	boobed = TRUE
 	detail_color = "#45749d"
+	salvage_result = /obj/item/natural/silk
+	salvage_amount = 2
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 	icon_state = "sailorblues"

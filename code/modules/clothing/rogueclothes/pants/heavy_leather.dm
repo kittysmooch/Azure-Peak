@@ -65,6 +65,8 @@
 	armor_class = ARMOR_CLASS_LIGHT
 	color = "#262927"
 	detail_color = "#FFFFFF"
+	salvage_result = /obj/item/natural/hide/cured
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants/attack_right(mob/user)
 	..()
