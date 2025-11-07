@@ -69,6 +69,8 @@
 	sewrepair = TRUE
 	armor = ARMOR_CLOTHING
 	blocksound = SOFTHIT
+	salvage_result = /obj/item/natural/fur
+	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
