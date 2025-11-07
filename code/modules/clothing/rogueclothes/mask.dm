@@ -510,6 +510,8 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	experimental_onhip = TRUE
 	smeltresult = /obj/item/natural/bone
+	salvage_result = /obj/item/natural/bone
+	salvage_amount = 1
 
 /obj/item/clothing/mask/rogue/ragmask
 	name = "rag mask"
