@@ -358,6 +358,8 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	flags_inv = HIDECROTCH|HIDEBOOB
+	salvage_result = /obj/item/natural/hide
+	salvage_amount = 1
 
 /obj/item/clothing/suit/roguetown/shirt/robe/archivist
 	name = "archivist's robe"
