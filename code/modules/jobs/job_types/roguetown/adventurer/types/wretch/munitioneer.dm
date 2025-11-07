@@ -16,7 +16,7 @@
 		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/axes = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN, 
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
@@ -40,11 +40,12 @@
 	to_chat(H, span_warning("You are a passable warrior- though week- but your true strength lies in your ability to bend the resources of Azuria to your will."))
 	has_loadout = TRUE
 	head = /obj/item/clothing/head/roguetown/roguehood/warden/munitioneer
+	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	cloak = /obj/item/clothing/cloak/templar/malumite
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
-	shirt = /obj/item/clothing/suit/roguetown/armor/workervest
+	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/white
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
 	belt = /obj/item/storage/backpack/rogue/satchel/beltpack
@@ -64,7 +65,7 @@
 		H.mind.current.faction += "[H.name]_faction"
 		H.set_patron(/datum/patron/divine/malum)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mineroresight) // controversial, and powerful, but it means you're spending less Wretch Time just mining.
-	var/weapons = list("Path of the Hammer - Steel Warhammer", "Path of the Crossbow - Crossbow and Bolts", "Path of the Sword - Steel Flamberge")
+	var/weapons = list("Path of the Hammer - Steel Warhammer", "Path of the Crossbow - Crossbow and Bolts", "Path of the Pick - Pulaski Axe")
 	var/weapon_choice = input(H, "Choose your weapon.", "HOT IS THE ANVYL") as anything in weapons
 	switch(weapon_choice)
 		if("Path of the Hammer - Steel Warhammer")
@@ -74,10 +75,9 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
 			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_L, TRUE)
-		if("Path of the Sword - Steel Flamberge")
-			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			H.put_in_hands(new /obj/item/rogueweapon/greatsword/grenz/flamberge, TRUE)
-			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap, SLOT_BACK_R, TRUE)
+		if("Path of the Pick - Pulaski Axe")
+			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/stoneaxe/woodcut/pick, TRUE)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_4)	//Minor regen, can level up to T4.
 	wretch_select_bounty(H)

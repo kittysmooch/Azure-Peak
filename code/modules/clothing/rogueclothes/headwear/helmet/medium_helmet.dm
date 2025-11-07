@@ -529,4 +529,4 @@
 
 /obj/item/clothing/head/roguetown/roguehood/warden/munitioneer
 	name = "forgehound's hood"
-	desc = "Inside his great suit, the fyrmanne smiles. He is a salamander upon the worlde, belching flame, cleaning away history, and leaving a new land for the lyving."
+	desc = "Beneath his gleaming mask, the fyrmanne smiles. He is a salamander upon the worlde, belching flame, cleaning away history, and leaving a new land for the lyving."
