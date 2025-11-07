@@ -1154,12 +1154,15 @@
 
 /obj/item/rogueweapon/sword/sabre/stalker
 	name = "stalker sabre"
-	desc = "A once elegant blade of mythril, diminishing under the suns gaze"
+	desc = "A once elegant blade of mythril, diminishing under the suns gaze. Can be poisoned."
 	icon_state = "spidersaber"
-	force = 17
-	force_wielded = 20
 	minstr = 7
 	wdefense = 9
+
+/obj/item/rogueweapon/sword/sabre/stalker/Initialize()
+	. = ..()
+	AddElement(/datum/element/tipped_item)	//Lets you tip your weapon in poison
+
 
 /obj/item/rogueweapon/sword/sabre/shamshir
 	name = "shamshir"
