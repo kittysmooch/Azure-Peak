@@ -288,11 +288,11 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Bardiche","Sword & Shield")
+		var/weapons = list("Bardiche & Sword","Sword & Shield")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Bardiche")
+			if("Bardiche & Sword")
 				l_hand = /obj/item/rogueweapon/sword
 				r_hand = /obj/item/rogueweapon/halberd/bardiche
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
