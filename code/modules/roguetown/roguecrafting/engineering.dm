@@ -1,8 +1,19 @@
 /datum/crafting_recipe/roguetown/engineering
 	abstract_type = /datum/crafting_recipe/roguetown/engineering
 
+/datum/crafting_recipe/roguetown/engineering/art_table
+	name = "artificer table"
+	category = "Machines"
+	result = /obj/machinery/artificer_table
+	reqs = list(/obj/item/natural/wood/plank = 2,
+				/obj/item/roguegear = 2)
+	skillcraft = /datum/skill/craft/engineering
+	verbage_simple = "constructs"
+	verbage = "constructs"
+
 /datum/crafting_recipe/roguetown/engineering/coolingtable
 	name = "cooling table"
+	category = "Machines"
 	result = /obj/structure/table/cooling
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ingot/iron = 1,
@@ -14,6 +25,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/potionseller
 	name = "potion seller peddler"
+	category = "Machines"
 	result = /obj/structure/roguemachine/potionseller/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ingot/iron = 1,
@@ -23,9 +35,11 @@
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
+	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/engineering/lever
 	name = "lever"
+	category = "Triggers"
 	result = /obj/structure/lever
 	reqs = list(/obj/item/roguegear = 1)
 	verbage_simple = "engineer"
@@ -33,7 +47,8 @@
 	skillcraft = /datum/skill/craft/engineering
 
 /datum/crafting_recipe/roguetown/engineering/trapdoor
-	name = "floorhatch"
+	name = "wooden floorhatch"
+	category = "Hatches"
 	result = /obj/structure/floordoor
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 					/obj/item/roguegear = 1)
@@ -42,8 +57,34 @@
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
 
+/datum/crafting_recipe/roguetown/engineering/trapdoor/TurfCheck(mob/user, turf/T)
+	if(istype(T,/turf/open/transparent/openspace))
+		return TRUE
+	if(istype(T,/turf/open/lava))
+		return FALSE
+	return ..()
+
+/datum/crafting_recipe/roguetown/engineering/floorgrille
+	name = "floorgrille"
+	category = "Hatches"
+	result = /obj/structure/bars/grille
+	reqs = list(/obj/item/ingot/iron = 1,
+					/obj/item/roguegear = 1)
+	verbage_simple = "engineer"
+	verbage = "engineers"
+	skillcraft = /datum/skill/craft/engineering
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/engineering/floorgrille/TurfCheck(mob/user, turf/T)
+	if(istype(T,/turf/open/transparent/openspace))
+		return TRUE
+	if(istype(T,/turf/open/lava))
+		return FALSE
+	return ..()
+
 /datum/crafting_recipe/roguetown/engineering/bars
 	name = "metal bars"
+	category = "Barriers"
 	result = /obj/structure/bars
 	reqs = list(/obj/item/ingot/iron = 1)
 	verbage_simple = "engineer"
@@ -52,14 +93,17 @@
 
 /datum/crafting_recipe/roguetown/engineering/shopbars
 	name = "shop bars"
+	category = "Barriers"
 	result = /obj/structure/bars/shop
 	reqs = list(/obj/item/ingot/iron = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
+	ignoredensity = TRUE
 
 /datum/crafting_recipe/roguetown/engineering/distiller
 	name = "copper distiller"
+	category = "Machines"
 	result = /obj/structure/fermentation_keg/distiller
 	reqs = list(/obj/item/ingot/copper = 2, /obj/item/roguegear = 1)
 	verbage_simple = "engineer"
@@ -69,6 +113,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/freedomchair
 	name = "LIBERTAS"
+	category = "Machines"
 	result = /obj/structure/chair/freedomchair/crafted
 	reqs = list(/obj/item/ingot/gold = 1, /obj/item/roguegear = 3)
 	verbage_simple = "engineer"
@@ -76,8 +121,9 @@
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
 
-/datum/crafting_recipe/roguetown/engineering/passage
-	name = "passage"
+/datum/crafting_recipe/roguetown/engineering/gate
+	name = "gate"
+	category = "Passages"
 	result = /obj/structure/bars/passage
 	reqs = list(/obj/item/ingot/iron = 1,
 					/obj/item/roguegear = 1)
@@ -97,6 +143,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/shutters
 	name = "shutters"
+	category = "Passages"
 	result = /obj/structure/bars/passage/shutter
 	reqs = list(/obj/item/ingot/iron = 1,
 					/obj/item/roguegear = 1)
@@ -118,6 +165,7 @@
 //adding in crossbows and bolts at a reduced cost and seeing if this upsets any balance. If it works I may add in other bows and arrows using planks
 /datum/crafting_recipe/roguetown/engineering/crossbow
 	name = "Crossbow"
+	category = "Weapons"
 	result = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	reqs = list(/obj/item/ingot/steel = 1, /obj/item/natural/fibers = 1, /obj/item/natural/wood/plank = 2)
 	structurecraft = /obj/machinery/artificer_table
@@ -126,6 +174,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/twentybolts
 	name = "Crossbow Bolts 20x"
+	category = "Ammo"
 	reqs = list(/obj/item/natural/wood/plank = 3, /obj/item/ingot/iron)
 	result = list(/obj/item/ammo_casing/caseless/rogue/bolt,
 						/obj/item/ammo_casing/caseless/rogue/bolt,
@@ -155,6 +204,7 @@
 //pyro arrow crafting, from stonekeep
 /datum/crafting_recipe/roguetown/engineering/pyrobolt
 	name = "pyroclastic bolt"
+	category = "Ammo"
 	result = /obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/bolt = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
@@ -164,6 +214,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/pyrobolt_five
 	name = "pyroclastic bolt (x5)"
+	category = "Ammo"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
 				/obj/item/ammo_casing/caseless/rogue/bolt/pyro,
@@ -179,6 +230,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow
 	name = "pyroclastic arrow"
+	category = "Ammo"
 	result = /obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	reqs = list(/obj/item/ammo_casing/caseless/rogue/arrow/iron = 1,
 				/obj/item/reagent_containers/food/snacks/grown/rogue/fyritius = 1)
@@ -188,6 +240,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/pyroarrow_five
 	name = "pyroclastic arrow (x5)"
+	category = "Ammo"
 	result = list(
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
 				/obj/item/ammo_casing/caseless/rogue/arrow/pyro,
@@ -203,6 +256,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/pressure_plate
 	name = "pressure plate"
+	category = "Triggers"
 	result = /obj/structure/pressure_plate
 	reqs = list(/obj/item/roguegear = 1, /obj/item/natural/wood/plank = 2)
 	verbage_simple = "engineer"
@@ -212,6 +266,7 @@
 
 /datum/crafting_recipe/roguetown/engineering/activator
 	name = "engineer's launcher"
+	category = "Machines"
 	result = /obj/structure/englauncher
 	reqs = list(/obj/item/roguegear = 1, /obj/item/natural/wood/plank = 4, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow = 1)
 	verbage_simple = "engineer"
@@ -348,7 +403,7 @@
 	name = "blastsand sticks"
 	category = "Explosives"
 	result = /obj/item/tntstick
-	reqs = list(/obj/item/paper = 2, /obj/item/alch/coaldust = 2, /obj/item/compost = 1, /obj/item/natural/fibers = 1)
+	reqs = list(/obj/item/paper = 2, /obj/item/alch/coaldust = 1, /obj/item/compost = 1, /obj/item/natural/fibers = 1)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -376,8 +431,10 @@
 /datum/crafting_recipe/roguetown/engineering/impactsmoke
 	name = "smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke
-	reqs =  list(/obj/item/smokeshell= 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke, 
+				  /obj/item/impact_grenade/smoke,
+				  /obj/item/impact_grenade/smoke,)
+	reqs =  list(/obj/item/smokeshell= 3, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -385,8 +442,10 @@
 /datum/crafting_recipe/roguetown/engineering/impactpoisonsmoke
 	name = "poison smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke/poison_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /datum/reagent/berrypoison = 5, /obj/item/alch/airdust = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke/poison_gas,
+				  /obj/item/impact_grenade/smoke/poison_gas,
+				  /obj/item/impact_grenade/smoke/poison_gas)
+	reqs =  list(/obj/item/smokeshell = 3, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /datum/reagent/berrypoison = 5, /obj/item/alch/airdust = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -394,8 +453,10 @@
 /datum/crafting_recipe/roguetown/engineering/impactfiresmoke
 	name = "conflagaration smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke/fire_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 2, /obj/item/ash = 1, /obj/item/alch/firedust = 1, /obj/item/alch/solardust = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke/fire_gas,
+				  /obj/item/impact_grenade/smoke/fire_gas,
+				  /obj/item/impact_grenade/smoke/fire_gas)
+	reqs =  list(/obj/item/smokeshell = 3, /obj/item/alch/coaldust = 2, /obj/item/ash = 1, /obj/item/alch/firedust = 1, /obj/item/alch/solardust = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -403,8 +464,10 @@
 /datum/crafting_recipe/roguetown/engineering/impactblindingsmoke
 	name = "blinding smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke/blind_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1, /obj/item/natural/dirtclod = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke/blind_gas,
+				  /obj/item/impact_grenade/smoke/blind_gas,
+				  /obj/item/impact_grenade/smoke/blind_gas)
+	reqs =  list(/obj/item/smokeshell = 3, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/reagent_containers/food/snacks/rogue/veg/onion_sliced = 1, /obj/item/natural/dirtclod = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -412,8 +475,10 @@
 /datum/crafting_recipe/roguetown/engineering/impactmutesmoke
 	name = "mute smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke/mute_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/irondust = 1, /obj/item/rogueore/cinnabar = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke/mute_gas,
+				  /obj/item/impact_grenade/smoke/mute_gas,
+				  /obj/item/impact_grenade/smoke/mute_gas)
+	reqs =  list(/obj/item/smokeshell = 3, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/irondust = 1, /obj/item/rogueore/cinnabar = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -421,8 +486,10 @@
 /datum/crafting_recipe/roguetown/engineering/impacthealingsmoke
 	name = "healing smoke grenade"
 	category = "Explosives"
-	result = /obj/item/impact_grenade/smoke/healing_gas
-	reqs =  list(/obj/item/smokeshell = 1, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/viscera = 1, /obj/item/alch/bonemeal = 1, /datum/reagent/water = 48)
+	result = list(/obj/item/impact_grenade/smoke/healing_gas,
+				  /obj/item/impact_grenade/smoke/healing_gas,
+				  /obj/item/impact_grenade/smoke/healing_gas)
+	reqs =  list(/obj/item/smokeshell = 3, /obj/item/alch/coaldust = 1, /obj/item/ash = 1, /obj/item/alch/viscera = 1, /obj/item/alch/bonemeal = 1, /datum/reagent/water = 48)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4
@@ -434,24 +501,24 @@
 
 /datum/crafting_recipe/roguetown/engineering/sawbladetrap
 	name = "saw blades trap"
-	category = "traps"
+	category = "Traps"
 	result = /obj/structure/trap/saw_blades
-	reqs =  list(/obj/item/roguegear = 3, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/natural/whetstone = 1)
+	reqs =  list(/obj/item/roguegear = 2, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 1, /obj/item/alch/irondust =1, /obj/item/natural/whetstone = 1)
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/engineering/flametrap
 	name = "flame trap"
-	category = "traps"
+	category = "Traps"
 	result = /obj/structure/trap/flame
-	reqs =  list(/obj/item/roguegear = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/alch/firedust =1)
+	reqs =  list(/obj/item/roguegear = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 1, /obj/item/alch/irondust =1, /obj/item/alch/firedust =1)
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 5
 
 /datum/crafting_recipe/roguetown/engineering/shocktrap
 	name = "shock trap"
-	category = "traps"
+	category = "Traps"
 	result = /obj/structure/trap/shock
-	reqs =  list(/obj/item/roguegear = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 2, /obj/item/alch/irondust =1, /obj/item/alch/magicdust =1)
+	reqs =  list(/obj/item/roguegear = 1, /obj/item/natural/clay = 2, /obj/item/roguegem/amethyst = 1, /obj/item/alch/irondust =1, /obj/item/alch/magicdust =1)
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 6
