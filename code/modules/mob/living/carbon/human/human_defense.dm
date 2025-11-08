@@ -212,8 +212,6 @@
 			if(projectile_parry_timer > world.time)
 				diceroll *= 2
 			diceroll = min(diceroll, 90)
-			if(!ispath(W.associated_skill, /datum/skill/combat))
-				diceroll /= 3
 			if(prob(diceroll))
 				var/turf/current_turf = get_turf(I)
 				I.get_deflected(src)
