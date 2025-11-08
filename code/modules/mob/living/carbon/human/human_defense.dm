@@ -211,7 +211,7 @@
 			var/diceroll = (get_skill_level(W.associated_skill)) * 10
 			if(projectile_parry_timer > world.time)
 				diceroll *= 2
-			diceroll = max(diceroll, 90)
+			diceroll = min(diceroll, 90)
 			if(!ispath(W.associated_skill, /datum/skill/combat))
 				diceroll /= 3
 			if(prob(diceroll))
