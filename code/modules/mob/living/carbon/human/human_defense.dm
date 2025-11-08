@@ -215,18 +215,10 @@
 			if(!ispath(W.associated_skill, /datum/skill/combat))
 				diceroll /= 3
 			if(prob(diceroll))
-				var/turnangle = (prob(50) ? 270 : 90)
-				if(prob(10))	
-					turnangle = 0 //Right back at thee
-				var/turndir = turn(dir, turnangle)
-				var/dist = rand(3, 7)
-				var/current_turf = get_turf(I)
-				var/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
+				var/turf/current_turf = get_turf(I)
+				I.get_deflected(src)
 				do_sparks(2, TRUE, current_turf)
-				var/soundin = pick(list('sound/combat/parry/deflect_1.ogg','sound/combat/parry/deflect_2.ogg','sound/combat/parry/deflect_3.ogg','sound/combat/parry/deflect_4.ogg','sound/combat/parry/deflect_5.ogg','sound/combat/parry/deflect_6.ogg'))
-				playsound(src, soundin, 100, TRUE)
 				visible_message(span_warning("[src] deflects \the [I]!"))
-				I.safe_throw_at(target_turf, dist, 1, spin = TRUE)
 				return
 
 	if(I && !blocked)

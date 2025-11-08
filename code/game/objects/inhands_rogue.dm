@@ -79,6 +79,23 @@
 		if(0.7)
 			return 1
 
+///Wrapper so the callback can work properly.
+/obj/item/proc/fake_throw_at(atom/target, range, speed, mob/thrower)
+	safe_throw_at(target, range, speed, thrower)
+	return
+
+/obj/item/proc/get_deflected(mob/deflecter)
+	var/turnangle = (prob(50) ? 270 : 90)
+	if(prob(10))	
+		turnangle = 0 //Right back at thee
+	var/turndir = turn(deflecter.dir, turnangle)
+	var/dist = rand(3, 7)
+	var/turf/current_turf = get_turf(src)
+	var/turf/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
+	var/soundin = pick(list('sound/combat/parry/deflect_1.ogg','sound/combat/parry/deflect_2.ogg','sound/combat/parry/deflect_3.ogg','sound/combat/parry/deflect_4.ogg','sound/combat/parry/deflect_5.ogg','sound/combat/parry/deflect_6.ogg'))
+	playsound(deflecter, soundin, 100, TRUE)
+	addtimer(CALLBACK(src, PROC_REF(fake_throw_at), target_turf, dist, dist, deflecter), 0.1 SECONDS)
+
 // For checking if we have a specific icon state in an icon.
 // Cached cause asking icons is expensive. This is still expensive, so avoid using it if
 // you can reasonably expect the icon_state to exist beforehand, or if you can cache the
