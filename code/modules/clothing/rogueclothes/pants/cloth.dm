@@ -42,6 +42,7 @@
 /obj/item/clothing/under/roguetown/tights/sailor
 	name = "sailor's pants"
 	icon_state = "sailorpants"
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/tights/puritan
 	name = "formal breeches"
@@ -57,15 +58,17 @@
 	item_state = "webs"
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	salvage_result = /obj/item/natural/silk
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/loincloth
 	name = "loincloth"
 	desc = ""
 	icon_state = "loincloth"
 	item_state = "loincloth"
-//	adjustable = CAN_CADJUST
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
+	salvage_amount = 1
 
 /obj/item/clothing/under/roguetown/loincloth/brown
 	color = CLOTHING_BROWN

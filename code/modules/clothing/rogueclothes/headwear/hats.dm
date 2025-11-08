@@ -4,6 +4,8 @@
 	desc = "It's scratchy and rustic, but at least it keeps the sun off your head while you toil in the fields."
 	icon_state = "strawhat"
 	sewrepair = TRUE
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 2 // Minor materials loss
 
 /obj/item/clothing/head/roguetown/puritan
 	name = "buckled hat"
@@ -67,6 +69,8 @@
 	sewrepair = TRUE
 	armor = ARMOR_CLOTHING
 	blocksound = SOFTHIT
+	salvage_result = /obj/item/natural/fur
+	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/hatblu
 	name = "fur hat"
@@ -142,6 +146,12 @@
 	color = "#1b1717ff"
 	detail_color = "#b68e37ff"
 
+/obj/item/clothing/head/roguetown/chaperon/noble/hand
+	name = "hand's chaperon"
+	desc = "A noble's chaperon made for the right hand man. \"Heavy is the head that bears the crown.\""
+	color = CLOTHING_AZURE
+	detail_color = CLOTHING_WHITE
+
 /obj/item/clothing/head/roguetown/chaperon/councillor
 	name = "chaperon hat"
 	desc = "A fancy hat worn by nobles."
@@ -162,12 +172,11 @@
 
 /obj/item/clothing/head/roguetown/armingcap
 	name = "cap"
-	desc = "A light cap made of leather, usually worn under a helmet."
+	desc = "A light cap made of cloth, usually worn under a helmet."
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	flags_inv = HIDEEARS
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide/cured
 	//dropshrink = 0.75
 
 /obj/item/clothing/head/roguetown/knitcap
@@ -319,7 +328,6 @@
 	desc = "A plain leather hat with decorative buckle. Made popular by the ne'er-do-wells of Etrusca."
 	icon_state = "bucklehat"
 	sewrepair = TRUE
-	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
 	name = "duelist's hat"
@@ -329,7 +337,6 @@
 	color = COLOR_ALMOST_BLACK	
 	detail_tag = "_detail"
 	detail_color = COLOR_SILVER
-	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/head/roguetown/wizhat
 	name = "wizard hat"
@@ -432,6 +439,9 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	salvage_result = /obj/item/natural/hide/cured
+	salvage_amount = 1
+
 
 /obj/item/clothing/head/roguetown/helmet/tricorn/skull
 	icon_state = "tricorn_skull"
@@ -454,6 +464,8 @@
 	smeltresult = null
 	sewrepair = TRUE
 	blocksound = SOFTHIT
+	salvage_result = /obj/item/natural/hide/cured
+	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/veiled
 	name = "nurse's veil"
