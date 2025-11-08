@@ -204,6 +204,7 @@
 		skipcatch = TRUE
 		blocked = TRUE
 	
+	//Thrown item deflection -- this RETURNS if successful!
 	var/obj/item/W = get_active_held_item()
 	if(!blocked && I)
 		if(W && get_dir(src, AM) == turn(get_dir(AM, src), 180))	//We are directly facing the thrown item.
