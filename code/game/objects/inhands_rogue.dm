@@ -96,6 +96,9 @@
 	var/turf/target_turf = get_ranged_target_turf(current_turf, turndir, dist)
 	var/soundin = pick(list('sound/combat/parry/deflect_1.ogg','sound/combat/parry/deflect_2.ogg','sound/combat/parry/deflect_3.ogg','sound/combat/parry/deflect_4.ogg','sound/combat/parry/deflect_5.ogg','sound/combat/parry/deflect_6.ogg'))
 	playsound(deflector, soundin, 100, TRUE)
+
+	//If called immediately it does not work as intended, likely because the movement of the item is still being overridden by the original throw procchain.
+	//This is basically the modern version of spawn(0) that "makes it work"
 	addtimer(CALLBACK(src, PROC_REF(fake_throw_at), target_turf, dist, dist, deflector), 0.1 SECONDS)
 
 // For checking if we have a specific icon state in an icon.
