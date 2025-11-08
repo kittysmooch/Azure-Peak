@@ -1014,5 +1014,4 @@
 
 ///This is used to allow the thrown item "deflect". Minor and mostly just for aurafarming. Hooks into do_attack_animation because it's the most reliable access to a "valid" attack.
 /mob/living/carbon/human/proc/update_proj_parry_timer()
-	if(projectile_parry_timer < world.time)
-		projectile_parry_timer = (world.time + PROJ_PARRY_TIMER)
+	projectile_parry_timer = (world.time + PROJ_PARRY_TIMER)
