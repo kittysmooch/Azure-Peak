@@ -33,17 +33,22 @@
 		SStreasury.steward_machine = src
 	setup_default_payments()
 
+//	For competence of life I will allow you,
+//	That lack of means enforce you not to evil:
 /obj/structure/roguemachine/steward/proc/setup_default_payments()
-	daily_payments["Sergeant"] = 40
+	daily_payments["Sergeant"] = 40 //Garrison
 	daily_payments["Man at Arms"] = 30
 	daily_payments["Dungeoneer"] = 30
-	daily_payments["Seneschal"] = 40
+	daily_payments["Warden"] = 30
+	daily_payments["Veteran"] = 20
+	daily_payments["Squire"] = 10
+	daily_payments["Seneschal"] = 40 //Manor-House
 	daily_payments["Servant"] = 20	
-	daily_payments["Head Physician"] = 20
+	daily_payments["Head Physician"] = 20 //Doctors
 	daily_payments["Apothecary"] = 10
-	daily_payments["Court Magician"] = 40
-	daily_payments["Magicians Associate"] = 20
+	daily_payments["Court Magician"] = 40 //University
 	daily_payments["Archivist"] = 20
+	daily_payments["Magicians Associate"] = 10
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
