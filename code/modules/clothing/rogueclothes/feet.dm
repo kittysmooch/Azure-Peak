@@ -485,3 +485,49 @@
 	item_state = "eastsandals"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = ARMOR_LEATHER_GOOD
+
+// horseshoes!
+/obj/item/clothing/shoes/roguetown/horseshoes
+	name = "wooden horseshoes"
+	desc = "A pair of horseshoes ready to be attached to some hooves."
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x32/saiga.dmi'
+	icon_state = "horseshoes"
+	item_state = "horseshoes"
+	clothing_flags = TAUR_COMPATIBLE
+	sewrepair = TRUE
+	armor = ARMOR_CLOTHING
+
+/obj/item/clothing/shoes/roguetown/horseshoes/build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, icon/clip_mask)
+	var/mutable_appearance/image = ..()
+	image.pixel_x = -16
+	image.pixel_y = -1
+	return image
+
+/obj/item/clothing/shoes/roguetown/horseshoes/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning)
+	var/mob/living/equipped_to_mob = equipper || M
+	var/obj/item/bodypart/taur/taur = equipped_to_mob.get_taur_tail()
+	if(!istype(taur, /obj/item/bodypart/taur/horse))
+		if(!disable_warning)
+			to_chat(M, span_warning("These horseshoes can only be equipped by beings with hooves."))
+		return FALSE
+	return ..()
+
+/obj/item/clothing/shoes/roguetown/horseshoes/copper
+	name = "copper horseshoes"
+	desc = "A pair of sturdy copper horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
+	icon_state = "copper_horseshoes"
+	item_state = "copper_horseshoes"
+	max_integrity = ARMOR_INT_LEG_HARDLEATHER
+	sewrepair = FALSE
+	armor = ARMOR_PLATE
+	smeltresult = /obj/item/ingot/copper
+
+/obj/item/clothing/shoes/roguetown/horseshoes/iron
+	name = "iron horseshoes"
+	desc = "A pair of sturdy iron horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
+	icon_state = "iron_horseshoes"
+	item_state = "iron_horseshoes"
+	max_integrity = ARMOR_INT_LEG_IRON_PLATE
+	sewrepair = FALSE
+	armor = ARMOR_PLATE
+	smeltresult = /obj/item/ingot/iron

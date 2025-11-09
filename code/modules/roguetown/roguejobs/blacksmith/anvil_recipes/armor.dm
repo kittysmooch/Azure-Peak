@@ -72,6 +72,11 @@
 	req_bar = /obj/item/ingot/copper
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/copper
 
+/datum/anvil_recipe/armor/copper/horseshoes
+	name = "Horseshoes, Copper"
+	req_bar =/obj/item/ingot/copper
+	created_item = /obj/item/clothing/shoes/roguetown/horseshoes/copper
+
 
 // DECREPIT/ANCIENT ALLOY
 
@@ -436,6 +441,12 @@
 	req_bar = /obj/item/ingot/iron
 	req_blade = /obj/item/blade/iron_plate
 	created_item = /obj/item/clothing/head/roguetown/helmet/horned
+
+/datum/anvil_recipe/armor/iron/horseshoes
+	name = "Horseshoes, Iron"
+	req_bar = /obj/item/ingot/iron
+	req_blade = /obj/item/blade/iron_plate
+	created_item = /obj/item/clothing/shoes/roguetown/horseshoes/iron
 
 
 // STEEL
