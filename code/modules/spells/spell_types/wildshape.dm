@@ -12,7 +12,7 @@
 	invocation_type = "shout"
 	action_icon_state = "shapeshift"
 	associated_skill = /datum/skill/magic/holy
-	devotion_cost = 60
+	devotion_cost = 80
 	miracle = TRUE
 
 	var/list/possible_shapes = list(
@@ -56,7 +56,7 @@
 
 	user.Stun(30)
 	user.Knockdown(30)
-	user.wildshape_transformation(GLOB.wildshapes[new_wildshape_type])
+	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, wildshape_transformation), GLOB.wildshapes[new_wildshape_type])
 
 	return TRUE
 
