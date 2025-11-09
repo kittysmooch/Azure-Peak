@@ -35,12 +35,14 @@
 /obj/structure/roguemachine/steward/proc/setup_default_payments()
 	daily_payments["Sergeant"] = 40
 	daily_payments["Man at Arms"] = 20
-	daily_payments["Servant"] = 20
+	daily_payments["Dungeoneer"] = 20
 	daily_payments["Seneschal"] = 40
+	daily_payments["Servant"] = 20	
 	daily_payments["Head Physician"] = 20
 	daily_payments["Apothecary"] = 10
-	daily_payments["Court Mage"] = 40
-	daily_payments["Magician"] = 20
+	daily_payments["Court Magician"] = 40
+	daily_payments["Magicians Associate"] = 20
+	daily_payments["Archivist"] = 20
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
@@ -260,6 +262,33 @@
 		var/job_to_remove = href_list["removedailypay"]
 		daily_payments -= job_to_remove
 		say("Daily payment for [job_to_remove] removed.")
+	if(href_list["togglewages"])
+		var/X = locate(href_list["togglewages"])
+		if(!X)
+			return
+		for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
+			if(A == X)
+				// Check if user has permission (Steward, Clerk, Grand Duke/Duchess, or Regent)
+				var/is_authorized = FALSE
+				if(usr.job == "Steward" || usr.job == "Clerk" || usr.job == "Grand Duke" || usr.job == "Grand Duchess")
+					is_authorized = TRUE
+				if(SSticker.regentmob && usr == SSticker.regentmob)
+					is_authorized = TRUE
+
+				if(!is_authorized)
+					say("Only the Steward, Clerk, or Ruler may suspend wages.")
+					playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
+					return
+
+				if(HAS_TRAIT(A, TRAIT_WAGES_SUSPENDED))
+					REMOVE_TRAIT(A, TRAIT_WAGES_SUSPENDED, TRAIT_GENERIC)
+					say("[A.real_name]'s wages have been reinstated.")
+					to_chat(A, span_notice("Your wages have been reinstated by the Stewardry."))
+				else
+					ADD_TRAIT(A, TRAIT_WAGES_SUSPENDED, TRAIT_GENERIC)
+					say("[A.real_name]'s wages have been suspended.")
+					to_chat(A, span_warning("Your wages have been suspended by the Stewardry!"))
+				break
 	if(href_list["compact"])
 		compact = !compact
 	if(href_list["changecat"])
@@ -346,7 +375,8 @@
 						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [SStreasury.bank_accounts[A]]m"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m"
-					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a><BR><BR>"
+					var/wage_status = HAS_TRAIT(A, TRAIT_WAGES_SUSPENDED) ? "UNSUSPEND" : "SUSPEND"
+					contents += " / <a href='?src=\ref[src];givemoney=\ref[A]'>\[PAY\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[FINE\]</a> <a href='?src=\ref[src];togglewages=\ref[A]'>\[[wage_status]\]</a><BR><BR>"
 			else
 				for(var/mob/living/carbon/human/A in SStreasury.bank_accounts)
 					if(ishuman(A))
@@ -354,7 +384,8 @@
 						contents += "[tmp.real_name] ([job_filter(tmp.advjob, tmp.job, compact)]) - [SStreasury.bank_accounts[A]]m<BR>"
 					else
 						contents += "[A.real_name] - [SStreasury.bank_accounts[A]]m<BR>"
-					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a><BR><BR>"
+					var/wage_status = HAS_TRAIT(A, TRAIT_WAGES_SUSPENDED) ? "Unsuspend Wages" : "Suspend Wages"
+					contents += "<a href='?src=\ref[src];givemoney=\ref[A]'>\[Give Money\]</a> <a href='?src=\ref[src];fineaccount=\ref[A]'>\[Fine Account\]</a> <a href='?src=\ref[src];togglewages=\ref[A]'>\[[wage_status]\]</a><BR><BR>"
 		if(TAB_STOCK)
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a>"
 			contents += " <a href='?src=\ref[src];compact=1'>\[Compact: [compact? "ENABLED" : "DISABLED"]\]</a><BR>"
@@ -483,7 +514,7 @@
 					var/amt = daily_payments[job_name]
 					var/count = 0
 					for(var/mob/living/carbon/human/H in GLOB.human_list)
-						if(H.job == job_name)
+						if(H.job == job_name && !HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
 							count++
 					contents += "<b>[job_name]:</b> [amt]m/day"
 					if(count > 0)

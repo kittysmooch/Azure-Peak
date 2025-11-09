@@ -77,8 +77,7 @@ SUBSYSTEM_DEF(treasury)
 	if(world.time > next_treasury_check)
 		next_treasury_check = world.time + TREASURY_TICK_AMOUNT
 		if(SSticker.current_state == GAME_STATE_PLAYING)
-			// Distribute initial payments once at round start
-			if(!initial_payment_done)
+			if(!initial_payment_done) // Distribute initial payments once at round start
 				initial_payment_done = TRUE
 				distribute_daily_payments()
 			for(var/datum/roguestock/X in stockpile_datums)
@@ -244,6 +243,9 @@ SUBSYSTEM_DEF(treasury)
 		var/payment_amount = steward_machine.daily_payments[job_name]
 		for(var/mob/living/carbon/human/H in GLOB.human_list)
 			if(H.job == job_name)
+				// Skip payment if wages are suspended
+				if(HAS_TRAIT(H, TRAIT_WAGES_SUSPENDED))
+					continue
 				if(give_money_account(payment_amount, H, "Daily Wage"))
 					total_paid += payment_amount
 					record_round_statistic(STATS_WAGES_PAID)
