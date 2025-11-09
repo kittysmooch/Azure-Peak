@@ -34,8 +34,8 @@
 
 /obj/structure/roguemachine/steward/proc/setup_default_payments()
 	daily_payments["Sergeant"] = 40
-	daily_payments["Man at Arms"] = 20
-	daily_payments["Dungeoneer"] = 20
+	daily_payments["Man at Arms"] = 30
+	daily_payments["Dungeoneer"] = 30
 	daily_payments["Seneschal"] = 40
 	daily_payments["Servant"] = 20	
 	daily_payments["Head Physician"] = 20
