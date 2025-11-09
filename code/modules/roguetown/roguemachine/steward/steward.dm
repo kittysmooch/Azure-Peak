@@ -287,7 +287,7 @@
 				else
 					ADD_TRAIT(A, TRAIT_WAGES_SUSPENDED, TRAIT_GENERIC)
 					say("[A.real_name]'s wages have been suspended.")
-					to_chat(A, span_warning("Your wages have been suspended by the Stewardry!"))
+					to_chat(A, span_danger("Your wages have been suspended by the Stewardry!"))
 				break
 	if(href_list["compact"])
 		compact = !compact
