@@ -17,6 +17,9 @@
 
 	insert_preposition = "onto"
 	allow_big_nesting = TRUE
+	allow_nesting = TRUE
+	intercept_parent_attack = FALSE
+	intercept_parent_mousedrop = FALSE
 
 /datum/component/storage/concrete/roguetown/hat/attackby(datum/source, obj/item/attacking_item, mob/user, params, storage_click)
 	if(is_type_in_list(attacking_item, cant_hold))
@@ -138,7 +141,7 @@
 	// get attachment component and check if there's anything inside
 	if(attachment_component)
 		var/datum/component/storage/concrete/roguetown/our_component = GetComponent(attachment_component)
-		if(length(our_component.item_to_grid_coordinates))
+		if(our_component && length(our_component.item_to_grid_coordinates))
 			for(var/obj/item/thing as anything in our_component.item_to_grid_coordinates)
 				var/mutable_appearance/thing_appearance = thing.build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, clip_mask)
 				standing.add_overlay(thing_appearance)
