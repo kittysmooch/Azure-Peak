@@ -18,7 +18,7 @@
 	outfit = /datum/outfit/job/roguetown/sergeant
 	advclass_cat_rolls = list(CTAG_SERGEANT = 20)
 
-	give_bank_account = 200
+	give_bank_account = 50
 	min_pq = 6
 	max_pq = null
 	cmode_music = 'sound/music/combat_ManAtArms.ogg'
