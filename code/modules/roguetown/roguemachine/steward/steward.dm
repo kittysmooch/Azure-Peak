@@ -5,6 +5,7 @@
 #define TAB_BOUNTIES 5
 #define TAB_LOG 6
 #define TAB_STATISTICS 7
+#define TAB_PAYDAY 8
 
 /obj/structure/roguemachine/steward
 	name = "nerve master"
@@ -24,7 +25,22 @@
 	var/list/excluded_jobs = list("Wretch","Vagabond","Adventurer")
 	var/current_category = "Raw Materials"
 	var/list/categories = list("Raw Materials", "Foodstuffs", "Fruits")
+	var/list/daily_payments = list() // Associative list: job name -> payment amount
 
+/obj/structure/roguemachine/steward/Initialize()
+	. = ..()
+	SStreasury.steward_machine = src
+	setup_default_payments()
+
+/obj/structure/roguemachine/steward/proc/setup_default_payments()
+	daily_payments["Sergeant"] = 40
+	daily_payments["Man at Arms"] = 20
+	daily_payments["Servant"] = 20
+	daily_payments["Seneschal"] = 40
+	daily_payments["Head Physician"] = 20
+	daily_payments["Apothecary"] = 10
+	daily_payments["Court Mage"] = 40
+	daily_payments["Magician"] = 20
 
 /obj/structure/roguemachine/steward/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/roguekey))
@@ -215,6 +231,35 @@
 			if(H.job == job_to_pay)
 				record_round_statistic(STATS_WAGES_PAID)
 				SStreasury.give_money_account(amount_to_pay, H, "NERVE MASTER")
+	if(href_list["setdailypay"])
+		var/list/L = list(GLOB.noble_positions) + list(GLOB.garrison_positions) + list(GLOB.courtier_positions) + list(GLOB.church_positions) + list(GLOB.yeoman_positions) + list(GLOB.peasant_positions) + list(GLOB.youngfolk_positions) + list(GLOB.inquisition_positions)
+		var/list/things = list()
+		for(var/list/category in L)
+			for(var/A in category)
+				things += A
+		var/job_to_pay = input(usr, "Select a job", src) as null|anything in things
+		if(!job_to_pay)
+			return
+		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
+			return
+		var/amount_to_pay = input(usr, "Set daily payment for [job_to_pay] (0 to remove)", src, daily_payments[job_to_pay] ? daily_payments[job_to_pay] : 0) as null|num
+		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
+			return
+		if(findtext(num2text(amount_to_pay), "."))
+			return
+		if(isnull(amount_to_pay))
+			return
+		amount_to_pay = CLAMP(amount_to_pay, 0, 999)
+		if(amount_to_pay == 0)
+			daily_payments -= job_to_pay
+			say("Daily payment for [job_to_pay] removed.")
+		else
+			daily_payments[job_to_pay] = amount_to_pay
+			say("Daily payment for [job_to_pay] set to [amount_to_pay]m.")
+	if(href_list["removedailypay"])
+		var/job_to_remove = href_list["removedailypay"]
+		daily_payments -= job_to_remove
+		say("Daily payment for [job_to_remove] removed.")
 	if(href_list["compact"])
 		compact = !compact
 	if(href_list["changecat"])
@@ -277,6 +322,7 @@
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_STOCK]'>\[Stockpile\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_IMPORT]'>\[Import\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_BOUNTIES]'>\[Bounties\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_PAYDAY]'>\[Daily Payments\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_LOG]'>\[Log\]</a><BR>"
 			contents += "<a href='?src=\ref[src];switchtab=[TAB_STATISTICS]'>\[Statistics\]</a><BR>"
 			contents += "</center>"
@@ -425,6 +471,26 @@
 			contents += "Total Mammons Minted: [SStreasury.minted]m<BR>"
 			contents += "Trade Balance: [SStreasury.total_export - SStreasury.total_import]m<BR>"
 			contents  += "</center><BR>"
+		if(TAB_PAYDAY)
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MAIN]'>\[Return\]</a><BR>"
+			contents += "<center>Daily Payments<BR>"
+			contents += "--------------<BR>"
+			contents += "Treasury: [SStreasury.treasury_value]m</center><BR>"
+			contents += "<a href='?src=\ref[src];setdailypay=1'>\[Add/Modify Job Payment\]</a><BR><BR>"
+			if(daily_payments.len)
+				contents += "<center>Configured Payments:</center><BR>"
+				for(var/job_name in daily_payments)
+					var/amt = daily_payments[job_name]
+					var/count = 0
+					for(var/mob/living/carbon/human/H in GLOB.human_list)
+						if(H.job == job_name)
+							count++
+					contents += "<b>[job_name]:</b> [amt]m/day"
+					if(count > 0)
+						contents += " ([count] employed, [amt * count]m total/day)"
+					contents += " <a href='?src=\ref[src];removedailypay=[job_name]'>\[Remove\]</a><BR>"
+			else
+				contents += "<center>No daily payments configured.</center><BR>"
 
 	if(!canread)
 		contents = stars(contents)
@@ -452,3 +518,5 @@
 #undef TAB_IMPORT
 #undef TAB_BOUNTIES
 #undef TAB_LOG
+#undef TAB_STATISTICS
+#undef TAB_PAYDAY
