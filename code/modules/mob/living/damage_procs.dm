@@ -152,7 +152,14 @@
 /mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
+
+	. = bruteloss
 	bruteloss = CLAMP((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	. -= bruteloss
+
+	if (!.)
+		return FALSE
+
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -167,7 +174,14 @@
 		mob_timers["lastoxydam"] = world.time
 	if(has_status_effect(/datum/status_effect/buff/fortify) && amount < 0)
 		amount *= 1.5
+
+	. = oxyloss
 	oxyloss = CLAMP((oxyloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	. -= oxyloss
+
+	if (!.)
+		return FALSE
+
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -186,7 +200,14 @@
 /mob/living/proc/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
+
+	. = toxloss
 	toxloss = CLAMP((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	. -= toxloss
+
+	if (!.)
+		return FALSE
+
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -205,7 +226,14 @@
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
+
+	. = fireloss
 	fireloss = CLAMP((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	. -= fireloss
+
+	if (!.)
+		return FALSE
+	
 	if(updating_health)
 		updatehealth()
 	return amount
@@ -216,7 +244,14 @@
 /mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
+
+	. = cloneloss
 	cloneloss = CLAMP((cloneloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	. -= cloneloss
+
+	if (!.)
+		return FALSE
+
 	if(updating_health)
 		updatehealth()
 	return amount
