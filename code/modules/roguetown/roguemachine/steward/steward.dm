@@ -29,7 +29,8 @@
 
 /obj/structure/roguemachine/steward/Initialize()
 	. = ..()
-	SStreasury.steward_machine = src
+	if(SStreasury.steward_machine == null) //The "only one" mapped in Nerve Master at map start
+		SStreasury.steward_machine = src
 	setup_default_payments()
 
 /obj/structure/roguemachine/steward/proc/setup_default_payments()
