@@ -343,9 +343,10 @@
 	var/blood_reward = (max_blood_pool / 10) * reward_multiplier * (quirk_effects["blood_multiplier"] || 1)
 	// 20 - 40 - 80 - 160 Under perfect circumstances
 	var/rack_multiplier = linked_rack.update_rack_stats()
-	var/tech_reward = (20 * (2 ^ (language_tier - 1))) * reward_multiplier * ((quirk_effects["tech_multiplier"] || 1) * rack_multiplier)
+	var/tech_reward = (20 * (2 ** (language_tier - 1))) * reward_multiplier * ((quirk_effects["tech_multiplier"] || 1) * rack_multiplier)
 	var/happiness_reward = (max_happiness / 4) * reward_multiplier * (quirk_effects["happiness_multiplier"] || 1)
-	var/language_progress_reward = (max_language_progress / 8) * reward_multiplier
+	// 2 perfect answers, or 4 mediocre ones, 8 serviceable answers
+	var/language_progress_reward = (max_language_progress / 2) * reward_multiplier
 
 	// Apply rewards
 	blood_pool = min(blood_pool + blood_reward, max_blood_pool)
@@ -381,6 +382,7 @@
 		language_tier++
 		heart_beast.visible_message(span_notice("[heart_beast] seems to resonate with newfound understanding!"))
 		playsound(heart_beast, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
+		current_language_progress = 0
 
 /datum/component/chimeric_heart_beast/proc/get_tier_feedback(type, score)
 	var/list/success_responses = list()
