@@ -53,8 +53,8 @@
 
 	return 0
 
-/mob/living/carbon/human/get_alt_name()
-	if(name != GetVoice())
+/mob/living/carbon/human/get_alt_name(var/force = FALSE)
+	if(force || name != GetVoice())
 		var/datum/mob_descriptor/voice/voice_descriptor = get_descriptor_type(/datum/mob_descriptor/voice)
 		if(!voice_descriptor)
 			return "Unknown Person"

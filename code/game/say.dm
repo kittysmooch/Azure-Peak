@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			if(hidden)
 				if(ishuman(speaker))
 					var/mob/living/carbon/human/human = speaker
-					namepart = human.get_alt_name()
+					namepart = human.get_alt_name(TRUE)
 				else if(isliving(speaker))
 					var/mob/living/L = speaker
 					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
