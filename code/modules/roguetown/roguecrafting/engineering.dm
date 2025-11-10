@@ -276,9 +276,11 @@
 
 //rotational and minecart parts
 /datum/crafting_recipe/roguetown/engineering/shaft
-	name = "wooden shaft(4x)"
+	name = "wooden shaft(6x)"
 	category = "Rotational"
 	result = list(/obj/item/rotation_contraption/shaft,
+				  /obj/item/rotation_contraption/shaft,
+				  /obj/item/rotation_contraption/shaft,
 				  /obj/item/rotation_contraption/shaft,
 				  /obj/item/rotation_contraption/shaft,
 				  /obj/item/rotation_contraption/shaft)
@@ -301,9 +303,11 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/cog
-	name = "wooden cogwheel(2x)"
+	name = "wooden cogwheel(4x)"
 	category = "Rotational"
 	result = list(/obj/item/rotation_contraption/cog,
+				  /obj/item/rotation_contraption/cog,
+				  /obj/item/rotation_contraption/cog,
 				  /obj/item/rotation_contraption/cog)
 	reqs = list(/obj/item/grown/log/tree/small = 1, /obj/item/roguegear = 2, /obj/item/grown/log/tree/stick = 2)
 	verbage_simple = "engineer"
@@ -314,9 +318,10 @@
 
 
 /datum/crafting_recipe/roguetown/engineering/waterwheel
-	name = "wooden waterwheel"
+	name = "wooden waterwheel(2x)"
 	category = "Rotational"
-	result = /obj/item/rotation_contraption/waterwheel
+	result = list(/obj/item/rotation_contraption/waterwheel,
+				  /obj/item/rotation_contraption/waterwheel)
 	reqs = list(/obj/item/natural/wood/plank = 3, /obj/item/grown/log/tree/stick = 2)
 	verbage_simple = "engineer"
 	verbage = "engineers"
@@ -325,9 +330,10 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/large_cog
-	name = "large wooden cogwheel"
+	name = "large wooden cogwheel(2x)"
 	category = "Rotational"
-	result = /obj/item/rotation_contraption/large_cog
+	result = list(/obj/item/rotation_contraption/large_cog,
+				  /obj/item/rotation_contraption/large_cog)
 	reqs = list(/obj/item/grown/log/tree/small = 1, /obj/item/ingot/bronze = 1, /obj/item/grown/log/tree/stick = 1)
 	verbage_simple = "engineer"
 	verbage = "engineers"
@@ -336,9 +342,10 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/gearbox
-	name = "gearbox"
+	name = "gearbox(2x)"
 	category = "Rotational"
-	result = /obj/item/rotation_contraption/horizontal
+	result = list(/obj/item/rotation_contraption/horizontal,
+				  /obj/item/rotation_contraption/horizontal)
 	reqs = list(/obj/item/roguegear = 2, /obj/item/natural/stoneblock = 2,/obj/item/grown/log/tree/stick = 2)
 	verbage_simple = "engineer"
 	verbage = "engineers"
@@ -346,9 +353,10 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/vertical_gearbox
-	name = "vertical gearbox"
+	name = "vertical gearbox(2x)"
 	category = "Rotational"
-	result = /obj/item/rotation_contraption/vertical
+	result = list(/obj/item/rotation_contraption/vertical,
+				  /obj/item/rotation_contraption/vertical)
 	reqs = list(/obj/item/roguegear = 2, /obj/item/natural/stoneblock = 2, /obj/item/grown/log/tree/stick = 2)
 	verbage_simple = "engineer"
 	verbage = "engineers"
@@ -356,9 +364,19 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/engineering/rails
-	name = "minecart rails (10x)"
+	name = "minecart rails (20x)"
 	category = "Minecarts"
 	result = list(/obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
+				  /obj/item/rotation_contraption/minecart_rail,
 				  /obj/item/rotation_contraption/minecart_rail,
 				  /obj/item/rotation_contraption/minecart_rail,
 				  /obj/item/rotation_contraption/minecart_rail,
@@ -375,9 +393,13 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/railbreak
-	name = "minecart rail break (4x)"
+	name = "minecart rail break (8x)"
 	category = "Minecarts"
 	result = list(/obj/item/rotation_contraption/minecart_rail/railbreak,
+				  /obj/item/rotation_contraption/minecart_rail/railbreak,
+				  /obj/item/rotation_contraption/minecart_rail/railbreak,
+				  /obj/item/rotation_contraption/minecart_rail/railbreak,
+				  /obj/item/rotation_contraption/minecart_rail/railbreak,
 				  /obj/item/rotation_contraption/minecart_rail/railbreak,
 				  /obj/item/rotation_contraption/minecart_rail/railbreak,
 				  /obj/item/rotation_contraption/minecart_rail/railbreak)
