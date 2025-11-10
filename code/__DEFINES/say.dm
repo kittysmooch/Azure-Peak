@@ -115,5 +115,5 @@
 #define STRIP_HTML_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext(text, 1, limit), ""))
 
 GLOBAL_LIST_INIT(correct_punctuation, list("!" = TRUE, "." = TRUE, "?" = TRUE, "-" = TRUE, "~" = TRUE, \
-											"*" = TRUE, "/" = TRUE, ">" = TRUE, "'" = TRUE, \
+											"*" = TRUE, "/" = TRUE, ">" = TRUE, "'" = TRUE, "|" = TRUE, \
 											"," = TRUE, ":" = TRUE, ";" = TRUE, "\"" = TRUE))
