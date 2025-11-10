@@ -17,7 +17,7 @@
 	var/datum/flesh_task/current_task
 	var/datum/flesh_task/next_task
 	var/last_task_time = 0
-	var/task_cooldown = 75 SECONDS
+	var/task_cooldown = 10 SECONDS
 
 	var/mob/living/current_listener
 	var/listener_timeout_time = 0
@@ -256,7 +256,7 @@
 
 	to_chat(user, span_info("You begin filling up [empty_container] with blood from the pool."))
 
-	if(do_after(user, 10 SECONDS))
+	if(do_after(user, 2 SECONDS))
 		if(blood_pool >= amount)
 			blood_pool -= amount
 			qdel(empty_container)
