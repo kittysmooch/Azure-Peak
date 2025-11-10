@@ -272,7 +272,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/examine(mob/user)
 	. = ..()
-	. += span_notice("These berries have a <span color=\"color: [filling_color];\"><b>[BERRYCOLORS[filling_color]]</b></span> hue.")
+	. += span_notice("These berries have a <b>[BERRYCOLORS[filling_color]]</b> hue.")
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue/Initialize()
 	if(GLOB.berrycolors[color_index])
