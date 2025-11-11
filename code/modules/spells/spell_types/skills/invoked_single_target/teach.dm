@@ -3,7 +3,7 @@
 	name = "The Tutor's Calling"
 	desc = "You can teach a skill or language to another person, provided they are not more skilled than you in it. \n\
 	You cannot teach the same person twice. Teaching takes 30 seconds, and requires both you and your student to be focused on the lesson."
-	overlay_state = "book3"
+	overlay_state = "knowledge"
 	releasedrain = 50
 	chargedrain = 0
 	chargetime = 0
@@ -71,7 +71,7 @@
 	/datum/language/hellspeak,
 	/datum/language/kazengunese,
 	/datum/language/orcish,
-	/datum/language/otavan	
+	/datum/language/otavan
     )
 	for(var/i = 1, i <= skill_choices.len, i++)
 		var/datum/skill/learn_item = skill_choices[i]
@@ -82,7 +82,7 @@
 		if (L.has_language(learn_item))
 			continue //skip if they know the language
 		choices["[learn_item.name]"] = learn_item
-	
+
 
 	var/teachingtime = 30 SECONDS
 
