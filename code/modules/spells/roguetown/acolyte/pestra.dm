@@ -389,8 +389,8 @@
 		if(istype(rose) && target.patron?.type == /datum/patron/divine/pestra)
 			// If the target is a Pestran and we are holding the rose, implant the component.
 			var/time_elapsed = STATION_TIME_PASSED() / (1 MINUTES)
-			if(time_elapsed < 120)
-				var/time_left = 120 - time_elapsed
+			if(time_elapsed < 45)
+				var/time_left = 45 - time_elapsed
 				to_chat(user, span_smallred("Pestra's rot is still preparing to bloom. Wait another [round(time_left, 0.1)] minutes."))
 				revert_cast()
 			if(!target.GetComponent(/datum/component/infestation_black_rot))
