@@ -24,7 +24,8 @@
 			to_chat(teacher, span_warning("[user] wants to learn from you, but you're in combat."))//notify them since they might not ACTUALLY be in combat, just have cmode on
 			revert_cast()
 			return
-		if(teacher in range(2, user))
+		var/distance = get_dist(teacher, user)
+		if(distance <= 2)
 			to_chat(usr, span_notice("I ask [teacher] to teach me one of [teacher.p_their()] skills."))
 			if(alert(teacher, "Teach [user] one of your skills?", "Teaching", "Yes", "No") == "Yes")
 				to_chat(user, span_nicegreen("[teacher] has decided to teach you. Stay close and let them decide what they will reveal..."))
