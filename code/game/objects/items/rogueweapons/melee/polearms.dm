@@ -1036,6 +1036,7 @@
 	force_wielded = 40
 	max_blade_int = 200
 	smeltresult = /obj/item/ingot/blacksteel
+	smelt_bar_num = 2 // Okay you CAN get a refund on the blacksteel
 
 /obj/item/rogueweapon/greatsword/psygsword
 	name = "psydonic greatsword"
