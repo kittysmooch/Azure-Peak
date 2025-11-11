@@ -162,7 +162,7 @@
 
 /// Performs a jump. Used by the jump MMB intent. Returns TRUE if a jump was performed.
 /mob/living/proc/can_jump(atom/A)
-	if(stat == DEAD || user.stat == UNCONSCIOUS || user.stat == SOFT_CRIT)
+	if(stat == DEAD || stat == UNCONSCIOUS || stat == SOFT_CRIT)
 		to_chat(src, span_warning("My muscles refuse to move."))
 		return FALSE
 	var/turf/our_turf = get_turf(src)

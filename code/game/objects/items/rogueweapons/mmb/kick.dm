@@ -61,7 +61,7 @@
 	return TRUE
 
 /mob/living/proc/can_kick(atom/A, do_message = TRUE)
-	if(stat == DEAD || user.stat == UNCONSCIOUS || user.stat == SOFT_CRIT)
+	if(stat == DEAD || stat == UNCONSCIOUS || stat == SOFT_CRIT)
 		to_chat(src, span_warning("I attempt to kick, but my muscles fail me."))
 		return FALSE
 	if(get_num_legs() < 2)
