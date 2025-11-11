@@ -1037,6 +1037,28 @@
 	max_blade_int = 200
 	smeltresult = /obj/item/ingot/blacksteel
 
+/obj/item/rogueweapon/greatsword/silver
+	name = "silver greatsword"
+	desc = "A hefty greatsword of pure silver. They would wish of you to give into despair, calamity, and annihilation: to believe that hope is but a fading notion. Never let them extinguish that spark within you - that which gifts you the strength to continue on, even within this dying world. So long as you still hold hope, Psydonia will still be worth fighting for."
+	icon_state = "silverexealt"
+	force = 8
+	force_wielded = 25
+	minstr = 11
+	wdefense = 6
+	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+
+/obj/item/rogueweapon/greatsword/silver/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 2,\
+	)
+
 /obj/item/rogueweapon/greatsword/psygsword
 	name = "psydonic greatsword"
 	desc = "It is said that a Psydonian smith was guided by Saint Malum himself to forge such a formidable blade, and given the task to slay a daemon preying on the Otavan farmlands. The design was retrieved, studied, and only a few replicas made - for they believe it dulls its edge."
