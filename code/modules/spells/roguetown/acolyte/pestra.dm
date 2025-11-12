@@ -391,7 +391,7 @@
 			var/time_elapsed = STATION_TIME_PASSED() / (1 MINUTES)
 			if(time_elapsed < 45)
 				var/time_left = 45 - time_elapsed
-				to_chat(user, span_smallred("Pestra's rot is still preparing to bloom. Wait another [round(time_left, 0.1)] minutes."))
+				to_chat(user, span_smallred("Pestra's rot is still preparing to bloom. Wait another [round(time_left, 0.1)] minutes!"))
 				revert_cast()
 			if(!target.GetComponent(/datum/component/infestation_black_rot))
 				target.AddComponent(/datum/component/infestation_black_rot)
