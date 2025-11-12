@@ -1154,12 +1154,12 @@
 
 /obj/item/rogueweapon/sword/sabre/stalker
 	name = "stalker sabre"
-	desc = "A once elegant blade of mythril, diminishing under the suns gaze"
+	desc = "A once elegant blade of mythril, diminishing under the suns gaze."
 	icon_state = "spidersaber"
-	force = 17
-	force_wielded = 20
+	force = 23
+	force_wielded = 23
 	minstr = 7
-	wdefense = 9
+	wdefense = 8
 
 /obj/item/rogueweapon/sword/sabre/shamshir
 	name = "shamshir"
