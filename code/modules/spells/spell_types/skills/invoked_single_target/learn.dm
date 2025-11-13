@@ -53,7 +53,7 @@
 					if(skill_choice)
 						for(var/real_skill in known_skills)//real_skill is the actual datum for the skill rather than the "Skill" string
 							if(skill_choice == GetSkillRef(real_skill))//if skill_choice (the name string) is equal to real_skill's name ref, essentially
-								var/distance = get_dist(teacher, user)
+								distance = get_dist(teacher, user)
 								if(distance > 2)
 									to_chat(teacher, span_warning("I moved too far away from [user]."))
 									to_chat(user, span_warning("[teacher] moved too far away from me."))
