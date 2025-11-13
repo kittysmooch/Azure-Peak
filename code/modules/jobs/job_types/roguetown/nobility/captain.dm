@@ -123,6 +123,8 @@
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list(
+			"Edict & Aegis (Sabre & Buckler)",
+			"Deliverance (Glaive)",
 			"Claymore",
 			"Great Mace",
 			"Battle Axe",
@@ -136,6 +138,11 @@
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
+			if("Edict & Aegis (Sabre & Buckler)")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/sabre/knightcaptain
+				l_hand = /obj/item/rogueweapon/shield/buckler/knightcaptain
+				beltr = /obj/item/rogueweapon/scabbard/sword
 			if("Claymore")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 				r_hand = /obj/item/rogueweapon/greatsword/zwei
@@ -204,7 +211,7 @@
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 				cloak = /obj/item/clothing/cloak/tabard/retinue/captain
 			if("Fluted Cuirass")
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 				cloak = /obj/item/clothing/cloak/tabard/retinue/captain
 			if("Captain's armor")
