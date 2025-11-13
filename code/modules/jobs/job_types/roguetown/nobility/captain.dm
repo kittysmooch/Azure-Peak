@@ -18,7 +18,7 @@
 	spells = list(/obj/effect/proc_holder/spell/self/convertrole/guard)
 	outfit = /datum/outfit/job/roguetown/captain
 
-	give_bank_account = 26
+	give_bank_account = TRUE
 	noble_income = 16
 	min_pq = 9
 	max_pq = null
@@ -116,8 +116,8 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/focustarget)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/knight()
 	H.verbs |= list(
-		/mob/living/carbon/human/proc/request_outlaw, 
-		/mob/proc/haltyell, 
+		/mob/living/carbon/human/proc/request_outlaw,
+		/mob/proc/haltyell,
 		/mob/living/carbon/human/mind/proc/setorders
 	)
 	H.adjust_blindness(-3)
@@ -232,6 +232,7 @@
 		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
 		if(helmchoice != "None")
 			head = helmets[helmchoice]
+	SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"
