@@ -78,7 +78,7 @@
 	eat_effect = null
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball
-	name = "pumpkin ball"
+	name = "pumpkin balls"
 	desc = "Crispy and soft ball of dough mixed with pumpkin. A surprisingly nice snack."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "pumpkinball3"
@@ -96,6 +96,7 @@
 		icon_state = "pumpkinball2"
 	else if(bitecount == 2)
 		icon_state = "pumpkinball1"
+		name = "pumpkin ball"
 
 /*	.............   Pumpkin loaf   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinloaf_raw
