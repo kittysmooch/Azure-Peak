@@ -91,7 +91,8 @@
 	tastes = list("crispy butterdough" = 1, "pumpkin" = 1)
 	eat_effect = /datum/status_effect/buff/foodbuff
 
-/obj/item/reagent_containers/food/snacks/rogue/pumpkinball/update_icon()
+/obj/item/reagent_containers/food/snacks/rogue/pumpkinball/On_Consume(mob/living/eater)
+	. = ..()
 	if(bitecount == 1)
 		icon_state = "pumpkinball2"
 	else if(bitecount == 2)
@@ -147,6 +148,7 @@
 			slices_num = 2
 		if(bitecount == 5)
 			changefood(slice_path, eater)
+	update_icon()
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloafslice
 	name = "pumpkin loaf slice"

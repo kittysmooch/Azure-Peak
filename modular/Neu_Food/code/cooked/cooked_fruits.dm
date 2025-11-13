@@ -9,5 +9,4 @@
 	portable = FALSE
 	bitesize = 3
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
-	tastes = list("warm pumpkin" = 1)
 	rotprocess = SHELFLIFE_LONG
