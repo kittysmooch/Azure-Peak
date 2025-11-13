@@ -197,7 +197,7 @@
 				qdel(I)
 				return
 		else if(process_step == 3 && istype(I, /obj/item/reagent_containers/food/snacks/egg))
-			playsound(get_turf(user), 'modular\Neu_Food\sound\eggbreak.ogg', 30, TRUE, -1)
+			playsound(get_turf(user), 'modular/Neu_Food/sound/eggbreak.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				to_chat(user, span_notice("Mixing the filling and egg in the pumpkin pie. It just needs sugar!"))
