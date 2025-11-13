@@ -95,11 +95,12 @@
 		add_overlay(pumpkin3)
 	else if (process_step == 5)
 		cut_overlays()
-		add_overlay(piebottom)
 		if(pumpkinpie)
 			cut_overlay()
 			pumpkinpie = FALSE
 			add_overlay(roofkin)
+		else
+			add_overlay(piebottom)
 		if (fishy)
 			cut_overlays()
 			fishy = FALSE
