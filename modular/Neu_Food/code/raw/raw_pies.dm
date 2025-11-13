@@ -169,13 +169,13 @@
 			return
 
 	// -------------- PUMPKIN PIE --------------
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed))
 		if (process_step > 2)
 			return
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 		if(process_step == 1 && do_after(user,short_cooktime, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			to_chat(user, span_notice("Starting on a pumpkin pie... Some cheese would do."))
+			to_chat(user, span_notice("Starting on a pumpkin pie... Some fresh cheese next."))
 			name = "unfinished pumpkin pie"
 			desc = initial(desc) + "\n" + span_smallnotice("It requires some fresh cheese.")
 			process_step += 1
@@ -190,7 +190,7 @@
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 30, TRUE, -1)
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-				to_chat(user, span_notice("Mixing the pumpkin and cheese in the pumpkin pie. It needs an egg."))
+				to_chat(user, span_notice("Mixing the pumpkin and cheese in the pie. It needs an egg."))
 				desc = initial(desc) + "\n" + span_smallnotice("It requires an egg.")
 				process_step += 1
 				update_icon()
