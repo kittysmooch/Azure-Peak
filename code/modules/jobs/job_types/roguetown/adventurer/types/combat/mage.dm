@@ -58,6 +58,7 @@
 					/obj/item/folding_alchcauldron_stored = 1,
 					/obj/item/reagent_containers/glass/bottle = 3,
 					/obj/item/reagent_containers/glass/bottle/alchemical = 3,
+					/obj/item/recipe_book/alchemy = 1,
 					)
 	backpack_contents |= list(
 		/obj/item/flashlight/flare/torch = 1,
