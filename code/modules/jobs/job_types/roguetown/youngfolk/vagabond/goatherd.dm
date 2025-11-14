@@ -2,7 +2,7 @@
 	name = "Lone Goatherd"
 	tutorial = "Having lost your idyllic pastoral existence, only a solitary member of your herd now remains as a reminder of what was. Is your sole charge a friend, or is it food? You decide."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = ACCEPTED_RACES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/vagabond/goatherd
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)
 	category_tags = list(CTAG_VAGABOND)
@@ -35,9 +35,10 @@
 	if(prob(33))
 		cloak = /obj/item/clothing/cloak/half/brown
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	
+
 	if(prob(10))
 		r_hand = /obj/item/rogue/instrument/flute
+	SStreasury.give_money_account(ECONOMIC_DESTITUTE, H, "Savings.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/tame/Initialize()
 	..()

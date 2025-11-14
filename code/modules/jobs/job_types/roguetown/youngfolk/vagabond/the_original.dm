@@ -2,7 +2,7 @@
 	name = "The Vagabond"
 	tutorial = "Fate's twists and turns lead many towards a wanderer's life. Find your fortunes in the shadows or in the pockets of another."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = ACCEPTED_RACES
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/vagabond/original
 	category_tags = list(CTAG_VAGABOND)
 	subclass_stats = list(
@@ -31,10 +31,11 @@
 	if(prob(33))
 		cloak = /obj/item/clothing/cloak/half/brown
 		gloves = /obj/item/clothing/gloves/roguetown/fingerless
-	
+
 	if(prob(10))
 		r_hand = /obj/item/rogue/instrument/flute
 
 	if (H.mind)
 		H.STALUC = rand(5, 15)
 		H.change_stat(STATKEY_INT, round(rand(-4,4)))
+	SStreasury.give_money_account(ECONOMIC_DESTITUTE, H, "Savings.")

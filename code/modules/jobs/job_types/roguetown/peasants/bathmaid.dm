@@ -85,6 +85,7 @@
 		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
+	SStreasury.give_money_account(ECONOMIC_LOWER_CLASS, H, "Savings.")
 
 /datum/advclass/nightmaiden/concubine
 	name = "Concubine"
@@ -137,9 +138,9 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 	if(H.mind)
-		var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman","Flute")
-		var/weapon_choice = input(H, "Choose your instrument.", "TAKE UP ARMS") as anything in weapons
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/massage)
+		var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman","Flute", "Psyaltery")
+		var/weapon_choice = input(H, "Choose your instrument.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Harp")
@@ -158,6 +159,9 @@
 				backr = /obj/item/rogue/instrument/vocals
 			if("Flute")
 				backr = /obj/item/rogue/instrument/flute
+			if("Psyaltery")
+				backr = /obj/item/rogue/instrument/psyaltery
+	SStreasury.give_money_account(ECONOMIC_LOWER_MIDDLE_CLASS, H, "Savings.")
 
 /datum/advclass/nightmaiden/courtesan
 	name = "Courtesan"
@@ -246,6 +250,7 @@
 				backr = /obj/item/rogue/instrument/vocals
 			if("Flute")
 				backr = /obj/item/rogue/instrument/flute
+	SStreasury.give_money_account(ECONOMIC_UPPER_CLASS, H, "Savings.")
 
 /obj/item/soap/bath
 	name = "herbal soap"

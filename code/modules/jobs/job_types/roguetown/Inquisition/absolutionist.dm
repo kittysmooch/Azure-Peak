@@ -78,6 +78,7 @@
 
 /datum/outfit/job/roguetown/absolver/basic/pre_equip(mob/living/carbon/human/H)
 	..()
+	job_bitflag = BITFLAG_HOLY_WARRIOR
 	H.adjust_blindness(-3)
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves
@@ -88,7 +89,7 @@
 	backr = /obj/item/storage/backpack/rogue/satchel/otavan
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/psydon
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer/psydon
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq
 	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
 	mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns
@@ -101,7 +102,7 @@
 		/obj/item/paper/inqslip/arrival/abso = 1,
 		/obj/item/needle = 1,
 		/obj/item/natural/worms/leech/cheele = 1,
-		/obj/item/roguekey/inquisition = 1,
+		/obj/item/storage/keyring/puritan = 1,
 		)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_ABSOLVER, start_maxed = TRUE) // PSYDONIAN MIRACLE-WORKER. LUX-MERGING FREEK.

@@ -5,10 +5,16 @@
 	density = TRUE
 	blocks_air = TRUE
 	baseturfs = list(/turf/open/floor/rogue/naturalstone, /turf/open/transparent/openspace)
+	plane = WALL_PLANE
 	var/above_floor
 	var/wallpress = TRUE
 	var/wallclimb = FALSE
 	var/climbdiff = 0
+
+/turf/closed/basic/New()//Do not convert to Initialize
+	SHOULD_CALL_PARENT(FALSE)
+	//This is used to optimize the map loader
+	return
 
 /turf/closed/MouseDrop_T(atom/movable/O, mob/user)
 	. = ..()
@@ -23,14 +29,6 @@
 		if(L.mobility_flags & MOBILITY_MOVE)
 			wallpress(L)
 			return
-			
-/turf/closed/proc/feel_turf(mob/living/user)
-	to_chat(user, span_notice("I start feeling around [src]"))
-	if(!do_after(user, 1.5 SECONDS, src))
-		return
-
-	for(var/obj/structure/lever/hidden/lever in contents)
-		lever.feel_button(user)
 
 /turf/closed/proc/wallpress(mob/living/user)
 	if(user.wallpressed)
@@ -213,6 +211,7 @@
 					playsound(user, 'sound/foley/climb.ogg', 100, TRUE)
 				if(L.mind)
 					L.mind.add_sleep_experience(/datum/skill/misc/climbing, (L.STAINT/2), FALSE)
+				return TRUE
 	else
 		..()
 
@@ -257,6 +256,14 @@
 	if(istype(mover) && (mover.pass_flags & PASSCLOSEDTURF))
 		return TRUE
 	return ..()
+
+/turf/closed/proc/feel_turf(mob/living/user)
+	to_chat(user, span_notice("I start feeling around [src]"))
+	if(!do_after(user, 1.5 SECONDS, src))
+		return
+
+	for(var/obj/structure/lever/hidden/lever in contents)
+		lever.feel_button(user)
 
 /turf/closed/indestructible
 	name = "wall"

@@ -78,6 +78,12 @@
 	icon_state = "wool2"
 	color = "#cecac4"
 
+/obj/item/natural/fur/raccoon	
+	desc = "from a raccoon."
+	icon_state = "pelt_raccoon"
+	color = null
+	sellprice = 12
+
 //RTD make this a storage item and make clickign on animals with things put it in storage
 /obj/item/natural/saddle
 	name = "saddle"
@@ -97,10 +103,10 @@
 
 /obj/item/natural/saddle/attack(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, /mob/living/simple_animal))
-		testing("yea1")
+
 		var/mob/living/simple_animal/S = target
 		if(S.can_saddle && !S.ssaddle)
-			testing("yea2")
+
 			if(!target.has_buckled_mobs())
 				user.visible_message(span_warning("[user] tries to saddle [target]..."))
 				if(do_after(user, 40, target = target))
