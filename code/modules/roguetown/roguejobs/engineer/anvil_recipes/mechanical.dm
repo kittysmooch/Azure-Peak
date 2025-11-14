@@ -122,7 +122,7 @@
 	craftdiff = 3
 
 /datum/anvil_recipe/engineering/folding_alchstation_stored
-	name = "Folding Table (+2 Small Log, +Bottle, +Cog)"
+	name = "Alchemical Station Kit (+2 Small Log, +Bottle, +Cog)"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/reagent_containers/glass/bottle, /obj/item/roguegear)
 	created_item = /obj/item/folding_alchstation_stored
