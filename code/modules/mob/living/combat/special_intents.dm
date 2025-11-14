@@ -143,32 +143,11 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /datum/special_intent/proc/apply_cooldown()
 	howner.apply_status_effect(/datum/status_effect/debuff/specialcd, cooldown)
 
-/datum/special_intent/example
-	name = "test L shape"
-	desc = "it do be testing"
-	tile_coordinates = list(list(0,0), list(0,1), list(1,1))	//L shape.
-
-/datum/special_intent/example/apply_hit()
-	var/force = iparent.wielded ? iparent.force_wielded : iparent.force
-	var/zone_default = BODY_ZONE_CHEST
-	var/obj/item/I = iparent
-	var/mob/living/carbon/human/H = howner
-	for(var/turf/T in affected_turfs)
-		for(var/mob/living/carbon/human/HT in T.contents)
-			var/obj/item/bodypart/affecting = HT.get_bodypart(zone_default)
-
-			var/armor_block = HT.run_armor_check(zone_default, H.used_intent.item_d_type, -100, damage = force, used_weapon = I)
-			
-			if(HT.apply_damage(force, I.damtype, affecting, armor_block))
-				affecting.bodypart_attacked_by(H.used_intent.blade_class, force, H, armor = (armor_block ? armor_block : -1), crit_message = TRUE, weapon = I)
-	..()
-
 /datum/special_intent/side_sweep
 	name = "Side Sweep"
 	desc = "Swings at your primary flank in a distracting fashion. Anyone caught in it will be exposed for a short while."
 	tile_coordinates = list(list(0,0), list(1,0), list(1,-1))	//L shape that hugs our flank.
 	post_icon_state = "emote"
-	pre_icon_state = "blip"
 	sfx_post_delay = 'sound/combat/sidesweep_hit.ogg'
 	delay = 1 SECONDS
 	cooldown = 20 SECONDS
