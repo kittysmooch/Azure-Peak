@@ -1998,3 +1998,13 @@
 /obj/item/clothing/cloak/captain/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/clothing/cloak/apron/waist/maid
+	name = "maid apron"
+	desc = "A fancy, somewhat short apron usually worn by servants."
+	body_parts_covered = null
+	icon_state = "maidapron"
+	item_state = "maidapron"
+	icon = 'icons/roguetown/clothing/special/maids.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/maids.dmi'
+	sleeved = 'icons/roguetown/clothing/special/onmob/maids.dmi'

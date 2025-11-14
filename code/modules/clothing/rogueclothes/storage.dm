@@ -97,6 +97,15 @@
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/armorsmithing
 
+/obj/item/storage/belt/rogue/leather/sash/maid
+	name = "cloth sash"
+	desc = "A pliable sash made of wool meant to wrap tightly around the waist."
+	item_state = "maidsash"
+	icon_state = "maidsash"
+	icon = 'icons/roguetown/clothing/special/maids.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/maids.dmi
+	sleeved = 'icons/roguetown/clothing/special/onmob/maids.dmi'
+
 /obj/item/storage/belt/rogue/leather/rope
 	name = "rope belt"
 	desc = "A length of strong rope repurposed into a belt. Better than nothing."
