@@ -28,7 +28,7 @@
 
 /datum/crafting_recipe/roguetown/arcana/obsidian
 	name = "Obsidian Shard"
-	result = /obj/item/magic.obsidian
+	result = /obj/item/magic/obsidian
 	reqs = list(/obj/item/natural/stone = 2, 
 				/obj/item/alch/coaldust = 1)
 	craftdiff = 2
