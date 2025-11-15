@@ -110,6 +110,12 @@
 	W.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)
 	W.update_a_intents()
 
+	
+	// temporal traits so our body won't die or snore
+	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WILDSHAPE)
+
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
 
@@ -125,7 +131,6 @@
 	W.AddSpell(new /obj/effect/proc_holder/spell/self/claws)
 	W.AddSpell(new /obj/effect/proc_holder/spell/targeted/woundlick)
 	W.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse/werewolf)
-
 	invisibility = oldinv
 
 /mob/living/carbon/human/proc/werewolf_untransform(dead,gibbed)
@@ -141,14 +146,14 @@
 
 	var/mob/living/carbon/human/W = stored_mob
 	stored_mob = null
-	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_GENERIC)
+	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
 	if(dead)
 		W.death(gibbed)
 
 	W.forceMove(get_turf(src))
 
-	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_GENERIC)
-	REMOVE_TRAIT(W, TRAIT_SILVER_WEAK, TRAIT_GENERIC)
+	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WILDSHAPE)
 
 	mind.transfer_to(W)
 
