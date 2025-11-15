@@ -91,7 +91,7 @@
 	return ..()
 
 /obj/item/repair_kit/bad
-	name = "cloth plate"
+	name = "Fabric patch"
 	icon_state = "custarsewingkit"
 	desc = "A meager set of pieces of cloth, a bundle of threads and a loose rope. It can be used for field repairs."
 	max_integrity = 300
