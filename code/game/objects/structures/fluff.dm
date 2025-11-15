@@ -983,7 +983,10 @@
 		return ..()
 	if(attacking_weapon.max_blade_int)
 		attacking_weapon.remove_bintegrity(5)
-	practice(user, attacking_weapon.associated_skill, user.used_intent.animname)
+	if(istype(attacking_weapon.associated_skill, /datum/skill/combat))
+		practice(user, attacking_weapon.associated_skill, user.used_intent.animname)
+	else
+		to_chat(user, span_warning("I don't think this weapon's skill cannot be practiced on a dummy..."))
 
 /obj/structure/fluff/statue/tdummy/proc/practice(var/mob/living/living_mob, var/associated_skill, var/attack_animation)
 	living_mob.changeNext_move(CLICK_CD_MELEE)
