@@ -404,5 +404,6 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/recipe_book/survival = 1)
 
+
 /obj/item/clothing/mask/rogue/ragmask/black
 	color = CLOTHING_BLACK
