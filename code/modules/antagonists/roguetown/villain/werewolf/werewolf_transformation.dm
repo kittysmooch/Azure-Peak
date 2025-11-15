@@ -1,3 +1,5 @@
+#define TRAIT_SOURCE_WEREWOLF "werewolf_transform"
+
 /datum/antagonist/werewolf/on_life(mob/user)
 	if(!user) return
 	var/mob/living/carbon/human/H = user
@@ -112,9 +114,9 @@
 
 	
 	// temporal traits so our body won't die or snore
-	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
-	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
-	ADD_TRAIT(src, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WILDSHAPE)
+	ADD_TRAIT(src, TRAIT_NOSLEEP, TRAIT_SOURCE_WEREWOLF)
+	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_SOURCE_WEREWOLF)
+	ADD_TRAIT(src, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WEREWOLF)
 
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")
@@ -146,14 +148,14 @@
 
 	var/mob/living/carbon/human/W = stored_mob
 	stored_mob = null
-	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOSLEEP, TRAIT_SOURCE_WEREWOLF)
 	if(dead)
 		W.death(gibbed)
 
 	W.forceMove(get_turf(src))
 
-	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_SOURCE_WILDSHAPE)
-	REMOVE_TRAIT(W, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WILDSHAPE)
+	REMOVE_TRAIT(W, TRAIT_NOMOOD, TRAIT_SOURCE_WEREWOLF)
+	REMOVE_TRAIT(W, TRAIT_SILVER_WEAK, TRAIT_SOURCE_WEREWOLF)
 
 	mind.transfer_to(W)
 
