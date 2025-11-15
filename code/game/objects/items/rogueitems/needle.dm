@@ -129,12 +129,6 @@
 			var/sewtime = max(SEW_MIN_TIME, BASE_SEW_TIME - (SEW_TIME_REDUCTION_PER_LEVEL * skill))
 			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR))
 				failed = FALSE // Make sure they can't fail but let them suffer sewtime
-			if(I.obj_broken == 1)
-				if(sew_skill >= 4) //expert
-					user.visible_message(span_info("[user] easily restores [I] from an irreversibly damaged state!"))
-				else
-					to_chat(user, span_info("[user] tries to repair the damage to [I], but stops without proper experience."))
-					return
 			if(!do_after(user, sewtime, target = I))
 				return
 			if(failed)

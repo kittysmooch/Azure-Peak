@@ -80,13 +80,6 @@
 			to_chat(user, span_warning("I should put this on a table or an anvil first."))
 			return
 
-		if(attacked_item.obj_broken == 1)
-			if(blacksmith.get_skill_level(/datum/skill/craft/blacksmithing) >= 4) //expert
-				user.visible_message(span_info("[user] easily restores [attacked_item] from an irreversibly damaged state!"))
-			else
-				to_chat(user, span_info("[user] tries to repair the damage to [attacked_item], but stops without proper experience."))
-				return
-
 		if(blacksmith.get_skill_level(attacked_item.anvilrepair) <= 0)
 			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR))
 				if(locate(/obj/machinery/anvil) in attacked_object.loc)
