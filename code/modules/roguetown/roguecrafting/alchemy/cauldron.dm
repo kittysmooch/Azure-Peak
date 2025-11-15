@@ -203,9 +203,6 @@
 	. += span_blue("Right-Click to fold the cauldron. Empty it first.")
 
 /obj/machinery/light/rogue/cauldron/folding/attack_right(mob/user)
-	if(src.reagents)
-		to_chat(user, "<span class='warning'>Something's inside!</span>")
-		return
 	if(do_after(user, 5 SECONDS, target = src))
 		user.visible_message(span_notice("[user] folds [src]."), span_notice("You fold [src]."))
 		new /obj/item/folding_alchcauldron_stored(drop_location())
