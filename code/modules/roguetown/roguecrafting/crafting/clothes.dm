@@ -228,15 +228,3 @@
 		/obj/item/natural/fibers = 3,
 		)
 	craftdiff = 0
-
-/datum/crafting_recipe/roguetown/survival/wooden_horseshoe
-	name = "wooden horseshoes"
-	category = "Clothes"
-	result = /obj/item/clothing/shoes/roguetown/horseshoes
-	reqs = list(
-		/obj/item/grown/log/tree/small = 1
-		)
-	craftdiff = 1
-	tools = list(/obj/item/rogueweapon/huntingknife = 1)
-	verbage_simple = "carve"
-	verbage = "carved"

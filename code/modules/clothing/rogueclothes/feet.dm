@@ -488,14 +488,16 @@
 
 // horseshoes!
 /obj/item/clothing/shoes/roguetown/horseshoes
-	name = "wooden horseshoes"
-	desc = "A pair of horseshoes ready to be attached to some hooves."
+	name = "iron horseshoes"
+	desc = "A pair of sturdy iron horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x32/saiga.dmi'
-	icon_state = "horseshoes"
-	item_state = "horseshoes"
+	icon_state = "iron_horseshoes"
+	item_state = "iron_horseshoes"
 	clothing_flags = TAUR_COMPATIBLE
-	sewrepair = TRUE
-	armor = ARMOR_CLOTHING
+	max_integrity = ARMOR_INT_LEG_IRON_PLATE
+	sewrepair = FALSE
+	armor = ARMOR_PLATE
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/horseshoes/build_worn_icon(default_layer, default_icon_file, isinhands, femaleuniform, override_state, female, customi, sleeveindex, boobed_overlay, icon/clip_mask)
 	var/mutable_appearance/image = ..()
@@ -512,22 +514,32 @@
 		return FALSE
 	return ..()
 
-/obj/item/clothing/shoes/roguetown/horseshoes/copper
-	name = "copper horseshoes"
-	desc = "A pair of sturdy copper horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
-	icon_state = "copper_horseshoes"
-	item_state = "copper_horseshoes"
+/obj/item/clothing/shoes/roguetown/horseshoes/steel
+	name = "steel horseshoes"
+	desc = "A pair of robust steel horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
+	icon_state = "steel_horseshoes"
+	item_state = "steel_horseshoes"
+	max_integrity = ARMOR_INT_LEG_STEEL_CHAIN
+	sewrepair = FALSE
+	armor = ARMOR_PLATE
+	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/shoes/roguetown/horseshoes/silver
+	name = "silver horseshoes"
+	desc = "A pair of shining silver horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
+	icon_state = "silver_horseshoes"
+	item_state = "silver_horseshoes"
 	max_integrity = ARMOR_INT_LEG_HARDLEATHER
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
-	smeltresult = /obj/item/ingot/copper
+	smeltresult = /obj/item/ingot/silver
 
-/obj/item/clothing/shoes/roguetown/horseshoes/iron
-	name = "iron horseshoes"
-	desc = "A pair of sturdy iron horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
-	icon_state = "iron_horseshoes"
-	item_state = "iron_horseshoes"
-	max_integrity = ARMOR_INT_LEG_IRON_PLATE
+/obj/item/clothing/shoes/roguetown/horseshoes/gold
+	name = "gold horseshoes"
+	desc = "A pair of opulent golden horseshoes nailed onto thick leather soles. These are ready to be attached to some hooves."
+	icon_state = "gold_horseshoes"
+	item_state = "gold_horseshoes"
+	max_integrity = ARMOR_INT_LEG_LEATHER
 	sewrepair = FALSE
-	armor = ARMOR_PLATE
-	smeltresult = /obj/item/ingot/iron
+	armor = ARMOR_PLATE_BAD // these are awful!
+	smeltresult = /obj/item/ingot/gold

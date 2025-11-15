@@ -68,6 +68,7 @@
 	pants = /obj/item/clothing/under/roguetown/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	belt = /obj/item/storage/belt/rogue/leather
 	l_hand = /obj/item/rogueweapon/sword/sabre
 	beltl = /obj/item/rogueweapon/scabbard/sword
@@ -112,6 +113,7 @@
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/steel/special
 	backr = /obj/item/storage/backpack/rogue/satchel
 	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	mask = /obj/item/clothing/mask/rogue/spectacles
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
@@ -162,6 +164,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
 
 /datum/advclass/heir/inbred
@@ -204,6 +207,7 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
 
 /datum/advclass/heir/scamp
