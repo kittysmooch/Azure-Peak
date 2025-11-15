@@ -123,7 +123,7 @@
 							user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
 							to_chat(usr, span_notice("My student Learns the language [item.name]!"))
 							L.grant_language(item)
-							ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
+							ADD_TRAIT(L, TRAIT_STUDENT, TRAIT_GENERIC)
 						else
 							to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 							to_chat(L, span_warning("I must be more focused on my studies!"))
@@ -136,7 +136,7 @@
 								user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
 								to_chat(usr, span_notice("My student grows a lot more proficient in [item.name]!"))
 								L.adjust_skillrank(item, 2, FALSE)
-								ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
+								ADD_TRAIT(L, TRAIT_STUDENT, TRAIT_GENERIC)
 							else
 								to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 								to_chat(L, span_warning("I must be more focused on my studies!"))
@@ -146,7 +146,7 @@
 								user.visible_message("<font color='yellow'>[user] teaches [L] a lesson.</font>")
 								to_chat(usr, span_notice("My student grows more proficient in [item.name]!"))
 								L.adjust_skillrank(item, 1, FALSE)
-								ADD_TRAIT(L, TRAIT_STUDENT, "[type]")
+								ADD_TRAIT(L, TRAIT_STUDENT, TRAIT_GENERIC)
 							else
 								to_chat(usr, span_warning("[L] got distracted and wandered off!"))
 								to_chat(L, span_warning("I must be more focused on my studies!"))

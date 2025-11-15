@@ -74,7 +74,7 @@
 								else //if the teacher has 2 or 1 levels over the user, only add 1 level
 									user.adjust_skillrank(real_skill, 1, FALSE)
 									user.visible_message(span_notice("[teacher] teaches [user] about [skill_choice]."), span_notice("I grow more proficient in [skill_choice]!"))
-								ADD_TRAIT(user, TRAIT_STUDENT, "[type]")
+								ADD_TRAIT(user, TRAIT_STUDENT, TRAIT_GENERIC)
 
 			else
 				to_chat(user, span_warning("[teacher] has decided to keep [teacher.p_their()] knowledge private."))
