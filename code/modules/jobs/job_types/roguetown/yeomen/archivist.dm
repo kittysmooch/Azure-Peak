@@ -11,7 +11,7 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_ages = ALL_AGES_LIST
 	cmode_music = 'sound/music/cmode/towner/combat_towner3.ogg'
-	
+
 	outfit = /datum/outfit/job/roguetown/archivist
 	display_order = JDO_ARCHIVIST
 	give_bank_account = TRUE
@@ -103,4 +103,5 @@
 	if(H.age == AGE_OLD)
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_INT, 1)
-	SStreasury.give_money_account(ECONOMIC_UPPER_CLASS, H, "Savings.")
+	if(H.mind)
+		SStreasury.give_money_account(ECONOMIC_UPPER_CLASS, H, "Savings.")
