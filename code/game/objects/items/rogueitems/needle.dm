@@ -123,7 +123,6 @@
 			// This is the actual code that applies those constants.
 			// If you want to adjust the balance please try just tweaking the above constants first!
 			var/skill = user.get_skill_level(/datum/skill/craft/sewing) + user.get_skill_level(/datum/skill/craft/tanning)
-			var/sew_skill = user.get_skill_level(/datum/skill/craft/sewing)
 			// The more knowlegeable we are the less chance we damage the object
 			var/failed = prob(BASE_FAIL_CHANCE - (skill * FAIL_REDUCTION_PER_LEVEL))
 			var/sewtime = max(SEW_MIN_TIME, BASE_SEW_TIME - (SEW_TIME_REDUCTION_PER_LEVEL * skill))
