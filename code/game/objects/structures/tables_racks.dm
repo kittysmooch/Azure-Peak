@@ -14,7 +14,7 @@
 
 /obj/structure/table
 	name = "table"
-	desc = desc = "A constructed table for putting things on."
+	desc = "A constructed table for putting things on."
 	icon_state = "table"
 	density = TRUE
 	anchored = TRUE
