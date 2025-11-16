@@ -85,6 +85,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	if(length(affected_turfs))
 		LAZYCLEARLIST(affected_turfs)
 
+///We go through our list of coordinates and check for custom timings. If we find any, we make a list to be managed later in _create_grid().
 /datum/special_intent/proc/_assign_grid_indexes()
 	affected_turfs[delay] = list()
 	for(var/list/l in tile_coordinates)
@@ -93,7 +94,6 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 				affected_turfs[l[3]] = list()
 			else
 				continue
-
 
 ///Gathers up the grid from tile_coordinates and puts the turfs into affected_turfs. Does not draw anything, yet.
 /datum/special_intent/proc/_create_grid()
@@ -124,12 +124,11 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 			if(dtimer)
 				timerlist = affected_turfs[dtimer]
 				timerlist.Add(step)
-			else
+			else	//No custom timer, we just add it to the default datum's delay one.
 				timerlist = affected_turfs[delay]
 				timerlist.Add(step)
 
-
-///Draws the grid. Under some circumstances this can result in nothing being drawn.
+///More like manages gridS. Calls process on every made grid with the appropriate timer.
 /datum/special_intent/proc/_manage_grid()
 	if(!length(affected_turfs))	//Nothing to draw, but technically possible without being an error.
 		return
@@ -139,6 +138,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		else
 			addtimer(CALLBACK(src, PROC_REF(_process_grid), affected_turfs[newdelay]), newdelay)
 
+///Called to process the grid of turfs. The main proc that draws, delays and applies the post-delay effects.
 /datum/special_intent/proc/_process_grid(list/turfs)
 	_draw(turfs)
 	pre_delay(turfs)
