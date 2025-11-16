@@ -17,7 +17,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	var/list/tile_coordinates
 
 	/// The list of turfs the grid will be drawn on and 
-	var/list/affected_turfs
+	var/list/affected_turfs = alist()
 
 	/// Whether to have the howner pass through a doafter for the delay rather than it being on every turf.
 	/// Default code here does not allow for dir switching during the do after.
@@ -35,6 +35,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	var/turf/click_loc 
 
 	var/cooldown = 30 SECONDS
+	var/cancelled = FALSE
 
 	///The delay for either the doafter or the timers on the turfs before calling post_delay() and apply_hit()
 	var/delay = 1 SECONDS
@@ -61,6 +62,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		CRASH("Special intent called without a valid item.")
 	howner = user
 	iparent = weapon
+	cancelled = FALSE
 	if(use_clickloc)
 		if(isturf(target))
 			click_loc = target
@@ -74,15 +76,24 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /datum/special_intent/proc/process_attack()
 	SHOULD_CALL_PARENT(TRUE)
 	_clear_grid()
+	_assign_grid_indexes()
 	_create_grid()
 	on_create()
-	_draw_grid()
-	pre_delay()
-	_delay()
+	_manage_grid()
 
 /datum/special_intent/proc/_clear_grid()
 	if(length(affected_turfs))
 		LAZYCLEARLIST(affected_turfs)
+
+/datum/special_intent/proc/_assign_grid_indexes()
+	affected_turfs[delay] = list()
+	for(var/list/l in tile_coordinates)
+		if(LAZYACCESS(l, 3))
+			if(!affected_turfs[l[3]])
+				affected_turfs[l[3]] = list()
+			else
+				continue
+
 
 ///Gathers up the grid from tile_coordinates and puts the turfs into affected_turfs. Does not draw anything, yet.
 /datum/special_intent/proc/_create_grid()
@@ -90,6 +101,9 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	for(var/list/l in tile_coordinates)
 		var/dx = l[1]
 		var/dy = l[2]
+		var/dtimer
+		if(LAZYACCESS(l, 3))
+			dtimer = l[3]
 		if(respect_dir)
 			switch(howner.dir)
 				//if(NORTH) Do nothing because the coords are meant to be written from north-facing perspective. All is well.
@@ -106,50 +120,71 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 					dy = -holder
 		var/turf/step = locate((origin.x + dx), (origin.y + dy), origin.z)
 		if(step && isturf(step) && !step.density)
-			LAZYADD(affected_turfs, step)
+			var/list/timerlist
+			if(dtimer)
+				timerlist = affected_turfs[dtimer]
+				timerlist.Add(step)
+			else
+				timerlist = affected_turfs[delay]
+				timerlist.Add(step)
+
 
 ///Draws the grid. Under some circumstances this can result in nothing being drawn.
-/datum/special_intent/proc/_draw_grid()
+/datum/special_intent/proc/_manage_grid()
 	if(!length(affected_turfs))	//Nothing to draw, but technically possible without being an error.
 		return
-	for(var/turf/T in affected_turfs)
+	for(var/newdelay in affected_turfs)
+		if(newdelay == delay)
+			_process_grid(affected_turfs[delay])
+		else
+			addtimer(CALLBACK(src, PROC_REF(_process_grid), affected_turfs[newdelay]), newdelay)
+
+/datum/special_intent/proc/_process_grid(list/turfs)
+	_draw(turfs)
+	pre_delay(turfs)
+	_delay(turfs)
+
+/datum/special_intent/proc/_draw(list/turfs)
+	for(var/turf/T in turfs)
 		var/obj/effect/temp_visual/fx = new (T, delay)
 		fx.icon = _icon
 		fx.icon_state = pre_icon_state
-
+	
 ///Called after the affected_turfs list is populated, but before the grid is drawn.
 /datum/special_intent/proc/on_create()
 
 ///Called after the grid has been drawn on every affected_turfs entry. The delay has not been initiated yet.
-/datum/special_intent/proc/pre_delay()
+/datum/special_intent/proc/pre_delay(list/turfs)
 	SHOULD_CALL_PARENT(TRUE)
 	if(sfx_pre_delay)
 		playsound(howner, sfx_pre_delay, 100, TRUE)
 
 ///Delay proc. Preferably it won't be hooked into.
-/datum/special_intent/proc/_delay()
-	if(use_doafter)
-		if(_try_doafter())
-			post_delay()
-	else
-		addtimer(CALLBACK(src, PROC_REF(post_delay)), delay)
+/datum/special_intent/proc/_delay(list/turfs)
+	if(!cancelled)
+		if(use_doafter)
+			if(_try_doafter())
+				post_delay(turfs)
+		else
+			addtimer(CALLBACK(src, PROC_REF(post_delay), turfs), delay)
 
 /datum/special_intent/proc/_try_doafter()
 	if(do_after(howner, delay, same_direction = TRUE))
 		return TRUE
 	else
 		to_chat(howner, span_warning("I was interrupted!"))
+		cancelled = TRUE
 		apply_cooldown()
 		return FALSE
 
 /// This is called immediately after the delay of the intent.
 /// It performs any needed adjacency checks and will try to draw the "post" visuals on any valid turfs.
 /// It calls apply_hit() after where most of the logic for any on-hit effects should go.
-/datum/special_intent/proc/post_delay()
+/datum/special_intent/proc/post_delay(list/turfs)
 	SHOULD_CALL_PARENT(TRUE)
 	if(respect_adjacency)
 		var/is_adjacent = FALSE
-		for(var/turf/T in affected_turfs)
+		for(var/turf/T in turfs)
 			if(howner.Adjacent(T))
 				is_adjacent = TRUE
 				break
@@ -158,19 +193,18 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 			apply_cooldown()
 			return
 	if(post_icon_state)
-		for(var/turf/T in affected_turfs)
+		for(var/turf/T in turfs)
 			var/obj/effect/temp_visual/fx = new /obj/effect/temp_visual(T, fade_delay)
 			fx.icon = _icon
 			fx.icon_state = post_icon_state
+			apply_hit(T)
 	if(sfx_post_delay)
 		playsound(howner, sfx_post_delay, 100, TRUE)
-
-	apply_hit()
-	
-/// Main proc where stuff should happen. This is called immediately after the post_delay of the intent.
-/datum/special_intent/proc/apply_hit()
-	SHOULD_CALL_PARENT(TRUE)
 	apply_cooldown()
+
+/// Main proc where stuff should happen. This is called immediately after the post_delay of the intent.
+/datum/special_intent/proc/apply_hit(turf/T)
+	SHOULD_CALL_PARENT(TRUE)
 
 /// This is called by post_delay() and _try_doafter() if the doafter fails.
 /// If you dynamically tweak the cooldown remember that it will /stay/ that way on this datum without
@@ -219,10 +253,15 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 			L.Slowdown(eff_dur)
 	..()
 
-/*/datum/special_intent/mage_cast
+#define WAVE_2_DELAY 0.75 SECONDS
+#define WAVE_3_DELAY 2 SECONDS
+//Test for some goofy ahh pattern
+/datum/special_intent/mage_cast
 	name = "Mage Cast"
 	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
-	tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0))
+	tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0),
+						list(-1,0,WAVE_2_DELAY), list(-2,0,WAVE_2_DELAY), list(0,0,WAVE_2_DELAY), list(1,0,WAVE_2_DELAY), list(2,0,WAVE_2_DELAY),
+						list(0,0,WAVE_3_DELAY),list(0,-1,WAVE_3_DELAY),list(0,-2,WAVE_3_DELAY),list(0,1,WAVE_3_DELAY),list(0,2,WAVE_3_DELAY))
 	use_clickloc = TRUE
 	respect_adjacency = FALSE
 	respect_dir = FALSE
@@ -230,4 +269,18 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	post_icon_state = "at_shield2"
 	sfx_post_delay = 'sound/magic/repulse.ogg'
 	delay = 1 SECONDS
-	cooldown = 2 SECONDS */
+	cooldown = 2 SECONDS 
+
+//Test for a line
+/datum/special_intent/mage_cast_line
+	name = "Mage Cast"
+	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
+	tile_coordinates = list(list(0,0), list(1,0, 1.1 SECONDS), list(2,0, 1.2 SECONDS), list(3,0,1.3 SECONDS), list(4,0,1.4 SECONDS), list(5,0,1.5 SECONDS))
+	use_clickloc = TRUE
+	respect_adjacency = FALSE
+	respect_dir = FALSE
+	pre_icon_state = "chronofield"
+	post_icon_state = "at_shield2"
+	sfx_post_delay = 'sound/magic/repulse.ogg'
+	delay = 1 SECONDS
+	cooldown = 2 SECONDS 
