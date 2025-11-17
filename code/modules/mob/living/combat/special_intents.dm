@@ -218,9 +218,9 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	tile_coordinates = list(list(0,0), list(1,0), list(1,-1))	//L shape that hugs our flank.
 	post_icon_state = "emote"
 	sfx_post_delay = 'sound/combat/sidesweep_hit.ogg'
-	delay = 1 SECONDS
+	delay = 0.8 SECONDS
 	cooldown = 20 SECONDS
-	var/eff_dur = 2 SECONDS
+	var/eff_dur = 7 SECONDS
 	
 
 /datum/special_intent/side_sweep/process_attack()
@@ -230,10 +230,9 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		tile_coordinates = initial(tile_coordinates)
 	..()
 
-/datum/special_intent/side_sweep/apply_hit()
-	for(var/mob/living/L in get_hearers_in_view(world.view, howner))
-		if(get_turf(L) in affected_turfs)
-			L.apply_status_effect(/datum/status_effect/debuff/exposed, eff_dur)
+/datum/special_intent/side_sweep/apply_hit(turf/T)
+	for(var/mob/living/L in get_hearers_in_view(0, T))
+		L.apply_status_effect(/datum/status_effect/debuff/exposed, eff_dur)
 	..()
 
 /datum/special_intent/shin_swipe
@@ -243,44 +242,22 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	post_icon_state = "emote"
 	pre_icon_state = "blip"
 	sfx_post_delay = 'sound/combat/shin_swipe.ogg'
-	delay = 1 SECONDS
+	delay = 0.8 SECONDS
 	cooldown = 15 SECONDS
-	var/eff_dur = 4	//We do NOT want to use SECONDS macro here.
+	var/eff_dur = 5	//We do NOT want to use SECONDS macro here.
 
-/datum/special_intent/side_sweep/apply_hit()
-	for(var/mob/living/L in get_hearers_in_view(world.view, howner))
-		if(get_turf(L) in affected_turfs)
-			L.Slowdown(eff_dur)
+/datum/special_intent/side_sweep/apply_hit(turf/T)	//This is applied PER tile, so we don't need to do a big check.
+	for(var/mob/living/L in get_hearers_in_view(0, T))
+		L.Slowdown(eff_dur)	
 	..()
-
+/*
+Example of a fun pattern that overlaps in three waves.
 #define WAVE_2_DELAY 0.75 SECONDS
 #define WAVE_3_DELAY 2 SECONDS
-//Test for some goofy ahh pattern
-/datum/special_intent/mage_cast
-	name = "Mage Cast"
-	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
-	tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0),
-						list(-1,0,WAVE_2_DELAY), list(-2,0,WAVE_2_DELAY), list(0,0,WAVE_2_DELAY), list(1,0,WAVE_2_DELAY), list(2,0,WAVE_2_DELAY),
-						list(0,0,WAVE_3_DELAY),list(0,-1,WAVE_3_DELAY),list(0,-2,WAVE_3_DELAY),list(0,1,WAVE_3_DELAY),list(0,2,WAVE_3_DELAY))
-	use_clickloc = TRUE
-	respect_adjacency = FALSE
-	respect_dir = FALSE
-	pre_icon_state = "chronofield"
-	post_icon_state = "at_shield2"
-	sfx_post_delay = 'sound/magic/repulse.ogg'
-	delay = 1 SECONDS
-	cooldown = 2 SECONDS 
+tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0),
+					list(-1,0,WAVE_2_DELAY), list(-2,0,WAVE_2_DELAY), list(0,0,WAVE_2_DELAY), list(1,0,WAVE_2_DELAY), list(2,0,WAVE_2_DELAY),
+					list(0,0,WAVE_3_DELAY),list(0,-1,WAVE_3_DELAY),list(0,-2,WAVE_3_DELAY),list(0,1,WAVE_3_DELAY),list(0,2,WAVE_3_DELAY))
+*/
 
-//Test for a line
-/datum/special_intent/mage_cast_line
-	name = "Mage Cast"
-	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit."
-	tile_coordinates = list(list(0,0), list(1,0, 1.1 SECONDS), list(2,0, 1.2 SECONDS), list(3,0,1.3 SECONDS), list(4,0,1.4 SECONDS), list(5,0,1.5 SECONDS))
-	use_clickloc = TRUE
-	respect_adjacency = FALSE
-	respect_dir = FALSE
-	pre_icon_state = "chronofield"
-	post_icon_state = "at_shield2"
-	sfx_post_delay = 'sound/magic/repulse.ogg'
-	delay = 1 SECONDS
-	cooldown = 2 SECONDS 
+//Example of a sweeping line from left to right from the clicked turf. The second tile and the line will only appear after 1.1 seconds (the first delay).
+//tile_coordinates = list(list(0,0), list(1,0, 1.1 SECONDS), list(2,0, 1.2 SECONDS), list(3,0,1.3 SECONDS), list(4,0,1.4 SECONDS), list(5,0,1.5 SECONDS))
