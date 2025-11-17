@@ -252,6 +252,7 @@ And it also helps for the character set panel
 	SHOULD_CALL_PARENT(TRUE)
 
 	UnregisterSignal(vampire, COMSIG_HUMAN_LIFE)
+	UnregisterSignal(vampire, COMSIG_MOB_ORGAN_REMOVED)
 
 	var/datum/action/clan_menu/clan_action = locate(/datum/action/clan_menu) in vampire.actions
 	QDEL_NULL(clan_action)
@@ -272,6 +273,25 @@ And it also helps for the character set panel
 		qdel(disguise_comp)
 
 	vampire.verbs -= /mob/living/carbon/human/proc/disguise_verb
+
+	// Reset combat music
+	vampire.cmode_music = initial(vampire.cmode_music)
+
+	// Restore normal eyes
+	var/obj/item/organ/eyes/eyes = vampire.getorganslot(ORGAN_SLOT_EYES)
+	if(istype(eyes, /obj/item/organ/eyes/night_vision/vampire))
+		var/list/eyecache = vampire.cache_eye_color()
+		eyes.Remove(vampire, TRUE)
+		QDEL_NULL(eyes)
+		eyes = new /obj/item/organ/eyes()
+		eyes.Insert(vampire)
+		vampire.set_eye_color(eyecache["eye_color"], eyecache["second_color"], TRUE)
+
+	// Reset mob biotype to non-undead
+	vampire.mob_biotypes = initial(vampire.mob_biotypes)
+
+	// Deactivate all active coven powers before removal
+	disable_covens(vampire)
 
 	clan_members -= vampire
 
