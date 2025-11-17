@@ -327,7 +327,7 @@
 /datum/roguestock/stockpile/sugar
 	name = "Sugar"
 	desc = "A sweet powder milled from sugarcane"
-	item_type = /obj/item/reagent_containers/food/snacks/grown/sugarcane
+	item_type = /obj/item/reagent_containers/food/snacks/sugar
 	held_items = list(0, 0)
 	payout_price = 4
 	withdraw_price = 4
