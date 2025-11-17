@@ -274,8 +274,6 @@ And it also helps for the character set panel
 
 	vampire.verbs -= /mob/living/carbon/human/proc/disguise_verb
 
-	// Reset combat music
-	vampire.cmode_music = initial(vampire.cmode_music)
 
 	// Restore normal eyes
 	var/obj/item/organ/eyes/eyes = vampire.getorganslot(ORGAN_SLOT_EYES)
