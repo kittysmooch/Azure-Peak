@@ -83,13 +83,13 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 
 /datum/special_intent/proc/_clear_grid()
 	if(length(affected_turfs))
-		LAZYCLEARLIST(affected_turfs)
+		LAZYNULL(affected_turfs)
 
 ///We go through our list of coordinates and check for custom timings. If we find any, we make a list to be managed later in _create_grid().
 /datum/special_intent/proc/_assign_grid_indexes()
 	affected_turfs[delay] = list()
 	for(var/list/l in tile_coordinates)
-		if(LAZYACCESS(l, 3))
+		if(LAZYACCESS(l, 3))	//Third index is a custom timer.
 			if(!affected_turfs[l[3]])
 				affected_turfs[l[3]] = list()
 			else
@@ -102,7 +102,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		var/dx = l[1]
 		var/dy = l[2]
 		var/dtimer
-		if(LAZYACCESS(l, 3))
+		if(LAZYACCESS(l, 3)) //Third index is a custom timer.
 			dtimer = l[3]
 		if(respect_dir)
 			switch(howner.dir)
