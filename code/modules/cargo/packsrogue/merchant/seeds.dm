@@ -111,6 +111,8 @@
 					/obj/item/seeds/coffee,
 					/obj/item/seeds/coffee,
 					/obj/item/seeds/coffee,
+					/obj/item/seeds/coffee,
+					/obj/item/seeds/coffee,
 				)
 
 
@@ -118,6 +120,8 @@
 	name = "Tea"
 	cost = 15
 	contains = list(
+					/obj/item/seeds/tea,
+					/obj/item/seeds/tea,
 					/obj/item/seeds/tea,
 					/obj/item/seeds/tea,
 					/obj/item/seeds/tea,
