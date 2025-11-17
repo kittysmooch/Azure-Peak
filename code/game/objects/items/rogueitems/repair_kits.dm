@@ -91,7 +91,7 @@
 	return ..()
 
 /obj/item/repair_kit/bad
-	name = "Fabric patch"
+	name = "fabric patch"
 	icon_state = "custarsewingkit"
 	desc = "A meager set of pieces of cloth, a bundle of threads and a loose rope. It can be used for field repairs."
 	max_integrity = 300
@@ -118,6 +118,8 @@
 	Fill with iron objects to create a repair kit."
 	icon_state = "armorkit_empty"
 	icon = 'icons/roguetown/items/misc.dmi'
+	grid_width = 64
+	grid_height = 32
 	var/need_scrap = 3
 	var/current_scrap = 0
 	dropshrink = 0.7
