@@ -65,7 +65,7 @@
 	//deploy the table if the user clicks on it with an open turf in front of them
 	var/turf/target_turf = get_step(user,user.dir)
 	if(target_turf.is_blocked_turf(TRUE) || (locate(/mob/living) in target_turf))
-		to_chat(user, span_danger("I can't deploy the folding table here!"))
+		to_chat(user, span_danger("I can't deploy the alchemical station here!"))
 		return NONE
 	if(isopenturf(target_turf))
 		deploy_alchstation(user, target_turf)
@@ -92,7 +92,7 @@
 	//deploy the table if the user clicks on it with an open turf in front of them
 	var/turf/target_turf = get_step(user,user.dir)
 	if(target_turf.is_blocked_turf(TRUE) || (locate(/mob/living) in target_turf))
-		to_chat(user, span_danger("I can't deploy the folding table here!"))
+		to_chat(user, span_danger("I can't deploy the folding cauldron here!"))
 		return NONE
 	if(isopenturf(target_turf))
 		deploy_alchcauldron(user, target_turf)
