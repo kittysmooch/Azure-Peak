@@ -302,8 +302,9 @@ And it also helps for the character set panel
 		vampire.remove_coven(coven)
 
 	// Bloodheal coven has snowflake behavior since it is added to all vampires. So - snowflake removal.
-	var/datum/coven/bloodheal/bloodheal = locate(/datum/coven/bloodheal) in vampire.covens
-	vampire.remove_coven(bloodheal)
+	// Covens are stored in an associative list by name, so we access by name
+	if(vampire.covens && vampire.covens["Bloodheal"])
+		vampire.remove_coven("Bloodheal")
 
 	var/list/spells_to_remove = list(
 		/datum/action/clan_menu,
