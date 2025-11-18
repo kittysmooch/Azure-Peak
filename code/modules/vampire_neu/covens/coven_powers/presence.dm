@@ -44,7 +44,7 @@
 	playsound(target,'sound/villain/wonder.ogg', 40)
 	target.apply_status_effect(/datum/status_effect/awestruck, owner)
 	if(!owner.cmode)
-		to_chat(target, span_love("<b>Look upon me.</b>"))
+		to_chat(target, span_love("<b>Come close and look upon me.</b>"))
 		owner.say("Look upon me.")
 	else
 		to_chat(target, span_love("<b>BEHOLD ME!!</b>"))
@@ -80,10 +80,16 @@
 
 /datum/status_effect/awestruck/on_remove()
 	. = ..()
+	var/dist = get_dist(awe_target, awe_user)
 	if(!awe_target.can_see_cone(awe_user))
 		awe_target.playsound_local(awe_target, 'sound/magic/heartbeat.ogg', 100)
 		awe_target.Immobilize(10 SECONDS)
 		awe_target.visible_message("<span class='warning'>[awe_target] goes still for a moment, their movements suddenly halted.</span>", "<span class='warning'>You were just beholding their presence.. Where are they? WHERE ARE THEY!?</span>")
+	if(awe_target.can_see_cone(awe_user) && dist > 4)
+		awe_target.playsound_local(awe_target, 'sound/magic/heartbeat.ogg', 100)
+		awe_target.Immobilize(10 SECONDS)
+		awe_target.visible_message("<span class='warning'>[awe_target] goes still for a moment, their movements suddenly halted.</span>", "<span class='warning'>Their presence.. you need to be closer, to admire it. YOU NEED TO BE CLOSER!!</span>")
+
 	else
 		awe_target.visible_message("[awe_target]'s gaze seemingly returns to normal.", "My gaze can focus again!")
 
