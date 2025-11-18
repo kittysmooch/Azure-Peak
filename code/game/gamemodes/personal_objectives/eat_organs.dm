@@ -23,7 +23,7 @@
 		return
 
 	organs_consumed++
-	organs_view = organs_required - organs_consumed
+	var/organs_view = organs_required - organs_consumed
 	if(organs_view <= 0)//stop take negative numbers
 		organs_view = 0
 
