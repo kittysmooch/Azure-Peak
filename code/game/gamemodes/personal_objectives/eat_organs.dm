@@ -24,13 +24,14 @@
 
 	organs_consumed++
 
-	if(ispath(organ_type, /obj/item/reagent_containers/food/snacks/organ/heart))
-		hearts_consumed++
-		to_chat(owner.current, span_cult("You feel Graggar's pleasure as you consume a heart!"))
-	else
-		to_chat(owner.current, span_notice("Organ consumed! [organs_required - organs_consumed] more organ\s needed."))
+	if(hearts_consumed <= hearts_required) //stop take negative numbers
+		if(ispath(organ_type, /obj/item/reagent_containers/food/snacks/organ/heart))
+			hearts_consumed++
+			to_chat(owner.current, span_cult("You feel Graggar's pleasure as you consume a heart!"))
+		else
+			to_chat(owner.current, span_notice("Organ consumed! [organs_required - organs_consumed] more organ\s needed."))
 
-	if(organs_consumed >= organs_required || hearts_consumed >= hearts_required)
+	if(organs_consumed >= organs_required && hearts_consumed >= hearts_required)
 		complete_objective()
 
 /datum/objective/consume_organs/proc/complete_objective()
