@@ -30,7 +30,7 @@
 	else
 		to_chat(owner.current, span_notice("Organ consumed! [organs_required - organs_consumed] more organ\s needed."))
 
-	if(organs_consumed >= organs_required && hearts_consumed >= hearts_required)
+	if(organs_consumed >= organs_required || hearts_consumed >= hearts_required)
 		complete_objective()
 
 /datum/objective/consume_organs/proc/complete_objective()
