@@ -12,7 +12,7 @@
 	skillcraft = /datum/skill/craft/crafting
 
 /datum/crafting_recipe/roguetown/survival/repairkitclothbad
-	name = "cloth plate" //9 fiber
+	name = "fabric patch" //9 fiber
 	result = /obj/item/repair_kit/bad
 	reqs = list(
 		/obj/item/natural/cloth = 2,
@@ -22,10 +22,18 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/repairkitmetal
-	name = "empty metal kit"
+	name = "empty metal kit (iron bar)"
 	result = /obj/item/armorkit_empty
 	reqs = list(
 		/obj/item/ingot/iron = 1,
+		)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/survival/repairkitmetal
+	name = "empty metal kit (scrap)"
+	result = /obj/item/armorkit_empty
+	reqs = list(
+		/obj/item/scrap = 3,
 		)
 	craftdiff = 3
 

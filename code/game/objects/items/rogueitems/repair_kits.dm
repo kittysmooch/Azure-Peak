@@ -34,6 +34,11 @@
 			new /obj/item/natural/fibers(get_turf(src))
 		if(prob(20))
 			new /obj/item/natural/fibers(get_turf(src))
+	if(repair_type == 1)
+		if(prob(20))
+			new /obj/item/scrap(get_turf(src))
+		if(prob(20))
+			new /obj/item/scrap(get_turf(src))
 	qdel(src)
 
 /obj/item/repair_kit/attack_obj(obj/O, mob/living/user)
@@ -107,7 +112,7 @@
 	table_need = TRUE
 
 /obj/item/repair_kit/metal/bad
-	name = "metal scrap"
+	name = "metal scrap kit"
 	icon_state = "custararmorkit"
 	desc = "A meager set of various pieces of old iron armor, some parts can be used for field repairs, but do not expect a miracle from this pile of metal."
 	max_integrity = 400
@@ -129,7 +134,7 @@
 		return
 	var/obj/item/I = O
 	if(I.anvilrepair)
-		if(I.smeltresult == /obj/item/ingot/iron) //all iron stuff
+		if(I.smeltresult == /obj/item/ingot/iron || I == /obj/item/scrap) //all iron stuff and iron scrap
 			if(!do_after(user, 2 SECONDS, target = I))
 				return
 			user.visible_message(span_notice("[user] salvages [I] into usable materials."))
@@ -144,3 +149,12 @@
 			return
 		return
 	return
+
+/obj/item/scrap
+	name = "iron scrap"
+	desc = "pieces of iron. The only thing left of what was once made of them. It might come in handy."
+	icon_state = "scrap"
+	icon = 'icons/roguetown/items/misc.dmi'
+	grid_width = 32
+	grid_height = 32
+	dropshrink = 0.7
