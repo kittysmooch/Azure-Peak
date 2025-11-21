@@ -124,8 +124,5 @@
 	time = 40 MINUTES
 	needsate_text = "I need someone to HURT me."
 
-/datum/charflaw/addiction/masochist/on_mob_creation(mob/living/carbon/human/human)
-	if(!istype(human))
-		return
-
-	human.pain_threshold += 10
+/datum/charflaw/addiction/masochist/on_mob_creation(mob/living/living)
+	living.pain_threshold += 10

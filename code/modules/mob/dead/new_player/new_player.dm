@@ -691,11 +691,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	
 	roll_stats()
 
-	pain_threshold = STAWIL * 10
-	
-	if(HAS_TRAIT(src, TRAIT_NOPAIN))
-		pain_threshold = 250
-
 /mob/dead/new_player/proc/transfer_character()
 	. = new_character
 	if(.)
