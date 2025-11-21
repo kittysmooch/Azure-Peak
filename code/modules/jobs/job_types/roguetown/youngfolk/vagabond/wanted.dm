@@ -61,7 +61,8 @@
 
 		add_bounty(human.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_amount, FALSE, my_crime, "The Justiciary of Azuria")
 
-		if(tgui_alert(human, "Am i known criminal?", "OUTLAW", list("Nae", "Yae")) == "Yae")
+		if(tgui_alert(human, "Do the Justiciary's hunters already know my name and face?", "OUTLAW", list("Nae", "Yae")) == "Yae")
 			GLOB.outlawed_players += human.real_name
+			ADD_TRAIT(human, TRAIT_OUTLAW, JOB_TRAIT)
 
 		to_chat(human, span_notice("I'm on the run from the law, and there's a [lowertext(bounty_amount)] sum of mammons out on my head... better lay low."))
