@@ -9,7 +9,7 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
-/obj/structure/crawl_space/Initialize(mapload) //shitcode shitcode shitcode shitco
+/turf/open/floor/rogue/crawl_space/Initialize(mapload) //shitcode shitcode shitcode shitco
 	. = ..()
 	if(!icon_state == "crawlspace4")
 		icon_state = "crawlspace_[rand(1, 3)]"
