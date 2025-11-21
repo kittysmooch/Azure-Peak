@@ -1209,6 +1209,7 @@
 #include "code\game\turfs\open\transparent.dm"
 #include "code\game\turfs\open\water.dm"
 #include "code\game\turfs\open\floor\carpet.dm"
+#include "code\game\turfs\open\floor\crawlspace.dm"
 #include "code\game\turfs\open\floor\roguefloor.dm"
 #include "code\modules\japes.dm"
 #include "code\modules\admin\admin.dm"
