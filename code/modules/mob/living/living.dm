@@ -59,8 +59,8 @@
 		points += "!"
 	visible_message(span_danger("[src] falls down[points]"), \
 					span_danger("I fall down[points]"))
-	playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 	if(!isgroundlessturf(T))
+		playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 		ZImpactDamage(T, levels)
 		record_round_statistic(STATS_MOAT_FALLERS)
 	return ..()
