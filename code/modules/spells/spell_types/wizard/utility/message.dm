@@ -74,20 +74,20 @@
 
 						// If this a projection or not?
 						if(!is_projection)
-							to_chat(HL, span_italics("Arcyne whispers slip into my mind, resolving into [user]'s voice: <font color=#[message_color]>[message]</font>"))
-							to_chat(user, span_italics("You whisper into [HL]'s mind, identifying yourself in the process: <font color=#[message_color]>[message]</font>"))
+							to_chat(HL, span_big("Arcyne whispers slip into my mind, resolving into [user]'s voice: <font color=#[message_color]><i>\"[message]\"</i></font>"))
+							to_chat(user, span_big("You whisper into [HL]'s mind, identifying yourself in the process: <font color=#[message_color]><i>\"[message]\"</i></font>"))
 						else
-							to_chat(HL, span_italics("A brief vision suddenly flashes in my mind, familiar as originating from [user]'s headspace: <font color=#[message_color]>[message]</font>"))
-							to_chat(user, span_italics("You slip a brief vision into [HL]'s mind, identifying yourself in the process: <font color=#[message_color]>[message]</font>"))
+							to_chat(HL, span_big("A brief vision suddenly flashes in my mind, familiar as originating from [user]'s headspace: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
+							to_chat(user, span_big("You slip a brief vision into [HL]'s mind, identifying yourself in the process: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
 
 			// We failed the check OR we just dont know who that is
 			if(!identified)
 				if(!is_projection)
-					to_chat(HL, span_italics("Arcyne whispers slip into my mind, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: <font color=#[message_color]>[message]</font>"))
-					to_chat(user, span_italics("You whisper anonymously into [HL]'s mind: <font color=#[message_color]>[message]</font>"))
+					to_chat(HL, span_big("Arcyne whispers slip into my mind, resolving into an unknown [user.gender == FEMALE ? "woman" : "man"]'s voice: <font color=#[message_color]><i>\"[message]\"</i></font>"))
+					to_chat(user, span_big("You whisper anonymously into [HL]'s mind: <font color=#[message_color]><i>\"[message]\"</i></font>"))
 				else
-					to_chat(HL, span_italics("A brief vision suddenly flashes in my mind, originating from an unknown source: <font color=#[message_color]>[message]</font>"))
-					to_chat(user, span_italics("You anonymously slip a brief vision into [HL]'s mind: <font color=#[message_color]>[message]</font>"))
+					to_chat(HL, span_big("A brief vision suddenly flashes in my mind, originating from an unknown source: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
+					to_chat(user, span_big("You anonymously slip a brief vision into [HL]'s mind: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
 
 			// Messages are whispered out loud, projections are just a silent murmur.
 			if(!is_projection)
