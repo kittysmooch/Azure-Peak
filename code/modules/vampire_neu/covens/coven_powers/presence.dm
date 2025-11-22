@@ -70,8 +70,8 @@
 	id = "awestruck"
 	duration = 10 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/awestruck
-	var/mob/living/awe_user
-	var/mob/living/awe_target
+	var/mob/living/carbon/human/awe_user
+	var/mob/living/carbon/human/awe_target
 
 /atom/movable/screen/alert/status_effect/awestruck
 	name = "Awestruck"
@@ -84,10 +84,12 @@
 	if(!awe_target.can_see_cone(awe_user))
 		awe_target.playsound_local(awe_target, 'sound/magic/heartbeat.ogg', 100)
 		awe_target.Immobilize(10 SECONDS)
+		awe_target.freakout_hud_skew()
 		awe_target.visible_message("<span class='warning'>[awe_target] goes still for a moment, their movements suddenly halted.</span>", "<span class='warning'>You were just beholding their presence.. Where are they? WHERE ARE THEY!?</span>")
 	if(awe_target.can_see_cone(awe_user) && dist > 4)
 		awe_target.playsound_local(awe_target, 'sound/magic/heartbeat.ogg', 100)
 		awe_target.Immobilize(10 SECONDS)
+		awe_target.freakout_hud_skew()
 		awe_target.visible_message("<span class='warning'>[awe_target] goes still for a moment, their movements suddenly halted.</span>", "<span class='warning'>Their presence.. you need to be closer, to admire it. YOU NEED TO BE CLOSER!!</span>")
 
 	else
