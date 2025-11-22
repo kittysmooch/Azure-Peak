@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return spans
 
 /mob/handle_language_spans(list/spans)
-	if(client.prefs?.no_language_fonts)
+	if(client?.prefs?.no_language_fonts)
 		for(var/language_span in LANGUAGE_SPANS)
 			spans -= language_span
 	return spans
@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return TRUE
 
 /mob/show_language_icon(list/spans)
-	if(client.prefs?.no_language_icon)
+	if(client?.prefs?.no_language_icon)
 		return FALSE
 	return TRUE
 
