@@ -287,8 +287,6 @@
 	GLOB.farm_animals++
 	if(tame)
 		tamed()
-	AddElement(/datum/element/ai_retaliate)
-	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Destroy()
 	..()
