@@ -143,6 +143,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Jupon"
 	path = /obj/item/clothing/cloak/stabard/surcoat
 
+/datum/loadout_item/jupon_short
+	name = "Short Jupon"
+	path = /obj/item/clothing/cloak/stabard/surcoat/short
+
 /datum/loadout_item/cape
 	name = "Cape"
 	path = /obj/item/clothing/cloak/cape
@@ -534,6 +538,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Amulet of Abyssor"
 	path = /obj/item/clothing/neck/roguetown/psicross/abyssor
 
+/datum/loadout_item/psicross/xylix
+	name = "Amulet of Xylix"
+	path = /obj/item/clothing/neck/roguetown/psicross/xylix
+
 /datum/loadout_item/psicross/dendor
 	name = "Amulet of Dendor"
 	path = /obj/item/clothing/neck/roguetown/psicross/dendor
@@ -569,6 +577,14 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/zcross_iron
 	name = "Iron Zcross"
 	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/iron
+
+/datum/loadout_item/psicross/matthios
+	name = "Amulet of Matthios"
+	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios
+
+/datum/loadout_item/psicross/graggar
+	name = "Amulet of Graggar"
+	path = /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar
 
 /datum/loadout_item/wedding_band
 	name = "silver wedding band"
@@ -680,3 +696,8 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Donator Kit - Shroud of the Undermaiden"
 	path = /obj/item/enchantingkit/zoe
 	ckeywhitelist = list("zoetheorc")
+
+/datum/loadout_item/donator_willmbrink
+	name = "Donator Item - Royal Gown"
+	path = /obj/item/clothing/suit/roguetown/shirt/dress/royal
+	ckeywhitelist = list("willmbrink")
