@@ -87,7 +87,7 @@
 					to_chat(user, span_big("You whisper anonymously into [HL]'s mind: <font color=#[message_color]><i>\"[message]\"</i></font>"))
 				else
 					to_chat(HL, span_big("A brief vision suddenly flashes in my mind, originating from an unknown source: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
-					to_chat(user, span_big("You anonymously slip a brief vision into [HL]'s mind: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
+					to_chat(user, span_big("You slip a brief vision anonymously into [HL]'s mind: <font color=#[message_color]>\[<b>[message]</b>\]</font>"))
 
 			// Messages are whispered out loud, projections are just a silent murmur.
 			if(!is_projection)
