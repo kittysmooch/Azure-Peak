@@ -559,5 +559,5 @@ BLIND     // can't see anything
 		str += "</font>"
 
 	//This makes it appear a faint off-blue from the rest of examine text. Draws the cursor to it like to a Wetsquires.rt link.
-	examine_text = "<font color = '#80bec9'>[examine_text]</font>"
+	examine_text = "<font color = '#808080'>[examine_text]</font>"
 	return SPAN_TOOLTIP_DANGEROUS_HTML(str, examine_text)
