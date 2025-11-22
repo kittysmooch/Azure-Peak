@@ -1111,7 +1111,76 @@
 	id = "clash"
 	duration = 6 SECONDS
 	var/dur
+	var/sfx_on_apply = 'sound/combat/clash_initiate.ogg'
+	var/swingdelay_mod = 5
 	alert_type = /atom/movable/screen/alert/status_effect/buff/clash
+
+	mob_effect_icon = 'icons/mob/mob_effects.dmi'
+	mob_effect_icon_state = "eff_riposte"
+	mob_effect_layer = MOB_EFFECT_LAYER_GUARD
+
+//We have a lot of signals as the ability is meant to be interrupted by or interact with a lot of mechanics. 
+/datum/status_effect/buff/clash/on_creation(mob/living/new_owner, ...)
+	//!Danger! Zone!
+	//These signals use OVERRIDES and can OVERLAP with anything else using them.
+	//At the moment we have no way of prioritising one signal over the other, it's first-come first-serve. Keep this in mind.
+	RegisterSignal(new_owner, COMSIG_MOB_ITEM_ATTACK, PROC_REF(process_attack))
+	RegisterSignal(new_owner, COMSIG_MOB_ITEM_BEING_ATTACKED, PROC_REF(process_attack))
+
+
+	RegisterSignal(new_owner, COMSIG_MOB_ATTACKED_BY_HAND, PROC_REF(process_touch))
+	RegisterSignal(new_owner, COMSIG_MOB_ON_KICK, PROC_REF(guard_disrupted))
+	RegisterSignal(new_owner, COMSIG_MOB_KICKED, PROC_REF(guard_disrupted))
+	RegisterSignal(new_owner, COMSIG_LIVING_ONJUMP, PROC_REF(guard_disrupted))
+	RegisterSignal(new_owner, COMSIG_CARBON_SWAPHANDS, PROC_REF(guard_disrupted))
+	RegisterSignal(new_owner, COMSIG_ITEM_GUN_PROCESS_FIRE, PROC_REF(guard_disrupted_cheesy))
+	RegisterSignal(new_owner, COMSIG_ATOM_BULLET_ACT, PROC_REF(guard_struck_by_projectile))
+	RegisterSignal(new_owner, COMSIG_LIVING_IMPACT_ZONE, PROC_REF(guard_struck_by_projectile))
+	RegisterSignal(new_owner, COMSIG_LIVING_SWINGDELAY_MOD, PROC_REF(guard_swingdelay_mod))	//I dunno if a signal is better here rather than theoretically cycling through _all_ status effects to apply a var'd swingdelay mod.
+	. = ..()
+
+/datum/status_effect/buff/clash/proc/guard_swingdelay_mod()
+	return swingdelay_mod
+
+/datum/status_effect/buff/clash/proc/process_touch(mob/living/carbon/human/parent, mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
+	var/obj/item/I = defender.get_active_held_item()
+	defender.process_clash(attacker, I, null)
+
+/datum/status_effect/buff/clash/proc/process_attack(mob/living/parent, mob/living/target, mob/user, obj/item/I)
+	var/bad_guard = FALSE
+	var/mob/living/U = user
+	//We have Guard / Clash active, and are hitting someone who doesn't. Cheesing a 'free' hit with a defensive buff is a no-no. You get punished.
+	if(U.has_status_effect(/datum/status_effect/buff/clash) && !target.has_status_effect(/datum/status_effect/buff/clash))
+		if(user == parent)
+			bad_guard = TRUE
+	if(ishuman(target) && target.get_active_held_item() && !bad_guard)
+		var/mob/living/carbon/human/HM = target
+		var/obj/item/IM = target.get_active_held_item()
+		var/obj/item/IU 
+		if(user.used_intent.masteritem)
+			IU = user.used_intent.masteritem
+		HM.process_clash(user, IM, IU)
+		return COMPONENT_NO_ATTACK
+	if(bad_guard)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.bad_guard(span_suicide("I tried to strike while focused on defense whole! It drains me!"), cheesy = TRUE)
+
+//Mostly here so the child (limbguard) can have special behaviour.
+/datum/status_effect/buff/clash/proc/guard_struck_by_projectile()
+	guard_disrupted()
+
+//Our guard was disrupted by normal means.
+/datum/status_effect/buff/clash/proc/guard_disrupted()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.bad_guard("My focus was disrupted!")
+
+//We tried to cheese it. Generally reserved for egregious things, like attacking / casting while its active.
+/datum/status_effect/buff/clash/proc/guard_disrupted_cheesy()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.bad_guard("My focus was <b>heavily</b> disrupted!")
 
 /datum/status_effect/buff/clash/on_apply()
 	. = ..()
@@ -1119,7 +1188,8 @@
 		return
 	dur = world.time
 	var/mob/living/carbon/human/H = owner
-	H.play_overhead_indicator('icons/mob/overhead_effects.dmi', prob(50) ? "clash" : "clashr", duration, OBJ_LAYER, soundin = 'sound/combat/clash_initiate.ogg', y_offset = 28)
+	if(sfx_on_apply)
+		playsound(H, sfx_on_apply, 100, TRUE)
 
 /datum/status_effect/buff/clash/tick()
 	if(!owner.get_active_held_item() || !(owner.mobility_flags & MOBILITY_STAND))
@@ -1131,11 +1201,19 @@
 	owner.apply_status_effect(/datum/status_effect/debuff/clashcd)
 	var/newdur = world.time - dur
 	var/mob/living/carbon/human/H = owner
-	if(newdur > (duration - 0.3 SECONDS))	//Not checking exact duration to account for lag and any other tick / timing inconsistencies.
+	if(newdur > (initial(duration) - 0.2 SECONDS))	//Not checking exact duration to account for lag and any other tick / timing inconsistencies.
 		H.bad_guard(span_warning("I held my focus for too long. It's left me drained."))
-	var/mutable_appearance/appearance = H.overlays_standing[OBJ_LAYER]
-	H.clear_overhead_indicator(appearance)
-
+	UnregisterSignal(owner, COMSIG_ATOM_BULLET_ACT)
+	UnregisterSignal(owner, COMSIG_MOB_ATTACKED_BY_HAND)
+	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK)
+	UnregisterSignal(owner, COMSIG_MOB_ITEM_BEING_ATTACKED)
+	UnregisterSignal(owner, COMSIG_MOB_ON_KICK)
+	UnregisterSignal(owner, COMSIG_MOB_KICKED)
+	UnregisterSignal(owner, COMSIG_ITEM_GUN_PROCESS_FIRE)
+	UnregisterSignal(owner, COMSIG_CARBON_SWAPHANDS)
+	UnregisterSignal(owner, COMSIG_LIVING_IMPACT_ZONE)
+	UnregisterSignal(owner, COMSIG_LIVING_ONJUMP)
+	UnregisterSignal(owner, COMSIG_LIVING_SWINGDELAY_MOD)
 
 /atom/movable/screen/alert/status_effect/buff/clash
 	name = "Ready to Clash"
@@ -1251,15 +1329,19 @@
 /datum/status_effect/buff/adrenaline_rush/on_apply()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_ADRENALINE_RUSH, INNATE_TRAIT)
-	if(ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		H.playsound_local(get_turf(H), 'sound/misc/adrenaline_rush.ogg', 100, TRUE)
-		H.blood_volume = min((H.blood_volume + blood_restore), BLOOD_VOLUME_NORMAL)
-		H.stamina -= max((H.stamina - (H.max_stamina / 2)), 0)
+	var/mob/living/carbon/human/human = owner
+	if(istype(human))
+		human.playsound_local(get_turf(human), 'sound/misc/adrenaline_rush.ogg', 100, TRUE)
+		human.blood_volume = min((human.blood_volume + blood_restore), BLOOD_VOLUME_NORMAL)
+		human.stamina -= max((human.stamina - (human.max_stamina / 2)), 0)
+		human.pain_threshold += 50
 
 /datum/status_effect/buff/adrenaline_rush/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_ADRENALINE_RUSH, INNATE_TRAIT)
+	var/mob/living/carbon/human/human = owner
+	if(istype(human))
+		human.pain_threshold -= 50
 
 /datum/status_effect/buff/magicknowledge
 	id = "intelligence"
@@ -1456,3 +1538,115 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff
 	effectedstats = list(STATKEY_SPD = 3, STATKEY_WIL = 1, STATKEY_CON = 1)
 	status_type = STATUS_EFFECT_REPLACE
+
+/datum/status_effect/buff/ravox_vow
+	id = "ravox_vow"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_vow
+	effectedstats = list(STATKEY_STR = 1, STATKEY_WIL = 1)
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = -1
+	tick_interval = -1
+
+/datum/status_effect/buff/ravox_vow/proc/on_life()
+	SIGNAL_HANDLER
+
+	owner.heal_wounds(1)
+
+/datum/status_effect/buff/ravox_vow/on_apply()
+	. = ..()
+	RegisterSignal(owner, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, PROC_REF(on_unarmed_attack))
+	RegisterSignal(owner, COMSIG_MOB_ITEM_AFTERATTACK, PROC_REF(on_item_attack))
+	RegisterSignal(owner, COMSIG_LIVING_LIFE, PROC_REF(on_life))
+
+/datum/status_effect/buff/ravox_vow/proc/on_unarmed_attack(mob/living/user, mob/living/carbon/human/target)
+	SIGNAL_HANDLER
+
+	if(!istype(target))
+		return
+
+	if(!HAS_TRAIT(target, TRAIT_OUTLAW) || (!(target.name in user.mind.known_people)))
+		return
+	
+	var/armor_block = target.run_armor_check(user.zone_selected, "blunt")
+	if(prob(armor_block))
+		return
+	
+	apply_effects(target)
+
+/datum/status_effect/buff/ravox_vow/proc/on_item_attack(mob/living/user, mob/living/carbon/human/target, obj/item/item)
+	SIGNAL_HANDLER
+
+	if(!istype(target))
+		return
+
+	if(!HAS_TRAIT(target, TRAIT_OUTLAW) || (!(target.name in user.mind.known_people)))
+		return
+	
+	var/armor_block = target.run_armor_check(user.zone_selected, item.d_type)
+	if(prob(armor_block))
+		return
+	
+	apply_effects(target)
+
+/datum/status_effect/buff/ravox_vow/proc/apply_effects(mob/living/carbon/human/target)
+	if(target.fire_stacks >= 3)
+		return
+
+	target.adjust_fire_stacks(1)
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living, ignite_mob))
+
+/datum/status_effect/buff/ravox_vow/on_remove()
+	. = ..()
+	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_AFTERATTACK, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, COMSIG_LIVING_LIFE))
+	
+/atom/movable/screen/alert/status_effect/buff/ravox_vow
+	name = "Ravox vow"
+	desc = "I vowed to Ravox. I shall bring justice to Psydonia."
+
+#define JOYBRINGER_FILTER "joybringer"
+
+/datum/status_effect/joybringer
+	id = "joybringer"
+	var/outline_colour = "#a529e8"
+	duration = -1
+	tick_interval = -1
+	examine_text = span_love("SUBJECTPRONOUN is bathed in Baotha's blessings!")
+	alert_type = null
+
+/datum/status_effect/joybringer/on_apply()
+	. = ..()
+
+	owner.visible_message(span_userdanger("A tide of vibrant purple mist surges from [owner], carrying the heavy scent of sweet intoxication!"))
+
+	var/filter = owner.get_filter(JOYBRINGER_FILTER)
+	if(!filter)
+		owner.add_filter(JOYBRINGER_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 60, "size" = 2))
+	
+	var/mutable_appearance/effect = mutable_appearance('icons/effects/effects.dmi', "mist", -JOYBRINGER_LAYER, alpha = 128)
+	effect.appearance_flags = RESET_COLOR
+	effect.blend_mode = BLEND_ADD
+	effect.color = "#a529e8"
+	
+	owner.overlays_standing[JOYBRINGER_LAYER] = effect
+	owner.apply_overlay(JOYBRINGER_LAYER)
+
+	RegisterSignal(owner, COMSIG_LIVING_LIFE, PROC_REF(on_life))
+
+/datum/status_effect/joybringer/on_remove()
+	. = ..()
+
+	owner.remove_filter(JOYBRINGER_FILTER)
+	owner.remove_overlay(JOYBRINGER_LAYER)
+	
+	UnregisterSignal(owner, COMSIG_LIVING_LIFE)
+
+/datum/status_effect/joybringer/proc/on_life()
+	SIGNAL_HANDLER
+
+	for(var/mob/living/mob in get_hearers_in_view(2, owner))
+		if(HAS_TRAIT(mob, TRAIT_CRACKHEAD) || HAS_TRAIT(mob, TRAIT_PSYDONITE))
+			continue
+
+		mob.apply_status_effect(/datum/status_effect/debuff/joybringer_druqks)
+
+#undef JOYBRINGER_FILTER

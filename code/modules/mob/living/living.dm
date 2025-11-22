@@ -1,6 +1,7 @@
 /mob/living
 	//used by the basic ai controller /datum/ai_behavior/basic_melee_attack to determine how fast a mob can attack
 	var/melee_cooldown = CLICK_CD_MELEE
+	var/pain_threshold = 0
 
 /mob/living/Initialize()
 	. = ..()
@@ -59,8 +60,8 @@
 		points += "!"
 	visible_message(span_danger("[src] falls down[points]"), \
 					span_danger("I fall down[points]"))
-	playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 	if(!isgroundlessturf(T))
+		playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 		ZImpactDamage(T, levels)
 		record_round_statistic(STATS_MOAT_FALLERS)
 	return ..()
@@ -618,8 +619,6 @@
 	if(pulling)
 		if(ismob(pulling))
 			var/mob/living/M = pulling
-			if(pulledby && pulledby == pulling)
-				reset_offsets("pulledby")
 			M.reset_offsets("pulledby")
 			reset_pull_offsets(pulling)
 			if(HAS_TRAIT(M, TRAIT_GARROTED))
@@ -638,8 +637,6 @@
 				if(I.grabbed == pulling)
 					dropItemToGround(I, silent = FALSE)
 	reset_offsets("pulledby")
-	reset_pull_offsets(src)
-
 	. = ..()
 
 	update_pull_movespeed()

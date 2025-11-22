@@ -112,6 +112,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
+	swingdelay = 15
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	damfactor = 2.5
 	clickcd = CLICK_CD_CHARGED
@@ -119,12 +120,13 @@
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	item_d_type = "slash"
 	misscost = 10
-	intent_intdamage_factor = 0.25
+	intent_intdamage_factor = 0.05
 
 /datum/intent/rend/reach
 	name = "long rend"
 	penfactor = BLUNT_DEFAULT_PENFACTOR
 	misscost = 5
+	swingdelay = 15
 	clickcd = CLICK_CD_HEAVY
 	damfactor = 2
 	reach = 2
@@ -300,6 +302,7 @@
 		"trashFishingMod" = 0,
 		"dangerFishingMod" = 0.9,
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
+		"cheeseFishingMod" = 0 // Just for the funny gimmick of a chance for rats and rouses.
 	)
 
 /obj/item/rogueweapon/spear/trident/afterattack(obj/target, mob/user, proximity)
@@ -564,6 +567,7 @@
 		"trashFishingMod" = 0,
 		"dangerFishingMod" = 1,
 		"ceruleanFishingMod" = 0, // 1 on cerulean aril, 0 on everything else
+		"cheeseFishingMod" = 0 // Just for the funny gimmick of a chance for rats and rouses.
 	)
 
 /obj/item/rogueweapon/fishspear/depthseek //DO NOT ADD RECIPE. MEANT TO BE AN ABYSSORITE RELIC. IDEA COURTESY OF LORDINQPLAS
@@ -1467,7 +1471,7 @@
 	max_blade_int = 200
 	icon_state = "assegai_steel"
 	gripsprite = FALSE
-
+	smeltresult = /obj/item/ingot/steel
 
 /////////////////////
 // Special Weapon! //
