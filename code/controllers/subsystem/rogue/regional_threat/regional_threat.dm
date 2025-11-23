@@ -41,9 +41,9 @@ SUBSYSTEM_DEF(regionthreat)
 		),
 		new /datum/threat_region(
 			_region_name = THREAT_REGION_TERRORBOG,
-			_latent_ambush = DANGER_DIRE_LIMIT,
+			_latent_ambush = DANGER_BLEAK_LIMIT,
 			_min_ambush = DANGER_SAFE_FLOOR, // This is intended. A warden can engage in a long war to tame the terrorbog.
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 1
@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_AZUREAN_COAST,
 			_latent_ambush = DANGER_DANGEROUS_FLOOR,
 			_min_ambush = DANGER_MODERATE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 1
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_region_name = THREAT_REGION_MOUNT_DECAP,
 			_latent_ambush = DANGER_DANGEROUS_FLOOR,
 			_min_ambush = DANGER_MODERATE_FLOOR,
-			_max_ambush = DANGER_DIRE_LIMIT,
+			_max_ambush = DANGER_BLEAK_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
 			_highpop_tick = 1
