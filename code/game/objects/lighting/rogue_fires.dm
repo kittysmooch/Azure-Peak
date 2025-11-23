@@ -804,7 +804,7 @@
 			// Astrata followers get enhanced fire healing
 			var/buff_strength = 1
 			if(human.patron?.type == /datum/patron/divine/astrata || human.patron?.type == /datum/patron/inhumen/matthios) //Fire and the fire-stealer
-				buff_strength = 2
+				buff_strength = 1.5
 			human.apply_status_effect(/datum/status_effect/buff/healing/campfire, buff_strength)
 			human.add_stress(/datum/stressevent/campfire)
 
