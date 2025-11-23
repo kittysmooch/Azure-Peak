@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_max_ambush = DANGER_DANGEROUS_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
-			_highpop_tick = 2
+			_highpop_tick = 1
 		),
 		new /datum/threat_region(
 			_region_name = THREAT_REGION_TERRORBOG,
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_max_ambush = DANGER_DIRE_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
-			_highpop_tick = 2
+			_highpop_tick = 1
 		),
 		// All regions after are meant to stay somewhat dangerous no matter what
 		new /datum/threat_region(
@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_max_ambush = DANGER_DIRE_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
-			_highpop_tick = 2
+			_highpop_tick = 1
 		),
 		new /datum/threat_region(
 			_region_name = THREAT_REGION_MOUNT_DECAP,
@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(regionthreat)
 			_max_ambush = DANGER_DIRE_LIMIT,
 			_fixed_ambush = FALSE,
 			_lowpop_tick = 1,
-			_highpop_tick = 2
+			_highpop_tick = 1
 		)
 	)
 
