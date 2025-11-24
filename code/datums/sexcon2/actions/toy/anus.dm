@@ -39,6 +39,7 @@
 	var/obj/item/dildo/used_item = user.get_active_held_item()
 	user.visible_message(sex_session.spanify_force("[user] [sex_session.get_generic_force_adjective()] fucks [user.p_their()] butt with a dildo!"))
 	playsound(target, sex_session.get_force_sound(), 50, TRUE, -2, ignore_walls = FALSE)
+	do_onomatopoeia(target)
 
 	sex_session.perform_sex_action(user, 2, used_item.pleasure, TRUE)
 	sex_session.handle_passive_ejaculation()
