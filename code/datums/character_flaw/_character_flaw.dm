@@ -496,7 +496,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	\nWARNING: HALLUCINATIONS MAY JUMPSCARE YOU, AND PREVENT YOU FROM TELLING APART REALITY AND IMAGINATION. \
 	FURTHERMORE, THIS DOES NOT EXEMPT YOU FROM ANY RULES SET BY THE SERVER. ESCALATION STILL APPLIES."
 
-/datum/charflaw/mind_broken/on_mob_creation(mob/living/carbon/human/insane_fool)
+/datum/charflaw/mind_broken/apply_post_equipment(mob/living/carbon/human/insane_fool)
 	insane_fool.hallucination = INFINITY
 	ADD_TRAIT(insane_fool, TRAIT_PSYCHOSIS, TRAIT_GENERIC)
 	insane_fool.adjust_triumphs(1)
