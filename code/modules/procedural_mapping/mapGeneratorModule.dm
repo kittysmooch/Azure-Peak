@@ -133,6 +133,13 @@
 			if(A.density)
 				. = 0
 				break
+	for(var/I in T.contents)
+		if(I in spawnableAtoms)
+			. = 0
+			break
+		if(istype(I, /obj/structure/flora/roguegrass/herb))
+			. = 0
+			break
 
 
 ///////////////////////////////////////////////////////////
