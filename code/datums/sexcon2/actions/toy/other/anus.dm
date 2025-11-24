@@ -45,7 +45,7 @@
 
 /datum/sex_action/toy/other/anus/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
-	user.visible_message(span_warning("[user] slides [user.p_their()] dildo from [target]'s butt."))
+	user.visible_message(span_warning("[user] pulls [user.p_their()] dildo from [target]'s butt."))
 
 /datum/sex_action/toy/other/anus/lock_sex_object(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
