@@ -1240,35 +1240,37 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 	return ..()
 
+/datum/hallucination/floor_shift
+
 /datum/hallucination/floor_shift/New(mob/living/carbon/dreamer, forced = TRUE)
 	set waitfor = FALSE
 	..()
-	for(var/turf/open/floor/F in view(dreamer))
+	for(var/turf/open/floor/floor in view(dreamer))
 		if(prob(40)) 
 			continue
 
-		var/mutable_appearance/MA = image(F.icon, F, F.icon_state, F.layer + 0.01)
-		dreamer.client.images += MA
+		var/mutable_appearance/appearance = image(floor.icon, floor, floor.icon_state, floor.layer + 0.01)
+		dreamer.client.images += appearance
 		var/offset = pick(-3, -2, -1, 1, 2, 3)
-		var/dur1 = rand(10,30) * abs(offset)
-		var/dur2 = rand(10,30) * abs(offset)
-		animate(MA, pixel_y = offset, time = dur1, flags = ANIMATION_RELATIVE)
-		addtimer(CALLBACK(src, PROC_REF(floor_back), dreamer, MA, offset, dur2), dur1)
+		var/raise_duration = rand(1 SECONDS, 3 SECONDS) * abs(offset)
+		var/lower_duration = rand(1 SECONDS, 3 SECONDS) * abs(offset)
+		animate(appearance, pixel_y = offset, time = raise_duration, flags = ANIMATION_RELATIVE)
+		addtimer(CALLBACK(src, PROC_REF(floor_back), dreamer, appearance, offset, lower_duration), raise_duration)
 
 	to_chat(dreamer, span_userdanger(pick("WOAH!", "WHERE IS THE FLOOR?", "MOVE!", "HOW!?")))
 	dreamer.adjustStaminaLoss(10)
 
 	qdel(src)
 
-/datum/hallucination/floor_shift/proc/floor_back(mob/living/carbon/dreamer, mutable_appearance/MA, offset, dur2)	
-	animate(MA, pixel_y = -offset, time = dur2, flags = ANIMATION_RELATIVE)
-	addtimer(CALLBACK(src, PROC_REF(floor_remove), dreamer, MA), dur2)
+/datum/hallucination/floor_shift/proc/floor_back(mob/living/carbon/dreamer, mutable_appearance/appearance, offset, lower_duration)	
+	animate(appearance, pixel_y = -offset, time = lower_duration, flags = ANIMATION_RELATIVE)
+	addtimer(CALLBACK(src, PROC_REF(floor_remove), dreamer, appearance), lower_duration)
 
-/datum/hallucination/floor_shift/proc/floor_remove(mob/living/carbon/dreamer, mutable_appearance/MA)
+/datum/hallucination/floor_shift/proc/floor_remove(mob/living/carbon/dreamer, mutable_appearance/appearance)
 	if(dreamer?.client)
-		dreamer.client.images -= MA
+		dreamer.client.images -= appearance
 
-	qdel(MA)
+	qdel(appearance)
 
 /datum/hallucination/fake_heartattack
 
