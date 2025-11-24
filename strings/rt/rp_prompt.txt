@@ -1,7 +1,7 @@
 <p><strong><em><span style="font-size:115%"> Welcome to Azure Peak! </span></em></strong></p>
 <p> This lore primer serves as an introduction to Azure Peak's setting.
 <br><br>
-As always, note that this lore primer shouldn't be treated as gospel. After all, there's plenty of room in Psydonia for characters with their own interpretations of faith-and-truth. Contradicting the established narrative is an excellent way to invoke conflict between clergymen and countrymen alike.
+As always, note that this lore primer shouldn't be treated as gospel. After all, there's plenty of room in Psydonia for characters with their own interpretations of faith-and-truth - no matter how contradictory they might appear to be. Get creative!
 <br><br>
 Only the broadest strokes have been applied onto this canvas. There's plenty of supplemental lore hidden throughout Azure Peak: level a keen eye towards the dungeons, tomes, events, and descriptions of examined items, if you wish to uncover Psydonia's secrets. 
 <br><br>
@@ -41,6 +41,160 @@ Don't be afraid to check out Azure Peak's Wiki - https://azurepeak.miraheze.org/
 
 
 <p><strong><em><span style="font-size:115%"> ... </span></em></strong></p>
+
+
+<details>
+	<summary><strong><span style="font-size:130%"> TIMELINE OF PSYDONIA </span></strong></summary>
+
+	<strong><span style="font-size:115%"> NOTEWORTHY EVENTS </span></strong>
+	<br><br>
+	<details>
+		<summary><strong> Calamity - -66 PR to -1 PR  </strong></summary>
+		<br>
+		The Archdevil, a force beyond reality, invades the still-nurtured world of Psydonia. Though shaken by the newfound concepts of sin and murder, Psydon's children nevertheless rally to defend their home. Bronze-armored legionnaires clash against devils and deadites alike, while Psydon struggles to keep His world from falling apart. His angels take up the mantle as the first kings: divine commanders.
+		<br><br>
+		Psydon's intervention is minimal, due to a terrible ploy enacted by the Archdevil: Vheslyn's entryway - a rift in the worldly filament - sucks in the souls of those slain, condemning them to eternal suffering. Psydon focuses most of His energy to try and seal the rift from growing any larger, leaving Him unable to directly assist His children in battle.
+		<br><br>
+		Within a generation, the Archdevil destroys most of Psydonia. Raging cyclones and thunderstorms blot out the starless skies, as many settlements are swallowed whole by the Archdevil's fatigueless march. The remnants of His children - reduced to the paltry thousands - are evacuated to the highest mountains by His angels, in preparation for their final stand.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Sacrifice - -1 PR  </strong></summary>
+		<br>
+		Psydon, moved by the desperate prayers of His children and angels, weeps. His attention finally turns away from the rift, which - without any force to oppose it - begins to consume the world itself. Vheslyn, personally leading the army of darkness, confronts His children. Before the last of men-and-mer can be culled, however, a blinding light pierces the storm-clouded skies.
+		<br><br>
+		The Archdevil's haughtiness turns into petrification, as the mere presence of Psydon-upon-the-world evaporates every summited devil within a heartbeat. The deities take to the skies, and the ensuing clash is felt throughout all of Psydonia. Though Vheslyn eventually gains the advantage, even It could not foresee Psydon's willingness to save His world.
+		<br><br>
+		Empowered by the hopes and dreams of His children, Psydon channels all of His divine might into a singular missile: the Comet Syon. The impact engulfs both Psydon and Vheslyn in a massive explosion: one that not only destroys the Archdevil's world-consuming rift, but also drowns most of the ruined world. From the mountaintops, His children are left with nothing but deathly silence.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Providence - 0 AP to 351 AP </strong></summary>
+		<br>
+		Though Psydonia was saved, it had come at a grave cost. Both Psydon and Vheslyn had vanished, and most of the world had been rendered uninhabitable by the Calamity. Knowing the importance of discovering Psydon's fate above all else, most of His angels leave Psydonia to begin their search: the starless skies, at last, finally reignite.
+		<br><br>
+		Shortly afterwards, the Pantheon makes itself known to Psydonia's survivors: Abyssor recedes the floodwaters back into the ocean, Dendor rekindles growth amongst the ruined ecosystems, and Necra shepherds Psydonia's lingering souls to rest. Blinding light envelops the sky, so that Astrata can guide His children down from the mountaintops.
+		<br><br>
+		With the Pantheon's nurturing, Psydonia gradually recovers from its nigh-apocalyptic state. Noc shepherds in the gentle night, halving Astrata's burden of reigning over His world - and in the dreams of His children, Noc whispers knowledge for them to seize. Ravox, Eora, Pestra, Malum, and Xylix intermingle with men-and-mer alike, spawning many fables and legends.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Enlightenment - 352 AP to 922 AP </strong></summary>
+		<br>
+		Kingdoms arise, with the Holy Celestial Empire - a communion of both Man and God - reigning above them all. The snow-elves, though cursed with infertility, were nevertheless blessed the most with Noc's wisdom. By their hands, they created many technological marvels that still exist today: namely, the mechanisms used for Thrones, Meisters, and the SCOM. 
+		<br><br>
+		Gradually, the Pantheon's presence in day-to-day life recedes, so that man-and-mer could continue to grow on their own. Clashes between kingdoms are infrequent, but present: most tend to end with mediation by the Holy Celestial Empire. Beyond that, Psydonia is otherwise uncontested - and for centuries to come, His children live in prosperity.
+		<br><br>
+		At this point, almost all of Psydonia now worships the Pantheon. Unlike today, however, the Psydonic minority isn't ostracized: instead, they're still treated as spiritual equals. The resting place of the Comet Syon is rediscovered, and a lesser kingdom is erected upon its coast: the Grand Duchy of Azure Peak. Azuria becomes a holy site for Psydonic worshippers.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Sundering - 923 AP </strong></summary>
+		<br>
+		At the height of Psydonia's prosperity, a snow-elven archmage discovers a way to dispel the curse that has led to their race's endangerment. A great machine is constructed, yet its activation results in a cataclysm beyond compare. Explosions ripple throughout Psydonia's leylines, and every single snow-elve simultaneously evaporates into piles of gore and ash.
+		<br><br>
+		Within a single night, an entire race had been erased from the face of the earth. The fractured leylines delved a mortal wound to Psydonia itself, causing the very forces of nature to turn on itself. Those, killed in the ensuing chaos, are resurrected as gibbering deadites - and like a plague, mania spreads throughout the Holy Celestial Empire.
+		<br><br>
+		Under the Psydonic churches, a crusade - ill-informed yet yearning for vengeance - descends upon Celestia, sealing the capital's fate. The Pantheon's own churches, believing the sudden calamity to've been caused by the raiding Psydonians, react with violence. It is only through Astrata's direct intervention that both sides didn't destroy one-another.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Decay - 924-1512 AP </strong></summary>
+		<br>
+		In the ashes of Celestia, a new deity arose - Zizo, accompanied by the trinity of Baotha, Graggar, and Matthios. Their presence gave way to the birth of Ascendanism, for they gifted His children with a revelation: they were all but mortals, once, who had discovered how to obtain divinity for themselves. A schism forms in the churches, and the Ecclesial is born.
+		<br><br>
+		With the Holy Celestial Empire in ruins, His children are forever marred. The Pantheon's church resettles in the central kingdom of Grenzelhoft, and becomes known as the Holy See - likewise, the Psydonic crusaders mournfully return to the Orthodoxy. Both leaders of these opposing churches now blame one-another for inadvertently destroying the Holy Celestial Empire.
+		<br><br>
+		Prosperity ends, and decay sets in. Divisions in faith, born in the Sundering, are now set in stone. Many worshippers have turned their backs on both Psydon and the Pantheon, in favor of the Ascendants. Men-and-mer alike are now far more vulnerable to depression, oft-coping through indulgence in vices or outbursts of uncontrollable emotions.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> Now - 1513 AP </strong></summary>
+		<br>
+		The world is dying, yet it is not like the Calamity or Sundering. It is slow, prolonged, and creeping: like rot upon wood. Starvation and strife aren't the norm, but signs of a struggle have become clear. The wheat is less bountiful, the stars glimmer less in the night sky, and - more concerningly - more villains have crept out to prowl once more.
+		<br><br>
+		Yet, His children persist. Some might not even know of the world's circumstance: much less so in Azuria, which has since flourished. It's believed that its connection - both physical and spiritual - to the Comet Syon has granted it some clemency from more worldly hardships: a thought that has driven many refugees and pilgrims to its harbors.
+		<br><br>
+		Churchbells chime throughout Azuria, christening the start of a new week. Some lament about strange-and-prophetic dreams from the nights prior, though they oft-brush it off as nothing more than that: something spawned from a crumb of spoiled mustard, rather than anything divine. Others simply groan, rise from their cots, and prepare for the labors-to-come.
+		<br><br>
+		What about you?
+	</details>
+	<br><br>
+</details>
+
+
+<details>
+	<summary><strong><span style="font-size:130%"> MYTHOS OF PSYDONIA </span></strong></summary>
+
+	<strong><span style="font-size:115%"> OVERVIEW OF THE DIVINE </span></strong>
+	<br><br>
+	<details>
+		<summary><strong> THE FATHER </strong></summary>
+		<br>
+		<span style="display:block; color:#007fff; font-size:115%"> "..." </span>
+		<br>
+		Psydon is worshipped as the creator of ontological reality, and the only true force of goodness that Psydonia ever knew. It was He who gifted man-and-mer with not only existence, but the capacity to emote like Him. When the Archdevil tore open reality and threatened to destroy Psydonia, it was Him who undertook the ultimate sacrifice to save the world He had come to love. 
+<br><br>
+Nowadays, most believe that Psydon is gone: yet, an ardent minority continues to remain loyal in the hopes that He may yet return to save His world once more. His children might be bereft of miracles and answers, but they continue to endure - even at the end of the world.
+<br><br>
+		Psydonic worshippers are in the minority, and are generally ostracized by most kingdoms. The Orthodoxy teaches the most widespread form of Psydonic worship, though there are countless other forms practiced throughout the world. 
+<br><br>
+Azuria currently houses a cohort of the Holy Psydonic Inquisition, as part of a diplomatic affair with Otava. In addition, Azuria - due to its proximity to Syon's resting place - is considered a 'holy site' by the Orthodoxy. Such has made it common for pilgrims throughout all of Psydonia to visit the lesser kingdom, in the hopes that they may be blessed by what remains of the divine comet.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> THE PANTHEON </strong></summary>
+		<br>
+		<span style="display:block; color:#ffd700; font-size:115%"> "WITH ORDER, WE REIGN; AND WITH FAITH, WE PROSPER." </span>
+		<br>
+		The Pantheon are the successors to Psydon: ten deities who have taken up the mantle of guiding His children along. After the Comet Syon had seemingly destroyed both Psydon and the Archdevil, the ruined world's survivors wept for guidence. 
+<br><br>
+Though most of His angels had left Psydonia in search of answers only woven into the stars, there remained a cohort of ten who - whether through guilt or newfound purpose - remained behind to pick up the pieces. Adopting more heavenly forms to ensure His children would not be afraid, Astrata and Her nine siblings finally descended from the reignited skies to answer their prayers: and from there, the rest was history.
+		<br><br>
+		Pantheonic worshippers are in the majority, and have remained as such for over a millenium's time. Almost every kingdom in Psydonia houses a church that preaches the Pantheon's teachings, taken directly from the Holy See's tomes.
+<br><br>
+Azuria is no different, with its duchal patrons being Astrata, Dendor, and Abyssor. While Astrata is traditionally worshipped as the Pantheon's supreme deity, the Holy See oft-emphasizes that all ten deities should be given equal reverance. Hence, it isn't uncommon to see an Astratan praying to Ravox for courage in the midst of battle, nor to witness a Malumite cursing out Dendor for overmuddying a carriage's intended pathway. 
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> THE ASCENDANTS </strong></summary>
+		<br>
+		<span style="display:block; color:#800080; font-size:115%"> "WHAT IS A GOD, IF NOT A MAN WHO HAS RECOGNIZED THE FOLLY OF MORTALITY?" </span>
+		<br>
+		The Ascendants are the youngest of all deities, and - as alleged by its worshippers - the true heirs to Psydon's mantle. Unlike the Pantheon, these four deities were never divine to begin with: instead, they were mortals who had managed to achieve godhood through mythical exploits. 
+<br><br>
+Zizo offers progress, Baotha offers bliss, Graggar offers freedom, and Matthios offers wealth - yet, their worshippers seldom know the price that must be paid to obtain such luxuries. While the Holy See has desperately tried to cover up the truth being the Ascendants, a recent schism has led to many of His children embracing the concept of apotheosis.
+		<br><br>
+		Ascendant worshippers vary from region-to-region. Most inner kingdoms revile the concept of Ascendanism, and - thanks to its demonization by the Holy See - oft-hunt down those who openly praise the four-who-ascended. 
+<br><br>
+The outermost kingdoms are much different, however: Gronn, Fjall, Raneshen, and Lirvas happen to welcome the Ascendants, albeit in forms that might be considered 'esoteric' and 'unusual' by more-recent convertees. Owing to the individualistic nature of Ascendanism, most worshippers - save for those who've completely embraced the concept of 'obtaining godhood' - tend to secularly worship one deity in particular.
+		<br>
+	</details>
+
+	<details>
+		<summary><strong> THE ARCHDEVIL </strong></summary>
+		<br>
+		<span style="display:block; color:#ff0000; font-size:115%"> "FROM THE ASHES, WE ROSE! AND TO THE ASHES, WE WILL ALL RETURN!" </span>
+		<br>
+		Vheslyn. The primordial essence, the manifestation of ontological evil, and - for the longest time - the lone inhabitant of ur-existence. Psydon had created reality within the void: an act of unforeseen interlopage that drove Vheslyn into a blithering rage. 
+<br><br>
+It was Vheslyn who introduced sin into the hearts of His children, who formed an army of darkness to march upon Psydonia, and created Hell to forever-torment those who were slain in the ensuing rampage. Before His world could be destroyed, however, Psydon undertook the ultimate sacrifice to stop Vheslyn's rampage: a final blow that sundered both body-and-spirit. In the Comet Syon's explosion, both had vanished.
+		<br><br>
+		Yet, Vheslyn's influence did not fully leave Psydonia. The few devils who had survived the Comet Syon's impact, now left powerless and tethered to Psydonia, would eventually learn to embrace goodness: and by communing with His children, the first Tieflings would be made. 
+<br><br>
+More recently, unsettling rumors have arose of an ancient cult, nestled deep within the Fjallic wastes - one that seeks to resurrect Vheslyn, in order to finally destroy Psydonia and return everything to nothingness. Most believe such rumors to be nothing more than that: a rumor. Even so, one must wonder why Psydonia's northern skies have taken on such vivid auroras, lately.
+		<br>
+	</details>
+	<br><br>
+</details>
 
 
 <details>
@@ -297,78 +451,10 @@ Even so, their reputation is mercifully softened by the fact that they grow some
 
 
 <details>
-	<summary><strong><span style="font-size:130%"> MYTHOS OF PSYDONIA </span></strong></summary>
-
-	<strong><span style="font-size:115%"> OVERVIEW OF THE DIVINE </span></strong>
-	<br><br>
-	<details>
-		<summary><strong> THE FATHER </strong></summary>
-		<br>
-		<span style="display:block; color:#007fff; font-size:115%"> "..." </span>
-		<br>
-		Psydon is worshipped as the creator of ontological reality, and the only true force of goodness that Psydonia ever knew. It was He who gifted man-and-mer with not only existence, but the capacity to emote like Him. When the Archdevil tore open reality and threatened to destroy Psydonia, it was Him who undertook the ultimate sacrifice to save the world He had come to love. 
-<br><br>
-Nowadays, most believe that Psydon is gone: yet, an ardent minority continues to remain loyal in the hopes that He may yet return to save His world once more. His children might be bereft of miracles and answers, but they continue to endure - even at the end of the world.
-<br><br>
-		Psydonic worshippers are in the minority, and are generally ostracized by most kingdoms. The Orthodoxy teaches the most widespread form of Psydonic worship, though there are countless other forms practiced throughout the world. 
-<br><br>
-Azuria currently houses a cohort of the Holy Psydonic Inquisition, as part of a diplomatic affair with Otava. In addition, Azuria - due to its proximity to Syon's resting place - is considered a 'holy site' by the Orthodoxy. Such has made it common for pilgrims throughout all of Psydonia to visit the lesser kingdom, in the hopes that they may be blessed by what remains of the divine comet.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> THE PANTHEON </strong></summary>
-		<br>
-		<span style="display:block; color:#ffd700; font-size:115%"> "WITH ORDER, WE REIGN; AND WITH FAITH, WE PROSPER." </span>
-		<br>
-		The Pantheon are the successors to Psydon: ten deities who have taken up the mantle of guiding His children along. After the Comet Syon had seemingly destroyed both Psydon and the Archdevil, the ruined world's survivors wept for guidence. 
-<br><br>
-Though most of His angels had left Psydonia in search of answers only woven into the stars, there remained a cohort of ten who - whether through guilt or newfound purpose - remained behind to pick up the pieces. Adopting more heavenly forms to ensure His children would not be afraid, Astrata and Her nine siblings finally descended from the reignited skies to answer their prayers: and from there, the rest was history.
-		<br><br>
-		Pantheonic worshippers are in the majority, and have remained as such for over a millenium's time. Almost every kingdom in Psydonia houses a church that preaches the Pantheon's teachings, taken directly from the Holy See's tomes.
-<br><br>
-Azuria is no different, with its duchal patrons being Astrata, Dendor, and Abyssor. While Astrata is traditionally worshipped as the Pantheon's supreme deity, the Holy See oft-emphasizes that all ten deities should be given equal reverance. Hence, it isn't uncommon to see an Astratan praying to Ravox for courage in the midst of battle, nor to witness a Malumite cursing out Dendor for overmuddying a carriage's intended pathway. 
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> THE ASCENDANTS </strong></summary>
-		<br>
-		<span style="display:block; color:#800080; font-size:115%"> "WHAT IS A GOD, IF NOT A MAN WHO HAS RECOGNIZED THE FOLLY OF MORTALITY?" </span>
-		<br>
-		The Ascendants are the youngest of all deities, and - as alleged by its worshippers - the true heirs to Psydon's mantle. Unlike the Pantheon, these four deities were never divine to begin with: instead, they were mortals who had managed to achieve godhood through mythical exploits. 
-<br><br>
-Zizo offers progress, Baotha offers bliss, Graggar offers freedom, and Matthios offers wealth - yet, their worshippers seldom know the price that must be paid to obtain such luxuries. While the Holy See has desperately tried to cover up the truth being the Ascendants, a recent schism has led to many of His children embracing the concept of apotheosis.
-		<br><br>
-		Ascendant worshippers vary from region-to-region. Most inner kingdoms revile the concept of Ascendanism, and - thanks to its demonization by the Holy See - oft-hunt down those who openly praise the four-who-ascended. 
-<br><br>
-The outermost kingdoms are much different, however: Gronn, Fjall, Raneshen, and Lirvas happen to welcome the Ascendants, albeit in forms that might be considered 'esoteric' and 'unusual' by more-recent convertees. Owing to the individualistic nature of Ascendanism, most worshippers - save for those who've completely embraced the concept of 'obtaining godhood' - tend to secularly worship one deity in particular.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> THE ARCHDEVIL </strong></summary>
-		<br>
-		<span style="display:block; color:#ff0000; font-size:115%"> "FROM THE ASHES, WE ROSE! AND TO THE ASHES, WE WILL ALL RETURN!" </span>
-		<br>
-		Vheslyn. The primordial essence, the manifestation of ontological evil, and - for the longest time - the lone inhabitant of ur-existence. Psydon had created reality within the void: an act of unforeseen interlopage that drove Vheslyn into a blithering rage. 
-<br><br>
-It was Vheslyn who introduced sin into the hearts of His children, who formed an army of darkness to march upon Psydonia, and created Hell to forever-torment those who were slain in the ensuing rampage. Before His world could be destroyed, however, Psydon undertook the ultimate sacrifice to stop Vheslyn's rampage: a final blow that sundered both body-and-spirit. In the Comet Syon's explosion, both had vanished.
-		<br><br>
-		Yet, Vheslyn's influence did not fully leave Psydonia. The few devils who had survived the Comet Syon's impact, now left powerless and tethered to Psydonia, would eventually learn to embrace goodness: and by communing with His children, the first Tieflings would be made. 
-<br><br>
-More recently, unsettling rumors have arose of an ancient cult, nestled deep within the Fjallic wastes - one that seeks to resurrect Vheslyn, in order to finally destroy Psydonia and return everything to nothingness. Most believe such rumors to be nothing more than that: a rumor. Even so, one must wonder why Psydonia's northern skies have taken on such vivid auroras, lately.
-		<br>
-	</details>
-	<br><br>
-</details>
-
-<details>
 	<summary><strong><span style="font-size:130%"> GLOSSARY OF PSYDONIA </span></strong></summary>
-
+	<details>
 	<strong><span style="font-size:115%"> NOTEWORTHY CONCEPTS </span></strong>
 	<br><br>
-	<details>
 		<p><strong> Psydonia </strong> - The world that Azuria takes place in. Named after its creator, Psydon. </p>
 		<p><strong> Enigma </strong> - A more agnostic term for Psydonia, preferred by the Holy See and Ascendants. Not to be confused with the Isle of Enigma. </p>
 		<p><strong> Comet Syon </strong> - A divine star, sent down by Psydon to destroy the Archdevil. Its core had come to rest just off of Azuria's coast. </p>
@@ -384,12 +470,13 @@ More recently, unsettling rumors have arose of an ancient cult, nestled deep wit
 		<br>
 	</details>
 
+	<details>
 	<strong><span style="font-size:115%"> NOTEWORTHY TERMS </span></strong>
 	<br><br>
-	<details>
 		<p><strong> Miracle </strong> - Holy magicka. Unlike the arcyne, miracles are powered by one's faith and devotion to their chosen deity. </p>
 		<p><strong> Lux </strong> - The physical condensation of soulmatter, present along the heart. It's said to tether one's spirit to their body. </p>
 		<p><strong> Deadite </strong> - Luxless corpses, resurrected through unholy means. Interchangeably used to describe both zombies and skeletons. </p>
+		<p><strong> Nitebeast </strong> - Monsters who rely on night-and-darkness to prowl. Primarily references werewolves, but can reference vampires as well. </p>
 		<p><strong> Lycker </strong> - Vampires. These luxless revenants are said to drink the blood of the living, and are empowered with unholy magicks. </p>
 		<p><strong> Avantyne </strong> - A so-called 'evil' alloy, wielded by Zizo's most devoted worshippers. More commonly known as 'darksteel'.</p>
 		<p><strong> Saiga </strong> - Large antelopes, and Psydonia's most popular choice for cavalrymen and travelers. Analogous to the far-rarer horse. </p>
@@ -407,92 +494,6 @@ More recently, unsettling rumors have arose of an ancient cult, nestled deep wit
 		<p><strong> PR </strong> - The previous calender-era, lasting from the beginning of recorded history to the Comet Syon's impact - and Psydon's absence. </p>
 		<p><strong> AP </strong> - The current calender-era, which started after the end of Psydonic supremacy. The current date, as mentioned, is 1513 AP. </p>
 		<br>
-	</details>
-	<br><br>
-</details>
-
-
-<details>
-	<summary><strong><span style="font-size:130%"> TIMELINE OF PSYDONIA </span></strong></summary>
-
-	<strong><span style="font-size:115%"> NOTEWORTHY EVENTS </span></strong>
-	<br><br>
-	<details>
-		<summary><strong> Calamity - -66 PR to -1 PR  </strong></summary>
-		<br>
-		The Archdevil, a force beyond reality, invades the still-nurtured world of Psydonia. Though shaken by the newfound concepts of sin and murder, Psydon's children nevertheless rally to defend their home. Bronze-armored legionnaires clash against devils and deadites alike, while Psydon struggles to keep His world from falling apart. His angels take up the mantle as the first kings: divine commanders.
-		<br><br>
-		Psydon's intervention is minimal, due to a terrible ploy enacted by the Archdevil: Vheslyn's entryway - a rift in the worldly filament - sucks in the souls of those slain, condemning them to eternal suffering. Psydon focuses most of His energy to try and seal the rift from growing any larger, leaving Him unable to directly assist His children in battle.
-		<br><br>
-		Within a generation, the Archdevil destroys most of Psydonia. Raging cyclones and thunderstorms blot out the starless skies, as many settlements are swallowed whole by the Archdevil's fatigueless march. The remnants of His children - reduced to the paltry thousands - are evacuated to the highest mountains by His angels, in preparation for their final stand.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Sacrifice - -1 PR  </strong></summary>
-		<br>
-		Psydon, moved by the desperate prayers of His children and angels, weeps. His attention finally turns away from the rift, which - without any force to oppose it - begins to consume the world itself. Vheslyn, personally leading the army of darkness, confronts His children. Before the last of men-and-mer can be culled, however, a blinding light pierces the storm-clouded skies.
-		<br><br>
-		The Archdevil's haughtiness turns into petrification, as the mere presence of Psydon-upon-the-world evaporates every summited devil within a heartbeat. The deities take to the skies, and the ensuing clash is felt throughout all of Psydonia. Though Vheslyn eventually gains the advantage, even It could not foresee Psydon's willingness to save His world.
-		<br><br>
-		Empowered by the hopes and dreams of His children, Psydon channels all of His divine might into a singular missile: the Comet Syon. The impact engulfs both Psydon and Vheslyn in a massive explosion: one that not only destroys the Archdevil's world-consuming rift, but also drowns most of the ruined world. From the mountaintops, His children are left with nothing but deathly silence.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Providence - 0 AP to 351 AP </strong></summary>
-		<br>
-		Though Psydonia was saved, it had come at a grave cost. Both Psydon and Vheslyn had vanished, and most of the world had been rendered uninhabitable by the Calamity. Knowing the importance of discovering Psydon's fate above all else, most of His angels leave Psydonia to begin their search: the starless skies, at last, finally reignite.
-		<br><br>
-		Shortly afterwards, the Pantheon makes itself known to Psydonia's survivors: Abyssor recedes the floodwaters back into the ocean, Dendor rekindles growth amongst the ruined ecosystems, and Necra shepherds Psydonia's lingering souls to rest. Blinding light envelops the sky, so that Astrata can guide His children down from the mountaintops.
-		<br><br>
-		With the Pantheon's nurturing, Psydonia gradually recovers from its nigh-apocalyptic state. Noc shepherds in the gentle night, halving Astrata's burden of reigning over His world - and in the dreams of His children, Noc whispers knowledge for them to seize. Ravox, Eora, Pestra, Malum, and Xylix intermingle with men-and-mer alike, spawning many fables and legends.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Enlightenment - 352 AP to 922 AP </strong></summary>
-		<br>
-		Kingdoms arise, with the Holy Celestial Empire - a communion of both Man and God - reigning above them all. The snow-elves, though cursed with infertility, were nevertheless blessed the most with Noc's wisdom. By their hands, they created many technological marvels that still exist today: namely, the mechanisms used for Thrones, Meisters, and the SCOM. 
-		<br><br>
-		Gradually, the Pantheon's presence in day-to-day life recedes, so that man-and-mer could continue to grow on their own. Clashes between kingdoms are infrequent, but present: most tend to end with mediation by the Holy Celestial Empire. Beyond that, Psydonia is otherwise uncontested - and for centuries to come, His children live in prosperity.
-		<br><br>
-		At this point, almost all of Psydonia now worships the Pantheon. Unlike today, however, the Psydonic minority isn't ostracized: instead, they're still treated as spiritual equals. The resting place of the Comet Syon is rediscovered, and a lesser kingdom is erected upon its coast: the Grand Duchy of Azure Peak. Azuria becomes a holy site for Psydonic worshippers.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Sundering - 923 AP </strong></summary>
-		<br>
-		At the height of Psydonia's prosperity, a snow-elven archmage discovers a way to dispel the curse that has led to their race's endangerment. A great machine is constructed, yet its activation results in a cataclysm beyond compare. Explosions ripple throughout Psydonia's leylines, and every single snow-elve simultaneously evaporates into piles of gore and ash.
-		<br><br>
-		Within a single night, an entire race had been erased from the face of the earth. The fractured leylines delved a mortal wound to Psydonia itself, causing the very forces of nature to turn on itself. Those, killed in the ensuing chaos, are resurrected as gibbering deadites - and like a plague, mania spreads throughout the Holy Celestial Empire.
-		<br><br>
-		Under the Psydonic churches, a crusade - ill-informed yet yearning for vengeance - descends upon Celestia, sealing the capital's fate. The Pantheon's own churches, believing the sudden calamity to've been caused by the raiding Psydonians, react with violence. It is only through Astrata's direction intervention that both sides didn't destroy one-another.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Decay - 924-1512 AP </strong></summary>
-		<br>
-		In the ashes of Celestia, a new deity arose - Zizo, accompanied by the trinity of Baotha, Graggar, and Matthios. Their presence gave way to the birth of Ascendanism, for they gifted His children with a revelation: they were all but mortals, once, who had discovered how to obtain divinity for themselves. A schism forms in the churches, and the Ecclesial is born.
-		<br><br>
-		With the Holy Celestial Empire in ruins, His children are forever marred. The Pantheon's church resettles in the central kingdom of Grenzelhoft, and becomes known as the Holy See - likewise, the Psydonic crusaders mournfully return to the Orthodoxy. Both leaders of these opposing churches now blame one-another for inadvertently destroying the Holy Celestial Empire.
-		<br><br>
-		Prosperity ends, and decay sets in. Divisions in faith, born in the Sundering, are now set in stone. Many worshippers have turned their backs on both Psydon and the Pantheon, in favor of the Ascendants. Men-and-mer alike are now far more vulnerable to depression, oft-coping through indulgence in vices or outbursts of uncontrollable emotions.
-		<br>
-	</details>
-
-	<details>
-		<summary><strong> Now - 1513 AP </strong></summary>
-		<br>
-		The world is dying, yet it is not like the Calamity or Sundering. It is slow, prolonged, and creeping: like rot upon wood. Starvation and strife aren't the norm, but signs of a struggle have become clear. The wheat is less bountiful, the stars glimmer less in the night sky, and - more concerningly - more villains have crept out to prowl once more.
-		<br><br>
-		Yet, His children persist. Some might not even know of the world's circumstance: much less so in Azuria, which has since flourished. It's believed that its connection - both physical and spiritual - to the Comet Syon has granted it some clemency from more worldly hardships: a thought that has driven many refugees and pilgrims to its harbors.
-		<br><br>
-		Churchbells chime throughout Azuria, christening the start of a new week. Some lament about strange-and-prophetic dreams from the nights prior, though they oft-brush it off as nothing more than that: something spawned from a crumb of spoiled mustard, rather than anything divine. Others simply groan, rise from their cots, and prepare for the labors-to-come.
-		<br><br>
-		What about you?
 	</details>
 	<br><br>
 </details>
