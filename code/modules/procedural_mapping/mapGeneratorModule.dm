@@ -133,7 +133,7 @@
 			if(A.density)
 				. = 0
 				break
-	for(var/I in T.contents)
+	for(var/I in T.contents) //no doubling up!!!
 		if(I in spawnableAtoms)
 			. = 0
 			break
