@@ -31,7 +31,7 @@
 	. = ..()
 	user.visible_message(span_warning("[user] starts riding a dildo using [user.p_their()] pussy.."))
 
-/datum/sex_action/toy/anus/get_start_sound(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/sex_action/toy/vagina/get_start_sound(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg')
 
 /datum/sex_action/toy/vagina/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -47,6 +47,6 @@
 	. = ..()
 	user.visible_message(span_warning("[user] stops fucking [user.p_their()] pussy with a dildo."))
 
-/datum/sex_action/toy/fagina/lock_sex_object(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/sex_action/toy/vagina/lock_sex_object(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
 	sex_locks |= new /datum/sex_session_lock(user, ORGAN_SLOT_VAGINA)
