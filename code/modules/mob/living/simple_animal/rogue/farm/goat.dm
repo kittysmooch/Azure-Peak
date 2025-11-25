@@ -255,6 +255,11 @@
 	bonus_tame_chance = 15
 	remains_type = /obj/effect/decal/remains/cow
 
+	//new ai, old ai off
+	AIStatus = AI_OFF
+	can_have_ai = FALSE
+	ai_controller = /datum/ai_controller/generic
+
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame
 	tame = TRUE
 
@@ -287,6 +292,8 @@
 	GLOB.farm_animals++
 	if(tame)
 		tamed()
+	AddElement(/datum/element/ai_retaliate)
+	ai_controller.set_blackboard_key(BB_BASIC_FOODS, food_type)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/Destroy()
 	..()
