@@ -15,10 +15,10 @@
 	var/budget = 0
 	var/wgain = 0
 	var/is_crafted = FALSE
-	var/keycontrol = "physician" // Yep I am defaulting it to Physician to avoid confusio with default key being merchant
-	var/obj/item/reagent_containers/glass/bottle/inserted
-	var/bottle_price = 10
-	var/bottle_sold_max = 10
+	var/keycontrol = "physician" // Yep I am defaulting it to Physician to avoid confusion with default key being merchant
+	var/max_storage_amount = 1000
+	var/vials_held = 10
+	var/max_dispense_volume = 30
 
 /obj/structure/roguemachine/potionseller/crafted
 	is_crafted = TRUE
@@ -27,6 +27,7 @@
 /obj/structure/roguemachine/potionseller/examine(mob/user)
 	. = ..()
 	. += span_smallnotice("Can be unlocked with a [keycontrol] key.")
+	. += span_smallnotice("You can add reagents and alchemical vials to this machine by interacting with it while unlocked.")
 
 // For university mage
 /obj/structure/roguemachine/potionseller/university
@@ -35,12 +36,12 @@
 /obj/structure/roguemachine/potionseller/Initialize()
 	. = ..()
 	if(!reagents)
-		create_reagents(200*3)
+		create_reagents(max_storage_amount)
 		reagents.flags |= NO_REACT
 		reagents.flags &= ~OPENCONTAINER
 	if(is_crafted) // spawn a key
 		var/obj/item/roguekey/key = new /obj/item/roguekey/physician(get_turf(src))
-		key.lockid = "random_potion_peddler_id_[rand(1,9999999)]" // I know, not foolproof
+		key.lockid = "random_potion_peddler_id_[rand(1,999)]" // I know, not foolproof
 		key.name = "potion seller key"
 		keycontrol = key.lockid
 	update_icon()
@@ -49,9 +50,6 @@
 	if(reagents)
 		qdel(reagents)
 		reagents = null
-	if(inserted)
-		inserted.forceMove(drop_location())
-		inserted = null
 	if(budget > 0)
 		budget2change(budget)
 		budget = 0
@@ -59,13 +57,23 @@
 	return ..()
 
 /obj/structure/roguemachine/potionseller/proc/insert(obj/item/P, mob/living/user)
-	if(!istype(P, /obj/item/reagent_containers/glass/bottle))
-		to_chat(user, span_warning("Not a container."))
+	if(!istype(P, /obj/item/reagent_containers/glass))
+		to_chat(user, span_warning("Not a valid container."))
 		return
-	var/obj/item/reagent_containers/glass/bottle/B = P
+	
+	var/obj/item/reagent_containers/B = P
+
+	if(istype(B, /obj/item/reagent_containers/glass/bottle/alchemical))
+		if(!B.reagents.total_volume)
+			to_chat(user, span_smallnotice("I add \the [P] to the bottle dispenser."))
+			vials_held++
+			qdel(B)
+			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
+			return attack_hand(user)
 	if(!B.reagents.total_volume)
 		to_chat(user, span_warning("Nothing to add."))
 		return
+	
 	if(reagents.maximum_volume < B.reagents.total_volume + reagents.total_volume)
 		to_chat(user, span_warning("Machine is filled to the lid."))
 		return
@@ -96,6 +104,7 @@
 		update_icon()
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		return attack_hand(user)
+	
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
 		if(K.lockid == keycontrol)
@@ -104,29 +113,71 @@
 			update_icon()
 			return attack_hand(user)
 		else
-			if(!locked)
-				insert(P, user)
-			else	
-				to_chat(user, span_warning("Wrong key."))
-				return
+			to_chat(user, span_warning("Wrong key."))
+			return
+	
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
-		for(var/obj/item/roguekey/KE in K.keys)
+		for(var/obj/item/roguekey/KE in K)
 			if(KE.lockid == keycontrol)
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				update_icon()
 				return attack_hand(user)
-	if(!locked)
-		insert(P, user)
-	else if(inserted)
-		to_chat(user, span_warning("Something is already inside!"))
-	else if(istype(P, /obj/item/reagent_containers/glass/bottle))
-		if(user.transferItemToLoc(P, src))
-			inserted = P
-			return attack_hand(user)
-		to_chat(user, span_warning("[P] is stuck to your hand!"))
+
+	if(istype(P, /obj/item/reagent_containers))
+		if(!locked)
+			insert(P, user)
+		else
+			to_chat(user, span_warning("The vendor is locked!"))
+			return
+	
 	..()
+
+/obj/structure/roguemachine/potionseller/proc/dispense(mob/user, datum/reagent/R, quantity)
+	if(!user || !ismob(user) || !Adjacent(user))
+		return
+	if(!R)
+		to_chat(user, span_warning("No reagent selected."))
+		return
+	if(quantity <= 0)
+		to_chat(user, span_warning("The machine cannot pour such a small amount!"))
+		return
+
+	if(vials_held <= 0)
+		say("I AM ALL OUT OF VIALS, TRAVELER")
+		return
+
+	var/obj/item/reagent_containers/glass/bottle/B
+	var/current_amount = reagents.get_reagent_amount(R.type)
+	
+	if(current_amount <= 0)
+		return
+
+	if(quantity > max_dispense_volume)
+		quantity = max_dispense_volume
+	if(quantity > current_amount)
+		quantity = current_amount
+
+	quantity = round(quantity)
+
+	if(quantity <= 0)
+		return
+	B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
+	B.reagents.add_reagent(R.type, quantity)
+	playsound(loc, 'sound/misc/potionseller.ogg', 100, TRUE, -1)
+	vials_held--
+
+	reagents.remove_reagent(R.type, quantity, FALSE)
+
+	if(current_amount - quantity <= 0)
+		reagents.del_reagent(R.type)
+		held_items -= R.type
+		update_icon()
+
+	user.put_in_hands(B)
+
+	return TRUE
 
 /obj/structure/roguemachine/potionseller/Topic(href, href_list)
 	. = ..()
@@ -134,36 +185,23 @@
 		var/datum/reagent/R = locate(href_list["buy"]) in held_items
 		if(!R || !ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE) || !locked)
 			return
-		if(!inserted)
-			say("MY POTIONS NEEDS A BOTTLE TO FILL, TRAVELER")
-			return
+		
 		var/price = held_items[R.type]["PRICE"]
-		if(price > budget)
-			say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
-			return
+		
 		var/quantity = 0
 		var/volume = reagents.get_reagent_amount(R)
-		var/buyer_volume = inserted.reagents.maximum_volume - inserted.reagents.total_volume
-		if(buyer_volume < 1)
-			say("[uppertext("\the [inserted]")] IS TOO SMALL FOR MY POTIONS, TRAVELER")
-			return
+		
 		if(price > 0)
 			var/budget_vol = round(budget / price)
 			if(budget_vol > volume)
 				budget_vol = volume
 			quantity = input(usr, "How many dram to buy (can afford [budget_vol] [UNIT_FORM_STRING(budget_vol)])?", "\The [held_items[R.type]["NAME"]]") as num|null
 		else
-			quantity = input(usr, "How many dram to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
+			quantity = input(usr, "How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
+		
 		if(!usr.Adjacent(src))
 			return
-		quantity = round(quantity)
-		if(quantity <= 0)
-			to_chat(usr, span_warning("The machine cannot pour such an small amount"))
-			return
-		if(quantity > buyer_volume)
-			quantity = buyer_volume
-		if(quantity > volume)
-			quantity = volume
+
 		if(price > 0)
 			price *= quantity
 			if(budget >= price)
@@ -171,42 +209,28 @@
 				wgain += price
 				record_round_statistic(STATS_PEDDLER_REVENUE, price)
 			else
-				say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
+				if(budget <= 0)
+					say("I NEED MONEY, TRAVELER")
+				else if(budget < price)
+					say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
 				return
-		inserted.reagents.add_reagent(R.type, quantity)
-		reagents.remove_reagent(R.type, quantity, FALSE)
-		if(volume - quantity < 1)
-			reagents.del_reagent(R.type)
-			held_items -= R.type
-			update_icon()
-		playsound(loc, 'sound/misc/potionseller.ogg', 100, TRUE, -1)
+				
+		dispense(usr, R, quantity)
+
 	if(href_list["retrieve"])
 		var/datum/reagent/R = locate(href_list["retrieve"]) in held_items
 		if(!R || !ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
-		var/obj/item/reagent_containers/glass/bottle/alchemical/sold_bottle = new /obj/item/reagent_containers/glass/bottle/alchemical(get_turf(src))
 		var/quantity = 0
 		var/volume = reagents.get_reagent_amount(R)
-		var/buyer_volume = sold_bottle.reagents.maximum_volume - sold_bottle.reagents.total_volume
-		var/vol_max = min(buyer_volume,volume)
-		quantity = input(usr, "How many dram to pour into \the [sold_bottle] ([vol_max] [UNIT_FORM_STRING(vol_max)] free)?", "\The [held_items[R.type]["NAME"]]") as num|null
+		quantity = input(usr, "How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
 		quantity = round(text2num(quantity))
-		if(quantity <= 0 || !usr.Adjacent(src))
-			qdel(sold_bottle)
-			return
-		if(quantity > buyer_volume)
-			quantity = buyer_volume
+		
 		if(quantity > volume)
 			quantity = volume
-		sold_bottle.reagents.add_reagent(R.type, quantity)
-		reagents.remove_reagent(R.type, quantity, FALSE)
-		if(volume - quantity < 1)
-			reagents.del_reagent(R.type)
-			held_items -= R.type
-			update_icon()
-		if(!usr.put_in_hands(sold_bottle))
-			sold_bottle.forceMove(get_turf(src))
-		playsound(loc, 'sound/misc/potionseller.ogg', 100, TRUE, -1)
+		
+		dispense(usr, R, quantity)
+			
 	if(href_list["change"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || !locked)
 			return
@@ -214,6 +238,7 @@
 			if(budget > 0)
 				budget2change(budget, usr)
 				budget = 0
+	
 	if(href_list["withdrawgain"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
@@ -221,6 +246,15 @@
 			if(wgain > 0)
 				budget2change(wgain, usr)
 				wgain = 0
+	
+	if(href_list["remove_vial"])
+		if(!usr.canUseTopic(src, BE_CLOSE))
+			return
+		if(ishuman(usr))
+			var/obj/item/reagent_containers/glass/bottle/B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
+			usr.put_in_hands(B)
+			vials_held--		
+	
 	if(href_list["setname"])
 		var/datum/reagent/R = locate(href_list["setname"]) in held_items
 		if(!R || !usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -232,6 +266,7 @@
 			var/newname = input(usr, "SET A NEW NAME FOR THIS POTION", src, prename)
 			if(newname)
 				held_items[R.type]["NAME"] = newname
+	
 	if(href_list["setprice"])
 		var/datum/reagent/R = locate(href_list["setprice"]) in held_items
 		if(!R || !usr.canUseTopic(src, BE_CLOSE) || locked)
@@ -247,37 +282,7 @@
 				held_items[R]["PRICE"] = round(newprice, 0.1)
 			else if(text2num(newprice) == 0)
 				held_items[R]["PRICE"] = 0 // free!
-	if(href_list["setbottleprice"])
-		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
-			return
-		if(ishuman(usr))
-			var/newprice = input(usr, "SET A NEW PRICE FOR BOTTLES (0 IS FREE)", src, bottle_price) as null|num
-			bottle_price = round(newprice)
-			if(bottle_price < 0)
-				bottle_price = 0
-	if(href_list["buybottle"])
-		if(!usr.canUseTopic(src, BE_CLOSE) || !locked)
-			return
-		if(ishuman(usr))
-			if(bottle_sold_max < 1)
-				say("MY BOTTLES ARE ALL SOLD OUT, TRAVELER")
-				return
-			if(bottle_price > 0)
-				if(budget < bottle_price)
-					say("MY BOTTLES ARE TOO EXPENSIVE FOR YOU, TRAVELER")
-					return
-				budget -= bottle_price
-				wgain += bottle_price
-				record_round_statistic(STATS_PEDDLER_REVENUE, bottle_price)
-			bottle_sold_max--
-			var/obj/item/reagent_containers/glass/bottle/rogue/sold_bottle = new /obj/item/reagent_containers/glass/bottle/rogue(get_turf(src))
-			if(!usr.put_in_hands(sold_bottle))
-				sold_bottle.forceMove(get_turf(src))
-	if(href_list["eject"])
-		if(!inserted)
-			return
-		inserted.forceMove(drop_location())
-		inserted = null
+
 	return attack_hand(usr)
 
 /obj/structure/roguemachine/potionseller/attack_hand(mob/living/user)
@@ -290,53 +295,47 @@
 	var/contents
 	if(canread)
 		contents = "<center>POTION SELLER, FIRST ITERATION<BR>"
-		if(!locked)
-			contents += "UNLOCKED<BR><a href='?src=[REF(src)];setbottleprice=1'>SET BOTTLE PRICE:</a> [bottle_price ? bottle_price : "FREE"]<HR>"
-		else if(!inserted)
-			contents += "No container inserted<BR><a href='?src=[REF(src)];buybottle=1'>[bottle_price ? "Buy bottle for [bottle_price] mammons" : "Take a FREE bottle"]</a><HR>"
-		else
-			contents += "Container: <a href='?src=[REF(src)];eject=1'>[inserted]</a> ([round(inserted.reagents.total_volume)]/[round(inserted.reagents.maximum_volume)] DRAMS)<HR>"
+		contents += "<a href='?src=[REF(src)];remove_vial=1'>Vials remaining:</a> [vials_held]<BR>"
+		
 		if(locked)
 			contents += "<a href='?src=[REF(src)];change=1'>Stored Mammon:</a> [budget]<BR>"
 		else
 			contents += "<a href='?src=[REF(src)];withdrawgain=1'>Stored Profits:</a> [wgain]<BR>"
 	else
 		contents = "<center>[stars("POTION SELLER, FIRST ITERATION")]<BR>"
-		if(!locked)
-			contents += "[stars("UNLOCKED")]<BR><a href='?src=[REF(src)];setbottleprice=1'>[stars("SET BOTTLE PRICE:")]</a> [bottle_price ? bottle_price : stars("FREE")]<HR>"
-		else if(!inserted)
-			contents += "[stars("No container inserted")]<BR><a href='?src=[REF(src)];buybottle=1'>[bottle_price ? stars("Buy bottle for [bottle_price] mammons") : stars("Take a FREE bottle")]</a><HR>"
-		else
-			contents += "[stars("Container")]: <a href='?src=[REF(src)];eject=1'>[stars("[inserted]")]</a> ([round(inserted.reagents.total_volume)]/[round(inserted.reagents.maximum_volume)] [stars("DRAMS")])<HR>"
+		
 		if(locked)
 			contents += "<a href='?src=[REF(src)];change=1'>[stars("Stored Mammon:")]</a> [budget]<BR>"
 		else
 			contents += "<a href='?src=[REF(src)];withdrawgain=1'>[stars("Stored Profits:")]</a> [wgain]<BR>"
 
 	contents += "</center>"
-
-	for(var/I in held_items)
-		var/price = held_items[I]["PRICE"]
-		var/namer = held_items[I]["NAME"]
-		var/volume = reagents.get_reagent_amount(I)
-		if(volume < 1) // do not sell reagents less than 1 dram
-			continue
-		if(!namer)
-			held_items[I]["NAME"] = "thing"
-			namer = "thing"
-		if(locked)
-			var/buy = !price ? "TAKE" : "BUY"
-			price = !price ? "FREE" : "[price] per dram"
-			if(canread)
-				contents += "[namer] ([volume] [UNIT_FORM_STRING(volume)]) - [price] <a href='?src=[REF(src)];buy=[REF(I)]'>[buy]</a>"
+	
+	if(!held_items.len)
+		contents += "<center>NO REAGENTS INSERTED</center><BR>"
+	else
+		for(var/I in held_items)
+			var/price = held_items[I]["PRICE"]
+			var/namer = held_items[I]["NAME"]
+			var/volume = reagents.get_reagent_amount(I)
+			if(volume < 1) // do not sell reagents less than 1 dram
+				continue
+			if(!namer)
+				held_items[I]["NAME"] = "thing"
+				namer = "thing"
+			if(locked)
+				var/buy = !price ? "TAKE" : "BUY"
+				price = !price ? "FREE" : "[price] per dram"
+				if(canread)
+					contents += "[namer] ([volume] [UNIT_FORM_STRING(volume)]) - [price] <a href='?src=[REF(src)];buy=[REF(I)]'>[buy]</a>"
+				else
+					contents += "[stars(namer)] - [stars(price)] <a href='?src=[REF(src)];buy=[REF(I)]'>[stars("[buy]")]</a>"
 			else
-				contents += "[stars(namer)] - [stars(price)] <a href='?src=[REF(src)];buy=[REF(I)]'>[stars("[buy]")]</a>"
-		else
-			if(canread)
-				contents += "<a href='?src=[REF(src)];setname=[REF(I)]'>[namer]</a> ([volume] [UNIT_FORM_STRING(volume)]) - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price] per dram</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>TAKE</a>"
-			else
-				contents += "<a href='?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price] [stars("per dram")]</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
-		contents += "<BR>"
+				if(canread)
+					contents += "<a href='?src=[REF(src)];setname=[REF(I)]'>[namer]</a> ([volume] [UNIT_FORM_STRING(volume)]) - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price] per dram</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>TAKE</a>"
+				else
+					contents += "<a href='?src=[REF(src)];setname=[REF(I)]'>[stars(namer)]</a> - <a href='?src=[REF(src)];setprice=[REF(I)]'>[price] [stars("per dram")]</a> <a href='?src=[REF(src)];retrieve=[REF(I)]'>[stars("TAKE")]</a>"
+			contents += "<BR>"
 
 	var/datum/browser/popup = new(user, "VENDORTHING", "", 370, 300)
 	popup.set_content(contents)
@@ -346,9 +345,6 @@
 	..()
 	held_items = list()
 	reagents.clear_reagents()
-	if(inserted)
-		inserted.forceMove(drop_location())
-		inserted = null
 	if(budget > 0)
 		budget2change(budget)
 		budget = 0
