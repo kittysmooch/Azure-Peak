@@ -1,3 +1,6 @@
+#define POTION_VIAL "vials"
+#define POTION_BOTTLE "bottles"
+
 /obj/structure/roguemachine/potionseller
 	name = "POTION SELLER"
 	desc = "The stomach of this thing can been stuffed with fluids for you to buy."
@@ -18,6 +21,8 @@
 	var/keycontrol = "physician" // Yep I am defaulting it to Physician to avoid confusion with default key being merchant
 	var/max_storage_amount = 1000
 	var/vials_held = 10
+	var/bottles_held = 5
+	var/dispensing_bottle_type = POTION_VIAL
 
 /obj/structure/roguemachine/potionseller/crafted
 	is_crafted = TRUE
@@ -62,10 +67,17 @@
 	
 	var/obj/item/reagent_containers/B = P
 
-	if(istype(B, /obj/item/reagent_containers/glass/bottle/alchemical))
+	if(istype(B, /obj/item/reagent_containers/glass/bottle))
 		if(!B.reagents.total_volume)
-			to_chat(user, span_smallnotice("I add \the [P] to the bottle dispenser."))
-			vials_held++
+			if(B.type == /obj/item/reagent_containers/glass/bottle || /obj/item/reagent_containers/glass/bottle/rogue)
+				to_chat(user, span_smallnotice("I add \the [P] to the bottle receptacle."))
+				bottles_held++
+			else if(B.type == /obj/item/reagent_containers/glass/bottle/alchemical)
+				to_chat(user, span_smallnotice("I add \the [P] to the vial receptacle."))
+				vials_held++
+			else
+				to_chat(user, span_warning("This container isn't accepted by the machine's receptacle."))
+				return
 			qdel(B)
 			playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 			return attack_hand(user)
@@ -135,46 +147,51 @@
 
 /obj/structure/roguemachine/potionseller/proc/dispense(mob/living/user, datum/reagent/R, quantity)
 	if(!user || !ismob(user) || !user.Adjacent(src))
-		return FALSE
+		return
+
 	if(!R)
 		to_chat(user, span_warning("No reagent selected."))
-		return FALSE
+		return 
 
 	quantity = round(quantity)
 	if(quantity <= 0)
 		to_chat(user, span_warning("The machine cannot pour such a small amount!"))
-		return FALSE
+		return
 
 	if(vials_held <= 0)
 		say("I AM ALL OUT OF VIALS, TRAVELER")
-		return FALSE
-
-	if(!reagents)
-		return FALSE
+		return
 
 	var/current_amount = reagents.get_reagent_amount(R.type)
 	if(current_amount <= 0)
-		return FALSE
-	
+		return 
+
 	if(quantity <= 0)
-		return FALSE
+		return
 
-	// Create a vial
-	var/obj/item/reagent_containers/glass/bottle/alchemical/B = new /obj/item/reagent_containers/glass/bottle/alchemical(get_turf(src))
+	// Create the vial
+	var/obj/item/reagent_containers/glass/bottle/B = null
+	if(dispensing_bottle_type == POTION_BOTTLE)
+		B = new /obj/item/reagent_containers/glass/bottle(src.loc)
+		bottles_held--
+	else
+		B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
+		vials_held--
 
-	// Clamp to what fits in a single vial and what we actually have
+	// Handle strange edge case
+	if(!B)
+		to_chat(span_warning("Nothing falls out! Something's broken!"))
+
 	if(quantity > B.volume)
 		quantity = B.volume
 	if(quantity > current_amount)
 		quantity = current_amount
 
-	// Fill the vial, subtract it from vials stored, remove reagents from the tank
 	B.reagents.add_reagent(R.type, quantity)
+	
 	playsound(loc, 'sound/misc/potionseller.ogg', 100, TRUE, -1)
-	vials_held--
-	reagents.remove_reagent(R.type, quantity, FALSE)
 
-	// If no more reagents are present in the vendor, delete the entry
+	reagents.remove_reagent(R.type, quantity, FALSE)
 	if(current_amount - quantity <= 0)
 		reagents.del_reagent(R.type)
 		held_items -= R.type
@@ -182,111 +199,133 @@
 
 	user.put_in_hands(B)
 
-	return TRUE
+	return attack_hand(user)
 
 /obj/structure/roguemachine/potionseller/Topic(href, href_list)
 	. = ..()
+
+	// BUY: customer mode
 	if(href_list["buy"])
 		var/datum/reagent/R = locate(href_list["buy"]) in held_items
 		if(!R || !ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE) || !locked)
 			return
-		
+
 		var/price = held_items[R.type]["PRICE"]
-		
-		var/quantity = 0
-		var/volume = reagents.get_reagent_amount(R)
-		
-		if(price > 0)
-			var/budget_vol = round(budget / price)
-			if(budget_vol > volume)
-				budget_vol = volume
-			quantity = input(usr, "How many dram to buy (can afford [budget_vol] [UNIT_FORM_STRING(budget_vol)])?", "\The [held_items[R.type]["NAME"]]") as num|null
-		else
-			quantity = input(usr, "How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
-		
-		if(!usr.Adjacent(src))
+		var/volume = reagents.get_reagent_amount(R.type)
+		if(volume <= 0)
 			return
 
+		var/quantity
 		if(price > 0)
-			price *= quantity
-			if(budget >= price)
-				budget -= price
-				wgain += price
-				record_round_statistic(STATS_PEDDLER_REVENUE, price)
-			else
-				if(budget <= 0)
-					say("I NEED MONEY, TRAVELER")
-				else if(budget < price)
-					say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
+			var/budget_vol = max(0, round(budget / price))
+			if(budget_vol <= 0)
+				say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
 				return
-				
+			quantity = input(usr,"How many drams to buy (can afford up to [budget_vol])?", "\The [held_items[R.type]["NAME"]]") as num|null
+		else
+			quantity = input(usr,
+				"How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
+
+		if(isnull(quantity) || !usr.Adjacent(src))
+			return
+
+		var/total_price = price * quantity
+		if(total_price > budget && price > 0)
+			say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
+			return
+
 		dispense(usr, R, quantity)
 
+		if(price > 0)
+			budget -= total_price
+			wgain += total_price
+			record_round_statistic(STATS_PEDDLER_REVENUE, total_price)
+		
+		return
+
+	// RETRIEVE: owner mode
 	if(href_list["retrieve"])
 		var/datum/reagent/R = locate(href_list["retrieve"]) in held_items
 		if(!R || !ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
-		var/quantity = 0
-		var/volume = reagents.get_reagent_amount(R)
-		quantity = input(usr, "How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
-		quantity = round(text2num(quantity))
-		
-		if(quantity > volume)
-			quantity = volume
-		
-		dispense(usr, R, quantity)
-			
+
+		var/quantity = input(usr,"How many drams to pour?", "\The [held_items[R.type]["NAME"]]") as num|null
+
+		if(isnull(quantity) || !usr.Adjacent(src))
+			return
+
+		quantity = round(quantity)
+		if(quantity > 0)
+			dispense(usr, R, quantity)
+		return
+
+
 	if(href_list["change"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || !locked)
 			return
-		if(ishuman(usr))
-			if(budget > 0)
-				budget2change(budget, usr)
-				budget = 0
-	
+		if(ishuman(usr) && budget > 0)
+			budget2change(budget, usr)
+			budget = 0
+
 	if(href_list["withdrawgain"])
 		if(!usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
-		if(ishuman(usr))
-			if(wgain > 0)
-				budget2change(wgain, usr)
-				wgain = 0
-	
+		if(ishuman(usr) && wgain > 0)
+			budget2change(wgain, usr)
+			wgain = 0
+
 	if(href_list["remove_vial"])
 		if(!usr.canUseTopic(src, BE_CLOSE))
 			return
 		if(ishuman(usr))
-			var/obj/item/reagent_containers/glass/bottle/B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
+			var/obj/item/reagent_containers/glass/bottle/alchemical/B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
 			usr.put_in_hands(B)
-			vials_held--		
-	
+			vials_held--
+
+	if(href_list["remove_bottle"])
+		if(!usr.canUseTopic(src, BE_CLOSE))
+			return
+		if(ishuman(usr))
+			var/obj/item/reagent_containers/glass/bottle/B = new /obj/item/reagent_containers/glass/bottle(src.loc)
+			usr.put_in_hands(B)
+			bottles_held--
+
+	if(href_list["switch_bottle_type"])
+		if(!usr.canUseTopic(src, BE_CLOSE))
+			return
+		if(ishuman(usr))
+			if(dispensing_bottle_type == POTION_VIAL)
+				dispensing_bottle_type = POTION_BOTTLE
+			else
+				dispensing_bottle_type = POTION_VIAL
+
 	if(href_list["setname"])
 		var/datum/reagent/R = locate(href_list["setname"]) in held_items
 		if(!R || !usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		if(ishuman(usr))
-			var/prename
-			if(held_items[R.type]["NAME"])
-				prename = held_items[R.type]["NAME"]
+			var/prename = held_items[R.type]["NAME"]
 			var/newname = input(usr, "SET A NEW NAME FOR THIS POTION", src, prename)
 			if(newname)
 				held_items[R.type]["NAME"] = newname
-	
+
 	if(href_list["setprice"])
 		var/datum/reagent/R = locate(href_list["setprice"]) in held_items
 		if(!R || !usr.canUseTopic(src, BE_CLOSE) || locked)
 			return
 		if(ishuman(usr))
-			var/preprice
-			if(held_items[R]["PRICE"])
-				preprice = held_items[R]["PRICE"]
-			var/newprice = input(usr, "SET A NEW PRICE FOR THIS POTION PER DRAM (0 IS FREE)", src, preprice) as null|num
-			if(newprice)
-				if(newprice < 0.1)
-					return attack_hand(usr)
-				held_items[R]["PRICE"] = round(newprice, 0.1)
-			else if(text2num(newprice) == 0)
-				held_items[R]["PRICE"] = 0 // free!
+			var/preprice = held_items[R.type]["PRICE"]
+			var/newprice = input(usr,"SET A NEW PRICE FOR THIS POTION PER DRAM (0 IS FREE)", src, preprice) as null|num
+
+			if(isnull(newprice))
+				return
+
+			if(newprice <= 0)
+				held_items[R.type]["PRICE"] = 0
+			else if(newprice < 0.1)
+				return attack_hand(usr)
+			else
+				held_items[R.type]["PRICE"] = round(newprice, 0.1)
 
 	return attack_hand(usr)
 
@@ -300,12 +339,14 @@
 	var/contents
 	if(canread)
 		contents = "<center>POTION SELLER, FIRST ITERATION<BR>"
-		contents += "<a href='?src=[REF(src)];remove_vial=1'>Vials remaining:</a> [vials_held]<BR>"
-		
+		contents += "Currently dispensing: <a href='?src=[REF(src)];switch_bottle_type=1'>[dispensing_bottle_type]</a><BR>"
+
 		if(locked)
 			contents += "<a href='?src=[REF(src)];change=1'>Stored Mammon:</a> [budget]<BR>"
+			contents += "Vials remaining: [vials_held] | Bottles remaining: [bottles_held]<BR>"
 		else
 			contents += "<a href='?src=[REF(src)];withdrawgain=1'>Stored Profits:</a> [wgain]<BR>"
+			contents += "<a href='?src=[REF(src)];remove_vial=1'>Vials remaining:</a>[vials_held] | <a href='?src=[REF(src)];remove_bottle=1'>Bottles remaining:</a>[bottles_held]<BR>"
 	else
 		contents = "<center>[stars("POTION SELLER, FIRST ITERATION")]<BR>"
 		
@@ -370,3 +411,6 @@
 	if(held_items.len)
 		set_light(1, 1, 1, l_color = "#1b7bf1")
 		add_overlay(mutable_appearance(icon, "vendor-gen"))
+
+#undef POTION_BOTTLE
+#undef POTION_VIAL
