@@ -683,7 +683,6 @@ SPECIALS START HERE
 		if(L.mobility_flags & MOBILITY_STAND)
 			apply_generic_weapon_damage(L, (hitcount > 1 ? dam * 1.5 : dam), "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
 		var/sfx = 'sound/combat/sp_gsword_hit.ogg'
-		stuff_hit = TRUE
 		playsound(T, sfx, 100, TRUE)
 	..()
 
