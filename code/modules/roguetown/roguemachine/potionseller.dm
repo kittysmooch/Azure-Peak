@@ -145,7 +145,7 @@
 	
 	..()
 
-/obj/structure/roguemachine/potionseller/proc/dispense(mob/living/user, datum/reagent/R, quantity)
+/obj/structure/roguemachine/potionseller/proc/dispense(mob/living/user, datum/reagent/R, quantity, price = 0)
 	if(!user || !ismob(user) || !user.Adjacent(src))
 		return
 
@@ -199,6 +199,13 @@
 
 	user.put_in_hands(B)
 
+	// Second price check to make sure machine doesn't overcharge
+	var/capped_price = price * quantity	
+	if(capped_price > 0)
+		budget -= capped_price
+		wgain += capped_price
+		record_round_statistic(STATS_PEDDLER_REVENUE, capped_price)
+
 	return attack_hand(user)
 
 /obj/structure/roguemachine/potionseller/Topic(href, href_list)
@@ -229,18 +236,13 @@
 		if(isnull(quantity) || !usr.Adjacent(src))
 			return
 
+		// First price check to see if user can actually afford it
 		var/total_price = price * quantity
 		if(total_price > budget && price > 0)
 			say("MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER")
 			return
 
-		dispense(usr, R, quantity)
-
-		if(price > 0)
-			budget -= total_price
-			wgain += total_price
-			record_round_statistic(STATS_PEDDLER_REVENUE, total_price)
-		
+		dispense(usr, R, quantity, price)		
 		return
 
 	// RETRIEVE: owner mode
