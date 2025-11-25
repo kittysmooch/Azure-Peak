@@ -18,7 +18,6 @@
 	var/keycontrol = "physician" // Yep I am defaulting it to Physician to avoid confusion with default key being merchant
 	var/max_storage_amount = 1000
 	var/vials_held = 10
-	var/max_dispense_volume = 30
 
 /obj/structure/roguemachine/potionseller/crafted
 	is_crafted = TRUE
@@ -134,42 +133,48 @@
 	
 	..()
 
-/obj/structure/roguemachine/potionseller/proc/dispense(mob/user, datum/reagent/R, quantity)
-	if(!user || !ismob(user) || !Adjacent(user))
-		return
+/obj/structure/roguemachine/potionseller/proc/dispense(mob/living/user, datum/reagent/R, quantity)
+	if(!user || !ismob(user) || !user.Adjacent(src))
+		return FALSE
 	if(!R)
 		to_chat(user, span_warning("No reagent selected."))
-		return
+		return FALSE
+
+	quantity = round(quantity)
 	if(quantity <= 0)
 		to_chat(user, span_warning("The machine cannot pour such a small amount!"))
-		return
+		return FALSE
 
 	if(vials_held <= 0)
 		say("I AM ALL OUT OF VIALS, TRAVELER")
-		return
+		return FALSE
 
-	var/obj/item/reagent_containers/glass/bottle/B
+	if(!reagents)
+		return FALSE
+
 	var/current_amount = reagents.get_reagent_amount(R.type)
-	
 	if(current_amount <= 0)
-		return
+		return FALSE
+	
+	if(quantity <= 0)
+		return FALSE
 
-	if(quantity > max_dispense_volume)
-		quantity = max_dispense_volume
+	// Create a vial
+	var/obj/item/reagent_containers/glass/bottle/alchemical/B = new /obj/item/reagent_containers/glass/bottle/alchemical(get_turf(src))
+
+	// Clamp to what fits in a single vial and what we actually have
+	if(quantity > B.volume)
+		quantity = B.volume
 	if(quantity > current_amount)
 		quantity = current_amount
 
-	quantity = round(quantity)
-
-	if(quantity <= 0)
-		return
-	B = new /obj/item/reagent_containers/glass/bottle/alchemical(src.loc)
+	// Fill the vial, subtract it from vials stored, remove reagents from the tank
 	B.reagents.add_reagent(R.type, quantity)
 	playsound(loc, 'sound/misc/potionseller.ogg', 100, TRUE, -1)
 	vials_held--
-
 	reagents.remove_reagent(R.type, quantity, FALSE)
 
+	// If no more reagents are present in the vendor, delete the entry
 	if(current_amount - quantity <= 0)
 		reagents.del_reagent(R.type)
 		held_items -= R.type
