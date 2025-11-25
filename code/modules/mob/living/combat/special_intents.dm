@@ -642,7 +642,7 @@ SPECIALS START HERE
 
 /datum/special_intent/greatsword_swing
 	name = "Great Swing"
-	desc = "Swing your greatsword all around you in a circle of Judgement."
+	desc = "Swing your greatsword all around you in a ring of Judgement."
 	tile_coordinates = list(
 		list(0,0), list(1,0), list(1,-1),list(1,-2),list(0,-2),list(-1,-2),list(-1,-1),list(-1,0),\
 		list(0,0, GAREN_WAVE1), list(1,0, GAREN_WAVE1), list(1,-1, GAREN_WAVE1),list(1,-2, GAREN_WAVE1),list(0,-2, GAREN_WAVE1),list(-1,-2, GAREN_WAVE1),list(-1,-1, GAREN_WAVE1),list(-1,0, GAREN_WAVE1),\
