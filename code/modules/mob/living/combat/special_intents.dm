@@ -638,7 +638,7 @@ SPECIALS START HERE
 	..()
 
 #define GAREN_WAVE1 1 SECONDS
-#define GAREN_WAVE2 1.6 SECONDS
+#define GAREN_WAVE2 1.4 SECONDS
 
 /datum/special_intent/greatsword_swing
 	name = "Great Swing"
@@ -659,16 +659,22 @@ SPECIALS START HERE
 	var/slow_dur = 2
 	var/hitcount = 0
 	var/self_debuffed = FALSE
+	var/self_immob = 3.5 SECONDS
+	var/self_clickcd = 3.5 SECONDS
+	var/self_expose = 5 SECONDS
 
 /datum/special_intent/greatsword_swing/_reset()
 	hitcount = initial(hitcount)
 	self_debuffed = initial(self_debuffed)
 	. = ..()
 
+//It's a bad idea to hook into _process_grid, but this is a ghetto way to check which "wave" we are at.
+//As process grid is called for every set of tiles.
 /datum/special_intent/greatsword_swing/_process_grid(list/turfs, newdelay)
 	if(!self_debuffed)
-		howner.Immobilize(3 SECONDS) //we're committing
-		howner.apply_status_effect(/datum/status_effect/debuff/exposed, 4 SECONDS)
+		howner.Immobilize(self_immob) //we're committing
+		howner.apply_status_effect(/datum/status_effect/debuff/exposed, self_expose)
+		howner.apply_status_effect(/datum/status_effect/debuff/clickcd, self_clickcd)
 		self_debuffed = TRUE
 	hitcount++
 	. = ..()
@@ -681,7 +687,7 @@ SPECIALS START HERE
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		L.Slowdown(slow_dur)
 		if(L.mobility_flags & MOBILITY_STAND)
-			apply_generic_weapon_damage(L, (hitcount > 1 ? dam * 1.5 : dam), "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
+			apply_generic_weapon_damage(L, ((hitcount > 1) ? (dam * 1.5) : dam), "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
 		var/sfx = 'sound/combat/sp_gsword_hit.ogg'
 		playsound(T, sfx, 100, TRUE)
 	..()
