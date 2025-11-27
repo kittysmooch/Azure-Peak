@@ -109,3 +109,6 @@
 		if(success)
 			did_ambush = TRUE
 	return did_ambush
+
+#undef WARDEN_AMBUSH_MIN
+#undef WARDEN_AMBUSH_MAX
