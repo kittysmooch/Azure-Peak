@@ -150,7 +150,7 @@ decreases charge time if held opened in hand, for pure mage build + aesthetics.
 		if(gamer.get_skill_level(/datum/skill/magic/arcane) > 3)
 			designlist = list("green", "yellow", "brown", "steel", "gem", "skin", "mimic")
 		var/the_time = world.time
-		var/design = input(user, "Select a design.","Spellbook Design") as null|anything in designlist
+		var/design = tgui_input_list(user, "Select a design.","Spellbook Design", designlist)
 		if(!design)
 			return
 		if(world.time > (the_time + 30 SECONDS))
