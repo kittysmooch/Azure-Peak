@@ -648,13 +648,13 @@ SPECIALS START HERE
 		list(0,0, GAREN_WAVE1), list(1,0, GAREN_WAVE1), list(1,-1, GAREN_WAVE1),list(1,-2, GAREN_WAVE1),list(0,-2, GAREN_WAVE1),list(-1,-2, GAREN_WAVE1),list(-1,-1, GAREN_WAVE1),list(-1,0, GAREN_WAVE1),\
 		list(0,0, GAREN_WAVE2), list(1,0, GAREN_WAVE2), list(1,-1, GAREN_WAVE2),list(1,-2, GAREN_WAVE2),list(0,-2, GAREN_WAVE2),list(-1,-2, GAREN_WAVE2),list(-1,-1, GAREN_WAVE2),list(-1,0, GAREN_WAVE2)
 		)
-	post_icon_state = "heavy_fx_north"
+	post_icon_state = "sweep_fx"
 	pre_icon_state = "fx_trap_long"
 	sfx_pre_delay = 'sound/combat/rend_hit.ogg'
 	respect_adjacency = FALSE
 	delay = 0.7 SECONDS
-	cooldown = 25 SECONDS
-	stamcost = 20	//Stamina cost
+	cooldown = 30 SECONDS
+	stamcost = 25	//Stamina cost
 	var/dam = 50
 	var/slow_dur = 2
 	var/hitcount = 0
