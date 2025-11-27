@@ -125,7 +125,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	tastes = list("fried egg" = 1, "sausage" = 1)
-	name = "wiener and egg"
+	name = "wiener egg"
 	desc = "Fried egg with sausage on the side. A good start to a perfect morning."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "wieneregg"
@@ -149,7 +149,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon
 	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_MEAGRE)
 	tastes = list("fried egg" = 1, "sausage" = 1, "bacon" = 1)
-	name = "wrapped wiener and egg"
+	name = "wiener egg with bacon"
 	desc = "Fried egg with sausage and bacon on the side. Mere step away from greatness."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "wienereggbacon"

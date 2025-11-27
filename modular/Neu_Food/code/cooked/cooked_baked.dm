@@ -151,6 +151,14 @@
 			user.put_in_hands(sammich)
 			qdel(I)
 			qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/gen_drop.ogg', 30, TRUE, -1)
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold(loc)
+				qdel(I)
+				qdel(src)	
 	else
 		return ..()
 
