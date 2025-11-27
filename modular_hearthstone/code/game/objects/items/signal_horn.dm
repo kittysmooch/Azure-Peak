@@ -4,7 +4,7 @@
 /obj/item/signal_horn
 	name = "signal horn"
 	desc = "A horn carried by the wardens. Blowing it attracts the attention of various creechurs and rapscallions, enabling the wardens to clear them out."
-	icon = 'modular_hearthstone/icons/obj/items/signalhorn.dmi'
+	icon = 'icons/obj/items/signalhorn.dmi'
 	icon_state = "signalhorn"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
@@ -51,7 +51,7 @@
 		if("Warden")
 			playsound(src, 'sound/items/horn/bogguardhorn.ogg', 100, TRUE)
 		if("Town Sheriff", "Watchman", "Sergeant", "Man at Arms")
-			playsound(src, 'sound/items/horn/watchhorn.ogg', 100, TRUE)
+			playsound(src, 'sound/items/horn/wardenhorn.ogg', 100, TRUE)
 		if("Knight Captain", "Royal Guard")
 			playsound(src, 'sound/items/horn/rghorn.ogg', 100, TRUE)
 		else
@@ -94,7 +94,7 @@
 			if("Warden")
 				player.playsound_local(get_turf(player), 'sound/items/horn/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			if("Marshall", "Watchman", "Sergeant", "Man at Arms")
-				player.playsound_local(get_turf(player), 'sound/items/horn/watchhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				player.playsound_local(get_turf(player), 'sound/items/horn/wardenhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			if("Knight Captain", "Knight")
 				player.playsound_local(get_turf(player), 'sound/items/horn/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			else

@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur
-	icon = 'modular_hearthstone/icons/mob/newminotaur.dmi'
+	icon = 'icons/mob/newminotaur.dmi'
 	name = "Minotaur"
 	icon_state = "MinotaurMale"
 	icon_living = "MinotaurMale"

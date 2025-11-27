@@ -1,7 +1,7 @@
 /obj/item/legwears
 	name = "stockings(under)"
 	desc = "A legwear made just for the pure aesthetics. Popular in courts and brothels alike."
-	icon = 'modular_hearthstone/icons/obj/items/clothes/stockings.dmi'
+	icon = 'icons/obj/items/clothes/stockings.dmi'
 	icon_state = "stockings"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT

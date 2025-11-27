@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/rogue/dreamfiend
-	icon = 'modular_hearthstone/icons/mob/abyssal_small.dmi'
+	icon = 'icons/mob/abyssal_small.dmi'
 	name = "minor dream fiend"
 	icon_state = "dreamfiend"
 	icon_living = "dreamfiend"
@@ -32,7 +32,7 @@
 	var/desummon_timer = 8 SECONDS
 
 /mob/living/simple_animal/hostile/rogue/dreamfiend/major
-	icon = 'modular_hearthstone/icons/mob/abyssal_medium.dmi'
+	icon = 'icons/mob/abyssal_medium.dmi'
 	name = "major dream fiend"
 	pixel_x = -4
 
@@ -50,7 +50,7 @@
 	attack_sound = list('modular_azurepeak/sound/mobs/abyssal/abyssal_attack.ogg','modular_azurepeak/sound/mobs/abyssal/abyssal_attack2.ogg')
 
 /mob/living/simple_animal/hostile/rogue/dreamfiend/ancient
-	icon = 'modular_hearthstone/icons/mob/abyssal_large.dmi'
+	icon = 'icons/mob/abyssal_large.dmi'
 	name = "ancient dream fiend"
 	desc = "A truly horrifying creature. It makes you dizzy just looking at it."
 	pixel_x = -16
@@ -185,7 +185,7 @@
 /obj/effect/decal/cleanable/dreamfiend_ichor
 	name = "vile ichor"
 	desc = "this dark shifting liquid looks impossibly deep"
-	icon = 'modular_hearthstone/icons/mob/abyssal_small.dmi'
+	icon = 'icons/mob/abyssal_small.dmi'
 	icon_state = "dreamfiend_dead"
 	beauty = -100
 	alpha = 200
@@ -194,11 +194,11 @@
 
 /obj/effect/decal/cleanable/dreamfiend_ichor/large
 	pixel_x = -4
-	icon = 'modular_hearthstone/icons/mob/abyssal_medium.dmi'
+	icon = 'icons/mob/abyssal_medium.dmi'
 
 /obj/effect/decal/cleanable/dreamfiend_ichor/huge
 	pixel_x = -16
-	icon = 'modular_hearthstone/icons/mob/abyssal_large.dmi'
+	icon = 'icons/mob/abyssal_large.dmi'
 
 /datum/intent/simple/dreamfiend_ancient
 	name = "devastating bite"

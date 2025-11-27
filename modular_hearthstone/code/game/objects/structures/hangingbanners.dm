@@ -2,7 +2,7 @@
 /obj/structure/fluff/littlebanners
 	name = "hanging little banners"
 	desc = ""
-	icon = 'modular_hearthstone/icons/obj/decor.dmi'
+	icon = 'icons/obj/decor.dmi'
 	icon_state = "hangingbanners_wr"
 	density = FALSE
 	anchored = TRUE
