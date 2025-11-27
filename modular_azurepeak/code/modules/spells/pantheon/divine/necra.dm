@@ -187,6 +187,10 @@
 	desc = "Call upon the Undermaiden to guide you to a lost soul."
 	overlay_state = "necraeye"
 	sound = 'sound/magic/whiteflame.ogg'
+	releasedrain = 30
+	chargedrain = 0.5
+	max_targets = 0
+	cast_without_targets = TRUE
 	miracle = TRUE
 	associated_skill = /datum/skill/magic/holy
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
@@ -197,7 +201,6 @@
 
 /obj/effect/proc_holder/spell/targeted/locate_dead/cast(list/targets, mob/living/user = usr)
 	. = ..()
-
 	var/list/mob/corpses = list()
 	for(var/mob/living/C in GLOB.dead_mob_list)
 		if(!C.mind || !is_in_zweb(C.z, user.z))
@@ -226,7 +229,7 @@
 
 	var/mob/selected = tgui_input_list(user, "Which body shall I seek?", "Available Bodies", corpses)
 
-	if(QDELETED(src) || QDELETED(user) || QDELETED(corpses[selected]) || !cast_check())
+	if(QDELETED(src) || QDELETED(user) || QDELETED(corpses[selected]))
 		to_chat(user, span_warning("The Undermaiden's grasp lets slip."))
 		return .
 
