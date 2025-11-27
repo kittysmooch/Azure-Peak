@@ -3,7 +3,7 @@
 
 /obj/structure/roguemachine/potionseller
 	name = "POTION SELLER"
-	desc = "The stomach of this thing can been stuffed with fluids for you to buy."
+	desc = "The stomach of this thing can been stuffed with fluids for you to buy. Its strongest potions might be too much for you to handle."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -69,12 +69,14 @@
 
 	if(istype(B, /obj/item/reagent_containers/glass/bottle))
 		if(!B.reagents.total_volume)
-			if(B.type == /obj/item/reagent_containers/glass/bottle || /obj/item/reagent_containers/glass/bottle/rogue)
-				to_chat(user, span_smallnotice("I add \the [P] to the bottle receptacle."))
-				bottles_held++
-			else if(B.type == /obj/item/reagent_containers/glass/bottle/alchemical)
+			if(B.type == /obj/item/reagent_containers/glass/bottle/alchemical)
 				to_chat(user, span_smallnotice("I add \the [P] to the vial receptacle."))
 				vials_held++
+			
+			else if(B.type == /obj/item/reagent_containers/glass/bottle || /obj/item/reagent_containers/glass/bottle/rogue)
+				to_chat(user, span_smallnotice("I add \the [P] to the bottle receptacle."))
+				bottles_held++
+
 			else
 				to_chat(user, span_warning("This container isn't accepted by the machine's receptacle."))
 				return
