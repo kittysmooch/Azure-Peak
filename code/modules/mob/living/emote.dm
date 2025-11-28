@@ -31,7 +31,7 @@
 	var/prayer = input("Whisper your prayer:", "Prayer") as text|null
 	if(!prayer)
 		return
-	
+
 	//If God can hear your prayer (long enough, no bad words, etc.)
 	if(patron.hear_prayer(follower, prayer))
 		if(follower.has_flaw(/datum/charflaw/addiction/godfearing))
@@ -50,9 +50,6 @@
 
 	if(SEND_SIGNAL(follower, COMSIG_CARBON_PRAY, prayer) & CARBON_PRAY_CANCEL)
 		return
-
-	for(var/mob/living/LICKMYBALLS in hearers(2,src))	// Lickmyballs = person in crit.
-		LICKMYBALLS.succumb_timer = world.time			//..succumb timer does nothing rn btw..
 
 /datum/emote/living/meditate
 	key = "meditate"
@@ -452,6 +449,7 @@
 	message = "blows a kiss."
 	message_param = "kisses %t."
 	emote_type = EMOTE_VISIBLE
+	use_params_for_runechat = TRUE
 
 /mob/living/carbon/human/verb/emote_kiss()
 	set name = "Kiss"
@@ -491,6 +489,49 @@
 	if(user.mind)
 		record_round_statistic(STATS_KISSES_MADE)
 
+/datum/emote/living/lick
+	key = "lick"
+	key_third_person = "licks"
+	message = "licking."
+	message_param = "licks %t."
+	emote_type = EMOTE_VISIBLE
+	use_params_for_runechat = TRUE
+
+/mob/living/carbon/human/verb/emote_lick()
+	set name = "Lick"
+	set category = "Emotes"
+	emote("lick", intentional = TRUE, targetted = TRUE)
+
+/datum/emote/living/lick/adjacentaction(mob/user, mob/target)
+	. = ..()
+	message_param = initial(message_param)
+	if(!user || !target)
+		return
+	if(ishuman(user) && ishuman(target))
+		var/mob/living/carbon/human/J = user
+		var/do_change
+		if(target.loc == user.loc)
+			do_change = TRUE
+		if(!do_change)
+			if(J.pulling == target)
+				do_change = TRUE
+		if(do_change)
+			if(J.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+				message_param = "licks %t lips."
+			else if(J.zone_selected == BODY_ZONE_PRECISE_EARS)
+				message_param = "licks the ear of %t."
+				var/mob/living/carbon/human/O = target
+				if(iself(O) || ishalfelf(O) || isdarkelf(O))
+					if(!O.cmode)
+						to_chat(target, span_love("It tickles..."))
+			else if(J.zone_selected == BODY_ZONE_PRECISE_GROIN)
+				message_param = "licks %t between the legs."
+				to_chat(target, span_love("It somewhat stimulating..."))
+			else if(J.zone_selected == BODY_ZONE_HEAD)
+				message_param = "licks %t cheek"
+			else
+				message_param = "licks %t [parse_zone(J.zone_selected)]."
+	playsound(target.loc, pick("sound/vo/lick.ogg"), 100, FALSE, -1)
 
 /datum/emote/living/spit
 	key = "spit"
@@ -552,35 +593,43 @@
 			SEND_SIGNAL(user, COMSIG_MOB_HUGGED, target)
 
 /datum/emote/living/holdbreath
-	key = "hold"
-	key_third_person = "holds"
-	message = "begins to hold their breath."
-	stat_allowed = SOFT_CRIT
+    key = "hold"
+    key_third_person = "holds"
+    message = null
 
 /mob/living/carbon/human/verb/emote_hold()
-	set name = "Hold Breath"
-	set category = "Emotes"
-
-	emote("hold", intentional = TRUE)
+    set name = "Hold Breath"
+    set category = "Emotes"
+    emote("hold", intentional = TRUE)
 
 /datum/emote/living/holdbreath/can_run_emote(mob/living/user, status_check = TRUE, intentional)
-	. = ..()
-	if(. && intentional && !HAS_TRAIT(user, TRAIT_HOLDBREATH) && !HAS_TRAIT(user, TRAIT_PARALYSIS))
-		to_chat(user, span_warning("I'm not desperate enough to do that."))
-		return FALSE
+    . = ..()
+    if(!.)
+        return FALSE
+    return TRUE
 
 /datum/emote/living/holdbreath/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(.)
-		if(HAS_TRAIT(user, TRAIT_HOLDBREATH))
-			REMOVE_TRAIT(user, TRAIT_HOLDBREATH, "[type]")
-		else
-			ADD_TRAIT(user, TRAIT_HOLDBREATH, "[type]")
+    if(!ishuman(user))
+        return FALSE
 
-/datum/emote/living/holdbreath/select_message_type(mob/user, intentional)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_HOLDBREATH))
-		. = "stops holding their breath."
+    var/mob/living/carbon/human/H = user
+    var/is_holding = HAS_TRAIT(H, TRAIT_HOLDBREATH)
+
+    if(is_holding)
+        REMOVE_TRAIT(H, TRAIT_HOLDBREATH, "[type]")
+        H.visible_message(
+            span_notice("[H] stops holding [H.p_their()] breath."),
+            span_notice("You stop holding your breath.")
+        )
+    else
+        ADD_TRAIT(H, TRAIT_HOLDBREATH, "[type]")
+        H.visible_message(
+            span_notice("[H] begins to hold [H.p_their()] breath."),
+            span_notice("You begin to hold your breath.")
+        )
+
+    return TRUE
+
 
 /datum/emote/living/slap
 	key = "slap"
@@ -1540,6 +1589,25 @@
 		set name = "Whine"
 		set category = "Noises"
 		emote("whine", intentional = TRUE, animal = TRUE)
+	else
+		to_chat(usr, span_warning("Your tongue doesn't do that"))
+		return
+
+/datum/emote/living/psnort
+	key = "psnort"
+	key_third_person = "psnorts"
+	message = "lets out an elongated snort."
+	emote_type = EMOTE_AUDIBLE
+	message_muffled = "makes a muffled sound!"
+	vary = TRUE
+	show_runechat = FALSE
+	is_animal = TRUE
+
+/mob/living/carbon/human/verb/emote_snort()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
+		set name = "Snort (Animal)"
+		set category = "Noises"
+		emote("psnort", intentional = TRUE, animal = TRUE)
 	else
 		to_chat(usr, span_warning("Your tongue doesn't do that"))
 		return

@@ -11,6 +11,7 @@
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
 	var/lastattackerckey = null
+	var/datum/weakref/lastattacker_weakref = null
 
 	//Health and life related vars
 	var/maxHealth = 100 //Maximum health that should be possible.
@@ -149,7 +150,8 @@
 
 	var/eyesclosed = 0
 	var/fallingas = 0
-
+	var/is_asleep = FALSE
+	
 	var/bleed_rate = 0 //how much are we bleeding
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding
 
@@ -194,3 +196,6 @@
 
 	/// If the character has prominent mob descriptors, they'll make extra noise
 	var/loud_sneaking = FALSE
+
+	/// Parry timer for projectiles post-attack. Hooks into the attack animation, so is fairly clunky.
+	var/projectile_parry_timer

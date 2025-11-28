@@ -175,7 +175,6 @@
 	if(hud_used)
 		hud_used.throw_icon?.update_icon()
 		hud_used.give_intent?.update_icon()
-	givingto = null
 	return hand_index
 
 //Puts the item into the first available left hand if possible and calls all necessary triggers/updates. returns 1 on success.
@@ -193,8 +192,8 @@
 	if(I.twohands_required && get_inactive_held_item())
 		return FALSE
 	if((I.is_silver || I.smeltresult == /obj/item/ingot/silver) && (HAS_TRAIT(src, TRAIT_SILVER_WEAK) &&  !has_status_effect(STATUS_EFFECT_ANTIMAGIC)))
-		var/datum/antagonist/vampirelord/V_lord = mind?.has_antag_datum(/datum/antagonist/vampirelord)
-		if(!istype(V_lord) || V_lord?.vamplevel < 4)
+		var/datum/antagonist/vampire/V_lord = mind?.has_antag_datum(/datum/antagonist/vampire)
+		if(!istype(V_lord) || V_lord?.generation < GENERATION_METHUSELAH)
 			to_chat(src, span_userdanger("I can't pick up the silver, it is my BANE!"))
 			Knockdown(10)
 			Paralyze(10)
@@ -324,7 +323,6 @@
 	if(hud_used)
 		hud_used.throw_icon?.update_icon()
 		hud_used.give_intent?.update_icon()
-	givingto = null
 	update_a_intents()
 	return TRUE
 

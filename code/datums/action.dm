@@ -1,8 +1,3 @@
-#define AB_CHECK_RESTRAINED 1
-#define AB_CHECK_STUN 2
-#define AB_CHECK_LYING 4
-#define AB_CHECK_CONSCIOUS 8
-
 /datum/action
 	var/name = "Generic Action"
 	var/desc = null
@@ -128,7 +123,7 @@
 		if(!status_only)
 			button.name = name
 			button.desc = desc
-			if(owner && owner.hud_used && background_icon_state == ACTION_BUTTON_DEFAULT_BACKGROUND)
+			if(owner && owner.hud_used && background_icon_state == "default")
 				var/list/settings = owner.hud_used.get_action_buttons_icons()
 				if(button.icon != settings["bg_icon"])
 					button.icon = settings["bg_icon"]
@@ -153,9 +148,9 @@
 /datum/action/proc/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
 	if(icon_icon && button_icon_state && ((current_button.button_icon_state != button_icon_state) || force))
 		current_button.cut_overlays(TRUE)
-		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
+		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state, layer = current_button.layer + 0.1))
 		if(overlay_state)
-			var/mutable_appearance/overlaid_icon = mutable_appearance(icon_icon, overlay_state)
+			var/mutable_appearance/overlaid_icon = mutable_appearance(icon_icon, overlay_state, layer = current_button.layer + 0.2)
 			overlaid_icon.alpha = overlay_alpha
 			current_button.add_overlay(overlaid_icon)
 		current_button.button_icon_state = button_icon_state

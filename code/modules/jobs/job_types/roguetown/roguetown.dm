@@ -30,7 +30,7 @@
 			peopleknowme += X
 		for(var/X in GLOB.inquisition_positions)
 			peopleiknow += X
-			peopleknowme += X	
+			peopleknowme += X
 
 /datum/outfit/job/roguetown
 	uniform = null
@@ -39,6 +39,7 @@
 	belt = null
 	back = null
 	shoes = null
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
 	box = null
 	/// List of patrons we are allowed to use
 	var/list/allowed_patrons
@@ -89,6 +90,9 @@
 			if(check_crownlist(H.ckey))
 				H.mind.special_items["Champion Circlet"] = /obj/item/clothing/head/roguetown/crown/sparrowcrown
 			give_special_items(H)
+		// Ensure Wretches are granted their antagonist datum at post-equip
+		if(H.mind.assigned_role == "Wretch" && !H.mind.has_antag_datum(/datum/antagonist/wretch))
+			H.mind.add_antag_datum(/datum/antagonist/wretch)
 	for(var/list_key in SStriumphs.post_equip_calls)
 		var/datum/triumph_buy/thing = SStriumphs.post_equip_calls[list_key]
 		thing.on_activate(H)

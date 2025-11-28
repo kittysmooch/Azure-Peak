@@ -79,7 +79,7 @@
 		if(1)
 			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 		if(2)
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+			armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/iron
 		if(3)
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 
@@ -94,7 +94,7 @@
 	flee_in_pain = TRUE
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY
-	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL)
+	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_SPECIAL)
 	possible_rmb_intents = list(
 		/datum/rmb_intent/feint,\
 		/datum/rmb_intent/aimed,\
@@ -118,7 +118,7 @@
 		wander = TRUE
 		if(!is_silent && target != newtarg)
 			say(pick(GLOB.highwayman_aggro))
-			linepoint(target)
+			pointed(target)
 
 /mob/living/carbon/human/species/human/northern/bog_deserters/should_target(mob/living/L)
 	if(L.stat != CONSCIOUS)
@@ -231,7 +231,7 @@
 	flee_in_pain = TRUE
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY
-	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL)
+	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_SPECIAL)
 	possible_rmb_intents = list(
 		/datum/rmb_intent/feint,\
 		/datum/rmb_intent/aimed,\

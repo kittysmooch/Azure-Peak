@@ -86,10 +86,6 @@
 #define ORGAN_SLOT_TAUR_BODY "taur_body"
 #define ORGAN_SLOT_WINGS "wings"
 #define ORGAN_SLOT_SNOUT "snout"
-#define ORGAN_SLOT_PENIS "penis"
-#define ORGAN_SLOT_TESTICLES "testicles"
-#define ORGAN_SLOT_BREASTS "breasts"
-#define ORGAN_SLOT_VAGINA "vagina"
 
 #define BODYPART_FEATURE_HAIR "hair"
 #define BODYPART_FEATURE_FACIAL_HAIR "facehair"
@@ -98,6 +94,7 @@
 #define BODYPART_FEATURE_UNDERWEAR "underwear"
 #define BODYPART_FEATURE_CREST "crest"
 #define BODYPART_FEATURE_LEGWEAR "legwear"
+#define BODYPART_FEATURE_BRAND "brand"
 
 //flags for requirements for a surgery step
 #define SURGERY_BLOODY (1<<0)

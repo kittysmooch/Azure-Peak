@@ -10,7 +10,7 @@
 
 /datum/time_of_day/sunrise
 	name = "Sunrise"
-	color = "#F598AB"
+	color = list("#F598AB","#e26d6d", "#e96e4f")
 	start = 9.5 HOURS  //9:30:00 AM
 
 /datum/time_of_day/daytime
@@ -140,17 +140,18 @@ SUBSYSTEM_DEF(outdoor_effects)
 
 	//Add our weather particle obj to any new weather screens
 	if(SSParticleWeather.initialized)
-		for (i in 1 to weather_planes_need_vis.len)
-			var/atom/movable/screen/plane_master/weather_effect/W = weather_planes_need_vis[i]
-			if(W)
-				W.vis_contents = list(SSParticleWeather.getweatherEffect())
-			if(init_tick_checks)
-				CHECK_TICK
-			else if (MC_TICK_CHECK)
-				break
-		if (i)
-			weather_planes_need_vis.Cut(1, i+1)
-			i = 0
+		if(length(weather_planes_need_vis))
+			for (i in 1 to weather_planes_need_vis.len)
+				var/atom/movable/screen/plane_master/weather_effect/W = weather_planes_need_vis[i]
+				if(W)
+					W.vis_contents = list(SSParticleWeather.getweatherEffect())
+				if(init_tick_checks)
+					CHECK_TICK
+				else if (MC_TICK_CHECK)
+					break
+			if (i)
+				weather_planes_need_vis.Cut(1, i+1)
+				i = 0
 
 	for (i in 1 to GLOB.SUNLIGHT_QUEUE_WORK.len)
 		var/turf/T = GLOB.SUNLIGHT_QUEUE_WORK[i]

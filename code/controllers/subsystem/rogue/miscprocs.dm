@@ -1,25 +1,4 @@
-/// DEFINITIONS ///
-#define CLERIC_ORI -1
-#define CLERIC_T0 0
-#define CLERIC_T1 1
-#define CLERIC_T2 2
-#define CLERIC_T3 3
-#define CLERIC_T4 4
-
-#define CLERIC_REQ_0 0
-#define CLERIC_REQ_1 250
-#define CLERIC_REQ_2 400
-#define CLERIC_REQ_3 750
-#define CLERIC_REQ_4 1000
-
-#define CLERIC_REGEN_DEVOTEE 0.3
-#define CLERIC_REGEN_WEAK 0.1 //Would be better to just do away with devotion entirely, but oh well.
-#define CLERIC_REGEN_MINOR 0.5
-#define CLERIC_REGEN_MAJOR 0.8
-#define CLERIC_REGEN_ABSOLVER 5
-
 // Cleric Holder Datums
-
 /datum/devotion
 	/// Mob that owns this datum
 	var/mob/living/carbon/human/holder
@@ -51,6 +30,8 @@
 	src.holder = holder
 	holder?.devotion = src
 	src.patron = patron
+	holder?.hud_used?.initialize_bloodpool()
+	holder?.hud_used?.bloodpool.set_fill_color("#3C41A4")
 	if (patron.type == /datum/patron/inhumen/zizo || patron.type == /datum/patron/divine/necra)
 		ADD_TRAIT(holder, TRAIT_DEATHSIGHT, "devotion")
 
@@ -58,6 +39,7 @@
 	. = ..()
 	if (patron.type == /datum/patron/inhumen/zizo || patron.type == /datum/patron/divine/necra)
 		REMOVE_TRAIT(holder, TRAIT_DEATHSIGHT, "devotion")
+	holder?.hud_used?.shutdown_bloodpool()
 	holder?.devotion = null
 	holder = null
 	patron = null
@@ -79,6 +61,12 @@
 
 /datum/devotion/proc/update_devotion(dev_amt, prog_amt, silent = FALSE)
 	devotion = clamp(devotion + dev_amt, 0, max_devotion)
+	holder?.hud_used?.bloodpool?.name = "Devotion: [devotion]"
+	holder?.hud_used?.bloodpool?.desc = "Devotion: [devotion]/[max_devotion]"
+	if(devotion <= 0)
+		holder?.hud_used?.bloodpool?.set_value(0, 1 SECONDS)
+	else
+		holder?.hud_used?.bloodpool?.set_value((100 / (max_devotion / devotion)) / 100, 1 SECONDS)
 	//Max devotion limit
 	if((devotion >= max_devotion) && !silent)
 		to_chat(holder, span_warning("I have reached the limit of my devotion..."))
@@ -120,7 +108,7 @@
 					var/obj/effect/proc_holder/spell/newspell = new spell_type
 					if(!silent)
 						to_chat(holder, span_boldnotice("I have unlocked a new spell: [newspell]"))
-					holder.mind.AddSpell(newspell)
+					holder.mind.AddSpell(newspell, holder)
 					LAZYADD(granted_spells, newspell)
 		if(length(patron.traits_tier))
 			for(var/trait in patron.traits_tier)

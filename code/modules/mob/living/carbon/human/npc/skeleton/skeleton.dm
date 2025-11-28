@@ -13,7 +13,7 @@
 	base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, /datum/intent/unarmed/claw)
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY
-	possible_mmb_intents = list(INTENT_STEAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE)
+	possible_mmb_intents = list(INTENT_SPECIAL, INTENT_JUMP, INTENT_KICK, INTENT_BITE)
 	cmode_music = 'sound/music/combat_weird.ogg'
 
 /mob/living/carbon/human/species/skeleton/npc
@@ -94,7 +94,17 @@
 	update_body()
 
 /mob/living/carbon/human/species/skeleton/npc/no_equipment
-    skel_outfit = null
+	skel_outfit = null
 
 /mob/living/carbon/human/species/skeleton/no_equipment
-    skel_outfit = null
+	skel_outfit = null
+	var/datum/weakref/crystal
+
+/mob/living/carbon/human/species/skeleton/no_equipment/death(gibbed, nocutscene = FALSE)
+	..()
+	var/obj/item/necro_relics/necro_crystal/active_crystal = crystal.resolve()
+	for(var/datum/weakref/W in active_crystal.active_skeletons)
+		if(W.resolve() == src)
+			active_crystal.active_skeletons -= W
+	active_crystal = null
+	gib(no_brain = TRUE, no_organs = TRUE)

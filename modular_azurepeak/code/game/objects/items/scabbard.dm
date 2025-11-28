@@ -27,10 +27,16 @@
 
 	COOLDOWN_DECLARE(shield_bang)
 
+	/// Weapon path and its children that are allowed
 	var/obj/item/rogueweapon/valid_blade
+	/// Specific weapons that are allowed. Bypasses valid_blade
 	var/list/obj/item/rogueweapon/valid_blades
+	/// Specific weapons that are not allowed. Bypassed valid_blade
 	var/list/obj/item/rogueweapon/invalid_blades
+
+	/// Stores weapon
 	var/obj/item/rogueweapon/sheathed
+
 	var/sheathe_time = 0.1 SECONDS
 	var/sheathe_sound = 'sound/foley/equip/scabbard_holster.ogg'
 
@@ -53,7 +59,7 @@
 		to_chat(user, span_warning("The sheath is occupied!"))
 		return FALSE
 	if(valid_blade && !istype(A, valid_blade))
-		to_chat(user, span_warning("[A] won't fit in there.."))
+		to_chat(user, span_warning("[A] won't fit in there."))
 		return FALSE
 	if(valid_blades)
 		if(!(A.type in valid_blades))
@@ -61,7 +67,7 @@
 			return FALSE
 	if(invalid_blades)
 		if(A.type in invalid_blades)
-			to_chat(user, span_warning("[A] won't fit in there.."))
+			to_chat(user, span_warning("[A] won't fit in there."))
 			return FALSE
 	return TRUE
 
@@ -124,7 +130,9 @@
 	..()
 	var/mob/living/M = usr
 
-	if(!M.incapacitated() && (loc == M || loc.loc == M) && istype(over, /atom/movable/screen/inventory/hand))
+	if(!Adjacent(M))
+		return
+	if(!M.incapacitated() && istype(over, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 			add_fingerprint(usr)
@@ -141,6 +149,7 @@
 	if(!sheathed)
 		if(!eat_sword(user, I))
 			return ..()
+
 
 /obj/item/rogueweapon/scabbard/examine(mob/user)
 	. = ..()
@@ -265,6 +274,19 @@
 	max_integrity = 500
 	sellprice = 2
 
+	invalid_blades = list(
+		/obj/item/rogueweapon/huntingknife/idagger/silver/stake
+	)
+
+/obj/item/rogueweapon/scabbard/sheath/weapon_check(mob/living/user, obj/item/A)
+	. = ..()
+	if(.)
+		if(!istype(A, /obj/item/rogueweapon))
+			return
+		var/obj/item/rogueweapon/sheathing = A
+		if(!sheathing.sheathe_icon)
+			return FALSE
+
 /obj/item/rogueweapon/scabbard/sheath/getonmobprop(tag)
 	..()
 
@@ -343,6 +365,118 @@
 					"westabove" = 1
 				)
 
+/obj/item/rogueweapon/scabbard/sheath/MiddleClick(mob/user)
+	if(sheathed)
+		to_chat(user, span_notice("There's something inside!"))
+		return
+	to_chat(user, span_notice("I start to strip the sheath down..."))
+	if(do_after(user, 5 SECONDS, src))
+		var/obj/item/S = new /obj/item/rogueweapon/scabbard/sheath/strap
+		qdel(src)
+		user.put_in_hands(S)
+		return TRUE
+
+/obj/item/rogueweapon/scabbard/sheath/strap
+	name = "dagger strap"
+	desc = "Something smaller and less secure than a typical sheath. Good if you like to show off."
+	icon_state = "beltstrapl"
+	item_state = "beltstrapl"
+
+/obj/item/rogueweapon/scabbard/sheath/strap/update_icon(mob/living/user)
+	if(sheathed)
+		icon = sheathed.icon
+		icon_state = sheathed.icon_state
+		experimental_onback = TRUE
+		experimental_onhip = TRUE
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
+		experimental_onback = FALSE
+		experimental_onhip = FALSE
+	if(user)
+		user.update_inv_hands()
+		user.update_inv_back()
+		user.update_inv_belt()
+
+	getonmobprop(tag)
+
+/obj/item/rogueweapon/scabbard/sheath/getonmobprop(tag)
+	..()
+
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.4,
+					"sx" = -10,
+					"sy" = -0,
+					"nx" = 11,
+					"ny" = 0,
+					"wx" = -4,
+					"wy" = 0,
+					"ex" = 2,
+					"ey" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 8,
+					"wflip" = 8,
+					"eflip" = 0
+				)
+			if("onback")
+				return list(
+					"shrink" = 0.3,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0
+				)
+			if("onbelt")
+				return list(
+					"shrink" = 0.3,
+					"sx" = -2,
+					"sy" = -5,
+					"nx" = 4,
+					"ny" = -5,
+					"wx" = 0,
+					"wy" = -5,
+					"ex" = 2,
+					"ey" = -5,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 0,
+					"eturn" = 0,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0
+				)
 
 /*
 	GREATWEAPON STRAPS
@@ -378,7 +512,6 @@
 	max_integrity = 0
 	sellprice = 15
 
-
 /obj/item/rogueweapon/scabbard/gwstrap/weapon_check(mob/living/user, obj/item/A)
 	. = ..()
 	if(.)
@@ -389,7 +522,6 @@
 				return TRUE
 		if(!istype(A, /obj/item/clothing/neck/roguetown/psicross)) //snowflake that bypasses the valid_blades that i made. i will commit seppuku eventually
 			return FALSE
-
 
 /obj/item/rogueweapon/scabbard/gwstrap/update_icon(mob/living/user)
 	if(sheathed)
@@ -484,13 +616,139 @@
 
 	valid_blade = /obj/item/rogueweapon/sword
 	invalid_blades = list(
-		/obj/item/rogueweapon/sword/long/exe
+		/obj/item/rogueweapon/sword/long/exe,
+		/obj/item/rogueweapon/sword/long/martyr
 	)
 
 	force = 7
 	max_integrity = 750
 	sellprice = 3
 
+/obj/item/rogueweapon/scabbard/sheath/weapon_check(mob/living/user, obj/item/A)
+	. = ..()
+	if(.)
+		if(!istype(A, /obj/item/rogueweapon))
+			return
+		var/obj/item/rogueweapon/sheathing = A
+		if(!sheathing.sheathe_icon)
+			return FALSE
+
+/obj/item/rogueweapon/scabbard/sword/MiddleClick(mob/user)
+	if(sheathed)
+		to_chat(user, span_notice("There's something inside!"))
+		return
+	to_chat(user, span_notice("I start to strip the scabbard down..."))
+	if(do_after(user, 5 SECONDS, src))
+		var/obj/item/S = new /obj/item/rogueweapon/scabbard/sword/strap
+		qdel(src)
+		user.put_in_hands(S)
+		return TRUE
+
+/obj/item/rogueweapon/scabbard/sword/strap
+	name = "simple strap"
+	desc = "The natural devolution of the evolution to the advent of longblades."
+	icon_state = "beltstrapr"
+	item_state = "beltstrapr"
+	force = 3
+
+/obj/item/rogueweapon/scabbard/sword/strap/update_icon(mob/living/user)
+	if(sheathed)
+		if(sheathed.bigboy)
+			bigboy = TRUE
+		icon = sheathed.icon
+		icon_state = sheathed.icon_state
+		experimental_onback = TRUE
+		experimental_onhip = TRUE
+	else
+		icon = initial(icon)
+		icon_state = initial(icon_state)
+		experimental_onback = FALSE
+		experimental_onhip = FALSE
+		bigboy = FALSE
+	if(user)
+		user.update_inv_hands()
+		user.update_inv_back()
+		user.update_inv_belt()
+
+	getonmobprop(tag)
+
+/obj/item/rogueweapon/scabbard/sword/strap/getonmobprop(tag)
+	..()
+
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list(
+					"shrink" = 0.5,
+					"sx" = -14,
+					"sy" = -8,
+					"nx" = 15,
+					"ny" = -7,
+					"wx" = -10,
+					"wy" = -5,
+					"ex" = 7,
+					"ey" = -6,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0,
+					"nturn" = -13,
+					"sturn" = 110,
+					"wturn" = -60,
+					"eturn" = -30,
+					"nflip" = 1,
+					"sflip" = 1,
+					"wflip" = 8,
+					"eflip" = 1
+				)
+			if("onback")
+				return list(
+					"shrink" = 0.5,
+					"sx" = -1,
+					"sy" = 2,
+					"nx" = 0,
+					"ny" = 2,
+					"wx" = 2,
+					"wy" = 1,
+					"ex" = 0,
+					"ey" = 1,
+					"nturn" = 0,
+					"sturn" = 0,
+					"wturn" = 70,
+					"eturn" = 15,
+					"nflip" = 1,
+					"sflip" = 1,
+					"wflip" = 1,
+					"eflip" = 1,
+					"northabove" = 1,
+					"southabove" = 0,
+					"eastabove" = 0,
+					"westabove" = 0
+				)
+			if("onbelt")
+				return list(
+					"shrink" = 0.4,
+					"sx" = -4,
+					"sy" = -6,
+					"nx" = 5,
+					"ny" = -6,
+					"wx" = 0,
+					"wy" = -6,
+					"ex" = -1,
+					"ey" = -6,
+					"nturn" = 100,
+					"sturn" = 156,
+					"wturn" = 90,
+					"eturn" = 180,
+					"nflip" = 0,
+					"sflip" = 0,
+					"wflip" = 0,
+					"eflip" = 0,
+					"northabove" = 0,
+					"southabove" = 1,
+					"eastabove" = 1,
+					"westabove" = 0
+				)
 
 /*
 	KAZENGUN
@@ -510,6 +768,13 @@
 	wdefense = 8
 
 	max_integrity = 0
+
+/obj/item/rogueweapon/scabbard/sword/kazengun/noparry
+	name = "ceremonial kazengun scabbard"
+	desc = "A simple wooden scabbard, trimmed with bronze. Unlike its steel cousins, this one cannot parry."
+	
+	valid_blade = /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
+	can_parry = FALSE
 
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/steel

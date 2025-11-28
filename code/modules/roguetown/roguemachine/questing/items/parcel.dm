@@ -10,6 +10,7 @@
 	var/obj/item/contained_item = null
 	var/list/allowed_jobs = list()
 	var/delivery_area_type
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/item/parcel/Initialize(mapload)
 	. = ..()
@@ -22,7 +23,7 @@
 			RegisterSignal(courier_quest, COMSIG_PARENT_QDELETING, PROC_REF(on_quest_component_deleted))
 
 	invisibility = INVISIBILITY_OBSERVER
-	proximity_monitor = new(src, 7)
+	proximity_monitor = new(src, 5)
 
 /obj/item/parcel/HasProximity(mob/nearby)
 	if(!istype(nearby))
@@ -36,7 +37,7 @@
 	if(!istype(quest))
 		return
 
-	if(get_dist(get_turf(src), get_turf(quest.quest_scroll_ref?.resolve())) > 7)
+	if(get_dist(get_turf(src), get_turf(quest.quest_scroll_ref?.resolve())) > 5)
 		return
 
 	var/image/I = image(icon = 'icons/effects/effects.dmi', loc = get_turf(src), icon_state = "hidden", layer = 18)

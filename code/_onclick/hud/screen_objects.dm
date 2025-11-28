@@ -111,6 +111,9 @@
 		var/mob/living/carbon/human/H = usr
 		H.print_levels(H)
 
+/atom/movable/screen/skills/should_click_on_mouse_up(var/atom/original_object)
+	return FALSE
+
 /atom/movable/screen/craft
 	name = "crafting menu"
 	icon_state = "craft"
@@ -145,7 +148,7 @@
 				else
 					C.ui_interact(H)
 			else
-				testing("what")
+
 
 /atom/movable/screen/area_creator
 	name = "create new area"
@@ -551,7 +554,7 @@
 	var/_y = text2num(params2list(params)["icon-y"])
 
 	if(_y<=9)
-		usr.mmb_intent_change(QINTENT_STEAL)
+		usr.mmb_intent_change(QINTENT_SPECIAL)
 
 	else if(_y>=9 && _y<=16)
 		usr.mmb_intent_change(QINTENT_KICK)
@@ -633,6 +636,9 @@
 		else
 			L.toggle_cmode()
 			update_icon()
+
+/atom/movable/screen/cmode/should_click_on_mouse_up(var/atom/original_object)
+	return FALSE
 
 /atom/movable/screen/mov_intent
 	name = "run/walk toggle"
@@ -1574,30 +1580,48 @@
 
 /atom/movable/screen/stress/update_icon()
 	cut_overlays()
-	var/state2use = "stress1"
+	var/state2use = "mood_idle"
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		if(!HAS_TRAIT(H, TRAIT_NOMOOD))
-			var/stress_amt = H.get_stress_amount()
-			if(stress_amt > 0)
+		//General stress moodlets
+		var/stress_amt = H.get_stress_amount()
+		switch(stress_amt)
+			if(1 to 4)
+				state2use = "stress"
+			if(5 to 14)
 				state2use = "stress2"
-			if(stress_amt >= 5)
+			if(5 to 24)
 				state2use = "stress3"
-			if(stress_amt >= 15)
+			if(25 to 999)
 				state2use = "stress4"
-			if(stress_amt >= 25)
-				state2use = "stress5"
+			if(-4 to -1)
+				state2use = "peace"
+			if(-9 to -5)
+				state2use = "peace2"
+			if(-20 to -10)
+				state2use = "peace3"
+			if(-999 to -21)
+				state2use = "mood_nirvana"
+
+		//Regular overrides for stress
 		if(H.has_status_effect(/datum/status_effect/buff/drunk))
-			state2use = "mood_drunk"
+			state2use = "mood_drunkorhigh"
 		if(H.has_status_effect(/datum/status_effect/buff/druqks))
-			state2use = "mood_drunk"
-		if(H.InFullCritical())
-			state2use = "stress4"
-		if(H.mind)
-			if(H.mind.has_antag_datum(/datum/antagonist/zombie))
-				state2use = "stress4"
-		if(H.stat == DEAD)
+			state2use = "mood_drunkorhigh"
+		if(H.has_status_effect(/datum/status_effect/buff/starsugar))
+			state2use = "mood_starsugar"
+		if(H.has_status_effect(/datum/status_effect/buff/bloodrage))
+			state2use = "mood_ult"
+		
+		//We go down a janky list of exceptions for total overrides
+		if(HAS_TRAIT(H, TRAIT_NOMOOD))
+			state2use = "mood_hopeless"
+		else if(H.stat == DEAD)
 			state2use = "mood_dead"
+		else if(H.mind?.has_antag_datum(/datum/antagonist/zombie))
+			state2use = "mood_zombidle"
+		else if(H.mind?.has_antag_datum(/datum/antagonist/lich))
+			state2use = "mood_boneidle"
 	add_overlay(state2use)
 
 
@@ -1669,7 +1693,7 @@
 	var/showing = FALSE
 
 /atom/movable/screen/rmbintent/update_icon()
-	testing("overlayscut")
+
 	cut_overlays()
 	if(isliving(hud?.mymob))
 		var/mob/living/L = hud.mymob
@@ -1879,12 +1903,16 @@
 	icon_state = ""
 	name = ""
 	screen_loc = "1,1"
-	layer = HUD_LAYER+0.01
 	plane = HUD_PLANE
 	alpha = 0
 	var/atom/movable/screen/readtext/textright
 	var/atom/movable/screen/readtext/textleft
 	var/reading
+
+/atom/movable/screen/read/Destroy()
+	. = ..()
+	textleft = null
+	textright = null
 
 /atom/movable/screen/read/Click(location, control, params)
 	. = ..()
@@ -1922,6 +1950,10 @@
 		animate(textleft, alpha = 255, time = 5, easing = EASE_IN)
 		animate(textright, alpha = 255, time = 5, easing = EASE_IN)
 
+#undef READ_RIGHT
+#undef READ_LEFT
+#undef READ_BOTH
+
 /atom/movable/screen/readtext
 	name = ""
 	icon = null
@@ -1948,3 +1980,102 @@
 /atom/movable/screen/daynight/New(client/C) //TODO: Make this use INITIALIZE_IMMEDIATE, except its not easy
 	. = ..()
 	icon_state = GLOB.tod
+
+/atom/movable/screen/bloodpool
+	appearance_flags = KEEP_TOGETHER
+	icon_state = "empty"
+	icon = 'icons/mob/rogueheat.dmi'
+	screen_loc = rogueui_vitae
+	var/width = 4
+	var/height = 43
+	var/orientation = NORTH
+	var/atom/movable/screen/bloodpool_maskpart/background
+	var/atom/movable/screen/bloodpool_maskpart/foreground
+	var/atom/movable/screen/bloodpool_maskpart/fill
+	var/atom/movable/screen/bloodpool_maskpart/mask
+
+/atom/movable/screen/bloodpool/Initialize(mapload, ...)
+	. = ..()
+	foreground = new /atom/movable/screen/bloodpool_maskpart/foreground(null, icon, src)
+	background = new /atom/movable/screen/bloodpool_maskpart/background(null, icon, src)
+	fill = new /atom/movable/screen/bloodpool_maskpart/fill(null, icon, src)
+	mask = new /atom/movable/screen/bloodpool_maskpart/mask(null, icon, src)
+
+	background.vis_contents += fill
+	mask.vis_contents += background
+	vis_contents.Add(mask, foreground)
+
+/atom/movable/screen/bloodpool/Destroy()
+	QDEL_NULL(background)
+	QDEL_NULL(foreground)
+	QDEL_NULL(fill)
+	QDEL_NULL(mask)
+	return ..()
+
+/atom/movable/screen/bloodpool/proc/set_fill_color(new_color = "#ffffff")
+	fill.color = new_color
+
+/atom/movable/screen/bloodpool/proc/set_value(ratio = 1.0, duration = 0)
+	//constrain the ratio between 0 and 1
+	ratio = min(max(ratio,0),1)
+
+	//apply orientation factors for fill bar offsets
+	var/fx = 0, fy = 0
+	switch(orientation)
+		if(EAST)
+			fx = -1
+		if(WEST)
+			fx = 1
+		if(SOUTH)
+			fy = 1
+		if(NORTH)
+			fy = -1
+
+	//calculate the offset of the fill bar.
+	var/invratio = 1-ratio
+	var/epx = width * invratio * fx
+	var/epy = height * invratio * fy
+
+	//apply the offset to the fill bar
+	if(duration)
+		//if a time value has been supplied, animate the transition from the current position
+		animate(fill, pixel_w = epx,pixel_z = epy, time = duration)
+	else
+		//if a time value has not been supplied, instantly set to the new position
+		fill.pixel_w = epx
+		fill.pixel_z = epy
+
+	animate(fill, time = duration)
+
+/atom/movable/screen/bloodpool_maskpart
+	layer = FLOAT_LAYER
+	plane = FLOAT_PLANE
+	/// Ref to our parent screem, purely for examine purposes
+	var/atom/movable/screen/parent_screen
+
+/atom/movable/screen/bloodpool_maskpart/Initialize(mapload, icon, parent_screen)
+	. = ..()
+	src.icon = icon
+	src.parent_screen = parent_screen
+
+/atom/movable/screen/bloodpool_maskpart/examine_ui(mob/user)
+	return parent_screen?.examine_ui(user)
+
+/atom/movable/screen/bloodpool_maskpart/Destroy()
+	parent_screen = null
+	return ..()
+
+/atom/movable/screen/bloodpool_maskpart/background
+	icon_state = "mana_bg"
+	appearance_flags = KEEP_TOGETHER
+	blend_mode = BLEND_MULTIPLY
+
+/atom/movable/screen/bloodpool_maskpart/foreground
+	icon_state = "mana_fg"
+
+/atom/movable/screen/bloodpool_maskpart/fill
+	icon_state = "mana_fill"
+
+/atom/movable/screen/bloodpool_maskpart/mask
+	icon_state = "mana_mask"
+

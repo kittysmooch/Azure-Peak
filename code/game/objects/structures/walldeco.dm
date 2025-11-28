@@ -54,47 +54,47 @@
 			. += span_bold("There doesn't seem to be any reports of bandit activity.")
 
 /obj/structure/fluff/walldeco/innsign
-	name = "sign"
-	desc = ""
+	name = "skull sign"
+	desc = "A placard sign with a skull and crossbones."
 	icon_state = "bar"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/steward
-	name = "sign"
-	desc = ""
+	name = "steward's sign"
+	desc = "A sign depicting the office of the local steward."
 	icon_state = "steward"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/bsmith
-	name = "sign"
-	desc = ""
+	name = "smith's sign"
+	desc = "A sign depicting the workplace of the local smith."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "bsmith"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/goblet
-	name = "sign"
-	desc = ""
+	name = "goblet sign"
+	desc = "An inviting sign; this one indicates to the weary and sober that booze is within."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "goblet"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/flower
-	name = "sign"
-	desc = ""
+	name = "flowery sign"
+	desc = "A seductive sign with a purple flower."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "flower"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/barbersign
-	name = "sign"
+	name = "barberpole"
 	desc = "The iconic swirl of the barber surgeon."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "barbersign"
 	layer = ABOVE_MOB_LAYER
 
 /obj/structure/fluff/walldeco/barbersignreverse
-	name = "sign"
+	name = "barberpole"
 	desc = "The iconic swirl of the barber surgeon."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "barbersignflip"
@@ -182,16 +182,19 @@
 
 /obj/structure/fluff/walldeco/bigpainting
 	name = "painting"
+	desc = "A large painting depicting a dim, forested bog."
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "sherwoods"
 	pixel_y = 32
 	pixel_x = -16
 
 /obj/structure/fluff/walldeco/bigpainting/lake
+	desc = "A large painting depicting a lake under moonlight."
 	icon_state = "lake"
 
 /obj/structure/fluff/walldeco/mona
 	name = "painting"
+	desc = "A painting of an enigmatic woman smiling at the viewer. Looking closer, it looks half-finished."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "mona"
 	pixel_y = 32
@@ -243,36 +246,45 @@
 /obj/structure/fluff/walldeco/rpainting
 	name = "painting"
 	icon_state = "painting_1"
+	desc = "A thought-evoking painting of a skull dimly illuminated by a candelabra."
 
 /obj/structure/fluff/walldeco/rpainting/forest
 	icon_state = "painting_2"
+	desc = "An unsettling painting of a blue-green, soupy forest, enshrouded in fog. The trees blend into each other."
 
 /obj/structure/fluff/walldeco/rpainting/crown
 	icon_state = "painting_3"
+	desc = "An introspective painting of a golden, spiked crown resting on top of some sort of book in dim light, accompanied by a red fruit."
 
 /obj/structure/fluff/walldeco/med
 	name = "diagram"
 	icon_state = "medposter"
+	desc = "A medical diagram depicting the interior structure of a humanoid hand."
 
 /obj/structure/fluff/walldeco/med2
 	name = "diagram"
 	icon_state = "medposter2"
+	desc = "A medical diagram depicting an interior section of a humanoid body."
 
 /obj/structure/fluff/walldeco/med3
 	name = "diagram"
 	icon_state = "medposter3"
+	desc = "A medical diagram depicting an interior section of a humanoid body."
 
 /obj/structure/fluff/walldeco/med4
 	name = "diagram"
 	icon_state = "medposter4"
+	desc = "A medical diagram depicting a humanoid heart."
 
 /obj/structure/fluff/walldeco/med5
 	name = "diagram"
 	icon_state = "medposter5"
+	desc = "A medical diagram depicting a humanoid heart."
 
 /obj/structure/fluff/walldeco/med6
 	name = "diagram"
 	icon_state = "medposter6"
+	desc = "A medical diagram depicting a humanoid head."
 
 /obj/structure/fluff/walldeco/alarm
 	name = "le réveil murmure"
@@ -347,3 +359,95 @@
 		playsound(loc, 'sound/misc/gold_license.ogg', 100, TRUE, -1)
 		say("UNKNOWN CREATURE IN SECURE AREA- ARRETZ-VOUS!!")
 		next_yap = world.time + 6 SECONDS
+
+/obj/structure/fluff/walldeco/vinez // overlay vines for more flexibile mapping
+	icon_state = "vinez"
+
+/obj/structure/fluff/walldeco/vinez/l
+	pixel_x = -32
+
+/obj/structure/fluff/walldeco/vinez/r
+	pixel_x = 32
+
+/obj/structure/fluff/walldeco/vinez/offset
+	icon_state = "vinez"
+	pixel_y = 32
+
+/obj/structure/fluff/walldeco/vinez/blue
+	icon_state = "vinez_blue"
+
+/obj/structure/fluff/walldeco/vinez/red
+	icon_state = "vinez_red"
+
+/obj/structure/fluff/walldeco/bath // suggestive stonework
+	icon_state = "bath1"
+	pixel_x = -32
+	alpha = 210
+
+/obj/structure/fluff/walldeco/bath/two
+	icon_state = "bath2"
+	pixel_x = -29
+
+/obj/structure/fluff/walldeco/bath/three
+	icon_state = "bath3"
+	pixel_x = -29
+
+/obj/structure/fluff/walldeco/bath/four
+	icon_state = "bath4"
+	pixel_y = 32
+	pixel_x = 0
+
+/obj/structure/fluff/walldeco/bath/five
+	icon_state = "bath5"
+	pixel_x = -29
+
+/obj/structure/fluff/walldeco/bath/six
+	icon_state = "bath6"
+	pixel_x = -29
+
+/obj/structure/fluff/walldeco/bath/seven
+	icon_state = "bath7"
+	pixel_x = 32
+
+/obj/structure/fluff/walldeco/bath/gents
+	icon_state = "gents"
+	pixel_x = 0
+	pixel_y = 32
+
+/obj/structure/fluff/walldeco/bath/ladies
+	icon_state = "ladies"
+	pixel_x = 0
+	pixel_y = 32
+
+/obj/structure/fluff/walldeco/bath/wallrope
+	icon_state = "wallrope"
+	layer = WALL_OBJ_LAYER+0.1
+	pixel_x = 0
+	pixel_y = 0
+	color = "#d66262"
+
+/obj/structure/fluff/walldeco/sign/saiga
+	name = "The Drunken Saiga"
+	icon_state = "shopsign_inn_saiga_right"
+	plane = -1
+	pixel_x = 3
+	pixel_y = 16
+
+/obj/structure/fluff/walldeco/sign/saiga/left
+	icon_state = "shopsign_inn_saiga_left"
+
+/obj/structure/fluff/walldeco/sign/trophy
+	name = "saiga trophy"
+	icon_state = "saiga_trophy"
+	pixel_y = 32
+
+/obj/effect/decal/shadow_floor
+	name = ""
+	desc = ""
+	icon = 'icons/roguetown/misc/decoration.dmi'
+	icon_state = "shadow_floor"
+	mouse_opacity = 0
+
+/obj/effect/decal/shadow_floor/corner
+	icon_state = "shad_floorcorn"
+

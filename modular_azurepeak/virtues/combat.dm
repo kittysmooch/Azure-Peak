@@ -65,19 +65,30 @@
 	name = "Duelist's Apprentice"
 	desc = "I have trained under a duelist of considerable skill. I have a pair of dueling weapons - both a hunting sword and dagger - stowed away."
 	custom_text = "Guaranteed Journeyman for Swords & Knives."
-	added_stashed_items = list("Duelist's Hunting Sword" = /obj/item/rogueweapon/sword/short/messer/iron/virtue)
-	added_stashed_items = list("Duelist's Hunting Sword" = /obj/item/rogueweapon/huntingknife/idagger/virtue)
+	added_stashed_items = list("Duelist's Messer" = /obj/item/rogueweapon/sword/short/messer/iron/virtue,
+								"Duelist's Parrying Dagger" = /obj/item/rogueweapon/huntingknife/idagger/virtue)
 
 /datum/virtue/combat/duelist/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
 
+/datum/virtue/combat/shielder
+	name = "Traditionalist"
+	desc = "I have trained extensively in both sword and shield, the most illustrious combination of attack and defence. I have one of each hidden away."
+	custom_text = "Guaranteed Journeyman for Swords & Shields."
+	added_stashed_items = list("Shield" = /obj/item/rogueweapon/shield/wood,
+								"Arming Sword" = /obj/item/rogueweapon/sword/iron)
+
+/datum/virtue/combat/shielder/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
+	recipient.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
+
 /datum/virtue/combat/executioner
 	name = "Dungeoneer's Apprentice"
 	desc = "I was set to be a dungeoneer some time ago, and I was taught by one. I have an axe and whip stashed away, should the need arise."
 	custom_text = "Guaranteed Journeyman for Axes & Whips/Flails."
-	added_stashed_items = list("Axe" = /obj/item/rogueweapon/stoneaxe/woodcut)
-	added_stashed_items = list("Leather Whip" = /obj/item/rogueweapon/whip)
+	added_stashed_items = list("Axe" = /obj/item/rogueweapon/stoneaxe/woodcut,
+								"Whip" = /obj/item/rogueweapon/whip)
 
 /datum/virtue/combat/executioner/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
@@ -87,8 +98,8 @@
 	name = "Militiaman"
 	desc = "I have trained with the local garrison in case I'm ever to be levied to fight for my lord. I have a spear and mace stashed away in the event I'm called to arms."
 	custom_text = "Guaranteed Journeyman for Polearms & Maces."
-	added_stashed_items = list("Spear" = /obj/item/rogueweapon/spear)
-	added_stashed_items = list("Mace" = /obj/item/rogueweapon/mace)
+	added_stashed_items = list("Spear" = /obj/item/rogueweapon/spear,
+								"Mace" = /obj/item/rogueweapon/mace)
 
 /datum/virtue/combat/militia/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
@@ -98,8 +109,8 @@
 	name = "Brawler's Apprentice"
 	desc = "I have trained under a skilled brawler, and have some experience fighting with my fists. I have a katar and some knuckledusters stashed away, too."
 	custom_text = "Guaranteed Journeyman for Unarmed & Wrestling."
-	added_stashed_items = list("Katar" = /obj/item/rogueweapon/katar/bronze)
-	added_stashed_items = list("Knuckledusters" = /obj/item/rogueweapon/knuckles/bronzeknuckles)
+	added_stashed_items = list("Katar" = /obj/item/rogueweapon/katar/bronze,
+								"Knuckledusters" = /obj/item/rogueweapon/knuckles/bronzeknuckles)
 
 /datum/virtue/combat/brawler/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
@@ -119,6 +130,22 @@
 		recipient.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_APPRENTICE, silent = TRUE)
 	else
 		added_skills = list(list(/datum/skill/combat/bows, 1, 6))
+
+
+/datum/virtue/combat/crossbowman
+	name = "Marksman"
+	desc = "Warfare is changing, and the crossbow is the next pedestal. I have always been ahead of the curve, as compared to my peers."
+	custom_text = "+1 to Crossbows, Up to Legendary, Minimum Apprentice"
+	added_stashed_items = list(
+		"Quiver (Bolts)" = /obj/item/quiver/bolts
+	)
+
+/datum/virtue/combat/crossbowman/apply_to_human(mob/living/carbon/human/recipient)
+	if(recipient.get_skill_level(/datum/skill/combat/crossbows) < SKILL_LEVEL_APPRENTICE)
+		recipient.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_APPRENTICE, silent = TRUE)
+	else
+		added_skills = list(list(/datum/skill/combat/crossbows, 1, 6))
+
 
 /datum/virtue/combat/shepherd
 	name = "Capable Shepherd"

@@ -9,10 +9,11 @@
 		"YOU CANNOT KILL ME!",
 	)
 	rogue_enabled = TRUE
+
 	var/list/phylacteries = list()
 	var/out_of_lives = FALSE
 
-	var/traits_lich = list(	
+	var/traits_lich = list(
 		TRAIT_INFINITE_STAMINA,
 		TRAIT_NOHUNGER,
 		TRAIT_NOBREATH,
@@ -33,7 +34,8 @@
 		TRAIT_COUNTERCOUNTERSPELL,
 		TRAIT_RITUALIST,
 		TRAIT_ARCYNE_T3,
-		TRAIT_SELF_SUSTENANCE
+		TRAIT_SELF_SUSTENANCE,
+		TRAIT_SILVER_WEAK
 		)
 
 	var/STASTR = 10
@@ -41,6 +43,9 @@
 	var/STAINT = 10
 	var/STAWIL = 10
 	var/STAPER = 10
+
+/datum/antagonist/lich/get_antag_cap_weight()
+	return 3
 
 /datum/antagonist/lich/on_gain()
 	SSmapping.retainer.liches |= owner
@@ -50,7 +55,6 @@
 	equip_lich()
 	greet()
 	save_stats()
-
 	return ..()
 
 /datum/antagonist/lich/greet()
@@ -129,6 +133,8 @@
 	H.change_stat(STATKEY_PER, 3)
 	H.change_stat(STATKEY_SPD, 1)
 
+	H.grant_language(/datum/language/undead)
+
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonechill)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_undead)
@@ -143,6 +149,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/lich_announce)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convert_heretic)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/tame_undead)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_deadite)
 	H.ambushable = FALSE
 
 	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "LICH"), 5 SECONDS)
@@ -175,7 +182,7 @@
 
 ///Called post death to equip new body with armour and stats. Order of equipment matters
 /datum/antagonist/lich/proc/equip_and_traits()
-	var/mob/living/carbon/human/body = owner.current 
+	var/mob/living/carbon/human/body = owner.current
 	var/list/equipment_slots = list(
 		SLOT_PANTS,
 		SLOT_SHOES,
@@ -198,7 +205,7 @@
 		/obj/item/clothing/shoes/roguetown/boots,
 		/obj/item/clothing/neck/roguetown/chaincoif,
 		/obj/item/clothing/cloak/raincloak/mortus,
-		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate,
+		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel,
 		/obj/item/clothing/suit/roguetown/shirt/tunic/ucolored,
 		/obj/item/clothing/wrists/roguetown/bracers,
 		/obj/item/clothing/gloves/roguetown/chain,
@@ -220,7 +227,7 @@
 /datum/antagonist/lich/proc/rise_anew()
 	if (!owner.current.mind)
 		CRASH("Lich: rise_anew called with no mind")
-	
+
 	var/mob/living/carbon/human/old_body = owner.current
 	var/turf/phylactery_turf = get_turf(old_body)
 	var/mob/living/carbon/human/new_body = new /mob/living/carbon/human/species/human/northern(phylactery_turf)
@@ -229,7 +236,7 @@
 
 	if (new_body.charflaw)
 		QDEL_NULL(new_body.charflaw)
-	
+
 	new_body.real_name = old_body.name
 	new_body.dna.real_name = old_body.real_name
 	new_body.mob_biotypes |= MOB_UNDEAD
@@ -239,7 +246,7 @@
 
 	for (var/obj/item/bodypart/body_part in new_body.bodyparts)
 		body_part.skeletonize(FALSE)
-		
+
 	replace_eyes(new_body)
 	set_stats()
 	skele_look()
@@ -274,7 +281,7 @@
 	var/offset = prob(50) ? -2 : 2
 	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = -1) //start shaking
 	visible_message(span_warning("[src] begins to glow and shake violently!"))
-	
+
 	spawn(timer)
 		possessor.owner.current.forceMove(get_turf(src))
 		possessor.rise_anew()
@@ -288,7 +295,7 @@
 /obj/effect/proc_holder/spell/self/lich_announce/cast(list/targets, mob/user)
 	if(user.stat)
 		return FALSE
-	
+
 	var/calltext = input("Send Your Will To Your Undead", "UNDEAD ANNOUNCE") as text|null
 	if(!calltext)
 		return FALSE
