@@ -1544,6 +1544,7 @@
 #include "code\modules\clothing\rogueclothes\storage\storage.dm"
 #include "code\modules\clothing\shoes\_shoes.dm"
 #include "code\modules\clothing\suits\_suits.dm"
+#include "code\modules\clothing\suits\cloaks.dm"
 #include "code\modules\clothing\suits\toggles.dm"
 #include "code\modules\clothing\under\_under.dm"
 #include "code\modules\clothing\under\accessories.dm"
