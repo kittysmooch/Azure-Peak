@@ -2844,7 +2844,6 @@
 #include "code\game\objects\structures\fartravel.dm"
 #include "code\game\objects\weapons\axes.dm"
 #include "code\game\turfs\crawlspace.dm"
-#include "code\modules\clothing\rogueclothes\cloaks.dm"
 #include "code\modules\clothing\rogueclothes\crown.dm"
 #include "code\modules\clothing\rogueclothes\hats.dm"
 #include "code\modules\mob\living\simple_animal\rogue\creacher\abyssal_monsters.dm"
