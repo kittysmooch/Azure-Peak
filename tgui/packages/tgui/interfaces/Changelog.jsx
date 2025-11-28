@@ -184,26 +184,26 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Traditional Games Space Station 13</h1>
+        <h1>Azure Peak</h1>
         <p>
           <b>Thanks to: </b>
-          Baystation 12, /vg/station, NTstation, CDK Station devs,
+          TGStation, Baystation 12, /vg/station, NTstation, CDK Station devs,
           FacepunchStation, GoonStation devs, the original Space Station 13
-          developers, Invisty for the title image and the countless others who
+          developers, Zydras for the title image and the countless others who
           have contributed to the game, issue tracker or wiki over the years.
         </p>
         <p>
           {'Current organization members can be found '}
-          <a href="https://github.com/orgs/tgstation/people">here</a>
+          <a href="https://github.com/orgs/Azure-Peak/people">here</a>
           {', recent GitHub contributors can be found '}
-          <a href="https://github.com/tgstation/tgstation/pulse/monthly">
+          <a href="https://github.com/Azure-Peak/Azure-Peak/pulse">
             here
           </a>
           .
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://tgstation13.org/phpBB/viewforum.php?f=60">here</a>.
+          <a href="https://discord.gg/NCFXUAgCPT">here</a>.
         </p>
         {dateDropdown}
       </Section>
@@ -238,7 +238,7 @@ export class Changelog extends Component {
           <a href="http://forums.somethingawful.com/">SomethingAwful Goons</a>
           {' only.'}
         </p>
-        <h3>Traditional Games Space Station 13 License</h3>
+        <h3>LICENSE</h3>
         <p>
           {'All code after '}
           <a
@@ -285,6 +285,12 @@ export class Changelog extends Component {
             code/modules/tgs/LICENSE
           </a>
           {' for the MIT license.'}
+        </p>
+        <p>
+          {'Roguetown / Azure Peak was originally forked from '}
+          <a href="https://github.com/tgstation/tgstation/commit/c28b351807bad950d2b323ada048190844bbda32">
+            TG station commit c28b351807bad950d2b323ada048190844bbda32 on 2019/17/11
+          </a>
         </p>
         <p>
           {'All assets including icons and sound are under a '}
