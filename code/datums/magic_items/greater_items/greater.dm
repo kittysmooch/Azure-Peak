@@ -231,7 +231,7 @@
 	if(world.time < (src.last_used[source] + 10 SECONDS))
 		return
 
-	if(isliving(target))
+	if(isliving(target) && target != user) //self teleporting might be scary actually
 		var/mob/living/L = target
 		to_chat(L, span_warning("You feel reality warp around you!"))
 		var/list/possible_turfs = list()
