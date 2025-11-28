@@ -82,7 +82,7 @@
 
 /datum/outfit/job/roguetown/marshal/classic/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/retinue
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/bailiff
+	cloak = /obj/item/clothing/cloak/tabard/stabard/surcoat/bailiff
 	backr = /obj/item/rogueweapon/mace/cudgel/justice
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/rich
