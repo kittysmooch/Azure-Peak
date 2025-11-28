@@ -228,7 +228,7 @@
 	var/list/last_used = list()
 
 /datum/magic_item/greater/void/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
-	if(world.time < (src.last_used[source] + 15 SECONDS))
+	if(world.time < (src.last_used[source] + 10 SECONDS))
 		return
 
 	if(isliving(target))
