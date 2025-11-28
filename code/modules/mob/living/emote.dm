@@ -1876,7 +1876,6 @@
 
 	emote("yip", intentional = TRUE)
 
-
 /datum/emote/living/stat_roll
 	var/delay = 2.5 SECONDS
 	var/list/attempt_message_list
