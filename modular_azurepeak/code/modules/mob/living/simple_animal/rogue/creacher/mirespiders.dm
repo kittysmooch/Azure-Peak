@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mirespider
-	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
+	icon = 'icons/mob/mirespider_small.dmi'
 	name = "mire crawler"
 	icon_state = "crawler"
 	icon_living = "crawler"
@@ -145,7 +145,7 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/rogue/mirespider_lurker
-	icon = 'modular_hearthstone/icons/mob/mirespider_big.dmi'
+	icon = 'icons/mob/mirespider_big.dmi'
 	name = "mire lurker"
 	icon_state = "lurker"
 	icon_living = "lurker"
@@ -226,7 +226,7 @@
 	followers.Cut()
 
 /mob/living/simple_animal/hostile/rogue/mirespider_paralytic
-	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
+	icon = 'icons/mob/mirespider_small.dmi'
 	name = "aragn"
 	icon_state = "aragn"
 	icon_living = "aragn"
@@ -275,7 +275,7 @@
 			L.reagents.add_reagent(/datum/reagent/toxin/spidervenom_paralytic, 5)
 
 /obj/random/spider
-	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
+	icon = 'icons/mob/mirespider_small.dmi'
 	name = "random spider spawner"
 	desc = "YOU SHOULD NOT BE SEEING THIS, GO YELL AT KETRAI."
 	icon_state = "crawler"

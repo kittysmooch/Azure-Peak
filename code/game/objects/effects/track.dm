@@ -85,7 +85,7 @@
 	anchored = TRUE
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	invisibility = INVISIBILITY_MAXIMUM
-	icon = 'modular_hearthstone/icons/obj/effects/track.dmi' //This sucks, but too bad!
+	icon = 'icons/obj/effects/track.dmi' //This sucks, but too bad!
 	///The visible state for those that know this.
 	var/real_icon_state = "tracks"
 	///The image knowers see.

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/orc
 	name = "Savage Orc"
 	desc = "A fierce, brutish looking creature."
-	icon = 'modular_hearthstone/icons/mob/simple_orcs.dmi'
+	icon = 'icons/mob/simple_orcs.dmi'
 	icon_state = "savageorc"
 	icon_living = "savageorc"
 	icon_dead = "savageorc_dead"

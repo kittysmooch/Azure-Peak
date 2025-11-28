@@ -4,7 +4,7 @@
 /obj/item/signal_horn
 	name = "signal horn"
 	desc = "A horn carried by the wardens. Blowing it attracts the attention of various creechurs and rapscallions, enabling the wardens to clear them out."
-	icon = 'modular_hearthstone/icons/obj/items/signalhorn.dmi'
+	icon = 'icons/obj/items/signalhorn.dmi'
 	icon_state = "signalhorn"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_NORMAL
@@ -49,13 +49,13 @@
 	user.visible_message(span_userdanger("[user] blows the horn!"))
 	switch(user.job)
 		if("Warden")
-			playsound(src, 'modular_hearthstone/sound/items/bogguardhorn.ogg', 100, TRUE)
+			playsound(src, 'sound/items/horn/bogguardhorn.ogg', 100, TRUE)
 		if("Town Sheriff", "Watchman", "Sergeant", "Man at Arms")
-			playsound(src, 'modular_hearthstone/sound/items/watchhorn.ogg', 100, TRUE)
+			playsound(src, 'sound/items/horn/wardenhorn.ogg', 100, TRUE)
 		if("Knight Captain", "Royal Guard")
-			playsound(src, 'modular_hearthstone/sound/items/rghorn.ogg', 100, TRUE)
+			playsound(src, 'sound/items/horn/rghorn.ogg', 100, TRUE)
 		else
-			playsound(src, 'modular_hearthstone/sound/items/signalhorn.ogg', 100, TRUE)
+			playsound(src, 'sound/items/horn/signalhorn.ogg', 100, TRUE)
 
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.stat == DEAD)
@@ -92,13 +92,13 @@
 
 		switch(user.job)
 			if("Warden")
-				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				player.playsound_local(get_turf(player), 'sound/items/horn/bogguardhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			if("Marshall", "Watchman", "Sergeant", "Man at Arms")
-				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/watchhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				player.playsound_local(get_turf(player), 'sound/items/horn/wardenhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			if("Knight Captain", "Knight")
-				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				player.playsound_local(get_turf(player), 'sound/items/horn/rghorn.ogg', 35, FALSE, pressure_affected = FALSE)
 			else
-				player.playsound_local(get_turf(player), 'modular_hearthstone/sound/items/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
+				player.playsound_local(get_turf(player), 'sound/items/horn/signalhorn.ogg', 35, FALSE, pressure_affected = FALSE)
 		to_chat(player, span_warning("I hear the horn of the Wardens somewhere [dirtext]"))
 
 	var/random_ambushes = 4 + rand(0,2) // 4 - 6 ambushes
@@ -109,3 +109,6 @@
 		if(success)
 			did_ambush = TRUE
 	return did_ambush
+
+#undef WARDEN_AMBUSH_MIN
+#undef WARDEN_AMBUSH_MAX

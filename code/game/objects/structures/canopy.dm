@@ -1,7 +1,7 @@
 /obj/structure/fluff/canopy
 	name = "Canopy"
 	desc = ""
-	icon = 'modular_hearthstone/icons/obj/decor.dmi'
+	icon = 'icons/obj/decor.dmi'
 	icon_state = "canopy"
 	density = FALSE
 	anchored = TRUE
