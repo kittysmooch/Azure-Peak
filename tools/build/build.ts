@@ -112,7 +112,6 @@ export const DmTarget = new Juke.Target({
     "sound/**",
     "tgui/public/tgui.html",
     "modular/**",
-    "modular_azurepeak/**",
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
