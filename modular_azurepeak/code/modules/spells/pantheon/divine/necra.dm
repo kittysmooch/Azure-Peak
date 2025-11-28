@@ -219,8 +219,14 @@
 			corpse_name = "Long dead "
 		else
 			corpse_name = "Forgotten remains of "
+		var/list/d_list = C.get_mob_descriptors()
+		var/trait_desc = "[capitalize(build_coalesce_description_nofluff(d_list, C, list(MOB_DESCRIPTOR_SLOT_TRAIT), "%DESC1%"))]"
+		var/stature_desc = "[capitalize(build_coalesce_description_nofluff(d_list, C, list(MOB_DESCRIPTOR_SLOT_STATURE), "%DESC1%"))]"
+		var/descriptor_name = "[trait_desc] [stature_desc]"
+		if(descriptor_name == " ")
+			descriptor_name = "Unknown"
 
-		corpse_name += " [copytext(C.name, 1, 2)]..."
+		corpse_name += " of \a [descriptor_name]..."
 		corpses[corpse_name] = C
 
 	if(!length(corpses))
