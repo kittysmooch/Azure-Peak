@@ -168,6 +168,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		return 0
 	user.doing = 1
 
+	var/user_loc = user.loc
 	var/target_loc = target.loc
 
 	var/holding = user.get_active_held_item()
@@ -198,7 +199,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(uninterruptible)
 			continue
 
-		if((double_progress && target.loc != target_loc) || user.get_active_held_item() != holding || user.incapacitated() || (extra_checks && !extra_checks.Invoke()))
+		if((double_progress && target.loc != target_loc) || user.loc != user_loc || user.get_active_held_item() != holding || user.incapacitated() || (extra_checks && !extra_checks.Invoke()))
 			. = 0
 			break
 	user.doing = 0
