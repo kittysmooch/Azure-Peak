@@ -478,6 +478,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	validate_key_in_db()
 
 	send_resources()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1138aff432a89f92e813f5cd315696464edf2d79
 
 	generate_clickcatcher()
 	apply_clickcatcher()
