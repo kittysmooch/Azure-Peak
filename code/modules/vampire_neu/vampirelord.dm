@@ -38,7 +38,13 @@
 	for(var/S in MOBSTATS)
 		H.change_stat(S, 2)
 	H.forceMove(pick(GLOB.vlord_starts))
-	ADD_TRAIT(H, TRAIT_DUSTABLE, TRAIT_GENERIC)//they are ancient and have a great risk. Maybe add a quest to reclaim their power?
+	ADD_TRAIT(H, TRAIT_DUSTABLE, TRAIT_GENERIC) //They are ancient and have a great risk. Maybe add a quest to reclaim their power?
+	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC) //Brute-forced method to ensure that Vampire Lords, no matter what, can actually wear their expensive turbokiller-armor and do their stuff. Applies to all following traits.
+	ADD_TRAIT(H, TRAIT_INFINITE_ENERGY, TRAIT_GENERIC) //Apparently, they weren't getting ANY of their previous traits. We're playing it safe with this.
+	ADD_TRAIT(H, TRAIT_STRENGTH_UNCAPPED, TRAIT_GENERIC) //Intended for antagonistic roles - especially those who're able to magnify their STR beyond the current softcap.
+	ADD_TRAIT(H, TRAIT_BITERHELM, TRAIT_GENERIC) //A little nibble?
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC) //Vampire lords are, as the name implies, noblemen. Noblewomen? Noblepeople? Makes it easier to LARP for insideous purposes.
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC) //Not sure if it's needed, but I'll throw this in just in case.
 
 /datum/antagonist/vampire/lord/greet()
 	to_chat(owner.current, span_userdanger("I am ancient. I am the Land. And I am now awoken to trespassers upon my domain."))
@@ -47,23 +53,28 @@
 /datum/outfit/job/vamplord/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_skillrank_up_to(/datum/skill/magic/blood, 6, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/swords, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/maces, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/whipsflails, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axes, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/maces, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/polearms, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/whipsflails, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 5, TRUE)
-	pants = /obj/item/clothing/under/roguetown/tights/black
+	H.adjust_skillrank(/datum/skill/misc/athletics, 5, TRUE)
+	pants = /obj/item/clothing/under/roguetown/tights/puritan
 	shirt = /obj/item/clothing/suit/roguetown/shirt/vampire
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass
+	gloves = /obj/item/clothing/gloves/roguetown/chain
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/veryrich
-	head  = /obj/item/clothing/head/roguetown/vampire
 	beltl = /obj/item/roguekey/vampire
+	head = /obj/item/clothing/head/roguetown/vampire
+	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	cloak = /obj/item/clothing/cloak/cape/puritan
-	shoes = /obj/item/clothing/shoes/roguetown/boots
+	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	backl = /obj/item/storage/backpack/rogue/satchel/black
 	l_hand = /obj/item/rogueweapon/sword/long/judgement/vlord
 	H.ambushable = FALSE
@@ -131,21 +142,6 @@
 	visible_message(span_danger("[src] reaches out, gripping [choice]'s soul, inflicting punishment!"), ignored_mobs = list(choice))
 
 ////////Outfits////////
-/obj/item/clothing/under/roguetown/platelegs/vampire
-	name = "ancient plate greaves"
-	desc = ""
-	gender = PLURAL
-	icon_state = "vpants"
-	item_state = "vpants"
-	sewrepair = FALSE
-	armor = ARMOR_VAMP
-	max_integrity = ARMOR_INT_LEG_ANTAG
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
-	blocksound = PLATEHIT
-	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
-	anvilrepair = /datum/skill/craft/armorsmithing
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-
 /obj/item/clothing/suit/roguetown/shirt/vampire
 	slot_flags = ITEM_SLOT_SHIRT
 	name = "regal silks"
@@ -157,6 +153,7 @@
 
 /obj/item/clothing/head/roguetown/vampire
 	name = "crown of darkness"
+	desc = "An obsidian crown, bejeweled with a beautifully-cut rontz. It is an eternal reminder that this world is yours to conquer - let no one, dull-blooded or otherwise, stop your fallen kingdom from rising once more."
 	icon_state = "vcrown"
 	body_parts_covered = null
 	slot_flags = ITEM_SLOT_HEAD
@@ -181,7 +178,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "ancient ceremonial plate"
-	desc = ""
+	desc = "Enchanted gilbraze armor, bearing the gilded heraldry of a fallen kingdom.  "
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = FULL_BODY
 	icon_state = "vplate"
@@ -197,9 +194,25 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+/obj/item/clothing/under/roguetown/platelegs/vampire
+	name = "ancient ceremonial plate greaves"
+	desc = "Enchanted gilbranze tassets, meticulously shingled over silk-lined chausses. Astrata tore open the sky, and Her light sundered all who had embraced your gift. They cried for your help - but you stood there, numb."
+	gender = PLURAL
+	icon_state = "vpants"
+	item_state = "vpants"
+	sewrepair = FALSE
+	armor = ARMOR_VAMP
+	max_integrity = ARMOR_INT_LEG_ANTAG
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
+	blocksound = PLATEHIT
+	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+
+
 /obj/item/clothing/shoes/roguetown/boots/armor/vampire
-	name = "ancient ceremonial plated boots"
-	desc = ""
+	name = "ancient ceremonial sabatons"
+	desc = "A set of enchanted gilbranze boots, tightly fastened with strips of niteleather. It was by your command that the families were left broken at your feet; and it was by your sword that even the righteous were forced to yield. Now, their descendants rally against you once more; let them know their place."
 	body_parts_covered = FEET
 	body_parts_inherent = FULL_BODY
 	icon_state = "vboots"
@@ -211,8 +224,18 @@
 	armor = ARMOR_VAMP
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+/obj/item/clothing/gloves/roguetown/chain/vampire
+	name = "ancient ceremonial gauntlets"
+	icon_state = "Enchanted gilbranze fingerettes, meticulously forged to leave no motion unimpeded. In your pursuit of immortality, the viziers had discovered a forbidden alternative to apotheosis: one that promised eternal lyfe, yet not without a cost. Never before could you've imagined just how sweet the taste of blood might be."
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	armor = ARMOR_VAMP
+	body_parts_inherent = FULL_BODY
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
+
 /obj/item/clothing/head/roguetown/helmet/heavy/vampire
-	name = "ancient ceremonial helm"
+	name = "ancient ceremonial sayovard"
+	desc = "A grand bascinet of enchanted gilbranze. They erased you from history, they destroyed your kingdom, and they plucked at its remains like vultures-to-carrion. Yet now, they cower in fear of your second coming; for they know that even the Pantheon cannot stop what is coming. </br>Send word - the end is nigh."
 	icon_state = "vhelmet"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	body_parts_inherent = FULL_BODY
@@ -235,12 +258,3 @@
 		return
 	active_item = FALSE
 	REMOVE_TRAIT(user, TRAIT_BITERHELM, TRAIT_GENERIC)
-
-/obj/item/clothing/gloves/roguetown/chain/vampire
-	name = "ancient ceremonial gloves"
-	icon_state = "vgloves"
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	armor = ARMOR_VAMP
-	body_parts_inherent = FULL_BODY
-	max_integrity = ARMOR_INT_SIDE_ANTAG
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
