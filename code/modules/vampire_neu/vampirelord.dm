@@ -164,6 +164,23 @@
 	smeltresult = /obj/item/ingot/draconic //Closest - and most valuable - analogue to obsidian.
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+////////BROKEN////////
+/obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire
+	name = "old ancient ceremonial vestments" //Currently invisible, due to the lack of an object sprite. Reinstate once someone adds a 'vunder' icon to the shirt.dmi.
+	desc = "An ornate aketon, woven from crimson silk and worn beneath a layer of enchanted gilbranze maille. Vheslyn, Zizo, Kaine had all failed in their pursuits - yet, the ancient truths they left behind were more valuable than lyfe itself. It's time to show them all how a Lord truly gets it done."
+	icon_state = "vunder"
+	item_state = "vunder"
+	icon = 'icons/roguetown/clothing/shirts.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	body_parts_covered = COVERAGE_TORSO
+	body_parts_inherent = FULL_BODY
+	armor_class = ARMOR_CLASS_HEAVY
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
+	armor = ARMOR_VAMP
+	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	smeltresult = /obj/item/ingot/purifiedaalloy
+
 ////////VAMPYRELORD-EXCLUSIVE ARMORSET////////
 /obj/item/clothing/suit/roguetown/armor/plate/vampire
 	slot_flags = ITEM_SLOT_ARMOR
@@ -184,15 +201,9 @@
 	armor_class = ARMOR_CLASS_HEAVY
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy/vampire
 	name = "ancient ceremonial vestments"
 	desc = "An ornate aketon, woven from crimson silk and worn beneath a layer of enchanted gilbranze maille. Vheslyn, Zizo, Kaine had all failed in their pursuits - yet, the ancient truths they left behind were more valuable than lyfe itself. It's time to show them all how a Lord truly gets it done."
-	icon_state = "vunder"
-	item_state = "vunder"
-	icon = 'icons/roguetown/clothing/shirts.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	body_parts_covered = COVERAGE_TORSO
-	body_parts_inherent = FULL_BODY
 	armor_class = ARMOR_CLASS_HEAVY
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PEEL, BCLASS_PIERCE, BCLASS_CHOP, BCLASS_LASHING, BCLASS_STAB)
 	armor = ARMOR_VAMP
