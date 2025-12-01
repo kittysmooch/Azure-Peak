@@ -171,6 +171,22 @@
 /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, (NECK), null, null, 'sound/foley/equip/equip_armor_chain.ogg', null, (UPD_HEAD|UPD_MASK|UPD_NECK))	//Chain coif.
 
+/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios
+	name = "gilded chain mantle"
+	desc = "The world is yours, as they say - yet, why doth the Gods still led us astray?"
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#ffc960"
+
+/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 /obj/item/clothing/neck/roguetown/chaincoif/iron
 	name = "iron chain coif"
 	desc = "A coif of meticulously crafted iron rings. It isn't steel, but metal is metal, and it might just save your life."
@@ -250,6 +266,22 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_SIDE_IRON
 	anvilrepair = /datum/skill/craft/armorsmithing
+
+/obj/item/clothing/neck/roguetown/bevor/zizo
+	name = "avantyne bevor"
+	desc = "The edge of reality, though unknown to many, favors Her acolytes above all else. This avantyne neckguard wards off the unenlightened's flailing."
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#c1b18d"
+
+/obj/item/clothing/neck/roguetown/bevor/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/neck/roguetown/bevor/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
 
 /obj/item/clothing/neck/roguetown/gorget
 	name = "gorget"
@@ -340,6 +372,16 @@
 	smeltresult = /obj/item/ingot/steel
 	max_integrity = ARMOR_INT_SIDE_STEEL
 	icon_state = "sgorget"
+
+/obj/item/clothing/neck/roguetown/gorget/steel/graggar
+	name = "vicious gorget"
+	desc = "Curled plate, cradling the neck. Once, they were chains - now, they've allowed you to break free."
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#ddc0a7"
+
+/obj/item/clothing/neck/roguetown/gorget/graggar/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
 /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
 	name = "kazengunite gorget"
