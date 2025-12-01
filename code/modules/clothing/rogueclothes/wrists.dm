@@ -42,6 +42,48 @@
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/wrists/roguetown/bracers/matthios
+	name = "gilded bracers"
+	desc = "Away with you, vile beggar!"
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#ffc960"
+
+/obj/item/clothing/wrists/roguetown/bracers/matthios/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/wrists/roguetown/bracers/matthios/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/wrists/roguetown/bracers/zizo
+	name = "avantyne bracers"
+	desc = "Clasped, yet unburdening. The pursuit of knowledge has led you to this very moment; there is no going back."
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#c1b18d"
+
+/obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
+
+/obj/item/clothing/wrists/roguetown/bracers/zizo/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
+/obj/item/clothing/wrists/roguetown/bracers/graggar
+	name = "vicious bracers"
+	desc = "Oh, to plunge hands into cold water; to play a melody upon an ivory-keyed piano; to watch steam rise from boiling, twisting entrails.."
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	color = "#ddc0a7"
+
+/obj/item/clothing/wrists/roguetown/bracers/graggar/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+
 /obj/item/clothing/wrists/roguetown/bracers/psythorns
 	name = "psydonic thorns"
 	desc = "Thorns fashioned from pliable yet durable blacksteel - woven and interlinked, fashioned to be wrapped around the wrists."
