@@ -8,9 +8,10 @@
 	antag_hud_type = ANTAG_HUD_VAMPIRE
 	antag_hud_name = "vamplord"
 	confess_lines = list(
-		"I AM ANCIENT! I AM ETERNAL!",
-		"I AM THE LAND! I AM PSYDONIA!",
-		"I AM THE FIRSTBORNE OF KAINE! I AM THE INHERITOR!",
+		"I AM ANCIENT!",
+		"I AM THE LAND!",
+		"I AM THE FIRSTBORNE OF KAINE!",
+		"I AM THE INHERITOR!",
 	)
 	show_in_roundend = TRUE
 	var/ascended = FALSE
