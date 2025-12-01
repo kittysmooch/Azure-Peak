@@ -367,7 +367,7 @@
 
 /datum/vampire_project/armor_crafting/on_complete(atom/movable/creation_point)
 	new /obj/item/clothing/under/roguetown/platelegs/vampire (bloodpool.loc)
-	new /obj/item/clothing/suit/roguetown/armor/chainmail/iron/vampire (bloodpool.loc)
+	new /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy/vampire (bloodpool.loc)
 	new /obj/item/clothing/suit/roguetown/armor/plate/vampire (bloodpool.loc)
 	new /obj/item/clothing/shoes/roguetown/boots/armor/vampire (bloodpool.loc)
 	new /obj/item/clothing/head/roguetown/helmet/heavy/vampire (bloodpool.loc)
