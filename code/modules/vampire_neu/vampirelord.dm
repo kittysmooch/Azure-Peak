@@ -188,6 +188,7 @@
 	name = "ancient ceremonial vestments"
 	desc = "An ornate aketon, woven from crimson silk and worn beneath a layer of enchanted gilbranze maille. Vheslyn, Zizo, Kaine had all failed in their pursuits - yet, the ancient truths they left behind were more valuable than lyfe itself. It's time to show them all how a Lord truly gets it done."
 	icon_state = "vunder"
+	item_state = "vunder"
 	icon = 'icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
 	body_parts_covered = COVERAGE_TORSO
@@ -234,6 +235,8 @@
 	name = "ancient ceremonial gauntlets"
 	icon_state = "Enchanted gilbranze fingerettes, meticulously forged to leave no motion unimpeded. In your pursuit of immortality, the viziers had discovered a forbidden alternative to apotheosis: one that promised eternal lyfe, yet not without a cost. Never before could you've imagined just how sweet the taste of blood might be."
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	icon_state = "vgloves"
+	item_state = "vgloves"
 	armor = ARMOR_VAMP
 	smeltresult = /obj/item/ingot/purifiedaalloy
 	body_parts_inherent = FULL_BODY
