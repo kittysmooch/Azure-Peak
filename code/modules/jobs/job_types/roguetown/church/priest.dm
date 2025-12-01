@@ -248,6 +248,33 @@ GLOBAL_LIST_EMPTY(heretical_players)
 			H.mind?.AddSpell(new chosen_miracle)
 			t3.Remove(t3_choice)
 			t3_count--
+	// -- Start of section for god specific bonuses --
+	if(H.patron?.type == /datum/patron/divine/undivided)
+		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+	if(H.patron?.type == /datum/patron/divine/astrata)
+		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
+	if(H.patron?.type == /datum/patron/divine/noc)
+		H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+		if(H.mind)
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
+	if(H.patron?.type == /datum/patron/divine/abyssor)
+		ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)
+	if(H.patron?.type == /datum/patron/divine/necra)
+		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/church/combat_necra.ogg'
+	if(H.patron?.type == /datum/patron/divine/pestra)
+		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
+	if(H.patron?.type == /datum/patron/divine/eora)
+		ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+		ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/church/combat_eora.ogg'
+	if(H.patron?.type == /datum/patron/divine/malum)
+		ADD_TRAIT(H, TRAIT_SMITHING_EXPERT, TRAIT_GENERIC)
+	if(H.patron?.type == /datum/patron/divine/ravox)
+		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 
 /datum/job/priest/vice //just used to change the priest title
 	title = "Vice Priest"
