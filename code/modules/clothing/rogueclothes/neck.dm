@@ -754,6 +754,12 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
+/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(QDELETED(src))
+		return
+	qdel(src)
+
 //
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
