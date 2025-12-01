@@ -1,0 +1,5 @@
+author: "PatapoIIIa"
+delete-after: True
+changes:
+  - bugfix: "Items that are explicitly blocked from being used as ingredients (e.g., full storage bags, written paper, etc.) will no longer be consumed when performing multi-quantity crafting."
+  - code_imp: "Synchronized the item consumption logic with the `can_craft_with()` check, making the crafting system more robust against complex item states."
