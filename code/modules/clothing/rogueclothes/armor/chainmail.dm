@@ -106,7 +106,6 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios
 	name = "gilded hauberk"
 	desc = "All that glimmers is gold; yet only shining stars shalt break the mold.."
-	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	color = "#ffc960"
 
 //
@@ -114,7 +113,6 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 	name = "avantyne hauberk"
 	desc = "The rings crackle with unkempt magicka, yearning to enamor the enlightened with avantynic might."
-	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	color = "#c1b18d"
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize()
@@ -126,7 +124,6 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
 	name = "vicious hauberk"
 	desc = "The blessing of a Martyr is nothing, when put before the Sinistar's rage."
-	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	color = "#ddc0a7"
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/Initialize()
