@@ -36,7 +36,7 @@
 	density = FALSE
 	max_integrity = 0
 	anchored = TRUE
-	var/cooldown = 10 MINUTES
+	var/cooldown = 5 MINUTES
 	var/on_cooldown = FALSE
 	var/area/localarea
 	/// If there is a location more specific than the area you need this to call people to, fill this in while mapping.
@@ -55,11 +55,11 @@
 		to_chat(user, span_warning("The bell has already been rung recently."))
 	else
 		user.changeNext_move(CLICK_CD_INTENTCAP)
-		user.visible_message(span_warning("[user] begins to ring [src]"))
-		if(do_after(user, 10 SECONDS))
+		user.visible_message(span_warning("[user] begins to ring [src]."))
+		if(do_after(user, 3 SECONDS))
 			on_cooldown = TRUE
 			user.visible_message(span_info("[user] rings [src]"))
-			playsound(src, 'sound/misc/bell.ogg', 100, extrarange = 5)
+			playsound(src, 'sound/misc/bell_small.ogg', 100, extrarange = 5)
 			addtimer(CALLBACK(src, PROC_REF(reset_cooldown)), cooldown)
 			var/list/rolestonotify = list()
 			switch(localarea)
@@ -79,13 +79,13 @@
 					rolestonotify = list("Inquisitor", "Orthodoxist", "Absolver")
 				if("Garrison")
 					rolestonotify = list("Man at Arms", "Sergeant", "Dungeoneer", "Watchman")
-				if("Manor")
+				if("Manor", "keep basement")
 					rolestonotify = list("Servant", "Seneschal")
 			if(!specific_location)
-				send_ooc_note(("I hear the distant sounds of [src] ringing. I'm being called to the [localarea]."), \
+				send_ooc_note(span_blue(("I hear the distant sounds of [src] ringing. I'm being called to the <b>[localarea]</b>.")), \
 				job = rolestonotify)
 			else
-				send_ooc_note(("I hear the distant sounds of [src] ringing. I'm being called to the [specific_location]."), \
+				send_ooc_note(span_blue(("I hear the distant sounds of [src] ringing. I'm being called to the <b>[specific_location]</b>.")), \
 				job = rolestonotify)
 
 /obj/structure/standingbell/proc/reset_cooldown()
