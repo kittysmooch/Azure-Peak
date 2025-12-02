@@ -39,11 +39,16 @@
 	var/cooldown = 10 MINUTES
 	var/on_cooldown = FALSE
 	var/area/localarea
+	/// If there is a location more specific than the area you need this to call people to, fill this in while mapping.
+	/// Implemented for use inside the keep, so servant bells can declare the exact location you're being called to despite
+	/// the keep being only one area. Nothing breaks if you don't fill this out.
+	var/specific_location
 
 /obj/structure/standingbell/Initialize()
 	. = ..()
 	localarea = get_area_name(src)
-
+	if(specific_location)
+		desc += " This one calls to the [specific_location]."
 
 /obj/structure/standingbell/attack_hand(mob/living/user)
 	if(on_cooldown)
@@ -74,7 +79,14 @@
 					rolestonotify = list("Inquisitor", "Orthodoxist", "Absolver")
 				if("Garrison")
 					rolestonotify = list("Man at Arms", "Sergeant", "Dungeoneer", "Watchman")
-			send_ooc_note(("I hear the distant sounds of [src] ringing. I'm being called to the [localarea]."), job = rolestonotify)
+				if("Manor")
+					rolestonotify = list("Servant", "Seneschal")
+			if(!specific_location)
+				send_ooc_note(("I hear the distant sounds of [src] ringing. I'm being called to the [localarea]."), \
+				job = rolestonotify)
+			else
+				send_ooc_note(("I hear the distant sounds of [src] ringing. I'm being called to the [specific_location]."), \
+				job = rolestonotify)
 
 /obj/structure/standingbell/proc/reset_cooldown()
 	visible_message(span_notice ("[src] is ready for use again."))
