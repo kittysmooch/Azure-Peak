@@ -730,9 +730,11 @@
 	if(user in viewers(src, null))
 		attack_message = span_combatsecondary("[user] [message_verb] [src] in the [span_combatsecondarybp(message_hit_area)] with [I]!")
 		attack_message_local = span_danger("[user] [message_verb] me in the [span_userdanger(message_hit_area)] with [I]!")
-		
+
 	//Janky, but you'll see BIG TEXT for both the hits you make and take.
-	to_chat(user, span_combatprimary("[user] [message_verb] [src] in the [span_combatsecondarybp(message_hit_area)] with [I]!"))
+	if(src != user)
+		var/attack_message_self = span_combatprimary("[user] [message_verb] [src] in the [span_combatsecondarybp(message_hit_area)] with [I]!")
+		to_chat(user, "[attack_message_self][next_attack_msg.Join()]")
 	visible_message("[attack_message][span_combatsecondarysmall(next_attack_msg.Join())]",\
 		"[attack_message_local][next_attack_msg.Join()]", null, COMBAT_MESSAGE_RANGE, list(user))	//We try not to show this to the user (attacker)
 	next_attack_msg.Cut()
