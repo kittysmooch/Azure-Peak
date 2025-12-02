@@ -750,16 +750,6 @@
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	color = "#ffc960"
 
-/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-
 //
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
@@ -770,13 +760,7 @@
 
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/neck/roguetown/bevor/zizo/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
 
 //
 
