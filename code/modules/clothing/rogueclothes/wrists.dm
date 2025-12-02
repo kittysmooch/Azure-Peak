@@ -271,18 +271,8 @@
 /obj/item/clothing/wrists/roguetown/bracers/matthios
 	name = "gilded bracers"
 	desc = "Away with you, vile beggar!"
-	max_integrity = ARMOR_INT_SIDE_ANTAG
+	max_integrity = ARMOR_INT_SIDE_ANTAG //Left removable, for the sake of customization.
 	color = "#ffc960"
-
-/obj/item/clothing/wrists/roguetown/bracers/matthios/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/wrists/roguetown/bracers/matthios/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
 
 //
 
@@ -294,14 +284,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/wrists/roguetown/bracers/zizo/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
 //
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar
