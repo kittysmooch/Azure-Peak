@@ -109,16 +109,6 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	color = "#ffc960"
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-
 //
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
@@ -129,13 +119,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize()
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
+	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "ARMOR")
 
 //
 
