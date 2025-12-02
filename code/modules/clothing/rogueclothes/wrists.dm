@@ -271,7 +271,6 @@
 /obj/item/clothing/wrists/roguetown/bracers/matthios
 	name = "gilded bracers"
 	desc = "Away with you, vile beggar!"
-	max_integrity = ARMOR_INT_SIDE_ANTAG //Left removable, for the sake of customization.
 	color = "#ffc960"
 
 //
@@ -279,7 +278,6 @@
 /obj/item/clothing/wrists/roguetown/bracers/zizo
 	name = "avantyne bracers"
 	desc = "Clasped, yet unburdening. The pursuit of knowledge has led you to this very moment; there is no going back."
-	max_integrity = ARMOR_INT_SIDE_ANTAG
 	color = "#c1b18d"
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
@@ -290,7 +288,6 @@
 /obj/item/clothing/wrists/roguetown/bracers/graggar
 	name = "vicious bracers"
 	desc = "Oh, to plunge hands into cold water; to play a melody upon an ivory-keyed piano; to watch steam rise from boiling, twisting entrails.."
-	max_integrity = ARMOR_INT_SIDE_ANTAG
 	color = "#ddc0a7"
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar/Initialize()
