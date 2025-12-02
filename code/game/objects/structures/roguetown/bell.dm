@@ -82,10 +82,10 @@
 				if("Manor", "keep basement")
 					rolestonotify = list("Servant", "Seneschal")
 			if(!specific_location)
-				send_ooc_note(span_blue(("I hear the distant sounds of [src] ringing. I'm being called to the <b>[localarea]</b>.")), \
+				send_ooc_note(span_blue(("I hear the distant sound of [src] ringing. I'm being called to the <b>[localarea]</b>.")), \
 				job = rolestonotify)
 			else
-				send_ooc_note(span_blue(("I hear the distant sounds of [src] ringing. I'm being called to the <b>[specific_location]</b>.")), \
+				send_ooc_note(span_blue(("I hear the distant sound of [src] ringing. I'm being called to the <b>[specific_location]</b>.")), \
 				job = rolestonotify)
 
 /obj/structure/standingbell/proc/reset_cooldown()
