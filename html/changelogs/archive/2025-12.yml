@@ -7,3 +7,17 @@
       multi-quantity crafting.
   - code_imp: Synchronized the item consumption logic with the `can_craft_with()`
       check, making the crafting system more robust against complex item states.
+2025-12-02:
+  NewyearnewmeUwu:
+  - bugfix: chaining people after walking away is no longer possible
+  PatapoIIIa:
+  - balance: Fixed an exploit that allowed infinite experience gain by repeatedly
+      reinserting and retrieving a single ingot from a lit furnace.
+  - bugfix: Ingot items now correctly reset their 'smelted' status when placed back
+      into a furnace, requiring a full smelting cycle for new experience gain.
+  - code_imp: Updated `add_item` logic for smelters.
+  - bugfix: Fixed the "type masquerade" issue for crafted long pipes, which previously
+      caused them to have flickering sprites and break after cleaning.
+  - bugfix: Fixed a bug where crafted pipes would start with residual "ashes".
+  mazzinsanity:
+  - rscadd: Added new stat roll emotes
