@@ -515,8 +515,17 @@
 	id = "healing_campfire"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/campfire
 	examine_text = null
+	outline_colour = "#447e3e"
+	healing_on_tick = 2.5
 	duration = 10 SECONDS
 	block_combat_mode = TRUE
+
+/datum/status_effect/buff/healing/campfire/tick()
+	if(block_combat_mode && owner.cmode)
+		return
+	if(owner.construct)
+		return
+	owner.energy_add(healing_on_tick)
 
 #define BLOODHEAL_DUR_SCALE_PER_LEVEL 3 SECONDS
 #define BLOODHEAL_RESTORE_DEFAULT 5
