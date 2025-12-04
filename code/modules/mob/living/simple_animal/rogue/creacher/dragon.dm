@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon
 	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
-	name = "dragon"
+	name = "half-drakkyn"
+	desc = "Descendent of descendent of descendent of greatness; degenerated to mortality through diluta of blood and power and wealth. Legend says Matthios stole and shared his fire to mortals after seeing how pure-blooed Drakkyn lived."
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -21,16 +22,16 @@
 	damage_coeff = list(BRUTE = 1, BURN = 0.2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	botched_butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
-		/obj/item/natural/hide = 2, 
+		/obj/item/natural/hide = 2,
 		/obj/item/natural/bundle/bone/full = 4)
 	butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
-		/obj/item/natural/hide = 4, 
+		/obj/item/natural/hide = 4,
 		/obj/item/natural/bundle/bone/full = 4,
 		/obj/item/natural/head/dragon = 1)
 	perfect_butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7, // More than troll. They are more difficult
-		/obj/item/natural/hide = 7, 
+		/obj/item/natural/hide = 7,
 		/obj/item/natural/bundle/bone/full = 4,
 		/obj/item/natural/head/dragon = 1)
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
@@ -44,8 +45,8 @@
 	retreat_distance = 0
 	minimum_distance = 0
 	milkies = FALSE
-	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat, 
-					/obj/item/bodypart, 
+	food_type = list(/obj/item/reagent_containers/food/snacks/rogue/meat,
+					/obj/item/bodypart,
 					/obj/item/organ
 					)
 	footstep_type = FOOTSTEP_MOB_HEAVY
@@ -100,7 +101,7 @@
 	AddElement(/datum/element/ai_retaliate)
 
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, leap)
-	
+
 	//ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC) // Need a weakness
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/death(gibbed)
@@ -213,20 +214,26 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
-	name = "dragon broodmother"
-	ranged_cooldown_time = 20 SECONDS
+	name = "drakkyn aspirant"
+	desc = "Dragon want-to-be; primordial wealth has crawled and infused into this one's scales in reverence of ancestor-was and will-be. Minaret of gilded power starburst from a firmament torn thousands of years ago."
+	icon_state = "dragon_cool"
+	icon_living = "dragon_cool"
+	icon_dead = "dragon_cool_dead"
+	melee_damage_lower = 100
+	melee_damage_upper = 120 //big buffs, these guys will drop very good things
+	ranged_cooldown_time = 10 SECONDS //dark souls prepare to fry edition
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 	butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
-		/obj/item/natural/hide = 4, 
+		/obj/item/natural/hide = 4,
 		/obj/item/natural/bundle/bone/full = 4,
 		/obj/item/natural/head/dragon/broodmother = 1)
 	perfect_butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7, // More than troll. They are more difficult
-		/obj/item/natural/hide = 7, 
+		/obj/item/natural/hide = 7,
 		/obj/item/natural/bundle/bone/full = 4,
 		/obj/item/natural/head/dragon/broodmother = 1)
-
+	damage_coeff = list(BRUTE = 1, BURN = 0.1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Initialize()
 	. = ..()
