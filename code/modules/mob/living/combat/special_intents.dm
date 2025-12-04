@@ -465,7 +465,8 @@ SPECIALS START HERE
 	use_doafter = TRUE
 	respect_adjacency = FALSE
 	delay = 0.6 SECONDS
-	cooldown = 20 SECONDS
+	cooldown = 25 SECONDS
+	stamcost = 25
 	var/slow_dur = 5	//We do NOT want to use SECONDS macro here. Slowdown() takes in an int and turns it into seconds already.
 	var/KD_dur = 2 SECONDS
 	var/Offb_dur = 5 SECONDS
@@ -579,6 +580,7 @@ SPECIALS START HERE
 	respect_adjacency = FALSE
 	delay = 0.5 SECONDS
 	cooldown = 25 SECONDS
+	stamcost = 15
 	var/immob_dur = 3.5 SECONDS
 	var/exposed_dur = 6 SECONDS
 	var/dam
@@ -662,7 +664,7 @@ SPECIALS START HERE
 	delay = 0.7 SECONDS
 	cooldown = 30 SECONDS
 	stamcost = 25	//Stamina cost
-	var/dam = 50
+	var/dam = 60
 	var/slow_dur = 2
 	var/hitcount = 0
 	var/self_debuffed = FALSE
