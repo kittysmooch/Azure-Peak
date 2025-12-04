@@ -182,6 +182,7 @@
 	sellprice = 50
 	possible_item_intents = list(/datum/intent/use, /datum/intent/hit)
 	force = 12 //Bludgeons!
+	is_silver = TRUE
 
 /obj/item/candle/candlestick/silver/single/update_icon()
 	icon_state = "singlescandelabra[lit ? "_lit" : ""]"
