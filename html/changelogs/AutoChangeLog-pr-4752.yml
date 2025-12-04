@@ -1,4 +1,0 @@
-author: "WeNeedMorePhoron"
-delete-after: True
-changes:
-  - bugfix: "Alt right click on a massive pile of item shouldn't lag out the server anymore (I'll find you)"
