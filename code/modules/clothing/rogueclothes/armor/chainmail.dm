@@ -108,6 +108,10 @@
 	desc = "All that glimmers is gold; yet only shining stars shalt break the mold.."
 	color = "#ffc960"
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+
 //
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
