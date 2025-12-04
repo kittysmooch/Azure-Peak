@@ -273,6 +273,10 @@
 	desc = "Away with you, vile beggar!"
 	color = "#ffc960"
 
+/obj/item/clothing/wrists/roguetown/bracers/matthios/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+
 //
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo
