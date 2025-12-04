@@ -743,6 +743,10 @@
 	desc = "The world is yours, as they say - yet, why doth the Gods still led us astray?"
 	color = "#ffc960"
 
+/obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+
 //
 
 /obj/item/clothing/neck/roguetown/bevor/zizo
