@@ -805,7 +805,7 @@
 			if(distance > healing_range || human.construct)
 				continue
 			if(!human.has_status_effect(/datum/status_effect/buff/campfire_stamina))
-				to_chat(human, "The warmth of the fire comforts me, affording me a short rest.")
+				to_chat(human, span_info("The warmth of the fire comforts me, affording me a short rest. I would need to lie down on a bed to get a better rest."))
 			human.apply_status_effect(/datum/status_effect/buff/campfire_stamina)
 			human.add_stress(/datum/stressevent/campfire)
 			if(human.resting)
@@ -820,7 +820,7 @@
 						break
 				if(valid_bed)
 					if(!human.has_status_effect(/datum/status_effect/buff/healing/campfire))
-						to_chat(human, "Settling in by the flames lifts the burdens of the week.")
+						to_chat(human, span_info("Settling in by the flames lifts the burdens of the week."))
 					human.apply_status_effect(/datum/status_effect/buff/healing/campfire)
 
 

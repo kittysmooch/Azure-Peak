@@ -574,6 +574,9 @@
 	owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -healing_on_tick)
 	owner.adjustCloneLoss(-healing_on_tick, 0)
 
+#undef CAMPFIRE_BASE_FILTER
+
+
 #define BLOODHEAL_DUR_SCALE_PER_LEVEL 3 SECONDS
 #define BLOODHEAL_RESTORE_DEFAULT 5
 #define BLOODHEAL_RESTORE_SCALE_PER_LEVEL 2
