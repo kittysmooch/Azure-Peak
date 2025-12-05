@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/etrusca/condottiero
 	name = "Condottiero Ringleader"
-	tutorial = "Hailing from the Kingdom of Etrusca, you are a Condotierro - the leader of a group of trained soldiers of fortune oft found in the employ of powerful merchants and lords for your efficiency and grace. Without a war to fight back home, the Grand Duchy has become a much-needed source of contracts. Afterall, this land is rich in coin yet poor in manpower..."
+	tutorial = "Hailing from the Kingdom of Etrusca, you are a Condotierro - an upstart mercenary, dedicated to leading a group of trained soldiers of fortune oft found in the employ of powerful merchants and lords for your efficiency and grace. Without a war to fight back home, the Grand Duchy has become a much-needed source of contracts. Afterall, this land is rich in coin yet poor in manpower..."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/etrusca/condottiero
@@ -9,7 +9,6 @@
 	subclass_languages = list(/datum/language/etruscan, /datum/language/thievescant)
 	cmode_music = 'sound/music/combat_condottiero.ogg'
 	traits_applied = list(TRAIT_MEDIUMARMOR)
-	maximum_possible_slots = 1 //You're the big boss.
 	subclass_stats = list(
 		STATKEY_WIL = 1,
 		STATKEY_PER = 2,
@@ -42,8 +41,8 @@
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan //Literally Etruscan. You don't get a choice, you're wearing this, sire. 
 	armor = /obj/item/clothing/suit/roguetown/armor/brigandine //It's THE Etruscan armor, come on!
 	backl = /obj/item/storage/backpack/rogue/satchel
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	pants = /obj/item/clothing/under/roguetown/splintlegs
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt //padded is too strong I guess.
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
 	wrists = /obj/item/clothing/wrists/roguetown/splintarms
 	backpack_contents = list(
@@ -58,9 +57,9 @@
 		switch(weapon_choice)
 			if("Intrepid Leader - Dual Longswords") //It's badass fuck you
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords = SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/sword/long/etruscan
+				r_hand = /obj/item/rogueweapon/sword/long/dec
 				beltl = /obj/item/rogueweapon/scabbard/sword
-				l_hand = /obj/item/rogueweapon/sword/long/etruscan
+				l_hand = /obj/item/rogueweapon/sword/long/dec
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, -2)
