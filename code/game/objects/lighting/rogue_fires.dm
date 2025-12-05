@@ -808,7 +808,7 @@
 				to_chat(human, span_info("The warmth of the fire comforts me, affording me a short rest. I would need to lie down on a bed to get a better rest."))
 			human.apply_status_effect(/datum/status_effect/buff/campfire_stamina)
 			human.add_stress(/datum/stressevent/campfire)
-			if(human.resting)
+			if(human.resting && !human.cmode)
 				var/valid_bed = FALSE
 				var/turf/T = get_turf(human)
 				for(var/obj/O in T.contents)

@@ -550,7 +550,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/campfire
 	examine_text = null
 	outline_colour = "#d6be7a"
-	healing_on_tick = 1
+	healing_on_tick = 2
 	duration = 6 SECONDS
 	block_combat_mode = TRUE
 
