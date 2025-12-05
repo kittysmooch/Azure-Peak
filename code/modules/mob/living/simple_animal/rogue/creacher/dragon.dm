@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon
 	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
 	name = "half-drakkyn"
-	desc = "Descendent of descendent of descendent of greatness; degenerated to mortality through diluta of blood and power and wealth. Legend says Matthios stole and shared his fire to mortals after seeing how pure-blooed Drakkyn lived."
+	desc = "Descendent of descendent of descendent of greatness; degenerated to mortality through diluta of power, blood, and wealth."
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -57,7 +57,7 @@
 	deaggroprob = 0
 	defprob = 40
 	del_on_deaggro = 9999 SECONDS
-	retreat_health = 0.3
+	retreat_health = 0.05
 	food = 0
 	attack_sound = list('sound/combat/hits/blunt/genblunt (1).ogg','sound/combat/hits/blunt/genblunt (2).ogg','sound/combat/hits/blunt/genblunt (3).ogg','sound/combat/hits/blunt/flailhit.ogg')
 	dodgetime = 30
@@ -187,7 +187,7 @@
 	return ..()
 
 /datum/intent/simple/bite/dragon_bite //the model/hitbox is too big so it never got to attack. Increase reach
-	reach = 2
+	reach = 3
 	swingdelay = 2
 	clickcd = DRAGON_ATTACK_SPEED //It is a dragon so it bites slightly faster
 	penfactor = 60 // It is a dragon so it bites hard
@@ -214,34 +214,36 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
+	retreat_health = 0.05
 	name = "drakkyn aspirant"
-	desc = "Dragon want-to-be; primordial wealth has crawled and infused into this one's scales in reverence of ancestor-was and will-be. Minaret of gilded power starburst from a firmament torn thousands of years ago."
+	desc = "Want-to-be True Drakyn. Primordial wealth has crawled and infused into this one's scales in reverence of ancestor-was and will-be. Minaret of gilded power starburst from a firmament torn thousands of years ago. Although True Drakkyn are immortal, these are not; not after a hundred-hundred offspring "
 	icon_state = "dragon_cool"
 	icon_living = "dragon_cool"
 	icon_dead = "dragon_cool_dead"
-	melee_damage_lower = 100
-	melee_damage_upper = 120 //big buffs, these guys will drop very good things
+	melee_damage_lower = 110
+	melee_damage_upper = 130 //big buffs, these guys will drop very very good things
 	ranged_cooldown_time = 10 SECONDS //dark souls prepare to fry edition
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 	butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 4,
 		/obj/item/natural/hide = 4,
 		/obj/item/natural/bundle/bone/full = 4,
-		/obj/item/natural/head/dragon/broodmother = 1)
+		/obj/item/natural/head/dragon/broodmother = 1,
+		/obj/item/clothing/ring/quartz = 1)
 	perfect_butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 7, // More than troll. They are more difficult
 		/obj/item/natural/hide = 7,
-		/obj/item/natural/bundle/bone/full = 4,
+		/obj/item/clothing/ring/gold = 4,
 		/obj/item/natural/head/dragon/broodmother = 1)
-	damage_coeff = list(BRUTE = 1, BURN = 0.1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	damage_coeff = list(BRUTE = 1, BURN = 0.0, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Initialize()
 	. = ..()
 
 	fire_breath = new(src)
 	fire_breath.Grant(src)
-
 	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, fire_breath)
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, TRUE, null, null, FALSE) //my brother in Zizo
 
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother/Destroy()
 	fire_breath.Remove(src)

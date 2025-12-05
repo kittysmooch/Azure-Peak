@@ -175,7 +175,7 @@
 	title = "The Verses and Acts of the Ten"
 	dat = "gott.json"
 	possible_item_intents = list(
-		/datum/intent/use, 
+		/datum/intent/use,
 		/datum/intent/bless,
 	)
 
@@ -341,6 +341,13 @@
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "thefireisgone.json"
+
+/obj/item/book/rogue/secret/dragon_stanza
+	name = "FORGOTTIN JOURNAL"
+	desc = "{<font color='red'><blink>PRIMORDIAL WEALTH.</blink></font>}"
+	icon_state ="book6_0"
+	base_icon_state = "book6"
+	bookfile = "dragonwealth.json"
 
 //player made books
 /obj/item/book/rogue/tales1
