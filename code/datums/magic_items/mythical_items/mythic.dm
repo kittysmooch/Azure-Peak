@@ -77,7 +77,7 @@
 		src.last_used = world.time
 
 /datum/magic_item/mythic/briarcurse
-	name = "Briar's curse"
+	name = "Briar's Curse"
 	description = "Its grip seems thorny. Must hurt to use."
 	var/last_used
 
@@ -92,7 +92,7 @@
 	if(isliving(target))
 		var/mob/living/carbon/targeted = target
 		targeted.adjustBruteLoss(10)
-		to_chat(target, span_notice("[source] gouges you with it's sharp edges!"))
+		to_chat(target, span_notice("[source] gouges you with its sharp edges!"))
 
 /datum/magic_item/mythic/rewind
 	name = "Temporal Rewind"
