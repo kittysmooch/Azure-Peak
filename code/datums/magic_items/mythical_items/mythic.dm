@@ -84,13 +84,15 @@
 /datum/magic_item/mythic/briarcurse/on_apply(var/obj/item/i)
 	.=..()
 	i.force = i.force + 10
+	if (i.force_wielded)
+		i.force_wielded = i.force_wielded + 10
 
 /datum/magic_item/mythic/briarcurse/on_hit(obj/item/source, atom/target, mob/user, proximity_flag, click_parameters)
 	.=..()
 	if(isliving(target))
 		var/mob/living/carbon/targeted = target
 		targeted.adjustBruteLoss(10)
-		to_chat(user, span_notice("[source] gouges you with it's sharp edges!"))
+		to_chat(target, span_notice("[source] gouges you with it's sharp edges!"))
 
 /datum/magic_item/mythic/rewind
 	name = "Temporal Rewind"
