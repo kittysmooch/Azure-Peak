@@ -121,7 +121,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	beltl = /obj/item/rogueweapon/scabbard/sword
 	l_hand = /obj/item/rogueweapon/sword/short
-	wrists = //obj/item/clothing/wrists/roguetown/bracers/jackchain
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
 	beltr = /obj/item/quiver/bolts
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
