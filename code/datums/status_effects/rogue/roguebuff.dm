@@ -545,17 +545,15 @@
 /datum/status_effect/buff/campfire_stamina/on_remove()
 	owner.remove_filter(CAMPFIRE_BASE_FILTER)
 
-/datum/status_effect/buff/healing/campfire
+/datum/status_effect/buff/campfire
 	id = "healing_campfire"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/campfire
 	examine_text = null
-	outline_colour = "#d6be7a"
-	healing_on_tick = 2
+	var/healing_on_tick = 2
 	duration = 6 SECONDS
-	block_combat_mode = TRUE
 
-/datum/status_effect/buff/healing/campfire/tick()
-	if(block_combat_mode && owner.cmode)
+/datum/status_effect/buff/campfire/tick()
+	if(owner.cmode)
 		return
 	if(owner.construct)
 		return

@@ -819,9 +819,9 @@
 					if(valid_bed)
 						break
 				if(valid_bed)
-					if(!human.has_status_effect(/datum/status_effect/buff/healing/campfire))
+					if(!human.has_status_effect(/datum/status_effect/buff/campfire))
 						to_chat(human, span_info("Settling in by the flames lifts the burdens of the week."))
-					human.apply_status_effect(/datum/status_effect/buff/healing/campfire)
+					human.apply_status_effect(/datum/status_effect/buff/campfire)
 
 
 /obj/machinery/light/rogue/campfire/onkick(mob/user)
