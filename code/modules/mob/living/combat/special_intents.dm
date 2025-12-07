@@ -436,8 +436,9 @@ SPECIALS START HERE
 	post_icon_state = "sweep_fx"
 	pre_icon_state = "trap"
 	sfx_post_delay = 'sound/combat/shin_swipe.ogg'
-	delay = 0.7 SECONDS
-	cooldown = 15 SECONDS
+	delay = 0.5 SECONDS
+	cooldown = 20 SECONDS
+	stamcost = 15
 	var/eff_dur = 5	//We do NOT want to use SECONDS macro here.
 	var/dam
 
@@ -451,6 +452,7 @@ SPECIALS START HERE
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
 			L.Slowdown(eff_dur)
+			L.apply_status_effect(/datum/status_effect/debuff/hobbled)	//-2 SPD for 8 seconds
 			if(L.mobility_flags & MOBILITY_STAND)
 				apply_generic_weapon_damage(L, dam, "stab", pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), bclass = BCLASS_CUT)
 	..()
