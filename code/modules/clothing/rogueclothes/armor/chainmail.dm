@@ -25,7 +25,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/item_equipped_movement_rustle)
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_CHAIN_STEP)
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/aalloy
 	name = "decrepit haubergeon"
