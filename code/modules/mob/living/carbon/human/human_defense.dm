@@ -17,6 +17,7 @@
 /mob/living/carbon/human/proc/checkarmor(def_zone, d_type, damage, armor_penetration, blade_dulling, peeldivisor, intdamfactor = 1, obj/item/used_weapon)
 	if(!d_type)
 		return 0
+	to_chat(world, "damage started with: [damage]")
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
@@ -36,13 +37,16 @@
 			playsound(loc, get_armor_sound(used.blocksound, blade_dulling), 100)
 		var/intdamage = damage
 		// Penetrative damage deals significantly less to the armor. Tentative.
-		if((damage + armor_penetration) > protection)
+		if((damage + armor_penetration) > protection && d_type != "blunt")
 			intdamage = (damage + armor_penetration) - protection
 		if(intdamfactor != 1)
+			to_chat(world, "intdamfactor of [intdamfactor] getting applied to [intdamage]")
 			intdamage *= intdamfactor
+			to_chat(world, "new int damage: [intdamage]")
 		if(d_type == "blunt")
 			if(used.armor?.getRating("blunt") > 0)
 				var/bluntrating = used.armor.getRating("blunt")
+				to_chat(world, "reducing intdamage by: [intdamage * ((bluntrating / 2) / 100)]")
 				intdamage -= intdamage * ((bluntrating / 2) / 100)	//Half of the blunt rating reduces blunt damage taken by %-age.
 		if(istype(used_weapon) && used_weapon.is_silver && ((used.smeltresult in list(/obj/item/ingot/aaslag, /obj/item/ingot/aalloy, /obj/item/ingot/purifiedaalloy)) || used.GetComponent(/datum/component/cursed_item)))
 			// Blessed silver delivers more int damage against "cursed" alloys, see component for multiplier values
@@ -50,6 +54,7 @@
 			if(bless.is_blessed)
 				// Apply multiplier if the blessing is active.
 				intdamage = round(intdamage * bless.cursed_item_intdamage)
+		to_chat(world, "intdamage taken: [intdamage]")
 		used.take_damage(intdamage, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
 	if(physiology)
 		protection += physiology.armor.getRating(d_type)

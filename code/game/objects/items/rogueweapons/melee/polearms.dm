@@ -1015,6 +1015,7 @@
 	wdefense = 4
 	force = 14
 	force_wielded = 35
+	intdamage_factor = 0.8
 
 /obj/item/rogueweapon/greatsword/grenz
 	name = "steel zweihander"
@@ -1025,6 +1026,7 @@
 	wdefense = 4
 	force = 14
 	force_wielded = 35
+	intdamage_factor = 0.8
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge
 	name = "steel flamberge"
