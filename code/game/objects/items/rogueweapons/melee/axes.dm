@@ -600,7 +600,7 @@
 	icon = 'icons/roguetown/weapons/64.dmi'
 	max_blade_int = 175
 	minstr = 12
-	intdamage_factor = 0.8
+	intdamage_factor = 0.9
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar
 	name = "vicious greataxe"
