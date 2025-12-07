@@ -20,7 +20,7 @@
 /obj/item/clothing/mask/rogue/attack_right(mob/user)
 	. = ..()
 
-	if(initial(flags_inv) & HIDEFACE)
+	if(!adjustable && initial(flags_inv) & HIDEFACE)
 		flags_inv ^= HIDEFACE
 		to_chat(user, span_notice("I adjust mask to [flags_inv & HIDEFACE ? "conceal" : "reveal"] identity."))
 		user.update_inv_wear_mask()
