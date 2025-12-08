@@ -116,7 +116,7 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight
-	name = "knight's helmet"
+	name = "knight's armet"
 	desc = "A noble knight's helm in the current style popular with nobility. Add a feather to show the colors of your family or allegiance."
 	icon_state = "knight"
 	item_state = "knight"
@@ -164,6 +164,16 @@
 	name = "iron knight's helmet"
 	icon_state = "iknight"
 	desc = "A noble knight's helm made of iron."
+	smeltresult = /obj/item/ingot/iron
+	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON
+
+/obj/item/clothing/head/roguetown/helmet/heavy/knight/old
+	name = "knight's helmet"
+	icon_state = "knightclassic"
+
+/obj/item/clothing/head/roguetown/helmet/heavy/knight/old/iron
+	name = "iron knight's helmet"
+	icon_state = "iknightclassic"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON
 
