@@ -1469,6 +1469,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(alt_intents)
 			user.update_a_intents()
 			if(mordhau)
+				if(user.get_inactive_held_item())
+					to_chat(user, span_warning("I need a free hand first."))
+					return
 				src.wielded = TRUE
 				update_force_dynamic()
 				wdefense_dynamic = (wdefense + wdefense_wbonus)
