@@ -245,6 +245,11 @@
 	gripsprite = FALSE
 	gripped_intents = null
 
+/obj/item/rogueweapon/woodstaff/polearm
+	name = "shillelagh"
+	desc = "A particularly long and sturdy walking stick with a variety of uses. It's heavier at one end, making it a little unbalanced."
+	associated_skill = /datum/skill/combat/polearms
+
 /obj/item/rogueweapon/woodstaff/aries/getonmobprop(tag)
 	. = ..()
 	if(tag)
