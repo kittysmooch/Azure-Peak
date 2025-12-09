@@ -601,6 +601,8 @@
 	density = FALSE
 	climbable = FALSE
 	dir = SOUTH
+	// These aren't dense, so they shouldn't have an offset!
+	climb_offset = 0
 	pixel_y = 32
 
 /obj/structure/rack/rogue/shelf/big
