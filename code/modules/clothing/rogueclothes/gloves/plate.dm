@@ -73,6 +73,7 @@
 	desc = "avantyne plate gauntlets. Called forth from the edge of what should be known. In Her name."
 	icon_state = "zizogauntlets"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
+	chunkcolor = "#363030"
 
 /obj/item/clothing/gloves/roguetown/plate/zizo/Initialize()
 	. = ..()

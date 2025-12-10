@@ -710,6 +710,7 @@
 	icon_state = "zizobarbute"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	peel_threshold = 4
+	chunkcolor = "#363030"
 	var/frogstyle = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/MiddleClick(mob/user)

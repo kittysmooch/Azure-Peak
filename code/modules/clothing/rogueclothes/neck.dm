@@ -753,6 +753,7 @@
 	name = "avantyne bevor"
 	desc = "The edge of reality, though unknown to many, favors Her acolytes above all else. This avantyne neckguard wards off the unenlightened's flailing."
 	color = "#c1b18d"
+	chunkcolor = "#363030"
 
 /obj/item/clothing/neck/roguetown/bevor/zizo/Initialize()
 	. = ..()

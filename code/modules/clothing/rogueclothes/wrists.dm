@@ -283,6 +283,7 @@
 	name = "avantyne bracers"
 	desc = "Clasped, yet unburdening. The pursuit of knowledge has led you to this very moment; there is no going back."
 	color = "#c1b18d"
+	chunkcolor = "#363030"
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
 	. = ..()
