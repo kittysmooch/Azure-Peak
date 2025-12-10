@@ -103,6 +103,12 @@
 	anvilrepair = /datum/skill/craft/carpentry
 	coverage = 30
 
+/obj/item/rogueweapon/shield/wood/deprived
+	name = "ghastly shield"
+	desc = "A frail looking amalgamation of planks. Yet somehow, the very wood itself seem to be filling you with resolve."
+	icon_state = "deprived"
+	coverage = 40
+
 /obj/item/rogueweapon/shield/attack_right(mob/user)
 	if(overlays.len)
 		..()
