@@ -34,7 +34,7 @@
 	adv_stat_ceiling = list(STAT_STRENGTH = 12) // I'm sorry but you're not grabbing muscular and aiming chest with 12 speed 17 strength swift intent spam.
 
 /datum/outfit/job/roguetown/mercenary/trollslayer
-	allowed_patrons = ALL_DIVINE_PATRONS
+	allowed_patrons = ALL_SLAYER_PATRONS
 
 /datum/outfit/job/roguetown/mercenary/trollslayer/pre_equip(mob/living/carbon/human/H)
 	..()
