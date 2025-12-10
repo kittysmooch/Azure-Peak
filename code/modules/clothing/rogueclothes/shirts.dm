@@ -686,7 +686,7 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	max_integrity = 150
+	max_integrity = 175
 	flags_inv = null //free the breast
 	surgery_cover = FALSE // cauterize and surgery through it.
 	var/repair_amount = 25 //The amount of integrity the tattoos will repair themselves
