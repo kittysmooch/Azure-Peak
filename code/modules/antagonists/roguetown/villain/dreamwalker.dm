@@ -654,7 +654,7 @@
 	icon_state = "dreamlegs"
 	armor = ARMOR_ASCENDANT
 	item_flags = DREAM_ITEM
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/under/roguetown/platelegs/dreamwalker/Initialize()
 	. = ..()

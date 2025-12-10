@@ -7,7 +7,6 @@
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = ARMOR_INT_LEG_STEEL_PLATE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -65,7 +64,7 @@
 	name = "gilded leggings"
 	desc = "But my outside to behold:"
 	icon_state = "matthioslegs"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+	prevent_crits = PREVENT_CRITS_ALL
 	armor = ARMOR_ASCENDANT
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize()
@@ -86,7 +85,7 @@
 	desc = "Leg garments worn by true anointed of the Dame of Progress. In Her name."
 	icon_state = "zizocloth"
 	armor = ARMOR_ASCENDANT
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
 	. = ..()

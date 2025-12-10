@@ -7,7 +7,6 @@
 	icon_state = "haubergeon"
 	armor = ARMOR_MAILLE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'

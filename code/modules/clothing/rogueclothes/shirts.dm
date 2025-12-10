@@ -678,7 +678,7 @@
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	armor = list("blunt" = 30, "slash" = 50, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	prevent_crits = PREVENT_CRITS_NONE
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
 	icon = 'icons/roguetown/clothing/shirts.dmi'

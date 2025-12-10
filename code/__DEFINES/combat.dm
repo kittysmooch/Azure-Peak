@@ -343,6 +343,10 @@ Medical defines
 #define CRIT_RESISTANCE_EFFECTIVE_BLEEDRATE 0.5 // How much CR reduce bleedrate by
 #define CRIT_RESISTANCE_TIMER_CD 30 SECONDS // Cooldown between guaranteed CR procs. DOES NOT APPLY TO DISMEMBERMENT.
 
+#define PREVENT_CRITS_NONE	0
+#define PREVENT_CRITS_MOST	1
+#define PREVENT_CRITS_ALL	2
+
 /*
 	Dullfactor Defines. These should be removed at some point.
 */
