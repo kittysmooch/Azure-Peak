@@ -150,6 +150,6 @@
 			if("yip")
 				used = list('sound/vo/yip.ogg', 'sound/vo/yip2.ogg', 'sound/vo/yip3.ogg')
 			if("oink")
-				used = list('modular\Creechers\sound/pig1.ogg', 'modular\Creechers\sound/pig2.ogg')
+				used = list('modular/Creechers/sound/pig1.ogg', 'modular/Creechers/sound/pig2.ogg')
 
 	return used
