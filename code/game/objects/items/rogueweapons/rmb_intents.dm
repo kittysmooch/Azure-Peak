@@ -188,7 +188,7 @@
 		perc = 0
 		special_msg = span_warning("Too soon! They were expecting it!")
 
-	if(!L.can_see_cone(user))
+	if(!L.can_see_cone(user) && L.mind)
 		perc = 0
 		special_msg = span_warning("They need to see me for me to feint them!")
 
