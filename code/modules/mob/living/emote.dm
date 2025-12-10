@@ -1614,7 +1614,7 @@
 
 /datum/emote/living/oink
 	key = "oink"
-	key_third_person = "oinks"
+	key_third_person = "oinks."
 	message = "oinks."
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "makes a muffled sound!"
@@ -1622,7 +1622,7 @@
 	show_runechat = FALSE
 	is_animal = TRUE
 
-/mob/living/carbon/human/verb/emote_snort()
+/mob/living/carbon/human/verb/emote_oink()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "Oink"
 		set category = "Noises"
