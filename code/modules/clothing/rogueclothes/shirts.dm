@@ -677,8 +677,7 @@
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	armor = list("blunt" = 30, "slash" = 50, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	armor = ARMOR_RUMACLAN
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
 	icon = 'icons/roguetown/clothing/shirts.dmi'
@@ -687,11 +686,11 @@
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	max_integrity = 600 //Bad armor protection and very basic crit protection, but incredibly hard to break completely
+	max_integrity = 250
 	flags_inv = null //free the breast
 	surgery_cover = FALSE // cauterize and surgery through it.
-	var/repair_amount = 6 //The amount of integrity the tattoos will repair themselves
-	var/repair_time = 20 SECONDS //The amount of time between each repair
+	var/repair_amount = 25 //The amount of integrity the tattoos will repair themselves
+	var/repair_time = 30 SECONDS //The amount of time between each repair
 	var/last_repair //last time the tattoos got repaired
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/Initialize(mapload)
@@ -710,6 +709,7 @@
 	if(obj_integrity < max_integrity)
 		START_PROCESSING(SSobj, src)
 		return
+	src.last_repair = world.time + src.repair_time
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/process()
 	if(obj_integrity >= max_integrity)
