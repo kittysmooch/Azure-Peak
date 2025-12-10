@@ -50,7 +50,7 @@
 	H.adjust_blindness(-3)
 	neck = /obj/item/clothing/neck/roguetown/psicross
 	if(should_wear_femme_clothes(H))
-		head = /obj/item/clothing/head/roguetown/armingcap
+		head = /obj/item/clothing/head/roguetown/cap
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	else if(should_wear_masc_clothes(H))
