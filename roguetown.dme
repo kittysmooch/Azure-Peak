@@ -1795,6 +1795,7 @@
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\routier.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\rumaclan.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\seonjang.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\classes\slayer.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\steppesman.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\underdweller.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\vaquero.dm"
