@@ -9,9 +9,9 @@
 	category_tags = list(CTAG_MERCENARY)
 	class_select_category = CLASS_CAT_RACIAL
 	cmode_music = 'sound/music/combat_dwarf.ogg'
-	extra_context = "Only the dwarves who swore an Oath to Ravox may become Trollslayers." // dwarf exclusive and will force Ravox
+	extra_context = "Only the dwarves who swore an Oath to the ten may become Trollslayers." // dwarf exclusive and will force Ravox
 
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_CALTROPIMMUNE, TRAIT_SHIRTLESS) //TRAIT_SHIRTLESS prevents equip on the head, armor and shirt slots and enables class-specific weapons
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_SHIRTLESS) //TRAIT_SHIRTLESS prevents equip on the head, armor and shirt slots and enables class-specific weapons
 	subclass_stats = list( 
 		STATKEY_STR = 2, 
 		STATKEY_CON = 5,
@@ -33,10 +33,13 @@
 	)
 	adv_stat_ceiling = list(STAT_STRENGTH = 12) // I'm sorry but you're not grabbing muscular and aiming chest with 12 speed 17 strength swift intent spam.
 
+/datum/outfit/job/roguetown/mercenary/trollslayer
+	allowed_patrons = ALL_DIVINE_PATRONS
+
 /datum/outfit/job/roguetown/mercenary/trollslayer/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		to_chat(H, span_warning("You are a Slayer - an elite hunter of monsters, hailing from the windy peaks of the dwarven Mountainhomes. Your devotion is matched only by your unbridled fury. You forgo defense, entrusting your life to the Just God’s favor and make a living by selling your trophies."))
+		to_chat(H, span_warning("You are a Slayer - an elite hunter of monsters, hailing from the windy peaks of the dwarven Mountainhomes. Your devotion is matched only by your unbridled fury. You forgo defense, entrusting your life to the Ten and make a living by selling your trophies."))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/axedance)
 		armor = /obj/item/clothing/suit/roguetown/armor/skin_armor/slayer
 		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -82,8 +85,8 @@
 	desc = "A marvel of craftsdwarfship, this ornate greataxe attunes itself to those who have sworn the Oath."
 	force = 20
 	force_wielded = 34 // Slightly weaker than the double bladed greataxe, but the edge doesn't dull quickly.
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash/flataxe)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/mace/smash/flataxe)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
 	icon_state = "slayer"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	dropshrink = 0.6
@@ -102,8 +105,6 @@
 	max_blade_int = 350
 	minstr = 13
 	wdefense = 4
-	pickup_sound = 'modular_helmsguard/sound/sheath_sounds/draw_greatsword.ogg'
-	sheathe_sound = 'modular_helmsguard/sound/sheath_sounds/put_back_to_leather.ogg'
 
 /obj/item/rogueweapon/stoneaxe/battle/slayer/getonmobprop(tag)
 	if(tag)
@@ -176,7 +177,7 @@
 	antimagic_allowed = TRUE
 	recharge_time = 3 MINUTES
 	ignore_cockblock = TRUE
-	invocation = "WITNESS ME!!!"
+	invocations = list("WITNESS ME!!!")
 	invocation_type = "shout"
 	sound = 'sound/magic/axedance.ogg'
 
@@ -220,7 +221,7 @@
 	REMOVE_TRAIT(owner, TRAIT_STRENGTH_UNCAPPED, STATUS_EFFECT_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_NODEF, STATUS_EFFECT_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_NOPAINSTUN, STATUS_EFFECT_TRAIT)
-	user.apply_status_effect(/datum/status_effect/debuff/axe_exhaustion)
+	owner.apply_status_effect(/datum/status_effect/debuff/axe_exhaustion)
 	owner.stamina = 400
 
 #undef AXEDANCE_FILTER
