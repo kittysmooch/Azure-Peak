@@ -26,8 +26,7 @@
 	var/cooldown = 0
 
 	var/emote_environment = -1
-	var/prevent_crits = PREVENT_CRIT_MOST
-
+	var/prevent_crits = PREVENT_CRITS_MOST
 	var/clothing_flags = NONE
 
 	salvage_result = /obj/item/natural/cloth
@@ -544,7 +543,7 @@ BLIND     // can't see anything
 		if(!prevent_crits)
 			str += "<text-align: center>"
 			str += "<b><font color = '#aa2121'>CRIT SUSCEPTIBLE!</font></b>"
-		else if(prevent_crits == PREVENT_CRIT_ALL)
+		else if(prevent_crits == PREVENT_CRITS_ALL)
 			str += "<text-align: center>"
 			str += "<b><font color = '#6890a7'>PICK RESISTANT</font></b>"
 

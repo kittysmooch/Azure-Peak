@@ -74,8 +74,9 @@
 							return FALSE
 						if(PREVENT_CRITS_ALL)
 							return TRUE
-						if(PREVENT_CRITS_MOST && bclass != BCLASS_PICK)
-							return TRUE
+						if(PREVENT_CRITS_MOST)
+							if(bclass != BCLASS_PICK)
+								return TRUE
 /*
 /mob/proc/checkwornweight()
 	return 0
