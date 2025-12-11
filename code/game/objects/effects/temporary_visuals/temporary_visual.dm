@@ -60,9 +60,11 @@
 	layer = HUD_LAYER
 	plane = ABOVE_LIGHTING_PLANE
 
-/obj/effect/temp_visual/armor_chunk/Initialize(mapload, customdur, customcolor)
+/obj/effect/temp_visual/armor_chunk/Initialize(mapload, customdur, customcolor, customstate)
 	if(customdur)
 		duration = customdur
+	if(customstate)
+		icon_state = customstate
 	if(customcolor)
 		add_atom_colour(customcolor, TEMPORARY_COLOUR_PRIORITY)
 	. = ..()
