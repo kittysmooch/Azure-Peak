@@ -32,6 +32,7 @@
 	icon_state = "agauntlets"
 	max_integrity = ARMOR_INT_SIDE_DECREPIT
 	color = "#bb9696"
+	chunkcolor = "#532e25"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 
