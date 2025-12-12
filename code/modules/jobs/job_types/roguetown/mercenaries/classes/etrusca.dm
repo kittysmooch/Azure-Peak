@@ -57,9 +57,9 @@
 		switch(weapon_choice)
 			if("Intrepid Leader - Dual Longswords") //It's badass fuck you
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/sword/long//No
+				r_hand = /obj/item/rogueweapon/sword/long/dec
 				beltl = /obj/item/rogueweapon/scabbard/sword
-				l_hand = /obj/item/rogueweapon/sword/long
+				l_hand = /obj/item/rogueweapon/sword/long/dec
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, -2)
