@@ -108,6 +108,7 @@
 	desc = "A frail looking amalgamation of planks. Yet somehow, the very wood itself seem to be filling you with resolve."
 	icon_state = "deprived"
 	coverage = 40
+	max_integrity = 200
 
 /obj/item/rogueweapon/shield/attack_right(mob/user)
 	if(overlays.len)
