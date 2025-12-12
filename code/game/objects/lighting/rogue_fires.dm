@@ -122,7 +122,7 @@
 			user.visible_message("<span class='warning'>[user] kicks [src]!</span>", \
 				"<span class='warning'>I kick [src]!</span>")
 
-/obj/machinery/light/rogue/campfire/wallfirecrafted
+/obj/machinery/light/rogue/campfire/wallfire
 	name = "fireplace"
 	desc = "A warm fire dances between a pile of half-burnt logs upon a bed of glowing embers."
 	icon_state = "wallfire1"
@@ -135,7 +135,7 @@
 	pixel_y = 32
 	healing_range = 2
 
-/obj/machinery/light/rogue/campfire/wallfirecrafted/attack_hand(mob/user)
+/obj/machinery/light/rogue/campfire/wallfire/fireplace/attack_hand(mob/user)
 	if(isliving(user) && on)
 		user.visible_message(span_warning("[user] snuffs [src]."))
 		burn_out()
@@ -147,7 +147,7 @@
 	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
 	icon_state = "wallcandle1"
 	base_state = "wallcandle"
-	crossfire = FALSE
+	fueluse = 0
 	cookonme = FALSE
 	pixel_y = 32
 	soundloop = null
@@ -157,7 +157,6 @@
 	desc = "Cold wax sticks in sad half-melted repose. All they need is a spark."
 	icon_state = "wallcandle0"
 	base_state = "wallcandle"
-	crossfire = FALSE
 	cookonme = FALSE
 	light_outer_range = 0
 	pixel_y = 32
