@@ -662,6 +662,7 @@
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT|HIDEHAIR|HIDEFACIALHAIR
 	icon_state = "matthioshelm"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
+	prevent_crits = PREVENT_CRITS_ALL
 	worn_x_dimension = 64
 	worn_y_dimension = 64
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -678,6 +679,7 @@
 	icon_state = "graggarplatehelm"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT|HIDEHAIR|HIDEFACIALHAIR
+	prevent_crits = PREVENT_CRITS_ALL
 	var/active_item = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/graggar/Initialize()
@@ -709,6 +711,7 @@
 	adjustable = CAN_CADJUST
 	icon_state = "zizobarbute"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
+	prevent_crits = PREVENT_CRITS_ALL
 	peel_threshold = 4
 	var/frogstyle = FALSE
 

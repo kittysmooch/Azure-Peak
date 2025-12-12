@@ -254,6 +254,7 @@
 	desc = "A series of iron plates designed to protect the neck."
 	icon_state = "gorget"
 	armor = ARMOR_PLATE
+	prevent_crits = PREVENT_CRITS_ALL
 	smeltresult = /obj/item/ingot/iron
 	anvilrepair = /datum/skill/craft/armorsmithing
 	equip_sound = 'sound/foley/equip/equip_armor.ogg'
