@@ -87,6 +87,7 @@
 	item_state = "studleather"
 	blocksound = SOFTHIT
 	armor = ARMOR_LEATHER_STUDDED
+	prevent_crits = PREVENT_CRITS_MOST
 	nodismemsleeves = TRUE
 	body_parts_covered = COVERAGE_TORSO
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
@@ -108,6 +109,7 @@
 	item_state = "roguearmor_belt"
 	armor = ARMOR_LEATHER_GOOD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
+	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 20
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat

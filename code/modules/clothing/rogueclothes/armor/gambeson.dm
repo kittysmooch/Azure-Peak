@@ -26,12 +26,14 @@
 	name = "arming jacket"
 	icon_state = "dgamb"
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	prevent_crits = PREVENT_CRITS_MOST
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/shadowrobe
 	name = "stalker robe"
 	desc = "A thick robe in royal purple, befitting the hand, while remaining easy for them to slip about in.."
 	allowed_race = NON_DWARVEN_RACE_TYPES
+	prevent_crits = PREVENT_CRITS_MOST
 	icon_state = "shadowrobe"
 
 
@@ -49,6 +51,7 @@
 	icon_state = "gambesonp"
 	armor = ARMOR_PADDED_GOOD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
+	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 25
 	color = "#976E6B"
 	var/shiftable = TRUE
