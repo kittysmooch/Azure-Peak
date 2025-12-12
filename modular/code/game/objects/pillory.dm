@@ -27,7 +27,7 @@
 	base_icon = "pillory_reinforced"
 
 /obj/structure/pillory/town
-	lockid = list("dungeon", "town_watch", "walls", "church", "inquisition", "manor")
+	lockid = list("dungeon", "garrison", "walls", "church", "inquisition", "manor")
 
 /obj/structure/pillory/Initialize()
 	LAZYINITLIST(buckled_mobs)
