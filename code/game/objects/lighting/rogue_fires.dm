@@ -135,6 +135,13 @@
 	pixel_y = 32
 	healing_range = 2
 
+/obj/machinery/light/rogue/campfire/wallfirecrafted/attack_hand(mob/user)
+	if(isliving(user) && on)
+		user.visible_message(span_warning("[user] snuffs [src]."))
+		burn_out()
+		return TRUE
+	return ..()
+
 /obj/machinery/light/rogue/wallfire/candle
 	name = "candles"
 	desc = "Tiny flames flicker to the slightest breeze and offer enough light to see."
