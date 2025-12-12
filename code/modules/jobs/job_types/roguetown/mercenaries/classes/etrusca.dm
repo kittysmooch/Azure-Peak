@@ -47,8 +47,8 @@
 	wrists = /obj/item/clothing/wrists/roguetown/splintarms
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
-		/obj/item/flashlight/flare/torch/lantern,
-		/obj/item/storage/belt/rogue/pouch/coins/rich,
+		/obj/item/flashlight/flare/torch/lantern = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
 		/obj/item/rogueweapon/huntingknife/idagger/navaja = 1,
 		)
 	if(H.mind)
@@ -57,9 +57,9 @@
 		switch(weapon_choice)
 			if("Intrepid Leader - Dual Longswords") //It's badass fuck you
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-				r_hand = /obj/item/rogueweapon/sword/long/dec
+				r_hand = /obj/item/rogueweapon/sword/long//No
 				beltl = /obj/item/rogueweapon/scabbard/sword
-				l_hand = /obj/item/rogueweapon/sword/long/dec
+				l_hand = /obj/item/rogueweapon/sword/long
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 				H.change_stat(STATKEY_SPD, -2)
