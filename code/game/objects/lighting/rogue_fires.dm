@@ -129,49 +129,11 @@
 	base_state = "wallfire"
 	light_outer_range = 4 //slightly weaker than a torch
 	bulb_colour = "#ffa35c"
-	density = FALSE
 	fueluse = 0
 	no_refuel = TRUE
 	crossfire = FALSE
 	pixel_y = 32
-	cookonme = TRUE
-	brightness = 4
 	healing_range = 2
-
-/obj/machinery/light/rogue/campfire/wallfirecrafted/process()
-	if(on)
-		var/list/hearers_in_range = get_hearers_in_LOS(healing_range, src, RECURSIVE_CONTENTS_CLIENT_MOBS)
-		for(var/mob/living/carbon/human/human in hearers_in_range)
-			var/distance = get_dist(src, human)
-			if(distance > healing_range || human.construct)
-				continue
-			if(!human.has_status_effect(/datum/status_effect/buff/campfire_stamina))
-				to_chat(human, span_info("The warmth of the fire comforts me, affording me a short rest. I would need to lie down on a bed to get a better rest."))
-			human.apply_status_effect(/datum/status_effect/buff/campfire_stamina)
-			human.add_stress(/datum/stressevent/campfire)
-			if(human.resting && !human.cmode)
-				var/valid_bed = FALSE
-				var/turf/T = get_turf(human)
-				for(var/obj/O in T.contents)
-					for(var/path in acceptable_beds)
-						if(ispath(O.type, path))
-							valid_bed = TRUE
-							break
-					if(valid_bed)
-						break
-				if(valid_bed)
-					if(!human.has_status_effect(/datum/status_effect/buff/campfire))
-						to_chat(human, span_info("Settling in by the flames lifts the burdens of the week."))
-					human.apply_status_effect(/datum/status_effect/buff/campfire)
-
-	return ..()
-
-/obj/machinery/light/rogue/campfire/wallfirecrafted/attack_hand(mob/user)
-	if(isliving(user) && on)
-		user.visible_message(span_warning("[user] snuffs [src]."))
-		burn_out()
-		return TRUE
-	return ..()
 
 /obj/machinery/light/rogue/wallfire/candle
 	name = "candles"
