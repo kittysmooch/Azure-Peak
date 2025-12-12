@@ -278,6 +278,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/strike, /datum/intent/sword/peel)
 	gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust/long, /datum/intent/sword/chop, /datum/intent/sword/peel)
 	alt_intents = list(/datum/intent/sword/strike, /datum/intent/sword/bash, /datum/intent/effect/daze)
+	mordhau = TRUE
 	icon_state = "longsword"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	item_state = "longsword"
@@ -843,6 +844,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 	alt_intents = null // Can't mordhau this
+	mordhau = FALSE
 	smeltresult = /obj/item/ingot/silver
 	is_silver = TRUE
 
@@ -870,6 +872,7 @@
 	possible_item_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/chop/falx, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 	alt_intents = null // Can't mordhau this
+	mordhau = FALSE
 	smeltresult = /obj/item/ingot/silverblessed
 	is_silver = TRUE
 
