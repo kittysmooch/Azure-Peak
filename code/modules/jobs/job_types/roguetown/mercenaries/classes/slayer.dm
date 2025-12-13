@@ -103,7 +103,7 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = FIRE_PROOF
 	max_blade_int = 350
-	minstr = 13
+	minstr = 11
 	wdefense = 4
 
 /obj/item/rogueweapon/stoneaxe/battle/slayer/getonmobprop(tag)
@@ -117,11 +117,11 @@
 				return list("shrink" = 0.4,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 	return ..()
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/slayer // a bit of natural armor to offset the nudism and shitty dodge. not too hard to break but will slowly repair itself
+/obj/item/clothing/suit/roguetown/armor/regenerating/slayer // a bit of natural armor to offset the nudism and shitty dodge. not too hard to break but will slowly repair itself
 	name = "rough skin"
 	desc = ""
 	icon_state = null
-	armor = list("blunt" = 30, "slash" = 30, "stab" = 30, "piercing" = 30, "fire" = 15, "acid" = 15)
+	armor = ARMOR_RUMACLAN
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -135,40 +135,28 @@
 		/datum/species/dwarf/mountain
 		)
 	surgery_cover = FALSE 
-	max_integrity = 200
+	max_integrity = 195
 	sewrepair = FALSE
-	var/repair_amount = 10 
-	var/repair_time = 50 
-	var/last_repair 
+	repairmsg_begin = "The thick skin cover starts to bulge and repair tears"
+	repairmsg_continue = "More of the tears on the skin close up"
+	repairmsg_stop = "A firm blow undoes some of the fresh skin you've grown!"
+	repairmsg_end = "Your skin looks just as shiny as ever, like it might stop the blow of a fully grown troll once more."
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/slayer/Initialize(mapload)
+	interrupt_damount = 25
+	repair_time = 35 SECONDS
+
+/obj/item/clothing/suit/roguetown/armor/regenerating/slayer/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/easttats/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/suit/roguetown/armor/regenerating/slayer/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(QDELETED(src))
 		return
 	qdel(src)
 
-/obj/item/clothing/suit/roguetown/armor/skin_armor/slayer/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
-	. = ..()
-	if(obj_integrity < max_integrity)
-		START_PROCESSING(SSobj, src)
-		return
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/slayer/obj_destruction()
+/obj/item/clothing/suit/roguetown/armor/regenerating/slayer/obj_destruction()
 	visible_message(span_bloody("The dwarf flinches from the blow!"), vision_distance = 3) // visual que for breaking
-
-/obj/item/clothing/suit/roguetown/armor/skin_armor/slayer/process()
-	if(obj_integrity >= max_integrity) 
-		STOP_PROCESSING(SSobj, src)
-		src.visible_message(span_notice("Cuts and bruises on the [src] scarify."), vision_distance = 1) // visual que for full repair
-		return
-	else if(world.time > src.last_repair + src.repair_time)
-		src.last_repair = world.time
-		obj_integrity = min(obj_integrity + src.repair_amount, src.max_integrity)
-	..()
 
 /obj/effect/proc_holder/spell/self/axedance
 	name = "Dance of the Axes" // rage button. gives maniac traits, some stats and removes the user's ability to dodge and parry. dunks stamina on expiration
