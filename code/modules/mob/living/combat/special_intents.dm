@@ -708,7 +708,7 @@ SPECIALS START HERE
 						hitdmg *= 2
 				apply_generic_weapon_damage(L, hitdmg, "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
 				if(hitcount == 3)	//Last hit deals a bit of extra damage to integrity only. Facetanking it is highly discouraged!
-					apply_generic_weapon_damage(L, (dam * 0.8) "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT, no_pen = TRUE)
+					apply_generic_weapon_damage(L, (dam * 0.8), "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT, no_pen = TRUE)
 			var/sfx = 'sound/combat/sp_gsword_hit.ogg'
 			playsound(T, sfx, 100, TRUE)
 	..()
