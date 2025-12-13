@@ -130,8 +130,8 @@
 		)
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/survival/bag
-	name = "bag"
+/datum/crafting_recipe/roguetown/survival/sack
+	name = "sack"
 	result = /obj/item/storage/roguebag/crafted
 	reqs = list(
 		/obj/item/natural/fibers = 1,
