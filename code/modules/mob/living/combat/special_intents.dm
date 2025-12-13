@@ -312,7 +312,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	if(ishuman(target))
 		var/mob/living/carbon/human/HT = target
 		var/obj/item/bodypart/affecting = HT.get_bodypart(zone)
-		var/armor_block = HT.run_armor_check(zone, d_type, 0, damage = dam, used_weapon = W, armor_penetration = -999)
+		var/armor_block = HT.run_armor_check(zone, d_type, 0, damage = dam, used_weapon = W, armor_penetration = (no_pen ? -999 : 0))
 		if(no_pen && armor_block)
 			armor_block = 999
 		if(HT.apply_damage(dam, W.damtype, affecting, armor_block))
@@ -664,7 +664,7 @@ SPECIALS START HERE
 	sfx_pre_delay = 'sound/combat/rend_hit.ogg'
 	respect_adjacency = FALSE
 	respect_dir = TRUE
-	delay = 0.6 SECONDS
+	delay = 0.7 SECONDS
 	cooldown = 30 SECONDS
 	stamcost = 25	//Stamina cost
 	var/dam = 60
@@ -672,8 +672,8 @@ SPECIALS START HERE
 	var/hitcount = 0
 	var/self_debuffed = FALSE
 	var/self_immob = 2.2 SECONDS
-	var/self_clickcd = 2 SECONDS
-	var/self_expose = 2.2 SECONDS
+	var/self_clickcd = 2.1 SECONDS
+	var/self_expose = 2.3 SECONDS
 
 /datum/special_intent/greatsword_swing/_reset()
 	hitcount = initial(hitcount)
@@ -707,8 +707,8 @@ SPECIALS START HERE
 					if(3)
 						hitdmg *= 2
 				apply_generic_weapon_damage(L, hitdmg, "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
-				if(hitcount == 3)	//Last hit deals an extra 90 damage to integrity only. Facetanking it is highly discouraged!
-					apply_generic_weapon_damage(L, (dam*1.5), "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT, no_pen = TRUE)
+				if(hitcount == 3)	//Last hit deals a bit of extra damage to integrity only. Facetanking it is highly discouraged!
+					apply_generic_weapon_damage(L, (dam * 0.8) "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT, no_pen = TRUE)
 			var/sfx = 'sound/combat/sp_gsword_hit.ogg'
 			playsound(T, sfx, 100, TRUE)
 	..()
