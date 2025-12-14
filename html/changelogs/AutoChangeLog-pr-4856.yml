@@ -1,0 +1,5 @@
+author: "SpadesNeil"
+delete-after: True
+changes:
+  - image: "Modified sling bullet sprite to be centered correctly."
+  - image: "Added sprite for \"silver bullet\" that is currently unused."
