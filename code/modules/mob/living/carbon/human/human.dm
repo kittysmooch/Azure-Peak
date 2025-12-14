@@ -461,14 +461,17 @@
 
 			var/toxloss = getToxLoss()
 			var/oxyloss = getOxyLoss()
+			var/painpercent = get_complex_pain() / pain_threshold
+			painpercent = painpercent * 100
+
 
 			var/usedloss = 0
 			if(bloodloss > 0)
 				usedloss = bloodloss
 
+			hud_used.bloods.cut_overlays()
 			if(usedloss <= 0)
 				hud_used.bloods.icon_state = "dam0"
-				hud_used.bloods.cut_overlays()
 				if(toxloss > 0)
 					var/toxoverlay
 					switch(toxloss)
@@ -504,6 +507,20 @@
 					hud_used.bloods.icon_state = "dam[used]"
 				else
 					hud_used.bloods.icon_state = "damelse"
+			if(painpercent > 0)
+				var/painoverlay
+				switch(painpercent)
+					if(1 to 29)
+						painoverlay = "painloss20"
+					if(30 to 59)
+						painoverlay = "painloss40"
+					if(60 to 79)
+						painoverlay = "painloss60"
+					if(80 to 99)
+						painoverlay = "painloss80"
+					if(100 to 999)
+						painoverlay = "painloss100"
+				hud_used.bloods.add_overlay(painoverlay)
 
 /*		if(hud_used.healthdoll)
 			hud_used.healthdoll.cut_overlays()
