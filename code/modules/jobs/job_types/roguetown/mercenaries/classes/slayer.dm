@@ -28,7 +28,7 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/tracking = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/labor/butchering = SKILL_LEVEL_NOVICE,
+		/datum/skill/labor/butchering = SKILL_LEVEL_JOURNEYMAN, // Butcher trolls
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE, // Sew up the countless holes you will be receiving
 	)
 	adv_stat_ceiling = list(STAT_STRENGTH = 12) // I'm sorry but you're not grabbing muscular and aiming chest with 12 speed 17 strength swift intent spam.
@@ -60,6 +60,7 @@
 			if("Hatchets")
 				backl = /obj/item/rogueweapon/stoneaxe/woodcut/steel/slayer
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel/slayer
+				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/slayer
 	name = "slayer axe"
