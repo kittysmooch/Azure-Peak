@@ -459,34 +459,45 @@
 		if(hud_used.bloods)
 			var/bloodloss = ((BLOOD_VOLUME_NORMAL - blood_volume) / BLOOD_VOLUME_NORMAL) * 100
 
-			var/burnhead = 0
-			var/brutehead = 0
-			var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-			if(head)
-				burnhead = (head.burn_dam / head.max_damage) * 100
-				brutehead = (head.brute_dam / head.max_damage) * 100
-
 			var/toxloss = getToxLoss()
-			var/oxloss = getOxyLoss()
-
-			var/hungloss = nutrition*-1 //this is smart i think
+			var/oxyloss = getOxyLoss()
 
 			var/usedloss = 0
 			if(bloodloss > 0)
 				usedloss = bloodloss
-			if(burnhead > usedloss)
-				usedloss = burnhead
-			if(brutehead > usedloss)
-				usedloss = brutehead
-			if(toxloss > usedloss)
-				usedloss = toxloss
-			if(oxloss > usedloss)
-				usedloss = oxloss
-			if(hungloss > usedloss)
-				usedloss = hungloss
 
 			if(usedloss <= 0)
 				hud_used.bloods.icon_state = "dam0"
+				hud_used.bloods.cut_overlays()
+				if(toxloss > 0)
+					var/toxoverlay
+					switch(toxloss)
+						if(1 to 20)
+							toxoverlay = "toxloss20"
+						if(21 to 49)
+							toxoverlay = "toxloss40"
+						if(50 to 79)
+							toxoverlay = "toxloss60"
+						if(80 to 99)
+							toxoverlay = "toxloss80"
+						if(100 to 999)
+							toxoverlay = "toxloss100"
+					hud_used.bloods.add_overlay(toxoverlay)
+
+				if(oxyloss > 0)
+					var/oxyoverlay
+					switch(oxyloss)
+						if(1 to 20)
+							oxyoverlay = "oxyloss20"
+						if(21 to 49)
+							oxyoverlay = "oxyloss40"
+						if(50 to 79)
+							oxyoverlay = "oxyloss60"
+						if(80 to 99)
+							oxyoverlay = "oxyloss80"
+						if(100 to 999)
+							oxyoverlay = "oxyloss100"
+					hud_used.bloods.add_overlay(oxyoverlay)
 			else
 				var/used = round(usedloss, 10)
 				if(used <= 80)
