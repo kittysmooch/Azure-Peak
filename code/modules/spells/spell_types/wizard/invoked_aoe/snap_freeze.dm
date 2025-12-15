@@ -62,9 +62,9 @@
 	sleep(delay)
 	var/play_cleave = FALSE
 
-	for(var/turf/affected_turf in view(area_of_effect, T))
+	for(var/turf/affected_turf in get_hear(area_of_effect, T))
 		new /obj/effect/temp_visual/snap_freeze(affected_turf)
-		if(!(affected_turf in view(source_turf)))
+		if(!(affected_turf in get_hear(area_of_effect, source_turf)))
 			continue
 		for(var/mob/living/L in affected_turf.contents)
 			if(L.anti_magic_check())

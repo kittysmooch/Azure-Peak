@@ -39,7 +39,7 @@
 		var/turf/affected_turf = affected_turfs[i]
 		if(affected_turf == source_turf) // Don't zap yourself
 			continue
-		if(!(affected_turf in view(source_turf)))
+		if(!(affected_turf in get_hear(strikerange, source_turf)))
 			continue
 		var/tile_delay = strike_delay * (i - 1) + delay
 		new /obj/effect/temp_visual/trap/wither(affected_turf, tile_delay)
