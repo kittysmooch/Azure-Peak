@@ -1992,3 +1992,19 @@
 	desc = "A valuable ornate arming sword made for the purpose of ceremonial fashion. It has a fine leather grip, a carefully engraved gold-plated crossguard, and its blade is made entirely of blacksteel."
 	icon_state = "bs_swordregal"
 	sellprice = 200
+
+/obj/item/rogueweapon/sword/short/gronn
+	name = "gronnic hinterblade"
+	desc = "Due to the shortage of forged steel in Gronn, their iron blades have become hardier and thicker than what one may see elsewhere. The favoured weapon of choice for any able-bodied northman of Gronn, the hinterblade is the heftier, unwieldy cousin of the arming sword."
+	possible_item_intents = list(/datum/intent/sword/cut/militia, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust, /datum/intent/sword/peel)
+	icon_state = "gronnsword"
+	sheathe_icon = "swordshort"
+	gripped_intents = null
+	minstr = 10 //NO TWINKS!!
+	wdefense = 3 // Use it with a shield jackass
+	wlength = WLENGTH_SHORT
+	w_class = WEIGHT_CLASS_NORMAL
+	wbalance = WBALANCE_HEAVY
+
+	grid_width = 32
+	grid_height = 96
