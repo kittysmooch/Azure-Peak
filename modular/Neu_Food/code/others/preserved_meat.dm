@@ -116,7 +116,7 @@
 	name = "dried fish filet"
 	desc = "A slab of aquatic meat, salted harder than the living thing was. A staple of any traveler alongside coastal regions, make sure to pack enough water with it."
 	icon = 'modular/Neu_Food/icons/others/preserved_meat.dmi'
-	icon_state = "driedfishfilet"
+	icon_state = "dried_fish_filet"
 	eat_effect = null
 	fried_type = null
 	bitesize = 3

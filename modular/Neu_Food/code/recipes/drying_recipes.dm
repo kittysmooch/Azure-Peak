@@ -36,7 +36,7 @@
 	craftdiff = 0
 	subtype_reqs = TRUE
 
-/obj/item/reagent_containers/food/snacks/rogue/meat/fish
+/datum/crafting_recipe/roguetown/cooking/fish
 	name = "dried fish filet"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/fish = 1,
