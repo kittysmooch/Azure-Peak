@@ -20,6 +20,7 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_DECREPIT
 	icon_state = "ancientbarbute"
 	color = "#bb9696"
+	chunkcolor = "#532e25"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	prevent_crits = PREVENT_CRITS_NONE
@@ -94,6 +95,7 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_DECREPIT
 	icon_state = "ancientsavoyard"
 	color = "#bb9696"
+	chunkcolor = "#532e25"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	prevent_crits = PREVENT_CRITS_NONE
@@ -713,6 +715,7 @@
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	prevent_crits = PREVENT_CRITS_ALL
 	peel_threshold = 4
+	chunkcolor = "#363030"
 	var/frogstyle = FALSE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/zizo/MiddleClick(mob/user)

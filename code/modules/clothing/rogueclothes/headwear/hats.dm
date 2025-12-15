@@ -182,7 +182,7 @@
 	sewrepair = TRUE
 	//dropshrink = 0.75
 
-/obj/item/clothing/head/roguetown/armingcap
+/obj/item/clothing/head/roguetown/cap
 	name = "cap"
 	desc = "A light cap made of cloth, usually worn under a helmet."
 	icon_state = "armingcap"
@@ -198,7 +198,7 @@
 	sewrepair = TRUE
 	//dropshrink = 0.75
 
-/obj/item/clothing/head/roguetown/armingcap/dwarf
+/obj/item/clothing/head/roguetown/cap/dwarf
 	color = "#cb3434"
 
 /obj/item/clothing/head/roguetown/headband

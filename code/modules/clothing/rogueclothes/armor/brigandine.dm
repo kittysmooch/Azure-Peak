@@ -16,6 +16,7 @@
 	armor_class = ARMOR_CLASS_MEDIUM //good idea suggested by lamaster
 	sleeved_detail = FALSE
 	boobed_detail = FALSE
+	chunkcolor = "#7d9097"
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/Initialize()
 	. = ..()
@@ -36,6 +37,7 @@
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_armor()
+	chunkcolor = pickedcolor
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/update_icon()
 	cut_overlays()

@@ -83,6 +83,7 @@
 	max_integrity = ARMOR_INT_SIDE_DECREPIT
 	icon_state = "ancientbracers"
 	color = "#bb9696"
+	chunkcolor = "#532e25"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	prevent_crits = PREVENT_CRITS_NONE
@@ -277,6 +278,7 @@
 	name = "avantyne bracers"
 	desc = "Clasped, yet unburdening. The pursuit of knowledge has led you to this very moment; there is no going back."
 	color = "#c1b18d"
+	chunkcolor = "#363030"
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize()
 	. = ..()

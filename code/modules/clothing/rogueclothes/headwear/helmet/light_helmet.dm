@@ -1,12 +1,12 @@
-/obj/item/clothing/head/roguetown/paddedcap
-	name = "padded cap"
-	desc = "A modest arming cap."
+/obj/item/clothing/head/roguetown/armingcap
+	name = "arming cap"
+	desc = "A modest arming cap. It will stop a light blow."
 	icon_state = "armingcap"
 	item_state = "armingcap"
 	sleevetype = null
 	sleeved = null
 	body_parts_covered = HEAD|HAIR|EARS
-	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK|ITEM_SLOT_HEAD
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HEAD //Meant to be worn under helmets pmuch
 	armor = ARMOR_PADDED_BAD
 	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTHIT
@@ -15,6 +15,15 @@
 	sewrepair = TRUE
 	salvage_result = /obj/item/natural/fibers
 	salvage_amount = 2 // Major materials loss
+
+/obj/item/clothing/head/roguetown/armingcap/padded
+	name = "padded arming cap"
+	desc = "A padded up arming cap. It might even stop a mace!"
+	icon_state = "paddedarmingcap"
+	item_state = "paddedarmingcap"
+	armor = ARMOR_PADDED
+	prevent_crits = list(BCLASS_BLUNT, BCLASS_SMASH)
+	max_integrity = ARMOR_INT_HELMET_CLOTH + 60
 
 /obj/item/clothing/head/roguetown/helmet/leather
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
