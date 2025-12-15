@@ -8,7 +8,7 @@
 	chargedrain = 1
 	chargetime = 5
 	charging_slowdown = 2
-	recharge_time = 6 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	no_early_release = FALSE
 	movement_interrupt = FALSE
@@ -27,8 +27,8 @@
 /obj/effect/proc_holder/spell/invoked/rebuke/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		target.adjustFireLoss(30) //damage
-		target.adjust_fire_stacks(4)
+		target.adjustFireLoss(66) //damage
+		target.adjust_fire_stacks(6)
 		target.ignite_mob()
 		target.visible_message(span_warning("[user] makes a rude gesture at [target] and causes them to burst into flames!"), \
 		span_userdanger("[user] makes a rude gesture at you and causes you to burst into flames!"))
