@@ -17,7 +17,7 @@
 		to_chat(user, span_warning("I can't move the fingers."))
 		return
 	if(!istype(src, /obj/item/grabbing))
-		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS))
+		if(HAS_TRAIT(user, TRAIT_CHUNKYFINGERS) && user.mind?.has_antag_datum(/datum/antagonist/werewolf))
 			to_chat(user, span_warning("...What?"))
 			return
 	if(tool_behaviour && target.tool_act(user, src, tool_behaviour))
