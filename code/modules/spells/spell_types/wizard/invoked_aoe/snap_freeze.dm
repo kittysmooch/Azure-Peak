@@ -22,8 +22,8 @@
 	glow_color = GLOW_COLOR_ICE
 	glow_intensity = GLOW_INTENSITY_HIGH
 	ignore_los = FALSE
-	var/delay = 14
-	var/damage = 60
+	var/delay = 10
+	var/damage = 40
 	var/area_of_effect = 2
 
 /obj/effect/temp_visual/trapice
@@ -40,7 +40,7 @@
 	name = "rippeling arcyne ice"
 	desc = "Get out of the way!"
 	randomdir = FALSE
-	duration = 1.4 SECONDS
+	duration = 1 SECONDS
 	layer = MASSIVE_OBJ_LAYER
 
 
@@ -72,7 +72,10 @@
 				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
 				return
 			play_cleave = TRUE
-			L.adjustFireLoss(damage)
+			if(ishuman(L))
+				L.adjustFireLoss(damage)
+			else
+				L.adjustFireLoss(damage + 20)
 			if(L.has_status_effect(/datum/status_effect/buff/frostbite))
 				return
 			else
