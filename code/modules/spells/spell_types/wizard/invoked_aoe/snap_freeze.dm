@@ -23,7 +23,7 @@
 	glow_intensity = GLOW_INTENSITY_HIGH
 	ignore_los = FALSE
 	var/delay = 10
-	var/damage = 40
+	var/damage = 30
 	var/area_of_effect = 2
 
 /obj/effect/temp_visual/trapice
