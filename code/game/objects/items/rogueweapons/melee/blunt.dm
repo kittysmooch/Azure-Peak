@@ -633,8 +633,7 @@
 	slot_flags = null//No.
 	smelt_bar_num = 2
 	minstr = 14
-	wdefense = 2
-	wdefense_wbonus = 1 //3
+	wdefense = 3
 	demolition_mod = 1.25 //Oh, yes...
 	pixel_y = -16
 	pixel_x = -16
