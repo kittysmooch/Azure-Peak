@@ -172,6 +172,8 @@
 		return
 	if(stat >= DEAD) //do shit the natural way i guess
 		return
+	if(HAS_TRAIT(TRAIT_ZOMBIE_IMMUNE))
+		return
 	var/datum/status_effect/zombie_infection/infection = has_status_effect(/datum/status_effect/zombie_infection)
 	if(infection)
 		var/time_remaining = infection.transformation_time - world.time
