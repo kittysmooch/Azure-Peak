@@ -32,7 +32,7 @@
 	exp_fire = 1
 	damage = 50
 	damage_type = BURN
-	npc_simple_damage_mult = 2 // HAHAHA
+	npc_simple_damage_mult = 2.4 // 1 shotting crawlers is cool. intentionally different from other fireballs due to arcyne mark disparity
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	nodamage = FALSE
 	flag = "magic"
