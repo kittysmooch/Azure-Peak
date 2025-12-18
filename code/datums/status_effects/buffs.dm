@@ -319,3 +319,60 @@
 /datum/status_effect/antimagic/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, MAGIC_TRAIT)
 	owner.visible_message("<span class='warning'>[owner]'s dull aura fades away...</span>")
+
+/atom/movable/screen/alert/status_effect/tempo_one
+	name = "Tempo One"
+	desc = "Three cowardly foes are attacking me. The need to focus has given me some light boons."
+	icon_state = "tempo1"
+
+/atom/movable/screen/alert/status_effect/tempo_two
+	name = "Tempo Two"
+	desc = "Four on one! I am locked in. Greater boons come to me in the heat of battle."
+	icon_state = "tempo2"
+
+/atom/movable/screen/alert/status_effect/tempo_three
+	name = "Full Tempo"
+	desc = "FIVE AND MORE! COME AND GET ME! I WILL NOT GO DOWN LIKE A KNAVE!"
+	icon_state = "tempo3"
+
+
+/datum/status_effect/buff/tempo_one
+	id = "tempo_1"
+	duration = 30 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/tempo_one
+
+/datum/status_effect/buff/tempo_one/on_apply()
+	. = ..()
+	if(owner)
+		owner.stamina_add(-(owner.max_stamina) / 2)
+		owner.energy_add((owner.max_energy / 5))
+
+/datum/status_effect/buff/tempo_two
+	id = "tempo_2"
+	duration = 30 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/tempo_two
+
+/datum/status_effect/buff/tempo_two/on_apply()
+	. = ..()
+	if(owner)
+		owner.stamina_add(-(owner.max_stamina) / 2)
+		owner.energy_add((owner.max_energy / 5))
+
+/datum/status_effect/buff/tempo_three
+	id = "tempo_3"
+	duration = 30 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/tempo_three
+
+/datum/status_effect/buff/tempo_three/on_apply()
+	. = ..()
+	if(owner)
+		owner.stamina_add(-(owner.max_stamina))
+		owner.energy_add((owner.max_energy / 2))
+		ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
+
+/datum/status_effect/buff/tempo_three/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE,  TRAIT_STATUS_EFFECT)

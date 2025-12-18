@@ -94,6 +94,10 @@
 
 	handle_gas_mask_sound()
 
+	if(world.time > next_tempo_cull)
+		cull_tempo_lists()
+		next_tempo_cull = world.time + TEMPO_CULL_DELAY
+
 	if(stat != DEAD)
 		return 1
 
