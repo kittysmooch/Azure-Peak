@@ -383,3 +383,5 @@
 /datum/status_effect/buff/tempo_three/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE,  TRAIT_STATUS_EFFECT)
+
+#undef TEMPO_MAX_FILTER
