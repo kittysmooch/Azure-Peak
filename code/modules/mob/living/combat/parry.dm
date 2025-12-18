@@ -8,6 +8,8 @@
 		prob2defend = 0
 	
 	if(!can_see_cone(user))
+		if(!H.get_tempo_bonus(TEMPO_TAG_NOLOS_PARRY))
+			return FALSE
 		if(d_intent == INTENT_PARRY)
 			return FALSE
 		else
