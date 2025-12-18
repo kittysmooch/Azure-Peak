@@ -325,9 +325,9 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define TEMPO_CULL_DELAY 	15 SECONDS	//Interval for checking our tempo lists. Only relevant to player mobs with TRAIT_TEMPO
 #define TEMPO_DELAY 30 SECONDS	//The amount of time a mob is expected to stay "in memory" of having attacked a user with TRAIT_TEMPO. Refreshes on hit.
 #define TEMPO_CAP 6	//Max amount of mobs kept in the list. Mostly here to keep it from getting flooded. It tries to auto-cull every 15 seconds anyway.
-#define TEMPO_MAX 4 
-#define TEMPO_TWO 3 
-#define TEMPO_ONE 2 //Amount of unique player mobs that need to hit us for us to get tempo stage one.
+#define TEMPO_MAX 5 
+#define TEMPO_TWO 4 
+#define TEMPO_ONE 3 //Amount of unique player mobs that need to hit us for us to get tempo stage one.
 
 #define TEMPO_TAG_STAMLOSS_PARRY "parry"
 #define TEMPO_TAG_STAMLOSS_DODGE "dodge"
