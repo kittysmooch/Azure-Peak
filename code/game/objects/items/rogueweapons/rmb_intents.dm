@@ -46,7 +46,8 @@
 		return	//We don't do anything if either of us is affected by bait statuses
 
 	HU.visible_message(span_danger("[HU] baits an attack from [HT]!"))
-	HU.apply_status_effect(/datum/status_effect/debuff/baitcd)
+	var/newcd = (BASE_RCLICK_CD - HU.get_tempo_bonus(TEMPO_TAG_RCLICK_CD_BONUS))
+	HU.apply_status_effect(/datum/status_effect/debuff/baitcd, newcd)
 
 	if((target_zone != user_zone) || ((target_zone == BODY_ZONE_CHEST) || (user_zone == BODY_ZONE_CHEST))) //Our zones do not match OR either of us is targeting chest.
 		var/guaranteed_fail = TRUE
@@ -220,7 +221,9 @@
 	L.Immobilize(0.5 SECONDS)
 	L.stamina_add(L.stamina * 0.1)
 	L.Slowdown(2)
-	user.apply_status_effect(/datum/status_effect/debuff/feintcd, 30 SECONDS + feintdur)
+
+	var/newcd = (BASE_RCLICK_CD - user.get_tempo_bonus(TEMPO_TAG_RCLICK_CD_BONUS)) + feintdur
+	user.apply_status_effect(/datum/status_effect/debuff/feintcd, newcd)
 	to_chat(user, span_notice("[L.p_they(TRUE)] fell for my feint attack!"))
 	to_chat(L, span_danger("I fall for [user.p_their()] feint attack!"))
 	playsound(user, 'sound/combat/riposte.ogg', 100, TRUE)

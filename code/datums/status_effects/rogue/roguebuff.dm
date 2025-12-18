@@ -1242,7 +1242,8 @@
 	guard_disrupted()
 
 /datum/status_effect/buff/clash/proc/apply_cooldown()
-	owner.apply_status_effect(/datum/status_effect/debuff/clashcd)
+	var/newcd = BASE_RCLICK_CD - owner.get_tempo_bonus(TEMPO_TAG_RCLICK_CD_BONUS)
+	owner.apply_status_effect(/datum/status_effect/debuff/clashcd, newcd)
 
 //Our guard was disrupted by normal means.
 /datum/status_effect/buff/clash/proc/guard_disrupted()
