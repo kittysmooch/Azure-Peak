@@ -324,3 +324,25 @@
   dopamiin0:
   - bugfix: snap freeze and bladeburst now correctly function at range again. sorry
   - bugfix: wither no longer misses anyone sharing a tile with a target
+2025-12-19:
+  Geevies:
+  - bugfix: You can now shoot arrows up and down stairs.
+  - rscadd: Throwing anything into a river will now cause it to process and shift
+      downstream.
+  - bugfix: Rivers now stop processing when there's nothing in them.
+  - bugfix: NPCs no longer try to swim upstream.
+  - qol: Honorary titles are now checked before joining, avoiding duplicates.
+  - bugfix: Bundles now spawn at the correct 2x1 grid size.
+  - qol: Left clicking a scabbard on the ground or in storage will now pick the entire
+      thing up.
+  - qol: Right clicking a scabbard will now always draw from it, as it works now.
+  - bugfix: Nets now drop to the floor after their timer runs out.
+  Lamasmaster:
+  - rscadd: Tunic in cloak slot
+  SayonaraEcho:
+  - rscadd: Handcart moving animation
+  TheNeoGamer42:
+  - qol: Footman squires now start with apprentice shield skill. In-line with Errant
+      Squire, and no more bonking a dummy for a few minutes.
+  kano-dot:
+  - bugfix: fixed half-elves not being able to pick wood elf ears.
