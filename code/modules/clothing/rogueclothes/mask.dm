@@ -330,6 +330,7 @@
 	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
+	stack_fovs = TRUE
 
 /obj/item/clothing/mask/rogue/facemask/shadowfacemask
 	name = "anthraxi war mask"
