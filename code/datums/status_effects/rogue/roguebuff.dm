@@ -1337,9 +1337,6 @@
 		mob_effect.alpha = 255
 		is_active = TRUE
 
-/datum/status_effect/buff/clash/limbguard/guard_swaphands()
-	return
-
 /datum/status_effect/buff/clash/limbguard/on_creation(mob/living/new_owner, ...)
 	. = ..()
 	shield_origin = owner.get_active_held_item()
@@ -1471,8 +1468,16 @@
 	owner.apply_status_effect(/datum/status_effect/debuff/specialcd, 60 SECONDS)
 	owner.apply_status_effect(/datum/status_effect/debuff/clashcd)
 
+//We don't have a cost to cancelling limbguard, so most of these are overridden.
+//No green regen at all + the initial cost is steep already.
 /datum/status_effect/buff/clash/limbguard/guard_kicked()
 	return
+
+/datum/status_effect/buff/clash/limbguard/guard_swaphands()
+	return
+
+/datum/status_effect/buff/clash/limbguard/guard_on_kick()
+	return	
 
 #define BLOODRAGE_FILTER "bloodrage"
 
