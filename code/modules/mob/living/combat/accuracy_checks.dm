@@ -1,7 +1,7 @@
 #define ULTRA_PRECISE_ZONE 1 
 #define PRECISE_ZONE 2 
 #define NO_PENALTY_ZONE 3
-#define FACE_ZONE 4
+#define PRECISE_FACE_ZONE 4
 #define RANGED_MAX_ULTRA_PRECISE_HIT_CHANCE 50 // No matter what max 50% chance to hit
 #define RANGED_MAX_FACE_HIT_CHANCE 30 // No matter what max 30% chance to hit
 #define RANGED_ULTRA_PRECISE_HIT_PENALTY -25 // -25 for you - THEN we clamp.
