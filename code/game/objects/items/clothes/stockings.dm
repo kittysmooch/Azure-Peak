@@ -4,11 +4,13 @@
 	icon = 'icons/obj/items/clothes/stockings.dmi'
 	icon_state = "stockings"
 	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_TINY
 	obj_flags = CAN_BE_HIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	blade_dulling = DULLING_CUT
 	max_integrity = 200
 	integrity_failure = 0.1
+	throw_speed = 0.5
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	var/gendered
 	var/race

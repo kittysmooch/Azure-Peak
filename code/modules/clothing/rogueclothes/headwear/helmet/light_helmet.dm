@@ -147,12 +147,15 @@
 		add_overlay(pic2)
 
 //................ Briar Thorns ............... //	- Dendor Briar
-/obj/item/clothing/head/roguetown/padded/briarthorns
+/obj/item/clothing/head/roguetown/briarthorns
 	name = "briar thorns"
 	desc = "The pain of wearing it might distract you from the whispers of a mad God overpowering your sanity..."
 	icon_state = "briarthorns"
+	max_integrity = 150
+	body_parts_covered = HEAD|HAIR|EARS
+	armor = ARMOR_CLOTHING
 
-/obj/item/clothing/head/roguetown/padded/briarthorns/pickup(mob/living/user)
+/obj/item/clothing/head/roguetown/briarthorns/pickup(mob/living/user)
 	. = ..()
 	to_chat(user, span_warning ("The thorns prick me."))
 	user.adjustBruteLoss(4)
