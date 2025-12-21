@@ -1735,9 +1735,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
 				text = "<i>I can't tell...</i>"
-				user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+				user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 		else
-			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 
 	if(H.client?.prefs.floating_text_toggles & HITZONE_TEXT)
 		H.balloon_alert(H, "[bodyzone2readablezone(selzone)]...")
