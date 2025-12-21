@@ -223,6 +223,11 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	return ..()
 
+/mob/living/simple_animal/examine(mob/user)
+	. = ..()
+	if(tame)
+		. += span_notice("This animal appears to be tamed.")
+
 /mob/living/simple_animal/attackby(obj/item/O, mob/user, params)
 	if(!is_type_in_list(O, food_type))
 		..()
@@ -252,7 +257,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(user)
 		owner = user
 		SEND_SIGNAL(user, COMSIG_ANIMAL_TAMED, src)
-	return
 
 //mob/living/simple_animal/examine(mob/user)
 //	. = ..()
