@@ -168,6 +168,7 @@
 	block2add = FOV_BEHIND
 	smelt_bar_num = 2
 	armor = ARMOR_PLATE
+	stack_fovs = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/sallet/shishak
 	name = "steel shishak"
@@ -239,6 +240,7 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
+	stack_fovs = TRUE
 
 	detail_tag = "_detail"
 	color = "#FFFFFF"
@@ -306,6 +308,7 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 2
+	stack_fovs = TRUE
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
