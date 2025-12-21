@@ -928,6 +928,11 @@
 	minstr = 5
 	wdefense = 4
 
+/obj/item/rogueweapon/sword/short/messer/duelist
+	name = "dueling messer"
+	swingsound = BLADEWOOSH_SMALL
+	wbalance = WBALANCE_SWIFT
+
 /obj/item/rogueweapon/sword/short/messer/iron
 	name = "hunting sword"
 	desc = "A basic single-edge sword that is usually used to finish off hunted game. It excels at slicing and chopping, and it's made of iron. \
@@ -943,7 +948,7 @@
 	sheathe_icon = "isword"
 
 /obj/item/rogueweapon/sword/short/messer/iron/virtue
-	name = "dueling messer"
+	name = "iron dueling messer"
 	desc = "A basic single-edge iron hunting sword that has been modified for the express purpose of dueling, with an added guard and a leaner grip for comfort and speed."
 	icon_state = "dmesser"
 	swingsound = BLADEWOOSH_SMALL
