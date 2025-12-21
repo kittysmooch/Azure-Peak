@@ -285,7 +285,8 @@
 		animal_patient.adjustHealth(-((animal_patient.maxHealth / 5) * (medskill + 1)), TRUE)
 		user.visible_message(span_notice("[user] bandages [M]'s wounds."), span_notice("I bandage [M]'s wounds."))
 		// clear all the wounds
-		animal_patient.clear_wounds()
+		for(var/datum/wound/wound as anything in animal_patient.get_wounds())
+			qdel(wound)
 		qdel(src)
 		return
 
