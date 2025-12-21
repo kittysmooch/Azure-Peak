@@ -81,7 +81,7 @@ LINEN BINS
 	signal_sleeper = null
 
 /obj/item/bedsheet/rogue
-	desc = "Useful for hiding under whenever unable or unwilling to face the world."
+	desc = "May be hidden under whenever unable, or unwilling, to face the world."
 
 /obj/item/bedsheet/rogue/cloth
 	icon = 'icons/roguetown/misc/beds.dmi'

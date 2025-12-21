@@ -543,7 +543,7 @@
 
 /obj/structure/fluff/clock
 	name = "clock"
-	desc = ""
+	desc = "A large grandfather clock; the cutting edge of modern technology."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "clock"
 	density = FALSE
@@ -626,7 +626,7 @@
 
 /obj/structure/fluff/wallclock
 	name = "clock"
-	desc = ""
+	desc = "Second greatest of all tyrants."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "wallclock"
 	density = FALSE

@@ -46,10 +46,6 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
 
-/mob/living/simple_animal/hostile/retaliate/rogue/cow/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be an adult female.")
-
 /obj/effect/decal/remains/cow
 	name = "remains"
 	gender = PLURAL
@@ -88,10 +84,6 @@
 	STASPD = 5
 	defprob = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/cow
-
-/mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be a juvenile female.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/simple_limb_hit(zone)
 	if(!zone)
@@ -194,10 +186,6 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
 
-/mob/living/simple_animal/hostile/retaliate/rogue/bull/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be an adult male.")
-
 /mob/living/simple_animal/hostile/retaliate/rogue/bull/get_sound(input)
 	switch(input)
 		if("aggro")
@@ -285,10 +273,6 @@
 	STASTR = 5
 	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/bull
-
-/mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be a juvenile male.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/Initialize()
 	. = ..()

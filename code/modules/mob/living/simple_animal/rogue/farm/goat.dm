@@ -118,10 +118,6 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic/goat //slightly more agressive retaliation
 
-/mob/living/simple_animal/hostile/retaliate/rogue/goat/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be an adult female.")
-
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/get_sound(input)
 	switch(input)
 		if("aggro")
@@ -159,10 +155,6 @@
 	can_buckle = FALSE
 	buckle_lying = 0
 	can_saddle = FALSE
-
-/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatlet/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be a juvenile female.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goat/simple_limb_hit(zone)
 	if(!zone)
@@ -269,10 +261,6 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
-
-/mob/living/simple_animal/hostile/retaliate/rogue/goatmale/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be an adult male.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/goatmale/tame
 	tame = TRUE
@@ -412,7 +400,3 @@
 	can_buckle = FALSE
 	buckle_lying = 0
 	can_saddle = FALSE
-
-/mob/living/simple_animal/hostile/retaliate/rogue/goat/goatletboy/examine(mob/user)
-	. = ..()
-	. += span_notice("This seems to be a juvenile male.")

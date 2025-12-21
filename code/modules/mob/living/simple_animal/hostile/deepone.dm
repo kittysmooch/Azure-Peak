@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/rogue/deepone
 	name = "Deep One"
-	desc = "It is said by some that, when the world was young and Abyssor did not yet dream, he took a mass of primordial humens in his hand and brought them to the abyss to create men in his own image. Alas, he fell aslumber before his reflections were totalised, leaving them an incomplete species without true mind or voice."
+	desc = "It is said that, when the world was young and Abyssor did not yet dream, he took a mass of humenity \
+	in his hand and brought them to the abyss, sculpting from them speechless men in his own image."
 	icon = 'icons/roguetown/mob/monster/fishman.dmi'
 	icon_state = "deep1"
 	icon_living = "deep1"
