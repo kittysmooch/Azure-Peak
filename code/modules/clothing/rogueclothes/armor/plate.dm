@@ -17,7 +17,7 @@
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 4 SECONDS
 	unequip_delay_self = 4 SECONDS
-	armor_class = ARMOR_CLASS_HEAVY
+	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 3
 	chunkcolor = "#a9c1ca"
 
@@ -476,14 +476,14 @@
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
-	armor_class = ARMOR_CLASS_MEDIUM
+	armor_class = ARMOR_CLASS_LIGHT
 	smelt_bar_num = 2
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer
 	name = "fencer's cuirass"
 	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."
 	armor = ARMOR_CUIRASS		// Experimental.
-	armor_class = ARMOR_CLASS_LIGHT
+	armor_class = ARMOR_CLASS_NONE
 	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL
 	smelt_bar_num = 1
 	icon_state = "fencercuirass"
@@ -521,6 +521,7 @@
 
 	body_parts_covered = CHEST | VITALS | LEGS 
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
+	armor_class = ARMOR_CLASS_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/ornate
 	name = "psydonic cuirass"
@@ -546,7 +547,7 @@
 	armor = list("blunt" = 75, "slash" = 75, "stab" = 75, "piercing" = 40, "fire" = 0, "acid" = 0)	//idk what this armor is but I ain't making a define for it
 	smeltresult = /obj/item/ingot/copper
 	body_parts_covered = CHEST
-	armor_class = ARMOR_CLASS_LIGHT
+	armor_class = ARMOR_CLASS_NONE
 	smelt_bar_num = 1
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/elven

@@ -354,7 +354,7 @@
 				var/obj/item/clothing/suit/roguetown/armor/examined_armor = wear_armor
 				switch(examined_armor.armor_class)
 					if(ARMOR_CLASS_LIGHT)
-						str = "[m3] some flimsy leathers!"
+						str = "[m3] something flimsy!"
 					if(ARMOR_CLASS_MEDIUM)
 						if(!HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
 							str = "[m3] some metal and leather!"
