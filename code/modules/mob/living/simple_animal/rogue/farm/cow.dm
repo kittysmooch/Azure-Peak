@@ -2,7 +2,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/cow
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
 	name = "cow"
-	desc = ""
+	desc = "Cattle are a staple of animal husbandry across the world, both for their milk and for their meat."
 	icon_state = "cow"
 	icon_living = "cow"
 	icon_dead = "cow_dead"
@@ -46,6 +46,10 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
 
+/mob/living/simple_animal/hostile/retaliate/rogue/cow/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be an adult female.")
+
 /obj/effect/decal/remains/cow
 	name = "remains"
 	gender = PLURAL
@@ -66,7 +70,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet
 	name = "calf"
-	desc = ""
 	icon_state = "cowlet"
 	icon_living = "cowlet"
 	icon_dead = "cowlet_dead"
@@ -85,6 +88,10 @@
 	STASPD = 5
 	defprob = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/cow
+
+/mob/living/simple_animal/hostile/retaliate/rogue/cow/cowlet/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be a juvenile female.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/simple_limb_hit(zone)
 	if(!zone)
@@ -142,7 +149,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull
 	icon = 'icons/roguetown/mob/monster/cow.dmi'
-	name = "cow"
+	name = "bull"
+	desc = "Cattle are a staple of animal husbandry across the world, both for their milk and for their meat."
 	icon_state = "bull"
 	icon_living = "bull"
 	icon_dead = "bull_dead"
@@ -185,6 +193,10 @@
 	AIStatus = AI_OFF
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
+
+/mob/living/simple_animal/hostile/retaliate/rogue/bull/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be an adult male.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/bull/get_sound(input)
 	switch(input)
@@ -255,7 +267,6 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet
 	name = "calf"
-	desc = ""
 	gender = MALE
 	icon_state = "bullet"
 	icon_living = "bullet"
@@ -274,6 +285,10 @@
 	STASTR = 5
 	STASPD = 5
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/bull
+
+/mob/living/simple_animal/hostile/retaliate/rogue/cow/bullet/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be a juvenile male.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/cow/Initialize()
 	. = ..()

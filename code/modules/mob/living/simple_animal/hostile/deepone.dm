@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/rogue/deepone
 	name = "Deep One"
-	desc = ""
+	desc = "It is said by some that, when the world was young and Abyssor did not yet dream, he took a mass of primordial humens in his hand and brought them to the abyss to create men in his own image. Alas, he fell aslumber before his reflections were totalised, leaving them an incomplete species without true mind or voice."
 	icon = 'icons/roguetown/mob/monster/fishman.dmi'
 	icon_state = "deep1"
 	icon_living = "deep1"
@@ -43,7 +43,6 @@
 
 /mob/living/simple_animal/hostile/rogue/deepone/arm
 	name = "Deep One"
-	desc = ""
 	icon = 'icons/roguetown/mob/monster/fishman.dmi'
 	icon_state = "deep1_arm"
 	health = DEEPONE_HEALTH * 1.4
@@ -56,7 +55,6 @@
 
 /mob/living/simple_animal/hostile/rogue/deepone/spit
 	name = "Deep One"
-	desc = ""
 	icon = 'icons/roguetown/mob/monster/fishman.dmi'
 	icon_state = "deep1_spit"
 	icon_living = "deep1_spit"
@@ -72,7 +70,6 @@
 
 /mob/living/simple_animal/hostile/rogue/deepone/wiz
 	name = "Deep One Devout"
-	desc = ""
 	icon = 'icons/roguetown/mob/monster/fishman.dmi'
 	icon_state = "deep1_wiz"
 	icon_living = "deep1_wiz"

@@ -47,6 +47,10 @@
 	can_have_ai = FALSE
 	ai_controller = /datum/ai_controller/generic
 
+/mob/living/simple_animal/hostile/retaliate/rogue/swine/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be an adult female")
+
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/get_sound(input)
 	switch(input)
 		if("aggro")
@@ -60,7 +64,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/piglet
 	name = "piglet"
-	desc = ""
+	desc = "An infant swine."
 	icon_state = "piggie_piglin"
 	icon_living = "piggie_piglin"
 	icon_dead = "piggie_piglin_dead"
@@ -79,6 +83,10 @@
 	STASPD = 2
 	defprob = 50
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/swine
+
+/mob/living/simple_animal/hostile/retaliate/rogue/swine/piglet/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be a juvenile female")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/simple_limb_hit(zone)
 	if(!zone)
@@ -167,6 +175,10 @@
 	can_saddle = TRUE//Hooooooog rider
 	remains_type = /obj/effect/decal/remains/pig
 
+/mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be an adult male.")
+
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/simple_limb_hit(zone)
 	if(!zone)
 		return ""
@@ -209,7 +221,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/piglet
 	name = "piglet"
-	desc = ""
+	desc = "An infant swine."
 	gender = MALE
 	icon_state = "piggie_piglin"
 	icon_living = "piggie_piglin"
@@ -229,6 +241,10 @@
 	STASTR = 5
 	STASPD = 2
 	adult_growth = /mob/living/simple_animal/hostile/retaliate/rogue/swine/hog
+
+/mob/living/simple_animal/hostile/retaliate/rogue/swine/hog/piglet/examine(mob/user)
+	. = ..()
+	. += span_notice("This seems to be a juvenile male.")
 
 /mob/living/simple_animal/hostile/retaliate/rogue/swine/Initialize()
 	. = ..()
