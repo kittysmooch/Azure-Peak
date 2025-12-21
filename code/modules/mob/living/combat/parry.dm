@@ -284,9 +284,12 @@
 				record_round_statistic(STATS_PARRIES)
 
 			var/def_verb = "parries"
+			var/att_verb = ""
 			if(istype(rmb_intent, /datum/rmb_intent/riposte))
 				def_verb = "[pick("expertly", "deftly")] parries"
-			var/def_msg = "<b>[src]</b> [def_verb] [user] with [W]!"
+			if(istype(user.rmb_intent, /datum/rmb_intent/strong))
+				att_verb = "'s [pick("hefty", "strong")] attack"
+			var/def_msg = "<b>[src]</b> [def_verb] [user][att_verb] with [W]!"
 
 			visible_message(span_combatsecondary(def_msg), span_boldwarning(def_msg), COMBAT_MESSAGE_RANGE, list(user))
 			to_chat(user, span_boldwarning(def_msg))

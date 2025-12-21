@@ -401,7 +401,7 @@
 			newforce *= (lerpratio * 2)
 
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
-		newforce += (I.force_dynamic * STRONG_STANCE_BONUS)
+		newforce += (I.force_dynamic * STRONG_STANCE_DMG_BONUS)
 
 	return newforce
 
