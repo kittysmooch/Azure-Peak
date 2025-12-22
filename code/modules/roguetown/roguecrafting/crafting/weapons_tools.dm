@@ -393,6 +393,28 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 4
 
+/datum/crafting_recipe/roguetown/survival/quarterstaff_psydonic
+	name = "psydonic silver-reinforced quarterstaff"
+	category = "Tools"
+	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/psy)
+	reqs = list(
+		/obj/item/rogueweapon/woodstaff/quarterstaff = 1,
+		/obj/item/ingot/silverblessed = 1,
+		)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 5
+
+/datum/crafting_recipe/roguetown/survival/quarterstaff_psydonic/bullion
+	name = "psydonic silver-reinforced quarterstaff"
+	category = "Tools"
+	result = list(/obj/item/rogueweapon/woodstaff/quarterstaff/psy)
+	reqs = list(
+		/obj/item/rogueweapon/woodstaff/quarterstaff = 1,
+		/obj/item/ingot/silverblessed/bullion = 1,
+		)
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 5
+
 /datum/crafting_recipe/roguetown/survival/woodsword
 	name = "wooden sword (x2)"
 	category = "Tools"
