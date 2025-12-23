@@ -38,7 +38,7 @@
 // A slightly weaker thrust for daggers with a curved blade, or which otherwise aren't very good at stabbing.
 /datum/intent/dagger/thrust/weak
 	name = "lopsided thrust"
-	damfactor = 0.9
+	damfactor = 0.8
 
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
