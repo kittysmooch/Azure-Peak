@@ -409,7 +409,7 @@
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/tunic
-	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	name = "tunic"
 	desc = "Modest and fashionable, with the right colors."
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
@@ -677,6 +677,7 @@
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
+	prevent_crits = PREVENT_CRITS_NONE
 	armor = ARMOR_RUMACLAN
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
