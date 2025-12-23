@@ -38,7 +38,7 @@
 // A slightly weaker thrust for daggers with a curved blade, or which otherwise aren't very good at stabbing.
 /datum/intent/dagger/thrust/weak
 	name = "lopsided thrust"
-	dam_factor = 0.9
+	damfactor = 0.9
 
 /datum/intent/dagger/thrust/pick
 	name = "icepick stab"
@@ -380,7 +380,7 @@
 /obj/item/rogueweapon/huntingknife/idagger/warden_machete
 	possible_item_intents = list(/datum/intent/dagger/thrust/weak, /datum/intent/dagger/cut/heavy, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/sucker_punch) // Stronger cut and chop, but no pick.
 	force = 22 // Slightly more damage than a steel dagger.
-	max_integrity = 130 // Slightly less integrity than a steel dagger.
+	max_integrity = 130 // Slightly lesans integrity than a steel dagger.
 	name = "Wardens' seax"
 	desc = "A well-worn seax utilised by the Fraternity of Wardens both as a tool and weapon. Nearly as effective for hacking \
 	down men as it is foiliage, but not quite as durable as more modern steel tools. More suitable for cutting than for thrusting."
