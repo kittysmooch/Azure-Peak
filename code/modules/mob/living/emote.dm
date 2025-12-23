@@ -1933,6 +1933,10 @@
 			if("fortune")
 				success = living.stat_roll(STAT_FORTUNE, chance_per_point)
 				chance = living.get_stat(STAT_FORTUNE)
+			if("charisma")
+				success = living.stat_roll(STAT_CHARISMA, chance_per_point)
+				chance = living.get_stat(STAT_CHARISMA)
+
 
 		chance *= chance_per_point
 
@@ -2171,3 +2175,30 @@
 	set category = "Emotes"
 
 	emote("fortune", intentional = TRUE)
+
+/datum/emote/living/stat_roll/charisma
+	key = "charisma"
+	key_third_person = "chr"
+	attempt_message_list = list(
+		"tries to maintain their composure...",
+		"attempts to appear impressive...",
+		"contemplating their next move...",
+	)
+
+	success_message_list = list(
+		"is brimming with self-confidence!",
+		"has a true poker face!",
+		"is the first crack in the sheer face of god, from them it will spread!",
+	)
+
+	failure_message_list = list(
+		"is brimming with self-doubt...",
+		"can't quite sell it...",
+		"is holding it together with string and prayer...",
+	)
+
+/mob/living/carbon/human/verb/emote_charisma_roll()
+	set name = "Roll Charisma"
+	set category = "Emotes"
+
+	emote("charisma", intentional = TRUE)

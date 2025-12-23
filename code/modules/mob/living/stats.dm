@@ -1,13 +1,22 @@
 	
 
 /mob/living
+	/// Strength.
 	var/STASTR = 10
+	/// Perception.
 	var/STAPER = 10
+	/// Intelligence.
 	var/STAINT = 10
+	/// Constitution.
 	var/STACON = 10
+	/// Willpower.
 	var/STAWIL = 10
+	/// Speed.
 	var/STASPD = 10
+	/// Luck.
 	var/STALUC = 10
+	/// Charisma.
+	var/STACHA = 10
 	//buffers, the 'true' amount of each stat
 	var/BUFSTR = 0
 	var/BUFPER = 0
@@ -16,6 +25,7 @@
 	var/BUFEND = 0
 	var/BUFSPE = 0
 	var/BUFLUC = 0
+	var/BUFCHA = 0
 	var/statbuf = FALSE
 	var/list/statindex = list()
 	var/datum/patron/patron = /datum/patron/godless
@@ -103,6 +113,8 @@
 			return STASPD
 		if(STAT_FORTUNE)
 			return STALUC
+		if(STAT_CHARISMA)
+			return STACHA
 		else
 			CRASH("get_stat called on [src] with an erroneous stat flag: [stat]")
 
@@ -270,6 +282,26 @@
 				BUFLUC++
 			STALUC = newamt
 
+		if(STATKEY_CHA)
+			newamt = STACHA + amt
+			if(BUFCHA < 0)
+				BUFCHA = BUFCHA + amt
+				if(BUFCHA > 0)
+					newamt = STACHA + BUFCHA
+					BUFCHA = 0
+			if(BUFCHA > 0)
+				BUFCHA = BUFCHA + amt
+				if(BUFCHA < 0)
+					newamt = STACHA + BUFCHA
+					BUFCHA = 0
+			while(newamt < 1)
+				newamt++
+				BUFCHA--
+			while(newamt > 20)
+				newamt--
+				BUFCHA++
+			STACHA = newamt
+
 /// Calculates a luck value in the range [1, 400] (calculated as STALUC^2), then maps the result linearly to the given range
 /// min must be >= 0, max must be <= 100, and min must be <= max
 /// For giving 
@@ -345,6 +377,8 @@
 			tocheck = STASPD
 		if(STATKEY_LCK)
 			tocheck = STALUC
+		if(STATKEY_CHA)
+			tocheck = STACHA
 	if(invert_dc)
 		return isnull(dee_cee) ? prob(tocheck * chance_per_point) : prob(clamp((dee_cee - tocheck) * chance_per_point,0,100))
 	else

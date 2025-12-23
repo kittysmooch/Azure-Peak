@@ -122,6 +122,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		STATKEY_PER = 2,
 		STATKEY_SPD = 1,
 		STATKEY_STR = 1,
+		STATKEY_CHA = 3,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
@@ -165,6 +166,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		STATKEY_PER = 4,
 		STATKEY_SPD = 1,
 		STATKEY_WIL = 1,
+		STATKEY_CHA = 4,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
@@ -207,6 +209,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		STATKEY_INT = 4,
 		STATKEY_PER = 2,
 		STATKEY_WIL = 1,
+		STATKEY_CHA = 3,
 	)
 	subclass_spellpoints = 18
 	subclass_skills = list(
@@ -247,6 +250,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		STATKEY_CON = -2,
 		STATKEY_WIL = -2,
 		STATKEY_STR = -2,
+		STATKEY_CHA = -2,
 	)
 	subclass_skills = list(
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,

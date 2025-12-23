@@ -230,6 +230,10 @@
 		body += "<li>Luck: [living.STALUC] "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=fortune'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=fortune'>-</a></li>"
+
+		body += "<li>Charisma: [living.STACHA] "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=charisma'>+</a> "
+		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=charisma'>-</a></li>"
 		body += "</ul>"
 
 

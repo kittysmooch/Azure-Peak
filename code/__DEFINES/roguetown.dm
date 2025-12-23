@@ -6,6 +6,7 @@
 #define STAT_WILLPOWER "willpower"
 #define STAT_SPEED "speed"
 #define STAT_FORTUNE "fortune"
+#define STAT_CHARISMA "charisma"
 
 // Weapon balance defines
 #define WBALANCE_NORMAL 0
