@@ -1316,7 +1316,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 		dat += "<a href='?_src_=prefs;preference=preset_bounty_severity_b;task=input'>[preset_bounty_severity_b || "Small Fish"]</a>"
 
 		dat += "<br><b>Crime:</b> "
-		dat += "<a href='?_src_=prefs;preference=preset_bounty_crime;task=input'>[preset_bounty_crime || "crimes against the Crown"]</a>"
+		dat += "<a href='?_src_=prefs;preference=preset_bounty_crime;task=input'>[preset_bounty_crime || "None"]</a>"
 
 
 	var/datum/browser/noclose/popup = new(user, "antag_setup", "<div align='center'>Special Role</div>", 400, 800) //no reason not to reuse the occupation window, as it's cleaner that way
