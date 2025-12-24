@@ -58,9 +58,29 @@
 
 // Proc for wretch to select a bounty
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
-	var/bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list("The Justiciary of Azuria", "The Grenzelhoftian Holy See", "The Otavan Orthodoxy")
-	// Felinid said we should gate it at 100 or so on at the lowest, so that wretch cannot ezmode it.
-	var/bounty_severity = input(H, "How severe are your crimes?", "Bounty Amount") as anything in list("Misdeed", "Harm towards lyfe", "Horrific atrocities")
+	var/datum/preferences/P = H?.client?.prefs
+	var/bounty_poster
+	var/bounty_severity
+	var/my_crime
+	if(P?.preset_bounty_enabled)
+		bounty_poster = P.preset_bounty_poster
+		bounty_severity = P.preset_bounty_severity
+		my_crime = P.preset_bounty_crime
+	if(!bounty_poster)
+		bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list(
+			"The Justiciary of Azuria",
+			"The Grenzelhoftian Holy See",
+			"The Otavan Orthodoxy"
+		)
+	if(!bounty_severity)
+		// Felinid said we should gate it at 100 or so on at the lowest, so that wretch cannot ezmode it.
+		bounty_severity = input(H, "How severe are your crimes?", "Bounty Amount") as anything in list(
+			"Misdeed",
+			"Harm towards lyfe",
+			"Horrific atrocities"
+		)
+	if(!my_crime)
+		my_crime = input(H, "What is your crime?", "Crime") as text|null
 	var/race = H.dna.species
 	var/gender = H.gender
 	var/list/d_list = H.get_mob_descriptors()
@@ -79,7 +99,6 @@
 				GLOB.outlawed_players += H.real_name
 			else
 				GLOB.excommunicated_players += H.real_name
-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
 	if (!my_crime)
 		my_crime = "crimes against the Crown"
 	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)

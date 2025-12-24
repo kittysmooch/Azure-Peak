@@ -222,6 +222,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/race_bonus
 
+	var/preset_bounty_enabled = FALSE
+	var/preset_bounty_poster
+	var/preset_bounty_severity
+	var/preset_bounty_crime
+
+
 /datum/preferences/New(client/C)
 	parent = C
 	migrant  = new /datum/migrant_pref(src)
@@ -1296,6 +1302,19 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	dat += "<BR><b>Quicksilver Resistant:</b> <a href='?_src_=prefs;preference=qsr;task=input'>[qsr_pref ? "Yes" : "No"]</a>"
 	dat += "</body>"
 
+	dat += "<br><br><br><b>Preset Bounty:</b> "
+	dat += "<a href='?_src_=prefs;preference=preset_bounty_toggle;task=input'>[preset_bounty_enabled ? "Enabled" : "Disabled"]</a>"
+	if(preset_bounty_enabled)
+		dat += "<br><b>Bounty Poster:</b> "
+		dat += "<a href='?_src_=prefs;preference=preset_bounty_poster;task=input'>[preset_bounty_poster || "The Justiciary of Azuria"]</a>"
+
+		dat += "<br><b>Crime Severity:</b> "
+		dat += "<a href='?_src_=prefs;preference=preset_bounty_severity;task=input'>[preset_bounty_severity || "Misdeed"]</a>"
+
+		dat += "<br><b>Crime:</b> "
+		dat += "<a href='?_src_=prefs;preference=preset_bounty_crime;task=input'>[preset_bounty_crime || "crimes against the Crown"]</a>"
+
+
 	var/datum/browser/noclose/popup = new(user, "antag_setup", "<div align='center'>Special Role</div>", 400, 800) //no reason not to reuse the occupation window, as it's cleaner that way
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
@@ -2169,7 +2188,34 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 					if(result)
 						set_new_race(result, user)
+				if("preset_bounty_toggle")
+					preset_bounty_enabled = !preset_bounty_enabled
+					save_preferences()
+					return
 
+				if("preset_bounty_poster")
+					preset_bounty_poster = input(user, "Who placed a bounty on you?", "Bounty Poster") as anything in list(
+						"The Justiciary of Azuria",
+						"The Grenzelhoftian Holy See",
+						"The Otavan Orthodoxy"
+					)
+					save_preferences()
+					return
+
+				if("preset_bounty_severity")
+					preset_bounty_severity = input(user, "How severe are your crimes?", "Bounty Amount") as anything in list(
+						"Misdeed",
+						"Harm towards lyfe",
+						"Horrific atrocities"
+					)
+					save_preferences()
+					return
+
+				if("preset_bounty_crime")
+					preset_bounty_crime = input(user, "What is your crime?", "Crime") as text|null
+					save_preferences()
+					return
+					
 				if("update_mutant_colors")
 					update_mutant_colors = !update_mutant_colors
 
