@@ -87,7 +87,7 @@
 		STATKEY_INT = 3,
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
-		STATKEY_SPD = -1,
+		STATKEY_SPD = -1
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT, //Polearms are pretty much explicitly a two-handed weapon, so I gave them a polearm option.
@@ -278,7 +278,7 @@
 		STATKEY_INT = 1,
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
-		STATKEY_PER = 2,
+		STATKEY_PER = 2
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
@@ -388,7 +388,7 @@
 		STATKEY_STR = 1,
 		STATKEY_INT = 1,
 		STATKEY_WIL = 2,
-		STATKEY_SPD = 2,
+		STATKEY_SPD = 2
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT, //Swords and knives class.
