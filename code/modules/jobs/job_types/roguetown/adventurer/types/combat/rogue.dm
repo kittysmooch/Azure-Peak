@@ -130,7 +130,6 @@
 		STATKEY_INT = 2,
 		STATKEY_SPD = 2,
 		STATKEY_WIL = 1,
-		STATKEY_CHA = 3,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,

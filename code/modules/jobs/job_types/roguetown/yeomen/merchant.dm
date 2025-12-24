@@ -40,7 +40,6 @@
 		STATKEY_PER = 3,
 		STATKEY_INT = 2,
 		STATKEY_STR = -1,
-		STATKEY_CHA = 3,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN,

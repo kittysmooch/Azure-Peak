@@ -14,7 +14,6 @@
 		STATKEY_INT = 2,
 		STATKEY_STR = 1,
 		STATKEY_SPD = 1,
-		STATKEY_CHA = 1,
 	)
 	subclass_skills = list(
 		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
@@ -62,7 +61,6 @@
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 		STATKEY_INT = 1,
-		STATKEY_CHA = 1,
 	)
 	subclass_skills = list(
 		/datum/skill/misc/riding = SKILL_LEVEL_JOURNEYMAN,
