@@ -2194,7 +2194,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						set_new_race(result, user)
 				if("preset_bounty_toggle")
 					preset_bounty_enabled = !preset_bounty_enabled
-					save_preferences()
 					return
 
 				if("preset_bounty_poster")
@@ -2203,7 +2202,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						"The Grenzelhoftian Holy See",
 						"The Otavan Orthodoxy"
 					)
-					save_preferences()
 					return
 
 				if("preset_bounty_severity")
@@ -2212,7 +2210,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						"Harm towards lyfe",
 						"Horrific atrocities"
 					)
-					save_preferences()
 					return
 				
 				if("preset_bounty_severity_b")
@@ -2221,12 +2218,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						"Bay Butcher",
 						"Azurean Boogeyman"
 					)
-					save_preferences()
 					return
 
 				if("preset_bounty_crime")
 					preset_bounty_crime = input(user, "What is your crime?", "Crime") as text|null
-					save_preferences()
 					return
 					
 				if("update_mutant_colors")
