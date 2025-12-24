@@ -1,0 +1,4 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - bugfix: "Taking loadout items from wall clocks now correctly applies their loadout color."
