@@ -33,6 +33,10 @@
 	damfactor = 1.2 //36 on battleaxe
 	penfactor = 40
 
+/datum/intent/axe/chop/battle/halberd
+	damfactor = 1.2 //36 on battleaxe
+	penfactor = 20
+
 /datum/intent/axe/cut/battle
 	penfactor = 25
 
