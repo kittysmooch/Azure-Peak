@@ -225,6 +225,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/preset_bounty_enabled = FALSE
 	var/preset_bounty_poster
 	var/preset_bounty_severity
+	var/preset_bounty_severity_b
 	var/preset_bounty_crime
 
 
@@ -1311,6 +1312,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 		dat += "<br><b>Crime Severity:</b> "
 		dat += "<a href='?_src_=prefs;preference=preset_bounty_severity;task=input'>[preset_bounty_severity || "Misdeed"]</a>"
 
+		dat += "<br><b>Crime Severity (Bandit):</b> "
+		dat += "<a href='?_src_=prefs;preference=preset_bounty_severity_b;task=input'>[preset_bounty_severity_b || "Small Fish"]</a>"
+
 		dat += "<br><b>Crime:</b> "
 		dat += "<a href='?_src_=prefs;preference=preset_bounty_crime;task=input'>[preset_bounty_crime || "crimes against the Crown"]</a>"
 
@@ -2207,6 +2211,15 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						"Misdeed",
 						"Harm towards lyfe",
 						"Horrific atrocities"
+					)
+					save_preferences()
+					return
+				
+				if("preset_bounty_severity_b")
+					preset_bounty_severity_b = input(user, "How notorious are you?", "Bounty Amount") as anything in list(
+						"Small Fish",
+						"Bay Butcher",
+						"Azurean Boogeyman"
 					)
 					save_preferences()
 					return

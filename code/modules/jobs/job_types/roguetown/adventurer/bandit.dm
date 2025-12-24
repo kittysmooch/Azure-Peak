@@ -70,8 +70,18 @@
 
 // Changed up proc from Wretch to suit bandits bit more
 /proc/bandit_select_bounty(mob/living/carbon/human/H)
-	var/bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list("The Justiciary of Azuria", "The Grenzelhoftian Holy See")
-	var/bounty_severity = input(H, "How notorious are you?", "Bounty Amount") as anything in list("Small Fish", "Bay Butcher", "Azurean Boogeyman")
+	var/datum/preferences/P = H?.client?.prefs
+	var/bounty_poster
+	var/bounty_severity
+	var/my_crime
+	if(P?.preset_bounty_enabled)
+		bounty_poster = P.preset_bounty_poster
+		bounty_severity = P.preset_bounty_severity_b
+		my_crime = P.preset_bounty_crime
+	if(!bounty_poster)
+		bounty_poster = input(H, "Who placed a bounty on you?", "Bounty Poster") as anything in list("The Justiciary of Azuria", "The Grenzelhoftian Holy See")
+	if(!bounty_severity)
+		bounty_severity = input(H, "How notorious are you?", "Bounty Amount") as anything in list("Small Fish", "Bay Butcher", "Azurean Boogeyman")
 	var/race = H.dna.species
 	var/gender = H.gender
 	var/list/d_list = H.get_mob_descriptors()
@@ -86,7 +96,8 @@
 			bounty_total = rand(400, 500)
 		if("Azurean Boogeyman")
 			bounty_total = rand(500, 600)
-	var/my_crime = input(H, "What is your crime?", "Crime") as text|null
+	if (!my_crime)
+		my_crime = input(H, "What is your crime?", "Crime") as text|null
 	if (!my_crime)
 		my_crime = "Brigandry"
 	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)

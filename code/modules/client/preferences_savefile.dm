@@ -624,6 +624,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["preset_bounty_enabled"] >> preset_bounty_enabled
 	S["preset_bounty_poster"] >> preset_bounty_poster
 	S["preset_bounty_severity"] >> preset_bounty_severity
+	S["preset_bounty_severity_b"] >> preset_bounty_severity_b
 	S["preset_bounty_crime"] >> preset_bounty_crime
 
 	S["img_gallery"]	>> img_gallery
@@ -800,6 +801,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["preset_bounty_enabled"] , preset_bounty_enabled)
 	WRITE_FILE(S["preset_bounty_poster"] , preset_bounty_poster)
 	WRITE_FILE(S["preset_bounty_severity"] , preset_bounty_severity)
+	WRITE_FILE(S["preset_bounty_severity_b"] , preset_bounty_severity_b)
 	WRITE_FILE(S["preset_bounty_crime"] , preset_bounty_crime)
 	WRITE_FILE(S["flavortext"] , html_decode(flavortext))
 	WRITE_FILE(S["ooc_notes"] , html_decode(ooc_notes))
