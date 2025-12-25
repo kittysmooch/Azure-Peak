@@ -51,7 +51,6 @@
 	name = "Arced Arcyne Bolt"
 	damage = 30 // You cannot modify charge and releasedrain dynamically so lower damage it is.
 	arcshot = TRUE
-	apply_mark = TRUE //...did not seem to be doing it for some reason? idfk dude
 
 /obj/projectile/energy/arcynebolt/on_hit(target)
 
