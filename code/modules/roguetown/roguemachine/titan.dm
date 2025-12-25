@@ -87,7 +87,6 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				say("The crown is within the vault.")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				return
-			I.anti_stall()
 			I = summon_crown()
 			return
 
@@ -312,10 +311,11 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 /obj/structure/roguemachine/titan/proc/summon_crown()
 	var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
 
-	if(!I)
-		SSroguemachine.crown = I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
-	else
-		I.forceMove(src.loc)
+	if(I)
+		I.anti_stall()
+	
+	I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+	SSroguemachine.crown = I
 
 	say("The crown is summoned!")
 	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
