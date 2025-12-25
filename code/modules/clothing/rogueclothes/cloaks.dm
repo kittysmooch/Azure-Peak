@@ -548,8 +548,8 @@
 /obj/item/clothing/cloak/tabard/stabard/mercenary/Initialize()
 	. = ..()
 	detail_tag = pick("_quad", "_spl", "_box", "_dim")
-	color = input(loc, "Choose a primary color.", "Color") as anything in COLOR_MAP
-	detail_color = input(loc, "Choose a secondary.", "Color") as anything in COLOR_MAP
+	color = pick(CLOTHING_COLOR_MAP)
+	detail_color = pick(CLOTHING_COLOR_MAP)
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
