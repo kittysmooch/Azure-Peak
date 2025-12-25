@@ -100,6 +100,7 @@
 	icon_state = "lbracers"
 	item_state = "lbracers"
 	armor = ARMOR_PADDED_GOOD
+	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -117,7 +118,7 @@
 	desc = "Hardened leather braces that will keep your wrists safe from bludgeoning."
 	icon_state = "albracers"
 	armor = ARMOR_LEATHER_GOOD
-	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
+	max_integrity = ARMOR_INT_SIDE_STEEL
 	sellprice = 10
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
