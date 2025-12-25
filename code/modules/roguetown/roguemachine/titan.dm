@@ -97,7 +97,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 			// Dead holders can't block
 			if(HC.stat == DEAD)
 				HC.dropItemToGround(I, TRUE)
-				summon_crown()
+				I = summon_crown()
 				return
 
 			// Ruler/regent blocks even if stowed/held
@@ -117,7 +117,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 				return
 
-		summon_crown()
+		I = summon_crown()
 		return
 
 	if(findtext(message, "summon key"))
