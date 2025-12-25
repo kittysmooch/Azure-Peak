@@ -204,14 +204,18 @@
 
 /obj/item/clothing/wrists/roguetown/royalsleeves/lordcolor(primary,secondary)
 	detail_color = primary
+	color = secondary
 	update_icon()
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_wrists()
 
 /obj/item/clothing/wrists/roguetown/royalsleeves/Initialize()
 	. = ..()
+	GLOB.lordcolor += src
 	if(GLOB.lordprimary)
-		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
-	else
-		GLOB.lordcolor += src
+		lordcolor(GLOB.lordprimary, GLOB.lordsecondary)
 
 /obj/item/clothing/wrists/roguetown/royalsleeves/Destroy()
 	GLOB.lordcolor -= src
