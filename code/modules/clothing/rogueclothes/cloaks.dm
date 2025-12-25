@@ -103,9 +103,9 @@
 		if("Diamonds")
 			detail_tag = "_dim"
 	boobed_detail = !symbol_chosen
-	color = clothing_color2hex(colorone)
+	color = COLOR_MAP[colorone]
 	if(colortwo)
-		detail_color = clothing_color2hex(colortwo)
+		detail_color = COLOR_MAP[colortwo]
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
@@ -548,8 +548,8 @@
 /obj/item/clothing/cloak/tabard/stabard/mercenary/Initialize()
 	. = ..()
 	detail_tag = pick("_quad", "_spl", "_box", "_dim")
-	color = clothing_color2hex(pick(COLOR_MAP))
-	detail_color = clothing_color2hex(pick(COLOR_MAP))
+	color = input(loc, "Choose a primary color.", "Color") as anything in COLOR_MAP
+	detail_color = input(loc, "Choose a secondary.", "Color") as anything in COLOR_MAP
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
