@@ -69,48 +69,55 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 		if(findtext(message, "nevermind"))
 			mode = 0
 			return
+	
 	if(findtext(message, "summon crown")) //This must never fail, thus place it before all other modestuffs.
-		if(SSroguemachine.crown)
-			var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
-			if(!I)
-				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+		var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
+		
+		// If no crown exists
+		if(!I)
+			I = summon_crown()
+			return
 
-			var/mob/M = get_containing_mob(I)
+		var/mob/M = get_containing_mob(I)
 
-			// If it's NOT contained by a mob, it can be summoned
-			if(I && !M)
-				var/area/crown_area = get_area(I)
-				if(crown_area && istype(crown_area, /area/rogue/indoors/town/vault) && notlord)
-					say("The crown is within the vault.")
-					playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-					return
-				I.anti_stall()
-				I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
-				say("The crown is summoned!")
+		// Not contained by anyone => summonable (vault exception)
+		if(!M)
+			var/area/crown_area = get_area(I)
+			if(crown_area && istype(crown_area, /area/rogue/indoors/town/vault) && notlord)
+				say("The crown is within the vault.")
 				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-				playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+				return
+			I = summon_crown()
+			return
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/HC = M
+
+			// Dead holders can't block
+			if(HC.stat == DEAD)
+				HC.dropItemToGround(I, TRUE)
+				I = summon_crown()
 				return
 
-			// If it IS contained by a human, block summon even if it's in a container
-			if(ishuman(M))
-				var/mob/living/carbon/human/HC = M
-				if(SSticker.rulermob == HC || SSticker.regentmob == HC)
-					if(HC.stat != DEAD)
-						if(I in HC.held_items)
-							say("[HC.real_name] holds the crown!")
-						else if(HC.head == I)
-							say("[HC.real_name] wears the crown!")
-						else
-							say("[HC.real_name] has the crown stowed away!")
-						playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-						return
+			// Ruler/regent blocks even if stowed/held
+			if(SSticker.rulermob == HC || SSticker.regentmob == HC)
+				if(I in HC.held_items)
+					say("Master [HC.real_name] holds the crown!")
+				else if(HC.head == I)
+					say("Master [HC.real_name] wears the crown!")
 				else
-					HC.dropItemToGround(I, TRUE)
+					say("Master [HC.real_name] has the crown stowed away!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				return
 
-			I.forceMove(src.loc)
-			say("The crown is summoned!")
-			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
-			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+			// Non-lords block ONLY if worn
+			if(HC.head == I)
+				say("[HC.real_name] wears the crown!")
+				playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+				return
+
+		I = summon_crown()
+		return
 
 	if(findtext(message, "summon key"))
 		if(nocrown)
@@ -300,6 +307,21 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 				return
 			make_law(raw_message)
 			mode = 0
+
+/obj/structure/roguemachine/titan/proc/summon_crown()
+	var/obj/item/clothing/head/roguetown/crown/serpcrown/I = SSroguemachine.crown
+
+	if(I)
+		I.anti_stall()
+	
+	I = new /obj/item/clothing/head/roguetown/crown/serpcrown(src.loc)
+	SSroguemachine.crown = I
+
+	say("The crown is summoned!")
+	playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
+	playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
+
+	return I
 
 /obj/structure/roguemachine/titan/proc/give_tax_popup(mob/living/carbon/human/user)
 	if(!Adjacent(user))
