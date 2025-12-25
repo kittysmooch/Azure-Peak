@@ -102,8 +102,8 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Otavan colors") as anything in colorlist
-		var/playerchoice = colorlist[choice]
+		var/choice = input(user, "Choose a color.", "Otavan colors") as anything in COLOR_MAP
+		var/playerchoice = COLOR_MAP[choice]
 		picked = TRUE
 		detail_color = playerchoice
 		detail_tag = "_detail"
@@ -164,8 +164,8 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in colorlist
-		var/playerchoice = colorlist[choice]
+		var/choice = input(user, "Choose a color.", "Grenzelhoft colors") as anything in COLOR_MAP
+		var/playerchoice = COLOR_MAP[choice]
 		picked = TRUE
 		detail_color = playerchoice
 		detail_tag = "_detail"
