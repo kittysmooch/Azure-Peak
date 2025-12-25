@@ -51,6 +51,7 @@
 	name = "Arced Arcyne Bolt"
 	damage = 30 // You cannot modify charge and releasedrain dynamically so lower damage it is.
 	arcshot = TRUE
+	apply_mark = TRUE //...did not seem to be doing it for some reason? idfk dude
 
 /obj/projectile/energy/arcynebolt/on_hit(target)
 
@@ -58,6 +59,7 @@
 	if(ismob(target))
 		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
 		if(mark && mark.stacks == mark.max_stacks)
+			damage = 60
 			armor_penetration = 50
 			woundclass = BCLASS_STAB
 			apply_mark = FALSE
