@@ -464,9 +464,9 @@ SPECIALS START HERE
 	name = "Piercing Lunge"
 	desc = "A planned attack at the chest, extending ourselves. Pierces our enemy's armor and knocks the wind from them."
 	tile_coordinates = list(list(0,0), list(0,1))
-	post_icon_state = "sweep_fx"
+	post_icon_state = "stab"
 	pre_icon_state = "trap"
-	sfx_post_delay = 'sound/combat/shin_swipe.ogg'
+	sfx_post_delay = 'sound/combat/parry/bladed/bladedsmall (3).ogg'
 	delay = 0.5 SECONDS
 	cooldown = 25 SECONDS
 	stamcost = 20
