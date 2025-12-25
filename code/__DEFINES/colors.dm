@@ -77,7 +77,6 @@
 #define CLOTHING_MAGENTA			"#962e5c"
 
 //extended dye
-#define CLOTHING_BABY_PUKE			"#b5b004"
 #define CLOTHING_CHALK_WHITE		"#f4ecde"
 #define CLOTHING_CHESTNUT			"#613613"
 #define CLOTHING_CREAM				"#fffdd0"
@@ -90,8 +89,8 @@
 #define CLOTHING_MAGE_BLUE			"#4756d8"
 #define CLOTHING_MAGE_GREEN			"#759259"
 #define CLOTHING_MAGE_GREY			"#6c6c6c"
-#define CLOTHING_MAGE_RED			"#b8252c"
 #define CLOTHING_MAGE_YELLOW		"#c1b144"
+#define CLOTHING_MUDDY_YELLOW		"#b5b004"
 #define CLOTHING_MAROON				"#550000"
 #define CLOTHING_OLIVE				"#98bf64"
 #define CLOTHING_ORCHIL				"#66023C"
@@ -99,6 +98,7 @@
 #define CLOTHING_PERIWINKLE_BLUE	"#8f99fb"
 #define CLOTHING_RED_OCHRE			"#913831"
 #define CLOTHING_RUSSET				"#7f461b"
+#define CLOTHING_SCARLET			"#b8252c"
 #define CLOTHING_WOAD_BLUE			"#597fb9"
 #define CLOTHING_YELLOW_OCHRE		"#cb9d06"
 #define CLOTHING_YELLOW_WELD		"#f4c430"
@@ -122,7 +122,6 @@
 )
 
 #define EXTENDED_COLOR_NAMES list(\
-	"Baby Puke",\
 	"Chalk White",\
 	"Chestnut",\
 	"Cream",\
@@ -135,8 +134,8 @@
 	"Mage Blue",\
 	"Mage Green",\
 	"Mage Grey",\
-	"Mage Red",\
 	"Mage Yellow",\
+	"Muddy Yellow",\
 	"Maroon",\
 	"Olive",\
 	"Orchil",\
@@ -144,6 +143,7 @@
 	"Periwinkle Blue",\
 	"Red Ochre",\
 	"Russet",\
+	"Scarlet",\
 	"Woad Blue",\
 	"Yellow Ochre",\
 	"Yellow Weld",\
@@ -167,7 +167,6 @@
 )	
 /* Extended */
 #define EXTENDED_COLOR_MAP list(\
-	"Baby Puke" = CLOTHING_BABY_PUKE,\
 	"Chalk White" = CLOTHING_CHALK_WHITE,\
 	"Chestnut" = CLOTHING_CHESTNUT,\
 	"Cream" = CLOTHING_CREAM,\
@@ -180,8 +179,8 @@
 	"Mage Blue" = CLOTHING_MAGE_BLUE,\
 	"Mage Green" = CLOTHING_MAGE_GREEN,\
 	"Mage Grey" = CLOTHING_MAGE_GREY,\
-	"Mage Red" = CLOTHING_MAGE_RED,\
 	"Mage Yellow" = CLOTHING_MAGE_YELLOW,\
+	"Muddy Yellow" = CLOTHING_MUDDY_YELLOW,\
 	"Maroon" = CLOTHING_MAROON,\
 	"Olive" = CLOTHING_OLIVE,\
 	"Orchil" = CLOTHING_ORCHIL,\
@@ -189,6 +188,7 @@
 	"Periwinkle Blue" = CLOTHING_PERIWINKLE_BLUE,\
 	"Red Ochre" = CLOTHING_RED_OCHRE,\
 	"Russet" = CLOTHING_RUSSET,\
+	"Scarlet" = CLOTHING_SCARLET,\
 	"Woad Blue" = CLOTHING_WOAD_BLUE,\
 	"Yellow Ochre" = CLOTHING_YELLOW_OCHRE,\
 	"Yellow Weld" = CLOTHING_YELLOW_WELD,\
