@@ -18,9 +18,10 @@
 /datum/intent/spear/thrust/oneh
 	name = "one-handed thrust"
 	reach = 1
-	swingdelay = 12
-	damfactor = 1.6	
-	clickcd = CLICK_CD_HEAVY
+	swingdelay = 14
+	damfactor = 1.6
+	penfactor = 50
+	clickcd = CLICK_CD_RESIST
 	effective_range = null
 	effective_range_type = null
 	sharpness_penalty = 4
