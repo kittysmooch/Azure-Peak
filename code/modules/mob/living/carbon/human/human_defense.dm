@@ -58,6 +58,8 @@
 /mob/living/carbon/human/proc/checkcritarmor(def_zone, bclass)
 	if(!bclass)
 		return FALSE
+	if(bclass == BCLASS_PIERCE)
+		return TRUE
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
@@ -75,7 +77,7 @@
 						if(PREVENT_CRITS_ALL)
 							return TRUE
 						if(PREVENT_CRITS_MOST)
-							if(bclass != BCLASS_PICK && bclass != BCLASS_PIERCE)
+							if(bclass != BCLASS_PICK)
 								return TRUE
 /*
 /mob/proc/checkwornweight()
