@@ -1018,6 +1018,10 @@
 	icon_state = "shashka"
 	sheathe_icon = "shashka"
 
+/obj/item/rogueweapon/sword/sabre/steppesman/Initialize()
+	. = ..()
+	AddComponent(/datum/component/skill_blessed, TRAIT_SABRIST, /datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+
 //Unique church sword - slightly better than regular sabre due to falx chop.
 /obj/item/rogueweapon/sword/sabre/nockhopesh
 	name = "moonlight khopesh"
