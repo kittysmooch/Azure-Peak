@@ -304,6 +304,10 @@
 	smeltresult = /obj/item/ingot/steel
 	special = /datum/special_intent/side_sweep
 
+/obj/item/rogueweapon/sword/long/Initialize()
+	. = ..()
+	AddComponent(/datum/component/skill_blessed, TRAIT_LONGSWORDSMAN, /datum/skill/combat/swords, SKILL_LEVEL_MASTER)
+
 /obj/item/rogueweapon/sword/long/training
 	name = "training sword"
 	desc = "Swords like these, with blunted tips and dull edges, are often used for practice without much risk of injury."
