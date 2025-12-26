@@ -80,6 +80,8 @@
 	///	Effective range type. Can be Exact, Below or Above. Be sure to set this if you use effective_range!
 	/// Only use this with reach is >1 because otherwise like... why.
 	var/effective_range_type = null
+	/// Extra sharpness drain per successful & parried hit.
+	var/sharpness_penalty = 0
 
 
 	var/list/static/bonk_animation_types = list(
