@@ -40,7 +40,7 @@
 			intdamage = (damage + armor_penetration) - protection
 		if(intdamfactor != 1)
 			intdamage *= intdamfactor
-		if(d_type == "blunt")
+		if(d_type == "blunt" && mind)
 			if(used.armor?.getRating("blunt") > 0)
 				var/bluntrating = used.armor.getRating("blunt")
 				intdamage -= intdamage * ((bluntrating / 2) / 100)	//Half of the blunt rating reduces blunt damage taken by %-age.
@@ -75,7 +75,7 @@
 						if(PREVENT_CRITS_ALL)
 							return TRUE
 						if(PREVENT_CRITS_MOST)
-							if(bclass != BCLASS_PICK)
+							if(bclass != BCLASS_PICK && bclass != BCLASS_PIERCE)
 								return TRUE
 /*
 /mob/proc/checkwornweight()
