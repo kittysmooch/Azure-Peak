@@ -1460,7 +1460,7 @@
 		spawn(40)
 			to_chat(target, span_cult("Break them."))
 
-/// Performs the war ritual, which requires a noble or inquisition member in the center of the circle. TRUE on success, FALSE on failure.
+/// Performs the war ritual, which requires a noble, clergy, or inquisition member in the center of the circle. TRUE on success, FALSE on failure.
 /obj/structure/ritualcircle/graggar/proc/perform_warritual()
 	var/mob/living/carbon/human/victim = null
 	for(var/mob/living/carbon/human/H in get_turf(src))

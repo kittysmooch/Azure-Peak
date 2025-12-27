@@ -972,6 +972,8 @@
 // Used for Inquisition tags
 /mob/living/proc/get_inquisition_text(mob/examiner)
 	var/inquisition_text
+	if(!HAS_TRAIT(examiner, TRAIT_INQUISITION)) //If the person doing the examining doesn't have the trait, we don't need to do the other four ifs
+		return null
 	if(HAS_TRAIT(src, TRAIT_INQUISITION) && HAS_TRAIT(examiner, TRAIT_INQUISITION))
 		inquisition_text = "A fellow adherent to the Holy Otavan Inquisition's missives."
 	if(HAS_TRAIT(src, TRAIT_PURITAN) && HAS_TRAIT(examiner, TRAIT_INQUISITION))
@@ -986,6 +988,8 @@
 // Used for Church tags
 /mob/living/proc/get_clergy_text(mob/examiner)
 	var/clergy_text
+	if(!HAS_TRAIT(examiner, TRAIT_CLERGY)) //If the person doing the examining doesn't have the trait, we don't need to do the other four ifs
+		return null
 	if(HAS_TRAIT(src, TRAIT_CLERGY) && HAS_TRAIT(examiner, TRAIT_CLERGY))
 		clergy_text = "A fellow member of the Azurian Church of the Ten."
 	if(HAS_TRAIT(src, TRAIT_CHOSEN) && HAS_TRAIT(examiner, TRAIT_CLERGY))
