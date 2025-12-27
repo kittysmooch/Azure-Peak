@@ -236,5 +236,6 @@
 	reqs = list(
 		/obj/item/grown/log/tree/stick = 4,
 		/obj/item/natural/fibers = 3,
+		/obj/item/natural/cloth = 1,
 	)
 	craftdiff = 0
