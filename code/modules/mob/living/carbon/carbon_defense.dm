@@ -222,6 +222,7 @@
 				user.update_inv_hands()
 				var/turf/location = get_turf(src)
 				add_splatter_floor(location)
+				add_splatter_wall(location, force = statforce)
 				if(get_dist(user, src) <= 1)	//people with TK won't get smeared with blood
 					user.add_mob_blood(src)
 				var/splatter_dir = get_dir(user, src)
@@ -246,7 +247,7 @@
 		I.remove_bintegrity(1)
 		var/probability = I.get_dismemberment_chance(affecting, user, useder)
     
-		if(prob(probability) && affecting.dismember(I.damtype, user.used_intent?.blade_class, user, user.zone_selected))
+		if(prob(probability) && affecting.dismember(I.damtype, user.used_intent?.blade_class, user, user.zone_selected, vorpal = I.vorpal))
 			I.add_mob_blood(src)
 			playsound(get_turf(src), I.get_dismember_sound(), 80, TRUE)
 		return TRUE //successful attack

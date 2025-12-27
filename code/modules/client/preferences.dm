@@ -144,6 +144,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/no_autopunctuate = FALSE
 	var/no_language_fonts = FALSE
 	var/no_language_icon = FALSE
+	var/no_redflash = FALSE
 
 	var/lastclass
 
@@ -341,6 +342,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "</td>"
 
 			dat += "<td style='width:33%;text-align:right'>"
+			dat += "<a href='?_src_=prefs;preference=changelog;task=menu'>Changelog</a>"
 			dat += "</td>"
 			dat += "</tr>"
 
@@ -1442,6 +1444,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	else if(href_list["preference"] == "triumph_buy_menu")
 		SStriumphs.startup_triumphs_menu(user.client)
 
+	else if(href_list["preference"] == "changelog")
+		user.client.changelog()
+		return TRUE
+
 	else if(href_list["preference"] == "keybinds")
 		switch(href_list["task"])
 			if("close")
@@ -2130,27 +2136,27 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if(loadout3.desc)
 								to_chat(user, "[loadout3.desc]")
 				if("loadout1hex")
-					var/choice = input(user, "Choose a color.", "Loadout Item One Colour") as null|anything in colorlist
-					if (choice && colorlist[choice])
-						loadout_1_hex = colorlist[choice]
+					var/choice = input(user, "Choose a color.", "Loadout Item One Colour") as null|anything in COLOR_MAP
+					if (choice && COLOR_MAP[choice])
+						loadout_1_hex = COLOR_MAP[choice]
 						if (loadout)
 							to_chat(user, "The colour for your [loadout::name] has been set to <b>[choice]</b>.")
 					else
 						loadout_1_hex = null
 						to_chat(user, "The colour for your <b>first</b> loadout item has been cleared.")
 				if("loadout2hex")
-					var/choice = input(user, "Choose a color.", "Loadout Item Two Colour") as null|anything in colorlist
-					if (choice && colorlist[choice])
-						loadout_2_hex = colorlist[choice]
+					var/choice = input(user, "Choose a color.", "Loadout Item Two Colour") as null|anything in COLOR_MAP
+					if (choice && COLOR_MAP[choice])
+						loadout_2_hex = COLOR_MAP[choice]
 						if (loadout2)
 							to_chat(user, "The colour for your [loadout2::name] has been set to <b>[choice]</b>.")
 					else
 						loadout_2_hex = null
 						to_chat(user, "The colour for your <b>second</b> loadout item has been cleared.")
 				if("loadout3hex")
-					var/choice = input(user, "Choose a color.", "Loadout Item Three Colour") as null|anything in colorlist
-					if (choice && colorlist[choice])
-						loadout_3_hex = colorlist[choice]
+					var/choice = input(user, "Choose a color.", "Loadout Item Three Colour") as null|anything in COLOR_MAP
+					if (choice && COLOR_MAP[choice])
+						loadout_3_hex = COLOR_MAP[choice]
 						if (loadout3)
 							to_chat(user, "The colour for your [loadout3::name] has been set to <b>[choice]</b>.")
 					else

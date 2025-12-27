@@ -460,7 +460,7 @@
 		var/current_athletics = user.get_skill_level(/datum/skill/misc/athletics)
 		if(current_skill < 4)
 			user.adjust_skillrank_up_to(skill_to_teach, 4)
-			to_chat(user, span_notice("Knowledge of [skill_to_teach] floods your mind!"))
+			to_chat(user, span_notice("Knowledge of [skill_to_teach.name] floods your mind!"))
 		if(current_athletics < 6)
 			user.adjust_skillrank_up_to(/datum/skill/misc/athletics, 6)
 			to_chat(user, span_notice("Your endurance swells!"))
@@ -480,7 +480,6 @@
 	spawn(20)
 		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 		target.equipOutfit(/datum/outfit/job/roguetown/dreamwalker_armorrite)
-		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 		spawn(40)
 			to_chat(target, span_purple("Reality is but a fragile dream. You are the dreamer, and your will is law."))
 
@@ -1196,7 +1195,6 @@
 	spawn(20)
 		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 		target.equipOutfit(/datum/outfit/job/roguetown/darksteelrite)
-		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 		spawn(40)
 			to_chat(target, span_purple("They are ignorant, backwards, without hope. You. You will be powerful."))
 
@@ -1208,12 +1206,14 @@
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo
 	pants = /obj/item/clothing/under/roguetown/platelegs/zizo
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/zizo
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/zizo
 	gloves = /obj/item/clothing/gloves/roguetown/plate/zizo
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/zizo
+	neck = /obj/item/clothing/neck/roguetown/bevor/zizo
 	backr = /obj/item/rogueweapon/sword/long/zizo
-	neck = /obj/item/clothing/neck/roguetown/bevor
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
 
@@ -1298,7 +1298,6 @@
 	spawn(20)
 		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 		target.equipOutfit(/datum/outfit/job/roguetown/gildedrite)
-		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 		spawn(40)
 			to_chat(target, span_cult("More to the maw, this shall help feed our greed."))
 
@@ -1369,15 +1368,16 @@
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/matthios
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/matthios
 	pants = /obj/item/clothing/under/roguetown/platelegs/matthios
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/matthios
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/matthios
 	gloves = /obj/item/clothing/gloves/roguetown/plate/matthios
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/matthios
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios
 	backr = /obj/item/rogueweapon/flail/peasantwarflail/matthios
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
-
 
 /obj/structure/ritualcircle/graggar
 	name = "Rune of Violence"
@@ -1441,7 +1441,7 @@
 			if(perform_warritual())
 				user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_heavy)
 			else
-				to_chat(user, span_smallred("The ritual fails. A noble, member of the inquisition or a tennite churchling body must be in the center of the circle!"))
+				to_chat(user, span_smallred("The ritual fails. A noble, a member of the Inquisition or a Tennite clergy member must be in the center of the circle!"))
 			spawn(120)
 				icon_state = "graggar_chalky" 
 /obj/structure/ritualcircle/graggar/proc/graggararmor(mob/living/carbon/human/target)
@@ -1457,18 +1457,17 @@
 	spawn(20)
 		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
 		target.equipOutfit(/datum/outfit/job/roguetown/viciousrite)
-		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 		spawn(40)
 			to_chat(target, span_cult("Break them."))
 
-/// Performs the war ritual, which requires a noble or inquisition member in the center of the circle. TRUE on success, FALSE on failure.
+/// Performs the war ritual, which requires a noble, clergy, or inquisition member in the center of the circle. TRUE on success, FALSE on failure.
 /obj/structure/ritualcircle/graggar/proc/perform_warritual()
 	var/mob/living/carbon/human/victim = null
 	for(var/mob/living/carbon/human/H in get_turf(src))
 		if(H.has_status_effect(/datum/status_effect/debuff/ritualdefiled))
 			continue
 
-		if(H.is_noble() || HAS_TRAIT(H, TRAIT_INQUISITION) || (H.mind?.assigned_role in list("Priest", "Templar", "Martyr")))
+		if(H.is_noble() || HAS_TRAIT(H, TRAIT_INQUISITION) || HAS_TRAIT(H, TRAIT_CLERGY))
 			victim = H
 			break
 
@@ -1508,11 +1507,13 @@
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
 	pants = /obj/item/clothing/under/roguetown/platelegs/graggar
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/graggar
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/graggar
 	gloves = /obj/item/clothing/gloves/roguetown/plate/graggar
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/graggar
-	neck = /obj/item/clothing/neck/roguetown/gorget/steel
+	neck = /obj/item/clothing/neck/roguetown/gorget/steel/graggar
 	cloak = /obj/item/clothing/cloak/graggar
 	r_hand = /obj/item/rogueweapon/greataxe/steel/doublehead/graggar
 
@@ -1562,13 +1563,15 @@
 	rituals = list(/datum/runeritual/silver_blessing::name = /datum/runeritual/silver_blessing)
 
 /datum/runeritual/silver_blessing
-	name = "Bless weapon"
+	name = "Rite of Silver-Blessing"
 	required_atoms = list(/obj/item/rogueweapon = 1)
 
 /datum/runeritual/silver_blessing/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	var/obj/item/rogueweapon/weapon = selected_atoms[1]
+	var/datum/component/silverbless/CP = weapon.GetComponent(/datum/component/silverbless)
 
-	if(weapon.GetComponent(/datum/component/silverbless))
+	if(!CP || CP.is_blessed)
+		loc.visible_message(span_warning("HIS rune pulses with a small flash of light, then falls dark. This weapon is not pure enough to be anointed."))
 		return FALSE
 
 	if(!do_after(user, 3 SECONDS))
@@ -1589,18 +1592,11 @@
 	loc.visible_message(span_cultsmall("[weapon] flares with a cold glimmer, having absorbed the sacrifice! [user] appears visibly drained and cold."))
 	playsound(loc, 'sound/magic/churn.ogg', 100, FALSE, -1)
 
-	weapon.AddComponent(\
-        /datum/component/silverbless,\
-        pre_blessed = BLESSING_PSYDONIAN,\
-        silver_type = SILVER_PSYDONIAN,\
-        added_force = 5,\
-        added_blade_int = 0,\
-        added_int = 50,\
-        added_def = 2,\
-    )
-	weapon.is_silver = TRUE
+	CP.try_bless(BLESSING_PSYDONIAN)
+	new /obj/effect/temp_visual/censer_dust(get_turf(loc))
 
 	user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 	user.apply_status_effect(/datum/status_effect/debuff/devitalised/lesser)
 
 	return TRUE
+

@@ -18,7 +18,7 @@
 	display_order = JDO_TEMPLAR
 
 	give_bank_account = TRUE
-	job_traits = list(TRAIT_RITUALIST, TRAIT_STEELHEARTED)
+	job_traits = list(TRAIT_RITUALIST, TRAIT_STEELHEARTED, TRAIT_CLERGY)
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
 	virtue_restrictions = list(/datum/virtue/utility/noble)
@@ -207,6 +207,7 @@
 		H.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
 	if(H.patron?.type == /datum/patron/divine/ravox)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		ADD_TRAIT(H, TRAIT_BATTLEMASTER, TRAIT_GENERIC)
 	if(H.patron?.type == /datum/patron/divine/xylix)
 		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
@@ -476,6 +477,7 @@
 		H.adjust_skillrank(/datum/skill/craft/smelting, 1, TRUE)
 	if(H.patron?.type == /datum/patron/divine/ravox)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
+		ADD_TRAIT(H, TRAIT_BATTLEMASTER, TRAIT_GENERIC)
 	if(H.patron?.type == /datum/patron/divine/xylix)
 		H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/misc/lockpicking, 1, TRUE)
