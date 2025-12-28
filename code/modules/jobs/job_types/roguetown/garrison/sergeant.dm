@@ -125,6 +125,7 @@
 				beltr = /obj/item/rogueweapon/mace/cudgel
 				beltl = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				backl = /obj/item/rogueweapon/shield/iron
+				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
 			if("Halberd & Heater")	//Halberd - basically exact same as MAA. It's a really valid build. Spear thrust + sword chop + bash. (Gets a Heater for secondary)
 				r_hand = /obj/item/rogueweapon/halberd
 				l_hand = /obj/item/rogueweapon/sword
