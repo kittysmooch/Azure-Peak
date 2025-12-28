@@ -34,7 +34,8 @@
 	penfactor = 40
 
 /datum/intent/axe/chop/battle/halberd
-	damfactor = 1.2 //36 on battleaxe
+	damfactor = 1.3
+	swingdelay = 12
 	penfactor = 20
 
 /datum/intent/axe/cut/battle
