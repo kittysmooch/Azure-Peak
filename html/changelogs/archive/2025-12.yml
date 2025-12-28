@@ -532,3 +532,18 @@
   - balance: Gave WW claws the axe swinging special (tee-hee)
   - balance: Jaked mauls giving them equal integrity to mace counterparts (except
       dwarf ones, still better)
+2025-12-28:
+  Baneuus:
+  - rscadd: Now it's possible to determine your bounty as Wretch or Bandit at Villain
+      Selection tab.
+  - bugfix: New druidic forms are now lowercase.
+  Ryan180602:
+  - qol: Revenants get leg wear and some markings.
+  SirSwagmeyer:
+  - rscadd: Deserter Cultural Sovl injection
+  - balance: Readjustment of Outlaw and Masked Lunatic wretch items and skills.
+  dopamiin0:
+  - rscadd: anything that can pick or pierce can be used to cook meat
+  - bugfix: pewter cups no longer burn the undead
+  - bugfix: crafting aragn essence properly consumes all ingredients
+  - bugfix: loadout items no longer delete themselves if your hands are full
