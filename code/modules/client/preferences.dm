@@ -561,8 +561,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "<font color = '#802929'>" : ""]OOC Notes:[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=ooc_notes;task=input'>Change</a>"
 
 			// Rumours / Gossip
-			dat += "<br><b>Rumours:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a> <a href='?_src_=prefs;preference=rumour;task=input'>Change</a>"
-			dat += "<br><b>Noble Gossip:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a> <a href='?_src_=prefs;preference=gossip;task=input'>Change</a>"
+			dat += "<br><b>Rumours & Noble Gossip:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><br><a href='?_src_=prefs;preference=rumour;task=input'>Set Rumours</a><a href='?_src_=prefs;preference=gossip;task=input'>Set Gossip</a><a href='?_src_=prefs;preference=rumour_preview;task=input'><i>Preview</i></a>"
 
 			dat += "<br><b>ERP Preferences:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=erpprefs;task=input'>Change</a>"
 			dat += "<br><b>Song:</b> <a href='?_src_=prefs;preference=ooc_extra;task=input'>Change URL</a>"
@@ -2077,6 +2076,23 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					preview_examine_panel.holder = user
 					preview_examine_panel.viewing = user
 					preview_examine_panel.ui_interact(user)
+
+				if("rumour_preview")
+					var/msg = ""
+					if(rumour && length(rumour))
+						var/rumour_display = rumour
+						rumour_display = html_encode(rumour_display)
+						rumour_display = parsemarkdown_basic(rumour_display, hyperlink = TRUE)
+						msg += "<b>You recall what you heard around Town about [real_name]...</b><br>[rumour_display]"
+					if(length(noble_gossip))
+						if(msg) 
+							msg += "<br><br>"
+						var/gossip_display = noble_gossip
+						gossip_display = html_encode(gossip_display)
+						gossip_display = parsemarkdown_basic(gossip_display, hyperlink = TRUE)
+						msg += "<b>You recall what the other Blue-bloods hushed about [real_name]...</b><br>[gossip_display]"
+					if(msg)
+						to_chat(user, "<span class='info'>[msg]</span>")
 
 				if("ooc_extra")
 					to_chat(user, "<span class='notice'>Add a link from a suitable host (catbox, etc) to an mp3 to embed in your flavor text.</span>")
