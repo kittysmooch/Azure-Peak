@@ -428,6 +428,8 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			msg += "<b>You recall what the other Blue-bloods hushed about [src]...</b><br>[gossip_display]"
 		if(msg)
 			to_chat(usr, "<span class='info'>[msg]</span>")
+		else	//Edge-case of there being ONLY noble gossip, but we aren't a noble.
+			to_chat(usr, "<span class='info'>Any tales of intrigue of this one are reserved to the nobility...</span>")
 		return
 
 	return ..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that. - I made it worse sorry guys.
