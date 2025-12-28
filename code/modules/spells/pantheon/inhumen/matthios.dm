@@ -303,7 +303,7 @@
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
 			return
 		if(totalvalue >=1001) //THE POWER OF MY STAND: 'EXPLODE AND DIE INSTANTLY'
-			target.visible_message(span_danger("[target]'s skin begins to SLOUGH AND BURN HORRIFICALLY!"), span_userdanger("MY BODY BURNS- AGONY!! MY HEART THRASHES IN MY CHEST..."))
+			target.visible_message(span_danger("[target]'s skin begins to SLOUGH AND BURN HORRIFICALLY, glowing like molten metal!"), span_userdanger("MY BODY BURNS- AGONY!! MY HEART THRASHES IN MY CHEST..."))
 			user.say("Power corrupts! YOUR FINAL TRANSACTION!!")
 			target.Stun(60)
 			target.emote("agony")
@@ -314,6 +314,10 @@
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
 			sleep(40)
 			target.visible_message(span_danger("[target] EXPLODES into coin and gem!"), span_userdanger("WEALTH. POWER. INTERCONNECTION. THE FINAL SIGHT UPON MYNE EYE IS A DRAGON'S MAW TEARING ME IN TWAIN. MY ENTRAILS ARE OF GOLD AND SILVER- AND I AM NEVERMORE."))
+			new /obj/item/roguecoin/silver/pile
+			new /obj/item/roguecoin/gold/pile
+			new /obj/item/roguegem/random
+			new /obj/item/roguegem/random
 			target.gib()
 			return
 
