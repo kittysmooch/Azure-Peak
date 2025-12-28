@@ -15,9 +15,9 @@
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
-	recharge_time = 5 SECONDS 
+	recharge_time = 5 SECONDS
 	miracle = TRUE
-	devotion_cost = 0 
+	devotion_cost = 0
 
 /obj/effect/proc_holder/spell/invoked/appraise/secular
 	name = "Secular Appraise"
@@ -142,7 +142,7 @@
 	revert_cast()
 	return FALSE
 
-// T2 We're going to debuff a targets stats = to the difference between us and them in total stats. 
+// T2 We're going to debuff a targets stats = to the difference between us and them in total stats.
 
 /obj/effect/proc_holder/spell/invoked/equalize
 	name = "Equalize"
@@ -291,13 +291,30 @@
 			target.Stun(40)
 			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 			return
-		if(totalvalue >= 501)
+		if(totalvalue <= 1000)
 			target.visible_message(span_danger("[target] is smited with holy light!"), span_userdanger("I feel the weight of my wealth rend my soul apart!"))
 			user.say("Your final transaction! The Free-God rebukes!!")
 			target.Stun(60)
 			target.emote("agony")
+			target.adjustFireLoss(140)
+			target.adjust_fire_stacks(9, /datum/status_effect/fire_handler/fire_stacks/divine)
+			target.ignite_mob()
 			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+			return
+		if(totalvalue >=1001) //THE POWER OF MY STAND: 'EXPLODE AND DIE INSTANTLY'
+			target.visible_message(span_danger("[target]'s skin begins to SLOUGH AND BURN HORRIFICALLY!"), span_userdanger("MY BODY BURNS- AGONY!! MY HEART THRASHES IN MY CHEST..."))
+			user.say("Power corrupts! YOUR FINAL TRANSACTION!!")
+			target.Stun(60)
+			target.emote("agony")
+			target.adjustFireLoss(140)
+			target.adjust_fire_stacks(9, /datum/status_effect/fire_handler/fire_stacks/divine)
+			target.ignite_mob()
+			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
+			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+			sleep(40)
+			target.visible_message(span_danger("[target] EXPLODES into coin and gem!"), span_userdanger("WEALTH. POWER. INTERCONNECTION. THE FINAL SIGHT UPON MYNE EYE IS A DRAGON'S MAW TEARING ME IN TWAIN. MY ENTRAILS ARE OF GOLD AND SILVER- AND I AM NEVERMORE."))
+			target.gib()
 			return
 
 
