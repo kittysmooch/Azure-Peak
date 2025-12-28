@@ -1975,11 +1975,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						ShowChoices(user)
 						return
 					if(length(new_rumour) > 400)
-						to_chat(user, "<span class='warning'>Rumours cannot exceed 400 characters.</span>")
+						to_chat(user, span_warning("Rumours cannot exceed 400 characters."))
 						ShowChoices(user)
 						return
 					rumour = new_rumour
-					to_chat(user, "<span class='notice'>Successfully updated Rumours</span>")
+					to_chat(user, span_notice("Successfully updated Rumours"))
 					log_game("[user] has set their rumour'.")
 
 				if("gossip")
@@ -1992,11 +1992,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						ShowChoices(user)
 						return
 					if(length(new_gossip) > 400)
-						to_chat(user, "<span class='warning'>Noble gossip cannot exceed 400 characters.</span>")
+						to_chat(user, span_notice("Noble gossip cannot exceed 400 characters."))
 						ShowChoices(user)
 						return
 					noble_gossip = new_gossip
-					to_chat(user, "<span class='notice'>Successfully updated Noble Gossip</span>")
+					to_chat(user, span_notice("Successfully updated Noble Gossip"))
 					log_game("[user] has set their noble gossip'.")
 
 				if("nsfwflavortext")
