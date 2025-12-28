@@ -387,6 +387,11 @@
 	desc = "This is my sanctuary. I can overpower any opposition that dares breach it."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/anthraxbuff
+	name = "Apex Predator"
+	desc = "These are my hunting grounds. My prey won't escape me."
+	icon_state = "buff"
+
 /datum/status_effect/buff/wardenbuff
 	id = "wardenbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/wardenbuff
@@ -413,6 +418,11 @@
 	id = "dungeoneerbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dungeoneerbuff
 	effectedstats = list(STATKEY_CON = 1,STATKEY_WIL = 1, STATKEY_STR = 2)//This only works in 2 small areas on the entire map
+
+/datum/status_effect/buff/anthraxbuff
+	id = "anthraxbuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/anthraxbuff
+	effectedstats = list(STATKEY_SPD = 3,STATKEY_PER = 1)
 
 /datum/status_effect/buff/guardbuffone/process()
 

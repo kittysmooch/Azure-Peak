@@ -310,6 +310,12 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
+/obj/item/clothing/suit/roguetown/armor/plate/fluted/shadowplate/npc //weaker drow npc variant, same stats as iron cuirass
+	name = "battered scourge breastplate"
+	desc = "More form over function, this armor was never meant for combat and it shows, years of battle having rendered it weak and ineffective."
+	body_parts_covered = CHEST | VITALS | LEGS
+	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
+
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/ordinator
 	name = "inquisitorial ordinator's plate"
 	desc = "A relic that is said to have survived the Grenzelhoft-Otavan war, refurbished and repurposed to slay the arch-enemy in the name of Psydon. <br> A fluted cuirass that has been reinforced with thick padding and an additional shoulder piece. You will endure."
