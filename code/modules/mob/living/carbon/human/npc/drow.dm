@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 	l_hand = /obj/item/rogueweapon/shield/tower/spidershield
 	r_hand = /obj/item/rogueweapon/whip
 	if(prob(40))
-		r_hand = /obj/item/rogueweapon/sword/sabre/stalker	//change this to drow falx
+		r_hand = /obj/item/rogueweapon/sword/falx/stalker
 	
 	if(prob(30))
 		shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
@@ -146,8 +146,8 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 		mask = /obj/item/clothing/mask/rogue/shepherd/shadowmask/delf
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
-		r_hand = /obj/item/rogueweapon/sword/sabre/stalker //change these to drow falx
-		l_hand = /obj/item/rogueweapon/sword/sabre/stalker
+		r_hand = /obj/item/rogueweapon/sword/falx/stalker
+		l_hand = /obj/item/rogueweapon/sword/falx/stalker
 
 	H.STASTR = 12 // 6 Points
 	H.STASPD = 13 // 3 points
