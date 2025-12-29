@@ -146,6 +146,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 		mask = /obj/item/clothing/mask/rogue/shepherd/shadowmask/delf
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
+		head = null
 		r_hand = /obj/item/rogueweapon/sword/falx/stalker
 		l_hand = /obj/item/rogueweapon/sword/falx/stalker
 

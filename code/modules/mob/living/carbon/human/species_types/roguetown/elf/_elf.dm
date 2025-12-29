@@ -21,7 +21,7 @@
 		/datum/language/elvish
 	)
 
-/datum/species/elf/check_roundstart_eligible()
+/datum/species/elf/check_roundstart_eligible() //honest to god don't know why this was missing, will remove it after im done with testing
 	return TRUE
 
 /datum/species/elf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
