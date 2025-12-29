@@ -2,7 +2,8 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 150
 	anchored = TRUE
-	plane = GAME_PLANE_UPPER
+	layer = LYING_MOB_LAYER
+	plane = GAME_PLANE
 
 /obj/structure/flora/Initialize()
 	. = ..()
@@ -349,6 +350,7 @@
 /obj/structure/flora/rock/pile
 	icon_state = "lavarocks"
 	desc = ""
+	density = FALSE
 
 //Jungle grass
 

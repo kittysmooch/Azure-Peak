@@ -12,6 +12,7 @@
 	blade_dulling = DULLING_CUT
 	pixel_x = -16
 	layer = 4.81
+	plane = GAME_PLANE_UPPER
 	attacked_sound = 'sound/misc/woodhit.ogg'
 	destroy_sound = 'sound/misc/woodhit.ogg'
 	debris = list(/obj/item/grown/log/tree/stick = 2)
@@ -279,6 +280,8 @@
 
 	if(isliving(AM))
 		var/mob/living/L = AM
+		if(L.is_flying()) //you won't rustle things if you're flying above them
+			return
 		if(L.m_intent == MOVE_INTENT_SNEAK)
 			return
 		else
@@ -621,7 +624,7 @@
 // swarmpweed bush -- STONEKEEP PORT
 /obj/structure/flora/roguegrass/swampweed
 	name = "bunch of swampweed"
-	desc = "a green root good for smoking."
+	desc = "A green root good for smoking."
 	icon_state = "swampweed1"
 	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 1
@@ -789,3 +792,5 @@
 /obj/structure/flora/roguetree/pine/dead/Initialize()
 	. = ..()
 	icon_state = "dead[rand(1, 3)]"
+
+#undef SEARCHTIME

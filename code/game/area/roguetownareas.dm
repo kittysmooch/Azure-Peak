@@ -31,8 +31,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 		guy.apply_status_effect(/datum/status_effect/buff/barkeepbuff)
 	if((src.warden_area == TRUE) && HAS_TRAIT(guy, TRAIT_WOODSMAN) && !guy.has_status_effect(/datum/status_effect/buff/wardenbuff)) // Warden
 		guy.apply_status_effect(/datum/status_effect/buff/wardenbuff)
-	if((src.cell_area == TRUE) && HAS_TRAIT(guy, TRAIT_DUNGEONMASTER) && !guy.has_status_effect(/datum/status_effect/buff/dungeoneerbuff)) // Dungeoneer
-		guy.apply_status_effect(/datum/status_effect/buff/dungeoneerbuff)
 	if((src.drow_area == TRUE) && HAS_TRAIT(guy, TRAIT_ANTHRAXI) && !guy.has_status_effect(/datum/status_effect/buff/anthraxbuff)) // Drow Mercenaries
 		guy.apply_status_effect(/datum/status_effect/buff/anthraxbuff)
 	if((src.holy_area == TRUE) && HAS_TRAIT(guy, TRAIT_UNDIVIDED)) // get a long-lingering mood buff so long as we visit the church daily as Undivided.
@@ -223,14 +221,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	spookysounds = SPOOKY_CAVE
 	spookynight = SPOOKY_GEN
 
-/area/rogue/under/cave/dungeon1
-	name = "smalldungeon1"
-	icon_state = "spider"
-	droning_sound = 'sound/music/area/dungeon.ogg'
-	droning_sound_dusk = null
-	droning_sound_night = null
-	converted_type = /area/rogue/outdoors/dungeon1
-
 /area/rogue/under/cave/licharena
 	name = "lich's domain"
 	icon_state = "under"
@@ -238,7 +228,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/dragonden.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	converted_type = /area/rogue/outdoors/dungeon1
 	ceiling_protected = TRUE
 	detail_text = DETAIL_TEXT_LICH_DOMAIN
 
@@ -254,15 +243,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	icon_state = "spidercave"
 	first_time_text = "ABANDONED MANOR"
 	droning_sound = 'sound/music/area/dungeon2.ogg'
-	droning_sound_dusk = null
-	droning_sound_night = null
-	converted_type = /area/rogue/outdoors/dungeon1
-	ceiling_protected = TRUE
-
-/area/rogue/outdoors/dungeon1
-	name = "smalldungeonoutdoors"
-	icon_state = "spidercave"
-	droning_sound = 'sound/music/area/dungeon.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
 	ceiling_protected = TRUE

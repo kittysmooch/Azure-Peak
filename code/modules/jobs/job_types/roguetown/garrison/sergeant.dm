@@ -35,7 +35,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(ishuman(L))
-			if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+			if(istype(H.cloak, /obj/item/clothing/cloak/tabard/stabard/surcoat/guard))
 				var/obj/item/clothing/S = H.cloak
 				var/index = findtext(H.real_name, " ")
 				if(index)
@@ -47,9 +47,10 @@
 //All skills/traits are on the loadouts. All are identical. Welcome to the stupid way we have to make sub-classes...
 /datum/outfit/job/roguetown/sergeant
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	cloak = /obj/item/clothing/cloak/tabard/stabard/surcoat/guard
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
+	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes
 	belt = /obj/item/storage/belt/rogue/leather
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	gloves = /obj/item/clothing/gloves/roguetown/plate/iron
@@ -88,6 +89,7 @@
 		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_MASTER,	// We are basically identical to a regular MAA, except having better athletics to help us manage our order usage better
+		/datum/skill/misc/swimming = SKILL_LEVEL_EXPERT, //John Athlete apparently
 		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,	//Decent tracking akin to Skirmisher.
 	)
@@ -99,7 +101,6 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/takeaim)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/onfeet)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/hold)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/focustarget)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard) // We'll just use Watchmen as sorta conscripts yeag?
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/proc/haltyell, /mob/living/carbon/human/mind/proc/setorders)
 	backpack_contents = list(
@@ -122,6 +123,7 @@
 			if("Flail & Shield")	//Tower-shield, higher durability wood shield w/ more coverage. Plus a steel flail; maybe.. less broken that a steel mace?
 				beltr = /obj/item/rogueweapon/flail/sflail
 				backl = /obj/item/rogueweapon/shield/tower
+				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, 4, TRUE)
 			if("Halberd")			//Halberd - basically exact same as MAA. It's a really valid build. Spear thrust + sword chop + bash.
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
@@ -367,68 +369,6 @@
 	. = ..()
 	to_chat(owner, span_blue("My officer orders me to hold!"))
 
-#define TARGET_FILTER "target_marked"
-
-/obj/effect/proc_holder/spell/invoked/order/focustarget
-	name = "Focus target!"
-	desc = "Tells your underlings to target a vulnerable spot on the enemy. Applies Crit vulnerability on enemy and gives them -2 Fortune."
-	overlay_state = "focustarget"
-
-
-/obj/effect/proc_holder/spell/invoked/order/focustarget/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/msg = user.mind.focustargettext
-		if(!msg)
-			to_chat(user, span_alert("I must say something to give an order!"))
-			return
-		if(target == user)
-			to_chat(user, span_alert("I cannot order myself to be killed!"))
-			return
-		if(HAS_TRAIT(target, TRAIT_CRITICAL_WEAKNESS))
-			to_chat(user, span_alert("They are already vulnerable!"))
-			return
-		user.say("[msg]")
-		target.apply_status_effect(/datum/status_effect/debuff/order/focustarget)
-		return TRUE
-	revert_cast()
-	return FALSE
-
-/datum/status_effect/debuff/order/focustarget
-	id = "focustarget"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/order/focustarget
-	effectedstats = list(STATKEY_LCK = -2)
-	duration = 1 MINUTES
-	var/outline_colour = "#69050a"
-
-/atom/movable/screen/alert/status_effect/debuff/order/focustarget
-	name = "Targetted"
-	desc = "A officer has marked me for death!"
-	icon_state = "targetted"
-
-/datum/status_effect/debuff/order/focustarget/on_apply()
-	. = ..()
-	var/filter = owner.get_filter(TARGET_FILTER)
-	to_chat(owner, span_alert("I have been marked for death by a officer!"))
-	ADD_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	if (!filter)
-		owner.add_filter(TARGET_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 200, "size" = 1))
-	return TRUE
-
-/datum/status_effect/debuff/order/focustarget/on_remove()
-	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
-	owner.remove_filter(TARGET_FILTER)
-
-
-/obj/effect/proc_holder/spell/invoked/order/focustarget
-	name = "Focus target!"
-	overlay_state = "focustarget"
-
-
-#undef TARGET_FILTER
-
 
 /mob/living/carbon/human/mind/proc/setorders()
 	set name = "Rehearse Orders"
@@ -447,9 +387,5 @@
 		return
 	mind.onfeettext = input("Send a message.", "On your feet!") as text|null
 	if(!mind.onfeettext)
-		to_chat(src, "I must rehearse something for this order...")
-		return
-	mind.focustargettext = input("Send a message.", "Focus Target!") as text|null
-	if(!mind.focustargettext)
 		to_chat(src, "I must rehearse something for this order...")
 		return
