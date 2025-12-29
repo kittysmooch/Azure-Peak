@@ -59,7 +59,7 @@
 	if(!bclass)
 		return FALSE
 	if(bclass == BCLASS_PIERCE)
-		return TRUE
+		return FALSE
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
