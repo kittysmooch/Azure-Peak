@@ -1,12 +1,19 @@
 	
 
 /mob/living
+	/// Strength.
 	var/STASTR = 10
+	/// Perception.
 	var/STAPER = 10
+	/// Intelligence.
 	var/STAINT = 10
+	/// Constitution.
 	var/STACON = 10
+	/// Willpower.
 	var/STAWIL = 10
+	/// Speed.
 	var/STASPD = 10
+	/// Luck.
 	var/STALUC = 10
 	//buffers, the 'true' amount of each stat
 	var/BUFSTR = 0
