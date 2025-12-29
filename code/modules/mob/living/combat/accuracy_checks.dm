@@ -33,7 +33,7 @@
 		chance2hit += 10
 
 	if(check_face_subzone(zone) && used_intent.blade_class != BCLASS_PEEL && target.mind)	//Are we targeting the face of a player mob?
-		chance2hit -= 30
+		chance2hit -= 24	// -3 PER, feel free to adjust if face attacks get too real.
 
 	chance2hit += (user.get_skill_level(associated_skill) * 8)
 
