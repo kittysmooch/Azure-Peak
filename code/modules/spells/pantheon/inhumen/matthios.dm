@@ -303,22 +303,41 @@
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
 			return
 		if(totalvalue >=1001) //THE POWER OF MY STAND: 'EXPLODE AND DIE INSTANTLY'
-			target.visible_message(span_danger("[target]'s skin begins to SLOUGH AND BURN HORRIFICALLY, glowing like molten metal!"), span_userdanger("MY BODY BURNS- AGONY!! MY HEART THRASHES IN MY CHEST..."))
-			user.say("Power corrupts! YOUR FINAL TRANSACTION!!")
-			target.Stun(60)
+			target.visible_message(span_danger("[target]'s skin begins to SLOUGH AND BURN HORRIFICALLY, glowing like molten metal!"), span_userdanger("MY LIMBS BURN IN AGONY..."))
+			user.say("Wealth beyond measure- YOUR FINAL TRANSACTION!!")
+			target.Stun(80)
 			target.emote("agony")
-			target.adjustFireLoss(140)
+			target.adjustFireLoss(50)
 			target.adjust_fire_stacks(9, /datum/status_effect/fire_handler/fire_stacks/divine)
 			target.ignite_mob()
 			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
 			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
-			sleep(40)
-			target.visible_message(span_danger("[target] EXPLODES into coin and gem!"), span_userdanger("WEALTH. POWER. INTERCONNECTION. THE FINAL SIGHT UPON MYNE EYE IS A DRAGON'S MAW TEARING ME IN TWAIN. MY ENTRAILS ARE OF GOLD AND SILVER- AND I AM NEVERMORE."))
-			new /obj/item/roguecoin/silver/pile
-			new /obj/item/roguecoin/gold/pile
-			new /obj/item/roguegem/random
-			new /obj/item/roguegem/random
-			target.gib()
+			sleep(80)
+
+			target.visible_message(span_danger("[target]'s limbs REND into coin and gem!"), span_userdanger("WEALTH. POWER. THE FINAL SIGHT UPON MYNE EYE IS A DRAGON'S MAW TEARING ME IN TWAIN. MY ENTRAILS ARE OF GOLD AND SILVER."))
+			playsound(user, 'sound/magic/churn.ogg', 100, TRUE)
+			playsound(user, 'sound/magic/whiteflame.ogg', 100, TRUE)
+			explosion(get_turf(target), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+			new /obj/item/roguecoin/silver/pile(target.loc)
+			new /obj/item/roguecoin/gold/pile(target.loc)
+			new /obj/item/roguegem/random(target.loc)
+			new /obj/item/roguegem/random(target.loc)
+
+			var/list/possible_limbs = list()
+			for(var/zone in list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
+				var/obj/item/bodypart/limb = target.get_bodypart(zone)
+				if(limb)
+					possible_limbs += limb
+				var/limbs_to_gib = min(rand(1, 4), possible_limbs.len)
+				for(var/i in 1 to limbs_to_gib)
+					var/obj/item/bodypart/selected_limb = pick(possible_limbs)
+					possible_limbs -= selected_limb
+					if(selected_limb?.drop_limb())
+						var/turf/limb_turf = get_turf(selected_limb) || get_turf(target) || target.drop_location()
+						if(limb_turf)
+							new /obj/effect/decal/cleanable/blood/gibs/limb(limb_turf)
+
+			target.death()
 			return
 
 
