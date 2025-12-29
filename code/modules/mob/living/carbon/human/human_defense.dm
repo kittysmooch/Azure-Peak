@@ -56,7 +56,7 @@
 					protection = layers[C]
 			if(mind)
 				if(protection > 0)
-					intdamage -= intdamage * ((protection / 2.5) / 100)	//Reduces it up to 60% (100 dmg -> 40 dmg at Blunt S armor (100))
+					intdamage -= intdamage * ((protection / 1.66) / 100)	//Reduces it up to 60% (100 dmg -> 40 dmg at Blunt S armor (100))
 		if(intdamfactor != 1)
 			intdamage *= intdamfactor
 		var/layers_deep = 1
