@@ -21,7 +21,7 @@
 		/datum/language/elvish
 	)
 
-/datum/species/dwarf/mountain/check_roundstart_eligible()
+/datum/species/elf/check_roundstart_eligible()
 	return TRUE
 
 /datum/species/elf/on_species_gain(mob/living/carbon/C, datum/species/old_species)
