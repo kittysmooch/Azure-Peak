@@ -119,12 +119,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	jobspawn_override = list("Grenzelhoft Mercenary")
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/anthraxlate
-	name = "Anthraxlate"
-	icon_state = "arrow"
-	jobspawn_override = list("Black Venom", "Anthrax Assassin")
-	delete_after_roundstart = FALSE
-
 /obj/effect/landmark/start/mercenarylate
 	name = "Mercenarylate"
 	icon_state = "arrow"
@@ -329,11 +323,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/gravedigger
 	name = "Mortician"
 	icon_state = "arrow"
-
-/obj/effect/landmark/start/anthrax
-	name = "Anthrax"
-	icon_state = "arrow"
-	jobspawn_override = list("Black Venom", "Anthrax Assassin")
 
 /obj/effect/landmark/start/mercenary
 	name = "Mercenary"
