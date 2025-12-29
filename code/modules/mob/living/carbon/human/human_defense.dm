@@ -57,17 +57,20 @@
 			if(mind)
 				if(protection > 0)
 					intdamage -= intdamage * ((protection / 1.66) / 100)	//Reduces it up to 60% (100 dmg -> 40 dmg at Blunt S armor (100))
-		if(intdamfactor != 1)
-			intdamage *= intdamfactor
-		var/layers_deep = 1
-		for(var/obj/item/clothing/C in layers)
-			var/actualdmg = intdamage
-			actualdmg /= layers_deep
-			C.take_damage(actualdmg, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
-			layers_deep++
+			if(intdamfactor != 1)
+				intdamage *= intdamfactor
+			var/layers_deep = 1
+			for(var/obj/item/clothing/C in layers)
+				var/actualdmg = intdamage
+				actualdmg /= layers_deep
+				C.take_damage(actualdmg, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
+				layers_deep++
+			layers.Cut()
+		
 
 	if(physiology)
 		protection += physiology.armor.getRating(d_type)
+	
 	return protection
 
 /mob/living/carbon/human/proc/checkcritarmor(def_zone, bclass)
