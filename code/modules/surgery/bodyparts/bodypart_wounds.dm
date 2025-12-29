@@ -140,6 +140,8 @@
 			acheck_dflag = "slash"
 		if(BCLASS_PICK, BCLASS_STAB)
 			acheck_dflag = "stab"
+		if(BCLASS_PIERCE)
+			acheck_dflag = "piercing"
 	armor = owner.run_armor_check(zone_precise, acheck_dflag, damage = 0)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
