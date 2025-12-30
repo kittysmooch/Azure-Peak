@@ -126,6 +126,10 @@
 	if(!ishuman(target))
 		revert_cast()
 		return FALSE
+	
+	if(target.cmode)
+		revert_cast
+		return FALSE
 
 	if(istype(target.patron, /datum/patron/old_god))
 		to_chat(user, span_warning("[target] is already a faithful of Psydon!"))
