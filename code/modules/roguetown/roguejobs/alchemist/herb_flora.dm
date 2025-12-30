@@ -18,7 +18,8 @@
 	GLOB.herb_locations |= src
 	loot_replenish()
 
-/obj/structure/flora/roguegrass/herb/examine()
+/obj/structure/flora/roguegrass/herb/examine(mob/user)
+	. = ..()
 	. += span_notice("This is a potentially useful herb!")
 
 /obj/structure/flora/roguegrass/herb/Destroy()
