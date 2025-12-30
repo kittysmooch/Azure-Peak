@@ -15,9 +15,11 @@
 
 /obj/structure/flora/roguegrass/herb/Initialize()
 	. = ..()
-	. += span_notice("This is a potentially useful herb!")
 	GLOB.herb_locations |= src
 	loot_replenish()
+
+/obj/structure/flora/roguegrass/herb/examine()
+	. += span_notice("This is a potentially useful herb!")
 
 /obj/structure/flora/roguegrass/herb/Destroy()
 	. = ..()
