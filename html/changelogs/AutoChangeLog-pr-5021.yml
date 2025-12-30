@@ -1,0 +1,4 @@
+author: "FreeStylaLT"
+delete-after: True
+changes:
+  - balance: "NPCs can no longer deflect thrown items, such as tossblades."
