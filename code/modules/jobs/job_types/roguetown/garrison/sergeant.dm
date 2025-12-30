@@ -68,8 +68,8 @@
 	category_tags = list(CTAG_SERGEANT)
 	subclass_stats = list(
 		STATKEY_STR = 2,
-		STATKEY_INT = 1,
-		STATKEY_CON = 1,
+		STATKEY_INT = 2,
+		STATKEY_CON = 2,//Glorified footman
 		STATKEY_PER = 1, //Gets bow-skills, so give a SMALL tad of perception to aid in bow draw.
 		STATKEY_WIL = 1,
 	)
