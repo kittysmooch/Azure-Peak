@@ -60,10 +60,14 @@
 			if(intdamfactor != 1)
 				intdamage *= intdamfactor
 			var/layers_deep = 1
+			var/played_sound = FALSE
 			for(var/obj/item/clothing/C in layers)
 				var/actualdmg = intdamage
 				actualdmg /= layers_deep
 				C.take_damage(actualdmg, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
+				if(C.blocksound && !played_sound)
+					playsound(loc, get_armor_sound(C.blocksound, blade_dulling), 100)
+					played_sound = TRUE
 				layers_deep++
 			layers.Cut()
 		
