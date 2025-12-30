@@ -829,7 +829,7 @@
 
 /obj/structure/fluff/statue
 	name = "statue"
-	desc = "A work of stone designed to move living minds."
+	desc = "Dead stone designed to compel living minds."
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	icon_state = "bstatue"
 	density = FALSE
@@ -1000,7 +1000,7 @@
 
 /obj/structure/fluff/statue/tdummy
 	name = "practice dummy"
-	desc = "Rough fabric wrapped around an interior of plant fibre. Used for practice, or when one just has some \
+	desc = "Rough fabric wrapped around an interior of plant fibre. Used for practice, or for when one just has some \
 	feelings to vent out."
 	icon_state = "p_dummy"
 	icon = 'icons/roguetown/misc/structure.dmi'
