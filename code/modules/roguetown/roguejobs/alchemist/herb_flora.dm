@@ -1,6 +1,6 @@
 /obj/structure/flora/roguegrass/herb
 	name = "herbbush"
-	desc = "A bush,for an herb. This shouldn't show up."
+	desc = "A bush, for a herb. This shouldn't show up."
 	icon = 'icons/roguetown/misc/herbfoliage.dmi'
 	icon_state = "spritemeplz"
 	var/res_replenish
@@ -15,7 +15,7 @@
 
 /obj/structure/flora/roguegrass/herb/Initialize()
 	. = ..()
-	desc = "An herb. This one looks like [name]."
+	desc = "A herb. This one looks like [name]."
 	GLOB.herb_locations |= src
 	loot_replenish()
 
