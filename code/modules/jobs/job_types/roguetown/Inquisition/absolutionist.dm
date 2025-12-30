@@ -128,7 +128,7 @@
 		return FALSE
 	
 	if(target.cmode)
-		revert_cast
+		revert_cast()
 		return FALSE
 
 	if(istype(target.patron, /datum/patron/old_god))

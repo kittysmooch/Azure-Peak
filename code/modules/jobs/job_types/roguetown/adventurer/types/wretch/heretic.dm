@@ -430,7 +430,7 @@
 		return FALSE
 	
 	if(target.cmode)
-		revert_cast
+		revert_cast()
 		return FALSE
 
 	//This SHOULD stop most heretics from being convertible and self-curing should they somehow get cursed in the future.

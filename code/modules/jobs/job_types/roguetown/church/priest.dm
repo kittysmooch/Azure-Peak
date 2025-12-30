@@ -682,7 +682,7 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 		return FALSE
 
 	if(target.cmode)
-		revert_cast
+		revert_cast()
 		return FALSE
 
 	if(!HAS_TRAIT(target, TRAIT_HERESIARCH))
