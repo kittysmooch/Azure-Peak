@@ -940,7 +940,7 @@
 
 /obj/structure/fluff/statue/myth
 	icon_state = "myth"
-	desc = "A statue with wildly exaggerated proportions. It seems old."
+	desc = "A statue with wildly exaggerated proportions."
 	density = TRUE
 
 /obj/structure/fluff/statue/psy
