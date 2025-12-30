@@ -134,11 +134,11 @@
 	H.verbs |= /mob/proc/haltyell
 
 	if(H.mind)
-		var/armor_options = list("Brigandine Set", "Maille Set")
+		var/armor_options = list("Light Brigandine Set", "Maille Set")
 		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
 
 		switch(armor_choice)
-			if("Brigandine Set")
+			if("Light Brigandine Set")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				wrists = /obj/item/clothing/wrists/roguetown/splintarms
