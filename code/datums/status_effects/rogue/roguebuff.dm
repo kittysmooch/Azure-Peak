@@ -1843,6 +1843,7 @@
 	. = ..()
 	to_chat(owner, span_warning("I fall back to the ground."))
 	owner.movement_type = GROUND
+
 /datum/status_effect/buff/ravox_vow
 	id = "ravox_vow"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_vow
@@ -1896,7 +1897,7 @@
 	if(target.fire_stacks >= 3)
 		return
 
-	target.adjust_fire_stacks(1)
+	target.adjust_fire_stacks(1, /datum/status_effect/fire_handler/fire_stacks/divine)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living, ignite_mob))
 
 /datum/status_effect/buff/ravox_vow/on_remove()
