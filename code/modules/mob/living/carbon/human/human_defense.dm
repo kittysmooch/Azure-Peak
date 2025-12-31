@@ -36,17 +36,25 @@
 					purge_peel(99)
 			if(used.blocksound)
 				playsound(loc, get_armor_sound(used.blocksound, blade_dulling), 100)
+        
 			// Penetrative damage deals significantly less to the armor. Tentative.
 			if((damage + armor_penetration) > protection)
 				intdamage = (damage + armor_penetration) - protection
+        
 			if(intdamfactor != 1)
 				intdamage *= intdamfactor
+        
 			if(istype(used_weapon) && used_weapon.is_silver && ((used.smeltresult in list(/obj/item/ingot/aaslag, /obj/item/ingot/aalloy, /obj/item/ingot/purifiedaalloy)) || used.GetComponent(/datum/component/cursed_item)))
 				// Blessed silver delivers more int damage against "cursed" alloys, see component for multiplier values
 				var/datum/component/silverbless/bless = used_weapon.GetComponent(/datum/component/silverbless)
 				if(bless.is_blessed)
 					// Apply multiplier if the blessing is active.
 					intdamage = round(intdamage * bless.cursed_item_intdamage)
+          
+      var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
+      if(tempo_bonus)
+        intdamage *= tempo_bonus
+          
 			used.take_damage(intdamage, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
 	else
 		var/list/layers = get_best_worn_armor_layered(def_zone, d_type)
@@ -59,6 +67,11 @@
 					intdamage -= intdamage * ((protection / 1.66) / 100)	//Reduces it up to 60% (100 dmg -> 40 dmg at Blunt S armor (100))
 			if(intdamfactor != 1)
 				intdamage *= intdamfactor
+        
+      var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
+      if(tempo_bonus)
+        intdamage *= tempo_bonus
+        
 			var/layers_deep = 1
 			var/played_sound = FALSE
 			for(var/obj/item/clothing/C in layers)
@@ -81,7 +94,7 @@
 	if(!bclass)
 		return FALSE
 	if(bclass == BCLASS_PIERCE)
-		return TRUE
+		return FALSE
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
 		def_zone = CBP.body_zone
@@ -233,7 +246,7 @@
 
 	//Thrown item deflection -- this RETURNS if successful!
 	var/obj/item/W = get_active_held_item()
-	if(!blocked && I && cmode)
+	if(!blocked && I && cmode && mind)
 		if(W && get_dir(src, AM) == turn(get_dir(AM, src), 180))	//We are directly facing the thrown item.
 			var/diceroll = (get_skill_level(W.associated_skill)) * 10
 			if(projectile_parry_timer > world.time)
