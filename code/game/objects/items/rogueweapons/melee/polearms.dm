@@ -23,7 +23,7 @@
 	penfactor = 50
 	clickcd = CLICK_CD_RESIST
 	effective_range = null
-	effective_range_type = null
+	effective_range_type = EFF_RANGE_NONE
 	sharpness_penalty = 3
 
 /datum/intent/spear/thrust/militia
