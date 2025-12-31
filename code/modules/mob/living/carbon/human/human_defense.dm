@@ -50,11 +50,11 @@
 				if(bless.is_blessed)
 					// Apply multiplier if the blessing is active.
 					intdamage = round(intdamage * bless.cursed_item_intdamage)
-          
-      var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
-      if(tempo_bonus)
-        intdamage *= tempo_bonus
-          
+				
+			var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
+			if(tempo_bonus)
+				intdamage *= tempo_bonus
+				
 			used.take_damage(intdamage, damage_flag = d_type, sound_effect = FALSE, armor_penetration = 100)
 	else
 		var/list/layers = get_best_worn_armor_layered(def_zone, d_type)
@@ -68,9 +68,9 @@
 			if(intdamfactor != 1)
 				intdamage *= intdamfactor
         
-      var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
-      if(tempo_bonus)
-        intdamage *= tempo_bonus
+			var/tempo_bonus = get_tempo_bonus(TEMPO_TAG_ARMOR_INTEGFACTOR)
+			if(tempo_bonus)
+				intdamage *= tempo_bonus
         
 			var/layers_deep = 1
 			var/played_sound = FALSE
