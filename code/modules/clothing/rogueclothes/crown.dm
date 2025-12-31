@@ -52,6 +52,7 @@
 				S.repeat_message(input_text, src, usedcolor)
 			for(var/obj/item/listenstone/S in SSroguemachine.scomm_machines)
 				S.repeat_message(input_text, src, usedcolor)
+			SSroguemachine.crown?.repeat_message(input_text, src, usedcolor)
 
 			GLOB.broadcast_list += list(list(
 			"message"   = input_text,
@@ -68,6 +69,7 @@
 			for(var/obj/structure/roguemachine/scomm/S in SSroguemachine.scomm_machines)
 				if(S.garrisonline)
 					S.repeat_message(input_text, src, usedcolor)
+			SSroguemachine.crown?.repeat_message(input_text, src, usedcolor)
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/attack_self(mob/living/user)
 	if(.)
@@ -94,8 +96,6 @@
 	update_icon()
 
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/repeat_message(message, atom/A, tcolor, message_language)
-	if(A == src)
-		return
 	if(!ismob(loc))
 		return
 	if(tcolor)
