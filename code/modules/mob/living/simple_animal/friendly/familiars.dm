@@ -439,7 +439,7 @@
 
 /mob/living/simple_animal/pet/familiar/ripplefox
 	name = "Ripplefox"
-	desc = "They flickers when not directly observed. Leaves no tracks. You're not always sure they're still nearby."
+	desc = "They flicker when not directly observed. Leaves no tracks. You're not always sure they're still nearby."
 	summoning_emote = "A ripple in the air becomes a sleek fox, their fur twitching between shades of color as they pads forth."
 	animal_species = "Ripplefox"
 	buff_given = /datum/status_effect/buff/familiar/subtle_slip
