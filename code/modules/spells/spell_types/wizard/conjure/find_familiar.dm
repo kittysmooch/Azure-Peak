@@ -313,7 +313,9 @@
 		qdel(awakener)
 		return
 
-	chosen_one.mind.transfer_to(awakener, 1)
+	if (chosen_one.ckey)
+		awakener.ckey = chosen_one.ckey
+
 	var/datum/mind/mind_datum = awakener.mind
 	if (!mind_datum)
 		to_chat(user, span_warning("Familiar summoning failed: Mind transfer failed."))
