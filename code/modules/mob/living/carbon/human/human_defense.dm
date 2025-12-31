@@ -40,7 +40,7 @@
 			intdamage = (damage + armor_penetration) - protection
 		if(intdamfactor != 1)
 			intdamage *= intdamfactor
-		if(d_type == "blunt")
+		if(d_type == "blunt" && mind)
 			if(used.armor?.getRating("blunt") > 0)
 				var/bluntrating = used.armor.getRating("blunt")
 				intdamage -= intdamage * ((bluntrating / 2) / 100)	//Half of the blunt rating reduces blunt damage taken by %-age.
@@ -60,6 +60,8 @@
 
 /mob/living/carbon/human/proc/checkcritarmor(def_zone, bclass)
 	if(!bclass)
+		return FALSE
+	if(bclass == BCLASS_PIERCE)
 		return FALSE
 	if(isbodypart(def_zone))
 		var/obj/item/bodypart/CBP = def_zone
@@ -212,7 +214,7 @@
 
 	//Thrown item deflection -- this RETURNS if successful!
 	var/obj/item/W = get_active_held_item()
-	if(!blocked && I && cmode)
+	if(!blocked && I && cmode && mind)
 		if(W && get_dir(src, AM) == turn(get_dir(AM, src), 180))	//We are directly facing the thrown item.
 			var/diceroll = (get_skill_level(W.associated_skill)) * 10
 			if(projectile_parry_timer > world.time)

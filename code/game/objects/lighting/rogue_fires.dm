@@ -421,6 +421,11 @@
 	var/mob/living/carbon/human/lastuser
 	var/datum/looping_sound/boilloop/boilloop
 
+/obj/machinery/light/rogue/hearth/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Hearths must be fuelled occasionally to continue burning. They can be dowsed with a container of liquid \
+	on <b>SPLASH</b> intent to save fuel.")
+
 /obj/machinery/light/rogue/hearth/Initialize()
 	boilloop = new(src, FALSE)
 	. = ..()
@@ -740,7 +745,8 @@
 
 /obj/item/mobilestove
 	name = "packed stove"
-	desc = "A portable bronze stovetop. The underside is covered in an esoteric pattern of small tubes. Whatever heats the hob is hidden inside the body of the device"
+	desc = "A portable bronze stovetop. The underside is covered in an esoteric pattern of small tubes. Whatever heats \
+	the hob is hidden inside the body of the device."
 	icon = 'icons/roguetown/misc/lighting.dmi'
 	icon_state = "hobostovep"
 	w_class = WEIGHT_CLASS_NORMAL

@@ -56,8 +56,10 @@
 		var/honorary = "Ser"
 		if(should_wear_femme_clothes(H))
 			honorary = "Dame"
-		H.real_name = "[honorary] [prev_real_name]"
-		H.name = "[honorary] [prev_name]"
+		// check if they already have it to avoid stacking titles
+		if(findtextEx(H.real_name, "[honorary] ") == 0)
+			H.real_name = "[honorary] [prev_real_name]"
+			H.name = "[honorary] [prev_name]"
 
 		for(var/X in peopleknowme)
 			for(var/datum/mind/MF in get_minds(X))
@@ -78,8 +80,8 @@
 		STATKEY_CON = 2,
 		STATKEY_WIL = 2,
 		STATKEY_INT = 2,
-		STATKEY_PER = 1,
-		STATKEY_LCK = 1
+		STATKEY_PER = 2,
+		STATKEY_LCK = 2
 	)
 	subclass_skills = list(
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
