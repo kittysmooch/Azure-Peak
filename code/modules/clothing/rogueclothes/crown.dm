@@ -28,6 +28,15 @@
 		SSroguemachine.scomm_machines += src
 	become_hearing_sensitive()
 
+/obj/item/clothing/head/roguetown/crown/serpcrown/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot == SLOT_HEAD)
+		ADD_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
+
+/obj/item/clothing/head/roguetown/crown/serpcrown/dropped(mob/living/user)
+	..()
+	REMOVE_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
+
 /obj/item/clothing/head/roguetown/crown/serpcrown/proc/anti_stall()
 	src.visible_message(span_danger("The Crown of Azuria crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 	SSroguemachine.scomm_machines -= src

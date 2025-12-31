@@ -145,6 +145,15 @@
 	hearrange = 0
 	sellprice = 100
 
+/obj/item/scomstone/garrison/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot == SLOT_RING)
+		ADD_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
+
+/obj/item/scomstone/garrison/dropped(mob/living/user)
+	..()
+	REMOVE_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
+
 /obj/item/scomstone/garrison/attack_right(mob/living/carbon/human/user)
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	if(on_cooldown)
@@ -216,3 +225,12 @@
 	sellprice = 20
 	messagereceivedsound = 'sound/misc/garrisonscom.ogg'
 	hearrange = 0
+
+/obj/item/scomstone/bad/garrison/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot == SLOT_RING)
+		ADD_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
+
+/obj/item/scomstone/bad/garrison/dropped(mob/living/user)
+	..()
+	REMOVE_TRAIT(user, TRAIT_GARRISON_ITEM, "[ref(src)]")
