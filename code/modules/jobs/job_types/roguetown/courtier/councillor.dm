@@ -22,15 +22,15 @@
 	cmode_music = 'sound/music/combat_noble.ogg'
 	job_traits = list(TRAIT_NOBLE)
 	job_subclasses = list(
-		/datum/advclass/councillor/messenger,
+		/datum/advclass/councillor/herald,
 		/datum/advclass/councillor/advisor,
-		/datum/advclass/councillor/fundraiser,
+		/datum/advclass/councillor/cofferer,
 	)
 
-/datum/advclass/councillor/messenger
-	name = "Messenger"
+/datum/advclass/councillor/herald
+	name = "Herald"
 	tutorial = "While lacking in some faculties, such as wealth and courtly advice, you have the uncanny ability to spread the word of the court, and rally people to your liege's cause. The crown saw it fit to employ you as a messenger, but may still lend an ear if you speak your mind. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
-	outfit = /datum/outfit/job/roguetown/councillor/messenger
+	outfit = /datum/outfit/job/roguetown/councillor/herald
 	horse = /mob/living/simple_animal/hostile/retaliate/rogue/saiga/saigabuck/tame/saddled
 	category_tags = list(CTAG_COUNCILLOR)
 	subclass_stats = list(
@@ -78,10 +78,10 @@
 	)
 
 
-/datum/advclass/councillor/fundraiser
-	name = "Fundraiser"
+/datum/advclass/councillor/cofferer
+	name = "Cofferer"
 	tutorial = "Whether born into wealth, or earned through working up from the bottom, you have quite the reserve of mammon at your disposal. Use your silver-tongue to acquire more, or buy more favour with the court. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
-	outfit = /datum/outfit/job/roguetown/councillor/fundraiser
+	outfit = /datum/outfit/job/roguetown/councillor/cofferer
 	category_tags = list(CTAG_COUNCILLOR)
 	subclass_stats = list(
 		STATKEY_WIL = 2,
@@ -104,7 +104,7 @@
 /datum/outfit/job/roguetown/councillor
 	job_bitflag = BITFLAG_ROYALTY
 
-/datum/outfit/job/roguetown/councillor/messenger/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/councillor/herald/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/mid // a mediocre pouch of coins
 	shirt = /obj/item/clothing/suit/roguetown/shirt/fancyjacket
@@ -138,7 +138,7 @@
 	// give them the shitty see prices trait
 	ADD_TRAIT(H, TRAIT_SEEPRICES_SHITTY, JOB_TRAIT)
 
-/datum/outfit/job/roguetown/councillor/fundraiser/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/councillor/cofferer/pre_equip(mob/living/carbon/human/H)
 	..()
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich // a fat pouch of coins
 	shirt = /obj/item/clothing/suit/roguetown/shirt/fancyjacket
@@ -147,7 +147,7 @@
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
-	beltl = /obj/item/storage/keyring/councillor/fundraiser
+	beltl = /obj/item/storage/keyring/councillor/cofferer
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	cloak = /obj/item/clothing/cloak/half/red
 	if(H.mind)

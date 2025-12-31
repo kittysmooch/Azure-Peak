@@ -220,7 +220,7 @@
 /obj/item/storage/keyring/councillor
 	keys = list(/obj/item/roguekey/garrison, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
 
-/obj/item/storage/keyring/councillor/fundraiser
+/obj/item/storage/keyring/councillor/cofferer
 	keys = list(/obj/item/roguekey/steward, /obj/item/roguekey/garrison, /obj/item/roguekey/manor, /obj/item/roguekey/graveyard)
 
 /obj/item/storage/keyring/squire
