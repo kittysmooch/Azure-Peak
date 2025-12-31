@@ -345,8 +345,8 @@
 /datum/status_effect/buff/tempo_one/on_apply()
 	. = ..()
 	if(owner)
-		owner.energy_add((owner.max_energy / 5))
-		owner.stamina_add(-(owner.max_stamina) / 2)
+		owner.stamina = max((owner.stamina - owner.max_stamina / 3), 0)
+		to_chat(owner, span_info("Tempo!"))
 
 /datum/status_effect/buff/tempo_two
 	id = "tempo_2"
@@ -357,8 +357,8 @@
 /datum/status_effect/buff/tempo_two/on_apply()
 	. = ..()
 	if(owner)
-		owner.energy_add((owner.max_energy / 5))
-		owner.stamina_add(-(owner.max_stamina) / 2)
+		owner.stamina = max((owner.stamina - owner.max_stamina / 2), 0)
+		to_chat(owner, span_notice("Tempo!!"))
 
 #define TEMPO_MAX_FILTER "tempo_max_glow"
 
@@ -375,13 +375,13 @@
 		var/filter = owner.get_filter(TEMPO_MAX_FILTER)
 		if (!filter)
 			owner.add_filter(TEMPO_MAX_FILTER, 2, list("type" = "outline", "color" = outline_color, "alpha" = 80, "size" = 1))
-		owner.playsound_local(owner, 'sound/combat/tempo_max.ogg', 100, TRUE)
-		owner.energy_add((owner.max_energy / 2))
-		owner.stamina_add(-(owner.max_stamina))
+		owner.playsound_local(owner, 'sound/combat/tempo_max.ogg', 35, TRUE)
+		to_chat(owner, span_notice("<b>TEMPO!!!</b>"))
+		owner.stamina = ownwer.max_stamina
 		ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
 
 /datum/status_effect/buff/tempo_three/on_remove()
 	. = ..()
+	owner.remove_filter(TEMPO_MAX_FILTER)
 	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE,  TRAIT_STATUS_EFFECT)
-
 #undef TEMPO_MAX_FILTER
