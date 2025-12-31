@@ -20,6 +20,7 @@
 		STAWIL = 13
 		STAPER = 8
 		STASPD = 6
+		STAINT = 8
 
 		AddSpell(new /obj/effect/proc_holder/spell/self/bearclaws)
 		real_name = "direbear"
