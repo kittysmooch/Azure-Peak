@@ -137,6 +137,7 @@
 	"Eggplant" = CLOTHING_EGGPLANT,					\
 	"Gold" = CLOTHING_GOLD,							\
 	"Gold Metallic" = CLOTHING_GOLD_METALLIC,		\
+	"Indigo" = CLOTHING_INDIGO,						\
 	"Light Grey" = CLOTHING_LIGHT_GREY,				\
 	"Madder" = CLOTHING_MADDER,						\
 	"Mage Blue" = CLOTHING_MAGE_BLUE,				\
