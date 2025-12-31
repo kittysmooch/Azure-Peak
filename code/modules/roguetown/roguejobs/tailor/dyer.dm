@@ -65,9 +65,9 @@ var/list/used_colors
 
 	var/list/colors_to_pick = list()
 	if(GLOB.lordprimary)
-		colors_to_pick["Keep Color Primary"] = GLOB.lordprimary
+		colors_to_pick["Primary Keep Color"] = GLOB.lordprimary
 	if(GLOB.lordsecondary)
-		colors_to_pick["Keep Color Secondary"] = GLOB.lordsecondary
+		colors_to_pick["Secondary Keep Color"] = GLOB.lordsecondary
 	colors_to_pick += used_colors.Copy()
 	var/picked = input(user, "Choose your dye:", "Dyes", null) as null|anything in colors_to_pick
 	if(!picked)
