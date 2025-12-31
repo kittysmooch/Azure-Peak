@@ -100,8 +100,6 @@
 		. += "Its designation is #[scomstone_number]."
 
 /obj/item/scomstone/proc/repeat_message(message, atom/A, tcolor, message_language)
-	if(A == src)
-		return
 	if(!ismob(loc))
 		return
 	if(tcolor)
@@ -155,7 +153,7 @@
 		return
 	if(!get_location_accessible(user, BODY_ZONE_PRECISE_MOUTH, grabs = TRUE))
 		to_chat(user, span_warning("My mouth is covered!"))
-		return 
+		return
 	visible_message(span_notice ("[user] presses their ring against their mouth."))
 	var/input_text = input(user, "Enter your message:", "Message")
 	if(!input_text)
@@ -188,7 +186,7 @@
 		S.repeat_message(input_text, src, usedcolor)
 	SSroguemachine.crown?.repeat_message(input_text, src, usedcolor)
 	on_cooldown = TRUE
-	
+
 	//Log messages that aren't sent on the garrison line.
 	GLOB.broadcast_list += list(list(
 	"message"   = input_text,
