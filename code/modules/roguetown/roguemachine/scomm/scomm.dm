@@ -303,8 +303,6 @@
 	animate(pixel_x = oldx, time = 0.5)
 
 /obj/structure/roguemachine/scomm/proc/repeat_message(message, atom/A, tcolor, message_language, list/tspans, broadcaster_tag)
-	if(A == src)
-		return
 	// The SCOM just do not work silently if cheesed
 	if(last_cheese && (last_cheese + CHEESE_QUIET_TIME >= world.time))
 		return
