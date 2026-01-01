@@ -55,14 +55,6 @@
 /datum/outfit/job/roguetown/seneschal
 	has_loadout = TRUE
 
-//This applies to all Seneschal subclasses
-/datum/outfit/job/roguetown/seneschal/choose_loadout(mob/living/carbon/human/H)
-	. = ..()
-	if(H.age == AGE_MIDDLEAGED)
-		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
-
 /datum/outfit/job/roguetown/seneschal/seneschal/pre_equip(mob/living/carbon/human/H)
 	..()
 	pants = /obj/item/clothing/under/roguetown/tights

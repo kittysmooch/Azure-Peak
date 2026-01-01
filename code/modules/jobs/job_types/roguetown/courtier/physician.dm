@@ -90,7 +90,5 @@
 	)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-	if(H.age == AGE_MIDDLEAGED)
-		H.adjust_skillrank_up_to(/datum/skill/craft/sewing, 4, TRUE)
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
