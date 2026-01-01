@@ -38,6 +38,7 @@
 		STATKEY_INT = 1,
 		STATKEY_SPD = 1
 	)
+	age_mod = /datum/class_age_mod/tapster
 	subclass_skills = list(
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
@@ -80,8 +81,5 @@
 /datum/outfit/job/roguetown/knavewench/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	if(H.age == AGE_MIDDLEAGED)
-		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
-	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
