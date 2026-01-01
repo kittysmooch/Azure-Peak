@@ -69,6 +69,9 @@
 			if (H.age == AGE_OLD)
 				H.adjust_skillrank(/datum/skill/magic/holy, SKILL_LEVEL_NOVICE, TRUE)
 				ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC) //but w/o ritual chalk)))
+				H.change_stat(STATKEY_SPD, -2)
+				H.change_stat(STATKEY_STR, -3)
+				H.change_stat(STATKEY_PER, -2)
 		if("Mystagogue")
 			// hybrid arcane/holy witch with t1 arcane and t1 miracles, but less spellpoints, lower max devotion and less regen (0.5). Still can't pray.
 			var/datum/devotion/D = new /datum/devotion/(H, H.patron)
