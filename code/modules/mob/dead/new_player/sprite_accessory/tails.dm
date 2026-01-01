@@ -419,7 +419,13 @@
 	color_keys = 2
 	color_key_names = list("Tail", "Underbelly")
 
+/datum/sprite_accessory/tail/large_snake/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return TRUE	//Always visible.
+
 /datum/sprite_accessory/tail/large_snake_plain
 	icon = 'icons/mob/tails/large_snake.dmi'
 	name = "Large Snake Plain"
 	icon_state = "large_snake_plain"	
+
+/datum/sprite_accessory/tail/large_snake_plain/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
+	return TRUE	//Always visible.
