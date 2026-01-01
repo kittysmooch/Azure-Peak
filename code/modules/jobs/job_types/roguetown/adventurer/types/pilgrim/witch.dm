@@ -51,11 +51,14 @@
 
 	switch (classchoice)
 		if("Old Magick")
-			// the original witch: arcyne t2 (buffed from t1) with 6 spellpoints
+			// the original witch: arcyne t2 (buffed from t1) with 9 spellpoints
 			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.mind?.adjust_spellpoints(9) // twelve if you pick arcyne potential
 			beltl = /obj/item/storage/magebag/starter
+			if (H.age == AGE_OLD)
+				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
+				H.mind?.adjust_spellpoints(3)
 		if("Godsblood")
 			//miracle witch: capped at t2 miracles. cannot pray to regain devo, but has high innate regen because of it (2 instead of 1 from major)
 			var/datum/devotion/D = new /datum/devotion/(H, H.patron)
@@ -63,6 +66,9 @@
 			D.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_WITCH, devotion_limit = CLERIC_REQ_2)
 			D.max_devotion *= 0.5
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
+			if (H.age == AGE_OLD)
+				H.adjust_skillrank(/datum/skill/magic/holy, SKILL_LEVEL_NOVICE, TRUE)
+				ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC) //but w/o ritual chalk)))
 		if("Mystagogue")
 			// hybrid arcane/holy witch with t1 arcane and t1 miracles, but less spellpoints, lower max devotion and less regen (0.5). Still can't pray.
 			var/datum/devotion/D = new /datum/devotion/(H, H.patron)
@@ -71,9 +77,12 @@
 			D.max_devotion *= 0.5
 			ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
 			H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)
-			H.mind?.adjust_spellpoints(6) // twelve if you pick arcyne potential
+			H.mind?.adjust_spellpoints(6) // nine if you pick arcyne potential
 			beltl = /obj/item/storage/magebag/starter
 			neck = /obj/item/clothing/neck/roguetown/psicross/wood
+			if (H.age == AGE_OLD)
+				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)
+				H.adjust_skillrank(/datum/skill/magic/holy, SKILL_LEVEL_NOVICE, TRUE)
 	if(H.mind)
 		switch (shapeshiftchoice)
 			if("Zad")
