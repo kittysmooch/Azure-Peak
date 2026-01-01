@@ -329,9 +329,33 @@
 	new /obj/item/quiver/bolts(src)
 	new /obj/item/quiver/bolts(src)
 
+/datum/roguestock/import/warden
+	name = "Warden Equipment Crate"
+	desc = "Equipment kit for a warden."
+	item_type = /obj/structure/closet/crate/chest/steward/warden
+	export_price = 300
+	importexport_amt = 1
+
+/obj/structure/closet/crate/chest/steward/warden/Initialize()
+	. = ..()
+	new /obj/item/clothing/head/roguetown/helmet/bascinet/antler(src)
+	new /obj/item/clothing/head/roguetown/roguehood/warden/antler(src)
+	new /obj/item/clothing/cloak/wardencloak(src)
+	new /obj/item/clothing/suit/roguetown/armor/leather/studded/warden(src)
+	new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy(src)
+	new /obj/item/clothing/gloves/roguetown/fingerless_leather(src)
+	new /obj/item/clothing/under/roguetown/trou/leather(src)
+	new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced(src)
+	new /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick(src)
+	new /obj/item/rogueweapon/huntingknife/idagger/warden_machete(src)
+	new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden(src)
+	new /obj/item/quiver/arrows(src)
+	new /obj/item/storage/belt/rogue/leather(src)
+	new /obj/item/storage/keyring/guard(src)//Different ring to the rest
+
 /datum/roguestock/import/manatarms
 	name = "Man-at-Arms Equipment Crate"
-	desc = "Equipment kit for an armsman Footman."
+	desc = "Equipment kit for an armsman."
 	item_type = /obj/structure/closet/crate/chest/steward/manatarms
 	export_price = 300
 	importexport_amt = 1
@@ -370,27 +394,3 @@
 	new /obj/item/storage/belt/rogue/leather/steel(src)
 	new /obj/item/rogueweapon/scabbard/sword(src)
 	new /obj/item/rogueweapon/sword/long(src)
-
-/datum/roguestock/import/warden
-	name = "Warden Equipment Crate"
-	desc = "Equipment kit for a warden."
-	item_type = /obj/structure/closet/crate/chest/steward/warden
-	export_price = 300
-	importexport_amt = 1
-
-/obj/structure/closet/crate/chest/steward/warden/Initialize()
-	. = ..()
-	new /obj/item/clothing/head/roguetown/helmet/bascinet/antler(src)
-	new /obj/item/clothing/head/roguetown/roguehood/warden/antler(src)
-	new /obj/item/clothing/cloak/wardencloak(src)
-	new /obj/item/clothing/suit/roguetown/armor/leather/studded/warden(src)
-	new /obj/item/clothing/suit/roguetown/armor/gambeson/heavy(src)
-	new /obj/item/clothing/gloves/roguetown/fingerless_leather(src)
-	new /obj/item/clothing/under/roguetown/trou/leather(src)
-	new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced(src)
-	new /obj/item/rogueweapon/stoneaxe/woodcut/wardenpick(src)
-	new /obj/item/rogueweapon/huntingknife/idagger/warden_machete(src)
-	new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/warden(src)
-	new /obj/item/quiver/arrows(src)
-	new /obj/item/storage/belt/rogue/leather(src)
-	new /obj/item/storage/keyring/guard(src)
