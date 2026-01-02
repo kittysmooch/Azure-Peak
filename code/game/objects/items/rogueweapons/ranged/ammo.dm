@@ -250,10 +250,6 @@
 
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "poison iron arrow"
-	damage = 20	
-	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
@@ -461,14 +457,8 @@
 
 //mob projectiles
 /obj/projectile/bullet/reusable/arrow/orc
-	damage = 20
-	damage_type = BRUTE
 	armor_penetration = 25
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "piercing"
