@@ -448,7 +448,7 @@
 	range = 30
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
-	woundclass = BCLASS_STAB
+	woundclass = BCLASS_PIERCE
 	flag = "piercing"
 	armor_penetration = BULLET_PENETRATION
 	speed = 0.1
@@ -470,8 +470,6 @@
 	armor_penetration = 25
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "piercing"
 	speed = 2
 
 /obj/projectile/bullet/reusable/arrow/ancient
@@ -484,8 +482,6 @@
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
-	woundclass = BCLASS_STAB
-	flag = "piercing"
 	speed = 2
 
 //deep one thrown stone
@@ -498,9 +494,9 @@
 	icon_state = "stone1"
 	ammo_type = /obj/item/natural/stone
 	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
+	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
 	embedchance = 50
-	woundclass = BCLASS_STAB
+	woundclass = BCLASS_BLUNT
 	flag = "piercing"
 	speed = 10
 
