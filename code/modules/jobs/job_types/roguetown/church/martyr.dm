@@ -607,7 +607,7 @@
 	var/list/active_intents_wielded = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr)
 	var/safe_damage = 20
 	var/safe_damage_wielded = 25
-	AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, )
+	AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 	..()
 
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
