@@ -8,6 +8,7 @@
 //parent of all bolts and arrows ฅ^•ﻌ•^ฅ
 /obj/item/ammo_casing/caseless/rogue/
 	firing_effect_type = null
+	icon = 'icons/roguetown/weapons/ammo.dmi'
 
 //bolts ฅ^•ﻌ•^ฅ
 
@@ -17,7 +18,6 @@
 	projectile_type = /obj/projectile/bullet/reusable/bolt
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt"
 	dropshrink = 0.6
 	max_integrity = 10
@@ -57,7 +57,6 @@
 	damage = BOLT_DAMAGE
 	damage_type = BRUTE
 	armor_penetration = BOLT_PENETRATION
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
 	range = 15
@@ -117,7 +116,6 @@
 	Consult your gods."
 	projectile_type = /obj/projectile/bullet/reusable/arrow
 	caliber = "arrow"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
 	force = 10
 	dropshrink = 0.6
@@ -175,7 +173,6 @@
 	npc_simple_damage_mult = 2
 	armor_penetration = ARROW_PENETRATION
 	//accuracy = 65 // Default defined by projectile.dm
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	range = 15
@@ -311,7 +308,6 @@
 	desc = "A bolt with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
 	damage = 0
 	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "boltwater_proj"
 	range = 15
 	hitsound = 'sound/blank.ogg'
@@ -376,7 +372,6 @@
 	desc = "An arrow with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
 	damage = 0
 	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrowwater_proj"
 	range = 15
 	hitsound = 'sound/blank.ogg'
@@ -403,7 +398,6 @@
 	name = "lead ball"
 	damage = BULLET_DAMAGE
 	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bullet
 	range = 30
@@ -419,7 +413,6 @@
 	desc = "A small lead sphere. This should go well with gunpowder."
 	projectile_type = /obj/projectile/bullet/reusable/bullet
 	caliber = "musketball"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball"
 	dropshrink = 0.5
 	possible_item_intents = list(/datum/intent/use)
@@ -436,7 +429,6 @@
 /obj/projectile/bullet/reusable/arrow/ancient
 	damage = 10
 	armor_penetration = 25
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	range = 15
@@ -512,7 +504,6 @@
 	throw_speed = 3		//1 lower than throwing knives, it hits harder + embeds more.
 	name = "iron javelin"
 	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ijavelin"
 	wlength = WLENGTH_NORMAL
 	w_class = WEIGHT_CLASS_BULKY
@@ -602,7 +593,6 @@
 	desc = "You shouldn't be seeing this."
 	projectile_type = /obj/projectile/bullet/sling_bullet
 	caliber = "slingbullet"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow"
 	force = 5
 	throwforce = 20 //you can still throw them
@@ -614,21 +604,18 @@
 	name = "stone sling bullet"
 	desc = "A stone refined for wrath."
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/stone
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "stone_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
 	name = "bronze sling bullet"
 	desc = "A small bronze sphere. It feels deceptively heavy in the palm of your hand."
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/bronze
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bronze_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/aalloy
 	name = "decrepit sling bullet"
 	desc = "A pellet of frayed bronze. The alloy flakes apart in your grasp, staining the palm with flecks of brown-and-red."
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/aalloy
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ancient_sling_bullet"
 	color = "#bb9696"
 
@@ -636,14 +623,12 @@
 	name = "ancient sling bullet"
 	desc = "A pellet of polished gilbranze. The bigger they are, the harder they'll fall; be it Man or God."
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/paalloy
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ancient_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
 	name = "iron sling bullet"
 	desc = "Not to be mistakened for a ball bearing."
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/iron
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "iron_sling_bullet"
 
 /obj/projectile/bullet/sling_bullet //not reusable since stones will break on impact. i couldnt figure out how to prevent that
@@ -684,7 +669,6 @@
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = 0
-	icon = 'icons/roguetown/items/natural.dmi'
 	icon_state = "stone1"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet
 	range = 15
@@ -716,7 +700,6 @@
 	damage = 30 //proper stones are better
 	armor_penetration = 0
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/aalloy
@@ -724,7 +707,6 @@
 	damage = 15
 	armor_penetration = 0
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/aalloy
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/bronze
@@ -732,7 +714,6 @@
 	damage = 35
 	armor_penetration = 20 //Slightly more damage, but with -33% AP.
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/paalloy
@@ -740,7 +721,6 @@
 	damage = 30
 	armor_penetration = 30
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/paalloy
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/iron
@@ -748,7 +728,6 @@
 	damage = 30
 	armor_penetration = 30
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 
 #undef ARROW_DAMAGE
