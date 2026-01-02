@@ -429,10 +429,7 @@
 /obj/projectile/bullet/reusable/arrow/ancient
 	damage = 10
 	armor_penetration = 25
-	icon_state = "arrow_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron/aalloy
 	embedchance = 100
 	speed = 2 // I guess slower to be slightly more forgiving to players since they're otherwise aimbots
 
