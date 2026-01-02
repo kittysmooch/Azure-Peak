@@ -666,7 +666,7 @@
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = 0
-	icon_state = "stone1"
+	icon_state = "stone_sling_bullet"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet
 	range = 15
 	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
