@@ -24,13 +24,29 @@
 	var/death_time
 	var/last_time
 
-/datum/component/martyrweapon/Initialize()
+	var/list/active_intents = list()
+	var/list/active_intents_wielded = list()
+	var/list/inactive_intents = list()
+	var/list/inactive_intents_wielded = list()
+
+/datum/component/martyrweapon/Initialize(list/intents, list/intents_w)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
+
+	if(length(intents))
+		active_intents = intents.Copy()
+	if(length(intents_w))
+		active_intents_wielded = intents_w.Copy()
+
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
 	RegisterSignal(parent, COMSIG_ITEM_AFTERATTACK, PROC_REF(item_afterattack))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+
+	var/obj/item/I = parent
+	inactive_intents = I.possible_item_intents.Copy()
+	inactive_intents_wielded = I.gripped_intents.Copy()
+
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/martyrweapon/process()
@@ -274,19 +290,7 @@
 				current_holder.STALUC += stat_bonus_martyr
 				H.energy_add(9999)
 			if(STATE_MARTYRULT)	//This is ONLY accessed during the last 30 seconds of the shorter variant.
-				current_holder.STASTR = 20
-				current_holder.STASPD = 20
-				current_holder.STACON = 20
-				current_holder.STAWIL = 20
-				current_holder.STAINT = 20
-				current_holder.STAPER = 20
-				current_holder.STALUC = 20
 				H.energy_add(9999)//Go get 'em, Martyrissimo, it's your last 30 seconds, it's a frag or be fragged world
-				H.adjust_skillrank(/datum/skill/combat/wrestling, 6, FALSE)
-				H.adjust_skillrank(/datum/skill/combat/swords, 6, FALSE)
-				H.adjust_skillrank(/datum/skill/combat/unarmed, 6, FALSE)
-				H.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
-				ADD_TRAIT(current_holder, TRAIT_INFINITE_STAMINA, TRAIT_GENERIC)
 				current_holder.visible_message(span_warning("[current_holder] rises up, empowered once more!"), span_warningbig("I rise again! I can feel my god flow through me!"))
 				flash_lightning(current_holder)
 				current_holder.revive(full_heal = TRUE, admin_revive = TRUE)
@@ -298,8 +302,8 @@
 		REMOVE_TRAIT(parent, TRAIT_NODROP, TRAIT_GENERIC)	//The weapon can be moved by the Priest again (or used, I suppose)
 	is_active = FALSE
 	I.damtype = BRUTE
-	I.possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
-	I.gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	I.possible_item_intents = inactive_intents
+	I.gripped_intents = inactive_intents_wielded
 	current_holder.update_a_intents()
 	I.force = initial(I.force)
 	I.force_wielded = initial(I.force_wielded)
@@ -363,8 +367,8 @@
 		flash_lightning(user)
 		var/obj/item/I = parent
 		I.damtype = BURN	//Changes weapon damage type to fire
-		I.possible_item_intents = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr)
-		I.gripped_intents = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr)
+		I.possible_item_intents = active_intents
+		I.gripped_intents = active_intents_wielded
 		user.update_a_intents()
 		I.slot_flags = null	//Can't sheathe a burning sword
 
@@ -377,22 +381,39 @@
 			if(STATE_SAFE)
 				end_activation = world.time + safe_duration	//Only a duration and nothing else.
 				adjust_stats(current_state)	//Lowers the damage of the sword due to safe activation.
+				current_holder.energy = current_holder.max_energy
+				current_holder.stamina = 0
 			if(STATE_MARTYR)
 				end_activation = world.time + martyr_duration
 				I.max_integrity = 2000				//If you're committing, we repair the weapon and give it a boost so it lasts the whole fight
 				I.obj_integrity = I.max_integrity
 				adjust_stats(current_state)	//Gives them extra stats.
+
+				current_holder.stamina = 0
+				current_holder.energy = current_holder.max_energy
 			if(STATE_MARTYRULT)
 				end_activation = world.time + ultimate_duration
 				I.max_integrity = 9999				//why not, they got 2 mins anyway
 				I.obj_integrity = I.max_integrity
-				current_holder.STASTR += stat_bonus_martyr
-				current_holder.STASPD += stat_bonus_martyr
-				current_holder.STACON += stat_bonus_martyr
-				current_holder.STAWIL += stat_bonus_martyr
-				current_holder.STAINT += stat_bonus_martyr
-				current_holder.STAPER += stat_bonus_martyr
-				current_holder.STALUC += stat_bonus_martyr
+
+				current_holder.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
+
+				current_holder.STASTR = 20
+				current_holder.STASPD = 20
+				current_holder.STACON = 20
+				current_holder.STAWIL = 20
+				current_holder.STAINT = 20
+				current_holder.STAPER = 20
+				current_holder.STALUC = 20
+
+				current_holder.energy = current_holder.max_energy
+				current_holder.stamina = 0
+
+				current_holder.adjust_skillrank(/datum/skill/combat/wrestling, 6, FALSE)
+				current_holder.adjust_skillrank(/datum/skill/combat/swords, 6, FALSE)
+				current_holder.adjust_skillrank(/datum/skill/combat/unarmed, 6, FALSE)
+
+				ADD_TRAIT(current_holder, TRAIT_INFINITE_STAMINA, TRAIT_GENERIC)
 			else
 				end_activation = world.time + safe_duration
 
@@ -443,7 +464,7 @@
 	give_bank_account = TRUE
 
 	cmode_music = 'sound/music/combat_martyrsafe.ogg'
-	job_traits = list(TRAIT_HEAVYARMOR, TRAIT_STEELHEARTED, TRAIT_SILVER_BLESSED, TRAIT_EMPATH, TRAIT_MEDICINE_EXPERT, TRAIT_DUALWIELDER, TRAIT_CLERGY)
+	job_traits = list(TRAIT_HEAVYARMOR, TRAIT_STEELHEARTED, TRAIT_SILVER_BLESSED, TRAIT_EMPATH, TRAIT_MEDICINE_EXPERT, TRAIT_DUALWIELDER, TRAIT_CLERGY, TRAIT_TEMPO)
 
 	//No undeath-adjacent virtues for a role that can sacrifice itself. The Ten like their sacrifices 'pure'. (I actually didn't want to code returning those virtue traits post-sword use)
 	//They get those traits during sword activation, anyway.
@@ -578,7 +599,7 @@
 
 
 /obj/item/rogueweapon/sword/long/martyr/Initialize()
-	AddComponent(/datum/component/martyrweapon)
+	AddComponent(/datum/component/martyrweapon, list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr), list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr))
 	..()
 
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
