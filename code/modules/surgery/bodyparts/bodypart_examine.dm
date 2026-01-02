@@ -103,8 +103,10 @@
 				if(bandage.return_blood_DNA())
 					usedclass = "bloody"
 					extra_text = " (bloodied)"
-				else if(bandage.medicine_amount)
-					extra_text = " (medicated)"
+				else if(istype(bandage, /obj/item/natural/cloth))
+					var/obj/item/natural/cloth/cloth = bandage
+					if(cloth.medicine_amount)
+						extra_text = " (medicated)"
 				bodypart_status += "<a href='?src=[owner_ref];bandage=[REF(bandage)];bandaged_limb=[REF(src)]' class='[usedclass]'>Bandaged[extra_text]</a>"
 			if(!bandage || observer_privilege)
 				for(var/datum/wound/wound as anything in wounds)
@@ -214,8 +216,10 @@
 		if(HAS_BLOOD_DNA(bandage))
 			usedclass = "bloody"
 			extra_text = " (bloodied)"
-		else if(bandage.medicine_amount)
-			extra_text = " (medicated)"
+		else if(istype(bandage, /obj/item/natural/cloth))
+			var/obj/item/natural/cloth/cloth = bandage
+			if(cloth.medicine_amount)
+				extra_text = " (medicated)"
 		status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='[usedclass]'>[uppertext(bandage.name)][extra_text]</a>"
 
 	if(disabled)
