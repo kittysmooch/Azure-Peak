@@ -251,7 +251,6 @@
 	within."
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
 	icon_state = "ironarrow_poison"
-	max_integrity = 10 // same as normal arrow; usually breaks on impact with a mob anyway
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
 	name = "poisoned stone arrow"
@@ -263,8 +262,6 @@
 /obj/projectile/bullet/reusable/arrow/poison
 	name = "poison iron arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	poisontype = /datum/reagent/stampoison
 	poisonamount = 2
 	slur = 10
@@ -282,27 +279,16 @@
 	desc = "A bolt smeared with a flammable tincture."
 	projectile_type = /obj/projectile/bullet/bolt/pyro
 	possible_item_intents = list(/datum/intent/mace/strike)
-	caliber = "regbolt"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_pyroclastic"
-	dropshrink = 0.8
-	max_integrity = 10
-	force = 10
 
 /obj/projectile/bullet/bolt/pyro
 	name = "pyroclastic bolt"
 	desc = "A bolt smeared with a flammable tincture."
 	damage = 20
-	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "boltpyro_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
-	range = 15
 	hitsound = 'sound/blank.ogg'
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
-	flag = "piercing"
-	speed = 0.3
 
 /obj/projectile/bullet/bolt/pyro/on_hit(target)
 	..()
@@ -319,10 +305,7 @@
 	projectile_type = /obj/projectile/bullet/bolt/water
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "regbolt"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_water"
-	dropshrink = 0.8
-	max_integrity = 10
 	force = 0
 
 /obj/projectile/bullet/bolt/water
@@ -341,7 +324,6 @@
 	speed = 0.3
 
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
-
 	//explosion values
 	var/exp_heavy = 0
 	var/exp_light = 0
@@ -365,26 +347,16 @@
 	projectile_type = /obj/projectile/bullet/arrow/pyro
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "arrow"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_pyroclastic"
-	dropshrink = 0.8
-	max_integrity = 10
-	force = 10
 
 /obj/projectile/bullet/arrow/pyro
 	name = "pyroclatic arrow"
 	desc = "An arrow with its tip drenched in a flammable tincture."
 	damage = 15
-	damage_type = BRUTE
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrowpyro_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
-	range = 15
 	hitsound = 'sound/blank.ogg'
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
-	flag = "piercing"
-	speed = 0.4
 
 /obj/projectile/bullet/arrow/pyro/on_hit(target)
 	..()
@@ -401,10 +373,7 @@
 	projectile_type = /obj/projectile/bullet/arrow/water
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "arrow"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_water"
-	dropshrink = 0.8
-	max_integrity = 10
 	force = 0
 
 /obj/projectile/bullet/arrow/water
@@ -414,7 +383,6 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrowwater_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
 	range = 15
 	hitsound = 'sound/blank.ogg'
 	embedchance = 0
@@ -474,7 +442,6 @@
 
 /obj/projectile/bullet/reusable/arrow/ancient
 	damage = 10
-	damage_type = BRUTE
 	armor_penetration = 25
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
