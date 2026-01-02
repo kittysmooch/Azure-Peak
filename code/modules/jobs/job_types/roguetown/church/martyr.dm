@@ -29,7 +29,10 @@
 	var/list/inactive_intents = list()
 	var/list/inactive_intents_wielded = list()
 
-/datum/component/martyrweapon/Initialize(list/intents, list/intents_w)
+	var/active_safe_damage
+	var/active_safe_damage_wielded
+
+/datum/component/martyrweapon/Initialize(list/intents, list/intents_w, active_damage, active_damage_wielded)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -37,6 +40,11 @@
 		active_intents = intents.Copy()
 	if(length(intents_w))
 		active_intents_wielded = intents_w.Copy()
+
+	if(active_damage)
+		active_safe_damage = active_damage
+	if(active_damage_wielded)
+		active_safe_damage_wielded = active_damage_wielded
 
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_drop))
@@ -87,11 +95,8 @@
 					deathprocess()
 				else
 					to_chat(current_holder, span_notice("You manage to endure it, this time."))
-		if(STATE_MARTYR)
-			C.freak_out()
-			deathprocess()
 
-		if(STATE_MARTYRULT)
+		if(STATE_MARTYR, STATE_MARTYRULT)
 			C.freak_out()
 			deathprocess()
 
@@ -166,10 +171,7 @@
 			switch(current_state)
 				if(STATE_SAFE)
 					return
-				if(STATE_MARTYR)
-					if(prob(ignite_chance))
-						mob_ignite(M)
-				if(STATE_MARTYRULT)
+				if(STATE_MARTYR, STATE_MARTYRULT)
 					if(prob(ignite_chance))
 						mob_ignite(M)
 		else
@@ -277,8 +279,10 @@
 		switch(state)
 			if(STATE_SAFE) //Lowered damage due to BURN damage type and SAFE activation
 				var/obj/item/I = parent
-				I.force = 20
-				I.force_wielded = 25
+				if(active_safe_damage)
+					I.force = active_safe_damage
+				if(active_safe_damage_wielded)
+					I.force_wielded = active_safe_damage_wielded
 				return
 			if(STATE_MARTYR)
 				current_holder.STASTR += stat_bonus_martyr
@@ -290,7 +294,7 @@
 				current_holder.STALUC += stat_bonus_martyr
 				H.energy_add(9999)
 			if(STATE_MARTYRULT)	//This is ONLY accessed during the last 30 seconds of the shorter variant.
-				H.energy_add(9999)//Go get 'em, Martyrissimo, it's your last 30 seconds, it's a frag or be fragged world
+				H.energy_add(9999)
 				current_holder.visible_message(span_warning("[current_holder] rises up, empowered once more!"), span_warningbig("I rise again! I can feel my god flow through me!"))
 				flash_lightning(current_holder)
 				current_holder.revive(full_heal = TRUE, admin_revive = TRUE)
@@ -599,7 +603,11 @@
 
 
 /obj/item/rogueweapon/sword/long/martyr/Initialize()
-	AddComponent(/datum/component/martyrweapon, list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr), list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr))
+	var/list/active_intents = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr)
+	var/list/active_intents_wielded = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr)
+	var/safe_damage = 20
+	var/safe_damage_wielded = 25
+	AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, )
 	..()
 
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
