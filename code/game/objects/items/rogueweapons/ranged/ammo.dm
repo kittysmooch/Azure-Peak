@@ -584,7 +584,6 @@
 		return//abort
 
 //sling bullets
-
 /obj/item/ammo_casing/caseless/rogue/sling_bullet //parent of sling ammo and the temporary sling bullet for stones. shouldn't ever be seen
 	name = "soaring stone"
 	desc = "You shouldn't be seeing this."
@@ -646,17 +645,13 @@
 
 /obj/projectile/bullet/sling_bullet/on_hit(atom/target)
 	. = ..()
-
 	var/mob/living/L = firer
 	if(!L || !L.mind) return
-
 	var/skill_multiplier = 0
-
 	if(isliving(target)) // If the target theyre shooting at is a mob/living
 		var/mob/living/T = target
 		if(T.stat != DEAD) // If theyre alive
 			skill_multiplier = 4
-
 	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/slings, SKILL_LEVEL_LEGENDARY))
 		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
 
@@ -691,16 +686,12 @@
 /obj/projectile/bullet/reusable/sling_bullet/stone
 	name = "stone sling bullet"
 	damage = 30 //proper stones are better
-	armor_penetration = 0
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone
-	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/aalloy
 	name = "decrepit sling bullet"
 	damage = 15
-	armor_penetration = 0
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/aalloy
-	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/bronze
 	name = "bronze sling bullet"
