@@ -589,7 +589,7 @@
 	desc = "You shouldn't be seeing this."
 	projectile_type = /obj/projectile/bullet/sling_bullet
 	caliber = "slingbullet"
-	icon_state = "arrow"
+	icon_state = "stone_sling_bullet"
 	force = 5
 	throwforce = 20 //you can still throw them
 	dropshrink = 0.6
@@ -627,15 +627,15 @@
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/iron
 	icon_state = "iron_sling_bullet"
 
-/obj/projectile/bullet/sling_bullet //not reusable since stones will break on impact. i couldnt figure out how to prevent that
-	name = "sling bullet"
+/obj/projectile/bullet/sling_bullet // Supposed to be a version that breaks on impact. Might be unused.
+	name = "stone sling bullet"
 	desc = "If you're reading this: duck."
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = 0
 	npc_simple_damage_mult = 2
-	icon = 'icons/roguetown/items/natural.dmi'
-	icon_state = "stone1"
+	icon = 'icons/roguetown/weapons/ammo.dmi'
+	icon_state = "stone_sling_bullet"
 	range = 15
 	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
 	embedchance = 0
@@ -656,12 +656,12 @@
 		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
 
 /obj/projectile/bullet/reusable/sling_bullet //parent for proper reusable sling bullets
-	name = "sling bullet"
+	name = "metal sling bullet"
 	desc = "If you're reading this: duck."
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = 0
-	icon_state = "stone_sling_bullet"
+	icon_state = "musketball_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet
 	range = 15
 	hitsound = 'sound/combat/hits/blunt/bluntsmall (1).ogg'
