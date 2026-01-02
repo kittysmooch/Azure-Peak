@@ -232,7 +232,7 @@
 		)
 
 /datum/crafting_recipe/roguetown/survival/woodcross
-	name = "wooden psytcross"
+	name = "wooden psycross"
 	category = "Clothes"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(

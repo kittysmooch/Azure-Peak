@@ -1251,7 +1251,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		log_combat(user, target, "punched")
 		if(ishuman(user) && user.mind)
 			var/text = "[bodyzone2readablezone(selzone)]..."
-			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 
 		if(!nodmg)
 			if(user.limb_destroyer)
@@ -1718,6 +1718,27 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			Iforce = 0
 	var/bladec = user.used_intent.blade_class
 
+	// Effective range check. Attacking a prone target doesn't apply a penalty at any range.
+	if(user.used_intent?.effective_range && H.mobility_flags & MOBILITY_STAND)
+		var/dist = get_dist(H, user)
+		var/range = user.used_intent?.effective_range
+		var/apply_penalty = FALSE
+		switch(user.used_intent?.effective_range_type)
+			if(EFF_RANGE_EXACT)
+				if(dist != range)
+					apply_penalty = TRUE
+			if(EFF_RANGE_BELOW)
+				if(dist <= range)
+					apply_penalty = TRUE
+			if(EFF_RANGE_ABOVE)
+				if(dist >= range)
+					apply_penalty = TRUE
+			else
+				CRASH("Invalid effective_range_type used by [user] with effective_range! Please set an effective_range_type on [user.used_intent?.type]")
+		if(apply_penalty)
+			pen = BLUNT_DEFAULT_PENFACTOR
+			Iforce *= 0.5
+
 	// No self-peeling. Useful for debug, though.
 	if(H == user && bladec == BCLASS_PEEL)
 		bladec = BCLASS_BLUNT
@@ -1730,14 +1751,18 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(higher_intfactor > 1)	//Make sure to keep your weapon and intent intfactors consistent to avoid problems here!
 		used_intfactor = higher_intfactor
 
-	if(ishuman(user) && user.mind && user.used_intent.blade_class != BCLASS_PEEL)
+	if(ishuman(user) && user.mind && user.used_intent.blade_class != BCLASS_PEEL && user != H)
 		var/text = "[bodyzone2readablezone(selzone)]..."
 		if(HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
 				text = "<i>I can't tell...</i>"
-				user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
-		else
-			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text)
+			else
+				text = null
+		if(text)
+			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
+
+	if(H.client?.prefs.floating_text_toggles & HITZONE_TEXT)
+		H.balloon_alert(H, "[bodyzone2readablezone(selzone)]...")
 
 	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=bladec, peeldivisor = user.used_intent.peel_divisor, intdamfactor = used_intfactor, used_weapon = I)
 

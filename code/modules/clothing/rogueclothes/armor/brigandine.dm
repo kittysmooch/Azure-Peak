@@ -26,13 +26,13 @@
 	if(detail_tag)
 		return
 	var/the_time = world.time
-	var/pickedcolor = input(user, "Select a color.","Brigandine Color") as null|anything in CLOTHING_COLOR_NAMES
+	var/pickedcolor = input(user, "Select a color.","Brigandine Color") as null|anything in COLOR_MAP
 	if(!pickedcolor)
 		return
 	if(world.time > (the_time + 30 SECONDS))
 		return
 	detail_tag = "_det"
-	detail_color = clothing_color2hex(pickedcolor)
+	detail_color = COLOR_MAP[pickedcolor]
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
@@ -80,30 +80,9 @@
 	desc = "A thick boiled leather surcoat with enough plates concealed within the folds to offer superior protection. It weighs a ton and takes a great man to wear."
 	icon_state = "leathercoat"
 	item_state = "leathercoat"
-	var/picked = FALSE
 	sleeved_detail = TRUE
 	boobed_detail = TRUE
-
-/obj/item/clothing/suit/roguetown/armor/brigandine/retinue/coat/attack_right(mob/user)
-	if(picked)
-		return
-	var/the_time = world.time
-	var/pickedvalue = input(user, "Select a color", "KINGSLAYER'S GARB") as null|anything in list("Khaki", "Black")
-	if(!pickedvalue)
-		return
-	if(world.time > (the_time + 30 SECONDS))
-		return
-	if(pickedvalue == "Khaki")
-		picked = TRUE
-	else if(pickedvalue == "Black")
-		picked = TRUE
-		icon_state = "bleathercoat"
-		item_state = "bleathercoat"
-		update_icon()
-		if(ismob(loc))
-			var/mob/L = loc
-			L.update_inv_armor()
-
+	color = "#7D6653"
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	slot_flags = ITEM_SLOT_ARMOR
@@ -123,13 +102,13 @@
 	if(detail_tag)
 		return
 	var/the_time = world.time
-	var/pickedcolor = input(user, "Select a color.","Brigandine Color") as null|anything in CLOTHING_COLOR_NAMES
+	var/pickedcolor = input(user, "Select a color.","Brigandine Color") as null|anything in COLOR_MAP
 	if(!pickedcolor)
 		return
 	if(world.time > (the_time + 30 SECONDS))
 		return
 	detail_tag = "_detail"
-	detail_color = clothing_color2hex(pickedcolor)
+	detail_color = COLOR_MAP[pickedcolor]
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
@@ -193,8 +172,8 @@
 /obj/item/clothing/suit/roguetown/armor/brigandine/haraate/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Uniform colors") as anything in colorlist
-		var/playerchoice = colorlist[choice]
+		var/choice = input(user, "Choose a color.", "Uniform colors") as anything in COLOR_MAP
+		var/playerchoice = COLOR_MAP[choice]
 		picked = TRUE
 		detail_color = playerchoice
 		detail_tag = "_detail"
