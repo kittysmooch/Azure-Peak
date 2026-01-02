@@ -1378,7 +1378,6 @@
 
 /obj/item/rogueweapon/sword/long/rhomphaia/getonmobprop(tag)
 	. = ..()
-	. = ..()
 	if(tag)
 		switch(tag)
 			if("gen")
