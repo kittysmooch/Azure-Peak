@@ -627,7 +627,7 @@
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/iron
 	icon_state = "iron_sling_bullet"
 
-/obj/projectile/bullet/sling_bullet // Supposed to be a version that breaks on impact. Might be unused.
+/obj/projectile/bullet/sling_bullet // Supposed to be a version that breaks on impact. Might be unused?
 	name = "stone sling bullet"
 	desc = "If you're reading this: duck."
 	damage = 25
