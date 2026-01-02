@@ -65,7 +65,7 @@
 	embedchance = 100
 	woundclass = BCLASS_PIERCE
 	flag = "piercing"
-	speed = 0.5
+	speed = 0.4
 	npc_simple_damage_mult = 2
 
 /obj/projectile/bullet/reusable/bolt/on_hit(atom/target)
@@ -97,7 +97,6 @@
 	icon_state = "bolthwater_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/holy
 	embedchance = 100
-	speed = 0.5
 	poisontype = /datum/reagent/water/blessed
 	poisonamount = 5
 	npc_simple_damage_mult = 5 //175, compared to the regular bolt's 140. Slightly more damage, as to imitate its anti-unholy properties on mobs who aren't affected by any form of poison.
@@ -233,7 +232,6 @@
 	damage = 25
 	armor_penetration = 45
 	embedchance = 80
-	speed = 0.6
 	npc_simple_damage_mult = 3
 
 /obj/projectile/bullet/reusable/arrow/steel/paalloy
@@ -320,8 +318,6 @@
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
 	flag = "piercing"
-	speed = 0.3
-
 	var/explode_sound = list('sound/misc/explode/incendiary (1).ogg','sound/misc/explode/incendiary (2).ogg')
 	//explosion values
 	var/exp_heavy = 0
@@ -387,8 +383,6 @@
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
 	flag = "piercing"
-	speed = 0.4
-
 
 /obj/projectile/bullet/arrow/water/on_hit(target)
 	. = ..()
@@ -437,7 +431,7 @@
 	armor_penetration = 25
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	embedchance = 100
-	speed = 2
+	speed = 2 // I guess slower to be slightly more forgiving to players since they're otherwise aimbots
 
 /obj/projectile/bullet/reusable/arrow/ancient
 	damage = 10
@@ -448,7 +442,7 @@
 	range = 15
 	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
 	embedchance = 100
-	speed = 2
+	speed = 2 // I guess slower to be slightly more forgiving to players since they're otherwise aimbots
 
 //deep one thrown stone
 /obj/projectile/bullet/reusable/deepone
@@ -479,7 +473,7 @@
 	//Will not cause wounds.
 	woundclass = null
 	flag = "piercing"
-	speed = 1
+	speed = 2 // I guess slower to be slightly more forgiving to players since they're otherwise aimbots
 
 /obj/projectile/bullet/spider/on_hit(target)
 	. = ..()
