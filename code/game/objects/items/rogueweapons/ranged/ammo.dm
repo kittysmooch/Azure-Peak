@@ -241,6 +241,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/steel/paalloy
 	damage = 15
 	armor_penetration = 25
+	embedchance = 30
 
 // POISON AMMO
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
