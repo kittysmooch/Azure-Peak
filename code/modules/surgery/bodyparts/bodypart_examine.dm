@@ -103,6 +103,8 @@
 				if(bandage.return_blood_DNA())
 					usedclass = "bloody"
 					extra_text = " (bloodied)"
+				else if(bandage.medicine_amount)
+					extra_text = " (medicated)"
 				bodypart_status += "<a href='?src=[owner_ref];bandage=[REF(bandage)];bandaged_limb=[REF(src)]' class='[usedclass]'>Bandaged[extra_text]</a>"
 			if(!bandage || observer_privilege)
 				for(var/datum/wound/wound as anything in wounds)
@@ -207,10 +209,14 @@
 			status += "<a href='?src=[owner_ref];embedded_limb=[REF(src)];embedded_object=[REF(embedded)];' class='info'>[uppertext(embedded.name)]</a>"
 
 	if(bandage)
+		var/usedclass = "info"
+		var/extra_text = ""
 		if(HAS_BLOOD_DNA(bandage))
-			status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='bloody'>[uppertext(bandage.name)] (bloodied)</a>"
-		else
-			status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='info'>[uppertext(bandage.name)]</a>"
+			usedclass = "bloody"
+			extra_text = " (bloodied)"
+		else if(bandage.medicine_amount)
+			extra_text = " (medicated)"
+		status += "<a href='?src=[owner_ref];bandaged_limb=[REF(src)];bandage=[REF(bandage)]' class='[usedclass]'>[uppertext(bandage.name)][extra_text]</a>"
 
 	if(disabled)
 		status += span_deadsay("CRIPPLED")
