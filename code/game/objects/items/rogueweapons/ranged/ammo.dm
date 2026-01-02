@@ -44,6 +44,14 @@
 	icon_state = "bolt_blunt"
 	force = 5
 
+/obj/item/ammo_casing/caseless/rogue/bolt/holy
+	name = "sunderbolt"
+	desc = "A silver-tipped bolt, containing a small vial of holy water. Though it inflicts lesser wounds on living flesh, it exceeds when employed against the unholy; a snap and a crack, followed by a fiery surprise. </br>'One baptism for the remission of sins.'"
+	projectile_type = /obj/projectile/bullet/reusable/bolt/holy
+	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
+	caliber = "regbolt"
+	icon_state = "bolt_holywater"
+
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
 	damage = 70
@@ -60,6 +68,19 @@
 	speed = 0.5
 	npc_simple_damage_mult = 2
 
+/obj/projectile/bullet/reusable/bolt/on_hit(atom/target)
+	. = ..()
+	var/mob/living/L = firer
+	if(!L || !L.mind)
+		return
+	var/skill_multiplier = 0
+	if(isliving(target)) // If the target theyre shooting at is a mob/living
+		var/mob/living/T = target
+		if(T.stat != DEAD) // If theyre alive
+			skill_multiplier = 4
+	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT))
+		L.mind.add_sleep_experience(/datum/skill/combat/crossbows, L.STAINT * skill_multiplier)
+
 /obj/projectile/bullet/reusable/bolt/aalloy
 	damage = 40
 	armor_penetration = 30
@@ -70,29 +91,23 @@
 	armor_penetration = 35
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/paalloy
 
+/obj/projectile/bullet/reusable/bolt/holy
+	name = "sunderbolt"
+	damage = 35 //Halved damage, but same penetration.
+	icon_state = "bolthwater_proj"
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/holy
+	embedchance = 100
+	speed = 0.5
+	poisontype = /datum/reagent/water/blessed
+	poisonamount = 5
+	npc_simple_damage_mult = 5 //175, compared to the regular bolt's 140. Slightly more damage, as to imitate its anti-unholy properties on mobs who aren't affected by any form of poison.
+
 /obj/projectile/bullet/reusable/bolt/blunt
 	damage = 25
 	armor_penetration = 0
 	embedchance = 0
 	woundclass = BCLASS_BLUNT
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/blunt
-
-/obj/projectile/bullet/reusable/bolt/on_hit(atom/target)
-	. = ..()
-
-	var/mob/living/L = firer
-	if(!L || !L.mind)
-		return
-
-	var/skill_multiplier = 0
-
-	if(isliving(target)) // If the target theyre shooting at is a mob/living
-		var/mob/living/T = target
-		if(T.stat != DEAD) // If theyre alive
-			skill_multiplier = 4
-
-	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT))
-		L.mind.add_sleep_experience(/datum/skill/combat/crossbows, L.STAINT * skill_multiplier)
 
 //arrows ฅ^•ﻌ•^ฅ
 
@@ -172,18 +187,14 @@
 
 /obj/projectile/bullet/reusable/arrow/on_hit(atom/target)
 	..()
-
 	var/mob/living/L = firer
 	if(!L || !L.mind)
 		return
-
 	var/skill_multiplier = 0
-
 	if(isliving(target)) // If the target theyre shooting at is a mob/living
 		var/mob/living/T = target
 		if(T.stat != DEAD) // If theyre alive
 			skill_multiplier = 4
-
 	if(skill_multiplier && can_train_combat_skill(L, /datum/skill/combat/bows, SKILL_LEVEL_EXPERT))
 		L.mind.add_sleep_experience(/datum/skill/combat/bows, L.STAINT * skill_multiplier)
 
@@ -203,7 +214,6 @@
 /obj/projectile/bullet/reusable/arrow/iron
 	name = "broadhead arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
-
 	damage = 40
 	armor_penetration = 20
 	embedchance = 30
@@ -265,8 +275,6 @@
 
 
 // PYRO AMMO
-
-
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro
 	name = "pyroclastic bolt"
 	desc = "A bolt smeared with a flammable tincture."
@@ -302,7 +310,6 @@
 	M.adjust_fire_stacks(6)
 	M.adjustFireLoss(15)
 	M.ignite_mob()
-
 
 /obj/item/ammo_casing/caseless/rogue/bolt/water
 	name = "water bolt"
@@ -348,6 +355,7 @@
 	var/turf/T = get_turf(target)
 	for(var/obj/O in T)
 		O.extinguish()
+
 //pyro arrows
 /obj/item/ammo_casing/caseless/rogue/arrow/pyro
 	name = "pyroclastic arrow"
@@ -784,36 +792,6 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
-
-/obj/item/ammo_casing/caseless/rogue/bolt/holy
-	name = "sunderbolt"
-	desc = "A silver-tipped bolt, containing a small vial of holy water. Though it inflicts lesser wounds on living flesh, it exceeds when employed against the unholy; a snap and a crack, followed by a fiery surprise. </br>'One baptism for the remission of sins.'"
-	projectile_type = /obj/projectile/bullet/reusable/bolt/holy
-	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
-	caliber = "regbolt"
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "bolt_holywater"
-	dropshrink = 0.6
-	max_integrity = 10
-	force = 10
-
-/obj/projectile/bullet/reusable/bolt/holy
-	name = "sunderbolt"
-	damage = 35 //Halved damage, but same penetration.
-	damage_type = BRUTE
-	armor_penetration = 50
-	icon = 'icons/roguetown/weapons/ammo.dmi'
-	icon_state = "bolthwater_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/holy
-	range = 15
-	hitsound = 'sound/combat/hits/hi_arrow2.ogg'
-	embedchance = 100
-	woundclass = BCLASS_PIERCE
-	flag = "piercing"
-	speed = 0.5
-	poisontype = /datum/reagent/water/blessed
-	poisonamount = 5
-	npc_simple_damage_mult = 5 //175, compared to the regular bolt's 140. Slightly more damage, as to imitate its anti-unholy properties on mobs who aren't affected by any form of poison.
 
 #undef ARROW_DAMAGE
 #undef BOLT_DAMAGE
