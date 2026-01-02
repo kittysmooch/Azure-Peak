@@ -315,7 +315,6 @@
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "boltwater_proj"
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/water
 	range = 15
 	hitsound = 'sound/blank.ogg'
 	embedchance = 0
