@@ -642,6 +642,7 @@
 	woundclass = BCLASS_BLUNT
 	flag = "piercing"
 	speed = 0.4
+	npc_simple_damage_mult = 2.5 // Deals roughly ~75-95 damage against a simplemob, compared to the ~140 damage of a crossbolt or arrow.
 
 /obj/projectile/bullet/sling_bullet/on_hit(atom/target)
 	. = ..()
