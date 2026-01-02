@@ -49,7 +49,7 @@
 	footstep_type = FOOTSTEP_MOB_BAREFOOT
 	var/obj/item/mouth = null
 	
-	var/buff_given = list()
+	var/buff_given = null
 	var/mob/living/carbon/familiar_summoner = null
 	var/inherent_spell = null
 	var/summoning_emote = null
