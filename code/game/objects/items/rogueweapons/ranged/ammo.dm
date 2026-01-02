@@ -698,21 +698,18 @@
 	damage = 35
 	armor_penetration = 20 //Slightly more damage, but with -33% AP.
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
-	icon_state = "musketball_proj"
-
-/obj/projectile/bullet/reusable/sling_bullet/paalloy
-	name = "ancient sling bullet"
-	damage = 30
-	armor_penetration = 30
-	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/paalloy
-	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/iron
 	name = "iron sling bullet"
 	damage = 30
 	armor_penetration = 30
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
-	icon_state = "musketball_proj"
+
+/obj/projectile/bullet/reusable/sling_bullet/paalloy
+	name = "ancient sling bullet"
+	damage = 35 // Best of both worlds 'cuz why not
+	armor_penetration = 30
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/paalloy
 
 #undef ARROW_DAMAGE
 #undef BOLT_DAMAGE
