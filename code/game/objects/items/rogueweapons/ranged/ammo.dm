@@ -1,7 +1,7 @@
-#define ARROW_DAMAGE		50
+#define ARROW_DAMAGE		20
 #define BOLT_DAMAGE			70
 #define BULLET_DAMAGE		80
-#define ARROW_PENETRATION	40
+#define ARROW_PENETRATION	10
 #define BOLT_PENETRATION	50
 #define BULLET_PENETRATION	100
 
@@ -54,9 +54,9 @@
 
 /obj/projectile/bullet/reusable/bolt
 	name = "bolt"
-	damage = 70
+	damage = BOLT_DAMAGE
 	damage_type = BRUTE
-	armor_penetration = 50
+	armor_penetration = BOLT_PENETRATION
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bolt_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt
@@ -171,10 +171,11 @@
 
 /obj/projectile/bullet/reusable/arrow
 	name = "arrow"
-	damage = 20
+	damage = ARROW_DAMAGE
 	damage_type = BRUTE
 	npc_simple_damage_mult = 2
-	armor_penetration = 10
+	armor_penetration = ARROW_PENETRATION
+	//accuracy = 65 // Default defined by projectile.dm
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow
@@ -438,7 +439,7 @@
 // GUNPOWDER AMMO
 /obj/projectile/bullet/reusable/bullet
 	name = "lead ball"
-	damage = 50
+	damage = BULLET_DAMAGE
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
@@ -448,7 +449,7 @@
 	embedchance = 100
 	woundclass = BCLASS_STAB
 	flag = "piercing"
-	armor_penetration = 200
+	armor_penetration = BULLET_PENETRATION
 	speed = 0.1
 
 /obj/item/ammo_casing/caseless/rogue/bullet
