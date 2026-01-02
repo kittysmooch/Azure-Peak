@@ -21,6 +21,8 @@
 		/obj/item/natural/fibers = 3,
 		)
 	craftdiff = 0
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 3
 
 /datum/crafting_recipe/roguetown/survival/antlerhood
 	name = "antlerhood"
@@ -182,6 +184,8 @@
 	craftdiff = 0
 	verbage_simple = "tied"
 	verbage = "ties"
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 2
 
 // Amulet
 /datum/crafting_recipe/roguetown/survival/pearlcross
