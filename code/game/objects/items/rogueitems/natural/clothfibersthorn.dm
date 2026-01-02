@@ -166,8 +166,12 @@
 	bundletype = /obj/item/natural/bundle/cloth
 	sellprice = 4
 	var/wet = 0
-	/// Effectiveness when used as a bandage, how much bloodloss we can staunch
-	var/bandage_effectiveness = 0.9
+	/// Effectiveness when used as a bandage, how much it'll lower the bloodloss, bloodloss will get multiplied by this.
+	var/bandage_effectiveness = 0.5
+	var/bandage_speed = 7 SECONDS
+	///How much you can bleed into the bandage until it needs to be changed
+	var/bandage_health = 150 //75 total blood stopped
+	//bandage_health * (1 - bandage_effectiveness) = total amount of blood saved from one bandage
 
 /obj/item/natural/cloth/Initialize()
 	. = ..()
@@ -263,9 +267,10 @@
 /obj/item/natural/cloth/wash_act()
 	. = ..()
 	wet = 10
+	bandage_health = initial(bandage_health)
 
 /obj/item/natural/cloth/proc/bandage(mob/living/M, mob/user)
-	var/used_time = 70
+	var/used_time = bandage_speed
 	var/medskill = 0
 
 	if(ishuman(user))
