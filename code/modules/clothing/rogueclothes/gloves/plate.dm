@@ -96,13 +96,6 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	body_parts_covered = HANDS|ARMS //For "heavy" drow merc
 
-/obj/item/clothing/gloves/roguetown/plate/shadowgauntlets/npc //weaker drow npc variant, same stats as iron gauntlets
-	name = "battered darkplate gauntlets"
-	desc = "Gauntlets with gilded fingers fashioned into talons. Worn out and battered."
-	icon_state = "shadowgauntlets"
-	allowed_race = NON_DWARVEN_RACE_TYPES
-	body_parts_covered = HANDS
-
 /obj/item/clothing/gloves/roguetown/plate/kote
 	name = "jjajeungna gauntlets"
 	desc = "A set of reinforced Kazengunite gauntlets. Difficult to do much other than fight in, but not entirely arresting."

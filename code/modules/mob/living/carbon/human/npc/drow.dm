@@ -126,30 +126,20 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 /datum/outfit/job/roguetown/human/species/elf/dark/drowraider/pre_equip(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants
-	head = /obj/item/clothing/neck/roguetown/chaincoif/full/black
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/fluted/shadowplate/npc
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/shadowrobe/npc
-	gloves = /obj/item/clothing/gloves/roguetown/plate/shadowgauntlets/npc
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/shadowvest
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt/elflock
+	gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/elflock
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
-	mask = /obj/item/clothing/mask/rogue/facemask/shadowfacemask
-	l_hand = /obj/item/rogueweapon/shield/tower/spidershield
-	r_hand = /obj/item/rogueweapon/whip
-	if(prob(40))
-		r_hand = /obj/item/rogueweapon/sword/falx/stalker
-	
-	if(prob(30))
-		shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants
-		shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt/elflock
-		armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/shadowrobe/npc
-		cloak = /obj/item/clothing/cloak/half/shadowcloak
-		gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/elflock
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
+	if(prob(70))
 		mask = /obj/item/clothing/mask/rogue/shepherd/shadowmask/delf
 		neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
-		head = null
+	r_hand = /obj/item/rogueweapon/whip
+	if(prob(45))
 		r_hand = /obj/item/rogueweapon/sword/falx/stalker
 		l_hand = /obj/item/rogueweapon/sword/falx/stalker
+	else if(prob(15))
+		r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
+		l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded/dirk
 
 	H.STASTR = 12 // 6 Points
 	H.STASPD = 13 // 3 points
