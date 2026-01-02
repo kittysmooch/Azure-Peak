@@ -40,3 +40,31 @@
       and Tan colors. Adjusted Gold Metallic to be more desaturated.
   - code_imp: Cleaned up colors.dm to remove redundant variables and defines, as well
       as some leftover brigandine color code still using the old system.
+2026-01-02:
+  Lamasmaster:
+  - rscadd: Seafood tab in stockpile
+  SillyMoff:
+  - balance: 'rebalanced direbear form
+
+      +Crit resist
+
+      +No pain stun
+
+      Defense of claws now 6 (was 2)
+
+      Penetration is 40 (was 10)
+
+      Force 25 (was 20)
+
+      CON now 14 (was 12)
+
+      WIL now 13 (was 12)
+
+      PER now 8 (was 10)
+
+      INT now 8 (was 10)'
+  SirSwagmeyer:
+  - rscadd: Added an aesthetic version of the steel half-plate to the Templars.
+  hazelrat:
+  - rscadd: Added a new longknife available to Wardens and Assassin Rangers.
+  - bugfix: Fireplaces now use the correct subtype on all maps.
