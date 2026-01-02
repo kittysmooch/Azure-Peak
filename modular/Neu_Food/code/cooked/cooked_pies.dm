@@ -175,5 +175,5 @@
 	foodtype = GRAIN | DAIRY | FRUIT | SUGAR
 	warming = 5 MINUTES
 	bitesize = 3
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	rotprocess = SHELFLIFE_LONG

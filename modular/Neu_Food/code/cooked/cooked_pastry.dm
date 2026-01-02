@@ -89,7 +89,7 @@
 	bitesize = 3
 	portable = TRUE
 	tastes = list("crispy butterdough" = 1, "pumpkin" = 1)
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinball/On_Consume(mob/living/eater)
 	. = ..()
@@ -127,7 +127,7 @@
 	slice_batch = FALSE
 	slice_sound = TRUE
 	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf/update_icon()
 	if(slices_num)
@@ -162,7 +162,7 @@
 	tastes = list("sweetbread" = 1,"pumpkin" = 1)
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/snackbuff
 	dropshrink = 0.8
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/handpieraw

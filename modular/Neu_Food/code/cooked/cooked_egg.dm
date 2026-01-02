@@ -118,7 +118,7 @@
 	desc = "Fried eggs with bacon. The bacon's savory salty crunch is a perfect complement to the eggs' more mellow flavors."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "baconegg"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = SHELFLIFE_DECENT
 
 /*	.................   Hammerholdian Breakfast   ................... */
@@ -130,7 +130,7 @@
 	desc = "Fried egg with sausage on the side. A good start to a perfect morning."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "wieneregg"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage/attackby(obj/item/I, mob/living/user, params)
@@ -154,7 +154,7 @@
 	desc = "Fried egg with sausage and bacon on the side. Mere step away from greatness."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "wienereggbacon"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = SHELFLIFE_DECENT
 
 /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon/attackby(obj/item/I, mob/living/user, params)
@@ -178,5 +178,5 @@
 	desc = "A classic of the northern fortresses, peeled of it's more exotic ingredients for Azurean kitchens, a true staple of Dwarven diet."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_egg.dmi'
 	icon_state = "hammerbreak"
-	eat_effect = /datum/status_effect/buff/foodbuff
+	eat_effect = /datum/status_effect/buff/mealbuff
 	rotprocess = SHELFLIFE_DECENT
