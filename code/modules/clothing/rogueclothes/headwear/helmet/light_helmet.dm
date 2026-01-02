@@ -157,6 +157,8 @@
 	max_integrity = 150
 	body_parts_covered = HEAD|HAIR|EARS
 	armor = ARMOR_CLOTHING
+	salvage_result = /obj/item/natural/fibers
+	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/briarthorns/pickup(mob/living/user)
 	. = ..()
