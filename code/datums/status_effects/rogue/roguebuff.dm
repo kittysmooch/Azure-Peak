@@ -365,22 +365,22 @@
 /atom/movable/screen/alert/status_effect/buff/guardbuffone
 	name = "Vigilant Guardsman"
 	desc = "My home. I watch vigilantly and respond swiftly."
-	icon_state = "buff"
+	icon_state = "guardsman"
 
 /atom/movable/screen/alert/status_effect/buff/barkeepbuff
 	name = "Vigilant Tavernkeep"
 	desc = "My home. I watch vigilantly and respond swiftly."
-	icon_state = "buff"
+	icon_state = "drunk"
 
 /atom/movable/screen/alert/status_effect/buff/knightbuff
 	name = "Sworn Defender"
 	desc = "I've sworn an oath to defend this castle. My resolve will not waver."
-	icon_state = "buff"
+	icon_state = "guardsman"
 
 /atom/movable/screen/alert/status_effect/buff/wardenbuff
 	name = "Woodsman"
 	desc = "I've trekked these woods for some time now. I find traversal easier here."
-	icon_state = "buff"
+	icon_state = "guardsman"
 
 /datum/status_effect/buff/wardenbuff
 	id = "wardenbuff"
