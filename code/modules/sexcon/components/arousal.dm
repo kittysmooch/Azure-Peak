@@ -168,8 +168,6 @@
 	charge = max(0, charge - CHARGE_FOR_CLIMAX)
 
 	user.add_stress(/datum/stressevent/cumok)
-	if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
-		user.sate_addiction()
 	user.emote("moan", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
@@ -180,6 +178,11 @@
 /datum/component/arousal/proc/after_intimate_climax(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
 		return
+	if(user && target)
+		if(user.has_flaw(/datum/charflaw/addiction/lovefiend))
+			user.sate_addiction()
+		if(target.has_flaw(/datum/charflaw/addiction/lovefiend))
+			target.sate_addiction()
 	/*
 	if(HAS_TRAIT(target, TRAIT_GOODLOVER))
 		if(!user.mob_timers["cumtri"])
