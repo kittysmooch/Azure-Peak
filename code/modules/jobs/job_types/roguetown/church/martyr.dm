@@ -293,11 +293,6 @@
 				current_holder.STAPER += stat_bonus_martyr
 				current_holder.STALUC += stat_bonus_martyr
 				H.energy_add(9999)
-			if(STATE_MARTYRULT)	//This is ONLY accessed during the last 30 seconds of the shorter variant.
-				H.energy_add(9999)
-				current_holder.visible_message(span_warning("[current_holder] rises up, empowered once more!"), span_warningbig("I rise again! I can feel my god flow through me!"))
-				flash_lightning(current_holder)
-				current_holder.revive(full_heal = TRUE, admin_revive = TRUE)
 
 //This is called regardless of the activated state (safe or not)
 /datum/component/martyrweapon/proc/deactivate()
@@ -387,19 +382,28 @@
 				adjust_stats(current_state)	//Lowers the damage of the sword due to safe activation.
 				current_holder.energy = current_holder.max_energy
 				current_holder.stamina = 0
+				I.sharpness = I.max_blade_int
 			if(STATE_MARTYR)
 				end_activation = world.time + martyr_duration
 				I.max_integrity = 2000				//If you're committing, we repair the weapon and give it a boost so it lasts the whole fight
 				I.obj_integrity = I.max_integrity
+
+				I.max_blade_int = 9999
+				I.sharpness = I.max_blade_int
 				adjust_stats(current_state)	//Gives them extra stats.
 
 				current_holder.stamina = 0
 				current_holder.energy = current_holder.max_energy
+
+				current_holder.adjust_skillrank_down_to(/datum/skill/combat/wrestling, SKILL_LEVEL_NONE, TRUE)
 			if(STATE_MARTYRULT)
 				end_activation = world.time + ultimate_duration
 				I.max_integrity = 9999				//why not, they got 2 mins anyway
 				I.obj_integrity = I.max_integrity
 
+				I.max_blade_int = 9999
+				I.sharpness = I.max_blade_int
+				
 				current_holder.adjust_skillrank(/datum/skill/misc/athletics, 6, FALSE)
 
 				current_holder.STASTR = 20
@@ -413,7 +417,7 @@
 				current_holder.energy = current_holder.max_energy
 				current_holder.stamina = 0
 
-				current_holder.adjust_skillrank(/datum/skill/combat/wrestling, 6, FALSE)
+				current_holder.adjust_skillrank_down_to(/datum/skill/combat/wrestling, SKILL_LEVEL_NONE, TRUE)
 				current_holder.adjust_skillrank(/datum/skill/combat/swords, 6, FALSE)
 				current_holder.adjust_skillrank(/datum/skill/combat/unarmed, 6, FALSE)
 
