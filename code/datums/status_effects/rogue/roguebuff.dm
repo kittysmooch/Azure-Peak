@@ -430,7 +430,7 @@
 /atom/movable/screen/alert/status_effect/buff/healing
 	name = "Healing Miracle"
 	desc = "Divine intervention relieves me of my ailments."
-	icon_state = "buff"
+	icon_state = "lesser_heal"
 
 #define MIRACLE_HEALING_FILTER "miracle_heal_glow"
 
@@ -484,12 +484,12 @@
 /atom/movable/screen/alert/status_effect/buff/healing/campfire
 	name = "Camp Rest"
 	desc = "The warmth of a fire and a bed soothes my ails."
-	icon_state = "buff"
+	icon_state = "campfire"
 
 /atom/movable/screen/alert/status_effect/buff/campfire_stamina
 	name = "Warming Respite"
 	desc = "A break by the fire restores some of my energy."
-	icon_state = "buff"
+	icon_state = "campfire"
 
 
 #define CAMPFIRE_BASE_FILTER "campfire_stamina"
@@ -1101,7 +1101,7 @@
 /atom/movable/screen/alert/status_effect/buff/xylix_joy
 	name = "Trickster's Joy"
 	desc = "The sound of merriment fills me with fortune."
-	icon_state = "buff"
+	icon_state = "joy"
 
 /datum/status_effect/buff/xylix_joy
 	id = "xylix_joy"
