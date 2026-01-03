@@ -41,7 +41,7 @@
 
 /obj/item/fishingcage/attack_hand(mob/user)
 	if(deployed)
-		var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 1, slowest = 6) //in seconds
+		var/deploy_speed = get_skill_delay(user.get_skill_level(/datum/skill/labor/fishing), 0.5, slowest = 6) //in seconds
 		if(caught)
 			user.visible_message(span_notice("[user] begins to harvest from the cage..."), \
 								span_notice("I begin harvesting the from the cage..."))
