@@ -41,7 +41,7 @@
 
 /obj/item/clothing/cloak/templar/xylixian/faux
 	name = "xylixian fasching leotard"
-	desc = "Look at you! Swing and Jingle your hips, maybe even crack some fun whips. Today is going to be a fun day!"
+	desc = "Look at you! Swing and Jingle your hips, maybe even crack some whips. Today is going to be a fun day!"
 	icon_state = "fauxoutfit"
 	item_state = "fauxoutfit"
 	alternate_worn_layer = TABARD_LAYER
