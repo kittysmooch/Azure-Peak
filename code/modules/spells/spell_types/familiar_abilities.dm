@@ -389,7 +389,8 @@
 	. = ..()
 
 	var/mob/living/simple_animal/pet/familiar/ripplefox/illusory_familiar = new user.type(user.loc)
-	user.visible_message(span_notice("[user.name] blurs and darts away in two directions at once!"))
+	user.mob_timers[MT_INVISIBILITY] = world.time + 200
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, update_sneak_invis), TRUE), 200)
 
 	illusory_familiar.familiar_summoner = user
 	illusory_familiar.fully_replace_character_name(null, user.name)

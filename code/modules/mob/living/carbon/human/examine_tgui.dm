@@ -49,7 +49,7 @@
 	var/is_naked = FALSE
 	var/obscured = FALSE
 
-	var/datum/preferences/prefs = user?.client?.prefs
+	var/datum/preferences/prefs = holder.client?.prefs
 	var/datum/familiar_prefs/fam_pref = prefs?.familiar_prefs
 
 	flavor_text = fam_pref.familiar_flavortext
