@@ -288,7 +288,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/stockings_thigh_white
-	name = "stockings - thigh)"
+	name = "stockings - thigh"
 	result = list(/obj/item/legwears/thigh_high/white)
 	reqs = list(/obj/item/natural/cloth = 1,
 				/obj/item/natural/fibers = 1)
