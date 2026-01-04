@@ -106,9 +106,7 @@
 			if(!QDELETED(fisherperson))
 				fishingmodlist = upgradecagemodlist(fisherperson, fishingmodlist)
 				fishingskill = fisherperson.get_skill_level(/datum/skill/labor/fishing)
-			to_chat(world, span_userdanger("modlist is [fishingmodlist] bait list is [bait.fishingMods]"))
 			caught = pickweightAllowZero(createCageFishWeightListModlist(fishingmodlist))
-			to_chat(world, span_userdanger("caught a [caught]"))
 			icon_state = "fishingcage_caught"
 			if(getbaitlife(fishingskill, bait, 100))
 				QDEL_NULL(bait)
