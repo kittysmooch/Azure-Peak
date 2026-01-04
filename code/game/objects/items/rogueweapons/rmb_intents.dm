@@ -48,7 +48,7 @@
 
 	if(!HT.can_see_cone(user) && HT.mind)
 		newcd = 5 SECONDS
-		to_chat(user, span_notice("[HU.p_they()] didn't see me! Nothing happened!"))
+		to_chat(user, span_notice("[HT.p_they()] didn't see me! Nothing happened!"))
 		HU.apply_status_effect(/datum/status_effect/debuff/baitcd, newcd)
 		return
 
