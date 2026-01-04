@@ -46,7 +46,7 @@
 	if(HT.has_status_effect(/datum/status_effect/debuff/baited) || user.has_status_effect(/datum/status_effect/debuff/baitcd))
 		return	//We don't do anything if either of us is affected by bait statuses
 
-	if(!L.can_see_cone(user) && L.mind)
+	if(!HT.can_see_cone(user) && HT.mind)
 		newcd = 5 SECONDS
 		to_chat(user, span_notice("[HU.p_they()] didn't see me! Nothing happened!"))
 		HU.apply_status_effect(/datum/status_effect/debuff/baitcd, newcd)
