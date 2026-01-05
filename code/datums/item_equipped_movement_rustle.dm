@@ -47,12 +47,13 @@ with light edits to work with roguecode */
 /datum/component/item_equipped_movement_rustle/proc/on_equip(datum/source, mob/equipper, slot)
 	SIGNAL_HANDLER
 	RegisterSignal(equipper, COMSIG_MOVABLE_MOVED, PROC_REF(try_step), override = TRUE)
-
+	RegisterSignal(equipper, COMSIG_SEX_JOSTLE, PROC_REF(try_step_quick), override = TRUE)
 
 /datum/component/item_equipped_movement_rustle/proc/on_unequip(datum/source, mob/dropped)
 	SIGNAL_HANDLER
 	move_counter = 0
 	UnregisterSignal(dropped, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(dropped, COMSIG_SEX_JOSTLE)
 
 /datum/component/item_equipped_movement_rustle/proc/try_step(obj/item/clothing/source)//(mob/source)
 	SIGNAL_HANDLER
@@ -60,6 +61,15 @@ with light edits to work with roguecode */
 		return*/
 	move_counter++
 	if(move_counter >= move_delay)
+		play_rustle_sound(source)
+		move_counter = 0
+
+/datum/component/item_equipped_movement_rustle/proc/try_step_quick(obj/item/clothing/source)//(mob/source)
+	SIGNAL_HANDLER
+	/*if (source.moving_diagonally == FIRST_DIAG_STEP)   //you can uncomment these if someone ever implements diagonal movement
+		return*/
+	move_counter++
+	if(move_counter >= (move_delay / 2))
 		play_rustle_sound(source)
 		move_counter = 0
 
