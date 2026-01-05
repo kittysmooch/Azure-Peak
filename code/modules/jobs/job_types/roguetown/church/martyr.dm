@@ -685,8 +685,8 @@
 			if("altgrip") return list("shrink" = 0.5,"sx" = 4,"sy" = 0,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/martyr
-	force = 25
-	force_wielded = 45
+	force = 20
+	force_wielded = 35
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
 	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/bash)
 	icon_state = "martyraxe"
@@ -791,8 +791,9 @@
 	return ..()
 
 /obj/item/rogueweapon/mace/goden/martyr
-	force = 30
-	force_wielded = 40
+	force = 20
+	force_wielded = 30
+	wdefense = 6
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/effect/daze, /datum/intent/effect/hobble)
 	icon_state = "martyrmace"
@@ -892,9 +893,10 @@
 	return ..()
 
 /obj/item/rogueweapon/spear/partizan/martyr
-	force = 20
-	force_wielded = 30
-	possible_item_intents = list(/datum/intent/spear/thrust, /datum/intent/spear/bash)
+	force = 25
+	force_wielded = 35
+	max_blade_int = 250
+	possible_item_intents = list(SPEAR_THRUST_1H, /datum/intent/spear/bash)
 	gripped_intents = list(/datum/intent/spear/thrust, /datum/intent/rend/reach/partizan, /datum/intent/partizan/peel, /datum/intent/spear/bash)
 	icon_state = "martyrtrident"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -927,6 +929,10 @@
 		item_d_type = "fire"
 		blade_class = BCLASS_PICK
 
+/datum/intent/spear/thrust/oneh/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_PICK
+
 /datum/intent/spear/bash/martyr
 		item_d_type = "fire"
 
@@ -944,10 +950,10 @@
 	else
 		SSroguemachine.martyrweapon = src
 	if(!gc_destroyed)
-		var/list/active_intents = list(/datum/intent/spear/thrust/martyr, /datum/intent/spear/bash/martyr)
+		var/list/active_intents = list(/datum/intent/spear/thrust/oneh/martyr, /datum/intent/spear/bash/martyr)
 		var/list/active_intents_wielded = list(/datum/intent/spear/thrust/martyr, /datum/intent/rend/reach/partizan/martyr, /datum/intent/partizan/peel/martyr, /datum/intent/spear/bash/martyr)
-		var/safe_damage = 15
-		var/safe_damage_wielded = 20
+		var/safe_damage = 20
+		var/safe_damage_wielded = 25
 		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 
 /obj/item/rogueweapon/spear/partizan/martyr/proc/anti_stall()
