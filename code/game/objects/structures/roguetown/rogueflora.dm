@@ -500,7 +500,7 @@
 	return ..()
 
 /obj/structure/flora/rogueshroom/obj_destruction(damage_flag)
-	new /obj/structure/flora/shroomstump(loc, icon_state, icon)
+	new /obj/structure/flora/shroomstump(loc, initial(icon_state), icon)
 	. = ..()
 
 
@@ -747,6 +747,12 @@
 	)
 	static_debris = list(/obj/item/reagent_containers/food/snacks/rogue/meat_rotten = 1)
 	var/rare_mush_bonus_drop = /obj/item/reagent_containers/powder/ozium
+	var/mush_animate = TRUE
+
+/obj/structure/flora/rogueshroom/happy/Initialize()
+	. = ..()
+	if(mush_animate)
+		animate(src, icon_state = "[icon_state]animated", delay = rand(1, 100), loop = -1, time = 10)
 
 /obj/structure/flora/rogueshroom/happy/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir)
 	. = ..()
@@ -775,6 +781,7 @@
 	special_examine = "You recall the gathering of wildsmasters recently. It hasn't been long, but these mushrooms were always believed to be happy and colorful. The spores of this one are rumoured to be the cause, it's like... they collectively made a decision."
 	static_debris = list(/obj/item/natural/fibers = 1)
 	rare_mush_bonus_drop = 0
+	mush_animate = FALSE
 
 /obj/structure/flora/rogueshroom/happy/random
 
