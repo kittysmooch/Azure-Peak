@@ -110,7 +110,7 @@
 /turf/open/floor/rogue/ruinedwood/turned,
 /area/rogue/under/tomb/indoors)
 "dp" = (
-/obj/item/natural/rock/random_ore,
+/obj/item/natural/rock/random_ore/dungeon,
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/under/tomb/cave)
 "dw" = (
@@ -938,7 +938,7 @@
 /turf/open/floor/rogue/twig,
 /area/rogue/under/tomb/indoors)
 "LA" = (
-/obj/item/natural/rock/random_ore,
+/obj/item/natural/rock/random_ore/dungeon,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave)
 "LR" = (
@@ -1242,7 +1242,7 @@
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/under/tomb/indoors)
 "Xv" = (
-/obj/item/natural/rock/random_ore,
+/obj/item/natural/rock/random_ore/dungeon,
 /mob/living/simple_animal/hostile/retaliate/rogue/bigrat,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave)

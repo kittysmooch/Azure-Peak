@@ -33,7 +33,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave/lava)
 "D" = (
-/obj/item/natural/rock/random_ore,
+/obj/item/natural/rock/random_ore/dungeon,
 /turf/open/floor/rogue/volcanic,
 /area/rogue/under/tomb/cave/lava)
 "F" = (
@@ -41,7 +41,7 @@
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave/lava)
 "G" = (
-/obj/item/natural/rock/random_ore,
+/obj/item/natural/rock/random_ore/dungeon,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave/lava)
 "H" = (
