@@ -24,6 +24,10 @@ with light edits to work with roguecode */
 	///when sounds start falling off for the rustle rustle.
 	var/sound_falloff_distance = 1
 
+	var/static/list/valid_storage_rustlers = list(
+		/datum/component/storage/concrete/roguetown/hat
+	)
+
 /datum/component/item_equipped_movement_rustle/Initialize(custom_sounds, move_delay_override, volume_override, extrarange, falloff_exponent, falloff_distance)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -58,8 +62,11 @@ with light edits to work with roguecode */
 	move_counter = 0
 	UnregisterSignal(dropped, COMSIG_MOVABLE_MOVED)
 
-/datum/component/item_equipped_movement_rustle/proc/handle_storage_insert(datum/source, obj/storage_master, mob/user)
+/datum/component/item_equipped_movement_rustle/proc/handle_storage_insert(datum/source, obj/storage_master, mob/user, datum/storage_datum)
 	SIGNAL_HANDLER
+
+	if(!is_type_in_list(storage_datum, valid_storage_rustlers))
+		return
 
 	RegisterSignal(storage_master, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
 	RegisterSignal(storage_master, COMSIG_ITEM_DROPPED, PROC_REF(on_unequip))
@@ -67,8 +74,11 @@ with light edits to work with roguecode */
 	if(storage_master.loc == user)
 		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(try_step), override = TRUE)
 
-/datum/component/item_equipped_movement_rustle/proc/handle_storage_remove(datum/source, obj/storage_master, mob/user)
+/datum/component/item_equipped_movement_rustle/proc/handle_storage_remove(datum/source, obj/storage_master, mob/user, datum/storage_datum)
 	SIGNAL_HANDLER
+
+	if(!is_type_in_list(storage_datum, valid_storage_rustlers))
+		return
 
 	UnregisterSignal(storage_master, COMSIG_ITEM_EQUIPPED)
 	UnregisterSignal(storage_master, COMSIG_ITEM_DROPPED)

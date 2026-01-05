@@ -756,7 +756,7 @@
 		else
 			coordinates = screen_loc_to_grid_coordinates(coordinates)
 		grid_add_item(storing, coordinates)
-	SEND_SIGNAL(storing, COMSIG_AFTER_STORAGE_INSERT, parent, user)
+	SEND_SIGNAL(storing, COMSIG_AFTER_STORAGE_INSERT, parent, user, src)
 	update_icon()
 	refresh_mob_views()
 	return TRUE
@@ -791,7 +791,7 @@
 		//Being destroyed, just move to nullspace now (so it's not in contents for the icon update)
 		removed.moveToNullspace()
 	removed.update_icon()
-	SEND_SIGNAL(removed, COMSIG_AFTER_STORAGE_REMOVE, parent, carrying_mob)
+	SEND_SIGNAL(removed, COMSIG_AFTER_STORAGE_REMOVE, parent, carrying_mob, src)
 	update_icon()
 	refresh_mob_views()
 	return TRUE
