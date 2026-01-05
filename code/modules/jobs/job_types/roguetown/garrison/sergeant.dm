@@ -99,8 +99,8 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/movemovemove)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/takeaim)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/onfeet)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/hold)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/onfeet)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/guard) // We'll just use Watchmen as sorta conscripts yeag?
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/proc/haltyell, /mob/living/carbon/human/mind/proc/setorders)
 	backpack_contents = list(
@@ -153,59 +153,64 @@
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_UPPER_MIDDLE_CLASS, H, "Savings.")
 
-/obj/effect/proc_holder/spell/invoked/order
+/obj/effect/proc_holder/spell/invoked/order //For the stat-buff orders, these affect a group
 	name = ""
 	range = 1
 	associated_skill = /datum/skill/misc/athletics
 	devotion_cost = 0
 	chargedrain = 1
 	chargetime = 15
-	releasedrain = 80 // This is quite costy. Shouldn't be able to really spam them right off the cuff, combined with having to type out an order. Should prevent VERY occupied officers from ALSO ordering
+	releasedrain = 80
 	recharge_time = 2 MINUTES
 	miracle = FALSE
 	sound = 'sound/magic/inspire_02.ogg'
+	var/single_target = FALSE
+	var/buff_given
+	var/msg
 
-
+/obj/effect/proc_holder/spell/invoked/order/cast(list/targets, mob/living/user)
+	. = ..()
+	var/affectedjobs = list()
+	var/affectedtargets = list()
+	if(!single_target) //We want one spell to use the old method so we'll separate this out
+		if(user.job == "Sergeant")
+			affectedjobs = list("Man at Arms", "Watchman")
+		else if(user.job == "Knight Captain")
+			affectedjobs = list("Knight", "Squire")
+		else //failsafe in case someone somehow gets the spells without a role that uses them
+			to_chat(user, span_alert("I don't have authority to order anyone!"))
+			revert_cast()
+			return FALSE
+		for(var/mob/living/carbon/target in view(5, get_turf(user)))
+			if(target.job in affectedjobs)
+				affectedtargets += target
+				continue
+		if(!length(affectedtargets))
+			to_chat(user, span_alert("There are no subordinates close enough to hear my orders!"))
+			revert_cast()
+			return FALSE
+		else
+			user.say("[msg]")
+			for(var/mob/living/carbon/target in affectedtargets)
+				target.apply_status_effect(buff_given)
+			return TRUE
 /obj/effect/proc_holder/spell/invoked/order/movemovemove
 	name = "Move! Move! Move!"
-	desc = "Orders your underlings to move faster. +5 Speed."
+	desc = "Orders your underlings to move faster. +2 Speed."
 	overlay_state = "movemovemove"
+	buff_given = /datum/status_effect/buff/order/movemovemove
 
 /obj/effect/proc_holder/spell/invoked/order/movemovemove/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/msg = user.mind.movemovemovetext
-		if(!msg)
-			to_chat(user, span_alert("I must say something to give an order!"))
-			return
-		if(user.job == "Sergeant")
-			if(!(target.job in list("Man at Arms", "Watchman")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(user.job == "Knight Captain")
-			if(!(target.job in list("Knight", "Squire")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(target == user)
-			to_chat(user, span_alert("I cannot order myself!"))
-			revert_cast()
-			return
-		user.say("[msg]")
-		target.apply_status_effect(/datum/status_effect/buff/order/movemovemove)
-		return TRUE
-	revert_cast()
-	return FALSE
+	msg = user.mind.movemovemovetext
+	.=..()
 
 /datum/status_effect/buff/order/movemovemove/nextmove_modifier()
-	return 0.85
+	return 0.925 //Half as beneficial as Haste
 
 /datum/status_effect/buff/order/movemovemove
 	id = "movemovemove"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/order/movemovemove
-	effectedstats = list(STATKEY_SPD = 5)
+	effectedstats = list(STATKEY_SPD = 2)
 	duration = 1 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/order/movemovemove
@@ -219,14 +224,19 @@
 
 /obj/effect/proc_holder/spell/invoked/order/takeaim
 	name = "Take aim!"
-	desc = "Orders your underlings to be more precise. +5 Perception."
+	desc = "Orders your underlings to be more precise. +2 Perception."
 	overlay_state = "takeaim"
+	buff_given = /datum/status_effect/buff/order/takeaim
 
 /datum/status_effect/buff/order/takeaim
 	id = "takeaim"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/order/takeaim
-	effectedstats = list(STATKEY_PER = 5)
+	effectedstats = list(STATKEY_PER = 2)
 	duration = 1 MINUTES
+
+/obj/effect/proc_holder/spell/invoked/order/takeaim/cast(list/targets, mob/living/user)
+	msg = user.mind.takeaimtext
+	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/order/takeaim
 	name = "Take aim!"
@@ -237,40 +247,38 @@
 	. = ..()
 	to_chat(owner, span_blue("My officer orders me to take aim!"))
 
-/obj/effect/proc_holder/spell/invoked/order/takeaim/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/msg = user.mind.takeaimtext
-		if(!msg)
-			to_chat(user, span_alert("I must say something to give an order!"))
-			return
-		if(user.job == "Sergeant")
-			if(!(target.job in list("Man at Arms", "Watchman")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(user.job == "Knight Captain")
-			if(!(target.job in list("Knight", "Squire")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(target == user)
-			to_chat(user, span_alert("I cannot order myself!"))
-			revert_cast()
-			return
-		user.say("[msg]")
-		target.apply_status_effect(/datum/status_effect/buff/order/takeaim)
-		return TRUE
-	revert_cast()
-	return FALSE
+/obj/effect/proc_holder/spell/invoked/order/hold
+	name = "Hold!"
+	desc = "Orders your underlings to Endure. +1 Willpower and Constitution."
+	overlay_state = "hold"
+	buff_given = /datum/status_effect/buff/order/hold
 
+
+/obj/effect/proc_holder/spell/invoked/order/hold/cast(list/targets, mob/living/user)
+	msg = user.mind.holdtext
+	. = ..()
+
+/datum/status_effect/buff/order/hold
+	id = "hold"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/order/hold
+	effectedstats = list(STATKEY_WIL = 1, STATKEY_CON = 1)
+	duration = 1 MINUTES
+
+/atom/movable/screen/alert/status_effect/buff/order/hold
+	name = "Hold!"
+	desc = "My officer has ordered me to hold!"
+	icon_state = "buff"
+
+/datum/status_effect/buff/order/hold/on_apply()
+	. = ..()
+	to_chat(owner, span_blue("My officer orders me to hold!"))
 
 
 /obj/effect/proc_holder/spell/invoked/order/onfeet
 	name = "On your feet!"
-	desc = "Orders your underlings to stand up."
+	desc = "Orders an underling to stand up and fight without fear or pain."
 	overlay_state = "onfeet"
+	single_target = TRUE
 
 /obj/effect/proc_holder/spell/invoked/order/onfeet/cast(list/targets, mob/living/user)
 	. = ..()
@@ -326,58 +334,6 @@
 /datum/status_effect/buff/order/onfeet/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_NOPAIN, TRAIT_GENERIC)
 	. = ..()
-
-
-/obj/effect/proc_holder/spell/invoked/order/hold
-	name = "Hold!"
-	desc = "Orders your underlings to Endure. +2 Willpower and Constitution."
-	overlay_state = "hold"
-
-
-/obj/effect/proc_holder/spell/invoked/order/hold/cast(list/targets, mob/living/user)
-	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/msg = user.mind.holdtext
-		if(!msg)
-			to_chat(user, span_alert("I must say something to give an order!"))
-			return
-		if(user.job == "Sergeant")
-			if(!(target.job in list("Man at Arms", "Watchman")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(user.job == "Knight Captain")
-			if(!(target.job in list("Knight", "Squire")))
-				to_chat(user, span_alert("I cannot order one not of my ranks!"))
-				revert_cast()
-				return
-		if(target == user)
-			to_chat(user, span_alert("I cannot order myself!"))
-			revert_cast()
-			return
-		user.say("[msg]")
-		target.apply_status_effect(/datum/status_effect/buff/order/hold)
-		return TRUE
-	revert_cast()
-	return FALSE
-
-
-/datum/status_effect/buff/order/hold
-	id = "hold"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/order/hold
-	effectedstats = list(STATKEY_WIL = 2, STATKEY_CON = 2)
-	duration = 1 MINUTES
-
-/atom/movable/screen/alert/status_effect/buff/order/hold
-	name = "Hold!"
-	desc = "My officer has ordered me to hold!"
-	icon_state = "buff"
-
-/datum/status_effect/buff/order/hold/on_apply()
-	. = ..()
-	to_chat(owner, span_blue("My officer orders me to hold!"))
-
 
 /mob/living/carbon/human/mind/proc/setorders()
 	set name = "Rehearse Orders"
