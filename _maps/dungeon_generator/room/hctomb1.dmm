@@ -193,6 +193,10 @@
 "jS" = (
 /turf/closed/wall/mineral/rogue/decostone/cand,
 /area/rogue/under/tomb/indoors)
+"kd" = (
+/obj/item/natural/rock/iron,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/tomb/cave)
 "kt" = (
 /obj/item/chair/stool/bar/rogue{
 	dir = 8
@@ -491,6 +495,11 @@
 /obj/structure/ladder,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb/cave)
+"Bt" = (
+/obj/item/natural/rock/random_ore/dungeon,
+/obj/item/natural/rock/tin,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/tomb/cave)
 "BC" = (
 /obj/item/rogueore/gold,
 /turf/open/water/cleanshallow,
@@ -636,6 +645,10 @@
 /obj/machinery/light/rogue/torchholder/l,
 /turf/open/floor/rogue/blocks/paving,
 /area/rogue/under/tomb/indoors)
+"Lk" = (
+/obj/item/natural/rock/coal,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/tomb/cave)
 "Ls" = (
 /obj/item/rogueweapon/pick/stone{
 	pixel_x = 5;
@@ -696,6 +709,11 @@
 /obj/structure/bars,
 /turf/open/floor/rogue/cobble/mossy,
 /area/rogue/under/tomb/indoors)
+"Qe" = (
+/obj/item/natural/rock/random_ore/dungeon,
+/obj/item/natural/rock/salt,
+/turf/open/floor/rogue/naturalstone,
+/area/rogue/under/tomb/cave)
 "Qn" = (
 /obj/machinery/light/rogue/campfire,
 /turf/open/floor/rogue/naturalstone,
@@ -1688,7 +1706,7 @@ TZ
 TZ
 Ug
 DA
-wy
+jx
 jx
 Ls
 jx
@@ -1719,8 +1737,8 @@ TZ
 TZ
 TZ
 jx
-wy
-jx
+Qe
+kd
 jx
 jx
 jx
@@ -1753,7 +1771,7 @@ TZ
 TZ
 Iz
 wy
-wy
+Bt
 jx
 jx
 xb
@@ -1786,7 +1804,7 @@ TZ
 NQ
 FF
 jx
-wy
+Lk
 jx
 jx
 eF
@@ -1819,7 +1837,7 @@ TZ
 TZ
 TZ
 jx
-wy
+jx
 eF
 Pl
 IN
