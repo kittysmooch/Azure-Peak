@@ -797,6 +797,13 @@
 
 	cut_overlays()
 
+	if(growth_stage >= FRUITING)
+		var/branches_to_show = 4 - prune_count
+		if(branches_to_show > 0)
+			for(var/i in 1 to branches_to_show)
+				var/image/branch_overlay = image(icon = initial(icon), icon_state = "branch[i]")
+				add_overlay(branch_overlay)
+
 	if(growth_stage == FRUITING && fruit_ready)
 		var/image/fruit_image = image(icon = initial(icon), icon_state = "fruit[happiness_tier]", layer = 1)
 		add_overlay(fruit_image)
