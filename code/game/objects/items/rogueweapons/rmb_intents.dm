@@ -198,7 +198,7 @@
 
 	if(!L.can_see_cone(user) && L.mind)
 		perc = 0
-		newcd = 8 SECONDS
+		newcd = 5 SECONDS
 		special_msg = span_warning("They need to see me for me to feint them!")
 
 	perc = CLAMP(perc, 0, 90)
