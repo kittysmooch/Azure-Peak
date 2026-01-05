@@ -30,6 +30,8 @@ with light edits to work with roguecode */
 
 	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_unequip))
+	RegisterSignal(parent, COMSIG_AFTER_STORAGE_INSERT, PROC_REF(handle_storage_insert))
+	RegisterSignal(parent, COMSIG_AFTER_STORAGE_REMOVE, PROC_REF(handle_storage_remove))
 
 	if(custom_sounds)
 		rustle_sounds = custom_sounds
@@ -46,13 +48,33 @@ with light edits to work with roguecode */
 
 /datum/component/item_equipped_movement_rustle/proc/on_equip(datum/source, mob/equipper, slot)
 	SIGNAL_HANDLER
+
 	RegisterSignal(equipper, COMSIG_MOVABLE_MOVED, PROC_REF(try_step), override = TRUE)
 
 
 /datum/component/item_equipped_movement_rustle/proc/on_unequip(datum/source, mob/dropped)
 	SIGNAL_HANDLER
+
 	move_counter = 0
 	UnregisterSignal(dropped, COMSIG_MOVABLE_MOVED)
+
+/datum/component/item_equipped_movement_rustle/proc/handle_storage_insert(datum/source, obj/storage_master, mob/user)
+	SIGNAL_HANDLER
+
+	RegisterSignal(storage_master, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equip))
+	RegisterSignal(storage_master, COMSIG_ITEM_DROPPED, PROC_REF(on_unequip))
+
+	if(storage_master.loc == user)
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(try_step), override = TRUE)
+
+/datum/component/item_equipped_movement_rustle/proc/handle_storage_remove(datum/source, obj/storage_master, mob/user)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(storage_master, COMSIG_ITEM_EQUIPPED)
+	UnregisterSignal(storage_master, COMSIG_ITEM_DROPPED)
+
+	if(storage_master.loc == user)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 /datum/component/item_equipped_movement_rustle/proc/try_step(obj/item/clothing/source)//(mob/source)
 	SIGNAL_HANDLER
