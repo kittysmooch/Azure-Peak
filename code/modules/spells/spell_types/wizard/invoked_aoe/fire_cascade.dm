@@ -4,10 +4,10 @@
 	overlay_state = "fireaura"
 	spell_tier = 3
 	cost = 6
-	releasedrain = 10
+	releasedrain = 20
 	chargedrain = 1
 	chargetime = 0.5 SECONDS
-	recharge_time = 20 SECONDS
+	recharge_time = 30 SECONDS
 	warnie = "spellwarning"
 	gesture_required = TRUE
 	movement_interrupt = FALSE
@@ -31,6 +31,6 @@
 
 	for(var/i in 0 to flame_radius)
 		for(var/turf/nearby_turf as anything in spiral_range_turfs(i + 1, centre))
-			new /obj/effect/hotspot(nearby_turf, null, null, 1)
+			new /obj/effect/hotspot(nearby_turf, null, null, 2)
 
 		stoplag(0.3 SECONDS)

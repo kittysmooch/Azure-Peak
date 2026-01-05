@@ -6,7 +6,7 @@
 	don't forget to take care of fireimmunity..."
 	cost = 4
 	xp_gain = TRUE
-	releasedrain = 60
+	releasedrain = 30
 	chargedrain = 1
 	chargetime = 0.5 SECONDS
 	recharge_time = 1 MINUTES
