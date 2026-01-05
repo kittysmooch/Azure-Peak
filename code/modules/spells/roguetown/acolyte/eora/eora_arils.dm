@@ -40,7 +40,7 @@
 	name = "crimson aril"
 	desc = "A blood-red seed that seems to pulse with vitality."
 	icon_state = "crimson"
-	effect_desc = "This fruit heals for a blood price."
+	effect_desc = "This fruit heals for a blood price. This seed can be fed to others at the cost of your own blood."
 
 	var/heal_amount = 35
 	var/blood_loss = 225
