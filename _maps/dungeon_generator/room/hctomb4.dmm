@@ -633,6 +633,11 @@
 /obj/effect/dungeon_directional_helper/north,
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/under/tomb)
+"wp" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop/valuable_jewelry_spawner,
+/turf/open/floor/rogue/carpet,
+/area/rogue/under/tomb/indoors/magic)
 "wr" = (
 /turf/open/transparent/openspace,
 /area/rogue/under/tomb/indoors)
@@ -852,6 +857,8 @@
 "GM" = (
 /obj/structure/fluff/railing/border,
 /obj/structure/table/wood/fancy/royalblack,
+/obj/effect/spawner/lootdrop/valuable_jewelry_spawner,
+/obj/effect/spawner/lootdrop/valuable_clutter_spawner,
 /turf/open/floor/rogue/carpet,
 /area/rogue/under/tomb/indoors)
 "GP" = (
@@ -1286,7 +1293,7 @@
 /turf/closed/wall/mineral/rogue/wooddark/vertical,
 /area/rogue/under/tomb/indoors)
 "YO" = (
-/turf/closed/mineral,
+/turf/closed/mineral/random/rogue,
 /area/rogue/under/tomb/cave)
 "YQ" = (
 /obj/structure/table/wood/crafted,
@@ -2531,7 +2538,7 @@ sz
 XV
 ie
 aN
-Sr
+wp
 Nn
 fk
 cy
