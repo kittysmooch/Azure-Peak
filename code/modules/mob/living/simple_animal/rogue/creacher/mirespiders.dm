@@ -194,6 +194,19 @@
 
 	var/list/mob/living/simple_animal/hostile/retaliate/rogue/mirespider/followers = list()
 
+/mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
+	icon = 'icons/mob/mirespider_shroom.dmi'
+	desc = "Mushroom!"
+	name = "mire lurker?"
+	icon_state = "mushroom"
+	icon_living = "mushroom"
+	icon_dead = "mushroom_dead"
+	health = MIRESPIDER_MUSHROOM_HEALTH
+	maxHealth = MIRESPIDER_MUSHROOM_HEALTH
+	pixel_x = -8
+
+	projectiletype = /obj/projectile/bullet/spider_shroom
+
 /mob/living/simple_animal/hostile/rogue/mirespider_lurker/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
