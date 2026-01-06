@@ -3,6 +3,7 @@
 
 /obj/structure/mineral_door
 	name = "metal door"
+	desc = "It opens and closes."
 	density = TRUE
 	anchored = TRUE
 	opacity = TRUE
@@ -62,6 +63,12 @@
 	var/list/resident_advclass
 	//a door name a skilled artisan can make 
 	var/doorname = null
+
+/obj/structure/mineral_door/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Right clicking the door with a key will attempt to lock it.")
+	. += span_info("Left clicking the door with a key will attempt to unlock it.")
+	. += span_info("Kicking an unlocked door will open or close it. Kicking a locked door, if sufficiently strong, can force it open!")
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -174,7 +181,7 @@
 		return
 	if(!grant_resident_key)
 		return
-	var/spare_key = alert(user, "Have I got an extra spare key?", "Home", "Yes", "No")
+	var/spare_key = alert(user, "Have I got a spare key?", "Home", "Yes", "No")
 	if(!grant_resident_key)
 		return
 	if(spare_key == "Yes")
@@ -196,6 +203,7 @@
 		to_chat(human, span_notice("They're just where I left them..."))
 	else
 		to_chat(human, span_notice("It's just where I left it..."))
+	name = "[user.real_name] the [human.advjob ? human.advjob : human.job]'s house"
 	return TRUE
 
 /obj/structure/mineral_door/Move()
@@ -688,7 +696,6 @@
 
 /obj/structure/mineral_door/wood
 	name = "door"
-	desc = ""
 	icon_state = "woodhandle"
 	openSound = 'sound/foley/doors/creak.ogg'
 	closeSound = 'sound/foley/doors/shut.ogg'
@@ -780,13 +787,12 @@
 	opacity = FALSE
 	icon_state = "woodwindow"
 	windowed = TRUE
-	desc = ""
+	desc = "This is a door with a window integrated into it."
 	over_state = "woodwindowopen"
 	smashable = TRUE
 
 /obj/structure/mineral_door/wood/fancywood
 	icon_state = "fancy_wood"
-	desc = ""
 	over_state = "fancy_woodopen"
 	smashable = TRUE
 
@@ -802,6 +808,10 @@
 	openSound = 'sound/foley/doors/shittyopen.ogg'
 	closeSound = 'sound/foley/doors/shittyclose.ogg'
 	smashable = TRUE
+
+/obj/structure/mineral_door/wood/deadbolt/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("You can lock this without a key with <b>right click</b>, but only from one side.")
 
 /obj/structure/mineral_door/wood/deadbolt/OnCrafted(dirin)
 	dir = turn(dirin, 180)
@@ -913,7 +923,6 @@
 
 /obj/structure/mineral_door/bars
 	name = "iron door"
-	desc = ""
 	icon_state = "bars"
 	openSound = 'sound/foley/doors/ironopen.ogg'
 	closeSound = 'sound/foley/doors/ironclose.ogg'
@@ -937,10 +946,9 @@
 	repair_cost_first = /obj/item/ingot/iron
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/blacksmithing
-	
+
 /obj/structure/mineral_door/barsold
 	name = "iron door"
-	desc = ""
 	icon_state = "barsold"
 
 /obj/structure/mineral_door/bars/Initialize()
@@ -1003,7 +1011,7 @@
 	lockid = "towner_fisher"
 
 /obj/structure/mineral_door/wood/towner/hunter
-	resident_advclass = list(/datum/advclass/hunter)
+	resident_advclass = list(/datum/advclass/hunter,/datum/advclass/hunter/spear)
 	lockid = "towner_hunter"
 
 /obj/structure/mineral_door/wood/towner/witch

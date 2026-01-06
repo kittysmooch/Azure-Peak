@@ -10,8 +10,21 @@
 	clickcd = CLICK_CD_CHARGED
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = 55
 	item_d_type = "stab"
+	effective_range = 2
+	effective_range_type = EFF_RANGE_EXACT
+
+/datum/intent/spear/thrust/oneh
+	name = "one-handed thrust"
+	reach = 1
+	swingdelay = 14
+	damfactor = 1.6
+	penfactor = 50
+	clickcd = CLICK_CD_RESIST
+	effective_range = null
+	effective_range_type = EFF_RANGE_NONE
+	sharpness_penalty = 3
 
 /datum/intent/spear/thrust/militia
 	penfactor = 40
@@ -40,13 +53,16 @@
 	blade_class = BCLASS_CUT
 	attack_verb = list("cuts", "slashes")
 	icon_state = "incut"
-	damfactor = 0.8
+	damfactor = 1
 	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	reach = 2
 	item_d_type = "slash"
 
-/datum/intent/spear/cut/halberd
-	damfactor = 0.9
+/datum/intent/spear/cut/oneh
+	name = "one-handed cut"
+	reach = 1
+	swingdelay = 6
+	sharpness_penalty = 2
 
 /datum/intent/spear/cut/scythe
 	reach = 3
@@ -261,10 +277,10 @@
 
 
 /obj/item/rogueweapon/spear
-	force = 20
+	force = 22
 	force_wielded = 30
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH)
+	possible_item_intents = list(SPEAR_THRUST_1H, SPEAR_CUT_1H) 
+	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	name = "spear"
 	desc = "One of the oldest weapons still in use today, second only to the club. The lack of reinforcements along the shaft leaves it vulnerable to being split in two."
 	icon_state = "spear"
@@ -287,6 +303,7 @@
 	thrown_bclass = BCLASS_STAB
 	throwforce = 25
 	resistance_flags = FLAMMABLE
+	special = /datum/special_intent/polearm_backstep
 
 /obj/item/rogueweapon/spear/trident
 	// Better one handed & throwing weapon, flimsier.
@@ -314,10 +331,6 @@
 	var/sl = user.get_skill_level(/datum/skill/labor/fishing)
 	var/ft = 150
 	var/fpp =  130 - (40 + (sl * 15))
-	var/frwt = list(/turf/open/water/river, /turf/open/water/cleanshallow, /turf/open/water/pond)
-	var/salwt_coast = list(/turf/open/water/ocean)
-	var/salwt_deep = list(/turf/open/water/ocean/deep)
-	var/mud = list(/turf/open/water/swamp, /turf/open/water/swamp/deep)
 	if(istype(target, /turf/open/water))
 		if(user.used_intent.type == SPEAR_CAST && !user.doing)
 			if(target in range(user,3))
@@ -335,15 +348,7 @@
 							fishchance -= fpp
 					var/mob/living/fisherman = user
 					if(prob(fishchance))
-						var/A
-						if(target.type in frwt)
-							A = pickweightAllowZero(createFreshWaterFishWeightListModlist(fishingMods))
-						else if(target.type in salwt_coast)
-							A = pickweightAllowZero(createCoastalSeaFishWeightListModlist(fishingMods))
-						else if(target.type in salwt_deep)
-							A = pickweightAllowZero(createDeepSeaFishWeightListModlist(fishingMods))
-						else if(target.type in mud)
-							A = pickweightAllowZero(createMudFishWeightListModlist(fishingMods))
+						var/A = getfishingloot(user, fishingMods, target)
 						if(A)
 							var/ow = 30 + (sl * 10)
 							to_chat(user, "<span class='notice'>You see something!</span>")
@@ -484,13 +489,14 @@
 	wdefense = 4
 	max_integrity = 60
 	throwforce = 20
+	special = null
 
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
 	desc = "A neat hook. Used to pull riders from horses, as well as defend against said horses when used in a proper formation. The reinforcements along it's shaft grant it higher durability against attacks."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/steel
-	max_blade_int = 200
+	max_blade_int = 230
 	minstr = 8
 	wdefense = 6
 	throwforce = 15
@@ -527,6 +533,7 @@
 	wdefense = 4
 	max_integrity = 50
 	throwforce = 20
+	special = null
 
 // Copper spear, no point to adjust force just slightly better integrity
 /obj/item/rogueweapon/spear/stone/copper
@@ -594,10 +601,6 @@
 	var/sl = user.get_skill_level(/datum/skill/labor/fishing) // User's skill level
 	var/ft = 160 //Time to get a catch, in ticks
 	var/fpp =  130 - (40 + (sl * 15)) // Fishing power penalty based on fishing skill level
-	var/frwt = list(/turf/open/water/river, /turf/open/water/cleanshallow, /turf/open/water/pond)
-	var/salwt_coast = list(/turf/open/water/ocean)
-	var/salwt_deep = list(/turf/open/water/ocean/deep)
-	var/mud = list(/turf/open/water/swamp, /turf/open/water/swamp/deep)
 	if(istype(target, /turf/open/water))
 		if(user.used_intent.type == SPEAR_CAST && !user.doing)
 			if(target in range(user,3))
@@ -615,26 +618,17 @@
 							fishchance -= fpp // Deduct a penalty the lower our fishing level is (-0 at legendary)
 					var/mob/living/fisherman = user
 					if(prob(fishchance)) // Finally, roll the dice to see if we fish.
-						var/A
-						if(target.type in frwt)
-							A = pickweightAllowZero(createFreshWaterFishWeightListModlist(fishingMods))
-						else if(target.type in salwt_coast)
-							A = pickweightAllowZero(createCoastalSeaFishWeightListModlist(fishingMods))
-						else if(target.type in salwt_deep)
-							A = pickweightAllowZero(createDeepSeaFishWeightListModlist(fishingMods))
-						else if(target.type in mud)
-							A = pickweightAllowZero(createMudFishWeightListModlist(fishingMods))
+						var/A = getfishingloot(user, fishingMods, target)
 						if(A)
 							var/ow = 30 + (sl * 10) // Opportunity window, in ticks. Longer means you get more time to cancel your bait
 							to_chat(user, "<span class='notice'>You see something!</span>")
 							playsound(src.loc, 'sound/items/fishing_plouf.ogg', 100, TRUE)
 							if(!do_after(user,ow, target = target))
-								if(ismob(A)) // TODO: Baits with mobs on their fishloot lists OR water tiles with their own fish loot pools
+								if(A in subtypesof(/mob/living))
 									var/mob/M = A
-									if(M.type in subtypesof(/mob/living/simple_animal/hostile))
-										new M(target)
-									else
-										new M(user.loc)
+									new M(target)
+									if (!(M.type == /mob/living/simple_animal/hostile/retaliate/rogue/mudcrab))
+										user.playsound_local(src, pick('sound/misc/jumpscare (1).ogg','sound/misc/jumpscare (2).ogg','sound/misc/jumpscare (3).ogg','sound/misc/jumpscare (4).ogg'), 100)
 									user.mind.add_sleep_experience(/datum/skill/labor/fishing, fisherman.STAINT*2) // High risk high reward
 								else
 									new A(user.loc)
@@ -709,8 +703,8 @@
 /obj/item/rogueweapon/halberd
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(SPEAR_THRUST, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/halberd, /datum/intent/sword/chop, SPEAR_BASH)
+	possible_item_intents = list(SPEAR_THRUST_1H, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, /datum/intent/axe/chop/battle/halberd, SPEAR_BASH)
 	name = "halberd"
 	desc = "A steel halberd, the pinnacle of all cumulative melee weapon knowledge. The only downside is the cost, so it's rarely seen outside of the guardsmans' hands. The reinforcements along the shaft provide greater durability."
 	icon_state = "halberd"
@@ -730,6 +724,7 @@
 	associated_skill = /datum/skill/combat/polearms
 	walking_stick = TRUE
 	wdefense = 6
+	special = /datum/special_intent/polearm_backstep
 
 /obj/item/rogueweapon/halberd/getonmobprop(tag)
 	. = ..()
@@ -752,13 +747,15 @@
 
 /obj/item/rogueweapon/halberd/bardiche
 	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/cut/bardiche, /datum/intent/axe/chop, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/cut/bardiche, /datum/intent/axe/chop/battle, SPEAR_BASH)
 	name = "bardiche"
 	desc = "A beautiful variant of the halberd. Its reinforced shaft provides it with greater durability against attacks."
 	icon_state = "bardiche"
 	anvilrepair = /datum/skill/craft/weaponsmithing
 	smeltresult = /obj/item/ingot/iron
-	max_blade_int = 200
+	max_blade_int = 300
+	wdefense = 5
+	wbalance = WBALANCE_HEAVY
 
 /obj/item/rogueweapon/halberd/bardiche/aalloy
 	name = "decrepit bardiche"
@@ -1038,6 +1035,16 @@
 	max_blade_int = 180
 	max_integrity = 130
 	wdefense = 6
+/obj/item/rogueweapon/greatsword/grenz/flamberge/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 5,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 4,"ex" = 4,"ey" = 5,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 7,"sy" = 1,"nx" = -5,"ny" = 2,"wx" = -5,"wy" = -10,"ex" = 10,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge/malum
 	name = "forgefiend flamberge"

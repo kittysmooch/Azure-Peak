@@ -11,7 +11,12 @@
 
 /obj/item/enchantingkit/pre_attack(obj/item/I, mob/user)
 	if(is_type_in_list(I, target_items))
-		var/obj/item/R = new result_item(get_turf(user))
+		var/obj/item/R
+		if(target_items[I.type] && !result_item)
+			R = target_items[I.type]
+		else
+			R = result_item
+		R = new R(get_turf(user))
 		to_chat(user, span_notice("You apply the [src] to [I], using the enchanting dust and tools to turn it into [R]."))
 		R.name += " <font size = 1>([I.name])</font>"
 		remove_item_from_storage(I)
@@ -44,11 +49,16 @@
 	target_items = list(/obj/item/clothing/suit/roguetown/shirt/dress)	//Literally any type of dress
 	result_item = /obj/item/clothing/suit/roguetown/shirt/dress/emerald
 
-//Strudle - Custom leather vest type
-/obj/item/enchantingkit/strudle
+//Strudel - Custom leather vest type and xylix tabard
+/obj/item/enchantingkit/strudel1
 	name = "'Grenzelhoft Mage Vest' morphing elixir"
 	target_items = list(/obj/item/clothing/suit/roguetown/shirt/robe)
 	result_item = /obj/item/clothing/suit/roguetown/shirt/robe/sofiavest
+
+/obj/item/enchantingkit/strudel2
+	name = "'Xylixian Fasching Leotard' morphing elixir"
+	target_items = list(/obj/item/clothing/cloak/templar/xylixian/)
+	result_item = /obj/item/clothing/cloak/templar/xylixian/faux
 
 //Bat - Custom harp type
 /obj/item/enchantingkit/bat
@@ -83,8 +93,12 @@
 //Eiren - Zweihander and sabres
 /obj/item/enchantingkit/eiren
 	name = "'Regret' morphing elixir"
-	target_items = list(/obj/item/rogueweapon/greatsword/zwei)		//now only takes the zwei and nothing else
-	result_item = /obj/item/rogueweapon/greatsword/zwei/eiren
+	target_items = list(
+		/obj/item/rogueweapon/greatsword/zwei 				= /obj/item/rogueweapon/greatsword/zwei/eiren,
+		/obj/item/rogueweapon/greatsword	  				= /obj/item/rogueweapon/greatsword/eiren,
+		/obj/item/rogueweapon/greatsword/grenz/flamberge 	= /obj/item/rogueweapon/greatsword/grenz/flamberge/eiren
+		)
+	result_item = null
 
 /obj/item/enchantingkit/eirensabre
 	name = "'Lunae' morphing elixir"
@@ -119,3 +133,17 @@
 	name = "'Silence' morphing elixir"
 	target_items = list(/obj/item/rogueweapon/shovel)
 	result_item = /obj/item/rogueweapon/shovel/zoe_silence
+
+//DasFox - Armet
+/obj/item/enchantingkit/dasfox_helm
+	name = "'archaic valkyrhelm' morphing elixir"
+	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
+	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/dasfox
+
+//DasFox - Cuirass
+/obj/item/enchantingkit/dasfox_cuirass
+	name = "'archaic cermonial cuirass' morphing elixir"
+	target_items = list(/obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted)
+	result_item = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/dasfox
+
+
