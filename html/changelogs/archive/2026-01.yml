@@ -203,3 +203,60 @@
   - balance: anyone with arcyne t1 or higher and at least 1 spellpoint can take find
       familiar for free
   - bugfix: players can actually control familiars now
+2026-01-06:
+  CometBlaze:
+  - bugfix: The Apex Predator buff is now correctly removed upon leaving the Underdark.
+  FreeStylaLT:
+  - refactor: Class Old modifiers are now viewable in the class preview menu.
+  - bugfix: Failed feints due to lack of LOS will now have a correctly shortened cooldown.
+  - bugfix: Fixed Tempo rclick CDR not applying correctly.
+  G9ose:
+  - rscadd: sprite cpitchfork
+  Geevies:
+  - balance: Reworked how bandages work. They now have a certain amount of blood they
+      can absorb before being bloodied, upon which they become useless. This means
+      you can use a bandage on an arterial wound to staunch it while you repair the
+      wound. Bleeding is no longer instantly stopped by bandages.
+  - balance: Bandages can now be soaked in health potions, strong health potions,
+      aqua vitae, and blessed water, to heal that specific limb better than it would've
+      been healed by the 'broad' application of drinking the potion.
+  Ketrai:
+  - balance: Leechtick bait recipes rebalanced.
+  - balance: Deprived have some extra traits.
+  - balance: All fishing sources are affected by skill, traits and abyssor patron
+      choice.
+  - balance: Fishing traps aren't guaranteed to lose their bait upon catching something.
+  - balance: Fishing traps can now catch sticks.
+  - rscadd: You can now use leechticks as fishing bait, do with this knowledge as
+      you would, sire.
+  Lamasmaster:
+  - balance: Good Lover
+  - bugfix: Eoran storyteller counting
+  Randall:
+  - rscadd: Lets Spear-Hunters claim Hunter houses just like Bow-Hunters
+  Ryan180602:
+  - rscadd: Lets bloodrain/bloodfog happen on Zizo/Graggar at night on a chance.
+  - rscadd: Lets falling leaves potentially happen.
+  - bugfix: Fixes indoor weather noise.
+  - rscadd: Adds snow/ice/hail.
+  SayonaraEcho:
+  - qol: Gives a name to a town door when claimed.
+  SpadesNeil:
+  - refactor: Refactored ammo.dm to remove bad and redundant copypasted code.
+  - refactor: Damage defines in ammo.dm are now actually used.
+  - bugfix: Fixed sling icons not appearing correctly in some situations.
+  - balance: Decrepit bodkin arrows now have worse embed chance than steel.
+  - balance: STAB projectiles now do PIERCE damage because that makes more sense.
+  - balance: Unused firearms bullets now have simple mob damage multiplier making
+      it still worse DPS than the crossbow but good burst damage for alpha strikes.
+  - bugfix: Rocks thrown by deep ones now do BLUNT damage, not STAB.
+  - bugfix: Water bolts now break and turn into normal arrows after use.
+  - bugfix: Ancient arrows fired by mobs no longer turn into stone arrows.
+  - balance: All bolt and arrow projectiles now travel at the same speed except for
+      simple mob fired projectiles.
+  - image: Added a missing texture catch for ammo.dmi
+  mumblemancer:
+  - rscadd: new statures
+  - rscadd: new physical descriptors
+  nauticall:
+  - bugfix: Fixed some newly added colors being inaccessible.
