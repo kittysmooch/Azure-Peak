@@ -818,6 +818,10 @@
 	icon_state = "mushroomcluster"
 	density = TRUE
 
+/obj/structure/flora/mushroomcluster/cute
+	desc = "A large cluster of mushrooms with a strange glow."
+	icon_state = "mushroomcluster_old"
+
 /obj/structure/flora/mushroomcluster/New(loc)
 	..()
 	set_light(1.5, 1.5, 1.5, l_color ="#5D3FD3")
