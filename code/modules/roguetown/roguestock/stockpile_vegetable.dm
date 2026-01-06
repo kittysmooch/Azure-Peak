@@ -231,8 +231,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
-	transport_fee = 1
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 4
 	importexport_amt = 10
 	stockpile_limit = 50

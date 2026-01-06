@@ -51,7 +51,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -70,7 +71,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -89,7 +91,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -108,7 +111,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -127,7 +131,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -146,7 +151,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0
@@ -165,7 +171,8 @@
 	export_only = TRUE
 
 	payout_price = 2
-	withdraw_price = 10
+	withdraw_price = 6
+	transport_fee = 5
 	export_price = 3
 	importexport_amt = 5
 	passive_generation = 0

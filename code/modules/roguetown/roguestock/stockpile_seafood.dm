@@ -38,8 +38,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 25
-	transport_fee = 2
+	withdraw_price = 15
+	transport_fee = 10
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -58,8 +58,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 25
-	transport_fee = 2
+	withdraw_price = 15
+	transport_fee = 10
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -78,8 +78,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 20
-	transport_fee = 2
+	withdraw_price = 12
+	transport_fee = 8
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 15
@@ -98,8 +98,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 25
-	transport_fee = 2
+	withdraw_price = 15
+	transport_fee = 10
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -118,8 +118,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 20
-	transport_fee = 2
+	withdraw_price = 12
+	transport_fee = 8
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -138,8 +138,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 50
-	transport_fee = 2
+	withdraw_price = 30
+	transport_fee = 20
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -158,8 +158,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 20
-	transport_fee = 2
+	withdraw_price = 12
+	transport_fee = 8
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -178,8 +178,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 25
-	transport_fee = 2
+	withdraw_price = 15
+	transport_fee = 10
 	export_price = 5
 	importexport_amt = 10
 	stockpile_limit = 10
@@ -198,8 +198,8 @@
 	export_only = TRUE
 
 	payout_price = 4
-	withdraw_price = 20
-	transport_fee = 2
+	withdraw_price = 12
+	transport_fee = 8
 	export_price = 4
 	importexport_amt = 10
 	stockpile_limit = 10
