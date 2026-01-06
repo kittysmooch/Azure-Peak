@@ -302,7 +302,7 @@
 	manage_tempo()
 
 /mob/living/carbon/human/proc/clear_tempo_all()
-	if(length(tempo_attackers) && HAS_TRAIT(src, TRAIT_TEMPO))
+	if(length(tempo_attackers) >= TEMPO_ONE && HAS_TRAIT(src, TRAIT_TEMPO))
 		LAZYCLEARLIST(tempo_attackers)
 		to_chat(src, span_info("My muscles relax. My tempo is gone."))
 		manage_tempo()
