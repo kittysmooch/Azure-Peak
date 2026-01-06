@@ -783,17 +783,33 @@
 	rare_mush_bonus_drop = /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
 	mush_animate = FALSE
 
+/obj/structure/flora/rogueshroom/happy/fat
+	name = "canker stool"
+	icon_state = "scarymush2"
+	desc = "A pale mushroom with weeping sores. You feel strangely watched."
+	mush_light_range = 0
+	mush_light_power = 0
+	mush_light_color = null
+	int_req = 20
+	special_examine = "To the world of academics, it appears as if this mushroom has many eyes, one in each sore. Yet, upon dissection, it is as if the eyes have melted away."
+	static_debris = null
+	rare_mush_bonus_drop = /obj/item/rogueore/iron
+	mush_animate = TRUE
+
 /obj/structure/flora/rogueshroom/happy/random
 
 /obj/structure/flora/rogueshroom/happy/random/Initialize()
 	. = ..()
-	var/mushroom_type = pick(/obj/structure/flora/rogueshroom/happy, /obj/structure/flora/rogueshroom/happy/white)
+	var/mushroom_type = pick(/obj/structure/flora/rogueshroom/happy,
+							 /obj/structure/flora/rogueshroom/happy/white,
+							 /obj/structure/flora/rogueshroom/happy/fat)
 	new mushroom_type(loc)
 	qdel(src)
 
 /obj/structure/flora/rogueshroom/happy/New(loc)
 	..()
-	set_light(mush_light_range, mush_light_range, mush_light_power, l_color = mush_light_color)
+	if(mush_light_power > 0)
+		set_light(mush_light_range, mush_light_range, mush_light_power, l_color = mush_light_color)
 
 /obj/structure/flora/mushroomcluster
 	name = "mushroom cluster"
