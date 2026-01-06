@@ -761,7 +761,7 @@
 
 /obj/structure/flora/rogueshroom/happy/obj_destruction(damage_flag)
 	playsound(src, pick(abyssal_screams), 100, FALSE)
-	if(prob(5) && rare_mush_bonus_drop)
+	if(prob(7) && rare_mush_bonus_drop)
 		new rare_mush_bonus_drop(loc)
 	. = ..()
 
