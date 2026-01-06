@@ -800,14 +800,27 @@
 	rare_mush_bonus_drop = /obj/item/rogueore/iron
 	mush_animate = TRUE
 
+/obj/structure/flora/rogueshroom/happy/angel
+	name = "grieving angel"
+	icon_state = "angelmush"
+	desc = "each of these mushrooms is believed to have sprouted out of angel tears in the long past"
+	mush_light_range = 3
+	mush_light_power = 3
+	mush_light_color = "#e2e2e2"
+	int_req = 10
+	special_examine = "This mushroom has an identical appearance to a highly murderous mushroom, called the weeping angel, but luckily that one isn't native to Azure."
+	static_debris = null
+	mush_animate = FALSE
+
 /obj/structure/flora/rogueshroom/happy/random
 
 /obj/structure/flora/rogueshroom/happy/random/Initialize()
 	. = ..()
 	var/list/mushroom_types = list(
-		/obj/structure/flora/rogueshroom/happy       = 3333,
-		/obj/structure/flora/rogueshroom/happy/white = 3333,
-		/obj/structure/flora/rogueshroom/happy/fat   = 3333,
+		/obj/structure/flora/rogueshroom/happy       = 2499,
+		/obj/structure/flora/rogueshroom/happy/white = 2499,
+		/obj/structure/flora/rogueshroom/happy/fat   = 2499,
+		/obj/structure/flora/rogueshroom/happy/angel = 2499,
 		/obj/structure/flora/rogueshroom/happy/metal = 1,
 	)
 	var/mushroom_type = pickweight(mushroom_types)
