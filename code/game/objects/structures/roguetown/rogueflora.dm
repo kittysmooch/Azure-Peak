@@ -731,10 +731,11 @@
 	desc = "This mushroom looks alive and thinking, giving you mush to think about."
 	random_mush_zone = FALSE
 	max_integrity = 240
+	pixel_x = -8
 	var/mush_light_range = 3
 	var/mush_light_power = 3
 	var/mush_light_color = "#850707"
-	var/int_req = 16
+	var/int_req = 14
 	var/trait_required = TRAIT_WOODSMAN
 	var/special_examine = "Upon closer inspection, the pulsing rhythm of its cap matches a humen heartbeat. You recall these grow atop corpses, mimicing the cadence of that specific person."
 	var/list/abyssal_screams = list(
@@ -748,6 +749,7 @@
 	static_debris = list(/obj/item/reagent_containers/food/snacks/rogue/meat_rotten = 1)
 	var/rare_mush_bonus_drop = /obj/item/reagent_containers/powder/ozium
 	var/mush_animate = TRUE
+	var/mush_scream = TRUE
 
 /obj/structure/flora/rogueshroom/happy/Initialize()
 	. = ..()
@@ -756,7 +758,7 @@
 
 /obj/structure/flora/rogueshroom/happy/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir)
 	. = ..()
-	if(damage_amount > 0)
+	if(damage_amount > 0 && mush_scream)
 		playsound(src, pick(abyssal_screams), 80, FALSE)
 
 /obj/structure/flora/rogueshroom/happy/obj_destruction(damage_flag)
@@ -778,8 +780,9 @@
 	mush_light_power = 2
 	mush_light_color = "#e2e2e2"
 	int_req = 0
-	special_examine = "You recall the gathering of wildsmasters recently. It hasn't been long, but these mushrooms were always believed to be happy and colorful. The spores of this one are rumoured to be the cause, it's like... they collectively made a decision."
-	static_debris = list(/obj/item/natural/fibers = 1)
+	special_examine = "You recall the gathering of wildsmasters recently. It hasn't been long, but these mushrooms were always believed to be happy and colorful. The spores of this one are rumoured to be the cause, it's like... they collectively made a decision top stop fooling humenkind."
+	static_debris = list(/obj/item/natural/fibers = 1,
+						 /obj/item/grown/log/tree/small = 1)
 	rare_mush_bonus_drop = /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
 	mush_animate = FALSE
 
@@ -791,8 +794,9 @@
 	mush_light_power = 0
 	mush_light_color = null
 	int_req = 20
+	max_integrity = 480
 	special_examine = "To the world of academics, it appears as if this mushroom has many eyes, one in each sore. Yet, upon dissection, it is as if the eyes have melted away."
-	static_debris = null
+	static_debris = list(/obj/item/grown/log/tree = 1)
 	rare_mush_bonus_drop = /obj/item/rogueore/iron
 	mush_animate = TRUE
 
@@ -800,9 +804,13 @@
 
 /obj/structure/flora/rogueshroom/happy/random/Initialize()
 	. = ..()
-	var/mushroom_type = pick(/obj/structure/flora/rogueshroom/happy,
-							 /obj/structure/flora/rogueshroom/happy/white,
-							 /obj/structure/flora/rogueshroom/happy/fat)
+	var/list/mushroom_types = list(
+		/obj/structure/flora/rogueshroom/happy       = 3333,
+		/obj/structure/flora/rogueshroom/happy/white = 3333,
+		/obj/structure/flora/rogueshroom/happy/fat   = 3333,
+		/obj/structure/flora/rogueshroom/happy/metal = 1,
+	)
+	var/mushroom_type = pickweight(mushroom_types)
 	new mushroom_type(loc)
 	qdel(src)
 
@@ -810,6 +818,23 @@
 	..()
 	if(mush_light_power > 0)
 		set_light(mush_light_range, mush_light_range, mush_light_power, l_color = mush_light_color)
+
+/obj/structure/flora/rogueshroom/happy/metal
+	name = "metallic mushroom"
+	icon_state = "metal"
+	icon = 'icons/roguetown/misc/foliagemushroom60x64.dmi'
+	desc = "An incomprehensible metal mushroom. It has a strange sheen. It seems nigh indestructible, but stubbornness can fell anything."
+	max_integrity = 3250
+	pixel_x = -14
+	blade_dulling = DULLING_PICK
+	special_examine = "Huh, strange."
+	mush_light_range = 0
+	mush_light_power = 0
+	mush_light_color = null
+	int_req = 20
+	mush_animate = FALSE
+	static_debris = list(/obj/item/rogueore/lithmyc = 1)
+	mush_scream = FALSE
 
 /obj/structure/flora/mushroomcluster
 	name = "mushroom cluster"
