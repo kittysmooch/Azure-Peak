@@ -74,7 +74,6 @@
 		if(world.time > SSticker.missing_lord_time + 10 MINUTES)
 			SSticker.missing_lord_time = world.time
 			addomen(OMEN_NOLORD)
-			launch_omen_event()
 		return FALSE
 	else
 		return TRUE
