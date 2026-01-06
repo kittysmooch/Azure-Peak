@@ -828,6 +828,10 @@
 	icon = 'icons/roguetown/misc/foliage.dmi'
 	icon_state = "tinymushrooms"
 
+/obj/structure/flora/tinymushrooms/cute
+	desc = "A cluster of tiny mushrooms that are growing in a suspicious circle shape."
+	icon_state = "tinymushrooms_old"
+
 /obj/structure/flora/roguetree/pine
 	name = "pine tree"
 	icon_state = "pine1"
