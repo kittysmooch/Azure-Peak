@@ -689,7 +689,7 @@
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
 	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, /datum/intent/axe/bash)
 	icon_state = "martyraxe"
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/axes64.dmi'
 	item_state = "martyraxe"
 	name = "martyr axe"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
@@ -796,7 +796,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike)
 	gripped_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash, /datum/intent/effect/daze, /datum/intent/effect/hobble)
 	icon_state = "martyrmace"
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/blunt64.dmi'
 	item_state = "martyrmace"
 	name = "martyr mace"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
@@ -898,7 +898,7 @@
 	possible_item_intents = list(SPEAR_THRUST_1H, /datum/intent/spear/bash)
 	gripped_intents = list(/datum/intent/spear/thrust, /datum/intent/rend/reach/partizan, /datum/intent/partizan/peel, /datum/intent/spear/bash)
 	icon_state = "martyrtrident"
-	icon = 'icons/roguetown/weapons/64.dmi'
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	item_state = "martyrtrident"
 	name = "martyr trident"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
