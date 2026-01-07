@@ -22,11 +22,26 @@
 
 	if(recipient.patron == GLOB.patronlist[/datum/patron/divine/xylix])
 		var/list/xylixian_array = stat_array.Copy()
+
+		// first, we need to determine how many non-fortune stats there are
+		var/non_fortune_stats = 0
 		for(var/stat_key in xylixian_array)
+			if(stat_key == STAT_FORTUNE)
+				continue
+			non_fortune_stats++
+
+		// now, we need to determine how many of them will be given a better result
+		var/enchanted_stats = rand(0, non_fortune_stats)
+
+		for(var/stat_key in shuffle(xylixian_array))
 			if(stat_key == STAT_FORTUNE)
 				xylixian_array[stat_key] = list(0, 2)
 			else
-				xylixian_array[stat_key] = list(-1, 2)
+				if(enchanted_stats > 0)
+					xylixian_array[stat_key] = list(-1, 2)
+					enchanted_stats--
+				else
+					xylixian_array[stat_key] = list(-2, 2)
 		return xylixian_array
 	return ..()
 
