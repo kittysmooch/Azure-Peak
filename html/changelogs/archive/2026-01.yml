@@ -260,3 +260,46 @@
   - rscadd: new physical descriptors
   nauticall:
   - bugfix: Fixed some newly added colors being inaccessible.
+2026-01-07:
+  Antoonij:
+  - bugfix: dullahans can no longer skeletonize their heads
+  BurpleBineapple:
+  - rscadd: Adds sex 2
+  FreeStylaLT:
+  - bugfix: Fixed a rare bug where Riposte was ignored if the attack had a swingdelay
+      under certain circumstances.
+  - bugfix: Fixed Tempo message showing for users who have not reached any stage of
+      Tempo.
+  Geevies:
+  - rscadd: Xylixian Devotees (anyone that has access to T0 miracles) now have a passive
+      that lets them re-roll good and bad luck events.
+  - rscadd: If you wear equipment while doing an action of intimate nature that causes
+      your character to thrust, your equipment will now rustle.
+  - rscadd: Items that rustle when you move now continues rustling even when in your
+      helmet.
+  Ketrai:
+  - balance: Eoran trees are now far easier to tend to, especially with higher farming
+      levels.
+  - balance: Crimson arils can be fed to others, and have a lower cost.
+  - rscadd: The slab, use this in the church infirmary to research tier 1 chimeric
+      beast techs. All tech interfaces show researched techs in a seperate tab now.
+  - rscadd: Calyxes spawn throughout the world, use these once per person for a decent
+      heal. Calyxes grant heartbeast tech points.
+  Lamasmaster:
+  - bugfix: Eora counter but for real.
+  - rscadd: Steel Poleaxe
+  - image: Split 64 weapon DMI file into it's own
+  PatapoIIIa:
+  - bugfix: Prevented antagonist and adventurer roles from being revealed via house
+      door names
+  - qol: Improved consistency of public-facing door naming
+  - code_imp: Adjusted resident door naming logic to respect hidden roles
+  Ryan180602:
+  - balance: Let bandoliers be worn on armourslot.
+  SirSwagmeyer:
+  - rscadd: Woodwalker, sewing, climbing for black oak pariah
+  ToasterStrudes:
+  - qol: Xylixan Acolyte/Monks/Templars now get their proper cross instead of the
+      cabbits foot.
+  mumblemancer:
+  - bugfix: made masked examines not be stuck 2gether
