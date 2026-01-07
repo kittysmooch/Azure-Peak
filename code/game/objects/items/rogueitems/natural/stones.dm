@@ -526,7 +526,7 @@ BECAUSE this is a dungeon reward, and you're SUPPOSED to get SOMETHING, they've 
 	// The amounts are going to be weird BC I wanted a % out of 100 and it's a 7 layer list.
 	// I am considering gems to be less problematic than gold BC gold can be melted into way more
 	// valuable stuff. Silver is the most egregious thing on this list, but I'm keeping it.
-	// All in all: you have a 16% chance of a "good" (read: at least like, 30 mammon) drop. 50% of coal or iron, 
+	// All in all: you have a 16% chance of a "good" (read: at least like, 30 mammon) drop.
 	var/obj/item/natural/rock/theboi = pickweight(list(
 		/obj/item/natural/rock/copper = 20,
 		/obj/item/natural/rock/tin = 25,
