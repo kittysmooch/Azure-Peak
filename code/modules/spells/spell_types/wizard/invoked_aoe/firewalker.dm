@@ -2,8 +2,7 @@
 	name = "Firewalker"
 	overlay_state = "firewalk"
 	desc = "Watch the fire dance and join the dance together! \n\
-	The ground under your feet will burn! \n\
-	don't forget to take care of fireimmunity..."
+	The ground under your feet will burn!"
 	cost = 4
 	xp_gain = TRUE
 	releasedrain = 30
@@ -26,7 +25,7 @@
 	. = ..()
 	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
 
-	user.visible_message("[user] mutters an incantation and the ground beneath his feet begins to burn!")
+	user.visible_message("[user] mutters an incantation, and the ground underneath begins to roar in flames!")
 	user.apply_status_effect(/datum/status_effect/buff/firewalker)
 
 	return TRUE
