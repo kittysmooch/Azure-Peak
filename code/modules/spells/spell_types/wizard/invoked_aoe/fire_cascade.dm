@@ -20,7 +20,7 @@
 	associated_skill = /datum/skill/magic/arcane
 
 	var/flame_radius = 2
-	var/hotspot_lifetime = 4
+	var/hotspot_lifetime = 3
 
 /obj/effect/proc_holder/spell/invoked/fire_cascade/cast(list/targets, mob/living/user = usr)
 	. = ..()
