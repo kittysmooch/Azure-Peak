@@ -888,8 +888,7 @@
 		var/index = 1
 		app_str += span_info(line)
 		index++
-		if(index != length(lines))
-			app_str += "<br>"
+		app_str += "<br>"
 	if(!(user.client?.prefs?.full_examine))
 		if(length(lines))
 			app_str += "</details>"
