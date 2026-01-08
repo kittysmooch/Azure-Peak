@@ -885,9 +885,7 @@
 		app_str = "<details><summary>[span_info("Details")]</summary>"
 
 	for(var/line in lines)
-		var/index = 1
 		app_str += span_info(line)
-		index++
 		app_str += "<br>"
 	if(!(user.client?.prefs?.full_examine))
 		if(length(lines))
