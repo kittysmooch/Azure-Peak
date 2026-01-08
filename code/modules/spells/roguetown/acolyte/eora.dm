@@ -988,7 +988,7 @@
 	desc = "Bestow a person with Eora's calm, if only for a little while. Restores their mood, as well as a tinge of hunger and thirst."
 	sound = 'sound/magic/eora_bless.ogg'
 	devotion_cost = 80
-	recharge_time = 5 MINUTES
+	recharge_time = 5 SECONDS // debug
 	miracle = TRUE
 	invocation_type = "shout"
 	invocations = list("Let the beauty of lyfe fill you whole.")
@@ -998,7 +998,7 @@
 /obj/effect/proc_holder/spell/invoked/eora_blessing/cast(list/targets, mob/living/user)
 	if(ishuman(targets[1]))
 		var/mob/living/L = targets[1]
-		var/assocskill = L.get_skill_level(associated_skill)
+		var/assocskill = user.get_skill_level(associated_skill)
 		message_admins("ASSOCIATED SKILL = [associated_skill]")
 		message_admins("BOOTSTRAP = [assocskill]")
 		L.apply_status_effect(/datum/status_effect/eora_blessing, assocskill)
@@ -1012,14 +1012,19 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/eora_blessing
 
 /datum/status_effect/eora_blessing/on_creation(mob/living/new_owner/, assocskill)
+
+	if(assocskill)
+		// I asked the antichrist (gpt) to help me figure out why a bug was happening w/ this.
+		// Apparently BYOND explodes if you, like, do duration *= something.
+		message_admins("DURATION = [duration]")
+		duration = assocskill * 1 MINUTES
+		message_admins("NEW DURATION = [duration]")
+
+	// Call parent here. We need owner to exist for the rest of the proc.
+	// Free. I am so sorry I used AI for this. Itsk illing me. This codew is illing me.
 	. = ..()
 
 	var/mob/living/carbon/human/H = owner
-
-	if(assocskill)
-		message_admins("DURATION = [duration]")
-		duration *= assocskill  // +1 minute per skill level.
-		message_admins("NEW DURATION = [duration]")
 
 	// Attempted to rework it into more of a formula that's awesome and cool, but its hard to get numbers down..
 	// Maint, if you're reading this, pls give better ideas for formula.
@@ -1033,9 +1038,6 @@
 	
 	// EXPECTED RANGE FOR FORMULA: 102 -> 172 (DEVOTEE TO LEGENDARY)
 	H.adjust_nutrition(100 + ((assocskill * assocskill)*2))
-	message_admins("ASSOCSKILL TYPE = [assocskill]")
-	message_admins(100 + ((assocskill * assocskill)*2))
-
 	// Adjust hydration based on skill
 	// Same as above, but adjusts thirst. 
 	H.adjust_hydration(100 + ((assocskill * assocskill)*2))
@@ -1049,11 +1051,9 @@
 
 	H.update_stress()
 
-	. = ..()
-
 /datum/status_effect/eora_blessing/on_apply()
 	. = ..()
-	
+
 	// Add trait
 	ADD_TRAIT(owner, TRAIT_EORAN_SERENE, TRAIT_GENERIC)  //Generic origin so other Eorans do not have their innate traits overridden (they use TRAIT_MIRACLE)
 
