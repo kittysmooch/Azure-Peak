@@ -988,7 +988,7 @@
 	desc = "Bestow a person with Eora's calm, if only for a little while. Restores their mood, as well as a tinge of hunger and thirst."
 	sound = 'sound/magic/eora_bless.ogg'
 	devotion_cost = 80
-	recharge_time = 5 SECONDS // debug
+	recharge_time = 5 MINUTES
 	miracle = TRUE
 	invocation_type = "shout"
 	invocations = list("Let the beauty of lyfe fill you whole.")
@@ -999,8 +999,6 @@
 	if(ishuman(targets[1]))
 		var/mob/living/L = targets[1]
 		var/assocskill = user.get_skill_level(associated_skill)
-		message_admins("ASSOCIATED SKILL = [associated_skill]")
-		message_admins("BOOTSTRAP = [assocskill]")
 		L.apply_status_effect(/datum/status_effect/eora_blessing, assocskill)
 		return TRUE
 	revert_cast()
@@ -1016,12 +1014,10 @@
 	if(assocskill)
 		// I asked the antichrist (gpt) to help me figure out why a bug was happening w/ this.
 		// Apparently BYOND explodes if you, like, do duration *= something.
-		message_admins("DURATION = [duration]")
 		duration = assocskill * 1 MINUTES
-		message_admins("NEW DURATION = [duration]")
 
 	// Call parent here. We need owner to exist for the rest of the proc.
-	// Free. I am so sorry I used AI for this. Itsk illing me. This codew is illing me.
+	// Free. I am so sorry I used AI for this. Itsk illing me. This code is killing me.
 	. = ..()
 
 	var/mob/living/carbon/human/H = owner
