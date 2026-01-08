@@ -5,7 +5,7 @@
 	var/describe
 	var/prefix
 	var/suffix
-	var/verbage
+	var/verbage // If adding verbage, please check living_descriptors.dm, as they will need to be a %REPLACEABLE% stand-in instead of a regular has/have or similar.
 	var/slot = MOB_DESCRIPTOR_SLOT_NOTHING
 	var/pre_string
 	var/post_string
