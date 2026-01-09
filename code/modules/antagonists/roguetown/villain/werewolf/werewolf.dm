@@ -44,6 +44,7 @@
 	var/transforming
 	var/untransforming
 	var/wolfname = "Verewolf"
+	has_tempo = TRUE
 
 /datum/antagonist/werewolf/lesser
 	name = "Lesser Verewolf"

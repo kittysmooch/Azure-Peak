@@ -64,7 +64,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		REMOVE_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, null)
 		to_chat(H, span_warning("My limbs are too frail and my body too tough... the contradiction leaves me unable to resist critical wounds."))
 		
-	if(!H.mind.has_antag_datum(/datum/antagonist/vampire) && !H.mind.has_antag_datum(/datum/antagonist/skeleton) && (H.mind.assigned_role != "Knight Captain" && H.mind.assigned_role != "Court Agent" && H.mind.assigned_role != "Adventurer" && H.mind.assigned_role != "Prince" && H.mind.assigned_role != "Court Magician" && H.mind.assigned_role != "Inquisitor"))
+	if((H.mind.assigned_role != "Knight Captain" && H.mind.assigned_role != "Court Agent" && H.mind.assigned_role != "Adventurer" && H.mind.assigned_role != "Prince" && H.mind.assigned_role != "Court Magician" && H.mind.assigned_role != "Inquisitor"))
 		ADD_TRAIT(H, TRAIT_TEMPO, SPECIES_TRAIT)		
 	return TRUE
 
