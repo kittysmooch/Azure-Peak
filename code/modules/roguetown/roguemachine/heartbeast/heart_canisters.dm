@@ -383,3 +383,55 @@
 		// Add the compiled data to the UI data
 		.["aspect_data"] = aspect_data
 	return .
+
+/obj/item/proc/break_fancy_container(obj/item/container)
+	if(!container)
+		return
+	var/turf/T = get_turf(container)
+	playsound(T, 'sound/foley/glassbreak.ogg', 75, TRUE)
+	new /obj/effect/decal/cleanable/heart_shards(T)
+	if(istype(container, /obj/item/heart_blood_canister/filled) || istype(container, /obj/item/heart_blood_vial/filled))
+		if(istype(container, /obj/item/heart_blood_canister/filled))
+			new /obj/effect/decal/cleanable/heart_blood(T)
+		else if(istype(container, /obj/item/heart_blood_vial/filled))
+			new /obj/effect/decal/cleanable/heart_blood/small(T)
+	qdel(container)
+	return TRUE
+
+/obj/effect/decal/cleanable/heart_blood
+	name = "heart blood"
+	desc = ""
+	icon = 'icons/obj/structures/heart_items.dmi'
+	icon_state = "blood"
+
+/obj/effect/decal/cleanable/heart_blood/small
+	name = "heart blood"
+	icon_state = "blood_small"
+
+/obj/effect/decal/cleanable/heart_shards
+	name = "heart shards"
+	desc = ""
+	icon = 'icons/obj/structures/heart_items.dmi'
+	icon_state = "shards"
+
+/obj/item/heart_blood_canister/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	break_fancy_container(src)
+
+/obj/item/heart_blood_vial/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	break_fancy_container(src)
+
+/obj/item/heart_blood_canister/attackby(obj/item/I, mob/user)
+	if(I.force > 10)
+		user.visible_message(span_warning("[user] shatters the [src]!"))
+		break_fancy_container(src, user)
+		return TRUE
+	return ..()
+
+/obj/item/heart_blood_vial/attackby(obj/item/I, mob/user)
+	if(I.force > 5)
+		user.visible_message(span_warning("[user] smashes the [src]!"))
+		break_fancy_container(src, user)
+		return TRUE
+	return ..()
