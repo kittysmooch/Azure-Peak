@@ -106,7 +106,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 		else if(owner.current.client?.holder && (CONFIG_GET(flag/auto_deadmin_antagonists) || owner.current.client.prefs?.toggles & DEADMIN_ANTAGONIST))
 			owner.current.client.holder.auto_deadmin()
 		if(!has_tempo)
-			REMOVE_TRAIT(owner.current, TRAIT_TEMPO, TRAIT_SPECIES)
+			REMOVE_TRAIT(owner.current, TRAIT_TEMPO, SPECIES_TRAIT)
 
 /datum/antagonist/proc/is_banned(mob/M)
 	if(!M)

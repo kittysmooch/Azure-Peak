@@ -18,6 +18,7 @@
 		"Cloak & Dagger (Poison & Knife)" = CHOICE_POISON_BLADE,
 		"Mace & Lockpicking Skill" = CHOICE_SKILLS
 	)
+	has_tempo = TRUE
 
 /datum/antagonist/aspirant/proc/give_equipment_prompt()
 	var/chosen = input(owner.current, "How shall I rise to power?", "YOUR ADVANTAGE") as anything in equipment_selection
@@ -68,7 +69,7 @@
 /datum/antagonist/aspirant/can_be_owned(datum/mind/new_owner)
 	. = ..()
 	if(.)
-		if(!((new_owner.assigned_role in GLOB.rogueantag_positions)))
+		if(!((new_owner.assigned_role in GLOB.noble_positions) || (new_owner.assigned_role in GLOB.garrison_positions) || (new_owner.assigned_role in GLOB.courtier_positions)))
 			return FALSE
 
 /datum/antagonist/aspirant/on_gain()
