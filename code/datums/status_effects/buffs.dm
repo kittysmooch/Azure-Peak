@@ -379,9 +379,11 @@
 		to_chat(owner, span_notice("<b>TEMPO!!!</b>"))
 		owner.stamina = 0
 		ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
+		owner.pass_flags |= PASSMOB
 
 /datum/status_effect/buff/tempo_three/on_remove()
 	. = ..()
 	owner.remove_filter(TEMPO_MAX_FILTER)
+	owner.pass_flags &= ~PASSMOB
 	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE,  TRAIT_STATUS_EFFECT)
 #undef TEMPO_MAX_FILTER
