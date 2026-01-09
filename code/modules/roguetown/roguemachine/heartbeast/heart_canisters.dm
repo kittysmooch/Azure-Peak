@@ -283,6 +283,7 @@
 	icon = 'icons/obj/structures/heart_items.dmi'
 	icon_state = "blood_canister_empty"
 	w_class = WEIGHT_CLASS_TINY
+	max_integrity = 50
 
 /obj/item/heart_blood_canister/filled
 	name = "Full heartblood canister"
@@ -295,6 +296,7 @@
 	icon = 'icons/obj/structures/heart_items.dmi'
 	icon_state = "blood_vial_empty"
 	w_class = WEIGHT_CLASS_TINY
+	max_integrity = 10
 
 /obj/item/heart_blood_vial/filled
 	name = "Full heartblood vial"
