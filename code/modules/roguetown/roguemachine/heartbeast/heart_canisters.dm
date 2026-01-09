@@ -422,16 +422,8 @@
 	. = ..()
 	break_fancy_container(src)
 
-/obj/item/heart_blood_canister/attackby(obj/item/I, mob/user)
-	if(I.force > 10)
-		user.visible_message(span_warning("[user] shatters the [src]!"))
-		break_fancy_container(src, user)
-		return TRUE
-	return ..()
+/obj/item/heart_blood_canister/obj_destruction(damage_flag)
+	break_fancy_container(src, user)
 
-/obj/item/heart_blood_vial/attackby(obj/item/I, mob/user)
-	if(I.force > 5)
-		user.visible_message(span_warning("[user] smashes the [src]!"))
-		break_fancy_container(src, user)
-		return TRUE
-	return ..()
+/obj/item/heart_blood_vial/obj_destruction(damage_flag)
+	break_fancy_container(src, user)
