@@ -425,7 +425,7 @@
 	break_fancy_container(src)
 
 /obj/item/heart_blood_canister/obj_destruction(damage_flag)
-	break_fancy_container(src, user)
+	break_fancy_container(src)
 
 /obj/item/heart_blood_vial/obj_destruction(damage_flag)
-	break_fancy_container(src, user)
+	break_fancy_container(src)
