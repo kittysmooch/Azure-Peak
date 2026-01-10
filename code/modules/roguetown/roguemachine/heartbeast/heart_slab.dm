@@ -136,6 +136,11 @@
 	// 225 healing but slowly released across 10 minutes, can't be refreshed.
 	H.apply_status_effect(/datum/status_effect/buff/pestra_care)
 
+	if(H.has_status_effect(/datum/status_effect/black_rot))
+		var/datum/status_effect/black_rot/rot = H.has_status_effect(/datum/status_effect/black_rot)
+		rot.remove_stack(2)
+		to_chat(H, span_good("The calyx's purifying blood flows through you, cleansing the black rot!"))
+
 	to_chat(H, span_boldnotice("The calyx shudders as tendrils extend to feel up your arms, affectionately carressing your head. You have contributed [points_granted] Echoes."))
 	if(vial_count > 1)
 		to_chat(H, span_notice("Your affinity allows you to coax the creature into giving you an extra vial of blood."))

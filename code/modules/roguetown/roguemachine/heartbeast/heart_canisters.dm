@@ -429,3 +429,33 @@
 
 /obj/item/heart_blood_vial/obj_destruction(damage_flag)
 	break_fancy_container(src)
+
+/obj/item/heart_blood_canister/filled/attack(mob/living/target, mob/living/user)
+	if(istype(target))
+		var/datum/status_effect/black_rot/rot = target.has_status_effect(/datum/status_effect/black_rot)
+		if(!rot)
+			to_chat(user, span_infection("[target] isn't infected with black rot currently."))
+			return
+		if(target == user)
+			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
+		else
+			target.visible_message(span_notice("[user] injects [target] with heartblood."), span_notice("[user] injects you with heartblood."))
+		rot.remove_stack(2)
+		qdel(src)
+		return TRUE
+	return ..()
+
+/obj/item/heart_blood_vial/filled/attack(mob/living/target, mob/living/user)
+	if(istype(target))
+		var/datum/status_effect/black_rot/rot = target.has_status_effect(/datum/status_effect/black_rot)
+		if(!rot)
+			to_chat(user, span_infection("[target] isn't infected with black rot currently."))
+			return
+		if(target == user)
+			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
+		else
+			target.visible_message(span_notice("[user] injects [target] with heartblood."), span_notice("[user] injects you with heartblood."))
+		rot.remove_stack(1)
+		qdel(src)
+		return TRUE
+	return ..()
