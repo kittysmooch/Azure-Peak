@@ -143,7 +143,7 @@ Often used measurements include the 'mote' for time, the 'cubit' or 'imperial fo
 I KICK THE LAMPTERN. THE FYRE-BEARER BLOCKS MY SHOT-- MY TEAM LOSES THE GAME OF LAMPTERNBALL!
 Campfires and bedrolls alone aid in fatigue. Combining both, however, grants a particularly potent restorative effect...
 Hand-axes are the superior weapon of choice for destroying most objects and barriers... though iron gates will require a mace.
-Sharpening blades with rocks slowly destroys the edge, which must be re-ground at a grindwheel, should one wish to recover their max sharpness.
+Sharpening blades with rocks slowly destroys the edge. One must hone their blade at a grindwheel, should they wish to recover their blade's maximum sharpness.
 Bandages soak up a limited amount of blood. Get stitching quick, or die snow white.
 I SEE THE DREADED GEM-EATER. HIS METAL MITTS HOLDS MY HIDDEN STASH OF SAFFIRA. ONE BY ONE, HE POPS THEM INTO HIS MOUTH...
 WHY IS IT WRITTEN SAIGA AND NOT PSYGA?
