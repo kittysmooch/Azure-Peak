@@ -1039,4 +1039,4 @@
 	resident_advclass = list(/datum/advclass/bathworker)
 
 /obj/structure/mineral_door/wood/bath/courtesan
-	resident_advclass = list(/datum/advclass/nightmaiden/harlot, /datum/advclass/nightmaiden/courtesan)
+	resident_advclass = list(/datum/advclass/bathworker/harlot, /datum/advclass/bathworker/courtesan)

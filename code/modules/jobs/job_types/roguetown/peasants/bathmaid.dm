@@ -26,9 +26,9 @@
 	cmode_music = 'sound/music/cmode/towner/combat_towner.ogg'
 	job_traits = list(TRAIT_EMPATH, TRAIT_GOODLOVER, TRAIT_HOMESTEAD_EXPERT)
 	job_subclasses = list(
-		/datum/advclass/nightmaiden,
-		/datum/advclass/nightmaiden/harlot,
-		/datum/advclass/nightmaiden/courtesan
+		/datum/advclass/bathworker,
+		/datum/advclass/bathworker/harlot,
+		/datum/advclass/bathworker/courtesan
 	)
 
 /datum/outfit/job/roguetown/bathworker
@@ -88,7 +88,7 @@
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_LOWER_CLASS, H, "Savings.")
 
-/datum/advclass/nightmaiden/harlot
+/datum/advclass/bathworker/harlot
 	name = "Harlot"
 	tutorial = "You're no stranger to selling your flesh, a veteran whore who's done your business in back alleys and brothels long enough to know the game. Yours has been a hard life, and you've learned a few things doing what you've needed to survive. You may not be fit for a noble's bed, but the workers and soldiers pay well enough."
 	outfit = /datum/outfit/job/nightmaiden/harlot
@@ -143,7 +143,7 @@
 		belt = /obj/item/storage/belt/rogue/leather
 		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
 
-/datum/advclass/nightmaiden/courtesan
+/datum/advclass/bathworker/courtesan
 	name = "Courtesan"
 	tutorial = "Overcoming mind games, deceit and competition, you came into your own as one of the bathhouse's most prized moneymakers and socialites. Dressed in lavish gifts left behind by your patrons, not just anyone can have you. Under the matron, you do most of the social heavylifting and provide entertainment of all forms - behind a heavy price tag. "
 	outfit = /datum/outfit/job/roguetown/bathworker/courtesan
