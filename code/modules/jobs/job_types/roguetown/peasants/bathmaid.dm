@@ -97,7 +97,7 @@
 	traits_applied = list(TRAIT_LIGHT_STEP, TRAIT_NUTCRACKER)
 	subclass_stats = list(
 		STATKEY_PER = 2,
-		STATKEY_END = 2,
+		STATKEY_WIL = 2,
 		STATKEY_SPD = 2
 	)
 
