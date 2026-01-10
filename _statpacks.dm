@@ -8,13 +8,12 @@ GLOBAL_LIST_EMPTY(statpacks)
 	/// An associative list of only the stats we're altering. The value can also be a list to signify a range of values - maximum length of 2 for these.
 	var/list/stat_array = list()
 	var/virtuous = FALSE
-	var/apply_after_outfit = FALSE
 
-/datum/statpack/proc/get_stat_array(mob/living/carbon/human/recipient)
+/datum/statpack/proc/get_stat_array(mob/living/carbon/human/recipient, mob/dead/new_player/new_player)
 	return stat_array
 
-/datum/statpack/proc/apply_to_human(mob/living/carbon/human/recipient)
-	var/list/assigned_stat_array = get_stat_array(recipient)
+/datum/statpack/proc/apply_to_human(mob/living/carbon/human/recipient, mob/dead/new_player/new_player)
+	var/list/assigned_stat_array = get_stat_array(recipient, new_player)
 	if (recipient && recipient.mind)
 		var/list/applied_stats = list()
 		for (var/stat in assigned_stat_array)
@@ -27,12 +26,12 @@ GLOBAL_LIST_EMPTY(statpacks)
 				var/value = rand(stat_range[1], stat_range[2])
 				recipient.change_stat(stat, value)
 				applied_stats[stat] = value
-		post_apply(recipient, applied_stats)
+		post_apply(recipient, new_player, applied_stats)
 		record_featured_object_stat(FEATURED_STATS_STATPACKS, name)
 		return TRUE
 	return FALSE
 
-/datum/statpack/proc/post_apply(mob/living/carbon/human/recipient, list/applied_stats)
+/datum/statpack/proc/post_apply(mob/living/carbon/human/recipient, mob/dead/new_player/new_player, list/applied_stats)
 	return
 
 /datum/statpack/proc/description_string()
