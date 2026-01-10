@@ -271,6 +271,7 @@
 					newtime = world.time + TEMPO_DELAY_MAX
 			tempo_attackers[attacker] = newtime
 			next_tempo_cull = world.time + TEMPO_CULL_DELAY	//We reset the autocull timer on a hit from a valid person.
+		cull_tempo_list()
 		manage_tempo()
 
 /mob/living/carbon/human/proc/manage_tempo()
@@ -294,12 +295,13 @@
 			remove_status_effect(/datum/status_effect/buff/tempo_two)
 			remove_status_effect(/datum/status_effect/buff/tempo_three)
 
-/mob/living/carbon/human/proc/cull_tempo_list()
+/mob/living/carbon/human/proc/cull_tempo_list(manage = FALSE)
 	list_clear_nulls(tempo_attackers)	//I pray this never returns TRUE
 	for(var/mob in tempo_attackers)
 		if(tempo_attackers[mob] < world.time)
 			tempo_attackers.Remove(mob)
-	manage_tempo()
+	if(manage)
+		manage_tempo()
 
 /mob/living/carbon/human/proc/clear_tempo_all()
 	if(HAS_TRAIT(src, TRAIT_TEMPO))
