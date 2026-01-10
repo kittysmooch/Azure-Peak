@@ -439,9 +439,9 @@
 		if(!do_mob(user, target, 0.6 SECONDS, FALSE))
 			return
 		if(target == user)
-			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
+			target.visible_message(span_notice("[user] drinks some heartblood."), span_notice("I drink the heartblood, feeling it fight the rot within."))
 		else
-			target.visible_message(span_notice("[user] injects [target] with heartblood."), span_notice("[user] injects you with heartblood."))
+			target.visible_message(span_notice("[user] feeds [target] some heartblood."), span_notice("[user] feeds you some heartblood."))
 		rot.remove_stack(2)
 		qdel(src)
 		return TRUE
@@ -456,9 +456,9 @@
 		if(!do_mob(user, target, 0.6 SECONDS, FALSE))
 			return
 		if(target == user)
-			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
+			target.visible_message(span_notice("[user] drinks some heartblood."), span_notice("I drink the heartblood, feeling it fight the rot within."))
 		else
-			target.visible_message(span_notice("[user] injects [target] with heartblood."), span_notice("[user] injects you with heartblood."))
+			target.visible_message(span_notice("[user] feeds [target] some heartblood."), span_notice("[user] feeds you some heartblood."))
 		rot.remove_stack(1)
 		qdel(src)
 		return TRUE
