@@ -30,7 +30,7 @@
 	var/base_state = null
 
 	var/locked = FALSE
-	var/lockdifficulty = 1
+	var/lockdifficulty = 1 // DO NOT SET THIS ABOVE 2 WITHOUT GOOD REASON. IT WILL BREAK MOST PICKS EVEN W/ 5/6 SKILL.
 	var/last_bump = null
 	var/brokenstate = 0
 	var/keylock = FALSE
@@ -857,7 +857,7 @@
 	rattlesound = 'sound/foley/doors/lockrattlemetal.ogg'
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	lock_strength = 200
-	lockdifficulty = 3
+	lockdifficulty = 2
 	repair_cost_second = /obj/item/ingot/iron
 	repair_skill = /datum/skill/craft/carpentry
 
