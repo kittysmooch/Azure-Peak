@@ -92,7 +92,7 @@
 	name = "Harlot"
 	tutorial = "You're no stranger to selling your flesh, a veteran whore who's done your business in back alleys and brothels long enough to know the game. Yours has been a hard life, and you've learned a few things doing what you've needed to survive. You may not be fit for a noble's bed, but the workers and soldiers pay well enough."
 	outfit = /datum/outfit/job/nightmaiden/harlot
-	category_tags = list(CTAG_NIGHTMAIDEN)
+	category_tags = list(CTAG_BATHWORKER)
 
 	traits_applied = list(TRAIT_LIGHT_STEP, TRAIT_NUTCRACKER)
 	subclass_stats = list(
