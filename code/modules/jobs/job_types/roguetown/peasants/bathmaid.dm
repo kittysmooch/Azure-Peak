@@ -94,7 +94,7 @@
 	outfit = /datum/outfit/job/nightmaiden/harlot
 	category_tags = list(CTAG_NIGHTMAIDEN)
 
-	traits_applied = list(TRAIT_LIGHT_STEP, TRAIT_BEAUTIFUL, TRAIT_NUTCRACKER)
+	traits_applied = list(TRAIT_LIGHT_STEP, TRAIT_NUTCRACKER)
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_END = 2,
