@@ -436,6 +436,8 @@
 		if(!rot)
 			to_chat(user, span_infection("[target] isn't infected with black rot currently."))
 			return
+		if(!do_mob(user, target, 0.6 SECONDS, FALSE))
+			return
 		if(target == user)
 			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
 		else
@@ -450,6 +452,8 @@
 		var/datum/status_effect/black_rot/rot = target.has_status_effect(/datum/status_effect/black_rot)
 		if(!rot)
 			to_chat(user, span_infection("[target] isn't infected with black rot currently."))
+			return
+		if(!do_mob(user, target, 0.6 SECONDS, FALSE))
 			return
 		if(target == user)
 			target.visible_message(span_notice("[user] injects themself with heartblood."), span_notice("I inject the heartblood, feeling it fight the rot within."))
