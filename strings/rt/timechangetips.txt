@@ -148,3 +148,10 @@ Bandages soak up a limited amount of blood. Get stitching quick, or die snow whi
 I SEE THE DREADED GEM-EATER. HIS METAL MITTS HOLD MY HIDDEN STASH OF SAFFIRA. ONE BY ONE, HE POPS THEM INTO HIS MOUTH...
 WHY IS IT WRITTEN SAIGA AND NOT PSYGA?
 YIELDING slows your bleeding and prevents your assailant from decapitating you, though you will struggle to attack in return.
+Crops can be dug up with spades. Hoes allow for instant removal of weeds. Compost, nightsoil, and bones can be combined by farmers into the legendary "fertilizer".
+Sleeves can be torn for cloth. They can also be rolled up, if you care for the aesthetic.
+With enough STRENGTH, locked doors can be kicked open. You may not bust it down on the first go, keep trying!
+SAKURA LEAVES FALLING IS A SIGN OF EORA'S GROWING POWER. IF I SEE THEM, I SHOULD EXPECT PEACE...
+In lieu of heartblood, leechbait can be crafted from impure lux. This can then fetch leechticks, which can eat a person's lux to restore lyfe to another...
+Focusing on your SPECIAL powers outside of combat allows deft fingers to pick pockets.
+
