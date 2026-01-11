@@ -321,6 +321,6 @@
 	name = "skikudic ingot"
 	desc = "This ingot offers an alternative - if rarely-heard - solution to riddle of steel, courtesy of the Underdark's fungus-fueled forges. Sunlight refuses to illuminate its presence, no matter how bright its glare becomes. </br>'..perhaps, the forge's heat can scald away its fungal temperance..'"
 	icon_state = "ingotsteel"
-	smeltresult = /obj/item/ingot/steel //Smelting the ingot again 'burns away' the fungal temperance, allowing it to be reused for said recipes.
+	smeltresult = /obj/item/ingot/iron //Smelting the ingot again 'burns away' the fungal temperance, allowing it to be reused for said recipes.
 	color = "#bc9ab7"
-	sellprice = 33
+	sellprice = 30 //Rarer to obtain than iron, and feasible to sell off as salvage.
