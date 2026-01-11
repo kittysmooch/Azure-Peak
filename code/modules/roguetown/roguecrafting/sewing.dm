@@ -34,6 +34,13 @@
 	reqs = list(/obj/item/natural/cloth = 3) // 3 because it thas a storage, but it really just a apron.
 	craftdiff = 0
 
+/datum/crafting_recipe/roguetown/sewing/apron/cook
+	name = "cooking apron"
+	category = "Misc"
+	result = list(/obj/item/clothing/cloak/apron/cook)
+	reqs = list(/obj/item/natural/cloth = 3)
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/sewing/apron/blacksmith
 	name = "leather apron"
 	category = "Misc"
