@@ -399,7 +399,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = null
-	invocations = list(span_blue("whispers a hushed promise to steady themselves.."))
+	invocations = list(span_blue("faithfully whispers a hushed promise to steady themselves.."))
 	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -505,7 +505,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = null
-	invocations = list(span_blue("whispers a hushed prayer to steady themselves.."))
+	invocations = list(span_blue("passionately whispers a hushed prayer to steady themselves.."))
 	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -610,7 +610,7 @@
 	range = 2
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	invocations = list(span_blue("whispers a hushed psalm to steady themselves.."))
+	invocations = list(span_blue("reverently whispers a hushed psalm to steady themselves.."))
 	invocation_type = "emote"
 	sound = null
 	associated_skill = /datum/skill/magic/holy
