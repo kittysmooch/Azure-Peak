@@ -1066,20 +1066,33 @@
 	force = 23 //Equalized with the Stalker Sabre, with a +1DMG boost to its original stats.
 	force_wielded = 23
 	minstr = 7
-	wdefense = 9
+	wdefense = 7
 	last_used = 0
 	is_silver = TRUE //One of the rare silver-edged weapons that has a positive damage boost, due to it requiring both silver and gold to create.
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
 
+/obj/item/rogueweapon/sword/sabre/elf/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 100,\
+		added_int = 100,\
+		added_def = 2,\
+	)
+
 /obj/item/rogueweapon/sword/sabre/stalker
 	name = "stalker sabre"
-	desc = "A once-elegant blade of mythril, who's sunless edge now menaces with obsidianesque mirth."
+	desc = "A once-elegant blade of mythril, who's sunless edge now menaces with obsidian-hued mirth."
 	icon_state = "spidersaber"
 	force = 23
 	force_wielded = 23
 	minstr = 7
 	wdefense = 8
+	smeltresult = /obj/item/ingot/drow
+	smelt_bar_num = 1
 
 /obj/item/rogueweapon/sword/sabre/shamshir
 	name = "shamshir"
