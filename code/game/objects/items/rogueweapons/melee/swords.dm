@@ -1058,23 +1058,23 @@
 
 /obj/item/rogueweapon/sword/sabre/elf
 	name = "elvish saber"
-	desc = "This finely crafted saber is of elven design."
+	desc = "A single-edged masterwork of Elven design, who's silvered blade glimmers under the sun's glare."
 	icon_state = "esaber"
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
-	force = 25
-	force_wielded = 25
+	force = 23 //Equalized with the Stalker Sabre, with a +1DMG boost to its original stats.
+	force_wielded = 23
 	minstr = 7
 	wdefense = 9
 	last_used = 0
-	is_silver = FALSE
+	is_silver = TRUE //One of the rare silver-edged weapons that has a positive damage boost, due to it requiring both silver and gold to create.
 	smeltresult = /obj/item/ingot/gold
 	smelt_bar_num = 1
 
 /obj/item/rogueweapon/sword/sabre/stalker
 	name = "stalker sabre"
-	desc = "A once elegant blade of mythril, diminishing under the suns gaze."
+	desc = "A once-elegant blade of mythril, who's sunless edge now menaces with obsidianesque mirth."
 	icon_state = "spidersaber"
 	force = 23
 	force_wielded = 23
