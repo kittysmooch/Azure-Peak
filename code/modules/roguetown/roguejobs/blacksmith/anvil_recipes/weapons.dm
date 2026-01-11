@@ -761,16 +761,16 @@
 	created_item = /obj/item/rogueweapon/sword/long/dec
 
 /datum/anvil_recipe/weapons/decorated/elfsaber
-	name = "Elegant Sabre, Elvish (+2 Silver)"
+	name = "Elegant Sabre, Elvish (+3 Silver)"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/sabre/elf
 	craftdiff = 5 //Combination of Decorated- and Silver-tier methods, alongside being stronger than either.
 
 /datum/anvil_recipe/weapons/decorated/elfdagger
-	name = "Elegant Dagger, Elvish (+1 Silver)"
+	name = "Elegant Dagger, Elvish (+2 Silver)"
 	req_bar = /obj/item/ingot/gold
-	additional_items = list(/obj/item/ingot/silver)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
 	craftdiff = 5 //Ditto.
 
