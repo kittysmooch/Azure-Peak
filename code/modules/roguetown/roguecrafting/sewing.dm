@@ -774,6 +774,14 @@
 				/obj/item/natural/fibers = 4)
 	craftdiff = 3
 
+/datum/crafting_recipe/roguetown/sewing/harmingjacket
+	name = "padded arming jacket"
+	category = "Gambesons"
+	result = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy)
+	reqs = list(/obj/item/natural/cloth = 6,
+				/obj/item/natural/fibers = 4)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/sewing/monkwraps
 	name = "padded arm wrappings"
 	category = "Bracers"
