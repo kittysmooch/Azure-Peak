@@ -235,9 +235,10 @@
 /obj/item/rogueweapon/sword/falx/stalker
 	name = "stalker falx"
 	desc = "A jagged blade with an in inward edge. Once a reputable weapon, now little more than a thug's tool."
-	force = 20 //trades damage for swift balance
 	icon_state = "spiderfalx"
 	wbalance = WBALANCE_SWIFT
+	smeltresult = /obj/item/ingot/drow
+	smelt_bar_num = 1
 
 /obj/item/rogueweapon/sword/decorated
 	name = "decorated arming sword"
