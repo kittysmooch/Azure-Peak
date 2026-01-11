@@ -3,6 +3,7 @@
 	f_title = "Bathhouse Attendant"
 	flag = BATHWORKER
 	department_flag = PEASANTS
+	selection_color = JCOLOR_PEASANT
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
