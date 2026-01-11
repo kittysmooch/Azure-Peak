@@ -124,7 +124,12 @@
 
 /datum/outfit/job/bathworkerghtmaiden/harlot/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/armingcap
+	var/pinroll = rand(1, 20)
+	switch(pinroll)
+		if(1 to 19)
+			head = /obj/item/lockpick/goldpin
+		if(20)
+			head = /obj/item/lockpick/goldpin/silver
 	neck = /obj/item/clothing/neck/roguetown/collar/leather
 	beltl = /obj/item/roguekey/nightmaiden
 	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
@@ -132,7 +137,6 @@
 	shoes = /obj/item/clothing/shoes/roguetown/sandals
 	backpack_contents = list(
 		/obj/item/soap/bath = 1,
-		/obj/item/lockpickring/mundane = 1
 	)
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/sexy/random
