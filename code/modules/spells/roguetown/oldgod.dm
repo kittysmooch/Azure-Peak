@@ -399,7 +399,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = null
-	invocations = list(span_blue("quietly mouths a prayer.."))
+	invocations = list(span_blue("whispers a hushed promise to steady themselves."))
 	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -407,7 +407,7 @@
 	miracle = TRUE
 	devotion_cost = 0 //Doesn't have an initial cost, but charges the caster once they're interrupted or have cycled a couple times. Check the 'if-doafter' line near the bottom if you wish to fiddle with the logic.
 
-/obj/effect/proc_holder/spell/self/psydonprayer/cast(mob/living/carbon/human/user) ///Lesser version of 'RESPITE' and 'PERSIST', T1. Self-regenerative
+/obj/effect/proc_holder/spell/self/psydonprayer/cast(mob/living/carbon/human/user) ///Lesser version of 'RESPITE' and 'PERSIST', T1. Self-regenerative.
 	. = ..()
 	if(!ishuman(user))
 		revert_cast()
@@ -505,7 +505,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = null
-	invocations = list(span_blue("quietly mouths a prayer.."))
+	invocations = list(span_blue("whispers a hushed prayer to steady themselves!"))
 	invocation_type = "emote"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -610,7 +610,7 @@
 	range = 2
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
-	invocations = list(span_blue("quietly mouths a prayer.."))
+	invocations = list(span_blue("whispers a hushed psalm to steady themselves!"))
 	invocation_type = "emote"
 	sound = null
 	associated_skill = /datum/skill/magic/holy
@@ -701,7 +701,7 @@
 		cast(user)	
 		return TRUE
 	else
-		to_chat(H, span_warning("My thoughts and sense of quiet escape me."))	
+		to_chat(H, span_warning("My thoughts and sense of quiet escape me!"))	
 		return FALSE					
 
 //
