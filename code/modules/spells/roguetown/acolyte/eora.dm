@@ -510,15 +510,17 @@
 			return TRUE
 		var/skill = get_farming_skill(user)
 		var/prune_time = get_skill_delay(skill, fastest = 0.5, slowest = 3)
+		var/branches_pruned = 1
 
 		to_chat(user, span_notice("You begin pruning the tree..."))
 
 		if(do_after(user, prune_time, target = src))
 			if(skill >= 3)
 				prune_count = min(4, prune_count + 2)
+				branches_pruned++
 			else
 				prune_count++
-			happiness = min(happiness + 5, 100)
+			happiness = min(happiness + (branches_pruned * 5), 100)
 			update_happiness_tier()
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
