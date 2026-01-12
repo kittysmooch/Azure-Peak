@@ -927,6 +927,19 @@
 	..()
 	icon_state = "stonebr" // Weird override otherwise
 
+// These are variants of the donjon doors for "high security" locations. They have stronger
+// locks. This SHOULD BE A VALUE BETWEEN 1-2, NOT HIGHER THAN 2. Level 3 doors are near
+// impossible to lockpick through. These should also NOT be placed everywhere, as even lockdiff 2
+// will break picks like no tomorrow. 
+
+/obj/structure/mineral_door/wood/donjon/highsecurity
+	lockdifficulty = 2
+	desc = "A solid metal door with a slot to peek through. The lock has been reinforced."
+
+/obj/structure/mineral_door/wood/donjon/stone/highsecurity
+	// No special desc for this one BC stone doors dont really have one. For whatever reason.
+	lockdifficulty = 2
+
 
 /obj/structure/mineral_door/bars
 	name = "iron door"
