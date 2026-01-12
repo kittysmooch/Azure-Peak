@@ -52,7 +52,7 @@
 			return TRUE
 		if(istype(I, /obj/item/roguegem))
 			return TRUE
-		if(istype(I, /obj/item/roguecoin/aalloy))
+		if(istype(I, /obj/item/roguecoin/aalloy)) //Can't find a way to make these sellable to the Stockpile. If someone finds a fix, feel free to implement it.
 			return TRUE
 		if(istype(I, /obj/item/clothing/ring))
 			return TRUE
