@@ -230,7 +230,7 @@
 	desc = "Take the form of objects to make fools of them. R-Click to destroy, left click to copy objects. Use to take a form."
 	clothes_req = FALSE
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 2 SECONDS
 	releasedrain = 5
 	miracle = TRUE
 	devotion_cost = 5
