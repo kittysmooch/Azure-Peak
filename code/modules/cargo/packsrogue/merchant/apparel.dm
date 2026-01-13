@@ -14,7 +14,7 @@
 
 /datum/supply_pack/rogue/apparel/crosses/silver
 	name = "Silver Cross"
-	cost = 150
+	cost = 250
 	contains = list(/obj/item/clothing/neck/roguetown/psicross/silver)
 
 /datum/supply_pack/rogue/apparel/crosses/divinepantheonastrata
@@ -72,11 +72,18 @@
 	contains = list(
 					/obj/item/clothing/neck/roguetown/psicross/noc,)
 
+/datum/supply_pack/rogue/apparel/crosses/xylix
+	name = "Xylix Amulet"
+	cost = 10
+	contains = list(
+					/obj/item/clothing/neck/roguetown/psicross/xylix,)
+
 /datum/supply_pack/rogue/apparel/crosses/divinepantheonten
 	name = "Undivided Amulet"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/neck/roguetown/psicross/undivided,)
+
 
 /datum/supply_pack/rogue/apparel/crosses/psicross
 	name = "Psicross"
