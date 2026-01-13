@@ -513,7 +513,7 @@
 	created_item = /obj/item/clothing/head/roguetown/helmet/kettle/wide
 
 /datum/anvil_recipe/armor/steel/slittedkettle
-	name = "Helmet, Kettle, Slitted ,Steel (+1 Steel)"
+	name = "Helmet, Kettle, Slitted, Steel (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
 	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel)
