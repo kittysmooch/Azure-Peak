@@ -498,11 +498,6 @@
 	armor = ARMOR_LEATHER_GOOD
 
 /obj/item/clothing/shoes/roguetown/armor/rumaclan/shitty
-	name = "raised sandals"
-	desc = "A pair of strange sandals that push you off the ground. These lack armor."
-	icon_state = "eastsandals"
-	item_state = "eastsandals"
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	armor = ARMOR_CLOTHING
 
 // horseshoes!
