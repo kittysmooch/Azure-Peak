@@ -146,7 +146,7 @@
 	created_item = /obj/item/clothing/gloves/roguetown/plate/aalloy
 
 /datum/anvil_recipe/armor/aalloy/chainkilt
-	name = "Chainkilt, Decrepit"
+	name = "Kilt, Chain, Decrepit"
 	req_bar = /obj/item/ingot/aalloy
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/kilt/aalloy
 
@@ -226,7 +226,7 @@
 	created_item = /obj/item/clothing/gloves/roguetown/plate/paalloy
 
 /datum/anvil_recipe/armor/paalloy/chainkilt
-	name = "Chainkilt, Ancient"
+	name = "Kilt, Chain, Ancient"
 	req_bar = /obj/item/ingot/purifiedaalloy
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/kilt/paalloy
 
@@ -348,7 +348,7 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/iron
 
 /datum/anvil_recipe/armor/iron/studded
-	name = "Studded Leather Armor (+ Leather Armor)"
+	name = "Breastplate, Studded Leather (+ Leather Armor)"
 	req_bar = /obj/item/ingot/iron
 	req_blade = /obj/item/blade/iron_plate
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
@@ -430,7 +430,7 @@
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron
 
 /datum/anvil_recipe/armor/iron/chainleg/kilt
-	name = "Chain Kilt, Iron"
+	name = "Kilt, Chain, Iron"
 	req_bar = /obj/item/ingot/iron
 	req_blade = /obj/item/blade/iron_plate
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/iron/kilt
@@ -817,7 +817,7 @@
 	created_item = /obj/item/clothing/under/roguetown/platelegs
 
 /datum/anvil_recipe/armor/steel/chainlegs/kilt
-	name = "Chain Kilt, Steel"
+	name = "Kilt, Chain, Steel"
 	req_bar = /obj/item/ingot/steel
 	req_blade = /obj/item/blade/steel_plate
 	created_item = /obj/item/clothing/under/roguetown/chainlegs/kilt
@@ -995,13 +995,13 @@
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 
 /datum/anvil_recipe/armor/blessedsilver/psyfullplate
-	name = "Full-Plate, Psydonic (+Psydonic Half-Plate, +1 Blessed Silver, +2 Cured Leather)"
+	name = "Full-Plate, Psydonic, Half-Plate Base (+Psydonic Half-Plate, +1 Blessed Silver, +2 Cured Leather)"
 	req_bar = /obj/item/ingot/silverblessed
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
 
 /datum/anvil_recipe/armor/blessedsilver/psyfullplatealt
-	name = "Full-Plate, Psydonic, Hauberked (+Psydonic Hauberk, +2 Blessed Silver, +2 Cured Leather)"
+	name = "Full-Plate, Psydonic, Hauberk Base (+Psydonic Hauberk, +2 Blessed Silver, +2 Cured Leather)"
 	req_bar = /obj/item/ingot/silverblessed
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate, /obj/item/ingot/silverblessed, /obj/item/ingot/silverblessed, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate
