@@ -460,7 +460,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/pants/leather_pants
 	name = "Leather Trousers"
-	cost = 25
+	cost = 20
 	contains = list(
 					/obj/item/clothing/under/roguetown/trou/leather
 				)
@@ -474,7 +474,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/pants/sailor_pants
 	name = "Sailor Pants"
-	cost = 30
+	cost = 20
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/sailor
 				)
@@ -495,7 +495,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/pants/formal
 	name = "Formal Pants"
-	cost = 20
+	cost = 25
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/black,
 					/obj/item/clothing/under/roguetown/tights/black,
@@ -522,7 +522,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shoes/shalal
 	name = "Shalal Shoes"
-	cost = 10
+	cost = 20
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/shalal,
 					/obj/item/clothing/shoes/roguetown/shalal,
