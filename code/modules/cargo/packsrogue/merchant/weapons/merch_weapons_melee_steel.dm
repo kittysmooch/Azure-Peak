@@ -242,3 +242,10 @@
 	contains = list(
 					/obj/item/rogueweapon/halberd/glaive,
 				)
+
+/datum/supply_pack/rogue/steel_weapons/flail
+	name = "Flail"
+	cost = 40 // 1 Steel Ingot
+	contains = list(
+					/obj/item/rogueweapon/flail/sflail,
+				)
