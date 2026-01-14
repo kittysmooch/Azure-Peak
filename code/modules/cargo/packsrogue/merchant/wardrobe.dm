@@ -384,7 +384,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/undervestements
 	name = "Undervestements"
-	cost = 20
+	cost = 15
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/priest
 
@@ -392,7 +392,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/shirt
 	name = "Shirt"
-	cost = 15
+	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt
 
@@ -400,7 +400,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/striped_shirt
 	name = "Striped Shirt"
-	cost = 20
+	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/sailor
 
@@ -408,7 +408,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/lowcut
 	name = "Low-Cut Shirt"
-	cost = 20
+	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/lowcut
 
@@ -416,7 +416,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/lowcut
 	name = "Tunic"
-	cost = 20
+	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic
 
@@ -424,7 +424,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/shirt/lowcut
 	name = "Tunic"
-	cost = 20
+	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic
 
