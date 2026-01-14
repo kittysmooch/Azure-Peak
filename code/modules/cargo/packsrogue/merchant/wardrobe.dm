@@ -151,7 +151,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 	)
 
 /datum/supply_pack/rogue/wardrobe/hat/deserthood
-	name = "Papakha"
+	name = "Desert Hood"
 	cost = 20
 	contains = list(
 		/obj/item/clothing/head/roguetown/deserthood,
@@ -463,22 +463,13 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 				)
 
-/datum/supply_pack/rogue/wardrobe/shirt/lowcut
+/datum/supply_pack/rogue/wardrobe/shirt/tunic
 	name = "Tunic"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic
 
 				)
-
-/datum/supply_pack/rogue/wardrobe/shirt/lowcut
-	name = "Tunic"
-	cost = 10
-	contains = list(
-					/obj/item/clothing/suit/roguetown/shirt/tunic
-
-				)
-		
 
 /datum/supply_pack/rogue/wardrobe/shirt/blackforeignshirt
 	name = "Black Foreign Shirt"
