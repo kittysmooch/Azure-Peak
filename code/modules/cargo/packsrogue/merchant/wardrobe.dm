@@ -222,7 +222,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 	contains = list(/obj/item/clothing/cloak/tabard/stabard/surcoat)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/jupon_short
-	name = "Short Jupon"
+	name = "Jupon, Short"
 	cost = 20
 	contains = list(/obj/item/clothing/cloak/tabard/stabard/surcoat/short)
 
@@ -262,21 +262,21 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 	contains = list(/obj/item/clothing/cloak/poncho)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/bcloaks
-	name = "Blue Raincloak"
+	name = "Raincloak, Blue"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/blue,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/rcloaks
-	name = "Red Raincloak"
+	name = "Raincloak, Red"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/red,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/gcloaks
-	name = "Green Raincloak"
+	name = "Raincloak, Green"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/green,
@@ -288,6 +288,41 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 	contains = list(
 					/obj/item/clothing/cloak/cotehardie,
 				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/scarlettabard
+	name = "Scarlet Tabard"
+	cost = 30
+	contains = list(
+					/obj/item/clothing/suit/roguetown/shirt/robe/tabardscarlet,
+				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/scarletshroud
+	name = "Tabard, Scarlet Shroud"
+	cost = 30
+	contains = list(
+					/obj/item/clothing/head/roguetown/roguehood/shroudscarlet,
+				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/blacktabard
+	name = "Shroud, Scarlet Tabard"
+	cost = 30
+	contains = list(
+					/obj/item/clothing/head/roguetown/roguehood/shroudscarlet,
+				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/blackshroud
+	name = "Shroud, Black Tabard"
+	cost = 30
+	contains = list(
+					/obj/item/clothing/head/roguetown/roguehood/shroudblack,
+				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/blacktabard
+	name = "Tabard, Black"
+	cost = 30
+	contains = list(
+					/obj/item/clothing/suit/roguetown/shirt/robe/tabardblack)
+
 
 /////////////////////////////////
 /// SUITS & DRESSES & ROBES!!! //
