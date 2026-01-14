@@ -162,6 +162,20 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 					/obj/item/clothing/mask/rogue/spectacles/golden,
 				)
 
+/datum/supply_pack/rogue/wardrobe/masks/ragmask
+	name = "Ragmask"
+	cost = 20
+	contains = list(
+					/obj/item/clothing/mask/rogue/ragmask
+				)
+
+/datum/supply_pack/rogue/wardrobe/masks/halfmask
+	name = "Halfmask"
+	cost = 20
+	contains = list(
+					/obj/item/clothing/mask/rogue/shepherd,
+				)
+
 // This is kinda weird and should probably be in the smith's face but I had a specific request for it.
 // IDK What category I'd put it under if we did the smithy is the problem.
 /datum/supply_pack/rogue/wardrobe/masks/goldmask
