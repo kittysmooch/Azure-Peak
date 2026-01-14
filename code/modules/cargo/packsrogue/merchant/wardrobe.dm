@@ -129,6 +129,20 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 		/obj/item/clothing/head/roguetown/nun,
 	)
 
+/datum/supply_pack/rogue/wardrobe/hat/nurseveil
+	name = "Nurse's Veil"
+	cost = 15
+	contains = list(
+		/obj/item/clothing/head/roguetown/veiled,
+	)
+
+/datum/supply_pack/rogue/wardrobe/hat/chaperon
+	name = "Chaperon"
+	cost = 20
+	contains = list(
+		/obj/item/clothing/head/roguetown/chaperon/greyscale,
+	)
+
 /datum/supply_pack/rogue/wardrobe/hat/papakha
 	name = "Papakha"
 	cost = 20
@@ -581,6 +595,27 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 	cost = 15
 	contains = list(
 					/obj/item/clothing/gloves/roguetown/leather
+									)
+
+/datum/supply_pack/rogue/wardrobe/gloves/handwraps
+	name = "Handwraps (Wrists)"
+	cost = 15
+	contains = list(
+					/obj/item/clothing/wrists/roguetown/wrappings
+									)
+
+/datum/supply_pack/rogue/wardrobe/gloves/handwraps
+	name = "Bandages, Gloves"
+	cost = 15
+	contains = list(
+					/obj/item/clothing/gloves/roguetown/bandages
+									)
+
+/datum/supply_pack/rogue/wardrobe/gloves/clothwrap
+	name = "Cloth Wrappings (Wrists)"
+	cost = 15
+	contains = list(
+					/obj/item/clothing/wrists/roguetown/allwrappings
 									)
 
 ////////////////////////////
