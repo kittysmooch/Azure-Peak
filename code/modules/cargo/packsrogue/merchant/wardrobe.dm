@@ -162,6 +162,16 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 					/obj/item/clothing/mask/rogue/spectacles/golden,
 				)
 
+// This is kinda weird and should probably be in the smith's face but I had a specific request for it.
+// IDK What category I'd put it under if we did the smithy is the problem.
+/datum/supply_pack/rogue/wardrobe/masks/goldmask
+	name = "Golden Mask"
+	cost = 140 // smiths need to be able 2 be competitive w/ this. It also smelts into gold. Base value 100. If people start using it to exploit, raise price.
+	contains = list(
+					/obj/item/clothing/mask/rogue/facemask/goldmask
+,
+				)
+
 //////////////////////////
 /// CLOAKS & TABARDS!!! //
 //////////////////////////
