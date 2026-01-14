@@ -110,7 +110,7 @@
 
 /datum/supply_pack/rogue/apparel/shirts/tunic
 	name = "Shirt"
-	cost = 10
+	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/tunic,
 					/obj/item/clothing/suit/roguetown/shirt/tunic,
@@ -119,7 +119,7 @@
 
 /datum/supply_pack/rogue/apparel/shirts
 	name = "Undershirt"
-	cost = 10
+	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/random,
@@ -128,7 +128,7 @@
 
 /datum/supply_pack/rogue/apparel/trousrs
 	name = "Trousers"
-	cost = 10
+	cost = 20
 	contains = list(
 					/obj/item/clothing/under/roguetown/trou,
 					/obj/item/clothing/under/roguetown/trou,
