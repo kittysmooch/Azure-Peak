@@ -174,7 +174,7 @@
 
 /datum/supply_pack/rogue/apparel/belts
 	name = "Belt"
-	cost = 14
+	cost = 30
 	contains = list(
 					/obj/item/storage/belt/rogue/leather,
 					/obj/item/storage/belt/rogue/leather,
