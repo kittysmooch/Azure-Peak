@@ -90,27 +90,9 @@
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/psicross)
 
-/datum/supply_pack/rogue/apparel/gloves/leather
-	name = "Leather Gloves"
-	cost = 15
-	contains = list(
-					/obj/item/clothing/gloves/roguetown/leather,
-					/obj/item/clothing/gloves/roguetown/leather,
-					/obj/item/clothing/gloves/roguetown/leather,
-				)
-
-/datum/supply_pack/rogue/apparel/boots/leather
-	name = "Leather Boots"
-	cost = 15
-	contains = list(
-					/obj/item/clothing/shoes/roguetown/boots/leather,
-					/obj/item/clothing/shoes/roguetown/boots/leather,
-					/obj/item/clothing/shoes/roguetown/boots/leather,
-				)
-
 /datum/supply_pack/rogue/apparel/trousers/leather
 	name = "Leather Trousers"
-	cost = 15
+	cost = 40
 	contains = list(
 					/obj/item/clothing/under/roguetown/trou/leather,
 					/obj/item/clothing/under/roguetown/trou/leather,

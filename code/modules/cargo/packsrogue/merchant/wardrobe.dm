@@ -460,7 +460,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 
 /datum/supply_pack/rogue/wardrobe/pants/leather_pants
 	name = "Leather Trousers"
-	cost = 30
+	cost = 25
 	contains = list(
 					/obj/item/clothing/under/roguetown/trou/leather
 				)
@@ -504,6 +504,13 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 ////////////////////////////
 /// SHOES AND BOOTS!!!!!! //
 ////////////////////////////
+
+/datum/supply_pack/rogue/wardrobe/shoes/leather
+	name = "Leather Boots"
+	cost = 15
+	contains = list(
+					/obj/item/clothing/shoes/roguetown/boots/leather,
+									)
 
 /datum/supply_pack/rogue/wardrobe/shoes/noble
 	name = "Noble Boots"
@@ -569,6 +576,12 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 					/obj/item/clothing/gloves/roguetown/fingerless,
 				)
 
+/datum/supply_pack/rogue/wardrobe/gloves/leather
+	name = "Leather Gloves"
+	cost = 15
+	contains = list(
+					/obj/item/clothing/gloves/roguetown/leather
+									)
 
 ////////////////////////////
 /// PACKAGES & BUNDLES!!! //
