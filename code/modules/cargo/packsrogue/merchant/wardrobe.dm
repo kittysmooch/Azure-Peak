@@ -438,7 +438,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 //////////////////
 
 /datum/supply_pack/rogue/wardrobe/pants/tights
-	name = "Cloth ights"
+	name = "Cloth Tights"
 	cost = 15
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/black
