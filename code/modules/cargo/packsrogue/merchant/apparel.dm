@@ -217,3 +217,23 @@
 	name = "Greatweapon Strap"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/scabbard/gwstrap)
+
+/datum/supply_pack/rogue/apparel/plaquesilver
+	name = "Silver Plaque Belt"
+	cost = 90
+	contains = list(/obj/item/storage/belt/rogue/leather/plaquesilver)
+
+/datum/supply_pack/rogue/apparel/plaquegold
+	name = "Golden Plaque Belt"
+	cost = 100
+	contains = list(/obj/item/storage/belt/rogue/leather/plaquegold)
+
+/datum/supply_pack/rogue/apparel/leatherbelt
+	name = "Leather Belt"
+	cost = 20
+	contains = list(/obj/item/storage/belt/rogue/leather)
+
+/datum/supply_pack/rogue/apparel/blackleatherbelt
+	name = "Black Leather Belt"
+	cost = 20
+	contains = list(/obj/item/storage/belt/rogue/leather/black)
