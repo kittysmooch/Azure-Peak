@@ -1,10 +1,10 @@
-//shotgun spell. big slowdown, high cd, big dmg if all 3 hit. very good vs light or no armor; not so much vs plate...
-//low accuracy bc 3 of them, literally codersprited, identical dmg/pen to sword thrust from 12str person
+//shotgun spell. big dmg if all 3 hit. very good vs light or no armor; not so much vs plate...
+//low accuracy bc 3 of them, literally codersprited
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom
 	name = "Stygian Efflorescence"
-	desc = "Burst forth a triad of sharpened onyxian shards, cut from the Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to knock an enemy back. Knocks them down and drops their weapon if knocked into a wall!"
-	range = 5
+	desc = "Burst forth a triad of sharpened onyxian shards, cut from Mount Golgotha herself. Strips away a fully-stacked Arcane Mark to knock an enemy down and briefly stun them."
+	range = 7 //no reason to not
 	projectile_type = /obj/projectile/energy/shrapnelbloom
 	projectiles_per_fire = 3
 	overlay_state = "stygian"
@@ -13,7 +13,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 0
-	recharge_time = 20 SECONDS //this shit very strong actually
+	recharge_time = 15 SECONDS //this shit very strong actually
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -33,7 +33,7 @@
 	accuracy = 50
 	icon = 'icons/mob/actions/roguespells.dmi'
 	icon_state = "stygian"
-	damage = 22
+	damage = 30
 	woundclass = BCLASS_STAB
 	armor_penetration = 20
 	npc_simple_damage_mult = 1.5
@@ -50,7 +50,7 @@
 		if(mark && mark.stacks >= mark.max_stacks)
 			has_full_mark = TRUE
 			consume_arcane_mark_stacks(M)
-			damage = 40
+			damage = 60
 			to_chat(M, "<span class='userdanger'>STYGIAN WORLD-ECHO; TRYPTICH-MARKE DETONATION!</span>")
 
 	. = ..()
@@ -66,6 +66,7 @@
 			var/turf/edge_target_turf = get_edge_target_turf(M, dir)
 			if(edge_target_turf)
 				M.safe_throw_at(edge_target_turf, 1, 1, firer, spin = FALSE, force = M.move_force, callback = CALLBACK(M, TYPE_PROC_REF(/mob/living, handle_knockback), start_turf))
+				M.Stun(10)
 
 
 /obj/effect/proc_holder/spell/invoked/projectile/shrapnelbloom/ready_projectile(obj/projectile/P, atom/target, mob/user, iteration) //dude this is all copy-paste guessed from other servers and ai slop. if this shit works id be so surprised
