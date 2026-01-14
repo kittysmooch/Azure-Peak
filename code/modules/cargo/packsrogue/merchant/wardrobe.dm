@@ -705,6 +705,7 @@ A LITTLE MORE CONSISTENT IN HERE. PLEASE DO YOUR BEST. THANKS.
 /datum/supply_pack/rogue/wardrobe/packages/jester_pack
 	name = "Aristocratic Jester Supreme Package" // it needs a stupidly long name
 	cost = 60
+	no_name_quantity = TRUE
 	contains = list(
 					/obj/item/clothing/head/roguetown/jester,
 					/obj/item/clothing/suit/roguetown/shirt/jester,
