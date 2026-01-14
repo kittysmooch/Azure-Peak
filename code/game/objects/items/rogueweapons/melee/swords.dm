@@ -138,9 +138,6 @@
 	damfactor = 1.2
 	clickcd = 10
 
-/datum/intent/sword/thrust/krieg
-	damfactor = 0.8
-
 /datum/intent/rend/krieg
 	intent_intdamage_factor = 0.2
 
@@ -798,6 +795,7 @@
 		)
 	icon_state = "eastshortsword"
 	sheathe_icon = "kodachi"
+	wbalance = WBALANCE_SWIFT
 
 /obj/item/rogueweapon/sword/short/iron
 	name = "iron shortsword"
@@ -1558,7 +1556,7 @@
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "ssangsudo"
 	sheathe_icon = "ssangsudo"
-	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/rend, /datum/intent/sword/strike) // better rend by .05
+	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/krieg, /datum/intent/rend, /datum/intent/sword/strike) // better rend by .05
 
 /obj/item/rogueweapon/sword/long/dec
 	name = "decorated longsword"
