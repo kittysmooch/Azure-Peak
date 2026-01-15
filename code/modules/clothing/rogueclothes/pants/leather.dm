@@ -84,6 +84,7 @@
 	name = "sanguine trousers"
 	desc = "A pair of formal trousers, clean to the best of the servant's ability, but some bloodstains are impossible to rid them of"
 	icon_state = "docpants"
+	salvage_result = /obj/item/natural/silk
 	item_state = "docpants"
 	icon = 'icons/roguetown/clothing/special/courtphys.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_courtphys.dmi'
