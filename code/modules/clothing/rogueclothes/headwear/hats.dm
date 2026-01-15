@@ -538,6 +538,7 @@
 	detail_color = CLOTHING_RED
 	icon = 'icons/roguetown/clothing/special/courtphys.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/head/roguetown/courtphysician/Initialize()
 	. = ..()
