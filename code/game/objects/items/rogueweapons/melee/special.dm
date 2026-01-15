@@ -473,6 +473,7 @@
 	name = "close caress"
 	desc = "Some times call for a more intimate approach."
 	icon_state = "eoraknuckle"
+	force = 28 // lower this to 27 if its too much
 
 ///Peasantry / Militia Weapon Pack///
 
