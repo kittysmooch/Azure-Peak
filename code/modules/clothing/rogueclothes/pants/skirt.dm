@@ -49,6 +49,7 @@
 	detail_tag = "_detail"
 	detail_color = CLOTHING_RED
 	alternate_worn_layer = (SHIRT_LAYER)
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/under/roguetown/skirt/courtphysician/Initialize()
 	. = ..()
