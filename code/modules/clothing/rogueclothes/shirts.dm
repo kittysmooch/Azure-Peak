@@ -766,7 +766,7 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
 	detail_tag = "_detail"
 	detail_color = CLOTHING_RED
-	salvage_result = /obj/item/natural/hide/cured
+	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/suit/roguetown/shirt/courtphysician/Initialize()
 	. = ..()
