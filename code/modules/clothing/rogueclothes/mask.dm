@@ -640,3 +640,4 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/courtphys.dmi'
 	icon_state = "docmask"
 	item_state = "docmask"
+	salvage_result = /obj/item/natural/bone
