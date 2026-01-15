@@ -472,7 +472,6 @@
 /obj/item/rogueweapon/knuckles/eora
 	name = "close caress"
 	desc = "Some times call for a more intimate approach."
-	force = 24
 	icon_state = "eoraknuckle"
 
 ///Peasantry / Militia Weapon Pack///
