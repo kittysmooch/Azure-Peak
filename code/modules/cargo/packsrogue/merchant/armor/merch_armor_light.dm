@@ -65,3 +65,28 @@
 	name = "Sewing Kit"
 	cost = 40
 	contains = list(/obj/item/repair_kit)
+
+/datum/supply_pack/rogue/light_armor/lightgambeson
+	name = "Light Gambeson"
+	cost = 24 // these are actually really easy to make
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/light)
+
+/datum/supply_pack/rogue/light_armor/paddedcoif
+	name = "Padded Coif"
+	cost = 26 // ditto
+	contains = list(/obj/item/clothing/neck/roguetown/coif/padded)
+
+/datum/supply_pack/rogue/light_armor/gambeson
+	name = "Gambeson"
+	cost = 32 // more expensive than clothes but not by a whole lot
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
+
+/datum/supply_pack/rogue/light_armor/arming_jacket
+	name = "Arming Jacket"
+	cost = 40 // superior gambeson. idk if its on par w/ the actual padded one or not
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord)
+
+/datum/supply_pack/rogue/light_armor/arming_jacket
+	name = "Padded Arming Jacket"
+	cost = 58 // padded gambeson equiv. but it lacks leg prot?
+	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy)
