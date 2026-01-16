@@ -2053,21 +2053,26 @@
 #undef PSYDON_HEALING_FILTER
 #undef PSYDON_REVIVED_FILTER
 
-/atom/movable/screen/alert/status_effect/buff/dagger_boost
+/atom/movable/screen/alert/status_effect/buff/dagger_dash
 	name = "Dagger Dash"
 	desc = "I'm slipping through!"
 	icon_state = "daggerboost"
 
-/datum/status_effect/buff/dagger_boost
+/atom/movable/screen/alert/status_effect/buff/dagger_boost
+	name = "Dagger Boost"
+	desc = "I'm rushing!"
+	icon_state = "daggerboost"
+
+/datum/status_effect/buff/dagger_dash
 	id = "dagger_boost"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_boost
+	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_dash
 	effectedstats = list(STATKEY_SPD = 1)
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = 3 SECONDS
 	mob_effect_icon_state = "eff_daggerboost"
 	mob_effect_layer = MOB_EFFECT_LAYER_DBOOST
 
-/datum/status_effect/buff/dagger_boost/on_creation(mob/living/new_owner)
+/datum/status_effect/buff/dagger_dash/on_creation(mob/living/new_owner)
 	if(!ishuman(new_owner))
 		return
 	var/spd_bonus = 1
@@ -2082,17 +2087,36 @@
 			duration = 4 SECONDS
 			spd_bonus = 3
 		if(ARMOR_CLASS_MEDIUM)
+			duration = 3 SECONDS
 			spd_bonus = 2
 		if(ARMOR_CLASS_HEAVY)
 			duration = 2 SECONDS
 			spd_bonus = 1
-	effectedstats = list(STATKEY_SPD = spd_bonus)
+	new_owner.apply_status_effect(/datum/status_effect/buff/dagger_dash, spd_bonus)
 	. = ..()
 
-/datum/status_effect/buff/dagger_boost/on_apply()
+/datum/status_effect/buff/dagger_dash/on_apply()
 	owner.pass_flags |= PASSMOB
 	. = ..()
 
-/datum/status_effect/buff/dagger_boost/on_remove()
+/datum/status_effect/buff/dagger_dash/on_remove()
 	owner.pass_flags &= ~PASSMOB
 	. = ..()
+
+/datum/status_effect/buff/dagger_boost
+	id = "dagger_dash"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_boost
+	effectedstats = list(STATKEY_SPD = 1)
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 30 SECONDS
+	var/obj/item/rogueweapon/held_dagger
+
+/datum/status_effect/buff/dagger_boost/on_creation(mob/living/new_owner, spd_boost)
+	if(spd_boost)
+		effectedstats[STATKEY_SPD] = spd_boost
+	held_dagger = new_owner.get_active_held_item()
+	. = ..()
+
+/datum/status_effect/buff/dagger_boost/process()
+	if(!istype(owner.get_active_held_item(), held_dagger))
+		owner.remove_status_effect(/datum/status_effect/buff/dagger_boost)
