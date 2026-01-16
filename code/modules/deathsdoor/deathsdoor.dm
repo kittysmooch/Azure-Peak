@@ -3,7 +3,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 
 /obj/structure/deaths_door_shrine
 	name = "A Way Out"
-	desc = "The eerie calm comes to an end, one way or another."
+	desc = "An end to the calm cold of the precipice, spirits without paid passage flock around it, gaining fleeting glances of Psydonia. Necrans who can peer through graves may be able to make sense of the twisting mists through them." 
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "doorway"
 	opacity = FALSE
@@ -12,7 +12,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 
 /obj/structure/deaths_door_shrine/attack_hand(mob/living/user)
 	to_chat(user, span_notice("You reach for the glowing portal..."))
-	if(!do_after(user, 2 SECONDS, src))
+	if(!do_after(user, 4 SECONDS, src))
 		return
 
 	if(user.mob_biotypes & MOB_UNDEAD)
@@ -36,7 +36,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 		return
 	if(!Adjacent(user) || !user.Adjacent(target))
 		return
-	if(!do_after_mob(user, target, 1 SECONDS))
+	if(!do_after_mob(user, target, 4 SECONDS))
 		return
 
 	exit_deaths_door(user, target)
@@ -125,6 +125,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 
 /obj/structure/deaths_door_portal
 	name = "death's door"
+	desc = "A misty passageway, vague shapes move beyond the veil, lit by what might be a blue lighthouse. There is no coming back if you step in here. Undead beware, you are not welcome in Necra's Precipice." 
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "underworldportal"
 	anchored = TRUE
@@ -151,7 +152,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 /obj/structure/deaths_door_portal/attack_hand(mob/living/user)
 	playsound(get_turf(src), 'sound/misc/carriage2.ogg', 50, TRUE, -2, ignore_walls = TRUE)
 	to_chat(user, span_notice("You reach for the glowing portal..."))
-	if(!do_after(user, 2 SECONDS, src))
+	if(!do_after(user, 4 SECONDS, src))
 		return
 	enter_portal(user)
 
@@ -165,7 +166,7 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 	if(!Adjacent(user) || !user.Adjacent(M))
 		return
 	playsound(get_turf(src), 'sound/misc/carriage2.ogg', 50, TRUE, -2, ignore_walls = TRUE)
-	if(!do_after_mob(user, M, 2 SECONDS))
+	if(!do_after_mob(user, M, 4 SECONDS))
 		return
 
 	if(M.mob_biotypes & MOB_UNDEAD)
@@ -264,7 +265,7 @@ GLOBAL_VAR_INIT(underworld_strands, 0)
 
 	visible_message(
 		span_danger("[src] collapses as Necra's grasp tightens."),
-		span_cult("Your body is sapped entirely of energy, devoid of the ability to fight spirits attempt to steal your body, draining your essence. The Ferryman casts you out before they completely steal your body!")
+		span_cult("Your body is sapped entirely of energy, slumping to the ground the desperate spirits attempt to steal your body, draining your essence. The Ferryman casts you out before they completely rip you from your vessel!")
 	)
 
 	src.forceMove(T)
