@@ -28,6 +28,13 @@
 	density = TRUE
 	var/toll = FALSE
 
+
+/obj/structure/underworld/carriageman/examine(mob/living/user)
+	. = ..()
+	if((user.patron?.type == /datum/patron/divine/necra) && (HAS_TRAIT(user, TRAIT_RITUALIST)))
+		. += (span_cult(" I could exchange a toll to refresh my rites..."))
+		return
+
 /obj/structure/underworld/carriageman/Initialize()
 	. = ..()
 	set_light(5, 4, 30, l_color = LIGHT_COLOR_BLUE)
