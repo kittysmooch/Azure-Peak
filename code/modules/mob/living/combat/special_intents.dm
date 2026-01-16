@@ -1054,3 +1054,15 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 #undef WAVE_3_DELAY
 #undef SPECIAL_AOE_AROUND_ORIGIN
 #undef CUSTOM_TIMER_INDEX
+
+/datum/special_intent/dagger_boost
+	name = "Dagger Dash"
+	desc = "Become quicker on your feet and pass through other beings for a short time. Boost scales with worn armor."
+	cooldown = 90 SECONDS
+	stamcost = 25
+
+/datum/special_intent/dagger_boost/process_attack()
+	SHOULD_CALL_PARENT(FALSE)
+	howner.apply_status_effect(/datum/status_effect/buff/dagger_boost)
+	playsound(howner, 'sound/combat/dagger_boost.ogg', 100, TRUE)
+	apply_cooldown()
