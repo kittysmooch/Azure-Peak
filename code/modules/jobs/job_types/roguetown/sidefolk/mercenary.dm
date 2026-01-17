@@ -64,6 +64,8 @@
 
 		// Get the mercenary statue from SSroguemachine
 		var/obj/structure/roguemachine/talkstatue/mercenary/statue = SSroguemachine.mercenary_statue
+		if(!statue && SSroguemachine.mercenary_statues.len)
+			statue = SSroguemachine.mercenary_statues[1]
 		if(statue)
 			// Send a message with a clickable link to register remotely
 			to_chat(M, span_boldnotice("I sense a mercenary statue calling out to me..."))

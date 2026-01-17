@@ -1,9 +1,9 @@
-/* 
-Talking statues. A means of giving communication to certain spheres 
+/*
+Talking statues. A means of giving communication to certain spheres
 (Church, Mercenaries) without overloading them into the SCOM ecosystem.
 
 Ideally, these machines will encourage gathering in a "centralized" area.
-Hopefully they are more useful than just writing a letter via HERMES. 
+Hopefully they are more useful than just writing a letter via HERMES.
 */
 
 /obj/structure/roguemachine/talkstatue
@@ -19,21 +19,22 @@ Hopefully they are more useful than just writing a letter via HERMES.
 	name = "mercenary statue"
 	desc = "A weathered stone statue depicting a warrior in foreign garb. A faint inscription reads: 'Silver for one, Gold for all.'"
 	icon_state = "goldvendor" //TODO: Get proper sprite
-	var/list/mercenary_status = list() // Stores: list(mob.key = list("status" = status, "mob" = mob, "message" = message))
-	var/list/pending_registrations = list() // Stores: list(mob.key = mob) for remote registrations that haven't expired
-	var/list/pending_message_links = list() // Stores: list(mob.key = mob) for remote message setting that haven't expired
-	var/list/pending_broadcast_responses = list() // Stores: list("response_id" = list("responder" = mob, "sender" = mob)) for time-limited broadcast responses
-	var/list/pending_direct_responses = list() // Stores: list("response_id" = list("responder" = mob, "sender" = mob)) for time-limited direct message responses
-	var/list/sender_cooldowns = list() // Stores: list(sender.key = world.time) for message cooldowns
+	var/static/list/mercenary_status = list() // Stores: list(mob.key = list("status" = status, "mob" = mob, "message" = message))
+	var/static/list/pending_registrations = list() // Stores: list(mob.key = mob) for remote registrations that haven't expired
+	var/static/list/pending_message_links = list() // Stores: list(mob.key = mob) for remote message setting that haven't expired
+	var/static/list/pending_broadcast_responses = list() // Stores: list("response_id" = list("responder" = mob, "sender" = mob)) for time-limited broadcast responses
+	var/static/list/pending_direct_responses = list() // Stores: list("response_id" = list("responder" = mob, "sender" = mob)) for time-limited direct message responses
+	var/static/list/sender_cooldowns = list() // Stores: list(sender.key = world.time) for message cooldowns
 	var/message_char_limit = 300 // Character limit for coin messages
 	var/response_timeout = 2 MINUTES // How long response links are valid
 	var/sender_cooldown = 30 SECONDS // Cooldown between sending messages
-	var/response_id_counter = 0 // Counter to ensure unique response IDs
+	var/static/response_id_counter = 0 // Counter to ensure unique response IDs
 
 /obj/structure/roguemachine/talkstatue/mercenary/Initialize()
 	. = ..()
-	if(SSroguemachine.mercenary_statue == null) // Only one mapped mercenary statue
+	if(SSroguemachine.mercenary_statue == null)
 		SSroguemachine.mercenary_statue = src
+	SSroguemachine.mercenary_statues |= src
 
 /obj/structure/roguemachine/talkstatue/mercenary/attack_hand(mob/living/carbon/human/user)
 	. = ..()

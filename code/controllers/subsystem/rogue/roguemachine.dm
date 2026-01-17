@@ -17,6 +17,7 @@ PROCESSING_SUBSYSTEM_DEF(roguemachine)
 	var/obj/item/rogueweapon/sword/long/martyr/martyrweapon
 	var/obj/item/key
 	var/obj/structure/roguemachine/talkstatue/mercenary/mercenary_statue
+	var/list/mercenary_statues = list()
 
 	var/obj/structure/roguemachine/talkstatue/church/church_statue
 
