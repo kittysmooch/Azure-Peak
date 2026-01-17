@@ -40,11 +40,10 @@
 	if(..() || !iscarbon(hit_atom))//if it gets caught or the target can't be cuffed,
 		return//abort
 	ensnare(hit_atom)
-	/*
-	// Nets always fall off after 10 seconds resist or not, so that the advantage it brings you is limited
+	// Nets always fall off after 30 seconds resist or not, so that the advantage it brings you is limited
 	// Being hit by a net and instalossing isn't fun for anyone because removing can be interrupted
-	addtimer(CALLBACK(src, PROC_REF(remove_effect)), TIMER_OVERRIDE|TIMER_UNIQUE)
-*/
+	addtimer(CALLBACK(src, PROC_REF(remove_effect)), 30 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+
 /obj/item/net/proc/ensnare(mob/living/carbon/C)
 	if(!C.legcuffed && C.get_num_legs(FALSE) >= 2)
 		visible_message("<span class='danger'>\The [src] ensnares [C]!</span>")
