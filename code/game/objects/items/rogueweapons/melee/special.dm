@@ -421,7 +421,7 @@
 	smeltresult = /obj/item/ingot/steel
 	grid_width = 64
 	grid_height = 32
-
+	special = /datum/special_intent/upper_cut
 /obj/item/rogueweapon/knuckles/getonmobprop(tag)
 	. = ..()
 	if(tag)
