@@ -11,7 +11,7 @@ Hopefully they are more useful than just writing a letter via HERMES.
 	desc = "Don't map this one! Map the others!"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "goldvendor" //placeholder
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	max_integrity = 0
 
