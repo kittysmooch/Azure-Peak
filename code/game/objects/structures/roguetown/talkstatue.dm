@@ -17,7 +17,7 @@ Hopefully they are more useful than just writing a letter via HERMES.
 
 /obj/structure/roguemachine/talkstatue/mercenary
 	name = "mercenary statue"
-	desc = "A weathered stone statue depicting a warrior in foreign garb. A faint inscription reads: 'Silver for one, Gold for all.'"
+	desc = "Ancient gilbronze contains a glass lune, warm to the touch and painted with softly-shifting symbols. I can place silver in to message one mercenary, and gold for all of them. A faint inscription reads: 'Silver for one, Gold for all.'"
 	icon_state = "goldvendor" //TODO: Get proper sprite
 	var/static/list/mercenary_status = list() // Stores: list(mob.key = list("status" = status, "mob" = mob, "message" = message))
 	var/static/list/pending_registrations = list() // Stores: list(mob.key = mob) for remote registrations that haven't expired
