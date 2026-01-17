@@ -90,3 +90,8 @@
 	name = "Padded Arming Jacket"
 	cost = 58 // padded gambeson equiv. but it lacks leg prot?
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy)
+
+/datum/supply_pack/rogue/light_armor/grenzelhat
+	name = "Grenzelhoftian Hat"
+	cost = 70 // it must be expensive. craftable, but high diff, and its heavily armored.
+	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
