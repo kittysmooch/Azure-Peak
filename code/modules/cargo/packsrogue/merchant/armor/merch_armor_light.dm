@@ -95,3 +95,13 @@
 	name = "Grenzelhoftian Hat"
 	cost = 70 // it must be expensive. craftable, but high diff, and its heavily armored.
 	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
+
+/datum/supply_pack/rogue/light_armor/spellsinger_hat
+	name = "Spellsinger Hat"
+	cost = 75// ditto
+	contains = list(/obj/item/clothing/head/roguetown/spellcasterhat)
+
+/datum/supply_pack/rogue/light_armor/spellsigner_robes
+	name = "Spellsinger Robes"
+	cost = 90// high material cost, high skill req (6). this is probably overtuned but its also Maybe Fine.
+	contains = list(/obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe)
