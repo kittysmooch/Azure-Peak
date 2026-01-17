@@ -295,7 +295,6 @@
 
 /datum/outfit/job/roguetown/manorguard/cavalry/pre_equip(mob/living/carbon/human/H)
 	..()
-	head = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
@@ -305,24 +304,22 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Bardiche & Sword","Sword & Shield")
+		var/weapons = list("Sabre & Crossbow", "Flail & Shield","Lucerne & Whip")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Bardiche & Sword")
-				l_hand = /obj/item/rogueweapon/sword
-				r_hand = /obj/item/rogueweapon/halberd/bardiche
-				backl = /obj/item/rogueweapon/scabbard/gwstrap
-				beltr = /obj/item/rogueweapon/scabbard/sword
-			if("Longsword + Crossbow")
-				beltl = /obj/item/rogueweapon/scabbard/sword
-				r_hand = /obj/item/rogueweapon/sword/long
-				beltr = /obj/item/quiver/bolts
+			if("Sabre & Crossbow")
+				l_hand = /obj/item/rogueweapon/sword/sabre
+				r_hand = /obj/item/rogueweapon/scabbard/sword
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("Sword & Shield")
-				beltr = /obj/item/rogueweapon/scabbard/sword
-				r_hand = /obj/item/rogueweapon/sword/sabre
-				backl = /obj/item/rogueweapon/shield/wood
+				beltr = /obj/item/quiver/bolts
+			if("Flail & Shield")
+				beltr = /obj/item/rogueweapon/flail/sflail
+				backl = /obj/item/rogueweapon/shield/tower
+			if("Lucerne & Whip")
+				r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
+				backl = /obj/item/rogueweapon/scabbard/gwstrap
+				beltr = /obj/item/rogueweapon/whip
 
 		backpack_contents = list(
 			/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
@@ -332,6 +329,19 @@
 			/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1
 			)
 		H.verbs |= /mob/proc/haltyell
+
+		var/helmets = list(
+		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
+		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"Bascinet Helmet"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"Skull Cap"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"None"
+		)
+		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
+		if(helmchoice != "None")
+			head = helmets[helmchoice]
 
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_LOWER_MIDDLE_CLASS, H, "Savings.")
