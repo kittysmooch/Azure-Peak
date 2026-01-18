@@ -12,7 +12,6 @@
 		STATKEY_CON = 2,
 		STATKEY_STR = 2,
 		STATKEY_WIL = 2,
-		STATKEY_LCK = -1, //You are not lucky, if bailiff came for you
 		STATKEY_SPD = -1
 	)
 	subclass_skills = list(
