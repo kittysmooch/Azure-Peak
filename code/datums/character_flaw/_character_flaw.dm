@@ -269,6 +269,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 		to_chat(L, span_info("Oh thank [L.patron?.name]! A person!"))
 	if(stacks > 1)
 		L.remove_stress_list(/datum/stressevent/lonely_one, /datum/stressevent/lonely_two, /datum/stressevent/lonely_three, /datum/stressevent/lonely_max)
+	stacks = 0
 
 /datum/charflaw/clingy
 	name = "Clingy"
