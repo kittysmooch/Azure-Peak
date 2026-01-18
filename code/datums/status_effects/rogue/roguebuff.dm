@@ -2097,10 +2097,12 @@
 
 /datum/status_effect/buff/dagger_dash/on_apply()
 	owner.pass_flags |= PASSMOB
+	ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
 	. = ..()
 
 /datum/status_effect/buff/dagger_dash/on_remove()
 	owner.pass_flags &= ~PASSMOB
+	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT)
 	. = ..()
 
 /datum/status_effect/buff/dagger_boost
