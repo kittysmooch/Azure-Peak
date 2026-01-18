@@ -154,6 +154,10 @@ GLOBAL_VAR(deaths_door_exit)//turf at necra's shrine on each map
 	to_chat(user, span_notice("You reach for the glowing portal..."))
 	if(!do_after(user, 4 SECONDS, src))
 		return
+	if(user.mob_biotypes & MOB_UNDEAD)
+		to_chat(user, span_danger("The Undermaiden churns the undead!"))
+		explosion(get_turf(user), light_impact_range = 1, flame_range = 1, smoke = FALSE)
+		return
 	enter_portal(user)
 
 /obj/structure/deaths_door_portal/MouseDrop_T(atom/movable/O, mob/living/user)
