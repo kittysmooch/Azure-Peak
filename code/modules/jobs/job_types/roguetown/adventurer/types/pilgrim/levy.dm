@@ -12,7 +12,7 @@
 		STATKEY_CON = 2,
 		STATKEY_STR = 2,
 		STATKEY_WIL = 2,
-		STATKEY_INT = -1,
+		STATKEY_FOR = -1, //You are not lucky, if bailiff came for you
 		STATKEY_SPD = -1
 	)
 	subclass_skills = list(
@@ -30,6 +30,7 @@
 		/datum/skill/craft/carpentry = SKILL_LEVEL_NOVICE,
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_NOVICE,
 		/datum/skill/labor/farming = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 	)
 
 /datum/outfit/job/roguetown/adventurer/levy/pre_equip(mob/living/carbon/human/H)
