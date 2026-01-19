@@ -57,7 +57,7 @@
 	var/clamp_max = MAX_AROUSAL
 	var/mob/user = parent
 	if(user.has_flaw(/datum/charflaw/addiction/thrillseeker))
-		clamp_max = THRILLSEEKER_EJAC_THRESHOLD
+		clamp_max = THRILLSEEKER_THRESHOLD
 		if(forced)
 			clamp_max = 50
 	arousal = clamp(amount, 0, clamp_max)
@@ -72,6 +72,29 @@
 	if(arousal > 0)
 		arousal *= arousal_multiplier
 	return set_arousal(source, arousal + amount, forced)
+
+/datum/component/arousal/proc/adjust_arousal_special(datum/source, amount, forced = FALSE)
+	var/mob/living/mob = parent
+	if(!mob.has_flaw(/datum/charflaw/addiction/thrillseeker))
+		return
+	if(arousal_frozen)
+		return arousal
+	if(arousal > 0)
+		arousal *= arousal_multiplier
+	return set_arousal_special(source, arousal + amount, THRILLSEEKER_THRESHOLD)
+
+/datum/component/arousal/proc/set_arousal_special(datum/source, amount, limit)
+	if(last_ejaculation_time > world.time - (3 MINUTES))	//Short break to not cover the screen in pink too quickly.
+		return
+	if(amount > arousal)
+		last_arousal_increase_time = world.time
+	var/clamp_max = MAX_AROUSAL
+	if(limit)
+		clamp_max = limit
+	arousal = clamp(amount, 0, clamp_max)
+	update_arousal_effects()
+	SEND_SIGNAL(parent, COMSIG_SEX_AROUSAL_CHANGED)
+	return arousal
 
 /datum/component/arousal/proc/freeze_arousal(datum/source, freeze_state = null)
 	var/mob/user = parent
@@ -116,11 +139,7 @@
 	update_erect_state()
 
 /datum/component/arousal/proc/try_ejaculate()
-	var/mob/user = parent
-
-	if(arousal < PASSIVE_EJAC_THRESHOLD && !user.has_flaw(/datum/charflaw/addiction/thrillseeker))
-		return
-	if(user.has_flaw(/datum/charflaw/addiction/thrillseeker) && arousal < THRILLSEEKER_EJAC_THRESHOLD_PASSIVE)
+	if(arousal < PASSIVE_EJAC_THRESHOLD)
 		return
 	if(is_spent())
 		return
@@ -167,7 +186,13 @@
 
 /datum/component/arousal/proc/ejaculate_special()
 	var/mob/living/mob = parent
-	after_ejaculation(FALSE, mob)
+	after_ejaculation_special(mob)
+	last_ejaculation_time = world.time
+
+/datum/component/arousal/proc/after_ejaculation_special(mob/living/parent)
+	parent.add_stress(/datum/stressevent/thrill)
+	if(prob(10))
+		parent.emote("groan", forced = TRUE)
 
 /datum/component/arousal/proc/handle_climax(climax_type, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner, action)
 
