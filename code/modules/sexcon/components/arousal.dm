@@ -141,9 +141,7 @@
 	else
 		climaxer = highest_priority.user
 		partner = highest_priority.target
-	if(mob.has_flaw(/datum/charflaw/addiction/thrillseeker))
-		after_ejaculation(FALSE, climaxer, partner)
-		return	
+
 	playsound(parent, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	// Special case for when the climaxer has a penis but no testicles
 	if(!mob.getorganslot(ORGAN_SLOT_TESTICLES) && mob.getorganslot(ORGAN_SLOT_PENIS))
@@ -167,6 +165,9 @@
 		if(action.knot_on_finish)
 			action.try_knot_on_climax(mob, partner)
 
+/datum/component/arousal/proc/ejaculate_special()
+	var/mob/living/mob = parent
+	after_ejaculation(FALSE, mob)
 
 /datum/component/arousal/proc/handle_climax(climax_type, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner, action)
 
@@ -193,18 +194,24 @@
 	SEND_SIGNAL(climaxer, COMSIG_SEX_CLIMAX)
 
 	charge = max(0, charge - CHARGE_FOR_CLIMAX)
-	
-	var/intensity = action.intensity
-	if(!action.masturbation) //If the action's masturbation, no good lover bonus
-		if(HAS_TRAIT(partner, TRAIT_GOODLOVER)) //If your partner is a good lover, your climax is more intense
-			intensity += 1
+
+	var/intensity
+	if(action)
+		intensity = action.intensity
+		if(!action.masturbation) //If the action's masturbation, no good lover bonus
+			if(HAS_TRAIT(partner, TRAIT_GOODLOVER)) //If your partner is a good lover, your climax is more intense
+				intensity += 1
+
 	if(climaxer.has_flaw(/datum/charflaw/addiction/thrillseeker))
 		var/datum/charflaw/addiction/thrill = climaxer.get_flaw(/datum/charflaw/addiction/thrillseeker)
 		climaxer.playsound_local(climaxer, 'sound/misc/mat/end.ogg', 100)
 		last_ejaculation_time = world.time
 		if(!thrill.sated)
 			climaxer.add_stress(/datum/stressevent/thrillsex)
+		if(prob(10))
+			climaxer.emote("groan", forced = TRUE)
 		return	
+
 	climaxer.emote("moan", forced = TRUE)
 	climaxer.playsound_local(climaxer, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
