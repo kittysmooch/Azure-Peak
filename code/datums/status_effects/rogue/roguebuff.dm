@@ -2064,7 +2064,7 @@
 	icon_state = "daggerboost"
 
 /datum/status_effect/buff/dagger_dash
-	id = "dagger_boost"
+	id = "dagger_dash"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_dash
 	effectedstats = list(STATKEY_SPD = 1)
 	status_type = STATUS_EFFECT_UNIQUE
@@ -2092,7 +2092,7 @@
 		if(ARMOR_CLASS_HEAVY)
 			duration = 2 SECONDS
 			spd_bonus = 1
-	new_owner.apply_status_effect(/datum/status_effect/buff/dagger_dash, spd_bonus)
+	new_owner.apply_status_effect(/datum/status_effect/buff/dagger_boost, spd_bonus)
 	. = ..()
 
 /datum/status_effect/buff/dagger_dash/on_apply()
@@ -2106,7 +2106,7 @@
 	. = ..()
 
 /datum/status_effect/buff/dagger_boost
-	id = "dagger_dash"
+	id = "dagger_boost"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/dagger_boost
 	effectedstats = list(STATKEY_SPD = 1)
 	status_type = STATUS_EFFECT_UNIQUE
