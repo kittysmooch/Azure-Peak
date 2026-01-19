@@ -96,7 +96,7 @@
 			scom_announce("The bounty posting on [target_name] has been removed.")
 			message_admins("[ADMIN_LOOKUPFLW(user)] has removed the bounty on [ADMIN_LOOKUPFLW(target_name)]")
 			return
-	say("Error. Bounty no longer active.") 
+	say("Error. Bounty no longer active.")
 
 ///Sets a bounty on a target player through user input.
 ///@param user: The player setting the bounty.
@@ -335,7 +335,7 @@
 
 /obj/structure/chair/arrestchair
 	name = "CASTIFICO"
-	desc = "A chair-shaped machine that collects bounties, for a greater reward, in exchange for a penalty that some might consider worse than death."
+	desc = "A chair-shaped machine that collects bounties- from live targets, for a greater reward- in exchange for a penalty that some might consider worse than death. Fantatic Astratan sects favor these."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "evilchair"
 	blade_dulling = DULLING_BASH
