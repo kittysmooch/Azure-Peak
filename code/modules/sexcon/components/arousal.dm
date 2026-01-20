@@ -191,7 +191,7 @@
 
 /datum/component/arousal/proc/after_ejaculation_special(mob/living/parent)
 	parent.add_stress(/datum/stressevent/thrill)
-	if(prob(10))
+	if(prob(1))
 		parent.emote("groan", forced = TRUE)
 
 /datum/component/arousal/proc/handle_climax(climax_type, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner, action)
