@@ -678,7 +678,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/check_interval = 15 SECONDS
 	var/active_since
 	var/next_check = 0
-	var/check_range = 4
+	var/check_range = 5
 
 /datum/charflaw/averse/flaw_on_life(mob/user)
 	if(is_active && world.time > next_check)
