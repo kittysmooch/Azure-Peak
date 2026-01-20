@@ -797,21 +797,26 @@
 
 /datum/status_effect/debuff/deathdoorwilloss/on_apply()
 	. = ..()
-	if(HAS_TRAIT(owner, TRAIT_BLOODLOSS_IMMUNE))
+	var/mob/living/carbon/human/H = owner
+	H.add_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING, multiplicative_slowdown = PULL_PRONE_SLOWDOWN)
+	if(HAS_TRAIT(H, TRAIT_BLOODLOSS_IMMUNE))
 		blimmune = TRUE
 	else
-		ADD_TRAIT(owner, TRAIT_BLOODLOSS_IMMUNE, STATUS_EFFECT_TRAIT)
-	if(HAS_TRAIT(owner, TRAIT_NOBREATH))
+		ADD_TRAIT(H, TRAIT_BLOODLOSS_IMMUNE, STATUS_EFFECT_TRAIT)
+	if(HAS_TRAIT(H, TRAIT_NOBREATH))
 		nobreath = TRUE
 	else
-		ADD_TRAIT(owner, TRAIT_NOBREATH, STATUS_EFFECT_TRAIT)
+		ADD_TRAIT(H, TRAIT_NOBREATH, STATUS_EFFECT_TRAIT)
 
 /datum/status_effect/debuff/deathdoorwilloss/on_remove()
 	. = ..()
-	if(!blimmune)
-		REMOVE_TRAIT(owner, TRAIT_BLOODLOSS_IMMUNE, id)
-	if(!nobreath)
-		REMOVE_TRAIT(owner, TRAIT_NOBREATH, id)
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.remove_movespeed_modifier(MOVESPEED_ID_BULKY_DRAGGING)
+		if(!blimmune)
+			REMOVE_TRAIT(H, TRAIT_BLOODLOSS_IMMUNE, STATUS_EFFECT_TRAIT)
+		if(!nobreath)
+			REMOVE_TRAIT(H, TRAIT_NOBREATH, STATUS_EFFECT_TRAIT)
 
 /datum/status_effect/debuff/deathdoorwilloss/process()
 	.=..()
