@@ -121,8 +121,8 @@
 	sleeved = 'icons/clothing/onmob/donor_sleeves_armor.dmi' //No sleeves
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/zydrasiconocrown
-	name = "rontz-iron crown"
-	desc = "A iron crown with a rontz studded into it. Any blow landing upon the wearer's head seems to divert to the gem."
+	name = "toper-iron crown"
+	desc = "A iron crown with a toper studded into it. Any blow landing upon the wearer's head seems to divert to the gem."
 	flags_inv = null //It's a crown, it ain't hiding anything
 	flags_cover = null 
 	icon_state = "zydras_iconocrown"
