@@ -112,18 +112,19 @@
 	set name = "Punish Minion"
 	set category = "VAMPIRE"
 
-	if(!clan_position)
-		to_chat(src, span_warning("You have no subordinates to punish."))
-		return
-
 	var/list/possible = list()
-	for(var/datum/clan_hierarchy_node/subordinate in clan_position.get_all_subordinates())
-		var/mob/living/carbon/human/member = subordinate.assigned_member
+	if(clan_position)
+		for(var/datum/clan_hierarchy_node/subordinate in clan_position.get_all_subordinates())
+			var/mob/living/carbon/human/member = subordinate.assigned_member
+			if(!member || QDELETED(member))
+				continue
+			possible[member.real_name] = member
+	for(var/mob/living/carbon/human/member in personal_vampire_spawn)
 		if(!member || QDELETED(member))
 			continue
 		possible[member.real_name] = member
 	if(!length(possible))
-		to_chat(src, span_warning("You have no subordinates to punish."))
+		to_chat(src, span_warning("You have no minions to punish."))
 		return
 	var/name_choice = input(src, "Who to punish?", "PUNISHMENT") as null|anything in possible
 	if(!name_choice)

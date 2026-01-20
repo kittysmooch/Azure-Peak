@@ -225,9 +225,11 @@
 	VDrinker.thrall_count++
 	adjust_bloodpool(VAMP_CONVERT_BLOOD_GAIN)
 	apply_status_effect(/datum/status_effect/incapacitating/stun, VAMP_CONVERT_POST_STUN)
+	var/mob/living/carbon/human/sire_human = sire
+	if(istype(sire_human))
+		sire_human.personal_vampire_spawn |= src
 
 	vampire_conversion_prompt_active = FALSE
 	return
-
 
 
