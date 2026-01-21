@@ -707,7 +707,7 @@
 	ricochet_auto_aim_range = 5
 	ricochet_incidence_leeway = 40
 	ricochet_decay_chance = 1
-	ricochet_decay_damage = 1
+	ricochet_decay_damage = 2 /// stronger with every bounce, fuck it
 
 /obj/projectile/bullet/reusable/sling_bullet/on_hit(atom/target)
 	. = ..()
