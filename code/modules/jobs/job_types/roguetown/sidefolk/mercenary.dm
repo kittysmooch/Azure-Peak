@@ -69,8 +69,7 @@
 		if(statue)
 			// Send a message with a clickable link to register remotely
 			to_chat(M, span_boldnotice("I sense a mercenary statue calling out to me..."))
-			to_chat(M, span_notice("<a href='?src=[REF(statue)];register=[REF(H)]'>Touch the statue from afar</a> to register myself as available for contract. (This link expires in 5 minutes)"))
+			to_chat(M, span_notice("<a href='?src=[REF(statue)];register=[REF(H)]'>Touch the statue from afar</a> to register myself as available for contract."))
 
-			// Store the registration request with a timer
+			// Store the registration request
 			statue.pending_registrations[H.key] = H
-			addtimer(CALLBACK(statue, TYPE_PROC_REF(/obj/structure/roguemachine/talkstatue/mercenary, expire_registration), H.key), 5 MINUTES)
