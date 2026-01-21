@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	name = "Clingy"
 	desc = "I like being close to people. Real close."
 	var/next_check = 0
-	var/interval = 10 SECONDS
+	var/interval = 1 MINUTES
 	var/is_active = FALSE
 
 /datum/charflaw/clingy/flaw_on_life(mob/user)
