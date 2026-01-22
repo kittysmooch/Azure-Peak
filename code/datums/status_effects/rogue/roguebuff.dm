@@ -1218,7 +1218,7 @@
 /atom/movable/screen/alert/status_effect/vigorized
 	name = "Vigorized"
 	desc = "I feel a surge of energy inside, quickening my speed and sharpening my focus."
-	icon_state = "drunk"
+	icon_state = "vigorized"
 
 /datum/status_effect/buff/vigorized/on_apply()
 	. = ..()
