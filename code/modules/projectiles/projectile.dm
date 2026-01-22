@@ -43,10 +43,27 @@
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
 	var/spread = 0			//amount (in degrees) of projectile spread
 	animate_movement = NO_STEPS	//Use SLIDE_STEPS in conjunction with legacy
+
+	// Ricochet logic
+	/// How many times we've ricochet'd so far (instance variable, not a stat)
 	var/ricochets = 0
-	var/ricochets_max = 2
-	var/ricochet_chance = 30
-	var/force_hit = FALSE //If the object being hit can pass ths damage on to something else, it should not do it for this bullet.
+	/// How many times we can ricochet max
+	var/ricochets_max = 0
+	/// 0-100 (or more, I guess), the base chance of ricocheting, before being modified by the atom we shoot and our chance decay
+	var/ricochet_chance = 0
+	/// 0-1 (or more, I guess) multiplier, the ricochet_chance is modified by multiplying this after each ricochet
+	var/ricochet_decay_chance = 0.7
+	/// 0-1 (or more, I guess) multiplier, the projectile's damage is modified by multiplying this after each ricochet
+	var/ricochet_decay_damage = 0.7
+	/// On ricochet, if nonzero, we consider all mobs within this range of our projectile at the time of ricochet to home in on like Revolver Ocelot, as governed by ricochet_auto_aim_angle
+	var/ricochet_auto_aim_range = 0
+	/// On ricochet, if ricochet_auto_aim_range is nonzero, we'll consider any mobs within this range of the normal angle of incidence to home in on, higher = more auto aim
+	var/ricochet_auto_aim_angle = 30
+	/// the angle of impact must be within this many degrees of the struck surface, set to 0 to allow any angle
+	var/ricochet_incidence_leeway = 40
+
+	///If the object being hit can pass ths damage on to something else, it should not do it for this bullet
+	var/force_hit = FALSE
 
 	//Hitscan
 	var/hitscan = FALSE		//Whether this is hitscan. If it is, speed is basically ignored.
@@ -223,8 +240,22 @@
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume
 
-/obj/projectile/proc/on_ricochet(atom/A)
-	return
+/obj/projectile/proc/on_ricochet(atom/target)
+	if(!ricochet_auto_aim_angle || !ricochet_auto_aim_range)
+		return
+
+	var/mob/living/unlucky_sob
+	var/best_angle = ricochet_auto_aim_angle
+	for(var/mob/living/L in range(ricochet_auto_aim_range, src.loc))
+		if(L.stat == DEAD || !isInSight(src, L))
+			continue
+		var/our_angle = abs(closer_angle_difference(Angle, Get_Angle(src.loc, L.loc)))
+		if(our_angle < best_angle)
+			best_angle = our_angle
+			unlucky_sob = L
+
+	if(unlucky_sob)
+		setAngle(Get_Angle(src, unlucky_sob.loc))
 
 /obj/projectile/proc/store_hitscan_collision(datum/point/pcache)
 	beam_segments[beam_index] = pcache
@@ -234,12 +265,14 @@
 /obj/projectile/Bump(atom/A)
 	var/datum/point/pcache = trajectory.copy_to()
 	var/turf/T = get_turf(A)
-	if(check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max)
+	if(ricochets < ricochets_max && check_ricochet_flag(A) && check_ricochet(A))
 		ricochets++
 		if(A.handle_ricochet(src))
 			on_ricochet(A)
 			ignore_source_check = TRUE
 			decayedRange = max(0, decayedRange - reflect_range_decrease)
+			ricochet_chance *= ricochet_decay_chance
+			damage *= ricochet_decay_damage
 			range = decayedRange
 			if(hitscan)
 				store_hitscan_collision(pcache)
