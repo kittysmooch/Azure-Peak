@@ -189,6 +189,7 @@
 		/datum/skill/combat/staves = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/crossbows = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
