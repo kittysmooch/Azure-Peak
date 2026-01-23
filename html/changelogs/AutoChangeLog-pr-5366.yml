@@ -1,0 +1,4 @@
+author: "Klein3"
+delete-after: True
+changes:
+  - bugfix: "Abyssal language should have an icon and be available to Acolytes and Bishops.\n:cl:"
