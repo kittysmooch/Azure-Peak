@@ -146,7 +146,7 @@
 		mob.used_intent = mob.o_intent
 		if(mob.used_intent.get_chargetime() && !object.blockscharging && !mob.in_throw_mode)
 			mob.face_atom(object, location, control, params)
-			updateprogbar()
+			updateprogbar(object)
 		else
 			mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
 	else
@@ -169,7 +169,7 @@
 		mouse_pointer_icon = 'icons/effects/mousemice/human_looking.dmi'
 	else
 		if(mob.mmb_intent.get_chargetime() && !object.blockscharging)
-			updateprogbar()
+			updateprogbar(object)
 		else
 			mouse_pointer_icon = mob.mmb_intent.pointer
 
@@ -187,7 +187,7 @@
 	mob.atkswinging = "left"
 	mob.used_intent = mob.a_intent
 	if(mob.used_intent.get_chargetime() && !object.blockscharging && !mob.in_throw_mode)
-		updateprogbar()
+		updateprogbar(object)
 	else
 		mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
 
