@@ -108,6 +108,9 @@
 		return FALSE
 	if(mind.has_antag_datum(/datum/antagonist/skeleton))
 		return FALSE
+	//No cross species pollination!!!
+	if(mind.has_antag_datum(/datum/antagonist/gnoll))
+		return FALSE
 	if(HAS_TRAIT(src, TRAIT_SILVER_BLESSED))
 		return FALSE
 	return TRUE
@@ -170,7 +173,6 @@
 	repair_time = 15 SECONDS
 	interrupt_damount = 35
 
-
 /datum/intent/simple/werewolf
 	name = "claw"
 	icon_state = "inchop"
@@ -185,7 +187,6 @@
 	miss_sound = "bluntwooshlarge"
 	item_d_type = "slash"
 
-
 /datum/intent/mace/smash/werewolf
 	name = "thrash"
 	desc = "A powerful, smash of lycan muscle that deals normal damage but can throw a standing opponent back and slow them down, based on your strength. Ineffective below 10 strength. Slowdown & Knockback scales to your Strength up to 15 (1 - 5 tiles). Cannot be used consecutively more than every 5 seconds on the same target. Prone targets halve the knockback distance."
@@ -193,7 +194,6 @@
 	maxrange = 5
 	chargetime = 1
 	penfactor = 60
-
 
 /obj/item/rogueweapon/werewolf_claw
 	name = "Verevolf Claw"
