@@ -3,7 +3,7 @@
 	name = "Miracle"
 	desc = "Heals target over time, causes damage if something is embedded in target. Burns undead instead of healing them if you worship the Ten.<br>Does not work on those worshipping the dead god."
 	overlay_state = "lesserheal"
-	releasedrain = 30
+	releasedrain = 3 SECONDS
 	chargedrain = 0
 	chargetime = 0
 	range = 4
@@ -16,6 +16,7 @@
 	recharge_time = 10 SECONDS
 	miracle = TRUE
 	devotion_cost = 10
+	ignore_los = FALSE
 
 /obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
 	. = ..()
@@ -32,16 +33,18 @@
 		playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
 		return FALSE
 
+	if(target.has_status_effect(/datum/status_effect/buff/healing))
+		to_chat(user, span_warning("They are already under the effects of a healing aura!"))
+		revert_cast()
+		return FALSE
+
+	user.Beam(target,icon_state="lichbeam",time=1 SECONDS)
+
 	if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD))
 		target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
 		target.adjustFireLoss(10)
 		target.fire_act(1, 10)
 		return TRUE
-
-	if(target.has_status_effect(/datum/status_effect/buff/healing))
-		to_chat(user, span_warning("They are already under the effects of a healing aura!"))
-		revert_cast()
-		return FALSE
 
 	var/conditional_buff = FALSE
 	var/situational_bonus = 1
@@ -106,31 +109,39 @@
 	recharge_time = 20 SECONDS
 	miracle = TRUE
 	devotion_cost = 20
+	ignore_los = FALSE
 
 /obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
-			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
-			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
-			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
-			return FALSE
-		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
-			target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
-			target.adjustFireLoss(25)
-			target.fire_act(1,10)
-			return TRUE
-		target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
-		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			C.apply_status_effect(/datum/status_effect/buff/fortify)
-		else
-			target.adjustBruteLoss(-50)
-			target.adjustFireLoss(-50)
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/target = targets[1]
+
+	if(HAS_TRAIT(target, TRAIT_PSYDONITE))
+		target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+		user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+		playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+		return FALSE
+
+	user.Beam(target,icon_state="lichbeam",time=1 SECONDS)
+
+	if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) //positive energy harms the undead
+		target.visible_message(span_danger("[target] is burned by holy light!"), span_userdanger("I'm burned by holy light!"))
+		target.adjustFireLoss(25)
+		target.fire_act(1,10)
 		return TRUE
-	revert_cast()
-	return FALSE
+
+	target.visible_message(span_info("A wreath of gentle light passes over [target]!"), span_notice("I'm bathed in holy light!"))
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.apply_status_effect(/datum/status_effect/buff/fortify)
+	else
+		target.adjustBruteLoss(-50)
+		target.adjustFireLoss(-50)
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/heal/astrata
 	base_icon_state = "regalyscroll"
@@ -142,7 +153,7 @@
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
-	range = 4
+	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = list('sound/magic/regression1.ogg','sound/magic/regression2.ogg','sound/magic/regression3.ogg','sound/magic/regression4.ogg')
@@ -152,17 +163,20 @@
 	recharge_time = 10 SECONDS
 	miracle = TRUE
 	devotion_cost = 10
+	ignore_los = FALSE
 
 /obj/effect/proc_holder/spell/invoked/regression/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		target.visible_message(span_info("Order filled magic rewind [target]'s wounds!"), span_notice("My wounds, undone!"))
-		var/healing = 2.5
-		target.apply_status_effect(/datum/status_effect/buff/healing, healing)
-		return TRUE
-	revert_cast()
-	return FALSE
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	target.visible_message(span_info("Order filled magic rewind [target]'s wounds!"), span_notice("My wounds, undone!"))
+	var/healing = 2.5
+	user.Beam(target,icon_state="lichbeam",time=1 SECONDS)
+	target.apply_status_effect(/datum/status_effect/buff/healing, healing)
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/convergence
 	name = "Convergence"
@@ -171,7 +185,7 @@
 	releasedrain = 30
 	chargedrain = 0
 	chargetime = 0
-	range = 4
+	range = 3
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 //	chargedloop = /datum/looping_sound/invokeholy
@@ -184,22 +198,25 @@
 	recharge_time = 20 SECONDS
 	miracle = TRUE
 	devotion_cost = 20
+	ignore_los = FALSE
 
 /obj/effect/proc_holder/spell/invoked/convergence/cast(list/targets, mob/living/user)
 	. = ..()
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		target.visible_message(span_info("A convergence of fates surrounds [target]!"), span_notice("My past and present converge as one!"))
-		if(iscarbon(target))
-			var/mob/living/carbon/C = target
-			C.apply_status_effect(/datum/status_effect/buff/convergence)
-			C.apply_status_effect(/datum/status_effect/buff/fortify)
-		else
-			target.adjustBruteLoss(-50)
-			target.adjustFireLoss(-50)
-		return TRUE
-	revert_cast()
-	return FALSE
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/target = targets[1]
+	target.visible_message(span_info("A convergence of fates surrounds [target]!"), span_notice("My past and present converge as one!"))
+	user.Beam(target,icon_state="lichbeam",time=1 SECONDS)
+	if(iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.apply_status_effect(/datum/status_effect/buff/convergence)
+		C.apply_status_effect(/datum/status_effect/buff/fortify)
+	else
+		target.adjustBruteLoss(-50)
+		target.adjustFireLoss(-50)
+	return TRUE
 
 
 /obj/effect/proc_holder/spell/invoked/stasis
@@ -228,29 +245,33 @@
 	var/blood = 0
 	miracle = TRUE
 	devotion_cost = 30
+	ignore_los = FALSE
 
 /obj/effect/proc_holder/spell/invoked/stasis/cast(list/targets, mob/user = usr)
-	if(isliving(targets[1]))
-		var/mob/living/carbon/target = targets[1]
-		var/mob/living/carbon/C = target
-		C.apply_status_effect(/datum/status_effect/buff/stasis)
-		brute = target.getBruteLoss()
-		burn = target.getFireLoss()
-		oxy = target.getOxyLoss()
-		toxin = target.getToxLoss()
-		origin = get_turf(target)
-		blood = target.blood_volume
-		var/datum/status_effect/fire_handler/fire_stacks/fire_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks)
-		firestacks = fire_status?.stacks
-		var/datum/status_effect/fire_handler/fire_stacks/sunder/sunder_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder)
-		sunderfirestacks = sunder_status?.stacks
-		var/datum/status_effect/fire_handler/fire_stacks/divine/divine_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/divine)
-		divinefirestacks = divine_status?.stacks
-		to_chat(target, span_warning("I feel a part of me was left behind..."))
-		play_indicator(target,'icons/mob/overhead_effects.dmi', "timestop", 100, OBJ_LAYER)
-		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = 10 SECONDS)
-		return TRUE
-	
+	if(!isliving(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/carbon/target = targets[1]
+	var/mob/living/carbon/C = target
+	C.apply_status_effect(/datum/status_effect/buff/stasis)
+	brute = target.getBruteLoss()
+	burn = target.getFireLoss()
+	oxy = target.getOxyLoss()
+	toxin = target.getToxLoss()
+	origin = get_turf(target)
+	blood = target.blood_volume
+	var/datum/status_effect/fire_handler/fire_stacks/fire_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks)
+	firestacks = fire_status?.stacks
+	var/datum/status_effect/fire_handler/fire_stacks/sunder/sunder_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder)
+	sunderfirestacks = sunder_status?.stacks
+	var/datum/status_effect/fire_handler/fire_stacks/divine/divine_status = target.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/divine)
+	divinefirestacks = divine_status?.stacks
+	to_chat(target, span_warning("I feel a part of me was left behind..."))
+	play_indicator(target,'icons/mob/overhead_effects.dmi', "timestop", 100, OBJ_LAYER)
+	addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = 10 SECONDS)
+
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/stasis/proc/remove_buff(mob/living/carbon/target)
 	do_teleport(target, origin, no_effects=TRUE)
@@ -387,7 +408,7 @@
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/blood_heal
-	name = "Blood transfer Miracle"
+	name = "Blood Boon"
 	desc = "Transfers the blood from myself to the target with divine magycks. Ratio of transfer scales with holy skill."
 	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
 	overlay_state = "bloodheal"
