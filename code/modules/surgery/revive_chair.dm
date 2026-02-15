@@ -96,8 +96,8 @@
 
 			// Animate filling
 			user.visible_message(
-				span_notice("[user] begins filling [src] with [container]."), 
-				span_notice("You begin filling [src] with [container].")
+				span_notice("[user] begins filling the [src] with [container]."), 
+				span_notice("You begin filling the [src] with [container].")
 			)
 
 			var/skill_mod = get_user_skill(H)
