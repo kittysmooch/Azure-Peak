@@ -278,6 +278,10 @@
 		to_chat(H, span_warning("Insufficient charge!"))
 		return
 
+	// Tell the user WE HAVE FLIPPED THE SWITCH.
+	H.visible_message(span_warning("[user] PULLS THE FULMEN-LEVER! Wait for it...!"), span_warning("You pull the FULMEN-LEVER! Wait for it...!"))
+	// We actually want to call it BEFORE the check because otherwise you still wont know if you actually pulled it 1/2 the time.
+
 	// Check if occupant is valid
 	if(!occupant.check_revive(user))
 		return
