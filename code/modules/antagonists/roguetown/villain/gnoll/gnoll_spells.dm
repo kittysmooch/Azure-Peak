@@ -106,7 +106,7 @@
 	var/blood_loss = 75
 	recharge_time = 5 MINUTES
 	invocation_type = "emote"
-	invocation_emote_self = "<span class='notice'>I rip a hole into space with my claw!</span>"
+	invocation_emote_self = "<span class='notice'>I rip a tear in reality with my claw!</span>"
 	overlay_icon = 'icons/mob/actions/gnollmiracles.dmi'
 	action_icon = 'icons/mob/actions/gnollmiracles.dmi'
 	overlay_state = "abduct"
@@ -149,9 +149,9 @@
 		return FALSE
 
 	// Determine Channel Time
-	var/channel_time = 10 SECONDS
+	var/channel_time = 15 SECONDS
 	if(target.has_flaw(/datum/charflaw/hunted))
-		channel_time = 3 SECONDS
+		channel_time = 6 SECONDS
 
 	to_chat(user, span_notice("You begin pulling [target] into graggar's plane"))
 	to_chat(target, span_userdanger("The world around you begins to dissolve into a blood scented nightmare!"))
@@ -215,7 +215,6 @@
 
 /datum/component/gnoll_combat_tracker/proc/on_damage(datum/source, damage, damagetype, def_zone)
 	SIGNAL_HANDLER
-	to_chat(world, span_userdanger("damage amount is [damage]"))
 	last_damage_time = world.time
 	damage_taken += damage
 
