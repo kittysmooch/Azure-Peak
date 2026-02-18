@@ -10,7 +10,7 @@ GLOBAL_VAR_INIT(desired_gnoll_slots, 1)
 /proc/unlock_gnoll_scaling()
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	if(players_amt < 25)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/unlock_gnoll_scaling), 10 MINUTES)
+		addtimer(CALLBACK(null, .proc/unlock_gnoll_scaling), 6000)
 		return
 
 	GLOB.gnoll_playercount_lock = FALSE
@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(desired_gnoll_slots, 1)
 		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 			if(!player.client)
 				continue
-			to_chat(player, span_danger("Graggar demands blood, gnolls flock to Azuria."))
+			to_chat(world, "<span class='alert'>Graggar demands blood, gnolls flock to Azuria</span>")
 
 /proc/get_gnoll_scaling()
 	if(GLOB.gnoll_scaling_mode != 0)
@@ -33,7 +33,7 @@ GLOBAL_VAR_INIT(desired_gnoll_slots, 1)
 
 	// Aiming for rougly 30 minutes into the round
 	// Will not unlock scaling if there's too few players
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/unlock_gnoll_scaling), 40 MINUTES)
+	addtimer(CALLBACK(null, .proc/unlock_gnoll_scaling), 24000)
 	var/datum/storyteller/ST =  SSgamemode.selected_storyteller
 	// Roll a coinflip to decide the round's behavior when default value is supplied.
 	if(ST.preferred_gnoll_mode == GNOLL_SCALING_RANDOM)
