@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(desired_gnoll_slots, 1)
 		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 			if(!player.client)
 				continue
-			to_chat(world, "<span class='alert'>Graggar demands blood, gnolls flock to Azuria</span>")
+		to_chat(world, "<span class='alert'>Graggar demands blood, gnolls flock to Azuria</span>")
 
 /proc/get_gnoll_scaling()
 	if(GLOB.gnoll_scaling_mode != 0)
