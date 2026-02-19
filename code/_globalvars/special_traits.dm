@@ -38,6 +38,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	apply_prefs_special(character, player)
 	apply_prefs_virtue(character, player)
 	apply_prefs_race_bonus(character, player)
+	apply_voicepacks(character, player)
 	if(player.prefs.dnr_pref)
 		apply_dnr_trait(character, player)
 	if(player.prefs.qsr_pref)
@@ -68,6 +69,13 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		if(!H.mind.has_antag_datum(/datum/antagonist/skeleton) && !H.mind.has_antag_datum(/datum/antagonist/lich) && !H.mind.has_antag_datum(/datum/antagonist/vampire) && !H.mind.has_antag_datum(/datum/antagonist/vampire/lord))
 			ADD_TRAIT(H, TRAIT_TEMPO, SPECIES_TRAIT)		
 	return TRUE
+
+/proc/apply_voicepacks(mob/living/carbon/human/character, client/player)
+	if(player.prefs.voice_pack != "Default")
+		var/datum/voicepack/VP = GLOB.voice_packs_list[player.prefs.voice_pack]
+		character.dna.species.soundpack_m = new VP()
+		character.dna.species.soundpack_f = new VP()
+
 
 /proc/apply_prefs_virtue(mob/living/carbon/human/character, client/player)
 	if (!player)
