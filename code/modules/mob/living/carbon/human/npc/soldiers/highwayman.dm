@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(highwayman_aggro, world.file2list("strings/rt/highwaymanaggroli
 		aggressive=1
 		wander = TRUE
 		if(!is_silent && target != newtarg)
-			say(pick(GLOB.highwayman_aggro))
+			say(pick(GLOB.highwayman_aggro), npc_speech = TRUE)
 			pointed(target)
 
 /mob/living/carbon/human/species/human/northern/highwayman/should_target(mob/living/L)
