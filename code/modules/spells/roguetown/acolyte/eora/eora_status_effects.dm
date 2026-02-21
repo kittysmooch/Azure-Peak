@@ -257,7 +257,7 @@
 		else if(HAS_TRAIT(H, TRAIT_UNSEEMLY) && prob(2))
 			to_chat(H, span_good("The tree's beauty beckons your gaze. </br>A whisper along the winds; an errant petal, flowing through the breeze. </br>Her divine love graces you, gently drawing the pain away from your marred flesh.."))
 			SEND_SOUND(usr, sound(null))
-			playsound(var/user, 'sound/misc/otavanlament.ogg', 80) 
+			playsound(usr, 'sound/misc/otavanlament.ogg', 80) 
 			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 
 	// There is no beauty in death. Feed my tree.
