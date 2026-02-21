@@ -214,8 +214,8 @@
 
 /mob/living/carbon/human/species/goblin/handle_combat()
 	if(mode == NPC_AI_HUNT)
-		if(prob(2))
-			emote("laugh")
+		if(prob(10))
+			emote(pick("laugh", "giggle", "chuckle", "cackle", "screech", "hiss", "growl"))
 	. = ..()
 
 /mob/living/carbon/human/species/goblin/after_creation()
