@@ -256,8 +256,8 @@
 
 		else if(HAS_TRAIT(H, TRAIT_LEPROSY) && prob(1))
 			to_chat(H, span_love("Her divine love graces you, gently drawing the pain away from your marred flesh.."))
-			visible_message(span_rose("The tree's branches sway in the breeze, as the howling gusts swill into an angelic tune.."))
-			playsound(local, 'sound/misc/otavanlament.ogg', 75, FALSE, -1)
+			to_chat(span_rose("The tree's branches sway in the breeze, as the howling gusts swill into an angelic tune.."))
+			playsound(H, 'sound/misc/otavanlament.ogg', 75, FALSE, -1)
 			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 
 	// There is no beauty in death. Feed my tree.
