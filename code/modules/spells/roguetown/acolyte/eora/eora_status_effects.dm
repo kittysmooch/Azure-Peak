@@ -69,9 +69,9 @@
 	else if(current_boost == 0)
 		REMOVE_TRAIT(owner, TRAIT_BEAUTIFUL, TRAIT_MIRACLE)
 		to_chat(owner, span_warning("Your divine beauty fades..."))
-	else if (current_boost == -5)
+	else if (current_boost == 1)
 		ADD_TRAIT(owner, TRAIT_UNSEEMLY, TRAIT_MIRACLE)
-		to_chat(owner, span_notice("Your flesh is flaky and disgusting."))
+		to_chat(owner, span_notice("A dull warmth swills in your heart - that, alone, left unmarred by ravaged flesh.."))
 
 	// Set visual appearance based on boost level
 	switch(current_boost)
@@ -250,12 +250,11 @@
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
-		// Ugly people might get hurt
 		if(HAS_TRAIT(H, TRAIT_UNSEEMLY) && prob(2))
-			to_chat(H, span_warning("The tree's beauty burns your eyes!"))
-			H.Dizzy(5)
-			H.blur_eyes(5)
-			H.adjustBruteLoss(10, 0)
+			to_chat(H, span_hypnophase("The tree's beauty beckons your gaze. </br>A whisper along the winds; an errant petal, flowing through the breeze. </br>Her divine love graces you, gently drawing the pain away from your marred flesh.."))
+			SEND_SOUND(usr, sound(null))
+			playsound(user, 'sound/misc/otavanlament.ogg', 80) 
+			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 
 		// Beautiful people might get healed
 		else if(HAS_TRAIT(H, TRAIT_BEAUTIFUL) && prob(10))
