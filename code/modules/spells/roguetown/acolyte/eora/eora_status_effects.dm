@@ -68,10 +68,10 @@
 		to_chat(owner, span_notice("You feel divinely empowered and radiant!"))
 	else if(current_boost == 0)
 		REMOVE_TRAIT(owner, TRAIT_BEAUTIFUL, TRAIT_MIRACLE)
-		to_chat(owner, span_warning("Your divine beauty fades..."))
-	else if (current_boost == 1)
-		ADD_TRAIT(owner, TRAIT_LEPROSY, TRAIT_MIRACLE)
-		to_chat(owner, span_notice("A dull warmth swills in your heart - that, alone, left unmarred by ravaged flesh.."))
+		to_chat(owner, span_warning("Your divine beauty fades away.."))
+	else if (current_boost == -5)
+		ADD_TRAIT(owner, TRAIT_UNSEEMLY, TRAIT_MIRACLE)
+		to_chat(owner, span_warning("Your divine beauty is rotting away!"))
 
 	// Set visual appearance based on boost level
 	switch(current_boost)
@@ -250,13 +250,22 @@
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
+		//Beautiful people have a chance to be healed.
 		if(HAS_TRAIT(H, TRAIT_BEAUTIFUL) && prob(10))
 			to_chat(H, span_rose("The tree's beauty revitalizes you!"))
 			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 
+		//People cursed by Eora will suffer visual disorientation and damage over time.
+		else if(HAS_TRAIT(H, TRAIT_CURSE_EORA) && prob(2))
+			to_chat(H, span_warning("The tree's beauty burns your eyes!"))
+			H.Dizzy(5)
+			H.blur_eyes(5)
+			H.adjustBruteLoss(10, 0)
+
+		//People marred by trama have a very, very low chance to be healed - and to proc a unique sight.
 		else if(HAS_TRAIT(H, TRAIT_LEPROSY) && prob(1))
 			to_chat(H, span_love("Her divine love graces you, gently drawing the pain away from your marred flesh.."))
-			to_chat(span_rose("The tree's branches sway in the breeze, as the howling gusts swill into an angelic tune.."))
+			to_chat(span_rose("The tree's branches sway in the breeze, and the howling gusts swill into an angelic tune.."))
 			playsound('sound/misc/otavanlament.ogg', 50, FALSE, -1)
 			H.apply_status_effect(/datum/status_effect/buff/healing, 1)
 
