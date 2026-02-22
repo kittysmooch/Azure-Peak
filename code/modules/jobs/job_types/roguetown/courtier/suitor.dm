@@ -133,12 +133,11 @@
 	tutorial = "With honor and the flash of your steel, you meet your rivals in open challenge. You'll win favour not with whispers or warmth, but with roaring applause."
 	outfit = /datum/outfit/job/roguetown/suitor/gallant
 	category_tags = list(CTAG_CONSORT)
-	traits_applied = list(TRAIT_STEELHEARTED) //no armour for you
+	traits_applied = list(TRAIT_MEDIUMARMOR) //now that i think about it, its funny if they lose their mind as people die
 	subclass_stats = list(
-		STATKEY_STR = 1,
+		STATKEY_STR = 2,
 		STATKEY_PER = 2,
-		STATKEY_CON = 2, //no armour so even noble duels draw blood fast
-		STATKEY_WIL = 1,
+		STATKEY_WIL = 1, //no more con but hey you got armour back
 		STATKEY_SPD = 1,
 		STATKEY_LCK = 1
 	)
