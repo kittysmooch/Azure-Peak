@@ -289,25 +289,25 @@
 	id = "pomegranate_beauty"
 	duration = -1
 	alert_type = /atom/movable/screen/alert/status_effect/pomegranate_aura
-	outline_colour ="#42001f"
+	var/outline_colour ="#42001f"
 	var/datum/weakref/source_ref
 	effectedstats = list(STATKEY_CON = -2, STATKEY_LCK = 2)
 
 /datum/status_effect/debuff/pomegranate_beauty/on_apply()
 	. = ..()
-	filter = owner.get_filter(POM_FILTER)
+	var/filter = owner.get_filter(POM_FILTER)
 	if (!filter)
 		owner.add_filter(POM_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 180, "size" = 1))
 	to_chat(owner, span_rose("Wisps of rose seep into my features, as the tree blesses me with beauty once more! The divine energy strains my body, yet my guise has never looked prettier!"))
-	ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
-	REMOVE_TRAIT(H, TRAIT_UNSEEMLY, TRAIT_GENERIC)
+	ADD_TRAIT(owner, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+	REMOVE_TRAIT(owner, TRAIT_UNSEEMLY, TRAIT_GENERIC)
 
 /datum/status_effect/debuff/pomegranate_beauty/on_remove()
 	. = ..()
 	owner.remove_filter(POM_FILTER)
 	to_chat(owner, span_warning("Wisps of rose seep from my features, as the tree's blessings - and my gifted beauty - fades away. The divine energy's burden is no more, and my body relaxes once again.."))
-	REMOVE_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_UNSEEMLY, TRAIT_GENERIC)
+	REMOVE_TRAIT(owner, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
+	ADD_TRAIT(owner, TRAIT_UNSEEMLY, TRAIT_GENERIC)
 
 /datum/status_effect/debuff/pomegranate_beauty/tick()
 	// Check if source tree still exists
