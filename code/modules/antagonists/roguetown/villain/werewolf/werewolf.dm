@@ -46,6 +46,11 @@
 	var/transforming
 	var/untransforming
 	var/wolfname = "Verewolf"
+	var/static/list/dendor_cries = list('sound/effects/werewolf_sounds/wscream1.ogg',
+								'sound/effects/werewolf_sounds/wscream2.ogg',
+								'sound/effects/werewolf_sounds/wscream3.ogg',
+								'sound/effects/werewolf_sounds/wscream4.ogg',
+								'sound/effects/werewolf_sounds/wscream5.ogg')
 
 /datum/antagonist/werewolf/lesser
 	name = "Lesser Verewolf"
