@@ -52,6 +52,13 @@
 				return
 		else
 			if(T.hingot && istype(T.hingot, /obj/item/ingot))
+				// if the held ingot was deleted/qdeling somehow, just clear state
+				if(QDELETED(T.hingot) || QDELING(T.hingot))
+					T.hingot = null
+					T.hott = null
+					T.update_icon()
+					return
+
 				T.hingot.forceMove(src)
 				hingot = T.hingot
 				T.hingot = null
@@ -134,6 +141,7 @@
 		user.visible_message(span_info("[user] places [W] on the anvil."))
 		W.forceMove(src.loc)
 		return
+
 	..()
 
 /obj/machinery/anvil/ui_interact(mob/user, datum/tgui/ui)
