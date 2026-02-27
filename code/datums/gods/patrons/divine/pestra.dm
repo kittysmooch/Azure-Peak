@@ -60,6 +60,6 @@
 		var/mob/living/carbon/carbon = target
 		if(!(carbon.mobility_flags & MOBILITY_STAND) && !carbon.buckled)
 			*conditional_buff = TRUE
-			*situational_bonus = 1.5
-			target.adjustToxLoss(-*situational_bonus*10)
-			target.blood_volume += BLOOD_VOLUME_SURVIVE / 3
+			*situational_bonus = 1 // finally pestra wont be the only line of miracle caster with a 2.5 regen
+			target.adjustToxLoss(-*situational_bonus*15) // flat 15 tox healing on people on the floor or in critical state
+			target.blood_volume += BLOOD_VOLUME_SURVIVE / 3 // capable of overcapping blood
