@@ -29,6 +29,51 @@
 	contains = list(/obj/item/reagent_containers/powder/spice)
 	not_in_public = TRUE // ditto
 
+/datum/supply_pack/rogue/luxury/msigs
+	name = "Mentha Zig"
+	cost = 7
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/mentha)
+
+/datum/supply_pack/rogue/luxury/bsigs
+	name = "Blackberry zig"
+	cost = 12
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/blackberry)
+	
+/datum/supply_pack/rogue/luxury/asigs
+	name = "Apple zig"
+	cost = 5
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/apple)
+
+/datum/supply_pack/rogue/luxury/masigs
+	name = "Mentha-apple zig"
+	cost = 9
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/menthaapple)
+
+/datum/supply_pack/rogue/luxury/csigs
+	name = "Chocolate Zig"
+	cost = 55
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/chocolate)
+	
+/datum/supply_pack/rogue/luxury/ssigs
+	name = "Strawberry Zig"
+	cost = 13
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/strawberry)
+	
+/datum/supply_pack/rogue/luxury/csigs
+	name = "Carrot Zig"
+	cost = 6
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/carrot)
+	
+/datum/supply_pack/rogue/luxury/lsigs
+	name = "Lime Zig"
+	cost = 5
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/lime)
+
+/datum/supply_pack/rogue/luxury/sigar
+	name = "Ziggara"
+	cost = 25
+	contains = list(/obj/item/clothing/mask/cigarette/rollie/ziggara)
+
 /datum/supply_pack/rogue/luxury/fancyteaset
 	name = "Fancy Tea Set (1 Teapot, 4 Cups)"
 	cost = 110
