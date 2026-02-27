@@ -56,5 +56,8 @@
 	*message_out = span_info("An aura of clinical care encompasses [target]!")
 	*message_self = span_notice("I'm sewn back together by sacred medicine!")
 
+	target.adjustToxLoss(-*situational_bonus)
+	target.blood_volume += BLOOD_VOLUME_SURVIVE / 3
+
 	*conditional_buff = TRUE
 	*situational_bonus = 1.5
