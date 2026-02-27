@@ -56,8 +56,10 @@
 	*message_out = span_info("An aura of clinical care encompasses [target]!")
 	*message_self = span_notice("I'm sewn back together by sacred medicine!")
 
-	target.adjustToxLoss(-*situational_bonus)
-	target.blood_volume += BLOOD_VOLUME_SURVIVE / 3
-
-	*conditional_buff = TRUE
-	*situational_bonus = 1.5
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon = target
+		if(!(carbon.mobility_flags & MOBILITY_STAND) && !carbon.buckled)
+			*conditional_buff = TRUE
+			*situational_bonus = 1.5
+			target.adjustToxLoss(-*situational_bonus*10)
+			target.blood_volume += BLOOD_VOLUME_SURVIVE / 3
