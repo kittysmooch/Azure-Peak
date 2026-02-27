@@ -601,15 +601,11 @@
 	var/mob/living/carbon/V = M
 	V.add_stress(/datum/stressevent/valerianasmoke)
 	if(prob(20))
+		M.drowsyness += 3
 		M.emote(pick("yawn"))
 		M.visible_message("<span class='danger'>[M]'s looks sleepy and relaxed</span>")
 	..()
 
-/* /datum/reagent/drug/valeriana/on_mob_life(mob/living/carbon/M)
-	var/datum/status_effect/drowsiness = M.has_status_effect(/datum/status_effect/drowsiness)
-	M.adjust_stamina(1)
-	..()
-	. = 1 */
 
 /datum/reagent/drug/valeriana/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
