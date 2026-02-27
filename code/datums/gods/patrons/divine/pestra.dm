@@ -56,6 +56,5 @@
 	*message_out = span_info("An aura of clinical care encompasses [target]!")
 	*message_self = span_notice("I'm sewn back together by sacred medicine!")
 
-
 	*conditional_buff = TRUE
 	*situational_bonus = 1.5
