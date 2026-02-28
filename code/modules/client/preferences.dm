@@ -592,6 +592,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 //			-----------START OF BODY TABLE-----------
 			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
+			var/datum/job/highest_pref
+			for(var/job in job_preferences)
+				if(job_preferences[job] > highest_pref)
+					highest_pref = SSjob.GetJob(job)
+			if(!isnull(highest_pref) && !istype(highest_pref, /datum/job/roguetown/jester))
+				dat += "<b>Subclass Preview:</b> <a href='?_src_=prefs;preference=subclassoutfit;task=input'>[preview_subclass ? "[preview_subclass.name]" : "None"]</a><BR>"
+			else
+				preview_subclass = null
 			dat += "<b>Update feature colors with change:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "Yes" : "No"]</a><BR>"
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
