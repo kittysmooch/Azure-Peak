@@ -68,7 +68,7 @@
 	name = "Ruler"
 
 /datum/antagonist/aspirant/greet()
-	to_chat(owner, span_danger("I have grown weary of being near the throne, but never on it. It is time to take the t"))
+	to_chat(owner, span_danger("I have grown weary of being near the throne, but never on it. It is time to seize destiny in myne own hands."))
 	..()
 
 /datum/antagonist/aspirant/supporter/greet()
