@@ -1056,13 +1056,13 @@
 /datum/outfit/job/roguetown/adventurer/bluthund/pre_equip(mob/living/carbon/human/H)
 	..()
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
-	wrists = /obj/item/clothing/wrists/roguetown/splintarms/iron
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/iron
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft
 	head = /obj/item/clothing/head/roguetown/grenzelhofthat
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
-	shoes = /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
+	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	backpack_contents = list(
@@ -1154,7 +1154,7 @@
 				H.change_stat(STATKEY_WIL, 1)
 				H.adjust_skillrank_up_to(/datum/skill/misc/lockpicking, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/music, 4, TRUE)
-				H.adjust_skillrank_uo_to(/datum/skill/misc/stealing, 3, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/misc/stealing, 3, TRUE)
 				//You already know why...
 				backr = /obj/item/rogue/instrument/flute
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero
