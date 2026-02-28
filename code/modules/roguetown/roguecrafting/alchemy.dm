@@ -473,7 +473,14 @@
 	result = list(/obj/item/clothing/mask/cigarette/rollie/salviavaleriana/crafted)
 	reqs = list(/obj/item/clothing/mask/cigarette/rollie/nicotine = 1, /obj/item/herbseed/salvia = 1, /datum/reagent/drug/valeriana = 2)
 	craftdiff = 3
-	
+
+/datum/crafting_recipe/roguetown/alchemy/calendulazig
+	name = "handmade calendula zig"
+	category = "Table"
+	result = list(/obj/item/clothing/mask/cigarette/rollie/calendula)
+	reqs = list(/obj/item/clothing/mask/cigarette/rollie/nicotine = 1, /obj/item/alch/calendula = 1)
+	craftdiff = 3
+
 /datum/crafting_recipe/roguetown/alchemy/ziggara
 	name = "handmade ziggara"
 	category = "Table"

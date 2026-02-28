@@ -476,10 +476,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "salvia-valeriana zig"
 	desc = "Dried westleach carefully wrapped in fine paper. It has a particularly smooth taste with a spicy, earthy and bitter effect."
 	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/drug/salvia= 5, /datum/reagent/drug/valeriana= 10)
-	
+
 /obj/item/clothing/mask/cigarette/rollie/salviavaleriana/crafted
 	name = "handmade salvia-valeriana zig"
 	desc = "A rewrapped westleach zig with some alchemically extracted salvia and valeriana essence."
+
+/obj/item/clothing/mask/cigarette/rollie/calendula
+	name = "handmade calendula zig"
+	desc = "A rewrapped westleach zig with some alchemically extracted calendula essence. It has a bitter taste and light healing properties."
+	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/drug/calendula= 15)
 
 ////////////
 // CIGARS //

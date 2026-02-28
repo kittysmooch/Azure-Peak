@@ -612,7 +612,42 @@
 	M.adjustOxyLoss(1.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
 	..()
 	. = 1
-	
+
+/datum/reagent/drug/calendula
+	name = "Calendula"
+	description = "Extract from the calendula. Produces a bitter-spicy and tart sensation."
+	reagent_state = LIQUID
+	color = "#a57006"
+	addiction_threshold = 999
+	taste_description = "calendula"
+	trippy = FALSE
+	overdose_threshold = 30 // lower, cuz of it's healing properties
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
+
+/datum/reagent/drug/calendula/on_mob_end_metabolize(mob/living/M)
+	..()
+
+/datum/reagent/drug/calendula/on_mob_metabolize(mob/living/M)
+	var/list/wCount = M.get_wounds()
+	M.adjustBruteLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustFireLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustOxyLoss(-0.25, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1  * REAGENTS_EFFECT_MULTIPLIER)
+	M.adjustCloneLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+	if(wCount.len > 0)
+		M.heal_wounds(0.5)  // twice worse than the tea
+	..()
+
+/datum/reagent/drug/calendula/on_mob_life(mob/living/carbon/M)
+	..()
+	. = 1
+
+/datum/reagent/drug/calendula/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustOxyLoss(1.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+	. = 1
+
 /datum/reagent/drug/ziggara
 	name = "Ziggara"
 	description = "Extract from the ziggara. Produces a causes sore throat and mild relaxation."
