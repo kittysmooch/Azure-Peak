@@ -62,4 +62,4 @@
 			*conditional_buff = TRUE
 			*situational_bonus = 1 // finally pestra wont be the only line of miracle caster with a 2.5 lesser miracle regen
 			target.adjustToxLoss(-*situational_bonus*15) // flat 15 tox healing on lesser miracle effect application
-			target.blood_volume += BLOOD_VOLUME_SURVIVE / 3 // capable of overcapping blood
+			target.blood_volume = min(target.blood_volume + (BLOOD_VOLUME_SURVIVE / 3), BLOOD_VOLUME_NORMAL) // actually this time around it cannot overcap blood!
