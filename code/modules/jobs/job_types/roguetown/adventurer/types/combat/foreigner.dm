@@ -1139,7 +1139,7 @@
 				H.change_stat(STATKEY_PER, 2)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)	//No shield skill, since you're buckler reliant.
 				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 3, TRUE)	//So you don't get IMMEDIATELY folded by a basic grappler 
-				r_hand = /obj/item/rogueweapon/sword/long/etruscan	//You'd stolen this, probably. It's just a longsword reskin.
+				r_hand = /obj/item/rogueweapon/sword/long	//You'd stolen this, probably. It's just a longsword reskin.
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				backr = /obj/item/rogueweapon/shield/buckler
 				backpack_contents = list(
