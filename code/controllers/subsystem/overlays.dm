@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(overlays)
 	iconbro.icon = icon
 	return iconbro.appearance
 
-atom/proc/build_appearance_list(build_overlays)
+/atom/proc/build_appearance_list(build_overlays)
 	if(!islist(build_overlays))
 		build_overlays = list(build_overlays)
 
