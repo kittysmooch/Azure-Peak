@@ -19,6 +19,7 @@
 /obj/item/ammo_casing/caseless/rogue/
 	firing_effect_type = null
 	icon = 'icons/roguetown/weapons/ammo.dmi'
+	var/ammo_weight = 1 // Weight cost in a quiver. Default 1, heavy ammo costs more.
 
 //bolts ฅ^•ﻌ•^ฅ
 
@@ -804,7 +805,8 @@
 //Only ammo casing, no 'projectiles'. You throw the casing, as weird as it is.
 /obj/item/ammo_casing/caseless/rogue/javelin
 	force = 14
-	throw_speed = 4	
+	throw_speed = 4
+	ammo_weight = 5 // Javelins are bulky — 5 weight each in a javelinbag
 	name = "iron javelin"
 	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
 	icon_state = "ijavelin"
