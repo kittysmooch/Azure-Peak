@@ -205,16 +205,16 @@
 		return TRUE
 
 /obj/item/quiver/ShiftRightClick(mob/user)
-	. = ..()
+	..()
 	if(!user.canUseTopic(src, BE_CLOSE))
-		return
+		return TRUE
 	var/list/ammo_types = get_ammo_types()
 	if(!length(ammo_types))
 		to_chat(user, span_warning("[src] is empty."))
-		return
+		return TRUE
 	if(length(ammo_types) < 2)
 		to_chat(user, span_notice("Only one ammo type loaded."))
-		return
+		return TRUE
 	var/list/choices = list()
 	var/list/label_to_type = list()
 	for(var/ammo_path in ammo_types)
@@ -225,9 +225,10 @@
 		label_to_type[label] = ammo_path
 	var/choice = show_radial_menu(user, src, choices, tooltips = TRUE)
 	if(!choice || !label_to_type[choice])
-		return
+		return TRUE
 	preferred_ammo_type = label_to_type[choice]
 	to_chat(user, span_notice("Selected: [ammo_types[preferred_ammo_type]["name"]]."))
+	return TRUE
 
 /obj/item/quiver/examine(mob/user)
 	. = ..()
@@ -648,7 +649,7 @@
 	icon_state = "slingpouch"
 	item_state = "slingpouch"
 	slot_flags = ITEM_SLOT_HIP | ITEM_SLOT_NECK
-	max_storage = 20
+	max_storage = 40
 	w_class = WEIGHT_CLASS_NORMAL
 	grid_height = 64
 	grid_width = 32
