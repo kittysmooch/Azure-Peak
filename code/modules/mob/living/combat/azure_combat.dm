@@ -157,6 +157,25 @@
 	throw_item(target_turf, FALSE)
 	apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 
+/mob/living/carbon/human/proc/try_guard()
+	if(has_status_effect(/datum/status_effect/buff/clash) || has_status_effect(/datum/status_effect/debuff/clashcd) || has_status_effect(/datum/status_effect/buff/clash/limbguard))
+		return FALSE
+	if(!get_active_held_item())
+		return FALSE
+	if(r_grab || l_grab || length(grabbedby))
+		return FALSE
+	if(IsImmobilized() || IsOffBalanced())
+		return FALSE
+	if(m_intent == MOVE_INTENT_RUN)
+		to_chat(src, span_warning("I can't focus on this while running."))
+		return FALSE
+	if(magearmor == 0 && HAS_TRAIT(src, TRAIT_MAGEARMOR))
+		magearmor = 1
+		apply_status_effect(/datum/status_effect/buff/magearmor)
+		to_chat(src, span_warning("I drop my Mage Armor to protect myself!"))
+	apply_status_effect(/datum/status_effect/buff/clash)
+	return TRUE
+
 ///Proc that cancels Riposte with a small stamina penalty, unless it's an extreme case.
 /mob/living/carbon/human/proc/bad_guard(msg, cheesy = FALSE, custom_value)
 	stamina_add(((max_stamina * (custom_value ? custom_value : BAD_GUARD_FATIGUE_DRAIN)) / 100))
