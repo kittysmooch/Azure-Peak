@@ -51,7 +51,7 @@
 			to_chat(owner, span_notice(pick(swordsmanship_flavors)))
 		if(CHOICE_MONEY)
 			var/static/list/money_flavors = list(
-				"I have persuaded a mysterious hooked Lirvassian Drakian to fund my rise to power in exchange for an undisclosed favor. Oh, let the mammons rain!",
+				"I have persuaded a mysterious hooded Lirvassian Drakian to fund my rise to power in exchange for an undisclosed favor. Oh, let the mammons rain!",
 				"I have received a massive windfall from betting against the price of tulip bulbs against the Etruscan Trading Company. The people love a savvy investor, and I have the cash to prove it.",
 				"I have received a hefty inheritance after the mysterious and unexplained death of one of my distant relatives in Otava. The vineyard was sold for a large sum, and I have the money to fund my ambitions.",
 			)
