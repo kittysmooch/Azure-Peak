@@ -181,6 +181,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	var/botched_butcher_results
 	var/perfect_butcher_results
+	/// Path of head to drop upon butchering. Guaranteed but value scales with butchering skill.
+	var/head_butcher
 	var/list/inherent_spells = list()
 
 	///What distance should we be checking for interesting things when considering idling/deidling? Defaults to AI_DEFAULT_INTERESTING_DIST
@@ -191,6 +193,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	var/obj/item/caparison/ccaparison
 	var/obj/item/clothing/barding/bbarding
 	var/caparison_over_barding = FALSE
+	var/barding_speed_mult = 1
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
@@ -211,7 +214,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		AddSpell(newspell)
 
 /mob/living/simple_animal/Destroy()
-	GLOB.simple_animals[AIStatus] -= src
+	for(var/list/SA_list in GLOB.simple_animals)
+		SA_list -= src
 	SSnpcpool.currentrun -= src
 
 	if(nest)
@@ -265,6 +269,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			if(realchance)
 				if(prob(realchance))
 					tamed(user)
+					record_round_statistic(STATS_ANIMALS_TAMED)
 				else
 					tame_chance += bonus_tame_chance
 
@@ -289,6 +294,9 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		user.visible_message(span_notice("[user] removes the bard from [src]."), span_notice("I remove the bard from [src]."))
 		var/obj/item/clothing/barding/B = bbarding
 		bbarding = null
+		// Reset any movement slowdown from barding when it is removed
+		barding_speed_mult = 1
+		updatehealth()
 		B.forceMove(get_turf(src))
 		user.put_in_hands(B)
 		update_icon()
@@ -387,13 +395,16 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if(HAS_TRAIT(src, TRAIT_RIGIDMOVEMENT))
 		return
 	if(HAS_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN))
-		move_to_delay = initial(move_to_delay)
+		var/base_delay = initial(move_to_delay)
+		move_to_delay = base_delay * barding_speed_mult
 		return
 	var/health_deficiency = getBruteLoss() + getFireLoss()
 	if(health_deficiency >= ( maxHealth - (maxHealth*0.50) ))
-		move_to_delay = initial(move_to_delay) + 2
+		var/damaged_delay = initial(move_to_delay) + 2
+		move_to_delay = damaged_delay * barding_speed_mult
 	else
-		move_to_delay = initial(move_to_delay)
+		var/normal_delay = initial(move_to_delay)
+		move_to_delay = normal_delay * barding_speed_mult
 
 /mob/living/simple_animal/hostile/forceMove(turf/T)
 	var/list/BM = list()
@@ -624,6 +635,23 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			user.mind.add_sleep_experience(/datum/skill/labor/butchering, user.STAINT * 0.5)
 		playsound(src, 'sound/foley/gross.ogg', 100, FALSE)
 	if(isemptylist(butcher_results))
+		if(head_butcher)
+			var/obj/item/natural/head/head = new head_butcher(Tsec)
+			var/head_quality = 0
+			switch(butchery_skill_level)
+				if(SKILL_LEVEL_NONE to SKILL_LEVEL_NOVICE)
+					head_quality = 0
+				if(SKILL_LEVEL_APPRENTICE)
+					head_quality = 1
+					if(prob(user.STALUC))
+						head_quality = 2
+				if(SKILL_LEVEL_JOURNEYMAN)
+					head_quality = 2
+				if(SKILL_LEVEL_EXPERT to INFINITY)
+					head_quality = 3
+			if(rotstuff)
+				head_quality = -1
+			head.scale_butchering_quality(head_quality)
 		to_chat(user, "<span class='notice'>I finish butchering: [butcher_summary(botch_count, normal_count, perfect_count, botch_chance, perfect_chance)].</span>")
 		gib()
 
@@ -1013,6 +1041,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	LoadComponent(/datum/component/riding)
 
 /mob/living/simple_animal/proc/toggle_ai(togglestatus)
+	if(QDELETED(src))
+		return
 	if(!can_have_ai && (togglestatus != AI_OFF))
 		return
 	if (AIStatus != togglestatus)

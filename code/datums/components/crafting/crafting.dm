@@ -164,10 +164,16 @@
 	return TRUE
 
 /atom/proc/OnCrafted(dirin, mob/user)
-	SEND_SIGNAL(user, COMSIG_ITEM_CRAFTED, user, type)
+	if(user)
+		SEND_SIGNAL(user, COMSIG_ITEM_CRAFTED, user, type)
+		record_featured_stat(FEATURED_STATS_CRAFTERS, user)
+
 	dir = dirin
 	record_featured_stat(FEATURED_STATS_CRAFTERS, user)
+	record_round_statistic(STATS_CRAFTED_ITEMS)
 	record_featured_object_stat(FEATURED_STATS_CRAFTED_ITEMS, name)
+	if(istype(src, /obj/item/rogueore/gold))
+		record_round_statistic(STATS_GOLD_TRANSMUTED)
 	return
 
 /obj/item/OnCrafted(dirin)
@@ -586,6 +592,7 @@
 	data["ref"] = "[REF(R)]"
 	data["path"] = R.type
 	data["sellprice"] = R.sellprice
+	data["aliases"] = R.aliases
 	var/req_text = ""
 	var/tool_text = ""
 	var/catalyst_text = ""
@@ -615,6 +622,14 @@
 
 	data["craftingdifficulty"] = skill_to_string(R.craftdiff)
 
+	if(islist(R.result))
+		for(var/a in R.result)
+			var/atom/A = a 
+			if(!(findtext(data["aliases"],A.name)))
+				data["aliases"] += A.name + " "
+	else
+		var/atom/A = R.result
+		data["aliases"] += A.name
 
 	return data
 

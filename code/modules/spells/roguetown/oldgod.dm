@@ -35,8 +35,8 @@
 		var/damtotal = brute + burn
 		var/zcross_trigger = FALSE
 		if(user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD)) // YOU ARE NO LONGER MORTAL. NO LONGER OF HIM. PSYDON WEEPS.
-			target.visible_message(span_danger("[target] shudders with a strange stirring feeling!"), span_userdanger("It hurts. You feel like weeping."))
-			target.adjustBruteLoss(40)			
+			// We do nothing to avoid meta checking for undead
+			target.visible_message(span_info("A strange stirring feeling pours from [target]!"), span_info("Sentimental thoughts drive away my pain..."))		
 			return TRUE
 
 		// Bonuses! Flavour! SOVL!
@@ -371,21 +371,32 @@
 	if(!ishuman(user))
 		revert_cast()
 		return FALSE
+
 	var/mob/living/carbon/human/H = user
+	var/turf/T = get_turf(H)
+	if(!T)
+		revert_cast()
+		return FALSE
+
 	var/obj/item/found_thing
 	if(H.get_stress_amount() < 0 && H.STALUC > 10)
-		found_thing = new /obj/item/roguecoin/gold
+		found_thing = new /obj/item/roguecoin/gold(T)
 	else if(H.STALUC == 10)
-		found_thing = new /obj/item/roguecoin/silver
+		found_thing = new /obj/item/roguecoin/silver(T)
 	else
-		found_thing = new /obj/item/roguecoin/copper
+		found_thing = new /obj/item/roguecoin/copper(T)
+
 	to_chat(H, span_info("A coin in my boot? Psydon smiles upon me!"))
-	H.put_in_hands(found_thing, FALSE)
+	if(!H.put_in_hands(found_thing, FALSE))
+		found_thing.forceMove(T)
+
 	if(prob(H.STALUC + H.get_skill_level(associated_skill)))
-		var/obj/item/extra_thing = pick(lootpool)
-		new extra_thing(get_turf(user))
+		var/path = pick(lootpool)
+		var/obj/item/extra = new path(T)
 		to_chat(H, span_info("Ah, of course! I almost forgot I had this stashed away for a perfect occasion."))
-		H.put_in_hands(extra_thing, FALSE)
+		if(!H.put_in_hands(extra, FALSE))
+			extra.forceMove(T)
+
 	return TRUE
 
 //

@@ -1193,6 +1193,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("I don't want to harm [target]!"))
 		return FALSE
+	if(user.rogue_sneaking)
+		user.mob_timers[MT_FOUNDSNEAK] = world.time
+		user.update_sneak_invis(reset = TRUE)
 	if(target.check_block())
 		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
 						span_danger("I block [user]'s attack!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
@@ -1785,6 +1788,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(EFF_RANGE_ABOVE)
 				if(dist >= range)
 					apply_penalty = TRUE
+			if(EFF_RANGE_ABOVE)
+				apply_penalty = FALSE
 			else
 				CRASH("Invalid effective_range_type used by [user] with effective_range! Please set an effective_range_type on [user.used_intent?.type]")
 		if(apply_penalty)
@@ -1813,7 +1818,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(text)
 			user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)
 
-	if(H.client?.prefs.floating_text_toggles & HITZONE_TEXT)
+	if(H.client?.prefs.combat_toggles & HITZONE_TEXT)
 		H.balloon_alert(H, "[bodyzone2readablezone(selzone)]...")
 
 	var/armor_block = H.run_armor_check(selzone, I.d_type, "", "",pen, damage = Iforce, blade_dulling=bladec, peeldivisor = user.used_intent.peel_divisor, intdamfactor = used_intfactor, used_weapon = I)
