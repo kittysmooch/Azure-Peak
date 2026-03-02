@@ -402,7 +402,7 @@ And it also helps for the character set panel
 	if(!isnull(H.vampire_ears))
 		ears?.accessory_colors = H.vampire_ears
 	else
-		ears?.accessory_colors = "#c9d3de"
+		ears?.accessory_colors = H.vampire_skin
 	H.update_body()
 	H.update_body_parts(redraw = TRUE)
 
