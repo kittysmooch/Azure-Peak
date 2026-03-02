@@ -41,4 +41,4 @@
 /obj/item/clothing/gloves/roguetown/bandages/pugilist
 	name = "pugilistic bandages"
 	desc = "Thickly-woven bandages that've been wrapped around the hands, fitted with alloyed knuckleweights. It soaks up the sweat from your palm, strengthens your fists, and protects your knuckles from dislodged teeth."
-	unarmed_bonus = 5 //Non-craftable. Restricted to Monks who've specialized in unarmed combat, and nothing else.
+	unarmed_bonus = 7 //Non-craftable. Restricted to Monks who've specialized in unarmed combat, and nothing else.
