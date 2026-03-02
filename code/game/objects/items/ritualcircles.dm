@@ -1004,8 +1004,22 @@
 	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
 		to_chat(user,span_smallred("I have performed enough rituals for the day... I must rest before communing more."))
 		return
-	var/riteselection = input(user, "Rituals of Death", src) as null|anything in deathrites
+	var/list/current_rites = deathrites
+	if(SSevent_scheduler.fog_scheduled)
+		current_rites += "Hollow the Mist"
+	var/riteselection = input(user, "Rituals of Death", src) as null|anything in current_rites
 	switch(riteselection) // put ur rite selection here
+		if("Hollow the Mist")
+			loc.visible_message(span_warning("[user] begins to chant in a low, vibrating hum, their voice sounding like grinding bone..."))
+			playsound(user, 'sound/vo/mobs/ghost/whisper (3).ogg', 100, FALSE)
+			if(do_after(user, 100))
+				loc.visible_message(span_notice("The chalk lines of the rune begin to seep into the floor, turning a pale, ghostly white."))
+				var/obj/item/cross_construction_kit/K = new /obj/item/cross_construction_kit(loc)
+				loc.visible_message(span_boldnotice("A heavy [K.name] manifests in the center of the rune!"))
+				icon_state = "necra_active"
+				user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+				spawn(120)
+					icon_state = "necra_chalky"
 		if("Undermaiden's Bargain")
 			loc.visible_message(span_warning("[user] sways before the rune, they open their mouth, though no words come out..."))
 			playsound(user, 'sound/vo/mobs/ghost/whisper (3).ogg', 100, FALSE, -1)
@@ -1326,7 +1340,7 @@
 			var/onrune = view(1, loc)
 			var/list/folksonrune = list()
 			for(var/mob/living/carbon/human/persononrune in onrune)
-				if(HAS_TRAIT(persononrune, TRAIT_COMMIE))
+				if(HAS_TRAIT(persononrune, TRAIT_FREEMAN))
 					folksonrune += persononrune
 			var/target = input(user, "Choose a host") as null|anything in folksonrune
 			if(!target)
@@ -1369,7 +1383,7 @@
 				icon_state = "matthios_chalky"
 
 /obj/structure/ritualcircle/matthios/proc/matthiosarmaments(mob/living/carbon/human/target)
-	if(!HAS_TRAIT(target, TRAIT_COMMIE))
+	if(!HAS_TRAIT(target, TRAIT_FREEMAN))
 		loc.visible_message(span_cult("THE RITE REJECTS ONE WITHOUT GREED IN THEIR HEART!!"))
 		return
 	target.Stun(60)
@@ -1632,7 +1646,7 @@
 	
 	user.say("Baotha, fill my cup with endless mirth!")
 	playsound(loc, 'sound/misc/evilevent.ogg', 100, FALSE, -1)
-    
+	
 	user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 	user.apply_status_effect(/datum/status_effect/joybringer)
 
@@ -1668,7 +1682,7 @@
 		return FALSE
 
 	loc.visible_message(span_userdanger("A ghostly, icy silver light visibly drains from [user]'s hand, surging into [weapon]—the very essence of their Steadfastness!"))
-    
+	
 	if(!do_after(user, 4 SECONDS))
 		return FALSE
 	

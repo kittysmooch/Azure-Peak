@@ -2,8 +2,9 @@
 //newtree
 
 /obj/structure/flora/roguetree
-	name = "old tree"
-	desc = "An old wicked tree that not even elves could love."
+	name = "bedraggled tree"
+	desc = "A stunted tree upon which structures loosely resembling faces have formed. Thought to result \
+	from the possession of the tree by wayward spirits. Increasingly common in all parts of the world."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "t1"
 	opacity = 1
@@ -98,7 +99,9 @@
 
 /obj/structure/flora/roguetree/wise
 	name = "sacred tree"
-	desc = "A blessed primordial tree, ancient beyond years. Said to be the very embodiment of the Tree Father himself—whose presence alone imbues druids with wild energies."
+	desc = "A blessed primordial tree, ancient beyond years. Said to be an emanation of the \
+	Tree Father himself, whose presence imbues druids with wild energies. It is wildly taboo \
+	among Dendorites to fell a tree through which their God is peering."
 	icon_state = "mystical"
 	max_integrity = 400
 	var/activated = FALSE
@@ -145,7 +148,7 @@
 
 /obj/structure/flora/roguetree/burnt
 	name = "burnt tree"
-	desc = "Maybe lightning, maybe war, took the life of this once lively tree."
+	desc = "A burned husk of a tree. It cannot be known how it died, only that it did."
 	icon = 'icons/roguetown/misc/96x96.dmi'
 	icon_state = "t1"
 	stump_type = /obj/structure/flora/roguetree/stump/burnt
@@ -181,7 +184,7 @@
 
 /obj/structure/flora/roguetree/underworld
 	name = "screaming tree"
-	desc = "Human faces everywhere."
+	desc = "Something resembling a tree. It sways in the breeze like so much fabric."
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
 	icon_state = "screaming1"
 	opacity = 1
@@ -767,9 +770,20 @@
 		new rare_mush_bonus_drop(loc)
 	. = ..()
 
-/obj/structure/flora/rogueshroom/happy/examine(mob/living/user)
+/obj/structure/flora/rogueshroom/happy/examine(mob/user)
 	. = ..()
-	if(user.STAINT >= int_req && int_req || HAS_TRAIT(user, TRAIT_WOODSMAN))
+
+	var/can_special = FALSE
+	if(user?.client?.holder || istype(user, /mob/dead/observer/admin))
+		can_special = TRUE
+
+	else if(HAS_TRAIT(user, TRAIT_WOODSMAN))
+		can_special = TRUE
+	else if(istype(user, /mob/living))
+		if(int_req && hasvar(user, "STAINT") && user:STAINT >= int_req)
+			can_special = TRUE
+
+	if(can_special)
 		. += span_infection("\n[special_examine]")
 
 /obj/structure/flora/rogueshroom/happy/white
@@ -780,7 +794,7 @@
 	mush_light_power = 2
 	mush_light_color = "#e2e2e2"
 	int_req = 0
-	special_examine = "You recall the gathering of wildsmasters recently. It hasn't been long, but these mushrooms were always believed to be happy and colorful. The spores of this one are rumoured to be the cause, it's like... they collectively made a decision top stop fooling humenkind."
+	special_examine = "You recall the gathering of wildsmasters recently. It hasn't been long, but these mushrooms were always believed to be happy and colorful. The spores of this one are rumoured to be the cause, it's like... they collectively made a decision to stop fooling humenkind."
 	static_debris = list(/obj/item/natural/fibers = 1,
 						 /obj/item/grown/log/tree/small = 1)
 	rare_mush_bonus_drop = /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom

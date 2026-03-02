@@ -21,7 +21,7 @@
 		return
 	if(drilled)
 		if(HAS_TRAIT(H, TRAIT_NOBLE))
-			if(!HAS_TRAIT(H, TRAIT_COMMIE))
+			if(!HAS_TRAIT(H, TRAIT_FREEMAN))
 				var/def_zone = "[(H.active_hand_index == 2) ? "r" : "l" ]_arm"
 				playsound(src, 'sound/items/beartrap.ogg', 100, TRUE)
 				to_chat(user, "<font color='red'>The meister craves my Noble blood!</font>")
@@ -125,7 +125,7 @@
 
 		if(istype(P, /obj/item/coveter))
 			var/mob/living/carbon/human/H = user
-			if(!HAS_TRAIT(H, TRAIT_COMMIE))
+			if(!HAS_TRAIT(H, TRAIT_FREEMAN))
 				to_chat(user, "<font color='red'>I don't know what I'm doing with this thing!</font>")
 				return
 			var/can_anyone_know = FALSE
@@ -158,8 +158,13 @@
 	return ..()
 
 /obj/structure/roguemachine/atm/examine(mob/user)
-	. += ..()
-	. += span_info("The current tax rate on deposits is [SStreasury.tax_value * 100] percent. Nobles exempt.")
+	. = ..()
+	. += span_notice("Current rates:")
+	. += span_smallnotice("Interest rate: [(SStreasury.bank_interest_rate) * 100]% per day.")
+	. += span_smallnotice("Nobility tax: [SStreasury.taxation_cat_settings[TAX_CAT_NOBLE]["taxAmount"] ? "[SStreasury.taxation_cat_settings[TAX_CAT_NOBLE]["taxAmount"]]%." : "EXEMPT."]")
+	. += span_smallnotice("Church tax: [SStreasury.taxation_cat_settings[TAX_CAT_CHURCH]["taxAmount"] ? "[SStreasury.taxation_cat_settings[TAX_CAT_CHURCH]["taxAmount"]]%." : "EXEMPT."]")
+	. += span_smallnotice("Burghers tax: [SStreasury.taxation_cat_settings[TAX_CAT_BURGHERS]["taxAmount"] ? "[SStreasury.taxation_cat_settings[TAX_CAT_BURGHERS]["taxAmount"]]%." : "EXEMPT."]")
+	. += span_smallnotice("Peasantry tax: [SStreasury.taxation_cat_settings[TAX_CAT_PEASANTS]["taxAmount"] ? "[SStreasury.taxation_cat_settings[TAX_CAT_PEASANTS]["taxAmount"]]%." : "EXEMPT."]")
 
 
 /obj/structure/roguemachine/atm/proc/drill(obj/structure/roguemachine/atm)
@@ -320,7 +325,7 @@
 			return
 
 	else
-		to_chat(user,span_info("Their blood is unsoiled by the Duchy's Nervemaster. There is nothing to take."))
+		to_chat(user,span_info("Their blood is unsoiled by the [SSticker.realm_type_short]'s Nervemaster. There is nothing to take."))
 		return
 
 /obj/item/coveter/proc/drain_effect_fast(mob/living/carbon/human/H)

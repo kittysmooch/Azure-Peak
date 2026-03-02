@@ -6,7 +6,7 @@
 	var/list/pipe_reagents = list()
 	var/seed
 	var/bitesize_mod = 0
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	/// Type of splat to use. If null - produce is unsquashable.
 	var/splat_type = null
 	/// Color of the splat, applied when splat_type is spawned (after squashing).
@@ -505,9 +505,9 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/pipeweeddry/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/sigdry,
-		/datum/crafting_recipe/roguetown/survival/sigdry/cheroot,
-		/datum/crafting_recipe/roguetown/survival/sigsweet/cheroot,
+		/datum/crafting_recipe/roguetown/cooking/sigdry,
+		/datum/crafting_recipe/roguetown/cooking/sigdry/cheroot,
+		/datum/crafting_recipe/roguetown/cooking/sigsweet/cheroot,
 		)
 
 	AddElement(
@@ -529,8 +529,8 @@
 /obj/item/reagent_containers/food/snacks/grown/rogue/swampweeddry/Initialize()
 	. = ..()
 	var/static/list/slapcraft_recipe_list = list(
-		/datum/crafting_recipe/roguetown/survival/sigsweet,
-		/datum/crafting_recipe/roguetown/survival/sigsweet/cheroot,
+		/datum/crafting_recipe/roguetown/cooking/sigsweet,
+		/datum/crafting_recipe/roguetown/cooking/sigsweet/cheroot,
 		)
 
 	AddElement(
