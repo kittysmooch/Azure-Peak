@@ -19,6 +19,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	rotprocess = SHELFLIFE_LONG
 
+//
+
 /obj/item/reagent_containers/food/snacks/grown/apple/gold
 	seed = null //Ungrowable(?). Can be changed if someone wishes.
 	name = "ambrosia"
@@ -82,8 +84,6 @@
 		if(H.patron.type == /datum/patron/inhumen/matthios)
 			. += span_rose("The remains of a heavenly fruit, courageously plucked by Matthios while escaping with Astrata's divine fire.. or so, they say. Such fruits're said to refresh and heal mortals more than any other morsel. </br>I can fetch more by bargaining with the Hoardmaster and those most-devout to greed.")
 
-//
-
 /obj/item/reagent_containers/food/snacks/grown/apple/gold/On_Consume(mob/living/eater)
 	..()
 	if(ishuman(eater))
@@ -117,3 +117,5 @@
 		if(H.head == src)
 			if(equippedloc != H.loc)
 				H.dropItemToGround(H.head)
+
+//
