@@ -193,12 +193,14 @@
 				attacker_dualw = TRUE
 		//----------Dual Wielding check end---------
 
+		var/attacker_feedback 
+
 		if(src.client?.prefs.showrolls)
 			var/text = "Roll to dodge... [prob2defend]%"
 			if((defender_dualw || attacker_dualw))
 				if(defender_dualw && attacker_dualw)
 					text += " Our dual wielding cancels out!"
-				else//If we're defending as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
+				else//If we're defending against or as a dual wielder, we roll disadv. But if we're both dual wielding it cancels out.
 					text += " Twice! Disadvantage! ([(prob2defend / 100) * (prob2defend / 100) * 100]%)"
 			to_chat(src, span_info("[text]"))
 
