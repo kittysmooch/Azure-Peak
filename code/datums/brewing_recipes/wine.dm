@@ -113,3 +113,22 @@
 	brewed_amount = 2 // should make 2 bottles
 	brew_time = 5 MINUTES
 	sell_value = 120  // this shits heretical and has a high black market value
+
+/datum/brewing_recipe/winemulled 
+	name = "Wine, Spiced"
+	category = "Fruit"
+	bottle_name = "spiced wine"
+	bottle_desc = "A bottle of locally-brewed spiced jackberry wine. Traditionally reserved for the holidaes, it still remains deliciously rich and aromatic all yil-around."
+	reagent_to_brew = /datum/reagent/consumable/ethanol/spicedwine
+	needed_reagents = list(/datum/reagent/water = 198)
+	needed_crops = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
+						/obj/item/reagent_containers/food/snacks/sugar = 1, /datum/reagent/consumable/pumpkinspice = 1, /obj/item/reagent_containers/food/snacks/grown/nut = 1)
+	brewed_amount = 4 //Less than usual, due to its more potent effects.
+	brew_time = 6 MINUTES
+	sell_value = 80 //Ditto. Requires more exotic fruits and spices to brew.
+
+	ages = TRUE
+	age_times = list(
+		/datum/reagent/consumable/ethanol/spicedwine/aged = 10 MINUTES,
+		/datum/reagent/consumable/ethanol/spicedwine/delectable = 20 MINUTES
+	)
