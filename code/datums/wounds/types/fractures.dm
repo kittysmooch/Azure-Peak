@@ -83,20 +83,19 @@
 	name = "cranial fracture"
 	check_name = span_bone("<B>SKULLCRACK</B>")
 	crit_message = list(
-		"The skull shatters in a gruesome way!",
+		"The skull cracks!",
 		"The head is smashed!",
 		"The skull is broken!",
-		"The skull caves in!",
 	)
 	sound_effect = "headcrush"
 	whp = 150
 	sleep_healing = 0
 	/// Most head fractures are serious enough to cause paralysis.
-	var/paralysis = TRUE
+	var/paralysis = FALSE
 	/// Some head fractures instantly kill you if you have critical weakness. Others won't.
 	mortal = TRUE
 	/// Some head fractures will knock your lights out, if not flat-out paralyze you.
-	var/knockout = 10	//10 tick knockout (1 sec)
+	var/knockout = 2 SECONDS
 
 /datum/wound/fracture/head/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -126,9 +125,18 @@
 	. = ..()
 	owner?.stuttering = max(owner.stuttering, 5)
 
+/datum/wound/fracture/head/shatter
+	name = "shattered skull"
+	severity = WOUND_SEVERITY_FATAL
+	crit_message = list(
+		"THE SKULL SHATTERS!",
+		"THE HEAD IS PULVERIZED!",
+		"THE SKULL IS MINCED INTO DUST!",
+	)
+	paralysis = TRUE
+
 /datum/wound/fracture/head/brain
 	name = "depressed cranial fracture"
-	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
 		"The cranium is punctured!",
 		"The cranium is pierced!",
@@ -136,7 +144,17 @@
 	)
 	embed_chance = 100	// Didn't we remove embeding..?
 	bleed_rate = 10		// Aooouuugh.. my brain..
-	knockout = 20
+	knockout = 4 SECONDS //We did hit the brain after all
+	paralysis = FALSE
+
+/datum/wound/fracture/head/brain/shatter
+	name = "shattered cranium"
+	severity = WOUND_SEVERITY_FATAL
+	crit_message = list(
+		"THE CRANIUM IS UNSEWN!",
+		"THE CRANIUM COMES APART IN GRUESOME WAY!",
+		"THE CRANIUM CAVES IN!",
+	)
 	paralysis = TRUE
 
 /datum/wound/fracture/head/eyes
