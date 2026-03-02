@@ -144,6 +144,40 @@
 	name = "Rune of Trickery"
 	icon_state = "xylix_chalky"
 	desc = "A Holy Rune of Xylix. You can hear the wind, and distant bells, in the distance."
+	var/trickstersrites = list("Stagehand's Silence")
+
+// this is just copied and pasted from noc, mostly. i dont know if there's a better way 2 do these now and the
+// ravox one looks weird.
+/obj/structure/ritualcircle/xylix/attack_hand(mob/living/user)
+	if(!..())
+		return
+	if((user.patron?.type) != /datum/patron/divine/xylix)
+		to_chat(user,span_smallred("I don't know the proper rites for this..."))
+		return
+	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
+		to_chat(user,span_smallred("I don't know the proper rites for this..."))
+		return
+	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
+		to_chat(user,span_smallred("I have performed enough rituals for the day... I must rest before communing more."))
+		return
+	var/riteselection = input(user, "The Twin-Mask's Trickeries", src) as null|anything in trickstersrites
+	switch(riteselection) // put ur rite selection here
+		if("Stagehand's Silence")
+			if(do_after(user, 50))
+				user.say("I CALL UPON THE MANY-FACED TRAGEDIAN!!") // sm1 redo this thx
+				if(do_after(user, 50))
+					user.say("PLAY YOUR HARP- LET EACH STRING DEAFEN MY FOES!!") // seriously im working w/ ZERO lore.
+					if(do_after(user, 50))
+						user.say("--ON WITH THE SHOW!!") // i miss skipper
+						to_chat(user,span_cultsmall("Every play needs it's stagehands. Xylix will quicken the slow, speed your sneaking, and quiet your footsteps... for a time."))
+						playsound(loc, 'sound/magic/mockery.ogg', 60, FALSE, -1)
+						stagehands_silence(src)
+						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+
+/obj/structure/ritualcircle/xylix/proc/stagehands_silence(src)
+	var/ritualtargets = view(1, loc) // only works for those in a 1 tile radius around the rune. might need to be made just whoever is on top of it.
+	for(var/mob/living/carbon/human/target in ritualtargets)
+		target.apply_status_effect(/datum/status_effect/buff/stagehands_silence)
 
 /obj/effect/decal/cleanable/roguerune/god/ravox
 	name = "Rune of Justice"
