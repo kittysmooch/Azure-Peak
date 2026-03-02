@@ -26,6 +26,7 @@
 	name = "ambrosia"
 	desc = "A golden apple, by any other name. You can see your own reflection in the golden apple's surface, as the fingers cradling it adopt a pleasant numbness."
 	icon_state = "gapple"
+	sellprice = 55 //Unsellable to the Hordemaster, but barterable as raw wealth - otherwise.
 	faretype = FARE_FINE
 	tastes = list("divinely crisp sweetness" = 1)
 	trash = /obj/item/trash/gapplecore
