@@ -28,6 +28,6 @@
 		/obj/item/reagent_containers/powder/salt = 1,
 		/obj/item/alch/calendula = 1,
 	)
-	brewed_amount = 3
+	brewed_amount = 1
 	brew_time = 30 MINUTES
 	sell_value = 33
