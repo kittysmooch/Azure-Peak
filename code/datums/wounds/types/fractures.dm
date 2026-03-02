@@ -159,7 +159,7 @@
 	check_name = span_bone("<B>SKULLSHATTER</B>")
 	crit_message = list(
 		"THE CRANIUM IS UNSEWN!",
-		"THE CRANIUM COMES APART IN GRUESOME WAY!",
+		"THE CRANIUM COMES APART IN A GRUESOME WAY!",
 		"THE CRANIUM CAVES IN!",
 	)
 	paralysis = TRUE
