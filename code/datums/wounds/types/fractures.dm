@@ -50,6 +50,8 @@
 			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_RIGHT_LEG, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
 		if(BODY_ZONE_L_LEG)
 			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_LEFT_LEG, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
+		if(BODY_ZONE_HEAD)
+			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_SKULL, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
 
 /datum/wound/fracture/on_bodypart_loss(obj/item/bodypart/affected)
 	. = ..()
@@ -62,6 +64,8 @@
 			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_RIGHT_LEG)
 		if(BODY_ZONE_L_LEG)
 			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_LEFT_LEG)
+		if(BODY_ZONE_HEAD)
+			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_SKULL)
 
 /datum/wound/fracture/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -82,6 +86,7 @@
 /datum/wound/fracture/head
 	name = "cranial fracture"
 	check_name = span_bone("<B>SKULLCRACK</B>")
+	severity = WOUND_SEVERITY_FATAL
 	crit_message = list(
 		"The skull cracks!",
 		"The head is smashed!",
@@ -100,6 +105,7 @@
 /datum/wound/fracture/head/on_mob_gain(mob/living/affected)
 	. = ..()
 	ADD_TRAIT(affected, TRAIT_DISFIGURED, "[type]")
+	affected.apply_status_effect(/datum/status_effect/debuff/dazed/skullshatter)
 	if(knockout)
 		affected.Unconscious(knockout)
 	if(paralysis)
@@ -113,6 +119,7 @@
 /datum/wound/fracture/head/on_mob_loss(mob/living/affected)
 	. = ..()
 	REMOVE_TRAIT(affected, TRAIT_DISFIGURED, "[type]")
+	affected.remove_status_effect(/datum/status_effect/debuff/dazed/skullshatter)
 	if(paralysis)
 		REMOVE_TRAIT(affected, TRAIT_NO_BITE, "[type]")
 		REMOVE_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
@@ -124,10 +131,11 @@
 /datum/wound/fracture/head/on_life()
 	. = ..()
 	owner?.stuttering = max(owner.stuttering, 5)
+	owner?.apply_effect()
 
 /datum/wound/fracture/head/shatter
 	name = "shattered skull"
-	severity = WOUND_SEVERITY_FATAL
+	check_name = span_bone("<B>SKULLSHATTER</B>")
 	crit_message = list(
 		"THE SKULL SHATTERS!",
 		"THE HEAD IS PULVERIZED!",
@@ -149,7 +157,7 @@
 
 /datum/wound/fracture/head/brain/shatter
 	name = "shattered cranium"
-	severity = WOUND_SEVERITY_FATAL
+	check_name = span_bone("<B>SKULLSHATTER</B>")
 	crit_message = list(
 		"THE CRANIUM IS UNSEWN!",
 		"THE CRANIUM COMES APART IN GRUESOME WAY!",
