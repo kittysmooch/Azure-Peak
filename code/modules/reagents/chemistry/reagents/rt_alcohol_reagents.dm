@@ -189,7 +189,7 @@
 	color = "#475e45"
 	quality = DRINK_NICE
 
-// Dwarven Production - Best in the Realms
+// Dwarven Production - Best in the Realms!
 
 /datum/reagent/consumable/ethanol/butterhairs
 	name = "Butterhairs"
@@ -369,7 +369,7 @@
 	color = "#330038"
 	quality = DRINK_VERYGOOD
 
-// Dwarf Production - Spice, Spice, Baby!
+// Special Production - Spice, Spice, Baby!
 
 /datum/reagent/consumable/ethanol/spicedwine
 	name = "Spiced Wine"
