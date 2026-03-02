@@ -68,7 +68,7 @@
 		H.AddSpell(F)
 		H.AddSpell(I)
 
-		var/mode = get_gnoll_scaling()
+		var/mode = SSgnoll_scaling.get_gnoll_scaling()
 		if(mode == GNOLL_SCALING_DYNAMIC)
 			to_chat(H, span_bignotice("I can expect to be joined by my pack this week. I should wait for them and group up."))
 		else
