@@ -2027,5 +2027,27 @@
 		/obj/item/clothing/head/roguetown/roguehood/astrata = 1,
 		/obj/item/clothing/mask/rogue/facemask/goldmaskc = 1
 	)
-	skillcraft = /datum/skill/magic/holy //Uniquely requires a Holy skill to craft, to encourage its stricter use amongst Acolytes and Clerics.
+	skillcraft = /datum/skill/magic/holy
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/astratahoodstonekeeptri
+	name = "turn sun hood into sunwrought visage"
+	category = "Misc"
+	result = list(/obj/item/clothing/head/roguetown/roguehood/astrata/stonekeep)
+	reqs = list(
+		/obj/item/clothing/head/roguetown/roguehood/astrata = 1,
+		/obj/item/clothing/mask/rogue/facemask/goldmask/triumph = 1
+	)
+	skillcraft = /datum/skill/magic/holy
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/sewing/astratahoodstonekeeptrialt
+	name = "turn sun hood into sunwrought visage"
+	category = "Misc"
+	result = list(/obj/item/clothing/head/roguetown/roguehood/astrata/stonekeep)
+	reqs = list(
+		/obj/item/clothing/head/roguetown/roguehood/astrata = 1,
+		/obj/item/clothing/mask/rogue/facemask/goldmaskc/triumph = 1
+	)
+	skillcraft = /datum/skill/magic/holy
 	craftdiff = 3
