@@ -78,7 +78,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strongstampot)
 
 /datum/supply_pack/rogue/Things/goldenapple
-	name = "Apple Of Ambrosia - Strong Healing + Nourishing"
+	name = "Apple Of Ambrosia"
 	cost = 60
 	contains = list(/obj/item/reagent_containers/food/snacks/grown/apple/gold)
 
