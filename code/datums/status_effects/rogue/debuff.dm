@@ -962,9 +962,13 @@
 		return FALSE
 	var/mob/living/carbon/human/H = owner
 	var/datum/physiology/phy = H.physiology 
-	var/con_mod = H.STACON - 10 // this gets NASTY as you bleed out.
+	var/con_mod = H.STACON - 10
+	// con mod needs to be greater than 1 for scaling
 	if(con_mod > 0)
+		// ensure their gotten con mod does not go below 1 or exceed the bleedrate cap.
 		con_mod = clamp(con_mod, 1, CONSTITUTION_BLEEDRATE_CAP - 10)
+		// this ""equalizes"" high con ppl into bleeding more, but they SHOULD generally still 
+		// bleed less than if they had just 10 con. remember: this numbers gets sent THRU their con score after.
 		phy.bleed_mod = 1.15 + (con_mod * 0.1) // at 15 con you'll bleed from a wound by .825
 	else
 		phy.bleed_mod = 1.15 // if you already have low con, we're not going to turbofuck you. ok?
