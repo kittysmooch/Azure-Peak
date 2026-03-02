@@ -350,11 +350,6 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		target.apply_status_effect(/datum/status_effect/buff/parry_buffer)
 		target.apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
-		if(howner)
-			howner.apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
-			howner.apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
-			howner.Slowdown(3)
-			to_chat(howner, span_danger("[target] deflected my [name]! I'm exposed!"))
 		return TRUE
 	return FALSE
 
