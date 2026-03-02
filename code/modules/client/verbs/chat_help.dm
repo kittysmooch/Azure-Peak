@@ -18,12 +18,13 @@
 		<b>+text+</b> makes text <b>bold</b>.<br>
 		<b>|text|</b> makes text <i>italic</i>.<br>
 		<b>_text_</b> makes text <u>underlined</u>.<br>
+		<b>$n</b> - Places your character's name where you want it in an emote instead of at the start. e.g. <i>With a thud, $n falls over.</i><br>
 		<br>
 		<b>Tips:</b><br>
 		- The Subtle emote (<b>@</b>) lets you pick who sees it and from what range.<br>
 		- Emotes are also available in the <b>Emotes</b> and <b>Noises</b> verb tabs.
 	"}
 
-	var/datum/browser/popup = new(usr, "chathelp", "Chat Help", 500, 800)
+	var/datum/browser/popup = new(usr, "chathelp", "Chat Help", 500, 900)
 	popup.set_content(dat)
 	popup.open(use_onclose = FALSE)
