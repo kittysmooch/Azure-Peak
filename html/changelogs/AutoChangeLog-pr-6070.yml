@@ -1,4 +1,0 @@
-author: "WeNeedMorePhoron"
-delete-after: True
-changes:
-  - rscadd: "Fixes Enchanted Weapon not refreshing in holster (again)"

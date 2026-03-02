@@ -1,4 +1,0 @@
-author: "Ldip999"
-delete-after: True
-changes:
-  - bugfix: "Fixes runtime if ghost inspects a gnoll"
