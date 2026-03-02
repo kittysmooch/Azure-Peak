@@ -386,7 +386,6 @@
 /datum/anvil_recipe/armor/iron/knightarmetgreatplume
 	name = "Helmet, Greatplumed Armet, Knight, Iron (+1 Iron)"
 	req_bar = /obj/item/ingot/iron
-	req_blade = /obj/item/blade/iron_plate
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/iron/greatplume
 
@@ -911,48 +910,41 @@
 /datum/anvil_recipe/armor/steel/helmetbucalt
 	name = "Sugarloaf Helmet, Steel (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/crusader
 
 /datum/anvil_recipe/armor/steel/helmetbarbute
 	name = "Barbute, Steel"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute
 
 /datum/anvil_recipe/armor/steel/helmetbarbutevisor
 	name = "Barbute, Visored, Steel (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor
 
 /datum/anvil_recipe/armor/steel/helmetbarbutedunk
 	name = "Barbute, Great, Steel (+1 Steel, +1 Cured Leather)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great
 
 /datum/anvil_recipe/armor/steel/helmetbuc
 	name = "Bucket Helmet, Steel (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
 
 /datum/anvil_recipe/armor/steel/helmetknightarmetgreatplume
 	name = "Knight's Greatplumed Armet, Steel (+1 Steel)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume
 
 /datum/anvil_recipe/armor/steel/frogmouthgreatplume
 	name = "Froggemund Helmet With Greatplume, Steel (+2 Steel)"
 	req_bar = /obj/item/ingot/steel
-	req_blade = /obj/item/blade/steel_plate
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume
 
