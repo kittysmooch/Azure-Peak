@@ -9,5 +9,10 @@
 	sleevetype = "shirt"
 	max_heat_protection_temperature = 361
 	experimental_inhand = TRUE
-	/// Unarmed damage multiplier (for pure fists / wrestling only)
-	var/unarmed_bonus = 1
+	/// Flat unarmed damage bonus (for pure fists / wrestling only)
+	var/unarmed_bonus = 0
+
+/obj/item/clothing/gloves/roguetown/examine(mob/user)
+	. = ..()
+	if(unarmed_bonus > 0)
+		. += span_info("Unarmed damage bonus: +[unarmed_bonus]")
