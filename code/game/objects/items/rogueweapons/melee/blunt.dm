@@ -48,7 +48,7 @@
 		user, \
 		spin = FALSE, \
 		force = H.move_force)
-// Do not call handle_knockback like in knockback cuz that means it will hardstun
+// Do not call handle_knockback like in knockback cuz that means it will hardstun.
 
 /datum/intent/mace/smash/prewarning()
 	if(mastermob)
