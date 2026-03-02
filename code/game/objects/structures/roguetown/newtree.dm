@@ -118,20 +118,18 @@
 			record_featured_stat(FEATURED_STATS_TREE_FELLERS, user)
 			record_round_statistic(STATS_TREES_CUT)
 
-/obj/structure/flora/newtree/update_icon()
-	icon_state = ""
+/obj/structure/flora/newtree/update_icon_state()
+	icon_state = burnt ? "burnt" : ""
+
+/obj/structure/flora/newtree/update_overlays()
+	. = ..()
 	if(burnt)
-		icon_state = "burnt"
-		cut_overlays()
 		return
-	cut_overlays()
-	var/mutable_appearance/M
 	if(base_state)
-		M = mutable_appearance(icon, "[base_state]")
-		add_overlay(M)
-	M = mutable_appearance(icon, "tree[tree_type]")
+		. += mutable_appearance(icon, "[base_state]")
+	var/mutable_appearance/M = mutable_appearance(icon, "tree[tree_type]")
 	M.dir = dir
-	add_overlay(M)
+	. += M
 
 /obj/structure/flora/newtree/Initialize()
 	. = ..()
