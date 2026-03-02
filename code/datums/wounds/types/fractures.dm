@@ -131,7 +131,6 @@
 /datum/wound/fracture/head/on_life()
 	. = ..()
 	owner?.stuttering = max(owner.stuttering, 5)
-	owner?.apply_effect()
 
 /datum/wound/fracture/head/shatter
 	name = "shattered skull"
