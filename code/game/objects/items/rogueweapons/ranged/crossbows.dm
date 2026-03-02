@@ -18,6 +18,7 @@
 	randomspread = 1
 	spread = 0
 	can_parry = TRUE
+	associated_skill = /datum/skill/combat/crossbows
 	wdefense = 3
 	max_integrity = 100
 	var/chargingspeed = 40
@@ -263,25 +264,6 @@
 	item_state = "ancientcrossbow"
 	max_integrity = 80
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/light
-	name = "stockless crossbow"
-	desc = "A deadly weapon that shoots a bolt with terrific power. The stock has been whittled down into a 'cabbit's foot'-styled grip; fletchable on the move without compromising the lethality of its bolts. Without a stock to bolster one's draw-strength, however, it means preparing each shot is more laborious than the last. </br>Rockhill's wytch-hunting folk heroes were oft-mythed to wield two of these at once."
-	icon = 'icons/roguetown/weapons/misc32.dmi'
-	icon_state = "crossbowshort0"
-	item_state = "crossbowshort"
-	possible_item_intents = list(/datum/intent/shoot/crossbow/slurbow, /datum/intent/arc/crossbow/slurbow, /datum/intent/buttstroke)
-	chargingspeed = 30
-	accfactor = 0.75
-	penfactor = 0.75 //Full damage, but reduce armor-penetration. Rough sidegrade  
-	reloadtime = 60 //Less leverage to work with, but not as difficult as larger weapons.
-	force = 13
-	movingreload = TRUE
-	onehanded = TRUE
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
-	w_class = WEIGHT_CLASS_SMALL //Theoretically stowable in a belt or satchel, unlike the larger variants.
-	grid_height = 96
-	grid_width = 64
-
 /datum/intent/buttstroke
 	name = "buttstroke"
 	blade_class = BCLASS_BLUNT
@@ -304,6 +286,7 @@
 	icon_state = "slurbow0"
 	item_state = "slurbow"
 	possible_item_intents = list(/datum/intent/shoot/crossbow/slurbow, /datum/intent/arc/crossbow/slurbow, /datum/intent/buttstroke)
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/slurbow
 	chargingspeed = 20
 	damfactor = 0.6
 	accfactor = 1.3
@@ -314,8 +297,15 @@
 	onehanded = TRUE
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
 	penfactor = 0.5		//Bolts have 50 pen, this decreases to 25. Should only pen armor with less than 67 protection.
+	w_class = WEIGHT_CLASS_SMALL
 	wdefense = 2
 	max_integrity = 80
+
+/obj/item/ammo_box/magazine/internal/shot/slurbow
+	ammo_type = /obj/item/ammo_casing/caseless/rogue/bolt/light
+	caliber = "lightbolt"
+	max_ammo = 1
+	start_empty = TRUE
 
 //
 

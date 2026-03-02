@@ -120,6 +120,10 @@
 			picks -= X
 	update_icon()
 
+/obj/item/lockpickring/Destroy()
+	QDEL_LIST(picks)
+	return ..()
+
 /obj/item/lockpickring/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -271,6 +275,26 @@
 
 /obj/item/storage/keyring/warden //All access to wardens
 	keys = list(/obj/item/roguekey/walls, /obj/item/roguekey/warden)
+
+//////////////
+// MANOR //
+//////////////
+
+/obj/item/storage/keyring/manor/guest/one // Two Manor Keys, Two Guest Room Keys
+	name = "guest room I keyring"
+	keys = list(/obj/item/roguekey/manor/guest, /obj/item/roguekey/manor/guest, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
+
+/obj/item/storage/keyring/manor/guest/two
+	name = "guest room II keyring"
+	keys = list(/obj/item/roguekey/manor/guest/two, /obj/item/roguekey/manor/guest/two, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
+
+/obj/item/storage/keyring/manor/guest/three
+	name = "guest room III keyring"
+	keys = list(/obj/item/roguekey/manor/guest/three, /obj/item/roguekey/manor/guest/three, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
+
+/obj/item/storage/keyring/manor/guest/four
+	name = "guest room IV keyring"
+	keys = list(/obj/item/roguekey/manor/guest/four, /obj/item/roguekey/manor/guest/four, /obj/item/roguekey/manor, /obj/item/roguekey/manor)
 
 ////////////
 // CHURCH //
