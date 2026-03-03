@@ -3,6 +3,8 @@
 	name = "Call to Slaughter"
 	desc = "Grants you and all allies nearby a buff to their strength, willpower, and constitution. Debuffs followers of the Ten, but not Psydonites.\
 	Works in a three tile radius around you."
+	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "call_to_slaughter"
 	recharge_time = 5 MINUTES
 	invocations = list("LAMBS TO THE SLAUGHTER!", "THE DARK STAR IS WATCHING!") // idk who changed it but it was identical to bloodrage. bad.
@@ -32,6 +34,8 @@
 	name = "Unholy Grasp"
 	desc = "Unleashes a snare of external blood and guts. The viscera winds around the legs of mortals... \
 	Though has little effect on simple creatures. Mortals cannot remove the net, but it decays ten seconds after landing."
+	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "unholy_grab"
 	associated_skill = /datum/skill/magic/holy
 	projectile_type = /obj/projectile/magic/unholy_grasp
@@ -68,6 +72,8 @@
 	name = "Revel in Death"
 	desc = "Increases the bleeding and pain of a target. Their blood-loss amount scales with every point of constitution over ten. \
 	Those with ten or less constituion will instead have a flat rate (x1.25)."
+	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "bloodsteal"
 	recharge_time = 1 MINUTES
 	chargetime = 10
@@ -101,6 +107,8 @@
 /obj/effect/proc_holder/spell/self/graggar_bloodrage
 	name = "Bloodrage"
 	desc = "Tap into Graggar's wellspring of strength and knowledge, granting unbound power at the cost of temporary insanity and physical exhaustion." 		//reflavored into "graggar grants you some of the strength he got from stealing the souls of miscellaneous ravoxians"
+	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "bloodrage"
 	recharge_time = 5 MINUTES
 	invocations = list("GRAGGAAAAAAAAAAAR!!",
