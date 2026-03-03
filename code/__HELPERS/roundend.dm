@@ -249,7 +249,7 @@
 						"The people of Azuria prepare to look forward; their actions locked in the impermeable past.")
 
 	if(SSmapping.retainer.head_rebel_decree)
-		end_reason = "The peasant rebels took control of the throne, hail the new community!"
+		end_reason = "The rebellious peasants have taken control of Azuria's throne, shepherding forth the beginning of a new community!"
 
 
 	if(end_reason)
@@ -696,3 +696,13 @@
 				return
 			qdel(query_update_everything_ranks)
 		qdel(query_check_everything_ranks)
+
+////////////////////////
+// CUTTING ROOM FLOOR //
+////////////////////////
+//Legacy versions of the original prompts, listed at the end of each round. Kept below for posterity, and - for creative minds - repurposement.
+//"Without a Monarch, they were doomed to become slaves of Zizo." //"Without a Monarch, they were doomed to be eaten by nite creachers." //"Without a Monarch, they were doomed to become victims of Gehenna."
+//"Without a Monarch, they were doomed to wander the wilderness as exiles." //"Without a Monarch, the Lich made them his playthings." //"Without a Monarch, some jealous rival reigned in tyranny."
+//"Without a Monarch, the gnomes eventually destroyed the town with explosives." //"Without a Monarch, the courtesans sucked the town dry and moved on to the next one." 
+//"Without a Monarch, the town was abandoned." //"The peasant rebels took control of the throne, hail the new community!" //"When the Vampires finished sucking the town dry, they moved on to the next one."
+//"The Werevolves formed an unholy clan, marauding [realm_name] until the end of its daes."
