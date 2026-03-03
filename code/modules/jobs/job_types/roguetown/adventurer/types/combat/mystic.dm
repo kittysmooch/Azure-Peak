@@ -242,7 +242,25 @@
 	backr = /obj/item/rogueweapon/shield/wood
 	beltr = /obj/item/rogueweapon/scabbard/sword
 	neck = /obj/item/clothing/neck/roguetown/coif/padded
-	r_hand = /obj/item/rogueweapon/sword/iron
+
+	if(H.mind)
+		var/weapons = list("Rapier", "Sabre", "Arming Sword", "Shortsword", "Falchion", "Hwando") // you may want to upgrade for a better sword
+		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		switch(weapon_choice)
+			if("Rapier")
+				r_hand = /obj/item/rogueweapon/sword/rapier
+			if("Sabre")
+				r_hand = /obj/item/rogueweapon/sword/sabre
+			if("Arming Sword")
+				r_hand = /obj/item/rogueweapon/sword
+			if("Shortsword")
+				r_hand = /obj/item/rogueweapon/sword/short
+			if("Falchion")
+				r_hand = /obj/item/rogueweapon/sword/short/falchion
+			if("Hwando")
+				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog
+				armor = /obj/item/clothing/suit/roguetown/armor/basiceast
+
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
