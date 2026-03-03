@@ -72,7 +72,9 @@
 						// good stress
 						stress_event = /datum/stressevent/see_zuranus/zizoite
 			else // no zuranus
+				var/star_audio = pick(star_sounds)
 				picked_message = span_info("NOC is settling in, the stars are just starting to shine!")
+				H.playsound_local(H, star_audio, 40, TRUE)
 		
 		// DAWN. 
 		// KYTHERIA is VISIBLE... ASTRATA MIGHT ALSO BLIND YOU. MOOD BUFF OR BLINDNESS.. CHOOSE WISELY...
@@ -80,7 +82,9 @@
 			var/what_do_see = rand(0,2) // 33% of each
 			switch(what_do_see)
 				if(0) // hey jimmy, get me a pizza wit nothin. nothin?
+					var/star_audio = pick(star_sounds)
 					picked_message = span_info("NOC is performing his final rotations... Astrata is rising, a GLORIOUS MORNING...") // https://www.youtube.com/watch?v=7T_YtklLyyo
+					H.playsound_local(H, star_audio, 40, TRUE)
 				if(1) // good luck! kytheria!
 					picked_message = span_rose("Kytheria's golden clouds swirl with blessed strife...")
 					stress_event = /datum/stressevent/kytherian_blessing
