@@ -232,7 +232,7 @@
 
 /atom/movable/screen/alert/status_effect/zuranus
 	name = "Something is Stirring"
-	desc = span_purple("I feel... off. There's a weird chill throughout my body. I feel an odd desire to touch gilbronze...?")
+	desc = span_purple("I feel... off. There's a weird chill throughout my body. I feel an odd desire to put gilbranze under my tongue...?")
 
 /datum/status_effect/telescope_used
 	id = "telescope"
