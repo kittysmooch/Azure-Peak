@@ -118,7 +118,7 @@
 	name = "Wine, Spiced"
 	category = "Fruit"
 	bottle_name = "spiced wine"
-	bottle_desc = "A bottle of locally-brewed spiced jackberry wine. Traditionally reserved for the holidaes, it still remains deliciously rich and aromatic all yil-around. Championed as a remedy for childhood ailments and injuries, courtesy of dwarven mothers."
+	bottle_desc = "A bottle of locally-brewed spiced jackberry wine. Traditionally reserved for the holidaes, it still remains deliciously rich and aromatic all yil-round. Championed as a remedy for childhood ailments and injuries, courtesy of dwarven mothers."
 	reagent_to_brew = /datum/reagent/consumable/ethanol/spicedwine
 	needed_reagents = list(/datum/reagent/water = 198)
 	needed_crops = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 2, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
