@@ -333,26 +333,6 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 		return
 	howner.apply_status_effect(/datum/status_effect/debuff/specialcd, cd_to_apply)
 
-/datum/special_intent/proc/special_guard_check(mob/living/target)
-	if(!isliving(target))
-		return FALSE
-	if(target.has_status_effect(/datum/status_effect/buff/parry_buffer))
-		return TRUE
-	var/datum/status_effect/buff/clash/guard = target.has_status_effect(/datum/status_effect/buff/clash)
-	if(guard)
-		target.visible_message(span_warning("[target] deflects [name]!"))
-		to_chat(target, span_notice("My guard deflects the incoming [name]!"))
-		var/obj/item/held = target.get_active_held_item()
-		if(held?.parrysound)
-			playsound(get_turf(target), pick(held.parrysound), 100)
-		else
-			playsound(get_turf(target), 'sound/combat/clash_struck.ogg', 100)
-		target.apply_status_effect(/datum/status_effect/buff/parry_buffer)
-		target.apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
-		target.remove_status_effect(/datum/status_effect/buff/clash)
-		return TRUE
-	return FALSE
-
 /// Resolves the attacker's aimed zone against a specific target using the shared accuracy formula.
 /// Uses weapon skill as the accuracy bonus. Specials can override this for custom behavior.
 /datum/special_intent/proc/get_aimed_zone(mob/living/target)
@@ -483,8 +463,7 @@ SPECIALS START HERE
 /datum/special_intent/side_sweep/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			if(L.mobility_flags & MOBILITY_STAND)
 				var/obj/item/rogueweapon/W = iparent
 				var/hit_zone = get_aimed_zone(L)
@@ -513,8 +492,7 @@ SPECIALS START HERE
 /datum/special_intent/shin_swipe/apply_hit(turf/T)	//This is applied PER tile, so we don't need to do a big check.
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.Slowdown(eff_dur)
 			L.apply_status_effect(/datum/status_effect/debuff/hobbled)	//-2 SPD for 8 seconds
 			if(L.mobility_flags & MOBILITY_STAND)
@@ -542,8 +520,7 @@ SPECIALS START HERE
 /datum/special_intent/piercing_lunge/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.stamina_add(30)	//Drains ~20 stamina from target; attrition warfare.
 			if(L.mobility_flags & MOBILITY_STAND)
 				var/hit_zone = get_aimed_zone(L)
@@ -578,8 +555,7 @@ SPECIALS START HERE
 /datum/special_intent/ground_smash/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			//We fling the target sideways from the attacker
 			var/targetdir = get_dir(L, howner)
 			var/throwdir = turn(targetdir, prob(50) ? 90 : 270)
@@ -628,8 +604,7 @@ SPECIALS START HERE
 /datum/special_intent/flail_sweep/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			if(L.mobility_flags & MOBILITY_STAND)
 				victim_count++
 				addtimer(CALLBACK(src, PROC_REF(apply_effect), L), 0.1 SECONDS)	//We need to count them all up first so this is an unfortunate (& janky) requirement.
@@ -711,8 +686,7 @@ SPECIALS START HERE
 /datum/special_intent/axe_swing/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.Immobilize(immob_dur)
 			if(L.mobility_flags & MOBILITY_STAND)
 				apply_generic_weapon_damage(L, dam, "slash", pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG), bclass = BCLASS_CHOP)
@@ -744,8 +718,7 @@ SPECIALS START HERE
 	var/whiffed = TRUE
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.Immobilize(immob_dur)
 			apply_generic_weapon_damage(L, dam, "slash", pick(BODY_ZONE_PRECISE_L_FOOT, BODY_ZONE_PRECISE_R_FOOT), bclass = BCLASS_LASHING)
 			L.apply_status_effect(/datum/status_effect/debuff/vulnerable, 2 SECONDS)
@@ -808,8 +781,7 @@ SPECIALS START HERE
 /datum/special_intent/greatsword_swing/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.Slowdown(slow_dur)
 			if(L.mobility_flags & MOBILITY_STAND)
 				var/hitdmg = dam
@@ -886,8 +858,7 @@ SPECIALS START HERE
 	if(get_dist(howner, T) <= min_dist)
 		for(var/mob/living/L in get_hearers_in_view(0, T))
 			if(L != howner)
-				if(special_guard_check(L))
-					continue
+	
 				L.Slowdown(slow_dur)
 				var/throwtarget = get_edge_target_turf(howner, pushdir)
 				apply_generic_weapon_damage(L, dam, "blunt", BODY_ZONE_CHEST, bclass = BCLASS_BLUNT, no_pen = TRUE)
@@ -973,8 +944,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.Slowdown(slow_dur)
 			L.adjust_fire_stacks(fire_stacks)
 			L.ignite_mob()
@@ -1025,8 +995,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 /datum/special_intent/martyr_blazing_sweep/apply_hit(turf/T)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.adjust_fire_stacks(fire_stacks)
 			L.ignite_mob()
 			if(L.mobility_flags & MOBILITY_STAND)
@@ -1082,8 +1051,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 /datum/special_intent/martyr_blazing_sweep_sword/apply_hit(turf/T, delay = 0)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.adjust_fire_stacks(fire_stacks)
 			L.ignite_mob()
 			if(L.mobility_flags & MOBILITY_STAND)
@@ -1134,8 +1102,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 /datum/special_intent/martyr_blazing_trident/apply_hit(turf/T, delay = 0)
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			L.adjust_fire_stacks(fire_stacks)
 			L.ignite_mob()
 			if(L.mobility_flags & MOBILITY_STAND)
@@ -1188,8 +1155,7 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 
 	for(var/mob/living/L in get_hearers_in_view(0, T))
 		if(L != howner)
-			if(special_guard_check(L))
-				continue
+	
 			var/throwtarget = get_edge_target_turf(howner, get_dir(howner, get_step_away(L, howner)))
 			var/throwdist = 1
 			var/target_zone = get_aimed_zone(L)
