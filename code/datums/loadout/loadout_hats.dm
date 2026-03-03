@@ -64,6 +64,11 @@
 	path = /obj/item/clothing/head/roguetown/wizhat/gen
 	sort_category = "Hats"
 
+/datum/loadout_item/chefhat
+	name = "Chef's Hat"
+	path = /obj/item/clothing/head/roguetown/chef
+	sort_category = "Hats"
+
 /datum/loadout_item/bardhat
 	name = "Bard Hat"
 	path = /obj/item/clothing/head/roguetown/bardhat
