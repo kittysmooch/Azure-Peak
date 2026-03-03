@@ -3,7 +3,7 @@
 	name = "Spitfire"
 	desc = "Shoot out a low-powered ball of fire that ignites a target with a small amount of fire on impact. Builds a stack of <b>Arcane Mark</b> on the target. \n\
 	Damage is increased by 100% versus simple-minded creechurs.\n\
-	Can be fired in an arc over an ally's head with a mage's staff or spellbook on arc intent. It will deals 25% less damage that way."
+	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced shots deal 25% less damage."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/spitfire
@@ -29,9 +29,9 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/spitfire/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
-	var/datum/intent/a_intent = H.a_intent
-	if(istype(a_intent, /datum/intent/special/magicarc))
+	if(H.in_throw_mode)
 		projectile_type = /obj/projectile/magic/aoe/fireball/spitfire/arc
+		H.throw_mode_off()
 	else
 		projectile_type = /obj/projectile/magic/aoe/fireball/spitfire
 	. = ..()

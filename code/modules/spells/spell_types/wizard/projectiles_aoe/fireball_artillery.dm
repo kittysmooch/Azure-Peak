@@ -1,8 +1,8 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/artillery
 	name = "Artillery Fireball"
-	desc = "A arc-able fireball that seemingly does far more damage to structures than people. \n\
-	Damage is increased by 100% versus simple-minded creechurs.\n\
-	Can be fired in an arc over an ally's head with a mage's staff or spellbook on arc intent. It will deals an additional 30% damage that way"
+	desc = "An artillery fireball that arcs over obstacles by default, dealing far more damage to structures than people. \n\
+	Damage is increased by 140% versus simple-minded creechurs.\n\
+	Toggle throw mode (R) before casting to fire it straight instead. Arced shots deal 25% less damage."
 	clothes_req = FALSE
 	cost = 6
 	range = 8
@@ -28,11 +28,11 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/artillery/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
-	var/datum/intent/a_intent = H.a_intent
-	if(istype(a_intent, /datum/intent/special/magicarc))
-		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
-	else
+	if(H.in_throw_mode)
 		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery
+		H.throw_mode_off()
+	else
+		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
 	. = ..()
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery
@@ -41,9 +41,9 @@
 	exp_light = -1
 	exp_flash = 0
 	exp_fire = 1
-	damage = 50 // 10 less damage than actual fireball on direct fire
+	damage = 50
 	damage_type = BURN
-	npc_simple_damage_mult = 2 // HAHAHA
+	npc_simple_damage_mult = 2.4
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
 	nodamage = FALSE
 	flag = "magic"
@@ -52,7 +52,7 @@
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
 	name = "Arced Artillery Fireball"
-	damage = 65 // 5 damage more than actual fireball on arc'd fire hit
+	damage = 40 // 25% damage penalty, matching fireball
 	arcshot = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery/on_hit(target)

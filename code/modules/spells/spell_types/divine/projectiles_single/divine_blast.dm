@@ -2,7 +2,7 @@
 	name = "Divine Blast"
 	desc = "Shoot out a blast of divine power! Deals more damage to heretics(Psydonians/Inhumen) and Undead! \n\
 	Damage is increased by 100% versus simple-minded creechurs.\n\
-	Can be fired in an arc over an ally's head with a mage's staff, spellbook or psicross on arc intent. Arced blasts deal 25% less damage."
+	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced blasts deal 25% less damage."
 	clothes_req = FALSE
 	range = 12
 	projectile_type = /obj/projectile/energy/divineblast
@@ -28,9 +28,9 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/divineblast/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
-	var/datum/intent/a_intent = H.a_intent
-	if(istype(a_intent, /datum/intent/special/magicarc))
+	if(H.in_throw_mode)
 		projectile_type = /obj/projectile/energy/divineblast/arc
+		H.throw_mode_off()
 	else
 		projectile_type = /obj/projectile/energy/divineblast
 	. = ..()

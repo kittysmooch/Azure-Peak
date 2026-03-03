@@ -2,7 +2,7 @@
 	name = "Unholy Blast"
 	desc = "Channel unholy power and sunder the unbelievers. Deals additional damage to wretched conformists and Psydonites! \n\
 	Damage is increased by 100% versus simple-minded creechurs.\n\
-	Can be fired in an arc over an ally's head with a mage's staff, spellbook or psicross on arc intent. Arced blasts deal 25% less damage."
+	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced blasts deal 25% less damage."
 	clothes_req = FALSE
 	range = 12
 	overlay_state = "divine_blast"
@@ -44,9 +44,9 @@
 
 /obj/effect/proc_holder/spell/invoked/projectile/unholyblast/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
-	var/datum/intent/a_intent = H.a_intent
-	if(istype(a_intent, /datum/intent/special/magicarc))
+	if(H.in_throw_mode)
 		projectile_type = /obj/projectile/energy/unholyblast/arc
+		H.throw_mode_off()
 	else
 		projectile_type = /obj/projectile/energy/unholyblast
 	. = ..()
