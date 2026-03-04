@@ -74,6 +74,8 @@
 	var/extra_blade_weapon
 	if(istype(H.patron, /datum/patron/inhumen/zizo))
 		extra_blade_weapon = "Avantyne Longsword"
+	else if(istype(H.patron, /datum/patron/divine/noc))
+		chant_faction = "noccite"
 	var/selection_html = get_spellblade_chant_html(src, H, chant_faction, extra_blade_weapon)
 	H << browse(selection_html, "window=spellblade_chant;size=1100x900")
 	onclose(H, "spellblade_chant", src)

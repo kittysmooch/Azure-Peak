@@ -136,7 +136,7 @@
 			else
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		if("phalangite")
-			var/weapons = list("Spear", "Bardiche")
+			var/weapons = list("Spear", "Bardiche", "Dory")
 			var/weapon_choice = input(H, "Choose your WEAPON.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
 				if("Spear")
@@ -144,6 +144,9 @@
 				if("Bardiche")
 					r_hand = /obj/item/rogueweapon/halberd/bardiche
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
+				if("Dory")
+					r_hand = /obj/item/rogueweapon/spear/spellblade
+					backr = /obj/item/rogueweapon/shield/heater
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 		if("macebearer")
 			var/weapons = list("Steel Mace", "Steel Warhammer")
