@@ -122,40 +122,40 @@
 
 	switch(subclass_selected)
 		if("blade")
-			var/weapons = list("Khopesh", "Sabre", "Steel Dagger")
+			var/weapons = list("Ancient Khopesh", "Sabre", "Corroded Dagger")
 			var/weapon_choice = input(H, "Choose your WEAPON.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
-				if("Khopesh")
-					beltr = /obj/item/rogueweapon/sword/sabre/bronzekhopesh
+				if("Ancient Khopesh")
+					beltr = /obj/item/rogueweapon/sword/sabre/palloy
 				if("Sabre")
 					beltr = /obj/item/rogueweapon/sword/sabre
-				if("Steel Dagger")
-					beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
-			if(weapon_choice == "Steel Dagger")
+				if("Corroded Dagger")
+					beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/corroded
+			if(weapon_choice == "Corroded Dagger")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
 			else
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		if("phalangite")
-			var/weapons = list("Spear", "Bardiche", "Dory")
+			var/weapons = list("Ancient Spear", "Ancient Bardiche", "Dory")
 			var/weapon_choice = input(H, "Choose your WEAPON.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
-				if("Spear")
-					r_hand = /obj/item/rogueweapon/spear
-				if("Bardiche")
-					r_hand = /obj/item/rogueweapon/halberd/bardiche
+				if("Ancient Spear")
+					r_hand = /obj/item/rogueweapon/spear/paalloy
+				if("Ancient Bardiche")
+					r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
 				if("Dory")
 					r_hand = /obj/item/rogueweapon/spear/spellblade
 					backr = /obj/item/rogueweapon/shield/heater
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 		if("macebearer")
-			var/weapons = list("Steel Mace", "Steel Warhammer")
+			var/weapons = list("Ancient Mace", "Ancient Warhammer")
 			var/weapon_choice = input(H, "Choose your WEAPON.", "TAKE UP ARMS") as anything in weapons
 			switch(weapon_choice)
-				if("Steel Mace")
-					beltr = /obj/item/rogueweapon/mace/steel
-				if("Steel Warhammer")
-					beltr = /obj/item/rogueweapon/mace/warhammer/steel
+				if("Ancient Mace")
+					beltr = /obj/item/rogueweapon/mace/steel/palloy
+				if("Ancient Warhammer")
+					beltr = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
 			H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 	H.set_blindness(0)
 

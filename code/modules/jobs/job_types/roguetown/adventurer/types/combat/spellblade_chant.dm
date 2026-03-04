@@ -30,9 +30,9 @@
 			phalanx_weapons = "Halberd / Bardiche / Boar Spear / Dory & Shield / Naginata"
 			mace_weapons = "Steel Mace / Steel Warhammer & Shield / Grand Mace"
 		if("undead")
-			blade_weapons = "Khopesh / Sabre / Dagger & Shield"
-			phalanx_weapons = "Spear / Bardiche / Dory & Shield"
-			mace_weapons = "Mace / Warhammer & Shield"
+			blade_weapons = "Ancient Khopesh / Sabre / Corroded Dagger & Shield"
+			phalanx_weapons = "Ancient Spear / Ancient Bardiche / Dory & Shield"
+			mace_weapons = "Ancient Mace / Ancient Warhammer & Shield"
 		else
 			blade_weapons = "Longsword / Rapier / Sabre / Arming Sword / Shortsword / Hwando / Steel Greatsword / Steel Dagger & Shield"
 			phalanx_weapons = "Spear / Dory & Shield / Naginata"

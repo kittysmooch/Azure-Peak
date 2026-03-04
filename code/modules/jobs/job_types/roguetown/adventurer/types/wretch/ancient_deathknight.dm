@@ -64,16 +64,16 @@
 	if(helmchoice != "None")
 		head = helmets[helmchoice]
 
-	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in list("Longsword", "Warhammer", "Halberd")
+	var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in list("Longsword", "Ancient Warhammer", "Halberd")
 	switch(weapon_choice)
 		if("Longsword")
 			beltl = /obj/item/rogueweapon/scabbard/sword
 			l_hand = /obj/item/rogueweapon/sword/long/death
-			backl = /obj/item/rogueweapon/shield/tower/metal
+			backl = /obj/item/rogueweapon/shield/tower/metal/palloy
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("Warhammer")
-			beltr = /obj/item/rogueweapon/mace/warhammer/steel
-			backl = /obj/item/rogueweapon/shield/tower/metal
+		if("Ancient Warhammer")
+			beltr = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
+			backl = /obj/item/rogueweapon/shield/tower/metal/palloy
 			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
 		if("Halberd")
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
@@ -81,7 +81,7 @@
 			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 
 	backpack_contents = list(
-		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/corroded = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 	)
 	H.set_blindness(0)
