@@ -13,7 +13,7 @@
 
 /obj/item/reagent_containers/glass/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Right click on someone to offer the glass over. If both sides offer a glass to each other at the same time, they'll clink them in celebration!")
+	. += span_info("Right click on someone to offer your glass to them. If someone else offers a glass to you in response, they'll clink together in celebration!")
 
 /obj/item/reagent_containers/glass/examine(mob/user)
 	. = ..()
