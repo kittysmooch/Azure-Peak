@@ -172,7 +172,7 @@
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
 		to_chat(user, span_notice("Needs more water to work it."))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now its time to knead it..."))
+	to_chat(user, span_notice("Adding water, now it's time to knead it..."))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
 		add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
@@ -232,7 +232,7 @@
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
 		to_chat(user, "<span class='notice'>Needs more water to work it.</span>")
 		return TRUE
-	to_chat(user, "<span class='notice'>Adding water, now its time to hand wash it...</span>")
+	to_chat(user, "<span class='notice'>Adding water, now it's time to hand wash it...</span>")
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user,2 SECONDS, target = src))
 		user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
@@ -306,7 +306,7 @@
 	if(is_container && (!R.reagents.has_reagent(/datum/reagent/water, 10)))
 		to_chat(user, span_notice("Needs more water to work it."))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now its time to sift it..."))
+	to_chat(user, span_notice("Adding water, now it's time to sift it..."))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(do_after(user, short_cooktime, target = src))
 		name = "prepared minerals"
