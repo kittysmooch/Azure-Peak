@@ -2347,12 +2347,12 @@
 		addtimer(CALLBACK(src, PROC_REF(stop_offering_item)), 0.6 SECONDS)
 		addtimer(CALLBACK(offered_to, PROC_REF(stop_offering_item)), 0.6 SECONDS)
 		visible_message(
-			span_notice("[src] clinks [offered_item] with [offered_to]."), \
-			span_notice("I clink [offered_item] with [offered_to]."), \
+			span_notice("[src] clinks [offered_item] with [offered_to]!"), \
+			span_notice("I clink [offered_item] with [offered_to]!"), \
 			vision_distance = COMBAT_MESSAGE_RANGE, \
 			ignored_mobs = list(offered_to)
 		)
-		to_chat(offered_to, span_notice("[src] clinks [offered_item] with me..."))
+		to_chat(offered_to, span_notice("[src] clinks [offered_item] with me!"))
 	else
 		visible_message(
 			span_notice("[src] offers [offered_item] to [offered_to] with an outstretched hand."), \
