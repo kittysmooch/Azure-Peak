@@ -1,4 +1,4 @@
-/proc/get_spellblade_chant_html(datum/caller, mob/living/carbon/human/H, faction = "conventional")
+/proc/get_spellblade_chant_html(datum/caller, mob/living/carbon/human/H, faction = "conventional", extra_blade_weapon, extra_phalanx_weapon, extra_mace_weapon)
 	var/blade_chant = get_blade_chant_text(faction, H)
 	var/phalanx_chant = get_phalanx_chant_text(faction, H)
 	var/macebearer_chant = get_macebearer_chant_text(faction, H)
@@ -23,17 +23,25 @@
 			phalanx_weapons = "Elvish Glaive"
 			mace_weapons = "Steel Mace / Steel Warhammer & Shield"
 		if("zizite")
-			blade_weapons = "Avantyne Longsword / Kriegmesser / Longsword / Rapier / Sabre / Steel Dagger & Shield"
+			blade_weapons = "Avantyne Longsword / Kriegmesser / Longsword / Rapier / Sabre / Steel Greatsword / Steel Dagger & Shield"
 			phalanx_weapons = "Halberd / Bardiche / Boar Spear / Dory & Shield / Naginata"
-			mace_weapons = "Steel Mace / Steel Warhammer & Shield"
+			mace_weapons = "Steel Mace / Steel Warhammer & Shield / Grand Mace"
 		if("undead")
 			blade_weapons = "Khopesh / Sabre / Dagger & Shield"
 			phalanx_weapons = "Spear / Bardiche & Shield"
 			mace_weapons = "Mace / Warhammer & Shield"
 		else
-			blade_weapons = "Longsword / Rapier / Sabre / Arming Sword / Shortsword / Hwando / Steel Dagger & Shield"
+			blade_weapons = "Longsword / Rapier / Sabre / Arming Sword / Shortsword / Hwando / Steel Greatsword / Steel Dagger & Shield"
 			phalanx_weapons = "Spear / Dory & Shield / Naginata"
-			mace_weapons = "Mace / Warhammer & Shield"
+			mace_weapons = "Mace / Warhammer & Shield / Grand Mace"
+
+	// Inject patron-specific weapons into weapon lists
+	if(extra_blade_weapon)
+		blade_weapons = "[extra_blade_weapon] / [blade_weapons]"
+	if(extra_phalanx_weapon)
+		phalanx_weapons = "[extra_phalanx_weapon] / [phalanx_weapons]"
+	if(extra_mace_weapon)
+		mace_weapons = "[extra_mace_weapon] / [mace_weapons]"
 
 	var/html = {"<!DOCTYPE html>
 <html>
