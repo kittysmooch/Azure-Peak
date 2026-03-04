@@ -11,6 +11,7 @@
 	allowed_patrons = list(/datum/patron/inhumen/zizo)
 	outfit = /datum/outfit/job/roguetown/wretch/zizite_spellblade
 	maximum_possible_slots = 2 // Team rocket!!!
+	class_select_category = CLASS_CAT_BATTLEMAGE
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_ARCYNE_T2)
 	subclass_stats = list(
