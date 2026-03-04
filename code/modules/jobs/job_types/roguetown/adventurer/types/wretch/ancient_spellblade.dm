@@ -1,110 +1,35 @@
-/datum/antagonist/unbound_spellblade
-	name = "Unbound Spellblade"
-	roundend_category = "Unbound Spellblade"
-	antagpanel_category = "Unbound Spellblade"
-	job_rank = ROLE_UNBOUND_DEATHKNIGHT // Shares preference with Death Knight
-	confess_lines = list(
-		"MY BLADE REMEMBERS!",
-		"THE ARCYNE FLOWS ETERNAL!",
-		"THE ROAD TO MASTERY NEVER ENDS!",
-		"I AM ALREADY DEAD YOU MORON!"
+/datum/advclass/wretch/ancient_spellblade
+	name = "Unbound Ancient Azurcaephan"
+	tutorial = "You were once an Azurcaephan — a Spellblade of the old world. How long you have been dead, you cannot say. Your master is gone. The bond is severed. But the arcyne still flows through your hollow bones, and the Chant still echoes in whatever is left of your mind. You remember your craft. That is enough."
+	allowed_sexes = list(MALE, FEMALE)
+	allowed_races = RACES_ALL_KINDS
+	outfit = /datum/outfit/job/roguetown/wretch/ancient_spellblade
+	class_select_category = CLASS_CAT_ACCURSED
+	category_tags = list(CTAG_WRETCH)
+	maximum_possible_slots = 1
+	applies_post_equipment = FALSE
+	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_ARCYNE_T2)
+	subclass_stats = list(
+		STATKEY_INT = 3,
+		STATKEY_WIL = 2,
+		STATKEY_CON = 1,
+		STATKEY_PER = 1,
+		STATKEY_STR = -1,
+	 ) // Weighted 5 - Loses str because Int make sense for a caster
+	subclass_spell_point_pools = list("utility" = 4)
+	subclass_skills = list(
+		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 	)
-	rogue_enabled = TRUE
 
-/datum/antagonist/unbound_spellblade/on_gain()
-	. = ..()
-	skeletonize()
-	equip_spellblade()
-	forge_objectives()
-
-/datum/antagonist/unbound_spellblade/proc/skeletonize()
-	var/mob/living/carbon/human/L = owner.current
-	L.become_skeleton()
-	ADD_TRAIT(L, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	ADD_TRAIT(L, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
-
-/datum/antagonist/unbound_spellblade/proc/equip_spellblade()
-	owner.unknow_all_people()
-	for(var/datum/mind/MF in get_minds())
-		owner.become_unknown_to(MF)
-
-	var/mob/living/carbon/human/H = owner.current
-	H.cmode_music = 'sound/music/combat_cult.ogg'
-	H.faction = list("undead")
-	H.equipOutfit(/datum/outfit/job/roguetown/unbound_spellblade)
-
-/datum/antagonist/unbound_spellblade/greet()
-	sleep(5 SECONDS)
-	to_chat(owner, span_warning("Arcyne energy surges through your hollow bones."))
-	sleep(1 SECONDS)
-	to_chat(owner, span_warning("You are... Awake? But how?"))
-	sleep(1 SECONDS)
-	to_chat(owner, span_warning("Memories of steel and sorcery flood back — the Chant, the Blade, the Momentum..."))
-	sleep(2 SECONDS)
-	to_chat(owner, "<span class='pulsedeath'>Your master is gone!</span>")
-	sleep(1 SECONDS)
-	to_chat(owner, "<span class='pulsedeath'>The bond is severed!</span>")
-	sleep(1 SECONDS)
-	to_chat(owner, "<span class='pulsedeath'>But the arcyne still flows.</span>")
-	sleep(2 SECONDS)
-	to_chat(owner, "<span class='pulsedeath'>You remember your craft. You remember your Chant. That is enough.</span>")
-
-/datum/antagonist/unbound_spellblade/proc/forge_objectives()
-	var/list/hoomans = list()
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.stat != CONSCIOUS)
-			continue
-
-		if(H?.mind == owner)
-			continue
-
-		hoomans |= H
-
-	INVOKE_ASYNC(src, PROC_REF(greet))
-	var/list/targets = pollCandidates(
-		"Would you like to be a target for an unbound spellblade?",
-		ignore_category = POLL_IGNORE_DEATHKNIGHT_TARGET,
-		group = hoomans
-	)
-	if(!length(targets))
-		return
-
-	var/mob/living/carbon/human/poor_sod
-	for(var/i = 0 to 3)
-		var/mob/living/carbon/human/candidate = pick_n_take(targets)
-		if(!candidate?.mind)
-			continue
-
-		poor_sod = candidate
-		break
-
-	if(poor_sod)
-		var/datum/objective/lordscommandment
-		if(rand(50))
-			lordscommandment = new /datum/objective/protect
-		else
-			lordscommandment = new /datum/objective/assassinate
-
-		lordscommandment.target = poor_sod.mind
-		lordscommandment.owner = owner
-		lordscommandment.update_explanation_text()
-		objectives += lordscommandment
-	else
-		var/datum/objective/free = new /datum/objective
-		free.name = "Protect area"
-		if(prob(50))
-			free.explanation_text = "Keep the living out of the Northern Hamlet."
-		else
-			free.explanation_text = "Defend the Northern Hamlet against trespassers."
-		objectives += free
-
-	to_chat(owner, "<span class='pulsedeath'>Suddenly, a final memory surfaces — your master's last commandment...</span>")
-	owner.announce_objectives()
-
-/datum/outfit/job/roguetown/unbound_spellblade
+/datum/outfit/job/roguetown/wretch/ancient_spellblade
 	var/subclass_selected
 
-/datum/outfit/job/roguetown/unbound_spellblade/Topic(href, href_list)
+/datum/outfit/job/roguetown/wretch/ancient_spellblade/Topic(href, href_list)
 	. = ..()
 	if(href_list["subclass"])
 		subclass_selected = href_list["subclass"]
@@ -112,23 +37,16 @@
 		if(!subclass_selected)
 			subclass_selected = "blade"
 
-/datum/outfit/job/roguetown/unbound_spellblade/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/wretch/ancient_spellblade/pre_equip(mob/living/carbon/human/H)
 	..()
 
-	H.change_stat(STATKEY_STR, -2)
-	H.change_stat(STATKEY_SPD, -3)
-	H.change_stat(STATKEY_CON, -5)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_INT, 4)
-	H.change_stat(STATKEY_PER, 1)
+	H.become_skeleton()
 
-	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+	H.choose_name_popup("Ancient Azurcaephan")
 
+	H.cmode_music = 'sound/music/combat_cult.ogg'
+
+	// Equipment — black chainmail loadout matching the Unbound Spellblade antagonist
 	belt = /obj/item/storage/belt/rogue/leather
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/black
@@ -140,8 +58,6 @@
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	backr = /obj/item/rogueweapon/shield/heater
 	backl = /obj/item/storage/backpack/rogue/satchel
-
-	H.ambushable = FALSE
 
 	// Chant selection — uses undead faction for "MEMORIES" UI
 	to_chat(H, span_warning("You start with Bind Weapon. Remember to Bind your weapon so you can use your abilities and build up Arcyne Momentum."))
@@ -186,7 +102,6 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bind_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
-		H.mind.set_spell_point_pools(list("utility" = 4))
 
 	H.adjust_blindness(-3)
 	var/helmets = list(
@@ -257,17 +172,4 @@
 
 	H.energy = H.max_energy
 
-/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/black
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/under/roguetown/chainlegs/black
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/neck/roguetown/chaincoif/black
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/gloves/roguetown/chain/black
-	color = CLOTHING_BLACK
-
-/obj/item/clothing/wrists/roguetown/bracers/brigandine/black
-	color = CLOTHING_BLACK
+	to_chat(H, span_danger("You are playing an Antagonist role. Your very existence is an abomination — everyone is justified in laying you down. Failing to play this role with the appropriate gravitas may result in punishment for Low Roleplay standards."))
