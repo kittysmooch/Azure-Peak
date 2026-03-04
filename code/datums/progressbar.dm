@@ -31,12 +31,13 @@
 	animate(bar, pixel_y = 32 + (PROGRESSBAR_HEIGHT * (listindex - 1)), alpha = 255, time = PROGRESSBAR_ANIMATION_TIME, easing = SINE_EASING)
 
 /datum/progressbar/proc/update(progress)
-	if(!tracked_clients)
+	if(!shown)
+		shown = TRUE
 		tracked_clients = list()
-	for(var/mob/M in viewers(user, null))
-		if(M.client)
-			M.client.images |= bar
-			tracked_clients |= M.client
+		for(var/mob/M in range(10, user))
+			if(M.client)
+				M.client.images |= bar
+				tracked_clients |= M.client
 	progress = CLAMP(progress, 0, goal)
 	last_progress = progress
 	bar.icon_state = "prog_bar_[round(((progress / goal) * 100), 5)]"
