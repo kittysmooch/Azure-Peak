@@ -156,8 +156,6 @@
 			switch(weapon_choice)
 				if("Avantyne Longsword")
 					r_hand = /obj/item/rogueweapon/sword/long/zizo
-				if("Moonlight Khopesh")
-					r_hand = /obj/item/rogueweapon/sword/sabre/nockhopesh
 				if("Kriegmesser")
 					r_hand = /obj/item/rogueweapon/sword/long/kriegmesser
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
