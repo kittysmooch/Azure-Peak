@@ -2140,19 +2140,22 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/hermes_trismegistus
 	duration = 20 MINUTES
 	var/original_skill = null // we need scope for the whole thing so this gotta b here and null
+	var/gave_buff = FALSE
 
 /atom/movable/screen/alert/status_effect/buff/hermes_trismegistus
 	name = "Hermetick Blessing" // yes, hermetick. with a k. 
-	desc = "Looking at HERMES has given me a blessing of the Stars... words make more sense." // dont ask how this works its magic biyatch
+	desc = "Looking at HERMES has given me a blessing of the Stars... written words begin to make more sense." // dont ask how this works its magic biyatch
 
 /datum/status_effect/buff/hermes_trismegistus/on_apply()
 	. = ..()
 	if(owner)
 		original_skill = owner.get_skill_level(/datum/skill/misc/reading) // cache it
-		if(original_skill < 3)
+		if(original_skill < SKILL_LEVEL_JOURNEYMAN)
 			owner.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE) // +1 reading. this technically lets u read if ur illtierate, ithink. idk. its cool, ok.
+			gave_buff = TRUE
 
 /datum/status_effect/buff/hermes_trismegistus/on_remove()
 	. = ..()
-	owner.adjust_skillrank_down_to(/datum/skill/misc/reading, original_skill, TRUE)
-	to_chat(owner, span_warning("The blessing of HERMES begins to wear off. Words lose their meaning in my skull."))
+	if(gave_buff) // because we ensure that the buff was actually given out, and due to the 0-3 scale of it, we can just
+		owner.adjust_skillrank(/datum/skill/misc/reading, -1, TRUE) // -1 skill once it wears off and it (should) be fine.
+		to_chat(owner, span_warning("The blessing of HERMES begins to wear off. The written word loses it's meaning in my skull."))
