@@ -34,7 +34,8 @@
 	if(!shown)
 		shown = TRUE
 		tracked_clients = list()
-		for(var/mob/M in range(10, user))
+		for(var/mob/M in range(14, user)) // 14 so you can see
+		// other people walking up
 			if(M.client)
 				M.client.images |= bar
 				tracked_clients |= M.client
