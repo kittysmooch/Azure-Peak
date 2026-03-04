@@ -1,4 +1,0 @@
-author: "Ollanius"
-delete-after: True
-changes:
-  - bugfix: "Spiced wine should now be properly brewable. If issues persist, ping @Dongwaiver (that's me!) on the Discord."
