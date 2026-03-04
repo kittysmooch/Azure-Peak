@@ -46,7 +46,7 @@
 	if(HT.has_status_effect(/datum/status_effect/debuff/baited) || user.has_status_effect(/datum/status_effect/debuff/baitcd))
 		return	//We don't do anything if either of us is affected by bait statuses
 
-	if(!HT.can_see_cone(user) && HT.mind)
+	if(!HT.can_see_cone(user) && HT.mind && HT.get_tempo_bonus(TEMPO_TAG_FEINTBAIT_FOV))
 		newcd = 5 SECONDS
 		to_chat(user, span_notice("[HT.p_they()] didn't see me! Nothing happened!"))
 		HU.apply_status_effect(/datum/status_effect/debuff/baitcd, newcd)
@@ -84,6 +84,7 @@
 	HT.apply_status_effect(/datum/status_effect/debuff/exposed)
 	HT.apply_status_effect(/datum/status_effect/debuff/clickcd, 5 SECONDS)
 	HT.bait_stacks++
+	HT.reset_desert_rider_momentum_tier()
 
 	if(HT.has_status_effect(/datum/status_effect/buff/clash/limbguard))
 		HT.bad_guard()
@@ -145,7 +146,7 @@
 			if(user.get_skill_level(skillreq) < SKILL_LEVEL_JOURNEYMAN)
 				to_chat(user, span_info("I'm not knowledgeable enough in the arts of this weapon to use this."))
 				return
-		if(W.special.check_range(user, target))
+		if(W.special.check_range(user, target) && W.special.check_reqs(user, W))
 			if(W.special.apply_cost(user))
 				W.special.deploy(user, W, target)
 
@@ -204,7 +205,7 @@
 		perc = 0
 		special_msg = span_warning("Too soon! They were expecting it!")
 
-	if(!L.can_see_cone(user) && L.mind)
+	if(!L.can_see_cone(user) && L.mind && L.get_tempo_bonus(TEMPO_TAG_FEINTBAIT_FOV))
 		perc = 0
 		newcd = 5 SECONDS
 		special_msg = span_warning("They need to see me for me to feint them!")
@@ -246,22 +247,10 @@
 	adjacency = FALSE
 	bypasses_click_cd = TRUE
 
-/datum/rmb_intent/riposte/special_attack(mob/living/user, atom/target)	//Wish we could breakline these somehow.
-	if(!user.has_status_effect(/datum/status_effect/buff/clash) && !user.has_status_effect(/datum/status_effect/debuff/clashcd) && !user.has_status_effect(/datum/status_effect/buff/clash/limbguard))
-		if(!user.get_active_held_item()) //Nothing in our hand to Guard with.
-			return 
-		if(user.r_grab || user.l_grab || length(user.grabbedby)) //Not usable while grabs are in play.
-			return
-		if(user.IsImmobilized() || user.IsOffBalanced()) //Not usable while we're offbalanced or immobilized
-			return
-		if(user.m_intent == MOVE_INTENT_RUN)
-			to_chat(user, span_warning("I can't focus on this while running."))
-			return
-		if(user.magearmor == 0 && HAS_TRAIT(user, TRAIT_MAGEARMOR))	//The magearmor is ACTIVE, so we break magearmor to guard.
-			user.magearmor = 1
-			user.apply_status_effect(/datum/status_effect/buff/magearmor)
-			to_chat(user, span_warning("I drop my Mage Armor to protect myself!"))
-		user.apply_status_effect(/datum/status_effect/buff/clash)
+/datum/rmb_intent/riposte/special_attack(mob/living/user, atom/target)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		H.try_guard()
 
 /datum/rmb_intent/guard
 	name = "guarde"

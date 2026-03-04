@@ -21,6 +21,7 @@
 	antimagic_allowed = TRUE
 	miracle = TRUE
 	devotion_cost = 30
+	range = 0
 
 /obj/effect/proc_holder/spell/self/divine_strike/cast(mob/living/user)
 	if(!isliving(user))
@@ -93,9 +94,10 @@
 	releasedrain = 30
 	miracle = TRUE
 	devotion_cost = 40
+	range = 3
 
 /obj/effect/proc_holder/spell/self/call_to_arms/cast(list/targets,mob/living/user = usr)
-	for(var/mob/living/carbon/target in view(3, get_turf(user)))
+	for(var/mob/living/carbon/target in view(range, get_turf(user)))
 		if(istype(target.patron, /datum/patron/inhumen))
 			target.apply_status_effect(/datum/status_effect/debuff/call_to_arms)	//Debuffs inhumen worshipers.
 			continue
@@ -135,6 +137,9 @@
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
 		if(target.mob_biotypes & MOB_UNDEAD)
+			if(spell_guard_check(target, TRUE))
+				target.visible_message(span_warning("[target] resists Ravox's judgment!"))
+				return TRUE
 			if(ishuman(target)) //BLEED AND PAIN
 				var/mob/living/carbon/human/human_target = target
 				var/datum/physiology/phy = human_target.physiology
@@ -208,6 +213,9 @@
 /obj/effect/proc_holder/spell/invoked/tug_of_war/cast(list/targets, mob/living/user)
 	if(isliving(targets[1]))
 		var/mob/living/target = targets[1]
+		if(spell_guard_check(target, TRUE))
+			target.visible_message(span_warning("[target] holds firm against the pull!"))
+			return TRUE
 		var/chance = 0
 		if(target.mob_biotypes & MOB_UNDEAD)
 			pull_distance++
@@ -312,6 +320,10 @@ GLOBAL_LIST_EMPTY(arenafolks) // we're just going to use a list and add to it. S
 		to_chat(user, span_warning("[target] is in no shape to accept the duel!"))
 		revert_cast()
 		return FALSE
+
+	if(spell_guard_check(target, TRUE))
+		target.visible_message(span_warning("[target] stands firm, refusing the trial!"))
+		return TRUE
 
 	for(var/obj/structure/fluff/ravox/challenger/aflag in thearena)
 		challengerspawnpoint = get_turf(aflag)

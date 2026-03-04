@@ -32,6 +32,9 @@ to still keep this unavailable to mages... for the moment, at least.
 		var/mob/living/target = targets[1]
 		if(target.anti_magic_check(TRUE, TRUE))
 			return FALSE
+		if(spell_guard_check(target, TRUE))
+			target.visible_message(span_warning("[target] shields their eyes from the darkness!"))
+			return TRUE
 		var/assocskill = user.get_skill_level(associated_skill)
 		target.visible_message(span_warning("[user] points at [target]'s eyes!"), span_userdanger("[user] points at my eyes! Shadowy fingers are digging into my vision-- I can't SEE!"))
 		target.apply_status_effect(STATUS_EFFECT_BLINDED, assocskill)
@@ -223,6 +226,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 	recharge_time = 25 MINUTES
 	chargetime = 0
 	chargedrain = 0
+	range = 0
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	associated_skill = /datum/skill/magic/holy
 	var/chosen_bundle
@@ -348,7 +352,8 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 //T0.
 /obj/effect/proc_holder/spell/self/wise_moon
 	name = "Enlightenment"
-	desc = "Invoke a lesser form of the Moonlight Dance, temporarily increasing your intelligence. Scales with holy skill and grows much more effective at nite."
+	desc = "Invoke a lesser form of the Moonlight Dance, temporarily increasing your intelligence. \
+	Scales with holy skill and grows much more effective at nite."
 	base_icon_state = "wisescroll"
 	overlay_state = "noc_gaze"
 	releasedrain = 10
@@ -363,6 +368,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 	recharge_time = 3 MINUTES
 	devotion_cost = 30
 	miracle = TRUE
+	range = 0
 
 /obj/effect/proc_holder/spell/self/wise_moon/cast(list/targets, mob/user)
 	if(!ishuman(user))
@@ -405,7 +411,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 
 /obj/effect/proc_holder/spell/invoked/moondream
 	name = "Hypnagognian Inspiration"
-	desc = "Touch a target. Their next dream will be inspired, granting more dream-points to the target and a few to yourself.\
+	desc = "Touch a target. Their next dream will be inspired, granting more dream-points to the target and a few to yourself. \
 	This spell will fail if it's dae or dawn. Points granted scales with holy skill."
 	overlay_state = "moondream"
 	base_icon_state = "wisescroll"
@@ -431,10 +437,6 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 		var/mob/living/carbon/human/H = user
 		if(target == user)
 			to_chat(user, span_warning("I cannot cast this spell on myself!"))
-			revert_cast()
-			return FALSE
-		if(!user.Adjacent(target)) // the range on this doesnt work for some reason. remove this if you can fix it. thx.
-			to_chat(user, span_warning("I must be adjacent to the target to cast this spell!"))
 			revert_cast()
 			return FALSE
 		if(!target.mind)
@@ -472,6 +474,7 @@ Somewhat fitting, considering the broadness of their domains. I also just think 
 	hand_path = /obj/item/melee/touch_attack/rogueweapon/nocgrasp
 	devotion_cost = 30
 	miracle = TRUE
+	range = 0
 
 /obj/item/melee/touch_attack/rogueweapon/nocgrasp
 	name = "Shimmering Hand"

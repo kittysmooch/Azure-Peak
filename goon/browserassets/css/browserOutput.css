@@ -53,7 +53,12 @@ body {
 
 @font-face {
 	font-family: "Furqan";
-	src: url("sand.ttf");
+	src: url("celestial.ttf");
+}
+
+@font-face {
+	font-family: "Furqan";
+	src: url("raneshi.ttf");
 }
 
 @font-face {
@@ -84,6 +89,16 @@ body {
 @font-face {
 	font-family: "Yuji Boku";
 	src: url("kazengunese.ttf");
+}
+
+@font-face {
+	font-family: "ZCOOL XiaoWei";
+	src: url("lingyuese.ttf");
+}
+
+@font-face {
+	font-family: "Evil Bible";
+	src: url("undercommon.ttf");
 }
 
 @font-face {
@@ -861,6 +876,9 @@ h2.alert {
 }
 .kazengunese {
 	font-family: "Yuji Boku", Pterra;
+}
+.lingyuese {
+	font-family: "ZCOOL XiaoWei", Pterra;
 }
 .orc {
 	font-family: "Thief by The Riddler", "Pterra";

@@ -731,7 +731,7 @@ SUBSYSTEM_DEF(gamemode)
 		var/datum/storyteller/storyboy = storytellers[storyteller_type]
 		if(findtext(html_contaminated, storyboy.name))
 			selected_storyteller = storyboy.type
-			get_gnoll_scaling() // Calling this here as to make sure scaling holds true as per the roundstart vote, not a latejoin hunted character joining.
+			SSgnoll_scaling.get_gnoll_scaling() // Calling this here as to make sure scaling holds true as per the roundstart vote, not a latejoin hunted character joining.
 			break
 
 	var/datum/storyteller/storytypecasted = selected_storyteller
@@ -1184,6 +1184,7 @@ SUBSYSTEM_DEF(gamemode)
         STATS_ALIVE_DARK_ELVES,
         STATS_ALIVE_WOOD_ELVES,
         STATS_ALIVE_HALF_ELVES,
+		STATS_ALIVE_SUN_ELVES,
         STATS_ALIVE_HALF_ORCS,
         STATS_ALIVE_GOBLINS,
         STATS_ALIVE_KOBOLDS,
@@ -1251,11 +1252,7 @@ SUBSYSTEM_DEF(gamemode)
 			switch(human_mob.pronouns)
 				if(HE_HIM)
 					record_round_statistic(STATS_MALE_POPULATION)
-				if(HE_HIM_F)
-					record_round_statistic(STATS_MALE_POPULATION)
 				if(SHE_HER)
-					record_round_statistic(STATS_FEMALE_POPULATION)
-				if(SHE_HER_M)
 					record_round_statistic(STATS_FEMALE_POPULATION)
 				else
 					record_round_statistic(STATS_OTHER_GENDER)
@@ -1302,6 +1299,8 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_DARK_ELVES)
 			if(iswoodelf(human_mob))
 				record_round_statistic(STATS_ALIVE_WOOD_ELVES)
+			if(issunelf(human_mob))
+				record_round_statistic(STATS_ALIVE_SUN_ELVES)
 			if(ishalfelf(human_mob))
 				record_round_statistic(STATS_ALIVE_HALF_ELVES)
 			if(ishalforc(human_mob))
