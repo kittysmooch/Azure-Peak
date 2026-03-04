@@ -72,9 +72,8 @@
 	// Determine faction and patron-specific weapon for chant display
 	var/chant_faction = "zizite"
 	var/extra_blade_weapon
-	if(istype(H.patron, /datum/patron/divine/noc))
-		chant_faction = "conventional"
-		extra_blade_weapon = "Moonlight Khopesh"
+	if(istype(H.patron, /datum/patron/inhumen/zizo))
+		extra_blade_weapon = "Avantyne Longsword"
 	var/selection_html = get_spellblade_chant_html(src, H, chant_faction, extra_blade_weapon)
 	H << browse(selection_html, "window=spellblade_chant;size=1100x900")
 	onclose(H, "spellblade_chant", src)
@@ -150,9 +149,7 @@
 		if("blade")
 			var/list/weapons = list("Kriegmesser", "Longsword", "Rapier", "Sabre", "Steel Greatsword", "Steel Dagger")
 			// Inject patron-specific weapon
-			if(istype(H.patron, /datum/patron/divine/noc))
-				weapons.Insert(1, "Moonlight Khopesh")
-			else
+			if(istype(H.patron, /datum/patron/inhumen/zizo))
 				weapons.Insert(1, "Avantyne Longsword")
 			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 			beltr = /obj/item/rogueweapon/scabbard/sword
