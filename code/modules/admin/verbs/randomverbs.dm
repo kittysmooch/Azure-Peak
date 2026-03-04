@@ -861,9 +861,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 			var/obj/machinery/light/rogue/chand/chandelier = new /obj/machinery/light/rogue/chand(get_turf(humie))
 			chandelier.layer = ABOVE_MOB_LAYER
-			playsound(get_turf(humie), 'sound/combat/hits/blunt/frying_pan(4)', 100, FALSE)
+			playsound(get_turf(humie), 'sound/combat/hits/blunt/frying_pan(4).ogg', 100, FALSE)
 			affecting.add_wound(/datum/wound/fracture/head)
-			humie.visible_message(span_userwarning("There is a sickening CRUNCH as a chandelier crashes down onto [humie]!"))
+			humie.visible_message(span_userdanger("There is a sickening CRUNCH as a chandelier crashes down onto [humie]!"))
 	punish_log(target, punishment)
 
 /client/proc/punish_log(whom, punishment)
