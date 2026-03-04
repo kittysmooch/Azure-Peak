@@ -22,7 +22,7 @@
 			phalanx_weapons = "Elvish Glaive"
 			mace_weapons = "Steel Mace / Steel Warhammer & Shield"
 		if("zizite")
-			blade_weapons = "Avantyne Longsword / Kriegmesser / Longsword / Rapier / Sabre / Steel Greatsword / Steel Dagger & Shield"
+			blade_weapons = "Kriegmesser / Longsword / Rapier / Sabre / Steel Greatsword / Steel Dagger & Shield"
 			phalanx_weapons = "Halberd / Bardiche / Boar Spear / Dory & Shield / Naginata"
 			mace_weapons = "Steel Mace / Steel Warhammer & Shield / Grand Mace"
 		if("noccite")
