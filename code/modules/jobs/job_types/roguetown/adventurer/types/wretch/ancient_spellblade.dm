@@ -1,6 +1,6 @@
 /datum/advclass/wretch/ancient_spellblade
 	name = "Unbound Ancient Azurcaephan"
-	tutorial = "You were once an Azurcaephan — a Spellblade of the old world. How long you have been dead, you cannot say. Your master is gone. The bond is severed. But the arcyne still flows through your hollow bones, and the Chant still echoes in whatever is left of your mind. You remember your craft. That is enough."
+	tutorial = "You were once an Azurcaephan - a Spellblade from aeons past, perhaps from even the day of Tarichea. You remember your chant, your oath, every move of your blade and the flow of the arcyne. Intellect and will, unlike most other skeletons. Yet, you are without a purpose, without a master. Why do you fight? You do not know. But fight you shall. The world sees you as an abomination. Seek your own path."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/ancient_spellblade

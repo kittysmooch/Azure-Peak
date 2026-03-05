@@ -1,6 +1,6 @@
 /datum/advclass/wretch/ancient_deathknight
 	name = "Unbound Ancient Death Knight"
-	tutorial = "You were once a Death Knight — a revenant warrior bound to a master's will. How long you have been dead, you cannot say. Your master is gone. You have no orders. You have no goal. But you are awake, clad in black iron, with the strength of the grave coursing through your bones. Why do you fight? You do not know. But fight you shall."
+	tutorial = "You were once a Death Knight - a warrior risen from death to serve a master. How long you have been dead - you do not remember anymore. And you find yourself severed from any master's command. Why do you fight? Does it matter? All that you know is to move forward. The world sees you as an abomination. Seek your own path."
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/ancient_deathknight
@@ -70,15 +70,15 @@
 			beltl = /obj/item/rogueweapon/scabbard/sword
 			l_hand = /obj/item/rogueweapon/sword/long/death
 			backl = /obj/item/rogueweapon/shield/tower/metal/palloy
-			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		if("Ancient Warhammer")
 			beltr = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
 			backl = /obj/item/rogueweapon/shield/tower/metal/palloy
-			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
 		if("Halberd")
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			r_hand = /obj/item/rogueweapon/halberd
-			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/corroded = 1,
