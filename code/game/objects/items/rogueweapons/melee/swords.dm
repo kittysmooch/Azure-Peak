@@ -2490,6 +2490,24 @@
 	soul, that’s still shining in the cold: the truth, the promise in our hearts.. ..don't forget, I'm with you in the dark.'"
 	icon_state = "longsword_rockhill"
 
+/obj/item/rogueweapon/sword/long/broadsword/rockhill //always worked on the iron version anyway
+	name = "valorian broadsword"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
+	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. The edge glimmers with the hopes \
+	and dreams of the Weeping God's children, imbuing your very soul with determination. ‎</br>‎‎ </br>'There's a light inside your \
+	soul, that’s still shining in the cold: the truth, the promise in our hearts.. ..don't forget, I'm with you in the dark.'"
+	icon_state = "longsword_rockhill"
+
+/obj/item/rogueweapon/sword/long/broadsword/bronze/rockhill //colours will be off but at least stats work
+	name = "valorian broadsword"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
+	swordsmen of Psydonia in their clashes against man-and-monster alike since time immemmorial. The edge glimmers with the hopes \
+	and dreams of the Weeping God's children, imbuing your very soul with determination. ‎</br>‎‎ </br>'There's a light inside your \
+	soul, that’s still shining in the cold: the truth, the promise in our hearts.. ..don't forget, I'm with you in the dark.'"
+	icon_state = "longsword_rockhill"
+
 /obj/item/rogueweapon/sword/long/broadsword/steel/rockhill/getonmobprop(tag)
 	. = ..()
 	if(tag)
