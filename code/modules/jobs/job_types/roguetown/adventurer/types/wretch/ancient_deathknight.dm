@@ -11,9 +11,9 @@
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 2,
-		STATKEY_CON = 2,
+		STATKEY_CON = 0,
 		STATKEY_WIL = 1,
-		STATKEY_INT = -2, // Weighted 5. Skeleton weakness but not too extreme.
+		STATKEY_INT = -2, // Weighted 1. 0 CON for limb reattachment tradeoff.
 	)
 	subclass_skills = list(
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
@@ -33,32 +33,31 @@
 
 	H.become_skeleton()
 
+	// Skeleton antag datum + patron (matching greater_skeleton setup)
+	H.set_patron(/datum/patron/inhumen/zizo)
+	if(H.mind)
+		H.mind.add_antag_datum(new /datum/antagonist/skeleton())
+
 	H.choose_name_popup("Unbound Ancient Death Knight")
 
 	H.cmode_music = 'sound/music/combat_cult.ogg'
 
+	// Equipment — gilbranze loadout matching lich skeleton death knight
 	beltl = /obj/item/rogueweapon/scabbard/sword
-	belt = /obj/item/storage/belt/rogue/leather
-	pants = /obj/item/clothing/under/roguetown/platelegs/blkknight/death
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/blkknight/death
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/blkknight/death
-	gloves = /obj/item/clothing/gloves/roguetown/plate/blkknight/death
-	backr = /obj/item/storage/backpack/rogue/satchel/black
+	belt = /obj/item/storage/belt/rogue/leather/black
+	pants = /obj/item/clothing/under/roguetown/platelegs/paalloy
+	shoes = /obj/item/clothing/shoes/roguetown/boots/paalloy
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/paalloy
+	gloves = /obj/item/clothing/gloves/roguetown/plate/paalloy
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/paalloy
+	backr = /obj/item/storage/backpack/rogue/satchel
 
 	H.adjust_blindness(-3)
 
 	var/helmets = list(
-		"Pigface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/black,
-		"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard/black,
-		"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/black,
-		"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/black,
-		"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/black,
-		"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/black,
-		"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/black,
-		"Hounskull Bascinet"= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull/black,
-		"Etruscan Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/black,
-		"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle/black,
+		"Gilbranze Knight Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/paalloy,
 	)
 	var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
 	if(helmchoice != "None")
@@ -84,6 +83,21 @@
 		/obj/item/rogueweapon/huntingknife/idagger/steel/corroded = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 	)
+
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+
 	H.set_blindness(0)
+
+	var/tabards = list("Black Tabard", "Black Jupon")
+	var/tabard_choice = input(H, "Choose your CLOAK.", "BARE YOUR HERALDRY.") as anything in tabards
+	switch(tabard_choice)
+		if("Black Jupon")
+			cloak = /obj/item/clothing/cloak/tabard/stabard/surcoat/lich
+		if("Black Tabard")
+			cloak = /obj/item/clothing/cloak/tabard/lich
+
+	H.energy = H.max_energy
 
 	to_chat(H, span_danger("You are playing an Antagonist role. Your very existence is an abomination — everyone is justified in laying you down. You are an ancient warrior risen from death, not a comedic skeleton. Having fun with your character is encouraged, but do not use the role to grief or disregard the setting — play it with gravitas and create memorable moments. Failure to maintain High Roleplay standards may result in punishment."))

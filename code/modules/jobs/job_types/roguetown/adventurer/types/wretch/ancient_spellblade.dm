@@ -10,12 +10,12 @@
 	applies_post_equipment = TRUE
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_ARCYNE_T2)
 	subclass_stats = list(
-		STATKEY_INT = 3,
+		STATKEY_INT = 2,
 		STATKEY_WIL = 2,
-		STATKEY_CON = 1,
+		STATKEY_CON = 0,
 		STATKEY_PER = 1,
 		STATKEY_STR = -1,
-	 ) // Weighted 5 - Loses str because Int make sense for a caster
+	 ) // Weighted 3 - Loses str because Int makes sense for a caster. 0 CON for limb reattachment tradeoff.
 	subclass_spell_point_pools = list("utility" = 4)
 	subclass_skills = list(
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
@@ -42,19 +42,24 @@
 
 	H.become_skeleton()
 
+	// Skeleton antag datum + patron (matching greater_skeleton setup)
+	H.set_patron(/datum/patron/inhumen/zizo)
+	if(H.mind)
+		H.mind.add_antag_datum(new /datum/antagonist/skeleton())
+
 	H.choose_name_popup("Ancient Azurcaephan")
 
 	H.cmode_music = 'sound/music/combat_cult.ogg'
 
-	// Equipment — black chainmail loadout matching the Unbound Spellblade antagonist
+	// Equipment — gilbranze loadout matching lich skeleton spellblade
 	belt = /obj/item/storage/belt/rogue/leather
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
-	armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/black
-	pants = /obj/item/clothing/under/roguetown/chainlegs/black
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/black
-	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-	gloves = /obj/item/clothing/gloves/roguetown/chain/black
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/brigandine/black
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
+	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt/paalloy
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
+	shoes = /obj/item/clothing/shoes/roguetown/sandals/paalloy
+	gloves = /obj/item/clothing/gloves/roguetown/chain/paalloy
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/paalloy
 	mask = /obj/item/clothing/mask/rogue/ragmask/black
 	backr = /obj/item/rogueweapon/shield/heater
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -102,18 +107,11 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/bind_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
 
 	H.adjust_blindness(-3)
 	var/helmets = list(
-		"Pigface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/black,
-		"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard/black,
-		"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/black,
-		"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/black,
-		"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/black,
-		"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/black,
-		"Hounskull Bascinet"= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull/black,
-		"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan/black,
-		"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle/black,
+		"Gilbranze Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/paalloy,
 		"None",
 	)
 	var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
