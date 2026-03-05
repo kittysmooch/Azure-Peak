@@ -2,7 +2,7 @@
 	name = "Unbound Ancient Azurcaephan"
 	tutorial = "You were once an Azurcaephan — a Spellblade of the old world. How long you have been dead, you cannot say. Your master is gone. The bond is severed. But the arcyne still flows through your hollow bones, and the Chant still echoes in whatever is left of your mind. You remember your craft. That is enough."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_ALL_KINDS
+	allowed_races = RACES_NO_CONSTRUCT
 	outfit = /datum/outfit/job/roguetown/wretch/ancient_spellblade
 	class_select_category = CLASS_CAT_ACCURSED
 	category_tags = list(CTAG_WRETCH)
