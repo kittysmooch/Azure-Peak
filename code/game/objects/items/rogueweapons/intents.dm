@@ -184,6 +184,8 @@
 		inspec += "\nThis intent deals [percstr]% [intent_intdamage_factor > 1 ? "more" : "less"] damage to integrity."
 	if(sharpness_penalty)
 		inspec += "\nThis intent will cost some sharpness for every attack made."
+	if(unarmed)
+		inspec += "\n<b>Swift:</b> Harder to parry or dodge when faster than your opponent."
 	inspec += "<br>----------------------"
 
 	to_chat(user, "[inspec.Join()]")
@@ -519,7 +521,6 @@
 	miss_text = "swing a fist at the air"
 	miss_sound = "punchwoosh"
 	item_d_type = "blunt"
-	intent_intdamage_factor = 0.8
 
 /datum/intent/unarmed/punch/rmb_ranged(atom/target, mob/user)
 	if(user.stat >= UNCONSCIOUS)
