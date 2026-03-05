@@ -136,22 +136,23 @@
 	dwarvish freeholds, and roaming hill clans, all sworn to the banner of their High King, \
 	Harlond IX. \
 	\
-	<br>Once under the yoke of Grenzehoft’s Holy See for its mines, herds, and quarries, \
+	<br><br>Once under the yoke of Grenzehoft’s Holy See for its mines, herds, and quarries, \
 	the Kingdom tore itself away from the Imperate in the chaos brought on by the Four, eventually \
 	uniting under the first king, Gronnic adventurer Harlan the Dreamer and his dwarven allies. \
 	To this dae, his line still rules from the sprawling coastal city of Norwardine, and spans \
 	the mighty rivers that run through the Kingdom’s southern reaches. \
 	\
-	<br>Since Hammerhold’s foundation, the nominally Psydonite Harlonds have enjoyed a special \
+	<br><br>Since Hammerhold’s foundation, the nominally Psydonite Harlonds have enjoyed a special \
 	relationship with Otava, welcoming their trade as freely as the Gronnic merchants, \
 	raiders, and mercenaries that seek to sell their goods and services. Despite this \
 	history of trade, and several abortive attempts by the Holy See to reclaim their \
 	prize, faith in the Kingdom comprises a mixture of Ascendant and Tennite hero-cults \
-	organized under the umbrella of several psuedo-pantheons. These “Ten-Thousand” \
-	span from simple local legends to the gods themselves- with many members of the \
-	royal family named among their number. \
+	organized under the umbrella of several psuedo-pantheons. \
 	\
-	<br>While renowned among the north for their pork, coal, and stonework, foreign traders \
+	<br><br>These “Ten-Thousand” span from simple local legends to the gods themselves- with many \
+	members of the royal family named among their number. \
+	\
+	<br><br>While renowned among the north for their pork, coal, and stonework, foreign traders \
 	would most likely know Hammerhold through its strong vodenna spirits, vibrant dyed \
 	satin, and finely forged dwarven steel."
 
