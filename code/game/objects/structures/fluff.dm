@@ -1227,14 +1227,14 @@
 	icon_state = "invertedcross"
 	divine = FALSE
 
-/obj/structure/fluff/psycross/zizo
+/obj/structure/fluff/psycross/zizocross/stone
 	name = "stone inverted cross"
 	desc = "An unholy symbol, the knowledge that something so sturdy was able to be put up in reverence of the dark star, completely unattended... is a difficult anchovy to swallow for many."
 	icon_state = "cross_zizo"
 	divine = FALSE
 	max_integrity = 200
 
-/obj/structure/fluff/psycross/zizo/golden
+/obj/structure/fluff/psycross/zizocross/golden
 	name = "golden inverted cross"
 	desc = "An unholy symbol meticilously plated with leaf gold. It stands in defiance to order. The dead will rise."
 	icon_state = "cross_zizo_u"

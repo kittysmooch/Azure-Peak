@@ -113,7 +113,7 @@
 /datum/crafting_recipe/roguetown/structure/zizo_cross_stone
 	name = "stone profane cross"
 	category = "Misc"
-	result = /obj/structure/fluff/psycross/zizo
+	result = /obj/structure/fluff/psycross/zizocross/stone
 	reqs =	list(/obj/item/natural/stone = 3)
 	verbage_simple = "construct"
 	verbage = "constructs"
@@ -121,7 +121,7 @@
 /datum/crafting_recipe/roguetown/structure/zizo_cross_gold
 	name = "gilded profane cross"
 	category = "Misc"
-	result = /obj/structure/fluff/psycross/zizo/golden
+	result = /obj/structure/fluff/psycross/zizocross/golden
 	reqs =	list(/obj/item/natural/stone = 3, /obj/item/rogueore/gold = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
