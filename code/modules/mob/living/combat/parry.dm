@@ -72,15 +72,20 @@
 	var/defender_skill = 0
 	var/attacker_skill = 0
 	var/obj/item/clothing/wrists/roguetown/bracers/unarmed_bracers
+	var/obj/item/clothing/gloves/roguetown/knuckles/unarmed_knuckles
 
 	if(highest_defense <= (H.get_skill_level(/datum/skill/combat/unarmed) * 20))
 		defender_skill = H.get_skill_level(/datum/skill/combat/unarmed)
 		var/obj/B = H.get_item_by_slot(SLOT_WRISTS)
+		var/obj/K = H.get_item_by_slot(SLOT_GLOVES)
 		if(istype(B, /obj/item/clothing/wrists/roguetown/bracers))
 			prob2defend += (defender_skill * 35)
 			unarmed_bracers = B
+		else if(istype(K, /obj/item/clothing/gloves/roguetown/knuckles))
+			prob2defend += (defender_skill * 35)
+			unarmed_knuckles = K
 		else
-			prob2defend += (defender_skill * 10)		// no bracers gonna be butts.
+			prob2defend += (defender_skill * 10)		// no bracers or knuckles gonna be butts.
 		weapon_parry = FALSE
 	else
 		if(used_weapon)
@@ -278,6 +283,8 @@
 
 			if(unarmed_bracers)
 				unarmed_bracers.take_damage(INTEG_PARRY_DECAY_NOSHARP, "slash", armor_penetration = 100)
+			else if(unarmed_knuckles)
+				unarmed_knuckles.take_damage(INTEG_PARRY_DECAY_NOSHARP, "slash", armor_penetration = 100)
 			flash_fullscreen("blackflash2")
 			return TRUE
 		else

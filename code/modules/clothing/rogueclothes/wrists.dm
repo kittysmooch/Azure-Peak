@@ -41,6 +41,10 @@
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/wrists/roguetown/bracers/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_notice("Allows unarmed parrying. Takes integrity damage when parrying.")
+
 /obj/item/clothing/wrists/roguetown/bracers/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)

@@ -12,7 +12,7 @@
 	/// Flat unarmed damage bonus (for pure fists / wrestling only)
 	var/unarmed_bonus = 0
 
-/obj/item/clothing/gloves/roguetown/examine(mob/user)
+/obj/item/clothing/gloves/roguetown/get_mechanics_examine(mob/user)
 	. = ..()
 	if(unarmed_bonus > 0)
-		. += span_info("Unarmed damage bonus: +[unarmed_bonus]")
+		. += span_notice("Unarmed damage bonus: +[unarmed_bonus] (flat, applied after strength scaling).")

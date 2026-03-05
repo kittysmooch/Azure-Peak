@@ -57,6 +57,10 @@
 	smeltresult = /obj/item/ingot/steel
 	unarmed_bonus = 12
 
+/obj/item/clothing/gloves/roguetown/knuckles/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_notice("Allows unarmed parrying, similar to bracers. Takes integrity damage when parrying.")
+
 /obj/item/clothing/gloves/roguetown/knuckles/bronze
 	name = "bronze knuckles"
 	desc = "A mean looking pair of bronze knuckles. Mildly heavier than its steel counterpart, making it a solid defensive option, if less wieldy."
