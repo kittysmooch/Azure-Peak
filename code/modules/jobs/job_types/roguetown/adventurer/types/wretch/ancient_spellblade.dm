@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/wretch/ancient_spellblade
 	class_select_category = CLASS_CAT_ACCURSED
 	category_tags = list(CTAG_WRETCH)
-	maximum_possible_slots = 1
+	maximum_possible_slots = 2 // Two so that the gimmick isn't overdone
 	applies_post_equipment = FALSE
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_ARCYNE_T2)
 	subclass_stats = list(
@@ -175,4 +175,4 @@
 
 	H.energy = H.max_energy
 
-	to_chat(H, span_danger("You are playing an Antagonist role. Your very existence is an abomination — everyone is justified in laying you down. Failing to play this role with the appropriate gravitas may result in punishment for Low Roleplay standards."))
+	to_chat(H, span_danger("You are playing an Antagonist role. Your very existence is an abomination — everyone is justified in laying you down. You are an ancient warrior risen from death, not a comedic skeleton. Having fun with your character is encouraged, but do not use the role to grief or disregard the setting — play it with gravitas and create memorable moments. Failure to maintain High Roleplay standards may result in punishment."))
