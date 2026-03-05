@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(gnoll_scaling)
 	var/datum/storyteller/ST = SSgamemode.selected_storyteller
 	// Roll a coinflip to decide the round's behavior when default value is supplied.
 	if(ST.preferred_gnoll_mode == GNOLL_SCALING_RANDOM)
-		gnoll_scaling_mode = pick(GNOLL_SCALING_DYNAMIC, GNOLL_SCALING_FLAT, GNOLL_SCALING_SINGLE)
+		gnoll_scaling_mode = pick(GNOLL_SCALING_FLAT, GNOLL_SCALING_SINGLE)
 	else
 		gnoll_scaling_mode = ST.preferred_gnoll_mode
 	return gnoll_scaling_mode
@@ -58,17 +58,18 @@ SUBSYSTEM_DEF(gnoll_scaling)
 
 	switch(mode)
 		if(GNOLL_SCALING_DYNAMIC)
-			// up to two gnolls guaranteed if there's hunted.
-			if(comparison_total <= 1)
+			// up to one gnolls guaranteed if there's hunted.
+			if(comparison_total <= 0)
 				slots_increase = 1
-			// up to three gnolls with a 50% chance per hunted if there's more hunted.
-			else if(comparison_total <= 2 && prob(50) && !slots_increase)
+			// up to two gnolls with a 50% chance per hunted if there's more hunted.
+			else if(comparison_total <= 1 && prob(50) && !slots_increase)
 				slots_increase = 1
-			// Up to four gnolls with a 25% chance per hunted if there's more hunted.
-			else if(comparison_total <= 3 && prob(25) && !slots_increase)
+			// Up to three gnolls with a 25% chance per hunted if there's more hunted.
+			else if(comparison_total <= 2 && prob(25) && !slots_increase)
 				slots_increase = 1
 
 		if(GNOLL_SCALING_FLAT)
+			// Up to two gnolls with only a 15% chance per hunted to increment.
 			if(comparison_total < 2 && prob(15))
 				slots_increase = 1
 
