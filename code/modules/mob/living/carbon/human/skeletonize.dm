@@ -1,6 +1,5 @@
 /mob/living/carbon/human/proc/become_skeleton()
-	if(isdwarf(src))
-		set_species(/datum/species/human/northern)
+	set_species(/datum/species/human/northern)
 
 	for(var/datum/charflaw/cf in charflaws)
 		charflaws.Remove(cf)
@@ -33,6 +32,7 @@
 	ADD_TRAIT(src, TRAIT_SELF_SUSTENANCE, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_SILVER_WEAK, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_FACELESS_KNOWN, TRAIT_GENERIC)
 
 	// Offer to clear flavor text / OOC notes since they likely don't match a skeleton
 	if(flavortext || ooc_notes)

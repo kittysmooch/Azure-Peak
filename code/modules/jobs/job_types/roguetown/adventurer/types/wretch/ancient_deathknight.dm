@@ -2,12 +2,12 @@
 	name = "Unbound Ancient Death Knight"
 	tutorial = "You were once a Death Knight — a revenant warrior bound to a master's will. How long you have been dead, you cannot say. Your master is gone. You have no orders. You have no goal. But you are awake, clad in black iron, with the strength of the grave coursing through your bones. Why do you fight? You do not know. But fight you shall."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/ancient_deathknight
 	class_select_category = CLASS_CAT_ACCURSED
 	category_tags = list(CTAG_WRETCH)
 	maximum_possible_slots = 2 // Two so that the gimmick isn't overdon
-	applies_post_equipment = FALSE
+	applies_post_equipment = TRUE
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 2,
