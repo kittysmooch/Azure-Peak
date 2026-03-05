@@ -388,11 +388,12 @@ a.choose-btn:hover {
 <p><em>My blade sharp, and my mind sharper!</em></p>
 <p><em>His word is wisdom, and I am his chosen.</em></p>"}
 		if("undead")
-			return {"<p><em>I, Blade of Tarichea. Forever loyal.</em></p>
-<p><em>Justice is my sword, and excellence my weapon.</em></p>
-<p><em>Tarichea my charge, and Tarichea my home.</em></p>
-<p><em>With a hundred blows I shall defend all that is dear.</em></p>
-<p><em>This body is—</em></p>
+			return {"<p><em>Some speak of Kazengun! And others of Etrusca!</em></p>
+<p><em>But there are none that can compare to the blades of Tarichea!</em></p>
+<p><em>Indomitable! Indivisible! Invincible!</em></p>
+<p><em>With a hundred cuts, all shall be laid low!</em></p>
+<p><em>Not even the gods shall stop us!</em></p>
+<p><em>In Tarichea's name, we are unshea—</em></p>
 <p><b>WAKE UP. WAKE UP.</b></p>"}
 	return {"<p><em>I am a blade of Azuria.</em></p>
 <p><em>The sword is my voice, and war my verse.</em></p>
@@ -425,11 +426,12 @@ a.choose-btn:hover {
 <p><em>My spear fast, and my wits quicker!</em></p>
 <p><em>His word is wisdom, and I am his chosen.</em></p>"}
 		if("undead")
-			return {"<p><em>I, Shield of Tarichea. Forever loyal.</em></p>
-<p><em>Justice is my spear, and duty my anchor.</em></p>
-<p><em>Tarichea my charge, and Tarichea my home.</em></p>
-<p><em>With a hundred thrusts I shall defend all that is dear.</em></p>
-<p><em>This body is—</em></p>
+			return {"<p><em>Some speak of Chorodiaki! And others of Vrdaqnan!</em></p>
+<p><em>But there are none that can compare to the phalanx of Tarichea!</em></p>
+<p><em>Indomitable! Immovable! Impenetrable!</em></p>
+<p><em>With a hundred thrusts, all shall be pierced!</em></p>
+<p><em>Not even the gods shall stop us!</em></p>
+<p><em>In Tarichea's name, we march for—</em></p>
 <p><b>WAKE UP. WAKE UP.</b></p>"}
 	return {"<p><em>I am a shield of Azuria.</em></p>
 <p><em>The spear is my reach, and duty my anchor.</em></p>
@@ -462,11 +464,12 @@ a.choose-btn:hover {
 <p><em>My hammer strong, and my will stronger!</em></p>
 <p><em>His word is wisdom, and I am his chosen.</em></p>"}
 		if("undead")
-			return {"<p><em>I, Mace of Tarichea. Forever loyal.</em></p>
-<p><em>Justice is my hammer, and wrath my fuel.</em></p>
-<p><em>Tarichea my charge, and Tarichea my home.</em></p>
-<p><em>With a hundred blows I shall crush all that would threaten what is dear.</em></p>
-<p><em>This body is—</em></p>
+			return {"<p><em>Some speak of Hammerhold! And others of Gronn!</em></p>
+<p><em>But there are none that can compare to the warriors of Tarichea!</em></p>
+<p><em>Unstoppable! Unbreakable! Unyielding!</em></p>
+<p><em>With a hundred blows, all shall be crushed!</em></p>
+<p><em>Not even the gods shall stop us!</em></p>
+<p><em>In Tarichea's name, we charge for—</em></p>
 <p><b>WAKE UP. WAKE UP.</b></p>"}
 	return {"<p><em>I am a mace of Azuria.</em></p>
 <p><em>The hammer is my word, and ruin my punctuation.</em></p>
