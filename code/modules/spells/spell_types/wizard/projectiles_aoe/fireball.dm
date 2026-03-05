@@ -2,7 +2,6 @@
 	name = "Fireball"
 	desc = "Shoot out a ball of fire that emits a light explosion on impact, setting the target alight. Consumes <b>Arcane Marks</b> for extra damage when fully stacked.\n\
 	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced fireballs deal 25% less damage."
-	"
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
