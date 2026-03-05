@@ -350,8 +350,8 @@ a.choose-btn:hover {
 <p>O! Blade of Tarichea!</p>
 <p>There was once a great city. On the foot of this very mountain, over the Azure Sea.</p>
 <p>It prospered, and in its midst, our warriors practiced their art, combining the arcyne with blades.</p>
-<p>We were master! Our skills, unmatched! Our techniques, unparalleled! Envy of the world!</p>
-<p>No Ranesheni bladedancers, or Kazengunese bladesman, or Grenzelhoftian mercenary, could match our prowess!</p>
+<p>We were masters! Our skills, unmatched! Our techniques, unparalleled! Envy of the world!</p>
+<p>No Ranesheni bladedancers, or Kazengunese bladesmen, or Grenzelhoftian mercenaries, could match our prowess!</p>
 <p>Mages! Knights! Demons! All fell before our blade.</p>
 <p class="loud">THEN — SHE ASCENDED, ALL WAS LOST.</p>
 <p class="loud">OR WAS IT?</p>
@@ -478,11 +478,11 @@ a.choose-btn:hover {
 /proc/get_preamble_closing(faction)
 	switch(faction)
 		if("blackoak")
-			return "Hone the tradition of your people! Though the snow elves are gone, your heritage is not! As the most excellent, most long-lyved of all races, it is up to you to carry on the legacy of a spellblade! Five hundred yils of martial and arcyne excellence, five hundred yils more!"
+			return "Hone the tradition of your people! Though the snow elves are gone, your heritage is not! As the most excellent, most long-lived of all races, it is up to you to carry on the legacy of a spellblade! Five hundred yils of martial and arcyne excellence, five hundred yils more!"
 		if("zizite")
-			return "Hone the knowledge of your patron! With her ascension. The ignorant clings onto the old way, your goddess lays imprisoned. Her teachings are all that remains. Her followers - corrupted, seeking undeath and bones, forgetting that she too, is the mistress of progress. With your very blade, you shall cut open the wound of the world, cauterize it, and let her light shine through! You are her herald."
+			return "Hone the knowledge of your patron! With her ascension, the ignorant cling to the old way, your goddess lies imprisoned. Her teachings are all that remains. Her followers — corrupted, seeking undeath and bones, forgetting that she, too, is the mistress of progress. With your very blade, you shall cut open the wound of the world, cauterize it, and let her light shine through! You are her herald."
 		if("noccite")
-			return "Hone the wisdom of your patron! With his gift, you have glimpsed the truth of the world. The old city is gone, his teachings is not. Noc have granted you the power to seize destiny upon your own hand - miracles to heal the wounded, sight to see the unseen, and magicks to strike down your foes. With your blade, you shall carve a new path forward, and let his light guide the way! You are his chosen."
+			return "Hone the wisdom of your patron! With his gift, you have glimpsed the truth of the world. The old city is gone, his teachings are not. Noc has granted you the power to seize destiny into your own hands - miracles to heal the wounded, sight to see the unseen, and magicks to strike down your foes. With your blade, you shall carve a new path forward, and let his light guide the way! You are his chosen."
 		if("undead")
 			return "Hone the blade of Tarichea! You awaken to... what? There is no archdevil, no Celestial Empire. What do you fight for? Why do you wield the blade? Every move, every cut, every thrust. Engrained into those old bones of yours. Fleshy hand that once wielded weapons, now naught but a pair of bone. Why? Do you fight? Have you been awakened by an ancient evyl, or did you just wake up, lost, dead, yet, somehow, retaining your will? Why do you fight? Why do you fight? Why do you fight?"
 	return "Hone the tradition of five centuries! Let not the art die with the fall of the old city! Wield your blade for justice, for profit, or for mastery! There is no wrong path, except to stray into heresy!"
