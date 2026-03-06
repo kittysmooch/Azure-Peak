@@ -34,7 +34,8 @@
 		"Squire" = TRUE, 
 		"Mercenary" = TRUE, 
 		"Warden" = TRUE,
-		"Acolyte" = TRUE
+		"Acolyte" = TRUE,
+		"Adventurer" = TRUE
 	)
 	var/mob/living/tracked_target = null
 
