@@ -87,6 +87,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonemend)
 
 	H.set_blindness(0)
 

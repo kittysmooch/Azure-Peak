@@ -108,6 +108,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/bonemend)
 
 	H.adjust_blindness(-3)
 	var/helmets = list(
