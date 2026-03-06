@@ -459,8 +459,10 @@
 			fracture_type = /datum/wound/fracture/mouth
 			necessary_damage = 0.8
 		else if(zone_precise == BODY_ZONE_PRECISE_NECK)
-			fracture_type = /datum/wound/fracture/neck
-			dislocation_type = /datum/wound/dislocation/neck
+			if(owner.has_wound(/datum/wound/fracture/neck))
+				fracture_type = /datum/wound/fracture/neck/shatter
+			else
+				fracture_type = /datum/wound/fracture/neck
 		if(prob(used) && (damage_dividend >= necessary_damage))
 			if(dislocation_type)
 				attempted_wounds += dislocation_type

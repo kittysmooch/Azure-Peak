@@ -52,6 +52,8 @@
 			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_LEFT_LEG, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
 		if(BODY_ZONE_HEAD)
 			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_SKULL, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
+		if(BODY_ZONE_PRECISE_NECK)
+			affected.owner.add_movespeed_modifier(MOVESPEED_ID_FRACTURE_SPINE, multiplicative_slowdown = FRACTURED_ADD_SLOWDOWN)
 
 /datum/wound/fracture/on_bodypart_loss(obj/item/bodypart/affected)
 	. = ..()
@@ -66,6 +68,8 @@
 			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_LEFT_LEG)
 		if(BODY_ZONE_HEAD)
 			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_SKULL)
+		if(BODY_ZONE_PRECISE_NECK)
+			affected.owner.remove_movespeed_modifier(MOVESPEED_ID_FRACTURE_SPINE)
 
 /datum/wound/fracture/on_mob_gain(mob/living/affected)
 	. = ..()
@@ -266,14 +270,22 @@
 	name = "cervical fracture"
 	check_name = span_bone("<B>NECK</B>")
 	crit_message = list(
-		"The spine shatters in a spectacular way!",
 		"The spine snaps!",
 		"The spine cracks!",
-		"The spine is broken!",
+		"The spine pops!",
+	)
+
+/datum/wound/fracture/neck/shatter
+	name = "shattered spine"
+	check_name = span_bone("<B>NECKSHATTER</B>")
+	crit_message = list(
+		"THE SPINE SHATTERS!", //Me when I use APDS against 89 degree slope instead of 90
+		"THE SPINE SNAPS IN SPECTACULAR WAY!",
+		"THE SPINE POPS WITH A SICKENING NOISE!",
 	)
 	whp = 100
 
-/datum/wound/fracture/neck/on_mob_gain(mob/living/affected)
+/datum/wound/fracture/neck/shatter/on_mob_gain(mob/living/affected)
 	. = ..()
 	ADD_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
 	ADD_TRAIT(affected, TRAIT_NOPAIN, "[type]")
@@ -283,7 +295,7 @@
 	if(HAS_TRAIT(affected, TRAIT_CRITICAL_WEAKNESS))
 		affected.death()
 
-/datum/wound/fracture/neck/on_mob_loss(mob/living/affected)
+/datum/wound/fracture/neck/shatter/on_mob_loss(mob/living/affected)
 	. = ..()
 	REMOVE_TRAIT(affected, TRAIT_PARALYSIS, "[type]")
 	REMOVE_TRAIT(affected, TRAIT_NOPAIN, "[type]")
