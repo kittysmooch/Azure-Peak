@@ -38,6 +38,7 @@
 		"Adventurer" = TRUE
 	)
 	var/mob/living/tracked_target = null
+	var/shown_hunt_disclaimer = FALSE
 
 /obj/effect/proc_holder/spell/invoked/gnoll_sniff/cast(list/targets, mob/user)
 	var/mob/living/target = targets[1]
@@ -81,6 +82,10 @@
 	var/selection = input(user, "Whose scent shall we follow?", "The Great Hunt") as null|anything in sort_list(possible_targets)
 	if(!selection)
 		return
+
+	if(!shown_hunt_disclaimer)
+		to_chat(user, span_boldnotice("You have chosen your first prey. Remember to judge whether or not your target is a worthy foe. Graggar does not reward spilling the blood of the meek when you have this much to prove."))
+		shown_hunt_disclaimer = TRUE
 
 	tracked_target = possible_targets[selection]
 	to_chat(user, span_notice("You focus your senses on [tracked_target.real_name]."))
