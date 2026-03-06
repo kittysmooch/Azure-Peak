@@ -1,5 +1,0 @@
-author: "Ollanius"
-delete-after: True
-changes:
-  - bugfix: "Delectable Spiced Wine should now show up as a selectable option for favorite drinks."
-  - code_imp: "All variants of spiced wine now have pre-filled bottles and kegs for mapping purposes. Same with Zarum."
