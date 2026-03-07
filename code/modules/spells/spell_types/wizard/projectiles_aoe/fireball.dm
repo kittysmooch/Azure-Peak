@@ -81,14 +81,6 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 
 	var/aoe_damage = round(damage * arcyne_aoe_damage_ratio)
 
-	// Arcane mark synergy — bonus on direct hit only, calculated after AOE snapshot
-	if(M)
-		var/datum/status_effect/debuff/arcanemark/mark = M.has_status_effect(/datum/status_effect/debuff/arcanemark)
-		if(mark && mark.stacks >= mark.max_stacks)
-			damage += 15
-			to_chat(M, "<span class='userdanger'>SCALDING HELLFIRE; TRYPTICH-MARKE DETONATION!</span>")
-			consume_arcane_mark_stacks(M)
-
 	var/turf/epicenter = get_turf(target)
 
 	if(epicenter)
