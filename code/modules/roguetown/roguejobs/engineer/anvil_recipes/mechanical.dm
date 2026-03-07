@@ -275,7 +275,7 @@
 
 //combat gear
 /datum/anvil_recipe/engineering/artificerarmor
-	name = "Artificer armor (+2 ancient alloy ingot)(+2 Bronze gear)"
+	name = "Artificer armor (+2 ancient alloy ingot, +2 Bronze gear)"
 	req_bar = /obj/item/ingot/purifiedaalloy
 	additional_items = list(/obj/item/ingot/purifiedaalloy, /obj/item/ingot/purifiedaalloy, /obj/item/roguegear, /obj/item/roguegear)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/paalloy/artificer
