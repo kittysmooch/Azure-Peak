@@ -12,7 +12,7 @@
 	releasedrain = 30
 	chargedrain = 1
 	chargetime = 25
-	recharge_time = 20 SECONDS // 5 seconds more than fireball
+	recharge_time = 22 SECONDS // 10% penalty but otherwise the same as fireball, to keep it from being strictly better in every way
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
@@ -41,7 +41,7 @@
 	exp_light = -1
 	exp_flash = 0
 	exp_fire = 1
-	damage = 50
+	damage = 60
 	damage_type = BURN
 	npc_simple_damage_mult = 2.4
 	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
@@ -49,6 +49,9 @@
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
+	arcyne_aoe_radius = 1
+	structural_damage = 300 // On average a door is 1100 integrity, and a window is 200
+	structural_damage_radius = 1
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
 	name = "Arced Artillery Fireball"
@@ -56,29 +59,17 @@
 	arcshot = TRUE
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery/on_hit(target)
+	var/cached_radius = structural_damage_radius
 	. = ..()
-	if(ismob(target))
-		var/mob/M = target
-		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
-			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-			qdel(src)
-			return BULLET_ACT_BLOCK
+	if(. == BULLET_ACT_BLOCK)
+		return
+	// Artillery-specific: lava visuals and smoke on impact
 	var/turf/fallzone = get_turf(target)
 	if(!fallzone)
 		return
-	var/const/damage = 300 //Structural damage the spell does, on average a door is 1100 integrity, and a window is 200
-	var/const/radius = 1
-	// The visuals are here, the lava is just for visuals and doesn't ACTUALLY damage you! Just looks cool and indicates what is structures will be damaged.
-	for(var/turf/open/visual in view(radius, fallzone))
+	for(var/turf/open/visual in view(cached_radius, fallzone))
 		var/obj/effect/temp_visual/lavastaff/Lava = new /obj/effect/temp_visual/lavastaff(visual)
-		var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread/fast // SMOKE EFFECT
 		animate(Lava, alpha = 255, time = 5)
-		S.set_up(radius, fallzone)
-		S.start()
-	// Everything from this point has to do with what is damaged, additional structures can be added to the list to have different damage/effects!
-	for(var/obj/structure/damaged in view(radius, fallzone))
-		if(!istype(damaged, /obj/structure/flora/newbranch))
-			damaged.take_damage(damage, BRUTE, "blunt", 1)
-	for(var/turf/closed/wall/damagedwalls in view(radius, fallzone))
-		damagedwalls.take_damage(damage, BRUTE, "blunt", 1)
+	var/datum/effect_system/smoke_spread/S = new /datum/effect_system/smoke_spread/fast
+	S.set_up(cached_radius, fallzone)
+	S.start()

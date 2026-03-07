@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	name = "Greater Fireball"
-	desc = "Shoot out an immense ball of fire that explodes on impact."
+	desc = "Shoot out an immense ball of fire that explodes on impact, scorching all nearby targets in a wide radius."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great
@@ -10,7 +10,7 @@
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 15
-	recharge_time = 15 SECONDS
+	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
 	spell_tier = 4 // Highest tier AOE
 	invocations = list("Maior Sphaera Ignis!")
@@ -32,3 +32,5 @@
 	damage = 90 // This is gonna fucking HURT
 	npc_simple_damage_mult = 2 // HAHAHA
 	flag = "magic"
+	arcyne_aoe_radius = 2
+	structural_damage = 150
