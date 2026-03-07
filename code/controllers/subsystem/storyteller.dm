@@ -782,12 +782,10 @@ SUBSYSTEM_DEF(gamemode)
 	dat += "<BR><b>--- Job Scaling ---</b>"
 	var/list/wretch_scaling = calculate_wretch_scaling()
 	var/datum/job/wretch_job = SSjob.GetJob("Wretch")
-	dat += "<BR>Wretch Slots: [wretch_job?.current_positions]/[wretch_job?.total_positions] (Tier 1: [wretch_scaling["tier1_slots"]], Final: [wretch_scaling["final_slots"]])"
-	dat += "<BR>&nbsp;&nbsp;Garrison: [wretch_scaling["garrison"]], Holy Warriors: [wretch_scaling["holy_warrior"]], Combat Total: [wretch_scaling["combat_total"]]"
+	dat += "<BR>Wretch Slots: [wretch_job?.current_positions]/[wretch_job?.total_positions] — T1: [wretch_scaling["tier1_slots"]]/10, T2: +[wretch_scaling["tier2_extra"]] / 5 = [wretch_scaling["final_slots"]] final"
+	dat += "<BR>&nbsp;&nbsp;Garrison: [wretch_scaling["garrison"]], Holy Warriors: [wretch_scaling["holy_warrior"]], Combat Total: [wretch_scaling["combat_total"]] (need > 10 for T2)"
 	if(wretch_scaling["major_antag_active"])
-		dat += "<BR>&nbsp;&nbsp;<font color='red'>MAJOR ANTAG ACTIVE — Tier 2 locked at 10</font>"
-	else if(wretch_scaling["tier1_slots"] >= 10)
-		dat += "<BR>&nbsp;&nbsp;Tier 2: combat [wretch_scaling["combat_total"]] - 10 = [max(0, wretch_scaling["combat_total"] - 10)] extra slots (max 5)"
+		dat += "<BR>&nbsp;&nbsp;<font color='red'>MAJOR ANTAG ACTIVE (VL/LICH) — Tier 2 locked, max 10</font>"
 
 	var/list/adv_scaling = calculate_adventurer_scaling()
 	var/datum/job/adv_job = SSjob.GetJob("Adventurer")

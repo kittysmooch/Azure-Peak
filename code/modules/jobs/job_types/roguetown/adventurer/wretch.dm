@@ -157,8 +157,11 @@
 	result["holy_warrior"] = holy_count
 	result["combat_total"] = combat_count
 
+	var/tier2_max = 0
 	if(slots >= 10 && !major_antag_active)
-		slots += min(max(0, combat_count - 10), 5)
+		tier2_max = min(max(0, combat_count - 10), 5)
+		slots += tier2_max
+	result["tier2_extra"] = tier2_max
 	result["final_slots"] = slots
 
 	return result
