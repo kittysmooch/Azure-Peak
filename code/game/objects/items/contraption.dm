@@ -558,7 +558,7 @@
 	//experimental_onback = FALSE
 	slot_flags = ITEM_SLOT_BACK
 	//gripspriteonmob = TRUE
-	smeltresult = /obj/item/ingot/steel
+	smeltresult = /obj/item/ingot/bronze
 	//pickmult = 1.5
 	w_class = WEIGHT_CLASS_HUGE
 	accepted_power_source = /obj/item/alch/coaldust
