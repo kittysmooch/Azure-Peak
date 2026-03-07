@@ -66,11 +66,12 @@
 		if(L == user || istype(L, /mob/living/carbon/human/dummy) || !L.mind)
 			continue
 		var/is_hunted = L.has_flaw(/datum/charflaw/hunted)
-		var/target_role = L.job
+		// Don't uncomment for now
+		// var/target_role = L.job
 		var/is_valid_prey = is_hunted
-		if(!is_valid_prey)
-			if(target_role in combat_roles)
-				is_valid_prey = TRUE
+		// if(!is_valid_prey)
+		// 	if(target_role in combat_roles)
+		// 		is_valid_prey = TRUE
 		if(is_valid_prey)
 			var/entry_name = "[L.real_name]"
 			possible_targets[entry_name] = L
@@ -85,6 +86,7 @@
 
 	if(!shown_hunt_disclaimer)
 		to_chat(user, span_boldnotice("You have chosen your first prey. Remember to judge whether or not your target is a worthy foe. Graggar does not reward spilling the blood of the meek when you have this much to prove."))
+		to_chat(user, span_boldwarning("(Escalation is still required. You can always still do other gnoll things if targets are too difficult.)"))
 		shown_hunt_disclaimer = TRUE
 
 	tracked_target = possible_targets[selection]
