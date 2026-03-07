@@ -121,10 +121,9 @@
 	
 	if(!new_note)
 		return
-	var/sanitized_note = html_encode(new_note)
 
 	if(SSrogueinfo.role_data[controlled_role])
-		SSrogueinfo.role_data[controlled_role]["note"] = sanitized_note
+		SSrogueinfo.role_data[controlled_role]["note"] = new_note
 		to_chat(user, span_notice("You have updated the custom note for [controlled_role]."))
 	else
 		to_chat(user, span_alert("Error: No data entry found for [controlled_role]."))
