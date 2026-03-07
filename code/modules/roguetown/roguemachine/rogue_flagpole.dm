@@ -68,7 +68,9 @@
 	name = "freeform miniature flagpole"
 	icon = 'icons/roguetown/misc/flagpole_mini.dmi'
 	icon_state = "flagpole"
+	desc = "Used to signify your presence in town. Middle click to set a custom notice on the flagpoles in town, use to raise your flag or lower it."
 
+	w_class = WEIGHT_CLASS_TINY
 	var/controlled_role = "freeform1"
 	var/flag_color = "#ffffff"
 	var/mutable_appearance/flag_overlay
