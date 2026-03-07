@@ -1,12 +1,16 @@
+/* Artillery Fireball - Worse DPS, much better structural damage. Smoke
+*/
+
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/artillery
 	name = "Artillery Fireball"
-	desc = "An artillery fireball that arcs over obstacles by default, dealing far more damage to structures than people. \n\
+	desc = "An artillery fireball that destroys structures with ease and creates a large impact of smoke and flame. \n\
 	Damage is increased by 140% versus simple-minded creechurs.\n\
-	Toggle throw mode (R) before casting to fire it straight instead. Arced shots deal 25% less damage."
+	Toggle throw mode (R) before casting to fire it arced instead. Arced shots deal 25% less damage."
 	clothes_req = FALSE
 	cost = 6
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery
+	projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
 	overlay_state = "fireball_artillery"
 	sound = list('sound/magic/fireball.ogg')
 	releasedrain = 30
@@ -18,22 +22,13 @@
 	movement_interrupt = FALSE
 	charging_slowdown = 3
 	spell_tier = 4 // Court mage can have this as a treat
-	invocations = list("Ignis Sphaera directa!")
+	invocations = list("Ignis Sphaera Bombardae!")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_FIRE
 	glow_intensity = GLOW_INTENSITY_HIGH
 	chargedloop = /datum/looping_sound/invokefire
 	associated_skill = /datum/skill/magic/arcane
 	xp_gain = TRUE
-
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/artillery/cast(list/targets, mob/user = user)
-	var/mob/living/carbon/human/H = user
-	if(H.in_throw_mode)
-		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery
-		H.throw_mode_off()
-	else
-		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
-	. = ..()
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery
 	name = "Artillery Fireball"

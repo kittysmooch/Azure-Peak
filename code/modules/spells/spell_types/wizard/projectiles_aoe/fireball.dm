@@ -12,6 +12,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
+	var/projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/arc
 	overlay_state = "fireball"
 	sound = list('sound/magic/fireball.ogg')
 	releasedrain = 30
@@ -35,10 +36,10 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
 	if(H.in_throw_mode)
-		projectile_type = /obj/projectile/magic/aoe/fireball/rogue/arc
+		projectile_type = projectile_type_arc
 		H.throw_mode_off()
 	else
-		projectile_type = /obj/projectile/magic/aoe/fireball/rogue
+		projectile_type = initial(projectile_type)
 	. = ..()
 
 /obj/projectile/magic/aoe/fireball/rogue
@@ -46,7 +47,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 	exp_heavy = -1
 	exp_light = -1
 	exp_flash = 0
-	exp_fire = 1
+	exp_fire = 0
 	damage = 60
 	damage_type = BURN
 	npc_simple_damage_mult = 3 // Intentionally higher than other fireballs due to arcyne mark disparity
@@ -99,6 +100,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 		var/mob/living/carbon/human/caster = firer
 		var/mob/living/direct_hit = M
 		for(var/turf/T in range(arcyne_aoe_radius, epicenter))
+			new /obj/effect/temp_visual/fire(T)
 			for(var/mob/living/L in T)
 				if(L == direct_hit || L.stat == DEAD)
 					continue
