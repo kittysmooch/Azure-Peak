@@ -15,7 +15,7 @@ more raw damage. */
 	releasedrain = 50
 	chargedrain = 1
 	chargetime = 15
-	recharge_time = 20 SECONDS
+	recharge_time = 30 SECONDS // Cuz you can stack it with normal fireball
 	warnie = "spellwarning"
 	spell_tier = 4
 	invocations = list("Maior Sphaera Ignis!")
