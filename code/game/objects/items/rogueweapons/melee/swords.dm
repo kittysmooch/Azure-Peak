@@ -1094,11 +1094,11 @@
 
 /datum/intent/sword/cut/sabre/master
 	name = "pokrajać"
-	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate light armour."
+	desc = "Perform a masterful wide-arc cut that's strong enough to penetrate heavy armour."
 	attack_verb = list("masterfully cuts", "deftly slits", "quarts")
 	clickcd = 7
 	damfactor = 1.25
-	penfactor = 55
+	penfactor = PEN_HEAVY
 	max_intent_damage = 29.7
 
 /datum/intent/effect/daze/freisabre

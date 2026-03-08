@@ -10,7 +10,7 @@
 	clickcd = CLICK_CD_CHARGED
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 55
+	penfactor = PEN_HEAVY
 	item_d_type = "stab"
 	effective_range = 2
 	effective_range_type = EFF_RANGE_EXACT
@@ -34,7 +34,7 @@
 	reach = 1
 	swingdelay = 14
 	damfactor = 1.6
-	penfactor = 50
+	penfactor = PEN_HEAVY
 	clickcd = CLICK_CD_RESIST
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
@@ -370,7 +370,7 @@
 	reach = 1
 	clickcd = 18
 	swingdelay = 14
-	penfactor = 50
+	penfactor = PEN_HEAVY
 	damfactor = 0.8
 	item_d_type = "stab"
 	effective_range = null
