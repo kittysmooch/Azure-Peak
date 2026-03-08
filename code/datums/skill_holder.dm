@@ -342,7 +342,7 @@
 			var/bracket_range = bracket_end - bracket_start
 			var/percent = 0
 			if(bracket_range > 0)
-				percent = clamp(round((current_xp - bracket_start) / bracket_range * 100), 0, 100)
+				percent = clamp(round((current_xp - bracket_start) * 100 / bracket_range), 0, 100)
 			var/pct_color = get_progress_color(percent)
 			progress_col = "<span style='color: [pct_color];'>[percent]%</span>"
 
