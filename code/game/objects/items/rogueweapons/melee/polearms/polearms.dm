@@ -81,7 +81,7 @@
 /datum/intent/spear/bash
 	name = "bash"
 	blade_class = BCLASS_BLUNT
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	icon_state = "inbash"
 	attack_verb = list("bashes", "strikes")
 	damfactor = NONBLUNT_BLUNT_DAMFACTOR
@@ -171,7 +171,7 @@
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	reach = 1
 	swingdelay = 15
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 2.5
 	clickcd = CLICK_CD_CHARGED
 	no_early_release = TRUE
@@ -182,7 +182,7 @@
 
 /datum/intent/rend/reach
 	name = "long rend"
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	misscost = 5
 	swingdelay = 15
 	clickcd = CLICK_CD_HEAVY
@@ -209,7 +209,7 @@
 	blade_class = BCLASS_PEEL
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 	clickcd = CLICK_CD_CHARGED
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	swingdelay = 5
 	damfactor = 0.01
 	item_d_type = "slash"
@@ -224,7 +224,7 @@
 /datum/intent/spear/thrust/quarterstaff
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.3 // Adds up to be slightly stronger than an unenhanced ebeak strike.
 	clickcd = CLICK_CD_CHARGED
 

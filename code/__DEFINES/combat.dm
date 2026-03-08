@@ -308,7 +308,6 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define BULLET_ACT_MISS				"MISS"
 
 //Weapon values
-#define BLUNT_DEFAULT_PENFACTOR		-100
 #define NONBLUNT_BLUNT_DAMFACTOR 0.6 // Damage factor when a non blunt weapon is used with blunt intent. Meant to make it worse than a real one.
 #define BLUNT_DEFAULT_INT_DAMAGEFACTOR 1.6 // Universal blunt intent integrity damage factor. Replaces Roguepen
 

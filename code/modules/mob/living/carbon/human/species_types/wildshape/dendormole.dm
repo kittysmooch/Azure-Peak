@@ -134,7 +134,7 @@
 	attack_verb = list("digs", "excavates", "perforates")
 	animname = "cut"
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "smashes the air!"

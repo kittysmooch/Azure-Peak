@@ -273,7 +273,7 @@
 	attack_verb = list("strikes", "buttstrokes")
 	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.1 //Translates into 11 DMG for a Slurbow, 16.5 DMG for a Crossbow, and 23 DMG for a Siegebow.
 	swingdelay = 0
 	icon_state = "instrike"

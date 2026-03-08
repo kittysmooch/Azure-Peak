@@ -106,7 +106,7 @@
 	attack_verb = list("hits", "mauls", "bashes")
 	animname = "strike"
 	hitsound = "punch_hard"
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	candodge = TRUE
 	canparry = TRUE
 	miss_text = "kicks the air!"
