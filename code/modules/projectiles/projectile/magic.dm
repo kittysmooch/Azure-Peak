@@ -4,7 +4,7 @@
 	damage = 0
 	damage_type = OXY
 	nodamage = TRUE
-	armor_penetration = 100
+	armor_penetration = PEN_NONE // We shouldn't allow any projectile that forget to set to pen all
 	pass_flags = PASSTABLE | PASSGRILLE
 	flag = "magic"
 	reflectable = REFLECT_NORMAL
@@ -140,7 +140,7 @@
 	damage = 20
 	damage_type = BURN
 	nodamage = FALSE
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 	flag = "magic"
 	hitsound = 'sound/blank.ogg'
 

@@ -400,7 +400,7 @@
 /obj/projectile/magic/frostbolt/wall_projectile
 	speed = 6
 	damage = 20
-	armor_penetration = 5
+	armor_penetration = PEN_NONE
 
 /obj/structure/trap/wall_projectile/acidsplash
 	name = "acid plate trap"
