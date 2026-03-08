@@ -287,6 +287,7 @@
 			return list(SKILL_EXP_LEGENDARY, SKILL_EXP_LEGENDARY)
 	return list(0, SKILL_EXP_NOVICE)
 
+/// Returns a color hex for a given XP percentage threshold
 /datum/skill_holder/proc/get_progress_color(percent)
 	switch(percent)
 		if(0 to 24)
@@ -299,117 +300,60 @@
 			return "#33cc66" // Green
 	return "#cc3333"
 
-/datum/skill_holder/proc/build_progress_bar(percent, bar_width = 20)
-	var/filled = round(percent / 100 * bar_width)
-	filled = clamp(filled, 0, bar_width)
-	var/empty = bar_width - filled
-
-	var/bar_color = get_progress_color(percent)
-
-	var/filled_str = ""
-	for(var/f in 1 to filled)
-		filled_str += "="
-	if(filled < bar_width)
-		filled_str += ">"
-		empty = max(0, empty - 1)
-
-	// Use braille blank (U+2800) for consistent spacing
-	var/empty_str = ""
-	for(var/e in 1 to empty)
-		empty_str += "⠀"
-
-	return "<span style='color: [bar_color]; font-family: Courier, monospace;'>[filled_str]</span><span style='font-family: Courier, monospace;'>[empty_str]</span>"
-
 /datum/skill_holder/proc/print_levels(user)
 	var/list/shown_skills = list()
 	for(var/i in known_skills)
-		if(known_skills[i]) // Has a level in this skill
-			shown_skills += i
-		else if(skill_experience[i] > 0) // No level yet but has XP progress
+		if(known_skills[i]) //Do we actually have a level in this?
 			shown_skills += i
 	if(!length(shown_skills))
 		to_chat(user, span_warning("I don't have any skills."))
 		return
 
 	var/list/sorted_skills = sortList(shown_skills, GLOBAL_PROC_REF(cmp_skills_for_display))
-
-	var/border_color = "#555555"
-	var/msg = {"<table style='border-collapse: collapse; font-family: Courier, monospace; border: 1px solid [border_color];'>"}
-
-	msg += {"<tr style='border-bottom: 1px solid [border_color];'>"}
-	msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; color: #aaaaaa;'><b>Skill</b></td>"}
-	msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; color: #aaaaaa;'><b>Level</b></td>"}
-	msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; color: #aaaaaa;'><b>Progress</b></td>"}
-	msg += {"<td style='padding: 2px 4px; color: #aaaaaa;'></td>"}
+	var/bc = "#555555"
+	var/msg = {"<table style='border-collapse: collapse; border: 1px solid [bc];'>"}
+	msg += {"<tr style='border-bottom: 1px solid [bc];'>"}
+	msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc]; color: #aaaaaa;'><b>Skill</b></td>"}
+	msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc]; color: #aaaaaa;'><b>Level</b></td>"}
+	msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc]; color: #aaaaaa;'><b>XP</b></td>"}
+	msg += {"<td style='padding: 1px 2px;'></td>"}
 	msg += "</tr>"
-
 	for(var/datum/skill/i in sorted_skills)
 		var/skill_level = known_skills[i]
 		var/effective_cap = get_effective_skill_cap(i)
 		var/is_legendary = (skill_level >= SKILL_LEVEL_LEGENDARY)
 		var/is_capped = !is_legendary && (skill_level >= effective_cap)
 
-		var/can_advance = current?.mind?.sleep_adv?.enough_sleep_xp_to_advance(i.type, 1)
-		var/can_advance_2 = current?.mind?.sleep_adv?.enough_sleep_xp_to_advance(i.type, 2)
-		var/advance_icon = can_advance_2 ? span_nicegreen(" ★") : can_advance ? span_nicegreen(" ☆") : ""
+		var/can_advance_post = current?.mind?.sleep_adv.enough_sleep_xp_to_advance(i.type, 1)
+		var/capped_post = current?.mind?.sleep_adv.enough_sleep_xp_to_advance(i.type, 2)
+		var/rankup_postfix = capped_post ? span_nicegreen(" ★") : can_advance_post ? span_nicegreen(" ☆") : ""
 
-		var/percent = 0
-		if(!is_capped && !is_legendary)
+		// Progress column
+		var/progress_col
+		if(is_capped)
+			progress_col = "<b style='color: #cc3333;'>CAPPED</b>"
+		else if(is_legendary)
+			progress_col = "<span style='color: #555555;'>---</span>"
+		else
 			var/list/brackets = get_xp_brackets(skill_level)
 			var/current_xp = skill_experience[i]
 			var/bracket_start = brackets[1]
 			var/bracket_end = brackets[2]
 			var/bracket_range = bracket_end - bracket_start
+			var/percent = 0
 			if(bracket_range > 0)
 				percent = clamp(round((current_xp - bracket_start) / bracket_range * 100), 0, 100)
-
-		// Build progress column content
-		var/progress_col
-		if(is_legendary)
-			progress_col = "<span style='color: #888888;'>N/A</span>"
-		else if(is_capped)
-			progress_col = "<b style='color: #cc3333;'>SKILL CAPPED</b>"
-		else
-			var/bar = build_progress_bar(percent)
 			var/pct_color = get_progress_color(percent)
-			progress_col = "<span style='color: [border_color];'>|</span>[bar]<span style='color: [border_color];'>|</span> <span style='color: [pct_color];'>[percent]%</span>"
+			progress_col = "<span style='color: [pct_color];'>[percent]%</span>"
 
-		msg += {"<tr style='border-bottom: 1px solid [border_color];'>"}
-		msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; white-space: nowrap;'><span style='color: [i.color || "#cccccc"];'>[i]</span></td>"}
-		var/level_color
-		var/level_label
-		switch(skill_level)
-			if(SKILL_LEVEL_NONE)
-				level_color = "#666666"
-				level_label = "Untrained"
-			if(SKILL_LEVEL_NOVICE)
-				level_color = "#888888"
-				level_label = "Novice"
-			if(SKILL_LEVEL_APPRENTICE)
-				level_color = "#cccccc"
-				level_label = "Apprentice"
-			if(SKILL_LEVEL_JOURNEYMAN)
-				level_color = "#3399cc"
-				level_label = "Journeyman"
-			if(SKILL_LEVEL_EXPERT)
-				level_color = "#cc9933"
-				level_label = "Expert"
-			if(SKILL_LEVEL_MASTER)
-				level_color = "#cc33cc"
-				level_label = "Master"
-			if(SKILL_LEVEL_LEGENDARY)
-				level_color = "#33cc33"
-				level_label = "Legendary"
-			else
-				level_color = "#cccccc"
-				level_label = "???"
-		msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; white-space: nowrap;'><span style='color: [level_color];'>[level_label]</span>[advance_icon]</td>"}
-		msg += {"<td style='padding: 2px 6px; border-right: 1px solid [border_color]; white-space: nowrap;'>[progress_col]</td>"}
-		msg += {"<td style='padding: 2px 4px;'><a href='?src=[REF(i)];skill_detail=1'>?</a></td>"}
+		msg += "<tr style='border-bottom: 1px solid [bc];'>"
+		msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc];'><span style='color: [i.color]'>[i]</span></td>"}
+		msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc]; white-space: nowrap;'>[SSskills.level_names[skill_level]][rankup_postfix]</td>"}
+		msg += {"<td style='padding: 1px 4px; border-right: 1px solid [bc]; white-space: nowrap;'>[progress_col]</td>"}
+		msg += {"<td style='padding: 1px 2px;'><a href='?src=[REF(i)];skill_detail=1' style='font-size: 0.5em;'>{?}</a></td>"}
 		msg += "</tr>"
 
 	msg += "</table>"
-
 	to_chat(user, msg)
 
 /mob/proc/get_inspirational_bonus()
