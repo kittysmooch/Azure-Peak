@@ -892,7 +892,7 @@
 	damfactor = 1.1
 	swingdelay = 5
 	clickcd = CLICK_CD_QUICK
-	penfactor = 45
+	penfactor = PEN_HEAVY
 
 /datum/intent/claw/cut
 	name = "cut"
