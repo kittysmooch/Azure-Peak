@@ -71,4 +71,6 @@
 
 // Special Intents
 /datum/intent/axe/chop/long/graggar
-	penfactor = 40
+	desc = "A heavy and powerful chop, sundering through even plate armor. No chains shall bind you. And no armor shall stop your might."
+	penfactor = PEN_HEAVY
+	clickcd = CLICK_CD_HEAVY
