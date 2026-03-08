@@ -197,7 +197,7 @@
 	desc = "A mystic style of tattoos adopted by the Ruma Clan, emulating a practice performed by warrior monks of the Xinyi Dynasty. They are your way of identifying fellow clan members, an sign of companionship and secretive brotherhood. These are styled into the shape of clouds, created by a mystical ink which shifts and moves in ripples like a pond to harden where your skin is struck. It's movement causes you to shudder."
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
-	armor = ARMOR_RUMACLAN
+	armor = ARMOR_MAILLE
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
 	icon = 'icons/roguetown/clothing/shirts.dmi'

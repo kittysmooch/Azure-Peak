@@ -572,7 +572,7 @@
 	name = "golden cuirass"
 	icon_state = "goldcuirass"
 	desc = "A resplendant cuirass of pure gold, fitted with tassets for additional coverage. It is dressed atop a besilked arming jacket to ensure the absolute comfort of its wearer, and the holy sigil has been meticulously formed from its slanted plates."
-	armor = ARMOR_GOLD //Renders its wearer completely invulnerable to damage. The caveat is, however..
+	armor = ARMOR_INDESTRUCTIBLE //Renders its wearer completely invulnerable to damage. The caveat is, however..
 	max_integrity = ARMOR_INT_SIDE_GOLD // ..is that it's extraordinarily fragile, especially against blunt damage.
 	armor_class = ARMOR_CLASS_HEAVY
 	anvilrepair = null

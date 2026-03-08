@@ -656,7 +656,7 @@
 	name = "otherworldly legplate"
 	desc = "Strange iridescent leg plate. It reflects light as if covered in shiny oil."
 	icon_state = "dreamlegs"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	item_flags = DREAM_ITEM
 	prevent_crits = PREVENT_CRITS_ALL
 
@@ -669,7 +669,7 @@
 	name = "otherworldly boots"
 	desc = "Strange iridescent plated boots. It reflects light as if covered in shiny oil."
 	icon_state = "dreamboots"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	item_flags = DREAM_ITEM
 
 /obj/item/clothing/shoes/roguetown/boots/armor/dreamwalker/Initialize()

@@ -165,17 +165,10 @@
 #define ARMOR_GNOLL_WEAK list("blunt" = DR_ULTRA, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_MEDIUM, "fire" = DR_MEDIUM, "acid" = DR_NONE)
 #define ARMOR_GNOLL_STANDARD list("blunt" = DR_SUPER, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_HEAVY, "fire" = DR_MEDIUM, "acid" = DR_NONE)
 #define ARMOR_GNOLL_STRONG list("blunt" = DR_MEDIUM, "slash" = DBLOCK_BSTEEL, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_HEAVY, "fire" = DR_MEDIUM, "acid" = DR_NONE)
-#define ARMOR_ASCENDANT list("blunt" = DR_MEDIUM, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_MEDIUM, "fire" = DR_NONE, "acid" = DR_NONE)
-#define ARMOR_GRUDGEBEARER list("blunt" = DR_MEDIUM, "slash" = DBLOCK_BSTEEL, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_BSTEEL, "fire" = DR_NONE, "acid" = DR_NONE)
 #define ARMOR_ZIZOCONCSTRUCT list("blunt" = DR_HEAVY, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_MEDIUM, "piercing" = DBLOCK_LIGHT, "fire" = DR_MEDIUM, "acid" = DR_LIGHT)
 #define ARMOR_DRAGONHIDE list("blunt" = DR_SUPER, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_LIGHT, "piercing" = DBLOCK_LIGHT, "fire" = DR_HEAVY, "acid" = DR_NONE) // snowflake armor for dragonhide - a bit worse than hard leather but w/ decent fire resist
-#define ARMOR_FATEWEAVER list("blunt" = DR_LIGHT, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_HEAVY, "fire" = DR_NONE, "acid" = DR_NONE)
-#define ARMOR_RUMACLAN	list("blunt" = DR_LIGHT, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_MEDIUM, "fire" = DR_NONE, "acid" = DR_NONE)
-#define ARMOR_HANDGAMB list("blunt" = DR_LIGHT, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_MEDIUM, "fire" = DR_LIGHT, "acid" = DR_NONE)
 #define ARMOR_BLACKOAK list("blunt" = DR_ULTRA, "slash" = DBLOCK_LIGHT, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_MEDIUM, "fire" = DR_NONE, "acid" = DR_NONE) // Wood: great vs blunt/stab, bad vs slash
-// Blocks every hit, at least once
 #define ARMOR_GRONN_LIGHT list("blunt" = DR_SUPER, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_LIGHT, "piercing" = DBLOCK_LIGHT, "fire" = DR_NONE, "acid" = DR_NONE)
-#define ARMOR_GOLD list("blunt" = DR_ULTRA, "slash" = DBLOCK_BSTEEL, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_BSTEEL, "fire" = DR_ULTRA, "acid" = DR_ULTRA) // Effective invulnerability on the covered limb(s). Can only be damaged through attacks with an integrity damage modifier.
 
 // Regenerating / Dragonskin
 #define ARMOR_DRAGONSKIN list("blunt" = DR_SUPER, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_MEDIUM, "piercing" = DBLOCK_MEDIUM, "fire" = DR_HEAVY, "acid" = DR_NONE) // Iconoclast dragon skin. Fire resistant.

@@ -56,7 +56,7 @@
 	name = "vicious leggings"
 	desc = "Fluted chausses, marinated in the afterbirth of disemboweled tyrants. Never kneel, again - never fall, again; cripple the ones who sought to keep you a slave, and force them to see the monster they've made of you."
 	icon_state = "graggarplatelegs"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	max_integrity = ARMOR_INT_LEG_STEEL_PLATE // Good good resistances, but less crit resist than the other ascendant armors. In trade, we can take off our pants to repair, and they are medium rather than heavy.
 	armor_class = ARMOR_CLASS_MEDIUM
 
@@ -70,7 +70,7 @@
 	desc = "But my outside to behold:"
 	icon_state = "matthioslegs"
 	prevent_crits = PREVENT_CRITS_ALL
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize()
 	. = ..()
@@ -89,7 +89,7 @@
 	name = "avantyne garments"
 	desc = "An unstemmable cognitovirus, laminated into thrice-parted leggings worn by only the truest - those, anointed by the Dame of Progress. In Her name."
 	icon_state = "zizocloth"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
