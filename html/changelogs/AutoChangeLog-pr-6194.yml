@@ -1,5 +1,0 @@
-author: "Ollanius"
-delete-after: True
-changes:
-  - rscadd: "Slightly reduced the size of quivers when worn on the belt."
-  - balance: "Tankards now hold +10d, and silver tankards now hold +20d."

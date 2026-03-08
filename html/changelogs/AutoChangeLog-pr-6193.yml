@@ -1,7 +1,0 @@
-author: "Ollanius"
-delete-after: True
-changes:
-  - balance: "The value of fermentation kegs and bottles has been greatly increased. Most brewed liqours now sell for a minimum of 10-30 mammons per bottle, each - the most exotic and laborious bottles can go from 40-100 mammons, per bottle!"
-  - balance: "Zarum heals a little less, but closes wounds a little better. It now properly imparts nutrition and lesser hydration, too, as a technical food-item."
-  - balance: "Certain fermentation keg recipes now take a little longer - and a little quicker - to complete."
-  - rscadd: "New names added to prefilled fermentation kegs."
