@@ -4,7 +4,7 @@ more raw damage. */
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
 	name = "Greater Fireball"
 	desc = "Shoot out an immense ball of fire that explodes on impact, scorching all nearby targets in a wide radius. \n\ Damage is increased by 100% versus simple-minded creechurs.\n\
-	Toggle throw mode (R) before casting to fire it arced instead. Arced shots deal 25% less damage."
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue/great

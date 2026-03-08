@@ -2,10 +2,11 @@
 	name = "Divine Blast"
 	desc = "Shoot out a blast of divine power! Deals more damage to heretics(Psydonians/Inhumen) and Undead! \n\
 	Damage is increased by 100% versus simple-minded creechurs.\n\
-	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced blasts deal 25% less damage."
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
 	clothes_req = FALSE
 	range = 12
 	projectile_type = /obj/projectile/energy/divineblast
+	projectile_type_arc = /obj/projectile/energy/divineblast/arc
 	overlay_state = "divine_blast"
 	sound = list('sound/magic/vlightning.ogg')
 	active = FALSE
@@ -27,12 +28,7 @@
 	devotion_cost = 25
 
 /obj/effect/proc_holder/spell/invoked/projectile/divineblast/cast(list/targets, mob/user = user)
-	var/mob/living/carbon/human/H = user
-	if(H.in_throw_mode)
-		projectile_type = /obj/projectile/energy/divineblast/arc
-		H.throw_mode_off()
-	else
-		projectile_type = /obj/projectile/energy/divineblast
+	projectile_type = arc_mode ? projectile_type_arc : initial(projectile_type)
 	. = ..()
 
 

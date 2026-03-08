@@ -5,7 +5,7 @@
 	name = "Artillery Fireball"
 	desc = "An artillery fireball that destroys structures with ease and creates a large impact of smoke and flame. \n\
 	Damage is increased by 140% versus simple-minded creechurs.\n\
-	Toggle throw mode (R) before casting to fire it arced instead. Arced shots deal 25% less damage."
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
 	clothes_req = FALSE
 	cost = 6
 	range = 8

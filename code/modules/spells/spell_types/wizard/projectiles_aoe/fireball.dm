@@ -8,11 +8,11 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	name = "Fireball"
 	desc = "Shoot out a ball of fire that explodes on impact, scorching nearby targets. Consumes <b>Arcane Marks</b> for extra damage when fully stacked.\n\
-	Can be fired in an arc over obstacles by toggling throw mode (R) before casting. Arced fireballs deal 25% less damage."
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
 	clothes_req = FALSE
 	range = 8
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
-	var/projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/arc
+	projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/arc
 	overlay_state = "fireball"
 	sound = list('sound/magic/fireball.ogg')
 	releasedrain = 30
@@ -34,12 +34,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 	xp_gain = TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/fireball/cast(list/targets, mob/user = user)
-	var/mob/living/carbon/human/H = user
-	if(H.in_throw_mode)
-		projectile_type = projectile_type_arc
-		H.throw_mode_off()
-	else
-		projectile_type = initial(projectile_type)
+	projectile_type = arc_mode ? projectile_type_arc : initial(projectile_type)
 	. = ..()
 
 /obj/projectile/magic/aoe/fireball/rogue
