@@ -27,7 +27,7 @@
 /datum/intent/dagger/cut/heavy
 	name = "heavy cut"
 	damfactor = 1.2
-	penfactor = 25
+	penfactor = PEN_MEDIUM
 	clickcd = 11
 
 /datum/intent/dagger/thrust
@@ -100,7 +100,7 @@
 
 /datum/intent/dagger/chop/cleaver
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 30
+	penfactor = PEN_MEDIUM
 
 /datum/intent/dagger/cut/blunt
 	blade_class = BCLASS_BLUNT

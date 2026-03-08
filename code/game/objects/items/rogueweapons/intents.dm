@@ -696,7 +696,7 @@
 	item_d_type = "slash"
 
 /datum/intent/simple/claw/simplewwnpc
-	penfactor = 25
+	penfactor = PEN_MEDIUM
 	clickcd = WOLF_ATTACK_SPEED
 
 /datum/intent/simple/bite

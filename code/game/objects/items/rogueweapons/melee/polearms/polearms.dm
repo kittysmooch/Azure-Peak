@@ -74,7 +74,7 @@
 /datum/intent/spear/thrust/short
 	reach = 1
 	damfactor = 0.9
-	penfactor = 30
+	penfactor = PEN_MEDIUM
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
 

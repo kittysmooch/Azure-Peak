@@ -1342,7 +1342,7 @@
 /datum/intent/sword/thrust/rapier
 	clickcd = 8
 	damfactor = 1.1
-	penfactor = 30
+	penfactor = PEN_MEDIUM
 
 /obj/item/rogueweapon/sword/rapier/dec
 	name = "decorated rapier"

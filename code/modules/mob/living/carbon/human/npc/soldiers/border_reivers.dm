@@ -540,7 +540,7 @@
 	clickcd = REIVER_LANCE_ATTACK_SPEED
 	chargetime = 1
 	animname = "stab"
-	penfactor = 25
+	penfactor = PEN_MEDIUM
 
 /datum/intent/simple/reiver_rider_sabre
 	name = "hack"
