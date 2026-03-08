@@ -1,0 +1,4 @@
+author: "Ollanius"
+delete-after: True
+changes:
+  - bugfix: "Corks now prevent you from drinking out of a given container, if not properly removed beforehand via RMB."
