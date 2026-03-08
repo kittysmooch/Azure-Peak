@@ -6,10 +6,12 @@
 	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/graggar_bloodrage				= CLERIC_T0,
+					/obj/effect/proc_holder/spell/self/graggar_chainbreak				= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/lesser_heal 					= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/blood_heal					= CLERIC_T1,
-					/obj/effect/proc_holder/spell/self/call_to_slaughter 				= CLERIC_T1,
-					/obj/effect/proc_holder/spell/invoked/projectile/blood_net 			= CLERIC_T2,
+					/obj/effect/proc_holder/spell/self/graggar_call_to_slaughter 		= CLERIC_T1,
+					/obj/effect/proc_holder/spell/invoked/projectile/graggar_blood_net 	= CLERIC_T2,
+					/obj/effect/proc_holder/spell/invoked/silence/graggar				= CLERIC_T2,
 					/obj/effect/proc_holder/spell/invoked/revel_in_slaughter 			= CLERIC_T3,
 					/obj/effect/proc_holder/spell/invoked/resurrect/graggar				= CLERIC_T4,
 	)
