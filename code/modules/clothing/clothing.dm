@@ -594,11 +594,11 @@ BLIND     // can't see anything
 		return examine_text
 
 	var/str
-	str += "[colorgrade_rating("🔨 BLUNT ", armor.blunt, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🪓 SLASH ", armor.slash, elaborate = TRUE)]"
-	str += "<br>"
-	str += "[colorgrade_rating("🗡️ STAB ", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 PIERCE ", armor.piercing, elaborate = TRUE)] "
+	str += "<b>ABSORPTION:</b> [colorgrade_rating("🔨 BLUNT", armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
+	str += "<b>BLOCK:</b> "
+	str += "[colorgrade_rating("🪓 SLASH", armor.slash, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🗡️ STAB", armor.stab, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🏹 PIERCE", armor.piercing, elaborate = TRUE)]"
 
 	if(showcrits)
 		if(!prevent_crits)

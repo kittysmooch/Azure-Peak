@@ -1271,7 +1271,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = BLUNT_DEFAULT_PENFACTOR, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = user.used_intent?.intent_intdamage_factor)
+		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = PEN_NONE, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = user.used_intent?.intent_intdamage_factor)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1767,11 +1767,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	hit_area = affecting.name
 	var/def_zone = affecting.body_zone
 
-	var/pen = I.armor_penetration
-	if(user.used_intent?.penfactor)
-		pen = I.armor_penetration + user.used_intent.penfactor
-	if(I.d_type == "blunt")
-		pen = BLUNT_DEFAULT_PENFACTOR
+	// Penetration tier from the intent (0-5). Blunt/fire/acid use DR instead, pen is irrelevant.
+	var/pen = user.used_intent?.penfactor ? user.used_intent.penfactor : PEN_NONE
 
 //	var/armor_block = H.run_armor_check(affecting, "I.d_type", span_notice("My armor has protected my [hit_area]!"), span_warning("My armor has softened a hit to my [hit_area]!"),pen)
 
@@ -1801,7 +1798,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			else
 				CRASH("Invalid effective_range_type used by [user] with effective_range! Please set an effective_range_type on [user.used_intent?.type]")
 		if(apply_penalty)
-			pen = BLUNT_DEFAULT_PENFACTOR
+			pen = PEN_NONE
 			Iforce *= 0.5
 
 	// No self-peeling. Useful for debug, though.

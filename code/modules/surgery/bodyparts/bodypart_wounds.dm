@@ -146,7 +146,7 @@
 			acheck_dflag = "stab"
 		if(BCLASS_PIERCE)
 			acheck_dflag = "piercing"
-	armor = owner.run_armor_check(zone_precise, acheck_dflag, damage = 0)
+	armor = owner.getarmor(zone_precise, acheck_dflag)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass) && armor)

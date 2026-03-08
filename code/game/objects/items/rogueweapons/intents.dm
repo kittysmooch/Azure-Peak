@@ -152,8 +152,9 @@
 		inspec += "\n<b>Effective Range:</b> [suffix] [effective_range] paces"
 	if(damfactor != 1)
 		inspec += "\n<b>Damage:</b> [damfactor]"
-	if(penfactor)
-		inspec += "\n<b>Armor Penetration:</b> [penfactor < 0 ? "NONE" : penfactor]"
+	inspec += "\n<b>Armor Penetration:</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>NONE</font>"]"
+	if(masteritem)
+		inspec += " <span class='info'><a href='?src=[REF(masteritem)];explainpenfactor=1'>{?}</a></span>"
 	if(get_chargetime())
 		inspec += "\n<b>Charge Time</b>"
 	if(movement_interrupt)
@@ -766,7 +767,7 @@
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/daze_hit.ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	swingdelay = 6
 	damfactor = 1
 	item_d_type = "blunt"

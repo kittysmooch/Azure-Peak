@@ -543,6 +543,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			output = examine_block(output)
 		to_chat(usr, output)
 
+	if(href_list["explainpenfactor"])
+		var/output = span_info("Armor Penetration whether this attack goes through armor.\n\
+		Each armor piece has a blocking tier (Light, Medium, Heavy, Blacksteel).\n\
+		Penetration > armor tier: 100% damage goes through.\n\
+		Penetration = armor tier: 20% damage through. Armor absorbs remaining %.\n\
+		Penetration < armor tier: Fully blocked.\n\
+		All attacks go through armor with no protection of that type, including attacks with no armor penetration.\n\
+		Blunt / Burn / Acid attacks bypass this system entirely and use damage reduction instead.")
+		if(!usr.client.prefs.no_examine_blocks)
+			output = examine_block(output)
+		to_chat(usr, output)
+
 	if(href_list["explaindemolitionmod"])
 		var/output = span_info("Multiplies the damage done to objects when hitting them.\nAlso multiplies durability damage dealt to shields on parry (if higher than Integrity Damage).")
 		if(!usr.client.prefs.no_examine_blocks)
@@ -1565,12 +1577,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(istype(src, /obj/item/clothing))
 		var/obj/item/clothing/C = src
 		if(C.armor)
-			var/defense = "<u><b>ABSORPTION: </b></u><br>"
 			var/datum/armor/def_armor = C.armor
-			defense += "[colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE)] | "
+			var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP against blunt by 20%.", "<u><b>ABSORPTION:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
+			defense += "[SPAN_TOOLTIP("Blocks slashing, stabbing and piercing attacks below this tier. Same tier penetrates 20%.", "<u><b>BLOCK:</b></u>")] "
 			defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
 			defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)] "
+			defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
 			str += "[defense]<br>"
 		else
 			str += "NO DEFENSE"

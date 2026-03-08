@@ -1910,7 +1910,7 @@
 		return
 
 	var/armor_block = target.run_armor_check(user.zone_selected, "blunt")
-	if(prob(armor_block))
+	if(armor_block > 0)
 		return
 
 	apply_effects(target)
@@ -1925,7 +1925,7 @@
 		return
 
 	var/armor_block = target.run_armor_check(user.zone_selected, item.d_type)
-	if(prob(armor_block))
+	if(armor_block > 0)
 		return
 
 	apply_effects(target)
