@@ -17,7 +17,7 @@
 
 /datum/intent/spear/thrust/bad
 	name = "weak thrust"
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 1
 	desc = "A weak thrust from a polearm not designed for stabbing. Doesn't care about effective range,\ but also incapable of piercing all but the weakest cloth armor."
 	effective_range = null

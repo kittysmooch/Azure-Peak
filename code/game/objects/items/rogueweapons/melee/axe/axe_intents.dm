@@ -37,7 +37,7 @@
 /datum/intent/axe/chop/halberd
 	damfactor = 1.35
 	swingdelay = 12
-	penfactor = 20
+	penfactor = PEN_MEDIUM // An exception - since the delay is so high. Vs Padded.
 
 /datum/intent/axe/thrust
 	name = "stab"

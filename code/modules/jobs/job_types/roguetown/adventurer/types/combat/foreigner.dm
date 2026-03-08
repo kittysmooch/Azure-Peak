@@ -803,7 +803,7 @@
 	clickcd = CLICK_CD_FAST //Same speed as a katar, but with reduced penetration and half-damage. Main appeal's the chopper.
 
 /datum/intent/katar/thrust/arbelos
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.8
 	clickcd = CLICK_CD_QUICK //Slower than a regular thrust, with slightly less penetration and damage. Inverse to the katar.
 
@@ -841,7 +841,7 @@
 
 /datum/intent/sword/chop/sabre
 	damfactor = 1.15
-	penfactor = 20
+	penfactor = PEN_MEDIUM
 
 /datum/intent/rend/apophis
 	damfactor = 2.2

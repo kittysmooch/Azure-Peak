@@ -853,7 +853,7 @@
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	no_early_release = TRUE
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.9
 	item_d_type = "stab"
 
@@ -865,7 +865,7 @@
 	animname = "stab"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	no_early_release = TRUE
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.8
 	swingdelay = 4
 	item_d_type = "stab"
