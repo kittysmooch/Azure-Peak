@@ -59,7 +59,7 @@
 	desc = "A collared jacket, intended to be worn underneath plate armor. The thicker padding ensures that any gaps left within its alloyed shell are thoroughly protected - lest an unforseen bowstrike, landing true, ruptures the vulnerable flesh beneath."
 	icon_state = "dgamb"
 	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	prevent_crits = PREVENT_CRITS_MOST
 
@@ -74,7 +74,7 @@
 	name = "padded gambeson"
 	desc = "A heavyweight jacket, further tightened with dorpel-styled stitchwork. On its own, it is a masterwork that can reduce a crushing blow into a slight tickle; beneath an alloyed chestplate, it can ward off anything short of a greater fireball."
 	icon_state = "gambesonp"
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 25
@@ -160,7 +160,7 @@
 	icon_state = "fencingshirt"
 	color = "#FFFFFF"
 	var/shiftable = FALSE
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 35
 	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 25
@@ -265,7 +265,7 @@
 	desc = "A robe-like gambeson of moth-eaten cloth and cheap purple dye. No self-respecting elf would be seen wearing this."
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	icon_state = "shadowrobe"
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM + 30 //280
 
 //Special Hand armor. More defense, low integrity, similar logic to Ruma Clan tattoos. Can't be worn in shirt slot.

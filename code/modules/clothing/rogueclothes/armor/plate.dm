@@ -70,7 +70,7 @@
 	desc = "A chiseled breastplate of bronze, further padded with hide to comfort its championing bod. The plates have been carefully forged to mimic the statuesque physiques of Psydonia's ancient heroes. Wearing it bolsters you with determination."
 	body_parts_covered = CHEST | VITALS | LEGS 
 	icon_state = "bronzecuirass"
-	armor = ARMOR_PLATE_BRONZE
+	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -236,7 +236,7 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL // We are probably one of the best medium armor sets. At higher integ than most(heavy armor levels, pretty much. But worse resistances, we get the bonus over the other sets of being medium and being unequippable.)
 	icon_state = "graggarplate"
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/Initialize()
 	. = ..()
@@ -495,7 +495,7 @@
 	body_parts_covered = CHEST|GROIN
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
-	armor = ARMOR_CUIRASS // Identical to steel cuirass, but covering the groin instead of the vitals.
+	armor = ARMOR_PLATE // Identical to steel cuirass, but covering the groin instead of the vitals.
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL	// Identical to steel cuirasss. Same steel price.
 	allowed_sex = list(MALE, FEMALE)
 	armor_class = ARMOR_CLASS_MEDIUM
@@ -508,7 +508,7 @@
 	body_parts_covered = COVERAGE_VEST
 	icon_state = "cuirass"
 	item_state = "cuirass"
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	allowed_race = CLOTHED_RACES_TYPES
 	nodismemsleeves = TRUE
 	blocking_behavior = null
@@ -521,7 +521,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer
 	name = "fencer's cuirass"
 	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."
-	armor = ARMOR_CUIRASS		// Experimental.
+	armor = ARMOR_PLATE		// Experimental.
 	armor_class = ARMOR_CLASS_LIGHT
 	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL
 	smelt_bar_num = 1
@@ -621,7 +621,7 @@
 	desc = "Shingled copper disks, strapped together to ward the heart from harm. As discovered by its antiquital wearers, it is deceptively protective; yet, its straps can only sustain so much stress before snapping.."
 	icon_state = "copperchest"
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_DECREPIT
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/copper
 	body_parts_covered = CHEST
 	armor_class = ARMOR_CLASS_LIGHT
@@ -725,7 +725,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	equip_delay_self = 4 SECONDS
 	armor_class = ARMOR_CLASS_LIGHT
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_LEATHER
 	smeltresult = /obj/item/ingot/iron
 	smelt_bar_num = 2
 	blocksound = SOFTHIT
@@ -760,7 +760,7 @@
 	equip_delay_self = 4 SECONDS
 	max_integrity = 300
 	armor_class = ARMOR_CLASS_MEDIUM
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	smelt_bar_num = 2
 	smeltresult = /obj/item/ingot/steel
 	blocksound = PLATEHIT	

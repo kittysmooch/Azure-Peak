@@ -60,7 +60,7 @@
     armor = ARMOR_LEATHER
 
 /obj/item/clothing/suit/roguetown/armor/manual/pushups/leather/good
-    armor = ARMOR_LEATHER_GOOD
+    armor = ARMOR_LEATHER
 
 
 /*

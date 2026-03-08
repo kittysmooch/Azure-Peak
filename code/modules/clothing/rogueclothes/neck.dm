@@ -68,7 +68,7 @@
 	blocksound = SOFTHIT
 	body_parts_covered = NECK|MOUTH|NOSE|HAIR|EARS|HEAD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER //padded gambeson durability
-	armor = ARMOR_PADDED_GOOD //full padded gambeson basically
+	armor = ARMOR_PADDED //full padded gambeson basically
 	prevent_crits = PREVENT_CRITS_MOST
 	adjustable = CAN_CADJUST
 	toggle_icon_state = TRUE
@@ -119,7 +119,7 @@
 	blocksound = SOFTHIT
 	body_parts_covered = NECK
 	body_parts_inherent = NECK
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	sewrepair = TRUE
 	sellprice = 10
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
@@ -290,7 +290,7 @@
 	name = "bronze neckguard"
 	desc = "An interlinked veil of bronze plates, shielding the throat from terrible wounds since the dawn of tyme. Piercing blows may sunder the plate, but - as long as the alloy persists - so shall you."
 	icon_state = "bronzegorget"
-	armor = ARMOR_PLATE_BRONZE
+	armor = ARMOR_PLATE
 	prevent_crits = PREVENT_CRITS_ALL
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_SIDE_BRONZE
@@ -311,7 +311,7 @@
 	name = "neck protector"
 	icon_state = "copperneck"
 	desc = "A curved disk of copper, rounded out to cradle one's neck; vulnerable, but far better than nothing at all."
-	armor = ARMOR_PLATE_BAD
+	armor = ARMOR_PLATE
 	smeltresult = /obj/item/ingot/copper
 
 /obj/item/clothing/neck/roguetown/fencerguard

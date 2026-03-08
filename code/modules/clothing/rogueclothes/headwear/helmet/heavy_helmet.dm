@@ -22,7 +22,7 @@
 	item_state = "bronzebarbute"
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	armor = ARMOR_PLATE_BRONZE
+	armor = ARMOR_PLATE
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE

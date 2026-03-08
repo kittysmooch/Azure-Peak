@@ -58,7 +58,7 @@
 	desc = "A padded dressing made from the finest silks."
 	icon_state = "bliaut"
 	color = null
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTHIT
 	slot_flags = ITEM_SLOT_ARMOR

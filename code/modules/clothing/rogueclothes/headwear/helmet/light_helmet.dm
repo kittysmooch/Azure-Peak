@@ -123,7 +123,7 @@
 	sellprice = 15
 	body_parts_covered = HEAD|EARS|HAIR|NOSE
 	prevent_crits = PREVENT_CRITS_NONE
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_HIP
 	anvilrepair = null
 	smeltresult = null
@@ -137,7 +137,7 @@
 	icon_state = "spellcasterhat"
 	item_state = "spellcasterhat"
 	prevent_crits = PREVENT_CRITS_NONE
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
 	worn_x_dimension = 64
@@ -160,7 +160,7 @@
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	body_parts_covered = HEAD|HAIR|EARS
 	prevent_crits = PREVENT_CRITS_NONE
-	armor = ARMOR_SPELLSINGER // spellsinger hat stats
+	armor = ARMOR_LEATHER // spellsinger hat stats
 	sewrepair = TRUE
 	resistance_flags = FIRE_PROOF
 	var/picked = FALSE
@@ -267,7 +267,7 @@
 	desc = "A reinforced bamboo hat."
 	icon_state = "easthat"
 	item_state = "easthat"
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	blocksound = SOFTHIT
 	sewrepair = TRUE
