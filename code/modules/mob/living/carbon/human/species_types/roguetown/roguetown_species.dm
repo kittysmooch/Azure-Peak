@@ -56,8 +56,6 @@
 /datum/species/proc/handle_speech(datum/source, mob/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 
-	message = treat_message_accent(message, strings("accent_universal.json", "universal"), REGEX_FULLWORD)
-
 	message = autopunct_bare(message)
 
 	speech_args[SPEECH_MESSAGE] = trim(message)
