@@ -1,6 +1,12 @@
 /mob/living/carbon
 	blood_volume = BLOOD_VOLUME_NORMAL
 	gender = MALE
+	/// Cached total brute damage across all bodyparts, updated in updatehealth(). Compared against TOTAL_DAMAGE thresholds.
+	var/total_brute_death = 0
+	/// Cached total burn damage across all bodyparts, updated in updatehealth(). Compared against TOTAL_DAMAGE thresholds.
+	var/total_burn_death = 0
+	/// Cached chest max_damage for threshold calculations, updated in updatehealth()
+	var/chest_max_damage = 300
 	base_intents = list(INTENT_HELP, INTENT_HARM)
 	hud_possible = list(ANTAG_HUD)
 	has_limbs = 1
