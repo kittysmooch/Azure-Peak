@@ -16,6 +16,7 @@
 	max_pq = null
 
 	obsfuscated_job = TRUE
+	class_categories = TRUE
 
 	advclass_cat_rolls = list(CTAG_WRETCH = 20)
 	PQ_boost_divider = 10
@@ -43,8 +44,11 @@
 		/datum/advclass/wretch/plaguebearer,
 		/datum/advclass/wretch/pyromaniac,
 		/datum/advclass/wretch/vigilante,
-		/datum/advclass/wretch/blackoakwyrm,
-		/datum/advclass/wretch/munitioneer
+		/datum/advclass/wretch/munitioneer,
+		/datum/advclass/wretch/pariah,
+		/datum/advclass/wretch/heretic_spellblade,
+		/datum/advclass/wretch/ancient_spellblade,
+		/datum/advclass/wretch/ancient_deathknight
 	)
 
 /datum/job/roguetown/wretch/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

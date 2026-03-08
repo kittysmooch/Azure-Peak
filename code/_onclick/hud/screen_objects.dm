@@ -410,16 +410,16 @@
 			lol++
 			switch(lol)
 				if(1)
-					intent1 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, pixel_y = 16, layer = layer+0.02)
+					intent1 = image(icon=intenty.icon,icon_state=intenty.icon_state, pixel_x = 64, pixel_y = 16, layer = layer+0.02)
 					add_overlay(intent1, TRUE)
 				if(2)
-					intent2 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, pixel_y = 16, layer = layer+0.02)
+					intent2 = image(icon=intenty.icon,icon_state=intenty.icon_state, pixel_x = 96, pixel_y = 16, layer = layer+0.02)
 					add_overlay(intent2, TRUE)
 				if(3)
-					intent3 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 64, layer = layer+0.02)
+					intent3 = image(icon=intenty.icon,icon_state=intenty.icon_state, pixel_x = 64, layer = layer+0.02)
 					add_overlay(intent3, TRUE)
 				if(4)
-					intent4 = image(icon='icons/mob/roguehud.dmi',icon_state=intenty.icon_state, pixel_x = 96, layer = layer+0.02)
+					intent4 = image(icon=intenty.icon,icon_state=intenty.icon_state, pixel_x = 96, layer = layer+0.02)
 					add_overlay(intent4, TRUE)
 		if(ismob(usr))
 			var/mob/M = usr
@@ -635,12 +635,25 @@
 	var/list/modifiers = params2list(params)
 	if(isliving(usr))
 		var/mob/living/L = usr
-		L.playsound_local(L, 'sound/misc/click.ogg', 100)
 		if(modifiers["right"])
+			L.playsound_local(L, 'sound/misc/click.ogg', 100)
 			L.submit()
 		else if(modifiers["middle"])
+			if(L.mob_timers["complybutton"]) // I am fed up with trying to triage issues that new middle click code has. Here, have hacky workaround. - Zoktiik
+				if(world.time < (L.mob_timers["complybutton"] + 0.5 SECONDS))
+					return
+			L.mob_timers["complybutton"] = world.time
+			L.playsound_local(L, 'sound/misc/click.ogg', 100)
 			L.toggle_compliance()
+		else if(modifiers["shift"] && modifiers["left"])
+			to_chat(usr, span_info("* --- *\n\
+			Combat mode button.\n\
+			<b>Left click:</b> toggles combat mode at-will, allowing you to parry or dodge attacks. Usually costs energy (blue stamina) to keep active. Also allows some more destructive interactions with objects.\n\
+			<b>Right click:</b> makes you visibly surrender, showing a white flag above your head and rendering you temporarily unable to move or fight.\n\
+			<b>Middle click:</b> toggles compliance mode at-will, removing your defense against grapples and tackles. Also makes it faster to restrain and strip you.\n\
+			All of these have configurable keybinds; see the Keybinds settings in your preferences window."))
 		else
+			L.playsound_local(L, 'sound/misc/click.ogg', 100)
 			L.toggle_cmode()
 			update_icon()
 
@@ -1815,10 +1828,13 @@
 			to_chat(M, "<span class='info'>* --- *</span>")
 
 /mob/living/proc/swap_rmb_intent(type, num)
+	if(QDELETED(src))
+		return
 	if(!possible_rmb_intents?.len)
 		return
 	if(type)
 		if(type in possible_rmb_intents)
+			qdel(rmb_intent)
 			rmb_intent = new type()
 			if(hud_used?.rmb_intent)
 				hud_used.rmb_intent.update_icon()
@@ -1828,6 +1844,7 @@
 			return
 		var/A = possible_rmb_intents[num]
 		if(A)
+			qdel(rmb_intent)
 			rmb_intent = new A()
 			if(hud_used?.rmb_intent)
 				hud_used.rmb_intent.update_icon()
