@@ -866,7 +866,7 @@
 	body_parts_covered = CHEST
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE - 100 //Translates into 250 INT, or a little above Iron - and +100 INT over the Copper variant.
 	armor_class = ARMOR_CLASS_LIGHT
-	armor = list("blunt" = 75, "slash" = 75, "stab" = 75, "piercing" = 40, "fire" = 0, "acid" = 0) //Note; same as the Copper Heart Protector. Quite good, but strictly locked to the chest zone. Say goodbye to your entrails and crotch, if you aren't smart!
+	armor = ARMOR_CUIRASS // Same as Copper Heart Protector. Strictly locked to chest zone.
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/bronze
 	name = "bronze panoplic armor"
