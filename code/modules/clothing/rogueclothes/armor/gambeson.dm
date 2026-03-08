@@ -7,7 +7,6 @@
 	icon_state = "gambeson"
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	armor = ARMOR_PADDED
-	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
@@ -34,7 +33,6 @@
 	desc = "A collared jacket, purpose-woven for warfare. The flared collar and sleeves keep the wearer's dexterity from being mitigated, while its tighter presentation helps to ward off killing blows from afar."
 	icon_state = "dgamb"
 	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
-	prevent_crits = PREVENT_CRITS_MOST
 	color = null
 	chunkcolor = null
 	allowed_sex = list(MALE, FEMALE)
@@ -43,7 +41,6 @@
 	name = "stalker robe"
 	desc = "A thick robe in royal purple, befitting the hand, while remaining easy for them to slip about in.."
 	allowed_race = NON_DWARVEN_RACE_TYPES
-	prevent_crits = PREVENT_CRITS_MOST
 	icon_state = "shadowrobe"
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/light
@@ -51,7 +48,6 @@
 	desc = "A light and insulative jacket, hewn from cloth. Peasants tend to wear these in the colder months, though they've also been repurposed - by more desperate hands - as armor-padding."
 	armor = ARMOR_PADDED_BAD
 	max_integrity = ARMOR_INT_CHEST_LIGHT_BASE
-	prevent_crits = PREVENT_CRITS_NONE
 	sellprice = 10
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy
@@ -61,7 +57,6 @@
 	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	prevent_crits = PREVENT_CRITS_MOST
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy/silkjacket
 	name = "besilked jacket"
@@ -76,7 +71,6 @@
 	icon_state = "gambesonp"
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 25
 	color = "#976E6B"
 	var/shiftable = TRUE
@@ -162,7 +156,6 @@
 	var/shiftable = FALSE
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 35
-	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 25
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -281,7 +274,6 @@
 	armor = ARMOR_MAILLE
 	slot_flags = ITEM_SLOT_ARMOR
 	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL
-	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 250
 	shiftable = FALSE
 	unenchantable = TRUE

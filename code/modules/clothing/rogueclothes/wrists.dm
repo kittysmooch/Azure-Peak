@@ -120,7 +120,6 @@
 	material_category = ARMOR_MAT_PLATE
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/wrists/roguetown/bracers/paalloy
 	name = "ancient bracers"
@@ -136,7 +135,6 @@
 	smeltresult = /obj/item/ingot/bronze
 	armor = ARMOR_PLATE
 	max_integrity = ARMOR_INT_SIDE_BRONZE
-	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/wrists/roguetown/bracers/leather
 	name = "leather bracers"

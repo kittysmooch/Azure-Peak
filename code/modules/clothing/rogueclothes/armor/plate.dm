@@ -74,7 +74,6 @@
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
 	armor_class = ARMOR_CLASS_MEDIUM
-	prevent_crits = PREVENT_CRITS_ALL
 	boobed = FALSE
 	smelt_bar_num = 2
 
@@ -89,7 +88,6 @@
 	material_category = ARMOR_MAT_PLATE
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/suit/roguetown/armor/plate/paalloy
 	name = "ancient half-plate"
@@ -552,7 +550,6 @@
 	material_category = ARMOR_MAT_PLATE
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/paalloy
 	name = "ancient cuirass"

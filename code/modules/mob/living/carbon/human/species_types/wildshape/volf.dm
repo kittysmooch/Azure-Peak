@@ -93,7 +93,6 @@
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY
 	armor = ARMOR_LEATHER //It's literally a wolf, shouldn't be more than this
-	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE

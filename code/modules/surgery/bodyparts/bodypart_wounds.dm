@@ -147,12 +147,8 @@
 		if(BCLASS_PIERCE)
 			acheck_dflag = "piercing"
 	armor = owner.getarmor(zone_precise, acheck_dflag)
-	if(ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		if(human_owner.checkcritarmor(zone_precise, bclass) && armor)
-			do_crit = FALSE
-		if((owner.mind || HAS_TRAIT(owner, TRAIT_CRIT_THRESHOLD)) && (get_damage() <= (max_damage * CRIT_DISMEMBER_DAMAGE_THRESHOLD))) //No crits unless the damage is maxed out.
-			do_crit = FALSE // We used to check if they are buckled or lying down but being grounded is a big enough advantage.
+	if((owner.mind || HAS_TRAIT(owner, TRAIT_CRIT_THRESHOLD)) && (get_damage() <= (max_damage * CRIT_DISMEMBER_DAMAGE_THRESHOLD))) //No crits unless the limb is at 75%+ damage.
+		do_crit = FALSE
 	if(user)
 		if(user.goodluck(2))
 			dam += 10

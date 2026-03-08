@@ -41,7 +41,6 @@
 	material_category = ARMOR_MAT_CHAINMAIL
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
 	name = "ancient haubergeon"
@@ -95,7 +94,6 @@
 	material_category = ARMOR_MAT_CHAINMAIL
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy
 	name = "ancient hauberk"

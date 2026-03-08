@@ -643,7 +643,6 @@
 	desc = "Strange iridescent full plate. It reflects light as if covered in shiny oil."
 	icon_state = "dreamplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
-	prevent_crits = PREVENT_CRITS_ALL
 	item_flags = DREAM_ITEM
 	peel_threshold = 5
 
@@ -658,7 +657,6 @@
 	icon_state = "dreamlegs"
 	armor = ARMOR_PLATE_BSTEEL
 	item_flags = DREAM_ITEM
-	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/under/roguetown/platelegs/dreamwalker/Initialize()
 	. = ..()

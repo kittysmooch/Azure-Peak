@@ -126,7 +126,6 @@
 	material_category = ARMOR_MAT_CHAINMAIL
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/paalloy
 	name = "ancient chain kilt"

@@ -44,7 +44,6 @@
 	material_category = ARMOR_MAT_PLATE
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
-	prevent_crits = PREVENT_CRITS_NONE
 
 /obj/item/clothing/under/roguetown/platelegs/paalloy
 	name = "ancient plate chausses"
@@ -69,7 +68,6 @@
 	name = "gilded leggings"
 	desc = "But my outside to behold:"
 	icon_state = "matthioslegs"
-	prevent_crits = PREVENT_CRITS_ALL
 	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize()
@@ -90,7 +88,6 @@
 	desc = "An unstemmable cognitovirus, laminated into thrice-parted leggings worn by only the truest - those, anointed by the Dame of Progress. In Her name."
 	icon_state = "zizocloth"
 	armor = ARMOR_PLATE_BSTEEL
-	prevent_crits = PREVENT_CRITS_ALL
 
 /obj/item/clothing/under/roguetown/platelegs/zizo/Initialize()
 	. = ..()

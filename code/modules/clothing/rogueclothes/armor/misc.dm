@@ -59,7 +59,6 @@
 	icon_state = "bliaut"
 	color = null
 	armor = ARMOR_LEATHER
-	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTHIT
 	slot_flags = ITEM_SLOT_ARMOR
 	blade_dulling = DULLING_BASHCHOP

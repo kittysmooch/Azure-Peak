@@ -131,7 +131,6 @@
 	icon_state = "dwarfchest"
 	item_state = "dwarfchest"
 	armor = ARMOR_PLATE_BSTEEL
-	prevent_crits = PREVENT_CRITS_NONE
 	body_parts_covered = CHEST|GROIN|VITALS|ARMS|LEGS
 	equip_delay_self = 5 SECONDS
 	unequip_delay_self = 5 SECONDS
@@ -159,7 +158,6 @@
 	desc = "A hardy, layered helmet. It lets one's dwarvenly beard to poke out."
 	body_parts_covered = (HEAD | MOUTH | NOSE | EYES | EARS | NECK)	//This specifically omits hair so you could hang your beard out of the helm
 	armor = ARMOR_PLATE_BSTEEL
-	prevent_crits = PREVENT_CRITS_NONE
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
@@ -190,7 +188,6 @@
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
-	prevent_crits = PREVENT_CRITS_NONE
 	icon_state = "dwarfhand"
 	item_state = "dwarfhand"
 	armor = ARMOR_PLATE_BSTEEL
@@ -206,7 +203,6 @@
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
-	prevent_crits = PREVENT_CRITS_NONE
 	icon_state = "dwarfshoe"
 	item_state = "dwarfshoe"
 	armor = ARMOR_PLATE_BSTEEL

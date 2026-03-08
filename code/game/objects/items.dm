@@ -692,10 +692,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					count++
 			inspec += "</td>"
 			inspec += "<br>"
-			if(!C.prevent_crits)
-				inspec += "\n<b><font color = '#aa2121'>CRIT SUSCEPTIBLE!</font></b>"
-			if(C.prevent_crits == PREVENT_CRITS_ALL)
-				inspec += "\n<b><font color = '#6890a7'>PICK RESISTANT!</font></b>"
 			inspec += "</tr></table>"
 			if(C.body_parts_inherent)
 				inspec += "<b>CANNOT BE PEELED: </b>"

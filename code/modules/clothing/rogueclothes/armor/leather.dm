@@ -4,7 +4,6 @@
 	icon_state = "roguearmor"
 	body_parts_covered = COVERAGE_TORSO
 	armor = ARMOR_LEATHER
-	prevent_crits = PREVENT_CRITS_NONE
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -94,7 +93,6 @@
 	item_state = "studleather"
 	blocksound = SOFTHIT
 	armor = ARMOR_LEATHER
-	prevent_crits = PREVENT_CRITS_MOST
 	nodismemsleeves = TRUE
 	body_parts_covered = COVERAGE_TORSO
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
@@ -134,7 +132,6 @@
 	item_state = "leather_armor"
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
-	prevent_crits = PREVENT_CRITS_MOST
 	sellprice = 20
 	color = "#7D6653"
 
@@ -280,7 +277,6 @@
 	item_state = "vest"
 	color = "#514339"
 	armor = ARMOR_CLOTHING
-	prevent_crits = list(BCLASS_CUT)
 	blocksound = SOFTHIT
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	blade_dulling = DULLING_BASHCHOP

@@ -9,7 +9,6 @@
 	body_parts_inherent = FULL_BODY
 	//slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	armor = ARMOR_GNOLL_STANDARD
-	prevent_crits = PREVENT_CRITS_ALL
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE

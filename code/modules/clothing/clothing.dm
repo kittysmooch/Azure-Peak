@@ -26,7 +26,6 @@
 	var/cooldown = 0
 
 	var/emote_environment = -1
-	var/prevent_crits = PREVENT_CRITS_MOST
 	var/clothing_flags = NONE
 	var/stack_fovs = FALSE
 
@@ -582,10 +581,10 @@ BLIND     // can't see anything
 	. = ..()
 
 
-/obj/proc/generate_tooltip(examine_text, showcrits)
+/obj/proc/generate_tooltip(examine_text)
 	return examine_text
 
-/obj/item/clothing/generate_tooltip(examine_text, showcrits)
+/obj/item/clothing/generate_tooltip(examine_text)
 	if(!armor)	// No armor
 		return examine_text
 
@@ -599,14 +598,6 @@ BLIND     // can't see anything
 	str += "[colorgrade_rating("🪓 SLASH", armor.slash, elaborate = TRUE)] | "
 	str += "[colorgrade_rating("🗡️ STAB", armor.stab, elaborate = TRUE)] | "
 	str += "[colorgrade_rating("🏹 PIERCE", armor.piercing, elaborate = TRUE)]"
-
-	if(showcrits)
-		if(!prevent_crits)
-			str += "<text-align: center>"
-			str += "<b><font color = '#aa2121'>CRIT SUSCEPTIBLE!</font></b>"
-		else if(prevent_crits == PREVENT_CRITS_ALL)
-			str += "<text-align: center>"
-			str += "<b><font color = '#6890a7'>PICK RESISTANT</font></b>"
 
 	//This makes it appear darker than the rest of examine text. Draws the cursor to it like to a Wetsquires.rt link.
 	examine_text = "<font color = '#808080'>[examine_text]</font>"
