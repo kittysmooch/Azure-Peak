@@ -441,7 +441,7 @@
 	icon_state = "inpick"
 	attack_verb = list("picks","impales")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
-	penfactor = 60
+	penfactor = PEN_BSTEEL
 	animname = "strike"
 	item_d_type = "stab"
 	blade_class = BCLASS_PICK
@@ -470,7 +470,7 @@
 	icon_state = "inpick"
 	attack_verb = list("stabs", "impales")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 60
+	penfactor = PEN_BSTEEL
 	damfactor = 1.1
 	clickcd = CLICK_CD_CHARGED
 	releasedrain = 4
