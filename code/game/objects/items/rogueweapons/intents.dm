@@ -46,7 +46,7 @@
 	/// Multiplied damage modifier.
 	var/damfactor = 1
 	/// Multiplied armour penetration modifier.
-	var/penfactor = 0
+	var/penfactor = PEN_NONE
 	/// Whether the intent itself has integrity damage modifier. Used for rend.
 	var/intent_intdamage_factor = 1
 	/// Intent's demolition mod. Applied to structures / objects and shields.
@@ -688,7 +688,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
-	penfactor = 0
+	penfactor = PEN_NONE
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
@@ -707,7 +707,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
 	chargetime = 0
-	penfactor = 0
+	penfactor = PEN_NONE
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
@@ -722,7 +722,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = list("genchop", "genslash")
 	chargetime = 0
-	penfactor = 0
+	penfactor = PEN_NONE
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE
@@ -736,7 +736,7 @@
 	blade_class = BCLASS_CUT
 	hitsound = list("genthrust", "genstab")
 	chargetime = 0
-	penfactor = 0
+	penfactor = PEN_NONE
 	swingdelay = 3
 	candodge = TRUE
 	canparry = TRUE

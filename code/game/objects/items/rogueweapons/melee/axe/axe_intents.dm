@@ -7,7 +7,7 @@
 	attack_verb = list("cuts", "slashes")
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	animname = "cut"
-	penfactor = 0
+	penfactor = PEN_NONE
 	damfactor = 1.3
 	demolition_mod = 2
 	clickcd = CLICK_CD_HEAVY
@@ -46,7 +46,7 @@
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 0 
+	penfactor = PEN_NONE 
 	damfactor = 0.9 //Lesser variant of the Stab intent for battle axes that have spikes on them. Mordhau-maxxing, as it were.
 	chargetime = 0
 	swingdelay = 0

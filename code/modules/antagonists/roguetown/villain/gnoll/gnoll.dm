@@ -97,7 +97,7 @@
 	icon_state = "insmash"
 	maxrange = 5
 	chargetime = 1
-	penfactor = 0
+	penfactor = PEN_NONE
 
 /datum/intent/simple/gnoll_cut
 	name = "cutting claw"

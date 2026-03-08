@@ -299,7 +299,7 @@
 	movingreload = TRUE
 	onehanded = TRUE
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
-	penfactor = 0.5		//Bolts have 50 pen, this decreases to 25. Should only pen armor with less than 67 protection.
+	penfactor = PEN_NONE.5		//Bolts have 50 pen, this decreases to 25. Should only pen armor with less than 67 protection.
 	w_class = WEIGHT_CLASS_SMALL
 	wdefense = 2
 	max_integrity = 80
