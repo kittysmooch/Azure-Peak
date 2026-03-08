@@ -40,7 +40,7 @@
 //T0: Graggar cuffbreak
 /obj/effect/proc_holder/spell/self/graggar_chainbreak
 	name = "Break the Chains"
-	desc = "Burn off your restraints with divine intervention."
+	desc = "Snap off your restraints with unholy help."
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "breakchains"
