@@ -65,6 +65,10 @@
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	prevent_crits = PREVENT_CRITS_NONE
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi' //Uses the new 'greatplume + orle' system. If this glitches out, I made sure to include a fully-prepared 32x32 version - with details - in head.dmi.
+	bloody_icon = 'icons/effects/blood64.dmi'
 
 /obj/item/clothing/head/roguetown/helmet/heavy/aalloy/attackby(obj/item/W, mob/living/user, params)
 	..()
@@ -324,6 +328,10 @@
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = null
 	prevent_crits = PREVENT_CRITS_NONE
+	worn_x_dimension = 64
+	worn_y_dimension = 64
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi' //Uses the new 'greatplume + orle' system. If this glitches out, I made sure to include a fully-prepared 32x32 version - with details - in head.dmi.
+	bloody_icon = 'icons/effects/blood64.dmi'
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/paalloy
 	name = "ancient bascinet"
