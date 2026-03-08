@@ -244,7 +244,7 @@
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 15
+	penfactor = PEN_NONE
 	damfactor = 1.3
 	swingdelay = 5
 	clickcd = CLICK_CD_QUICK
@@ -292,7 +292,7 @@
 	animname = "chop"
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	penfactor = 15
+	penfactor = PEN_NONE
 	damfactor = 1.3
 	swingdelay = 5
 	clickcd = CLICK_CD_QUICK

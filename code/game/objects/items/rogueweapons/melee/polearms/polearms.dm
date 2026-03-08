@@ -355,7 +355,7 @@
 	desc = "A rapid jab from one hand. Fast with long range, but unable to penetrate armor."
 	reach = 2
 	clickcd = CLICK_CD_QUICK // capture that nimble feel
-	penfactor = 15
+	penfactor = PEN_NONE
 	damfactor = 1
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
