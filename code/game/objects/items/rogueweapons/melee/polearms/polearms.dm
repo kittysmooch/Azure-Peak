@@ -47,7 +47,7 @@
 	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
 
 /datum/intent/spear/thrust/militia
-	penfactor = 40
+	penfactor = PEN_MEDIUM
 
 /datum/intent/spear/thrust/pike		//EXPERIMENTAL
 	name = "pike thrust"
@@ -64,7 +64,7 @@
 	clickcd = CLICK_CD_HEAVY + 4
 	swingdelay = 6
 	damfactor = 1.5
-	penfactor = 35
+	penfactor = PEN_MEDIUM
 	max_intent_damage = 54
 	reach = 2
 	effective_range = 2
