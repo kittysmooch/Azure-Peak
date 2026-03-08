@@ -420,7 +420,7 @@
 /datum/intent/stab/militia
 	name = "militia stab"
 	damfactor = 1.1
-	penfactor = 50
+	penfactor = PEN_HEAVY
 
 /datum/intent/pick //now like icepick intent, we really went in a circle huh
 	name = "pick"

@@ -345,7 +345,7 @@
 	desc = "A quick, nimble two-handed thrust. Keeps reach but lacks the power to pierce armor."
 	reach = 2
 	clickcd = CLICK_CD_QUICK // Long range, quick poke, NO AP
-	penfactor = 5
+	penfactor = PEN_NONE
 	damfactor = 1
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
