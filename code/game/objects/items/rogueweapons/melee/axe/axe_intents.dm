@@ -7,10 +7,10 @@
 	attack_verb = list("cuts", "slashes")
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	animname = "cut"
-	penfactor = PEN_NONE
+	penfactor = PEN_LIGHT
 	damfactor = 1.3
-	demolition_mod = 2
-	clickcd = CLICK_CD_HEAVY
+	demolition_mod = 2.5
+	clickcd = CLICK_CD_CHARGED // Shield DPS: 10 / 1.4 = 8.9. Will out DPS sword no matter what.
 	chargetime = 0
 	item_d_type = "slash"
 
@@ -21,11 +21,11 @@
 	attack_verb = list("chops", "hacks")
 	animname = "chop"
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 25
-	damfactor = 1.3
-	demolition_mod = 4
+	penfactor = PEN_MEDIUM
+	damfactor = 1.5
+	demolition_mod = 5
 	swingdelay = 6
-	clickcd = CLICK_CD_HEAVY
+	clickcd = CLICK_CD_CHARGED // Effective Shield DPS: 25 / 2.4 = 10.4
 	item_d_type = "slash"
 
 /datum/intent/axe/chop/scythe
@@ -34,10 +34,9 @@
 /datum/intent/axe/chop/stone
 	penfactor = PEN_NONE
 
-/datum/intent/axe/chop/halberd
-	damfactor = 1.35
-	swingdelay = 12
-	penfactor = PEN_MEDIUM // An exception - since the delay is so high. Vs Padded.
+/datum/intent/axe/halberd
+	damfactor = 1.3
+	reach = 2
 
 /datum/intent/axe/thrust
 	name = "stab"
