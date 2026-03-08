@@ -584,7 +584,7 @@
 	misscost = 5
 	releasedrain = 4	//More than punch cus pen factor.
 	swingdelay = 0
-	penfactor = 10
+	penfactor = PEN_NONE
 	candodge = TRUE
 	canparry = TRUE
 	blade_class = BCLASS_CUT
@@ -674,7 +674,7 @@
 	blade_class = BCLASS_BLUNT
 	hitsound = "punch_hard"
 	chargetime = 0
-	penfactor = 10
+	penfactor = PEN_NONE
 	swingdelay = 0
 	candodge = TRUE
 	canparry = TRUE
