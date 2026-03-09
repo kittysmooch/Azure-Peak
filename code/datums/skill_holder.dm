@@ -343,7 +343,7 @@
 					var/sleep_xp = sadv.get_sleep_xp(i.type)
 					var/needed_xp = sadv.get_requried_sleep_xp_for_skill(i.type, 1)
 					if(needed_xp > 0)
-						percent = clamp(round(sleep_xp * 100 / needed_xp), 0, 100)
+						percent = clamp(round(sleep_xp * 100 / needed_xp), 0, 200)
 			else
 				// Below Apprentice, XP is tracked directly on skill_experience
 				var/list/brackets = get_xp_brackets(skill_level)
