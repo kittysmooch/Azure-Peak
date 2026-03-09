@@ -135,7 +135,7 @@
 	throwforce = 32 //You ever had an axe thrown at you? 
 	throw_speed = 6 //Batarangs, baby.
 	max_integrity = 50 //Brittle design, hits hard, breaks quickly.
-	armor_penetration = 40 //On-par with steel tossblades. 
+	armor_penetration = PEN_MEDIUM //On-par with steel tossblades.
 	wdefense = 1
 	icon_state = "hurlbat"
 	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 50, "embedded_fall_chance" = 30) //high chance at embed, high chance to fall out on its own.
@@ -196,7 +196,7 @@
 	smeltresult = /obj/item/ingot/copper
 	throwforce = 20 //You ever had an axe thrown at you? 
 	throw_speed = 3 
-	armor_penetration = 20
+	armor_penetration = PEN_LIGHT
 
 /obj/item/rogueweapon/stoneaxe/handaxe
 	name = "hatchet"
@@ -219,7 +219,7 @@
 	grid_height = 96 //Can be stowed in the belt as a larger - if slightly more intimidating - counterpart to the Hunting Knife.
 	grid_width = 32
 	throw_speed = 3 
-	armor_penetration = 25
+	armor_penetration = PEN_LIGHT
 
 /obj/item/rogueweapon/stoneaxe/woodcut/bronze
 	name = "bronze axe"
@@ -230,7 +230,7 @@
 	max_blade_int = 550
 	smeltresult = /obj/item/ingot/bronze
 	wdefense = 2
-	armor_penetration = 22 //In-between a hurblat and hatchet. Far harder to reproduce.
+	armor_penetration = PEN_LIGHT //In-between a hurblat and hatchet. Far harder to reproduce.
 	throwforce = 32
 	throw_speed = 6
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
@@ -247,7 +247,7 @@
 	smeltresult = /obj/item/ingot/bronze
 	minstr = 8
 	wdefense = 4
-	armor_penetration = 22 //In-between a hurblat and hatchet. Far harder to reproduce.
+	armor_penetration = PEN_LIGHT //In-between a hurblat and hatchet. Far harder to reproduce.
 	throwforce = 32
 	throw_speed = 6
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
@@ -492,7 +492,7 @@
 	wdefense = 7
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/bronze
-	armor_penetration = 16
+	armor_penetration = PEN_NONE
 	throwforce = 32
 	throw_speed = 3
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)

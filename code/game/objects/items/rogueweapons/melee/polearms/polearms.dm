@@ -400,7 +400,7 @@
 	thrown_bclass = BCLASS_STAB
 	throwforce = 22
 	resistance_flags = FLAMMABLE
-	armor_penetration = 0
+	armor_penetration = PEN_NONE
 
 /obj/item/rogueweapon/spear/trainer
 	name = "sparring spear"
@@ -1048,7 +1048,7 @@
 	throwforce = 30
 	icon_state = "bronzespear"
 	smeltresult = /obj/item/ingot/bronze
-	armor_penetration = 22 //In-between a spear and javelin.
+	armor_penetration = PEN_LIGHT //In-between a spear and javelin.
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 33, "embedded_fall_chance" = 2)
 	max_blade_int = 225
 	max_integrity = 155

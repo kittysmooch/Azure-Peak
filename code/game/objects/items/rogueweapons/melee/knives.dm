@@ -549,7 +549,7 @@
 	force = 30 //The only instance of this dagger existing, outside of special admin-ran events, is when the Priest joins. They spawn with this on their person. Should be safe from Judgement-tier thefts.
 	throwforce = 33
 	throw_speed = 3
-	armor_penetration = 50 //Only accounted for when thrown. Plays into the idea of 'divine intervention' - a literal 'hail mary' when facing down a terrible beast.
+	armor_penetration = PEN_HEAVY //Only accounted for when thrown. Plays into the idea of 'divine intervention' - a literal 'hail mary' when facing down a terrible beast.
 	embedding = list("embedded_pain_multiplier" = 1, "embed_chance" = 99, "embedded_fall_chance" = 0) //The 'last resort' for a Bishop. Ensures penetration and embedding, at the cost of the dagger itself.
 	max_integrity = 222
 	max_blade_int = 333
@@ -1034,7 +1034,7 @@
 	throwforce = 22
 	throw_speed = 4
 	max_integrity = 50
-	armor_penetration = 30
+	armor_penetration = PEN_MEDIUM
 	wdefense = 1
 	icon_state = "throw_knifei"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 25, "embedded_fall_chance" = 10)
@@ -1073,7 +1073,7 @@
 	item_state = "bone_dagger"
 	throwforce = 28
 	max_integrity = 100
-	armor_penetration = 40
+	armor_penetration = PEN_MEDIUM
 	icon_state = "throw_knifes"
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 30, "embedded_fall_chance" = 5)
 	sellprice = 2
@@ -1089,7 +1089,7 @@
 	item_state = "bone_dagger"
 	force = 10
 	throwforce = 20
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	max_integrity = 150
 	wdefense = 3
 	icon_state = "throw_knifesil"
@@ -1114,7 +1114,7 @@
 	item_state = "bone_dagger"
 	force = 10
 	throwforce = 20
-	armor_penetration = 50
+	armor_penetration = PEN_HEAVY
 	max_integrity = 150
 	wdefense = 3
 	icon_state = "throw_knifep"
