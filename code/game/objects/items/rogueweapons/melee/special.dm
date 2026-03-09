@@ -909,6 +909,7 @@
 			Few shamen hold the strength to wield it, and fewer will speak of what they, alone, know - the true fate of the Weeping Father. \
 			'Here we stand, to turn and face the odds; sacrifice yourself, or bow to lesser gods!'"
 	smeltresult = /obj/item/ingot/silver
+	icon_state = "silverclaws"
 	wdefense = 5
 	max_blade_int = 300
 	max_integrity = 225
