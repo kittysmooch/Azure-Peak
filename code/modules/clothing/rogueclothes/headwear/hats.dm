@@ -296,6 +296,7 @@
 	armor = ARMOR_LEATHER
 	body_parts_covered = HEAD|HAIR|EARS
 	sewrepair = TRUE
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/head/roguetown/inqhat/gravehat
 	name = "gravetender's hat"
