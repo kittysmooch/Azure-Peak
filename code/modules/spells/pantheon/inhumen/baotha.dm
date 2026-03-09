@@ -87,7 +87,6 @@
 	)
 
 /obj/effect/proc_holder/spell/self/bless_drink/cast(list/targets, mob/living/user)
-	. = ..()
 	if(!ishuman(user))
 		revert_cast()
 		return FALSE
@@ -108,7 +107,7 @@
 		revert_cast()
 		to_chat(user, span_info("This is already blessed!"))
 		return FALSE
-		
+
 	var/dur = duration * user.get_skill_level(associated_skill)
 	var/printed_dur = round(dur / 600)
 	if(target_container.set_infinite(user, dur))
