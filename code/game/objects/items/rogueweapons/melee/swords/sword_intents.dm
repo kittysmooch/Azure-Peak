@@ -97,7 +97,7 @@
 	attack_verb = list("masterfully tears", "artfully slits", "adroitly hacks")
 	damfactor = 1.01
 	penfactor = 50
-	max_intent_damage = 35
+	max_intent_damage = 31
 	swingdelay = 1
 
 /datum/intent/sword/thrust/long/master
