@@ -335,14 +335,24 @@
 		else if(is_legendary)
 			progress_col = "<span style='color: #555555;'>---</span>"
 		else
-			var/list/brackets = get_xp_brackets(skill_level)
-			var/current_xp = skill_experience[i]
-			var/bracket_start = brackets[1]
-			var/bracket_end = brackets[2]
-			var/bracket_range = bracket_end - bracket_start
 			var/percent = 0
-			if(bracket_range > 0)
-				percent = clamp(round((current_xp - bracket_start) * 100 / bracket_range), 0, 100)
+			if(skill_level >= SKILL_LEVEL_APPRENTICE)
+				// Apprentice+ uses sleep XP system for progression
+				var/datum/sleep_adv/sadv = current?.mind?.sleep_adv
+				if(sadv)
+					var/sleep_xp = sadv.get_sleep_xp(i.type)
+					var/needed_xp = sadv.get_requried_sleep_xp_for_skill(i.type, 1)
+					if(needed_xp > 0)
+						percent = clamp(round(sleep_xp * 100 / needed_xp), 0, 100)
+			else
+				// Below Apprentice, XP is tracked directly on skill_experience
+				var/list/brackets = get_xp_brackets(skill_level)
+				var/current_xp = skill_experience[i]
+				var/bracket_start = brackets[1]
+				var/bracket_end = brackets[2]
+				var/bracket_range = bracket_end - bracket_start
+				if(bracket_range > 0)
+					percent = clamp(round((current_xp - bracket_start) * 100 / bracket_range), 0, 100)
 			var/pct_color = get_progress_color(percent)
 			progress_col = "<span style='color: [pct_color];'>[percent]%</span>"
 
