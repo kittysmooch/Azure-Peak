@@ -170,32 +170,6 @@
 /datum/intent/sword/strike/bad
 	damfactor = 0.7 
 
-/datum/intent/sword/peel
-	name = "armor peel"
-	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>peels</font>")
-	animname = "cut"
-	blade_class = BCLASS_PEEL
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	chargetime = 0
-	penfactor = PEN_NONE
-	swingdelay = 0
-	damfactor = 0.01
-	item_d_type = "slash"
-	peel_divisor = 4
-
-/datum/intent/sword/peel/light
-	name = "light peel"
-	peel_divisor = 5
-
-/datum/intent/sword/peel/big
-	name = "big sword armor peel"
-	reach = 2
-	peel_divisor = 5
-
-/datum/intent/sword/peel/weak
-	name = "weak armor peel"
-	peel_divisor = 8
 
 /datum/intent/sword/chop
 	name = "chop"
@@ -215,8 +189,12 @@
 /datum/intent/sword/chop/long
 	reach = 2
 
+/datum/intent/sword/cut/long
+	clickcd = CLICK_CD_QUICK // Longsword 2H cut — faster than default, no extra damage
+
 /datum/intent/sword/cut/falx
 	penfactor = PEN_LIGHT
+	clickcd = CLICK_CD_QUICK
 
 /datum/intent/sword/chop/falx
 	penfactor = PEN_MEDIUM
