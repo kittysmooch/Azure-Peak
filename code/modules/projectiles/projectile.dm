@@ -163,8 +163,6 @@
 	var/max_range = 0
 	/// Falloff factor for damage. Multiplicative.
 	var/dam_falloff_factor = 1
-	/// Falloff factor for AP. Multiplicative.
-	var/ap_falloff_factor = 1
 
 /obj/projectile/proc/handle_drop()
 	return
@@ -431,8 +429,6 @@
 	if(check_range(T))
 		if(damage)
 			damage = round(damage * dam_falloff_factor)
-		if(armor_penetration)
-			armor_penetration = round(armor_penetration * ap_falloff_factor)
 
 	if(QDELETED(src) || !T || !target)		//We're done, nothing's left.
 		if((qdel_self == FORCE_QDEL) || ((qdel_self == QDEL_SELF) && !temporary_unstoppable_movement && !CHECK_BITFIELD(movement_type, UNSTOPPABLE)))
