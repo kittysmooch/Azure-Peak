@@ -941,6 +941,16 @@
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/stake
 	craftdiff = 5
 
+/datum/anvil_recipe/weapons/silver/katar
+	name = "Katar, Silver"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/rogueweapon/katar/silver
+
+/datum/anvil_recipe/weapons/silver/knuckle
+	name = "Knuckledusters, Silver"
+	req_bar = /obj/item/ingot/silver
+	created_item = /obj/item/rogueweapon/knuckles/silver
+
 /datum/anvil_recipe/weapons/silver/sword
 	name = "Arming Sword, Silver (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
@@ -952,6 +962,12 @@
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/rapier/silver
+
+/datum/anvil_recipe/weapons/silver/claws
+	name = "Handclaws, Silver (+1 Silver, +1 Cured Leather)"
+	req_bar = /obj/item/ingot/silver
+	additional_items = list(/obj/item/ingot/silver, /obj/item/natural/hide/cured)
+	created_item = /obj/item/rogueweapon/handclaw/gronn/silver
 
 /datum/anvil_recipe/weapons/silver/scabbard
 	name = "Scabbard, Silver-Decorated (+1 Sword's Scabbard)"
@@ -1049,7 +1065,7 @@
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/silver
-	createditem_num = 4
+	createditem_num = 2
 
 
 // SHIELDS
