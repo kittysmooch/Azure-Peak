@@ -34,7 +34,7 @@
 /datum/intent/axe/chop/stone
 	penfactor = PEN_NONE
 
-/datum/intent/axe/halberd
+/datum/intent/axe/chop/halberd
 	damfactor = 1.3
 	reach = 2
 
