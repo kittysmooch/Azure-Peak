@@ -15,7 +15,7 @@
 	damage = 25
 	name = "ray of holy fire"
 	damage_type = BURN
-	flag = "magic"
+	flag = "fire"
 	light_color = "#a98107"
 	light_outer_range = 7
 	tracer_type = /obj/effect/projectile/tracer/solar_beam

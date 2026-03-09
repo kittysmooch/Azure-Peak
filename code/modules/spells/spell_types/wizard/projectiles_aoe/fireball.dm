@@ -33,9 +33,9 @@
 	damage = 40
 	damage_type = BURN
 	npc_simple_damage_mult = 3 // 1 shotting crawlers is cool. intentionally different from other fireballs due to arcyne mark disparity
-	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
+	accuracy = 40
 	nodamage = FALSE
-	flag = "magic"
+	flag = "fire"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 

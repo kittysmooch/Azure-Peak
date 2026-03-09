@@ -6,7 +6,8 @@
 // If penfactor > armor tier: 100% of damage penetrates armor.
 // If penfactor == armor tier: 20% of damage penetrates armor.
 // If penfactor < armor tier: fully blocked (0 through).
-// Blunt uses DR tiers and is never penetrated — damage multiplied by 1 / (1 + 0.2 * DR tier).
+// Blunt uses DR Absorb — damage multiplied by 1 / (1 + 0.2 * DR tier), all absorbed by armor (none to HP).
+// Fire/Acid use DR Pierce — same DR formula, but reduced damage still hits HP.
 
 // Penetration tiers (0-4). Weapon attacks.
 #define PEN_NONE			0	// No penetration. Training weapons, base cuts/chops.
@@ -22,9 +23,10 @@
 #define DBLOCK_HEAVY		3	// Brigandine, mail, cuirass, plate.
 #define DBLOCK_BSTEEL		4	// Blacksteel, antagonist.
 
-// Blunt damage reduction tiers (0-5). Independent scale.
+// Damage reduction tiers (0-5). Used by blunt (absorb), fire, acid (pierce).
 // Note that blunt by default have 1.6x Integrity Multiplier.
 // Damage multiplier = 1 / (1 + 0.2 * tier)
+// Blunt: all damage absorbed by armor. Fire/Acid: reduced damage still hits HP.
 #define DR_NONE				0	// Nothing. 100% damage. EDPS: 160%
 #define DR_LIGHT			1	// Plate / Metal. 20% EHP increase. EDPS: 133%
 #define DR_MEDIUM			2	// Mail. 40% EHP increase. EDPS: 114%
@@ -33,7 +35,11 @@
 #define DR_ULTRA			5	// Best quality light armor. 100% EHP increase. EDPS: 80%
 
 // Armor damage type categories
-// DR types use damage reduction (multiplier). DBLOCK types use tier pass/fail penetration.
+// DR Absorb: damage reduced by tier, ALL damage goes to armor integrity (none to HP). Blunt.
+// DR Pierce: damage reduced by tier, reduced damage STILL hits HP. Armor also takes integrity damage. Fire, acid.
+// DBLOCK: tier pass/fail penetration system. Slash, stab, piercing.
+#define ARMOR_DR_ABSORB_TYPES list("blunt")
+#define ARMOR_DR_PIERCE_TYPES list("fire", "acid")
 #define ARMOR_DR_TYPES list("blunt", "fire", "acid")
 #define ARMOR_DBLOCK_TYPES list("slash", "stab", "piercing")
 

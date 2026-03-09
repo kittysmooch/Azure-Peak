@@ -121,7 +121,7 @@
 	icon_state = "lavastaff"
 	damage = 15
 	damage_type = BURN
-	flag = "magic"
+	flag = "fire"
 	dismemberment = 50
 	nodamage = FALSE
 
@@ -141,7 +141,7 @@
 	damage_type = BURN
 	nodamage = FALSE
 	armor_penetration = PEN_NONE
-	flag = "magic"
+	flag = "fire"
 	hitsound = 'sound/blank.ogg'
 
 /obj/projectile/magic/arcane_barrage/on_hit(target)
@@ -286,7 +286,7 @@
 	icon_state = "xray"
 	damage = 10
 	damage_type = BURN
-	flag = "magic"
+	flag = "fire"
 	range = 15
 
 /obj/projectile/magic/sickness/on_hit(atom/target, blocked = FALSE)

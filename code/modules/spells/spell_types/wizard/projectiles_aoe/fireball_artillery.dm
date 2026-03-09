@@ -44,9 +44,9 @@
 	damage = 50 // 10 less damage than actual fireball on direct fire
 	damage_type = BURN
 	npc_simple_damage_mult = 2 // HAHAHA
-	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
+	accuracy = 40
 	nodamage = FALSE
-	flag = "magic"
+	flag = "fire"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 
