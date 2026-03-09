@@ -978,9 +978,9 @@
 	created_item = /obj/item/rogueweapon/sword/long/kriegmesser/silver
 
 /datum/anvil_recipe/weapons/silver/greatsword
-	name = "Greatsword, Silver (+4 Silver, +1 Small Log)"
+	name = "Greatsword, Silver (+3 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greatsword/silver
 
 /datum/anvil_recipe/weapons/silver/waraxe
@@ -990,9 +990,9 @@
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/silver
 
 /datum/anvil_recipe/weapons/silver/poleaxe
-	name = "Poleaxe, Silver (+3 Silver, +2 Small Logs)"
+	name = "Poleaxe, Silver (+2 Silver, +2 Small Logs)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/greataxe/silver
 
 /datum/anvil_recipe/weapons/silver/mace
@@ -1002,9 +1002,9 @@
 	created_item = /obj/item/rogueweapon/mace/steel/silver
 
 /datum/anvil_recipe/weapons/silver/flangedmace
-	name = "Flanged Mace, Silver (+2 Silver, +1 Small Log)"
+	name = "Flanged Mace, Silver (+1 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/cudgel/flanged/silver
 
 /datum/anvil_recipe/weapons/silver/warhammer
