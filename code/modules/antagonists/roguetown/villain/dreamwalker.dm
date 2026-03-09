@@ -120,8 +120,6 @@
 	var/process_interval = 5 SECONDS
 	/// Time of last processing
 	var/last_process = 0
-	var/next_armor_peel_process = 0
-	var/next_armor_peel_interval = 1 MINUTES
 
 /datum/component/dreamwalker_repair/Initialize()
 	if(!ishuman(parent))
@@ -157,15 +155,6 @@
 			I.update_icon()
 		if(I.blade_int < I.max_blade_int)
 			I.add_bintegrity(min(I.blade_int + I.max_blade_int * 0.01, I.max_blade_int), src.parent) // Sharpen 1% of max sharpness
-
-	if(world.time >= next_armor_peel_process)
-		next_armor_peel_process = world.time + next_armor_peel_interval
-
-		for(var/obj/item/I in repairing_items)
-			if(istype(I, /obj/item/clothing) && I.peel_count > 0)
-				I.peel_count--
-				I.visible_message(span_notice("The dream energies snap a peeled layer of [I] back in place."))
-				break
 
 /datum/component/dreamwalker_repair/proc/on_item_equipped(mob/user, obj/item/source, slot)
 	SIGNAL_HANDLER
@@ -644,7 +633,6 @@
 	icon_state = "dreamplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	item_flags = DREAM_ITEM
-	peel_threshold = 5
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dreamwalker/Initialize()
 	. = ..()
@@ -691,7 +679,6 @@
 	adjustable = CAN_CADJUST
 	icon_state = "dreamsquidhelm"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	peel_threshold = 4
 	item_flags = DREAM_ITEM
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/32x48/head.dmi'
 	block2add = null

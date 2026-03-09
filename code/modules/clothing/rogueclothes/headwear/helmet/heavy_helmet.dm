@@ -1184,7 +1184,6 @@
 	adjustable = CAN_CADJUST
 	icon_state = "zizobarbute"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
-	peel_threshold = 4
 	chunkcolor = "#363030"
 	material_category = ARMOR_MAT_PLATE
 	var/frogstyle = FALSE

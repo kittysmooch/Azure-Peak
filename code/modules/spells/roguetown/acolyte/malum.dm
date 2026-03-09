@@ -625,14 +625,9 @@ var/global/list/anvil_recipe_prices[][]
 			to_chat(user, "<font color='purple'>I lose [cost] devotion!</font>")
 		if(I.max_integrity <= I.obj_integrity)
 			I.obj_fix()
-			if(I.peel_count)
-				I.peel_count--
-				I.visible_message(span_info("[I]'s shorn layers mend together. ([I.peel_count])."))
-				continue
-			else
-				I.repair_coverage()
-				I.visible_message(span_info("[I]'s mend together, completely."))
-				continue
+			I.repair_coverage()
+			I.visible_message(span_info("[I]'s mend together, completely."))
+			continue
 		if((user.devotion?.devotion - cost) < 0)
 			to_chat(user, span_warning("I do not have enough devotion!"))
 			return FALSE

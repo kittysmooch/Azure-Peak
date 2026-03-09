@@ -74,7 +74,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 	var/body_parts_covered_dynamic = 0
-	var/body_parts_inherent	= 0 //bodypart coverage areas you cannot peel off because it wouldn't make any sense (peeling chest off of torso armor, hands off of gloves, head off of helmets, etc)
+	var/body_parts_inherent	= 0 //bodypart coverage areas that are always covered (chest on torso armor, hands on gloves, head on helmets, etc)
 	var/surgery_cover = TRUE // binary, whether this item is considered covering its bodyparts in respect to surgery. Tattoos, etc. are false.
 	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/permeability_coefficient = 1 // for chemicals/diseases
@@ -660,50 +660,17 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += "<b>COVERAGE: <br></b>"
 			if(!C.body_parts_covered)
 				inspec += "<b>NONE!</b>"
-			if(C.body_parts_covered == C.body_parts_covered_dynamic)
-				var/list/zonelist = body_parts_covered2organ_names(C.body_parts_covered)
-				var/count = 0
-				for(var/zone in zonelist)
-					var/add_divider = TRUE
-					if(count == (length(zonelist) - 1))
-						add_divider = FALSE
-					inspec += "<b>[capitalize(zone)]</b> [add_divider ? "| " : ""]"
-					count++
-			else
-				var/list/zones = list()
-				//We have some part peeled, so we turn the printout into precise mode and highlight the missing coverage.
-				var/count = 1
-				for(var/zoneorg in body_parts_covered2organ_names(C.body_parts_covered, precise = TRUE))
-					zones += zoneorg
-				var/list/dynlist = body_parts_covered2organ_names(C.body_parts_covered_dynamic, precise = TRUE)
-				for(var/zonedyn in dynlist)
-					var/add_divider = TRUE
-					if(count == (length(dynlist) - 1))
-						add_divider = FALSE
-
-					inspec += "<b>[capitalize(zonedyn)]</b> [add_divider ? "| " : ""]"
-					if(zonedyn in zones)
-						zones.Remove(zonedyn)
-					count++
-				for(var/zone in zones)
-					var/add_divider = TRUE
-					if(count == (length(dynlist) - 1))
-						add_divider = FALSE
-					inspec += "<b><font color = '#7e0000'>[capitalize(zone)]</font></b> [add_divider ? "| " : ""]"
-					count++
+			var/list/zonelist = body_parts_covered2organ_names(C.body_parts_covered)
+			var/count = 0
+			for(var/zone in zonelist)
+				var/add_divider = TRUE
+				if(count == (length(zonelist) - 1))
+					add_divider = FALSE
+				inspec += "<b>[capitalize(zone)]</b> [add_divider ? "| " : ""]"
+				count++
 			inspec += "</td>"
 			inspec += "<br>"
 			inspec += "</tr></table>"
-			if(C.body_parts_inherent)
-				inspec += "<b>CANNOT BE PEELED: </b>"
-				var/peelcolor = "#77cde2"
-				var/list/inherentList = body_parts_covered2organ_names(C.body_parts_inherent)
-				if(length(inherentList) == 1)
-					inspec += "<b><font color = [peelcolor]>[capitalize(inherentList[1])]</font></b>"
-				else
-					inspec += "| "
-					for(var/zone in inherentList)
-						inspec += "<b><font color = [peelcolor]>[capitalize(zone)]</b></font> | "
 
 //**** General durability
 
@@ -1639,107 +1606,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	damage.alpha = 150
 	add_overlay(damage)
 
-/// Proc that is only called with the Peel intent. Stacks consecutive hits, shreds coverage once a threshold is met. Thresholds are defined on /obj/item
-/obj/item/proc/peel_coverage(bodypart, divisor, mob/living/carbon/human/owner)
-	var/coveragezone = attackzone2coveragezone(bodypart)
-	if((body_parts_inherent & coveragezone))
-		playsound(src, 'sound/combat/failpeel.ogg', 100, TRUE)
-		visible_message(span_warning("Peel struck an area too thick!"))
-		last_peeled_limb = coveragezone
-		reset_peel()
-		return
-	if(!last_peeled_limb || coveragezone == last_peeled_limb)
-		var/peel_goal = peel_threshold
-		if(divisor > peel_goal)
-			peel_goal = divisor
-
-		var/list/peeledpart = body_parts_covered2organ_names(coveragezone, precise = TRUE)
-
-		if(peel_count < peel_goal)
-			peel_count++
-
-		if(peel_count >= peel_goal)
-			body_parts_covered_dynamic &= ~coveragezone
-			playsound(src, 'sound/foley/peeled_coverage.ogg', 100)
-			var/parttext
-			if(length(peeledpart))
-				parttext = peeledpart[1]	//There should really only be one bodypart that gets exposed here.
-			visible_message("<font color = '#f5f5f5'><b>[parttext ? parttext : "Coverage"]</font></b> gets peeled off of [src]!")
-			var/balloon_msg = "<font color = '#bb1111'>[parttext] peeled!</font>"
-			if(length(peeledpart))
-				balloon_alert_to_viewers(balloon_msg, balloon_msg, DEFAULT_MESSAGE_RANGE)
-			reset_peel(success = TRUE)
-		else
-			if(owner)
-				owner.visible_message(span_info("Peel strikes [src]! <b>[ROUND_UP(peel_count)]</b>!"))
-			var/balloon_msg = "Peel! \Roman[ROUND_UP(peel_count)] <br><font color = '#8b7330'>[peeledpart[1]]!</font>"
-			var/has_guarded = HAS_TRAIT(owner, TRAIT_DECEIVING_MEEKNESS)
-			if(length(peeledpart) && !has_guarded)
-				filtered_balloon_alert(TRAIT_COMBAT_AWARE, balloon_msg)
-			else if(length(peeledpart) && has_guarded)
-				if(prob(10))
-					balloon_msg = "<i>Guarded...</i>"
-					filtered_balloon_alert(TRAIT_COMBAT_AWARE, balloon_msg)
-	else
-		last_peeled_limb = coveragezone
-		reset_peel()
-
 /obj/item/proc/repair_coverage()
 	body_parts_covered_dynamic = body_parts_covered
-	reset_peel()
-
-/obj/item/proc/reset_peel(success = FALSE)
-	if(peel_count > 0 && !success)
-		visible_message(span_info("Peel count lost on [src]!"))
-	peel_count = 0
-
-/obj/item/proc/reduce_peel(amt)
-	if(peel_count > amt)
-		peel_count -= amt
-	else
-		peel_count = 0
-	visible_message(span_info("Peel reduced to [peel_count == 0 ? "none" : "[peel_count]"] on [src]!"))
-
-/proc/attackzone2coveragezone(location)
-	switch(location)
-		if(BODY_ZONE_HEAD)
-			return HEAD
-		if(BODY_ZONE_PRECISE_EARS)
-			return EARS
-		if(BODY_ZONE_PRECISE_SKULL)
-			return HAIR
-		if(BODY_ZONE_PRECISE_NOSE)
-			return NOSE
-		if(BODY_ZONE_PRECISE_NECK)
-			return NECK
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return LEFT_EYE
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return RIGHT_EYE
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return MOUTH
-		if(BODY_ZONE_CHEST)
-			return CHEST
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return VITALS
-		if(BODY_ZONE_PRECISE_GROIN)
-			return GROIN
-		if(BODY_ZONE_L_ARM)
-			return ARM_LEFT
-		if(BODY_ZONE_R_ARM)
-			return ARM_RIGHT
-		if(BODY_ZONE_L_LEG)
-			return LEG_LEFT
-		if(BODY_ZONE_R_LEG)
-			return LEG_RIGHT
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return HAND_LEFT
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return HAND_RIGHT
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return FOOT_LEFT
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return FOOT_RIGHT
 
 /obj/item/examine(mob/user)
 	. = ..()
