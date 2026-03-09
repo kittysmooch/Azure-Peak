@@ -142,8 +142,8 @@ window "outputwindow"
 		font-family = "Arial"
 		font-size = 9
 		font-style = "bold"
-		text-color = #EEEEEE
-		background-color = #444444
+		text-color = #ad9eb4
+		background-color = #1a1a1a
 		border = raised
 		saved-params = "is-checked"
 		text = "Say"
