@@ -315,8 +315,18 @@
 
 /datum/intent/sword/thrust/estoc
 	name = "thrust"
-	penfactor = PEN_HEAVY	// Penetrates mail/plate at same-tier 20%. Estoc's purpose — but no range unlike spear.
-	swingdelay = 8
+	penfactor = PEN_HEAVY	// Penetrates mail/plate at same-tier 20%. Estoc's purpose — point blank, telegraphed.
+	swingdelay = 6
+
+/datum/intent/sword/thrust/estoc/lunge
+	name = "lunge"
+	icon_state = "inlance"
+	attack_verb = list("lunges")
+	penfactor = PEN_LIGHT	// Fast attrition thrust — light pen, no swingdelay, quick clickcd.
+	damfactor = 1.1
+	swingdelay = 0
+	clickcd = CLICK_CD_QUICK
+	reach = 2
 
 /datum/intent/sword/lunge
 	name = "lunge"
