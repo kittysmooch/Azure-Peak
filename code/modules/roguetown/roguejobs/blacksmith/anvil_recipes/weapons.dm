@@ -1002,7 +1002,7 @@
 	created_item = /obj/item/rogueweapon/mace/steel/silver
 
 /datum/anvil_recipe/weapons/silver/flangedmace
-	name = "Flanged Mace, Silver (+1 Silver, +1 Small Log)"
+	name = "Flanged Mace, Silver  (+1 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/mace/cudgel/flanged/silver
