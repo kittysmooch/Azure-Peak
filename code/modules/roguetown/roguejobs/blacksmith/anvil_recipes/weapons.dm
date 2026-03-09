@@ -925,34 +925,32 @@
 // SILVER
 
 /datum/anvil_recipe/weapons/silver/dagger
-	name = "Dagger, Silver (+1 Silver)"
+	name = "Dagger, Silver"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver
 
 /datum/anvil_recipe/weapons/silver/shortsword
-	name = "Shortsword, Silver (+1 Silver)"
+	name = "Shortsword, Silver"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/short/silver
 
 /datum/anvil_recipe/weapons/silver/stake
-	name = "Stake, Silver-Tipped (+1 Silver, +1 Sharpened Stake)"
+	name = "Stake, Silver-Tipped (+1 Sharpened Stake)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/rogueweapon/huntingknife/idagger/stake)
+	additional_items = list(/obj/item/rogueweapon/huntingknife/idagger/stake)
 	created_item = /obj/item/rogueweapon/huntingknife/idagger/silver/stake
 	craftdiff = 5
 
 /datum/anvil_recipe/weapons/silver/sword
-	name = "Arming Sword, Silver (+2 Silver)"
+	name = "Arming Sword, Silver (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver)
+	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/silver
 
 /datum/anvil_recipe/weapons/silver/rapier
-	name = "Rapier, Silver (+2 Silver)"
+	name = "Rapier, Silver (+1 Silver)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver)
+	additional_items = list(/obj/item/ingot/silver)
 	created_item = /obj/item/rogueweapon/sword/rapier/silver
 
 /datum/anvil_recipe/weapons/silver/scabbard
@@ -968,15 +966,15 @@
 	created_item = /obj/item/rogueweapon/scabbard/sheath/noble
 
 /datum/anvil_recipe/weapons/silver/longsword
-	name = "Longsword, Silver (+3 Silver, +1 Small Log)"
+	name = "Longsword, Silver (+2 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/sword/long/silver
 
 /datum/anvil_recipe/weapons/silver/broadsword
-	name = "Broadsword, Silver (+3 Silver, +1 Small Log)"
+	name = "Broadsword, Silver (+2 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/sword/long/kriegmesser/silver
 
 /datum/anvil_recipe/weapons/silver/greatsword
@@ -1022,9 +1020,9 @@
 	created_item = /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 
 /datum/anvil_recipe/weapons/silver/spear
-	name = "Spear, Silver (+1 Silver, +3 Small Logs)"
+	name = "Spear, Silver (+3 Small Logs)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/silver
 
 /datum/anvil_recipe/weapons/silver/morningstar
@@ -1047,9 +1045,9 @@
 	createditem_num = 4
 
 /datum/anvil_recipe/weapons/silver/javelin
-	name = "Javelins, Silver (+1 Silver, Small Log)"
+	name = "Javelins, Silver (+1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/silver
 	createditem_num = 2
 
