@@ -105,7 +105,8 @@
 /obj/item/recipe_book/survival
 	name = "Tips, Tricks, & Triumphs: The Novice's Handbook To Azuria"
 	desc = "A heftsome tome, filled to the brim with all the information you'd need to survive within Azuria. The golden bookmark seems to always lead you \
-	to the page you needed the most, no matter how you flip it. </br>‎  </br>This particular tome can be recycled into the Stockpile for a small amount of free \
+	to the page you needed the most, no matter how you flip it. </br>‎  </br>Check out Azure Peak's official wikipedia - https://azurepeak.miraheze.org/wiki/Main_Page - for \
+	whatever comes to mind. </br>‎  </br>This particular tome can be recycled into the Stockpile for a small amount of free \
 	mammons. </br>‎  </br>Activate the tome in your hand to open a searchable glossary, filled with most basic crafting recipes.  </br>‎  </br>Click the 'Mechanics' \
 	tab to reveal a wide variety of tips and tricks, for getting started. Be warned, it's quite a lot; be prepared to scroll around, or hold shift while scrolling down \
 	to compact more information into your chatbox's frame."
