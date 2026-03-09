@@ -1542,14 +1542,17 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/obj/item/clothing/C = src
 		if(C.armor)
 			var/datum/armor/def_armor = C.armor
-			var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP against blunt by 20%.", "<u><b>ABSORPTION:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
-			defense += "[SPAN_TOOLTIP("Blocks slashing, stabbing and piercing attacks below this tier. Same tier penetrates 20%.", "<u><b>BLOCK:</b></u>")] "
-			defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
-			str += "[defense]<br>"
+			if(!def_armor.blunt && !def_armor.slash && !def_armor.stab && !def_armor.piercing)
+				str += "<b>NO ARMOR!</b>"
+			else
+				var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP against blunt by 20%.", "<u><b>ABSORPTION:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
+				defense += "[SPAN_TOOLTIP("Blocks slashing, stabbing and piercing attacks below this tier. Same tier penetrates 20%.", "<u><b>BLOCK:</b></u>")] "
+				defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
+				str += "[defense]<br>"
 		else
-			str += "NO DEFENSE"
+			str += "<b>NO ARMOR!</b>"
 	return str
 
 /obj/item/obj_break(damage_flag)
