@@ -201,20 +201,6 @@
 	no_early_release = TRUE
 	intent_intdamage_factor = 0.1
 
-/datum/intent/partizan/peel
-	name = "armor peel"
-	icon_state = "inpeel"
-	attack_verb = list("snags")
-	animname = "cut"
-	blade_class = BCLASS_PEEL
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	clickcd = CLICK_CD_CHARGED
-	penfactor = PEN_NONE
-	swingdelay = 5
-	damfactor = 0.01
-	item_d_type = "slash"
-	peel_divisor = 5
-	reach = 2
 
 
 
@@ -1165,12 +1151,12 @@
 	force = 8	//Not a possible one-handed weapon. Also too heavy!
 	force_wielded = 30
 	possible_item_intents = list(SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(SPEAR_THRUST, PARTIZAN_REND, PARTIZAN_PEEL)
+	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, PARTIZAN_REND)
 	icon_state = "partizan"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	minstr = 10
 	max_blade_int = 200
-	wdefense = 6
+	wdefense = 8 // It IS a parrying spear after all.
 	throwforce = 12	//Not a throwing weapon. Too heavy!
 	icon_angle_wielded = 50
 	smeltresult = /obj/item/ingot/steel
