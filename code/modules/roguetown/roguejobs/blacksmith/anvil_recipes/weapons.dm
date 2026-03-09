@@ -1049,7 +1049,7 @@
 	req_bar = /obj/item/ingot/silver
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/ammo_casing/caseless/rogue/javelin/silver
-	createditem_num = 2
+	createditem_num = 4
 
 
 // SHIELDS
