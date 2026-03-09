@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(rogueinfo)
 			"note" = "No custom notes."
 		),
 		"apothecary" = list(
-			"desc" = "A practitioner of herbalism and alchemy, capable creating medicines, balms, and curative tinctures. Get your wounds cured and the dead revived here.",
+			"desc" = "A practitioner of herbalism and alchemy, capable of creating medicines, balms, and curative tinctures. Get your wounds cured and the dead revived here.",
 			"note" = "No custom notes."
 		),
 		"church" = list(
@@ -49,11 +49,11 @@ SUBSYSTEM_DEF(rogueinfo)
 			"note" = "No custom notes."
 		),
 		"university" = list(
-			"desc" = "The academic hub of the town, dedicated to the study of history, science, and arcane theory. Often offers enchanting services or combat capable mages.",
+			"desc" = "The academic hub of the town, dedicated to the study of history, science, and arcane theory. Often offers enchanting services or combat-capable mages.",
 			"note" = "No custom notes."
 		),
 		"innkeeper" = list(
-			"desc" = "Proprietor of the local tavern, keeping the peace (through alcohol) while offering lodging, supper and spirits to travelers.",
+			"desc" = "Proprietor of the local tavern, keeping the peace (through alcohol) while offering lodging, supper and spirits to travellers.",
 			"note" = "No custom notes."
 		),
 		"tailor" = list(
@@ -61,11 +61,11 @@ SUBSYSTEM_DEF(rogueinfo)
 			"note" = "No custom notes."
 		),
 		"bathhouse" = list(
-			"desc" = "The sanctuary of Eoran cleanliness, offering public sanitation and relaxation for the weary townsfolk. Enjoy the company of one their many attendants.",
+			"desc" = "The sanctuary of Eoran cleanliness, offering public sanitation and relaxation for the weary townsfolk. Unwind as our skilled attendants see to your every need.",
 			"note" = "No custom notes."
 		),
 		"merchant" = list(
-			"desc" = "A tradesperson specializing in the import and distribution of rare goods, artifacts, and general stock. Will at times, buy rare goods as well. May buy valuables.",
+			"desc" = "A tradesperson specializing in the import and distribution of rare goods, artifacts, and general stock. Will, at times, buy rare goods as well. May buy valuables.",
 			"note" = "No custom notes."
 		),
 		"freeform1" = list(
