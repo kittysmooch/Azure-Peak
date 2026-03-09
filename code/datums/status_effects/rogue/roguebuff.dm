@@ -1551,7 +1551,6 @@
 		if(ishuman(user) && target == owner)
 			var/mob/living/carbon/human/HM = user
 			if(check_zone(HM.zone_selected) == protected_zone)	//User has struck the exact limb that was being protected. Bad!
-				var/mob/living/carbon/human/H = owner
 				if(ishuman(user))
 					apply_debuffs(HM)
 					perform_disarm(HM)
