@@ -984,9 +984,9 @@
 	created_item = /obj/item/rogueweapon/greatsword/silver
 
 /datum/anvil_recipe/weapons/silver/waraxe
-	name = "War Axe, Silver (+2 Silver, +1 Small Log)"
+	name = "War Axe, Silver (+1 Silver, +1 Small Log)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/ingot/silver, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/silver
 
 /datum/anvil_recipe/weapons/silver/poleaxe
@@ -1014,9 +1014,9 @@
 	created_item = /obj/item/rogueweapon/mace/warhammer/steel/silver
 
 /datum/anvil_recipe/weapons/silver/quarterstaff
-	name = "Quarterstaff, Silver (+1 Silver, +3 Small Logs)"
+	name = "Quarterstaff, Silver (+3 Small Logs)"
 	req_bar = /obj/item/ingot/silver
-	additional_items = list(/obj/item/ingot/silver, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/woodstaff/quarterstaff/silver
 
 /datum/anvil_recipe/weapons/silver/spear
