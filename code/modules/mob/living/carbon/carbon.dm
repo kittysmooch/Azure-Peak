@@ -748,8 +748,6 @@
 	if(status_flags & GODMODE)
 		return
 	var/total_burn	= 0
-	total_brute_death = 0
-	total_burn_death = 0
 	var/total_stamina = 0
 	var/total_tox = getToxLoss()
 	var/total_oxy = getOxyLoss()
@@ -759,10 +757,6 @@
 		BODY_ZONE_CHEST,
 	)
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-		total_brute_death += bodypart.brute_dam
-		total_burn_death += bodypart.burn_dam
-		if(bodypart.body_zone == BODY_ZONE_CHEST)
-			chest_max_damage = bodypart.max_damage
 		if(!(bodypart.body_zone in lethal_zones))
 			continue
 		var/hardcrit_divisor = !mind ? FIRE_HARDCRIT_DIVISOR_MINDLESS : FIRE_HARDCRIT_DIVISOR
@@ -774,13 +768,6 @@
 	if(used_damage < total_oxy)
 		used_damage = total_oxy
 	health = round(maxHealth - used_damage, DAMAGE_PRECISION)
-	// Total damage hardcrit / death: brute and burn independently clamp health
-	var/death_cap = chest_max_damage * TOTAL_DAMAGE_DEATH_THRESHOLD
-	var/hardcrit_cap = chest_max_damage * TOTAL_DAMAGE_HARDCRIT_THRESHOLD
-	if(total_brute_death >= death_cap || total_burn_death >= death_cap)
-		health = min(health, HEALTH_THRESHOLD_DEAD)
-	else if(total_brute_death >= hardcrit_cap || total_burn_death >= hardcrit_cap)
-		health = min(health, HEALTH_THRESHOLD_FULLCRIT)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
 	update_mobility()
@@ -1079,6 +1066,16 @@
 			cure_blind(UNCONSCIOUS_BLIND)
 			return
 		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
+			if(stat != UNCONSCIOUS) // Transition into hardcrit — announce once
+				if((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
+					visible_message(span_danger("<b>[src] collapses, [src.p_their()] body drained of blood!</b>"), \
+						span_userdanger("My lyfeblood drains from my veins, I cannot go on anymore."))
+				else if(getOxyLoss() > 75)
+					visible_message(span_danger("<b>[src] collapses, gasping desperately for air!</b>"), \
+						span_userdanger("Every breath suffocates, I cannot move anymore."))
+				else if(health <= HEALTH_THRESHOLD_FULLCRIT)
+					visible_message(span_danger("<b>[src] collapses from [src.p_their()] wounds, unable to fight any longer!</b>"), \
+						span_userdanger("My body fails me... I cannot hold on..."))
 			stat = UNCONSCIOUS
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src
