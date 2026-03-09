@@ -90,6 +90,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 			ADD_TRAIT(user, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 		if(3)
 			ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
+			ADD_TRAIT(user, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
 			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 			to_chat(user, span_userdanger("I have many enemies- AND they HAVE NOTHING. TEN OF SWORDS, UPRIGHT"))
