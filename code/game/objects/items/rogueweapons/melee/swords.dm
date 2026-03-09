@@ -1067,6 +1067,7 @@
 /datum/intent/sword/thrust/sabre
 	clickcd = 9			//Fast but still not as fast as rapier n' shittier.
 	damfactor = 0.9		//10% worse	than base
+	penfactor = PEN_LIGHT	//Curved blade — can poke through cloth but not mail.
 
 /obj/item/rogueweapon/sword/sabre/dec
 	icon_state = "decsaber"
