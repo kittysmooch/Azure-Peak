@@ -115,7 +115,7 @@
 																		span_userdanger("You shake and spark as you're tuned up!"))
 									
 								// Apply buffs
-								human_target.apply_status_effect(/datum/status_effect/buff/windup)
+								human_target.apply_status_effect(/datum/status_effect/buff/tuneup)
 								return
 						else	
 							to_chat(user, span_warning("I need to hold onto the wrench!"))
@@ -128,7 +128,7 @@
 			return
 	//this should repair certain stuctures
 	if(isstructure(targets[1]))
-		if(isstructure(targets[1]) && is_type_in_list(targets[1], repairablelist))
+		if(is_type_in_list(targets[1], repairablelist))
 			var/obj/structure/structurerepair = targets[1]
 
 			if(user.get_skill_level(/datum/skill/craft/engineering) < 4)
@@ -165,7 +165,6 @@
 									structurerepair.density = TRUE
 									structurerepair.opacity = TRUE
 									structurerepair.obj_broken = FALSE
-									structurerepair.obj_integrity = structurerepair.max_integrity
 									structurerepair.obj_integrity = structurerepair.max_integrity							
 									user.visible_message(span_notice("[user] repaired [structurerepair.name]."), \
 															span_notice("I repaired [structurerepair.name]."))
@@ -184,12 +183,56 @@
 										doorsrepairable.repair_state = 0
 									return	
 				else
-					user.visible_message(span_notice("Its already fully repaired."))
+					user.visible_message(span_notice("It's already fully repaired."))
 					return
 			else 
 				to_chat(user, span_warning("I need to be next to [structurerepair] to repair them"))
 				return
+	if(isitem(targets[1]))
+		var/obj/item/contraptionrepair = targets[1]
+		if(ispath(contraptionrepair.type, /obj/item/contraption))
 
+			if(user.get_skill_level(/datum/skill/craft/engineering) < 3)
+				to_chat(user, span_warning("I don't have the engineering skill to operate this device!"))
+				return
+
+			//check if we're holding a wrench
+			for(var/obj/item/I in user.held_items)
+				if((istype(I, /obj/item/contraption/linker))||(istype(I, /obj/item/contraption/linker/master)))
+					holdingwrench = TRUE
+
+			//if no wrench is found then wipe the skill
+			if (!holdingwrench)
+				to_chat(user, span_warning("I'm not holding a wrench, how can I tune something up?!"))
+				user.mind.RemoveSpell(new /obj/effect/proc_holder/spell/invoked/engineertuneup)
+				return
+
+			
+			// Animation and sound
+			playsound(user, 'sound/misc/ratchet.ogg', 100, TRUE)
+			do_sparks(8, TRUE, contraptionrepair)
+			user.visible_message(span_danger("[user] starts to repair [contraptionrepair]"))		
+			if(do_after(usr, 3 SECONDS, target = contraptionrepair))
+				if(contraptionrepair.obj_integrity < contraptionrepair.max_integrity)
+					if(do_after(user, (150 / user.get_skill_level(/datum/skill/craft/engineering)), target = contraptionrepair)) // making this generic carpentry, even though it could be masonry
+						for(var/obj/item/contraption/I in user.held_items)
+							if((istype(I, /obj/item/contraption/linker))||(istype(I, /obj/item/contraption/linker/master)))
+								if(I.current_charge < 2)
+									to_chat(user, span_warning("There's not enough charge for this!")) //revive failed, not enough fuel
+									return
+								else
+									I.current_charge -= 2
+									playsound(user, 'sound/misc/ratchet.ogg', 100, TRUE)
+									contraptionrepair.obj_integrity = contraptionrepair.max_integrity							
+									user.visible_message(span_notice("[user] repaired [contraptionrepair.name]."), \
+															span_notice("I repaired [contraptionrepair.name]."))
+									return	
+				else
+					user.visible_message(span_notice("It's already fully repaired."))
+					return
+			else 
+				to_chat(user, span_warning("I need to be next to [contraptionrepair] to repair them"))
+				return
 
 	revert_cast()
 	return FALSE
