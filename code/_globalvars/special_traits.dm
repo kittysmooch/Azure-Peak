@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 	var/virtuous = FALSE
 	var/heretic = FALSE
-	var/species = character.dna.species
+	var/species = character.dna.species.type
 
 	if(istype(player.prefs.selected_patron, /datum/patron/inhumen))
 		heretic = TRUE
