@@ -61,12 +61,12 @@
 		user.visible_message("<font color='red'>[user]'s eyes glow a ghastly red as they project their will outwards!</font>")
 
 	for(var/mob/living/carbon/human/target as anything in targets)
-			var/current_will_dice = will_dice
-			if(target.cmode)
-				current_will_dice += 1
+		var/current_will_dice = will_dice
+		if(target.cmode)
+			current_will_dice += 1
 
-			var/willpower = round(target.STAINT / int_divisor, 1)
-			var/willroll = roll(willpower, current_will_dice)
+		var/willpower = round(target.STAINT / int_divisor, 1)
+		var/willroll = roll(willpower, current_will_dice)
 
 		// If the vampire failed badly
 		var/knowledgable = (willroll - bloodroll) >= 3
