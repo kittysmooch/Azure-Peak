@@ -1179,6 +1179,7 @@
 	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
 	log_combat(src, src, "surrendered", null, )
 	log_admin("([key_name(src)]) surrendered at [AREACOORD(src)].")
+	SSblackbox.record_feedback("tally", "submit", 1, "surrenders")
 
 /mob/living/proc/end_submit()
 	surrendering = 0
