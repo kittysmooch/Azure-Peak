@@ -142,8 +142,11 @@
 
 	var/ambushable = 0
 
+	// Tracks whether mob is in surrendering state (right-click combat button)
 	var/surrendering = 0
-	var/compliance = 0 // whether we are choosing to auto-resist grabs and stuff
+
+	// Tracks whether mob is in compliance mode (middle-click combat button)
+	var/compliance = 0
 
 	var/defprob = 50 //base chance to defend against this mob's attacks, for simple mob combat
 	var/encumbrance = 0
@@ -206,3 +209,10 @@
 	var/toggle_delay = 1 SECONDS
 	/// Toggle timer for Specials, or really anything else that you don't want input spam to instantly cycle through.
 	var/toggle_timer
+	var/is_swimming = FALSE
+	var/is_underwater = FALSE
+	var/drowning_drowniness = 0
+	var/breath_remaining = 100
+	var/max_breath = 100
+	var/last_breath_spent = 0
+	var/client/swimming_filter_client = null

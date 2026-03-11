@@ -6,7 +6,7 @@
 /datum/migrant_role/ranesheni/emir
 	name = "Emir"
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_SHUNNED_UP
 	advclass_cat_rolls = list(CTAG_RANESHENI_EMIR = 20)
 	greet_text = "You are an envoy from the Empire, traveling with bodyguards and a priest to represent your homeland.\
 	 What exactly you have been sent here to speak about- only you know."
@@ -66,12 +66,12 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew = 2,
 		)
 	H.cmode_music = 'sound/music/combat_desertrider.ogg'
-	H.grant_language(/datum/language/celestial)
+	H.grant_language(/datum/language/raneshi)
 
 /datum/migrant_role/ranesheni/amirah
 	name = "Amirah"
 	allowed_sexes = list(FEMALE)
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_SHUNNED_UP
 	advclass_cat_rolls = list(CTAG_RANESHENI_AMIRAH = 20)
 
 /datum/advclass/ranesheni_amirah
@@ -125,13 +125,13 @@
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpotnew = 1,
 	)
 	H.cmode_music = 'sound/music/combat_desertrider.ogg'
-	H.grant_language(/datum/language/celestial)
+	H.grant_language(/datum/language/raneshi)
 
 /datum/migrant_role/ranesheni/janissary
 	name = "Janissary"
 	greet_text = "You are a dilligent soldier in employ of the Emir for protection and to assure that their mission goes as planned."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_SHUNNED_UP
 	advclass_cat_rolls = list(CTAG_RANESHENI_JANISSARY = 20)
 
 /datum/advclass/ranesheni_janissary
@@ -186,13 +186,13 @@
 		/obj/item/natural/bundle/cloth/bandage/full = 1,
 		)
 	H.cmode_music = 'sound/music/combat_desertrider.ogg'
-	H.grant_language(/datum/language/celestial)
+	H.grant_language(/datum/language/raneshi)
 
 /datum/migrant_role/ranesheni/advisor
 	name = "Advisor"
 	greet_text = "You are the Emir's advisor and loyal protector."
 	allowed_sexes = list(MALE, FEMALE)
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_SHUNNED_UP
 	advclass_cat_rolls = list(CTAG_RANESHENI_ADVISOR = 20)
 
 /datum/advclass/ranesheni_advisor
@@ -236,7 +236,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel/short
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	backr = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-	beltr = /obj/item/quiver/bolts
+	beltr = /obj/item/quiver/bolt/standard
 	cloak = /obj/item/clothing/cloak/raincloak/red
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/navaja = 1,
@@ -245,7 +245,7 @@
 		/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1,
 		)
 	H.cmode_music = 'sound/music/combat_desertrider.ogg'
-	H.grant_language(/datum/language/celestial)
+	H.grant_language(/datum/language/raneshi)
 
 #undef CTAG_RANESHENI_EMIR
 #undef CTAG_RANESHENI_AMIRAH
