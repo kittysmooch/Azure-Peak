@@ -417,7 +417,6 @@
 	desc = span_aiprivradio("The standard calls out to me! It knows we're to see victory!")
 	timer = 3 MINUTES
 
-<<<<<<< cig
 
 // Effects for zigs
 
@@ -481,7 +480,7 @@
 	timer = 1 MINUTES
 	stressadd = 0
 	desc = list(span_blue("A pleasant feeling slight sourness and sweetnesson... and salty on the tongue? You feel an unpleasant chill run down your spine. You can't shake the feeling of someone staring from behind you...."))
-=======
+
 /datum/stressevent/kytherian_blessing
 	timer = 5 MINUTES
 	stressadd = -2
@@ -501,4 +500,4 @@
 	timer = 10 MINUTES // this will :) you for a while
 	stressadd = -2
 	desc = span_boldred("Long ago, XYLIX put up an extra star in the sky to anger NOC... seeing it is a FANTASTIC sign!")
->>>>>>> main
+
