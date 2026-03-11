@@ -61,10 +61,13 @@
 #define CLICK_CD_EXHAUSTED 60
 #define CLICK_CD_TRACKING 30
 #define CLICK_CD_SLEUTH 10
-#define CLICK_CD_HEAVY 16
-#define CLICK_CD_CHARGED 14
-#define CLICK_CD_MELEE 12
-#define CLICK_CD_FAST 8
+#define CLICK_CD_GLACIAL 20	// Tier: Glacial
+#define CLICK_CD_MASSIVE 18	// Tier: Extremely Sluggish
+#define CLICK_CD_HEAVY 16		// Tier: Very Sluggish
+#define CLICK_CD_CHARGED 14	// Tier: Sluggish
+#define CLICK_CD_MELEE 12		// Tier: Normal (baseline)
+#define CLICK_CD_QUICK 10		// Tier: Quick
+#define CLICK_CD_FAST 8		// Tier: Very Quick
 #define CLICK_CD_INTENTCAP 6
 #define CLICK_CD_RANGE 4
 #define CLICK_CD_RAPID 2
@@ -313,6 +316,8 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define INTEG_PARRY_DECAY			1	//Default integrity decay on parry.
 #define INTEG_PARRY_DECAY_NOSHARP	5	//Integrity decay on parry for weapons with no sharpness OR for off-hand parries.
 #define SHARPNESS_ONHIT_DECAY		3	//Sharpness decay on parry.
+#define RIPOSTE_SHARPNESS_FACTOR	0.15	//Fraction of blade_int lost on riposte (15%). Heavy weapons add +0.05.
+#define RIPOSTE_INTEG_DIVISOR		5	//max_integrity / this = integrity damage on riposte for non-bladed weapons.
 #define SHARPNESS_TIER1_THRESHOLD	0.8	//%-age threshold when damage starts to fall off -- mainly damfactor and STR factor. NOT base damage value.
 #define SHARPNESS_TIER1_FLOOR		0.45//%-age threshold when damfactors and STR factors become 0.
 #define SHARPNESS_TIER2_THRESHOLD	0.2 //%-age threshold when damage *really* falls off. Base damage value included.

@@ -121,6 +121,8 @@
 	var/prob2defend = U.defprob
 	if(L.stamina >= L.max_stamina)
 		return FALSE
+	if(src.client)
+		log_combat(src, user, "dodged against")
 	if(L)
 		if(H?.check_dodge_skill())
 			prob2defend = prob2defend + (L.STASPD * 15)
@@ -137,6 +139,7 @@
 	if(H)
 		if(!H?.check_armor_skill() || H?.legcuffed)
 			H.Knockdown(1)
+			H.drop_all_held_items()
 			return FALSE
 		if(I) //the enemy attacked us with a weapon
 			if(!I.associated_skill) //the enemy weapon doesn't have a skill because its improvised, so penalty to attack

@@ -336,6 +336,29 @@
 		added_def = 2,\
 	)
 
+/obj/item/rogueweapon/katar/silver
+	name = "silver katar"
+	desc = "An exotic weapon that was born from frugality and scarcity, strongly associated with Saint Abenjunne of Astrata. As the folktale goes, this humble preacher belonged to an old village, whose \
+	lyvestock would be hunted every nite by a ferocious verebeaste. Though no weapon of steel-nor-iron could hope to rupture its hide, they had little silver to call upon; save for the abbey's lone \
+	psicrucifix. After praying for guidence, the preacher was said to've been guided by a ray of daelight to the silvered steeple - and through divine heat, melted it into a hand-dagger that would soon \
+	rip the verebeaste apart."
+	icon_state = "silverkatar"
+	force = 19
+	wdefense = 3
+	is_silver = TRUE
+	smeltresult = /obj/item/ingot/silver
+
+/obj/item/rogueweapon/katar/silver/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 50,\
+		added_def = 2,\
+	)
+
 ///Peasantry / Militia Weapon Pack///
 
 /obj/item/rogueweapon/woodstaff/militia
@@ -367,7 +390,7 @@
 	desc = "Shovels have always held some manner of importance in a militiaman's lyfe. Instead of digging corpsepits, however, this poleaxe will now fill them up."
 	icon_state = "peasantwaraxe"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/battle/greataxe, /datum/intent/sword/peel/big, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/long, /datum/intent/sword/peel/big, SPEAR_BASH)
 	force = 15
 	force_wielded = 25
 	minstr = 10
@@ -382,7 +405,7 @@
 	desc = "'Do you think Psydon stays in Heaven because He too lives in fear of what He's created?' </br>A silver shovel, improvised - perhaps, by the hands of a particularly desperate gravedigger - to fill a polearm's duty."
 	icon_state = "silvershovelwaraxe"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/battle/greataxe, /datum/intent/sword/peel/big, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/long, /datum/intent/sword/peel/big, SPEAR_BASH)
 	force = 15
 	force_wielded = 25
 	minstr = 11
@@ -727,6 +750,29 @@
 	max_blade_int = 200
 	max_integrity = 200
 
+/obj/item/rogueweapon/handclaw/gronn/silver
+	name = "Silver Ravager Claws"
+	desc = "A trinity of silver claws, forged in defiant reverence of the Old Ways that still permeate throughout the Northern Empty. \
+			The psicruciformic edge shreds through the hide of thralls; resurrected corpses from Fjallic antiquity, said to've been born through faithlessness and despair. \
+			Few shamen hold the strength to wield it, and fewer will speak of what they, alone, know - the true fate of the Weeping Father. \
+			'Here we stand, to turn and face the odds; sacrifice yourself, or bow to lesser gods!'"
+	smeltresult = /obj/item/ingot/silver
+	icon_state = "silverclaws"
+	wdefense = 5
+	max_blade_int = 300
+	max_integrity = 225
+	is_silver = TRUE
+
+/obj/item/rogueweapon/handclaw/gronn/silver/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 100,\
+		added_int = 50,\
+		added_def = 2,\
+	)
 
 /obj/item/rogueweapon/handclaw/getonmobprop(tag)
 	. = ..()
@@ -760,7 +806,7 @@
 /datum/intent/claw/lunge/gronn
 	damfactor = 1.1
 	swingdelay = 5
-	clickcd = 10
+	clickcd = CLICK_CD_QUICK
 	penfactor = 45
 
 /datum/intent/claw/cut
@@ -806,6 +852,7 @@
 	item_d_type = "slash"
 	misscost = 10
 	intent_intdamage_factor = 0.05
+	demolition_mod = 0.05
 
 /datum/intent/claw/rend/steel
 	damfactor = 3
