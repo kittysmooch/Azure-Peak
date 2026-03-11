@@ -682,3 +682,74 @@
 	M.adjustOxyLoss(1.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
 	..()
 	. = 1
+
+/datum/reagent/drug/jacksberries
+	name = "jacksberries"
+	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	reagent_state = LIQUID
+	color = "#0e0004"
+	addiction_threshold = 999
+	taste_description = "jacksberries"
+	trippy = FALSE
+	overdose_threshold=999
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+
+/datum/reagent/drug/jacksberries/on_mob_end_metabolize(mob/living/M)
+	..()
+
+/datum/reagent/drug/jacksberries/on_mob_metabolize(mob/living/M)
+	var/mob/living/carbon/V = M
+	V.add_stress(/datum/stressevent/jacksberriessmoke)
+	..()
+
+/datum/reagent/drug/jacksberries/on_mob_life(mob/living/carbon/M)
+	..()
+	. = 1
+
+/datum/reagent/drug/jacksberries/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustOxyLoss(1.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+	. = 1
+
+/datum/reagent/drug/ziggara/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustOxyLoss(1.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+	. = 1
+	
+/datum/reagent/drug/abyss
+	name = "Abyss"
+	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	reagent_state = LIQUID
+	color = "#0e0004"
+	addiction_threshold = 999
+	taste_description = "jacksberries"
+	trippy = FALSE
+	overdose_threshold=999
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+
+/datum/reagent/drug/abyss/on_mob_end_metabolize(mob/living/M)
+	..()
+
+/datum/reagent/drug/abyss/on_mob_metabolize(mob/living/M)
+	var/mob/living/carbon/V = M
+	V.add_stress(/datum/stressevent/abysssmoke)
+	if(prob(10))
+		M.emote(pick("drool","gasp"))
+	if(prob(3))
+		M.visible_message("<span class='danger'>[M]'s feels slightly uneasy, <span class='danger'>[M]'s gaze appears puzzled and distant</span>")
+	..()
+
+/datum/reagent/drug/abyss/on_mob_life(mob/living/carbon/M)
+	if(HAS_TRAIT(M, TRAIT_TOXIMMUNE))
+		M.adjustOxyLoss(0.1)
+	M.apply_status_effect(/datum/status_effect/buff/abyss)
+	..()
+	. = 1
+
+/datum/reagent/drug/abyss/overdose_process(mob/living/M)
+	M.adjustToxLoss(0.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	M.adjustOxyLoss(1.1*REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+	. = 1

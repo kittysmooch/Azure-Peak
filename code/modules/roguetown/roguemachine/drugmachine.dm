@@ -262,6 +262,7 @@
 	held_items[/obj/item/clothing/mask/cigarette/rollie/carrot] = list("PRICE" = rand(6,11),"NAME" = "carrot zig")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/lime] = list("PRICE" = rand(6,11),"NAME" = "lime zig")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/salvia] = list("PRICE" = rand(6,11),"NAME" = "salvia zig")
+	held_items[/obj/item/clothing/mask/cigarette/rollie/jacksberries] = list("PRICE" = rand(6,11),"NAME" = "jacksberries zig")
 	held_items[/obj/item/clothing/mask/cigarette/rollie/ziggara] = list("PRICE" = rand(20,35),"NAME" = "ziggara")
 	// azure peak addition start - lipstick
 	held_items[/obj/item/lipstick] = list("PRICE" = rand(33,50),"NAME" = "red lipstick")

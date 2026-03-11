@@ -470,3 +470,13 @@
 	timer = 2 MINUTES
 	stressadd = -2
 	desc = list(span_blue("You feel a pleasant bitterness that burns and scratches your throat. Nicotine and the taste of oak bark leave a pleasant aftertaste in your mouth."))
+
+/datum/stressevent/jacksberriessmoke
+	timer = 1 MINUTES
+	stressadd = -1
+	desc = list(span_blue("You feel a pleasant slight sourness and sweetnesson the tongue."))
+
+/datum/stressevent/abysssmoke
+	timer = 1 MINUTES
+	stressadd = 0
+	desc = list(span_blue("A pleasant feeling slight sourness and sweetnesson... and salty on the tongue? You feel an unpleasant chill run down your spine. You can't shake the feeling of someone staring from behind you...."))
