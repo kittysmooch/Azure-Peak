@@ -349,7 +349,7 @@
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	song_list = list(
 	"A Rambling Tongue" = 'sound/music/instruments/shamisen A Rambling Tongue.ogg',
-	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka',
+	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka.ogg',
 	"Daimyo Dreamwalker" = 'sound/music/instruments/shamisen Daimyo Dreamwalker.ogg',
 	"Emperor of Flame" = 'sound/music/instruments/shamisen Emperor of Flame.ogg',
 	"Fire Phoenix" = 'sound/music/instruments/shamisen Fire Phoenix.ogg',
