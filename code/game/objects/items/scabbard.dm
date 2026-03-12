@@ -12,6 +12,7 @@
 	attacked_sound = "parrywood"
 
 	anvilrepair = /datum/skill/craft/blacksmithing
+	sewrepair = TRUE
 
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_BACK
 	possible_item_intents = list(SHIELD_BASH)
@@ -156,7 +157,6 @@
 /obj/item/rogueweapon/scabbard/sheath
 	name = "dagger sheath"
 	desc = "A slingable sheath made of leather, meant to host surprises in smaller sizes."
-	sewrepair = TRUE
 
 	icon_state = "sheath"
 	item_state = "sheath"
@@ -375,6 +375,7 @@
 	associated_skill = /datum/skill/combat/shields
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 2
 	max_integrity = 50
 	sellprice = 50
@@ -387,6 +388,7 @@
 	associated_skill = /datum/skill/combat/shields
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 4
 	sellprice = 100
 	resistance_flags = null
@@ -402,7 +404,6 @@
 	icon_state = "scabbard"
 	item_state = "scabbard"
 
-	sewrepair = TRUE
 
 	valid_blade = /obj/item/rogueweapon/sword
 	invalid_blades = list(
@@ -521,6 +522,7 @@
 	associated_skill = /datum/skill/combat/shields
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 4
 	max_integrity = 75
 	sellprice = 50
@@ -533,6 +535,7 @@
 	associated_skill = /datum/skill/combat/shields
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 6
 	max_integrity = 150
 	sellprice = 100
@@ -546,13 +549,16 @@
 	icon_state = "kazscab"
 	item_state = "kazscab"
 
+	force = 20
 	valid_blade = /obj/item/rogueweapon/sword/sabre/mulyeog
-	associated_skill = /datum/skill/combat/shields
+	associated_skill = /datum/skill/combat/swords
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 8
+	special = /datum/special_intent/limbguard
 
-	max_integrity = 0
+	max_integrity = 200
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
 	name = "ceremonial kazengun scabbard"
@@ -560,6 +566,9 @@
 
 	valid_blade = /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
 	can_parry = FALSE
+	sewrepair = TRUE
+	special = null
+	max_integrity = 0
 
 
 /obj/item/rogueweapon/scabbard/sword/kazengun/steel
@@ -585,6 +594,7 @@
 	item_state = "kazscabyuruku"
 	valid_blade = /obj/item/rogueweapon/sword/short/kazengun
 	wdefense = 4
+	special = null
 
 /obj/item/rogueweapon/scabbard/sheath/kazengun
 	name = "plain lacquer sheath"
@@ -592,9 +602,10 @@
 	icon_state = "kazscabdagger"
 	item_state = "kazscabdagger"
 	valid_blade = /obj/item/rogueweapon/huntingknife/idagger/steel/kazengun
-	associated_skill = /datum/skill/combat/shields
+	associated_skill = /datum/skill/combat/knives
 	possible_item_intents = list(SHIELD_BASH, SHIELD_BLOCK)
 	can_parry = TRUE
+	sewrepair = FALSE
 	wdefense = 3
 
 	max_integrity = 0
@@ -700,7 +711,6 @@
 	resistance_flags = NONE
 	experimental_onback = FALSE
 	bigboy = TRUE
-	sewrepair = TRUE
 
 	equip_delay_self = 5 SECONDS
 	unequip_delay_self = 5 SECONDS
@@ -715,6 +725,8 @@
 
 /obj/item/rogueweapon/scabbard/gwstrap/getonmobprop(tag)
 	..()
+	if(!hol_comp)
+		return
 	if(!hol_comp.sheathed)
 		return
 	if(istype(hol_comp.sheathed, /obj/item/rogueweapon/estoc) || istype(hol_comp.sheathed, /obj/item/rogueweapon/greatsword))

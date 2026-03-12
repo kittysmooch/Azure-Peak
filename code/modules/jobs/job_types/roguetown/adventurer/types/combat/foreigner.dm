@@ -57,7 +57,6 @@
 				beltl = /obj/item/rogueweapon/sword/sabre/mulyeog
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast
-				H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 
 /datum/advclass/foreigner/yoruku
@@ -221,7 +220,7 @@
 	You hail from the Ranesheni Empire, where the market of flesh is ancient and unbroken, and your coin is earned in the trade of living souls."
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/slaver
-	subclass_languages = list(/datum/language/celestial)
+	subclass_languages = list(/datum/language/raneshi)
 	cmode_music = 'sound/music/combat_desertrider.ogg'
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
@@ -635,7 +634,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = 150
-	sheathe_icon = "makhaira"
+	sheathe_icon = "kopis"
 
 /obj/item/clothing/suit/roguetown/shirt/tribalrag/gladiator
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
@@ -689,10 +688,34 @@
 
 /datum/reagent/medicine/healthpot/zarum
 	name = "Zarum"
-	description = "Gradually regenerates all types of damage, imparts a savory taste to most topped meals."
+	description = "A fermented sauce of fish innards and vinegear, which gradually regenerates all types of damage."
+	reagent_state = LIQUID
 	color = "#891305"
+	var/nutriment_factor = 16
+	metabolization_rate = 0.4
 	taste_description = "lip-puckeringly rich fishiness"
 	scent_description = "fermented pungence"
+	taste_mult = 8
+	var/hydration = 4
+
+/datum/reagent/medicine/healthpot/zarum/on_mob_life(mob/living/carbon/M)
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!HAS_TRAIT(H, TRAIT_NOHUNGER))
+			H.adjust_hydration(hydration)
+		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+			M.blood_volume = min(M.blood_volume+10, BLOOD_VOLUME_NORMAL)
+	var/list/wCount = M.get_wounds()
+	if(wCount.len > 0)
+		M.heal_wounds(4) //Better than traditional lifeblood at sealing open wounds. Slightly weaker healing potency, in turn.
+	if(volume > 0.99)
+		M.adjustBruteLoss(-1.5  * REAGENTS_EFFECT_MULTIPLIER, 0) //Minor reduction of ~15%-ish potency.
+		M.adjustFireLoss(-1.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustOxyLoss(-1.25, 0)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustCloneLoss(-1.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustOrganLoss(ORGAN_SLOT_EYES, -1 * REAGENTS_EFFECT_MULTIPLIER)
+	..()
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple/gladiator
 	name = "gladiator's skin"
@@ -798,7 +821,7 @@
 
 /datum/intent/axe/chop/arbelos
 	damfactor = 1.3
-	clickcd = 10 //Quicker than a conventional axe, but slower than a katar. 
+	clickcd = CLICK_CD_QUICK //Quicker than a conventional axe, but slower than a katar.
 
 /datum/intent/axe/cut/arbelos
 	damfactor = 1.15
@@ -807,7 +830,7 @@
 /datum/intent/katar/thrust/arbelos
 	penfactor = 20
 	damfactor = 0.8
-	clickcd = 10 //Slower than a regular thrust, with slightly less penetration and damage. Inverse to the katar.
+	clickcd = CLICK_CD_QUICK //Slower than a regular thrust, with slightly less penetration and damage. Inverse to the katar.
 
 /obj/item/rogueweapon/sword/long/greatkhopesh
 	name = "apophis" //Kriegmesser analogue.
@@ -1001,18 +1024,21 @@
 	desc = "'We are Her soldiers, the Legion of light.' </br>'We are the center, the depth of the Sun.' </br>'Fire and flame - we are one.'"
 	icon_state = "astrata_b"
 	item_state = "astrata_b"
+	sellprice = 25 // same as a bronze psycross
 
 /obj/item/clothing/neck/roguetown/psicross/malum/bronze
 	name = "bronze amulet of Malum"
 	desc = "Stone to steel, bone to bronze, mulched to masterworked."
 	icon_state = "malum_b"
 	item_state = "malum_b"
+	sellprice = 25
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/bronze
 	name = "bronze amulet of Graggar"
 	desc = "'EVERYTHING - AND EVERYONE YOU LOVE - WILL BE GONE! WHAT WILL YOU HAVE, AFTER THE LAST FIRE'S BEEN SMOTHERED OUT?!' </br>‎  </br>'..You. I'd still have you.'"
 	icon_state = "graggar_b"
 	item_state = "graggar_b"
+	sellprice = 25
 
 //////////////////////////
 // THESPIANS - END!     //

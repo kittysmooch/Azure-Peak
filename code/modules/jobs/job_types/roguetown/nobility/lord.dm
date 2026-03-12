@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = JCOLOR_NOBLE
-	allowed_races = RACES_NO_CONSTRUCT
+	allowed_races = RACES_SHUNNED_UP
 	allowed_sexes = list(MALE, FEMALE)
 	advclass_cat_rolls = list(CTAG_LORD = 20)
 
@@ -64,7 +64,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			to_chat(L, span_notice("Word reached me on the approach that [regentbuddy.real_name], the [regentbuddy.job], served as regent in my absence."))
 		SSticker.regentmob = null //Time for regent to give up the position.
 
-		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_marriage_choice)), 50)
+		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_marriage_choice)), 50) //sensible to have this first
+		addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_suitor_choice)), 50)
 		if(STATION_TIME_PASSED() <= 30 MINUTES) //Late to the party? Stuck with default colors, sorry!
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/mob, lord_color_choice)), 50)
 
@@ -436,6 +437,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	var/accept_message = "I will serve!"
 	/// Say message when the recruit refuses
 	var/refuse_message = "I refuse."
+	ignore_los = 1 // this needs to ignore normal "range", it looks like
+	range = 3
 
 /obj/effect/proc_holder/spell/self/convertrole/cast(list/targets,mob/user = usr)
 	. = ..()

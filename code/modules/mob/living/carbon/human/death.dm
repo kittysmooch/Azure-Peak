@@ -30,7 +30,9 @@
 /mob/living/carbon/human/death(gibbed, nocutscene = FALSE)
 	if(stat == DEAD)
 		return
-
+	if(QDELETED(src) || !loc)
+		return
+		
 	var/area/A = get_area(src)
 	dna?.species?.stop_wagging_tail(src)
 
@@ -76,6 +78,7 @@
 		if(ishumannorthern(src))
 			record_round_statistic(STATS_HUMEN_DEATHS)
 		if(mind)
+			cmode = FALSE
 			if(mind.assigned_role in GLOB.church_positions)
 				record_round_statistic(STATS_CLERGY_DEATHS)
 			if(mind.has_antag_datum(/datum/antagonist/vampire))

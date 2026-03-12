@@ -4,7 +4,7 @@
 	icon = 'icons/roguetown/clothing/neck.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/neck.dmi'
 	bloody_icon_state = "bodyblood"
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	alternate_worn_layer = NECK_LAYER
 	var/overarmor
 
@@ -204,7 +204,8 @@
 	adjustable = CAN_CADJUST
 
 /obj/item/clothing/neck/roguetown/chaincoif/full/ComponentInitialize()
-	return
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
 
 /obj/item/clothing/neck/roguetown/chaincoif/full/AdjustClothes(mob/user)
 	if(loc == user)
@@ -440,9 +441,9 @@
 	//dropshrink = 0.75
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
-	possible_item_intents = list(/datum/intent/use, /datum/intent/special/magicarc)
+	possible_item_intents = list(/datum/intent/use)
 	sellprice = 10
-	experimental_onhip = FALSE
+	experimental_onhip = TRUE
 	anvilrepair = /datum/skill/craft/armorsmithing
 	grid_width = 32
 	grid_height = 32
@@ -541,6 +542,14 @@
 	name = "amulet of Graggar"
 	desc = "Blood leads only to glory, and violence begets divinity. Nothing less. Conquest is simply another name for victory."
 	icon_state = "graggar"
+	resistance_flags = FIRE_PROOF
+	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS|ITEM_SLOT_RING
+	smeltresult = null
+
+/obj/item/clothing/neck/roguetown/psicross/inhumen/baotha
+	name = "amulet of Baotha"
+	desc = "A hollow promise rendered in gold. It weighs heavy with the memory of sweet wine turned to poison, and the comfort of a sorrow that refuses to fade."
+	icon_state = "baotha"
 	resistance_flags = FIRE_PROOF
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS|ITEM_SLOT_RING
 	smeltresult = null
@@ -690,7 +699,6 @@
 	icon_state = "psycross_b"
 	item_state = "psycross_b"
 	sellprice = 25
-	is_silver = TRUE
 
 /obj/item/clothing/neck/roguetown/psicross/silver
 	name = "silver psycross"
@@ -927,7 +935,7 @@
 	desc = "A cabbit's foot necklace. Some say it brings good luck. It only feels more lucky when it's worn around the neck."
 	icon_state = "luckcharm"
 	sellprice = 15
-	possible_item_intents = list(/datum/intent/use, /datum/intent/special/magicarc)
+	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_HIP|ITEM_SLOT_WRISTS
 	grid_width = 32
 	grid_height = 32
@@ -989,7 +997,7 @@
 
 /obj/item/clothing/neck/roguetown/chaincoif/chainmantle/matthios/Initialize()
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
 
 //
 

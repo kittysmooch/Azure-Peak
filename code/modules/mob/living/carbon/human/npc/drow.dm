@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 		aggressive=1
 		wander = TRUE
 	if(!is_silent && target != newtarg)
-		say(pick(GLOB.drowraider_aggro))
+		say(pick(GLOB.drowraider_aggro), npc_speech = TRUE)
 		pointed(target)
 
 /mob/living/carbon/human/species/elf/dark/drowraider/should_target(mob/living/L)
@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 
 /mob/living/carbon/human/species/elf/dark/drowraider/Initialize()
 	. = ..()
-	set_species(/datum/species/elf/dark)
+	set_species(/datum/species/elf/dark/raider)
 	addtimer(CALLBACK(src, PROC_REF(after_creation)), 1 SECONDS)
 	is_silent = TRUE
 
@@ -122,15 +122,19 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 
 /mob/living/carbon/human/species/elf/dark/drowraider/handle_combat()
 	if(mode == NPC_AI_HUNT)
-		if(prob(5))
-			emote("laugh")
+		if(prob(5) && world.time >= (mob_timers["npc_chatter"] + 15 SECONDS))
+			mob_timers["npc_chatter"] = world.time
+			if(prob(60))
+				say(pick(GLOB.drowraider_aggro), npc_speech = TRUE)
+			else
+				emote(pick("laugh", "cackle", "giggle"))
 	. = ..()
 
 /datum/outfit/job/roguetown/human/species/elf/dark/drowraider/pre_equip(mob/living/carbon/human/H)
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
-	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/shadowvest
-	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt/elflock
+	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/shadowpants/drowraider
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/shadowvest/drowraider
+	shirt = /obj/item/clothing/suit/roguetown/shirt/shadowshirt/elflock/drowraider
 	gloves = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/elflock
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 	mask = /obj/item/clothing/mask/rogue/facemask

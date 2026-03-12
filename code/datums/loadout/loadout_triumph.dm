@@ -67,7 +67,7 @@
 
 /datum/loadout_item/triumph_foldtable
 	name = "Folding Table"
-	path = /obj/structure/table/wood/folding
+	path = /obj/item/folding_table_stored
 	triumph_cost = 5
 	sort_category = "Triumphs"
 
@@ -230,6 +230,12 @@
 /datum/loadout_item/triumph_armorkit
 	name = "Morphing Elixir, 'Valorian Steel Armor'"
 	path = /obj/item/enchantingkit/triumph_armorkit
+	triumph_cost = 3
+	sort_category = "Triumphs"
+
+/datum/loadout_item/triumph_armorkit_drow
+	name = "Morphing Elixir, 'Drowcraft Armor'"
+	path = /obj/item/enchantingkit/triumph_armorkit_drow
 	triumph_cost = 3
 	sort_category = "Triumphs"
 

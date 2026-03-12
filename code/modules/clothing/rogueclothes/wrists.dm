@@ -7,7 +7,7 @@
 	resistance_flags = FLAMMABLE
 	sewrepair = TRUE
 	anvilrepair = null
-	experimental_inhand = FALSE
+	experimental_inhand = TRUE
 	grid_width = 32
 	grid_height = 64
 	var/overarmor
@@ -40,6 +40,11 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
+
+/obj/item/clothing/wrists/roguetown/bracers/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_notice("Allows unarmed parrying. Takes integrity damage when parrying.")
+	. += span_notice("Unarmed attacks are swift-balanced: faster attackers are harder to parry and dodge.")
 
 /obj/item/clothing/wrists/roguetown/bracers/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
@@ -390,7 +395,7 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/matthios/Initialize()
 	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "ARMOR")
+	AddComponent(/datum/component/cursed_item, TRAIT_FREEMAN, "ARMOR")
 
 //
 
