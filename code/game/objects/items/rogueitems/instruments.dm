@@ -349,6 +349,8 @@
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	song_list = list(
 	"A Rambling Tongue" = 'sound/music/instruments/shamisen A Rambling Tongue.ogg',
+	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka',
+	"Daimyo Dreamwalker" = 'sound/music/instruments/shamisen Daimyo Dreamwalker.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
@@ -356,8 +358,7 @@
 	"Tsugaru" = 'sound/music/instruments/shamisen (5).ogg',
 	"Season" = 'sound/music/instruments/shamisen (6).ogg',
 	"Parade" = 'sound/music/instruments/shamisen (7).ogg',
-	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg',
-	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka')
+	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg')
 
 
 
