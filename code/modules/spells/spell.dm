@@ -7,6 +7,8 @@
 #define COOLDOWN_REDUCTION_PER_INT 0.05 // The amount of cooldown reduction per point of intelligence above / below threshold
 #define CHARGE_REDUCTION_PER_SKILL 0.05 // The amount of charge reduction per skill level.
 #define FATIGUE_REDUCTION_PER_SKILL 0.05 // The amount of fatigue reduction per skill level.
+#define MEDIUM_ARMOR_STAM_PENALTY 0.15 // Multiplier on base stamina cost for wearing medium armor
+#define HEAVY_ARMOR_STAM_PENALTY 0.3 // Multiplier on base stamina cost for wearing heavy armor
 
 /obj/effect/proc_holder
 	var/panel = "Debug"//What panel the proc holder needs to go on.
@@ -255,6 +257,15 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		newdrain = newdrain + (releasedrain * (diffy * FATIGUE_REDUCTION_PER_INT))
 	if(!user.check_armor_skill())
 		newdrain += 80
+	// Armor weight penalty. Trained wearers
+	// still get a bit of a soft penalty 
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/ac = H.highest_ac_worn()
+		if(ac == ARMOR_CLASS_HEAVY)
+			newdrain += releasedrain * HEAVY_ARMOR_STAM_PENALTY
+		else if(ac == ARMOR_CLASS_MEDIUM)
+			newdrain += releasedrain * MEDIUM_ARMOR_STAM_PENALTY
 	if(newdrain > 0)
 		return newdrain
 	return 0.1
@@ -933,3 +944,5 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 #undef COOLDOWN_REDUCTION_PER_INT
 #undef CHARGE_REDUCTION_PER_SKILL
 #undef FATIGUE_REDUCTION_PER_SKILL
+#undef MEDIUM_ARMOR_STAM_PENALTY
+#undef HEAVY_ARMOR_STAM_PENALTY
