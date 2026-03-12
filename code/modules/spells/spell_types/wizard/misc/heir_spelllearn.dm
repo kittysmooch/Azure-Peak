@@ -11,7 +11,7 @@
 	var/list/utility_bundle = list(	//Fly! Well, sort of.
 		/obj/effect/proc_holder/spell/invoked/leap,
 		/obj/effect/proc_holder/spell/invoked/featherfall,
-		/obj/effect/proc_holder/spell/invoked/blink
+		/obj/effect/proc_holder/spell/invoked/mirror_transform
 	)
 	var/list/offensive_bundle = list( //Bonk. Bonk. Bonk. Bonk. Bonk.
 		/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt

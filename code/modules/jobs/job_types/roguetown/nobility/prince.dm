@@ -154,6 +154,9 @@
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_RICH, H, "Savings.")
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/heir_spell_bundle)
+	backpack_contents = list(
+		/obj/item/handmirror = 1
+	)
 		
 
 /datum/advclass/heir/aristocrat
