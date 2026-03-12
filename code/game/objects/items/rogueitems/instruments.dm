@@ -354,6 +354,7 @@
 	"Emperor of Flame" = 'sound/music/instruments/shamisen Emperor of Flame.ogg',
 	"Fire Phoenix" = 'sound/music/instruments/shamisen Fire Phoenix.ogg',
 	"Kaiju Islands" = 'sound/music/instruments/shamisen Kaiju Islands.ogg',
+	"Lavender Village" = 'sound/music/instruments/shamisen Lavender Village.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
