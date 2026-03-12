@@ -297,6 +297,12 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 	shortname = "Firestorm"
 	musicpath = list('sound/music/combat_Kazengun_Firestorm.ogg')
 
+/datum/combat_music/overlord
+	name = "Overlord (Kazengun)"
+	desc = ""
+	shortname = "Overlord"
+	musicpath = list('sound/music/combat_Kazengun_Overlord.ogg')
+
 /datum/combat_music/knight
 	name = "Knight (Noble)"
 	desc = ""
