@@ -295,7 +295,6 @@
 				if(user.vars[variable] == user_vars_to_edit[variable]) //Is it still what we set it to? (if not we best not change it)
 					user.vars[variable] = user_vars_remembered[variable]
 		user_vars_remembered = initial(user_vars_remembered) // Effectively this sets it to null.
-	warn_armor_class(user, removed = TRUE)
 
 /obj/item/clothing/equipped(mob/user, slot)
 	..()
@@ -314,18 +313,21 @@
 		return
 	if(!ishuman(user))
 		return
-	if(removed)
-		// Check if they're now fine after removing this piece
-		if(user.check_armor_skill())
-			to_chat(user, span_notice("I feel lighter and more agile without that armor weighing me down."))
-		else
-			to_chat(user, span_notice("I feel the weight lessens, but another piece of armor is still impairing my movements."))
-		return
-	// Check if this piece puts them over their training
+	// Was this item's armor class actually beyond the user's training?
+	var/dominated = FALSE
 	if(armor_class == ARMOR_CLASS_HEAVY && !HAS_TRAIT(user, TRAIT_HEAVYARMOR))
-		to_chat(user, span_warning("I'm not trained to wear armor of this weight. My ability to parry, dodge, run and cast spells will be greatly impaired."))
+		dominated = TRUE
 	else if(armor_class == ARMOR_CLASS_MEDIUM && !HAS_TRAIT(user, TRAIT_HEAVYARMOR) && !HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
-		to_chat(user, span_warning("I'm not trained to wear armor of this weight. My ability to parry, dodge, run and cast spells will be greatly impaired."))
+		dominated = TRUE
+	if(!dominated)
+		return
+	if(removed)
+		if(user.check_armor_skill())
+			to_chat(user, span_info("I feel lighter and more agile without that armor weighing me down."))
+		else
+			to_chat(user, span_info("I feel the weight lessens, but another piece of armor is still impairing my movements."))
+		return
+	to_chat(user, span_warning("I'm not trained to wear armor of this weight. My ability to parry, dodge, run and cast spells will be greatly impaired."))
 
 /obj/item/clothing/examine(mob/user)
 	. = ..()
