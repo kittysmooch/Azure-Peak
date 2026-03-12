@@ -303,6 +303,12 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 	shortname = "Overlord"
 	musicpath = list('sound/music/combat_Kazengun_Overlord.ogg')
 
+/datum/combat_music/runaway_chariot
+	name = "Runaway Chariot (Kazengun)"
+	desc = ""
+	shortname = "Runaway Chariot"
+	musicpath = list('sound/music/combat_Kazengun_Runaway_Chariot.ogg')
+
 /datum/combat_music/knight
 	name = "Knight (Noble)"
 	desc = ""
