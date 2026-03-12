@@ -641,6 +641,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		after_cast(targets, user = user)
 		if(isliving(user))
 			var/mob/living/L = user
+			// Apply stamina drain — the on_mmb path is never reached due to check_click_intercept consuming the click first
+			if(releasedrain > 0)
+				var/fatigue = calculate_fatigue_drain(L)
+				if(fatigue > 0)
+					L.stamina_add(fatigue)
 			if(L.has_status_effect(/datum/status_effect/buff/clash))
 				var/mob/living/carbon/human/H = user
 				H.bad_guard(span_warning("I can't focus while casting spells!"), cheesy = TRUE)
