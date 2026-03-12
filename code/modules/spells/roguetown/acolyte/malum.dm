@@ -408,7 +408,7 @@ var/global/list/anvil_recipe_prices[][]
 
 //T0
 
-/obj/effect/proc_holder/spell/invoked/rework
+/*/obj/effect/proc_holder/spell/invoked/rework //this whole thing, barely works and fixing it causes only further issues
 	name = "Rework"
 	desc = "Burn a piece of equipment to create a blessing for the appropriate type of equipment. Cast once more on another item to bless it."
 	action_icon = 'icons/mob/actions/malummiracles.dmi'
@@ -572,7 +572,7 @@ var/global/list/anvil_recipe_prices[][]
 	max_integrity = initial(max_integrity)
 	obj_integrity = max_integrity/2
 	malumblessed_c = FALSE
-	visible_message("<font color='purple'>A holy blessing no longer affects [name]!</font>")
+	visible_message("<font color='purple'>A holy blessing no longer affects [name]!</font>")*/
 
 /obj/effect/proc_holder/spell/self/repair
 	name = "Order: Repair"
