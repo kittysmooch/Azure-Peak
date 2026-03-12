@@ -359,6 +359,7 @@
 	"Pouncing Shadow" = 'sound/music/instruments/shamisen Pouncing Shadow.ogg',
 	"Rising Sun" = 'sound/music/instruments/shamisen Rising Sun.ogg',
 	"Those Who Fight" = 'sound/music/instruments/shamisen Those Who Fight.ogg',
+	"Village in the Mountains" = 'sound/music/instruments/shamisen Village in the Mountains.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
