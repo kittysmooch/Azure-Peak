@@ -357,6 +357,7 @@
 	"Lavender Village" = 'sound/music/instruments/shamisen Lavender Village.ogg',
 	"Morning Is Coming" = 'sound/music/instruments/shamisen Morning Is Coming.ogg',
 	"Pouncing Shadow" = 'sound/music/instruments/shamisen Pouncing Shadow.ogg',
+	"Rising Sun" = 'sound/music/instruments/shamisen Rising Sun.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
