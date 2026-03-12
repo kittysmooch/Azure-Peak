@@ -348,6 +348,7 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	song_list = list(
+	"A Rambling Tongue" = 'sound/music/instruments/shamisen A Rambling Tongue.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
