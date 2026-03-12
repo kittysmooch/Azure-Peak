@@ -95,11 +95,11 @@
 			var/list/options = song_list.Copy()
 			if(user.mind && user.get_skill_level(/datum/skill/misc/music) >= 4)
 				options["Upload New Song"] = "upload"
-			
+
 			var/choice = input(user, "Which song?", "Music", name) as null|anything in options
 			if(!choice || !user)
 				return
-				
+
 			if(playing || !(src in user.held_items) || user.get_inactive_held_item())
 				return
 
@@ -355,7 +355,8 @@
 	"Tsugaru" = 'sound/music/instruments/shamisen (5).ogg',
 	"Season" = 'sound/music/instruments/shamisen (6).ogg',
 	"Parade" = 'sound/music/instruments/shamisen (7).ogg',
-	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg')
+	"Koshiro" = 'sound/music/instruments/shamisen (8).ogg',
+	"Ashitaka" = 'sound/music/instruments/shamisen The Legend of Ashitaka')
 
 
 
