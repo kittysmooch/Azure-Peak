@@ -576,7 +576,7 @@ var/global/list/anvil_recipe_prices[][]
 
 /obj/effect/proc_holder/spell/self/repair
 	name = "Order: Repair"
-	desc = "Repair a metal item in your hands."
+	desc = "Repairs metal items on your person." //it literally repairs everything
 	action_icon = 'icons/mob/actions/malummiracles.dmi'
 	overlay_icon = 'icons/mob/actions/malummiracles.dmi'
 	overlay_state = "repair"
