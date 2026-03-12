@@ -355,6 +355,7 @@
 	"Fire Phoenix" = 'sound/music/instruments/shamisen Fire Phoenix.ogg',
 	"Kaiju Islands" = 'sound/music/instruments/shamisen Kaiju Islands.ogg',
 	"Lavender Village" = 'sound/music/instruments/shamisen Lavender Village.ogg',
+	"Morning Is Coming" = 'sound/music/instruments/shamisen Morning Is Coming.ogg',
 	"Cursed Apple" = 'sound/music/instruments/shamisen (1).ogg',
 	"Fire Dance" = 'sound/music/instruments/shamisen (2).ogg',
 	"Lute" = 'sound/music/instruments/shamisen (3).ogg',
