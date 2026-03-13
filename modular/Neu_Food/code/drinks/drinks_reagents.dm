@@ -1,6 +1,6 @@
 /datum/reagent/water/rosewater
 	name = "Rose Tea"
-	description = "Steeped rose petals with mild regeneration."
+	description = "Steeped rose petals with mild health regeneration."
 	reagent_state = LIQUID
 	color = "#f398b6"
 	taste_description = "floral sweetness"
@@ -16,6 +16,30 @@
 		M.adjustBruteLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustFireLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustOxyLoss(-0.1, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+
+/datum/reagent/water/rosewater_spiced
+	name = "Spiced Rose Tea"
+	description = "Spiced rose petals that help to reinvigorate the body's humors, providing modest health regeneration."
+	reagent_state = LIQUID
+	color = "#F2638C"
+	taste_description = "floral spiciness"
+	overdose_threshold = 0
+	metabolization_rate = REAGENTS_METABOLISM
+	alpha = 173
+
+/datum/reagent/water/rosewater_spiced/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if (M.mob_biotypes & MOB_BEAST)
+		M.adjustFireLoss(0.8  * REAGENTS_EFFECT_MULTIPLIER)
+	else
+		M.adjustBruteLoss(-0.46  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustFireLoss(-0.46  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustOxyLoss(-0.23, 0)
 		var/list/our_wounds = M.get_wounds()
 		if (LAZYLEN(our_wounds))
 			var/upd = M.heal_wounds(1)
@@ -51,6 +75,26 @@
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
 
+/datum/reagent/consumable/caffeine/coffee_spiced
+	name = "Spiced Coffee"
+	description = "Spiced offee beans brewed into a hot drink, with a hint of bitterness. Modestly rejuvenating."
+	reagent_state = LIQUID
+	color = "#8C4221"
+	taste_description = "caramelized spiciness"
+	metabolization_rate = 0.5
+	alpha = 173
+
+/datum/reagent/consumable/caffeine/coffee_spiced/on_mob_life(mob/living/carbon/M)
+	. = ..()
+		M.adjustBruteLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustFireLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustOxyLoss(-0.15, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
+
 /datum/reagent/consumable/caffeine/tea
 	name = "Tea"
 	description = "Tea leaves brewed into a hot drink. Slight hint of bitterness. Smooth."
@@ -59,6 +103,26 @@
 	taste_description = "smooth grassiness" // Yeah, uh.
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+
+/datum/reagent/consumable/caffeine/tea_spiced
+	name = "Spiced Tea"
+	description = "Spiced tea leaves brewed into a hot drink. Slight hint of bitterness. Smoothly rejuvinating."
+	reagent_state = LIQUID
+	color = "#788C41" // Deeper green to make it look better
+	taste_description = "spiced grassiness"
+	metabolization_rate = 0.5
+	alpha = 173
+
+/datum/reagent/consumable/caffeine/tea_spiced/on_mob_life(mob/living/carbon/M)
+	. = ..()
+		M.adjustBruteLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustFireLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustOxyLoss(-0.15, 0)
+		var/list/our_wounds = M.get_wounds()
+		if (LAZYLEN(our_wounds))
+			var/upd = M.heal_wounds(1)
+			if (upd)
+				M.update_damage_overlays()
 
 /datum/reagent/consumable/poppy_milk
 	name = "Poppy Milk"
@@ -101,6 +165,28 @@
 		M.adjustOxyLoss(-0.25, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-0.75  * REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+
+/datum/reagent/consumable/spiced_chocolate
+	name = "Spiced Chocolate"
+	description = "Impossibly smooth, velvety, and rich. Provides a generous portion of health regeneration, and minor stamina regeneration."
+	color = "#6D472F"
+	taste_description = "an impossible blemd of richness, sweetness, and a hint of throat-tingling spiciness"
+
+/datum/reagent/consumable/spiced_chocolate/on_mob_life(mob/living/carbon/M)
+	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
+		M.energy_add(2)
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+2, BLOOD_VOLUME_MAXIMUM)
+	var/list/wCount = M.get_wounds()
+	if(wCount.len > 0)
+		M.heal_wounds(1)
+	if(volume > 0.99)
+		M.adjustBruteLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustFireLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustOxyLoss(-0.15, 0)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustCloneLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
 	..()
 
 /datum/reagent/consumable/soothing_valerian_tea
