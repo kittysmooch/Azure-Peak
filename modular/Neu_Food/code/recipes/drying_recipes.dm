@@ -235,3 +235,21 @@
 	time = 10 SECONDS
 	verbage_simple = "roll"
 	verbage = "rolls"
+
+/datum/crafting_recipe/roguetown/cooking/sugartangerine
+	name = "smothered tangerines"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
+		/obj/item/reagent_containers/food/snacks/sugar = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine/sugared
+	structurecraft = null
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/cooking/sugarblackberry
+	name = "smothered blackberries"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry = 1,
+		/obj/item/reagent_containers/food/snacks/sugar = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
+	craftdiff = 1
+	structurecraft = null
