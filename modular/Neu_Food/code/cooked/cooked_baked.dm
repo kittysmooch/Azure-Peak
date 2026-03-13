@@ -118,6 +118,20 @@
 			user.put_in_hands(sammich)
 			qdel(I)
 			qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
+		if(do_after(user,short_cooktime, target = src))
+			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/jamtallow/sammich= new(get_turf(user))
+			user.put_in_hands(sammich)
+			qdel(I)
+			qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/marmaladeslice))
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
+		if(do_after(user,short_cooktime, target = src))
+			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade/sammich= new(get_turf(user))
+			user.put_in_hands(sammich)
+			qdel(I)
+			qdel(src)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
@@ -204,6 +218,7 @@
 	desc = "A blackberried jam, smeared across a slice of toast. It is favored as a delicacy by Psydonia's peasantry and yeomen, and is usually reserved to crown the start of a particularly special dae."
 	faretype = FARE_LAVISH
 	icon_state = "toast_jamtallow"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
@@ -287,6 +302,7 @@
 	desc = "'I liked it. I was good at it. And I was really.. I was alive.'"
 	faretype = FARE_FINE
 	icon_state = "bread_jamtallow"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	eat_effect = /datum/status_effect/buff/snackbuff
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade
