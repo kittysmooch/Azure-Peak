@@ -1,0 +1,151 @@
+/**
+ * Azure Peak — Shared Theme Base
+ *
+ * All azure_* themes derive from this mixin.
+ * Each theme only needs to supply its color map and topbar asset.
+ *
+ * Color map keys:
+ *   base            – body / layout background
+ *   text            – primary text color
+ *   label           – secondary / label text
+ *   accent          – section separators, dividers, input borders
+ *   accent-bright   – input focus borders, link hover (brighter accent)
+ *   border          – component borders, button backgrounds
+ *   btn-text        – button label color
+ *   btn-selected    – selected-state button background
+ *   btn-disabled    – disabled transparent-button text
+ *   scrollbar-thumb – scrollbar thumb color
+ *   link            – a:link color
+ *   link-visited    – a:visited color
+ *   link-hover      – a:hover / a:active color
+ */
+
+@use 'sass:map';
+
+@font-face {
+  font-family: 'Pterra';
+  src: url('~roguefont/pterra.ttf');
+}
+
+@mixin azure-theme($colors, $topbar-svg) {
+  // ── Core variables ──────────────────────────────────────────────
+  --color-base: #{map.get($colors, 'base')};
+  --color-base-start: #{map.get($colors, 'base')};
+  --color-base-end: #{map.get($colors, 'base')};
+
+  --font-size: 14px;
+  --font-family: 'Pterra';
+  --color-text: #{map.get($colors, 'text')};
+  --line-height: 170%;
+
+  // Semantic
+  --color-label: #{map.get($colors, 'label')};
+
+  // Scrollbar
+  --color-scrollbar-thumb: #{map.get($colors, 'scrollbar-thumb')};
+  scrollbar-color: #{map.get($colors, 'border')} #{map.get($colors, 'base')};
+
+  // Borders
+  --color-border: #{map.get($colors, 'border')};
+  --section-separator-color: #{map.get($colors, 'accent')};
+  --input-border-color: #{map.get($colors, 'accent')};
+  --input-border-color-focus: #{map.get($colors, 'accent-bright')};
+
+  // Buttons
+  --button-background: #{map.get($colors, 'border')};
+  --button-background-default: #{map.get($colors, 'border')};
+  --button-background-selected: #{map.get($colors, 'btn-selected')};
+
+  // ── Layout ──────────────────────────────────────────────────────
+  .Layout__content {
+    background-image: none;
+  }
+
+  // ── Title Bar ───────────────────────────────────────────────────
+  .TitleBar {
+    background-image: url($topbar-svg);
+    background-repeat: repeat-x;
+    background-size: 64px;
+    background-color: #000000;
+    box-shadow: none;
+
+    &__title {
+      font-size: 1.6rem;
+    }
+  }
+
+  .TitleBar__title {
+    padding-left: 12px;
+    font-size: 15px;
+    color: #FFFFFF;
+    font-weight: bolder;
+  }
+
+  // ── Buttons ─────────────────────────────────────────────────────
+  .Button {
+    transition: all 0.5s;
+    --color-text: #{map.get($colors, 'btn-text')};
+  }
+
+  .Button--color--transparent {
+    --button-background-hover: #{map.get($colors, 'border')};
+    --button-background-active: #{map.get($colors, 'border')};
+    --button-background-disabled: transparent;
+  }
+
+  .Button--color--transparent.Button--disabled {
+    --button-color: #{map.get($colors, 'btn-disabled')};
+  }
+
+  // ── Input Buttons ───────────────────────────────────────────────
+  .input-button {
+    &__submit, &__cancel {
+      color: #ae3636;
+      font-weight: 600;
+    }
+    &__submit:hover {
+      background: rgba(74, 140, 74, 0.3);
+      transition: all 0.5s;
+    }
+    &__cancel:hover {
+      background: rgba(140, 74, 74, 0.3);
+      transition: all 0.5s;
+    }
+  }
+
+  // ── Content padding ─────────────────────────────────────────────
+  .Window__contentPadding {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  // ── Divider ─────────────────────────────────────────────────────
+  .Divider {
+    border-color: #{map.get($colors, 'accent')};
+  }
+
+  // ── Links ───────────────────────────────────────────────────────
+  a:link {
+    color: #{map.get($colors, 'link')};
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  a:visited {
+    color: #{map.get($colors, 'link-visited')};
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    color: #{map.get($colors, 'link-hover')};
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  a:active {
+    color: #{map.get($colors, 'link-hover')};
+    background-color: transparent;
+    text-decoration: underline;
+  }
+}
