@@ -274,7 +274,7 @@
 	name = "aged cheese bread"
 	desc = "A slice of toast with a rather thin wedge of aged cheese melted into the crust. For a meal so humble, you'd never imagine it to be so tasty!"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS * 2)
-	icon_state = "bread_agedcheese"
+	icon_state = "bread_cheeseaged"
 	foodtype = GRAIN | DAIRY
 	faretype = FARE_FINE
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
