@@ -660,7 +660,7 @@
 	dropshrink = 0.75
 	seed = /obj/item/seeds/carrot
 
-..................   Skysugar   ...................
+///////////  Skysugar   //////////////
 // Stored here, as it uses deepfrying to make. Let's cook, yo!
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase
