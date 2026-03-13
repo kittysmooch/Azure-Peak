@@ -173,6 +173,7 @@
 /obj/item/recipe_book/magic
 	name = "The Magister's Grimoire"
 	wiki_name = "Magic"
+	wiki_section = "Guides"
 	icon_state = "book4_0"
 	base_icon_state = "book4"
 
@@ -185,4 +186,73 @@
 		/datum/runeritual/enchanting,
 		/datum/runeritual/binding,
 		/datum/runeritual/other,
+		)
+
+// ---- OOC-Only Guides (no physical item) ----
+
+/obj/item/recipe_book/combat_guide
+	name = "The Art of War: A Combat Primer"
+	wiki_name = "Combat"
+	wiki_section = "Guides"
+	can_spawn = FALSE
+	icon_state = "book3_0"
+	base_icon_state = "book3"
+
+	types = list(
+		/datum/book_entry/combat/intents,
+		/datum/book_entry/combat/basic_melee,
+		/datum/book_entry/combat/weapons,
+		/datum/book_entry/combat/armor,
+		/datum/book_entry/combat/ranged,
+		/datum/book_entry/combat/stamina,
+		/datum/book_entry/combat/mounted,
+		/datum/book_entry/combat/unarmed,
+		/datum/book_entry/combat/injuries,
+		/datum/book_entry/combat/healing,
+		/datum/book_entry/combat/group_tactics,
+		/datum/book_entry/combat/advanced,
+		)
+
+/obj/item/recipe_book/spell_compendium
+	name = "The Arcyne Compendium: All Known Spells"
+	wiki_name = "Spell List"
+	wiki_section = "Guides"
+	can_spawn = FALSE
+	icon_state = "book4_0"
+	base_icon_state = "book4"
+
+	types = list(
+		/datum/book_entry/spell_compendium/tier1,
+		/datum/book_entry/spell_compendium/tier2,
+		/datum/book_entry/spell_compendium/tier3,
+		/datum/book_entry/spell_compendium/tier4,
+		/datum/book_entry/spell_compendium/tier5,
+		/datum/book_entry/spell_compendium/utility,
+		)
+
+/obj/item/recipe_book/miracle_compendium
+	name = "The Divine Accord: Miracles of the Gods"
+	wiki_name = "Miracles"
+	wiki_section = "Guides"
+	can_spawn = FALSE
+	icon_state = "book4_0"
+	base_icon_state = "book4"
+
+	types = list(
+		/datum/book_entry/miracle_compendium/astrata,
+		/datum/book_entry/miracle_compendium/necra,
+		/datum/book_entry/miracle_compendium/dendor,
+		/datum/book_entry/miracle_compendium/abyssor,
+		/datum/book_entry/miracle_compendium/noc,
+		/datum/book_entry/miracle_compendium/eora,
+		/datum/book_entry/miracle_compendium/pestra,
+		/datum/book_entry/miracle_compendium/ravox,
+		/datum/book_entry/miracle_compendium/malum,
+		/datum/book_entry/miracle_compendium/xylix,
+		/datum/book_entry/miracle_compendium/zizo,
+		/datum/book_entry/miracle_compendium/graggar,
+		/datum/book_entry/miracle_compendium/baotha,
+		/datum/book_entry/miracle_compendium/matthios,
+		/datum/book_entry/miracle_compendium/undivided,
+		/datum/book_entry/miracle_compendium/psydon,
 		)
