@@ -86,6 +86,9 @@
 
 /datum/reagent/consumable/caffeine/coffee_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
+	if (M.mob_biotypes & MOB_BEAST)
+		M.adjustFireLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
+	else
 		M.adjustBruteLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustFireLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustOxyLoss(-0.15, 0)
@@ -115,6 +118,9 @@
 
 /datum/reagent/consumable/caffeine/tea_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
+	if (M.mob_biotypes & MOB_BEAST)
+		M.adjustFireLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
+	else
 		M.adjustBruteLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustFireLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustOxyLoss(-0.15, 0)
