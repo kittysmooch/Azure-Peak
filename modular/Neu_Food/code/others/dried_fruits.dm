@@ -15,7 +15,6 @@
 	foodtype = GRAIN
 	eat_effect = null
 	rotprocess = null
-	cooked_smell = /datum/pollutant/food/sweetglass
 	process_step = 1
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/On_Consume(mob/living/eater)
