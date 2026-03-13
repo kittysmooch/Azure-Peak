@@ -212,17 +212,27 @@
 	name = "lime"
 	seed = /obj/item/seeds/lime
 	desc = "A small, green citrus fruit with a sharp, tangy flavor, often used to add zest to dishes and drinks."
-	icon_state = "lemon" // Need a real icon
+	icon_state = "lime"
 	tastes = list("lime" = 1)
 	splat_color = "#00FF00"
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine
 	name = "tangerine"
 	seed = /obj/item/seeds/tangerine
-	desc = "A small, easy-to-peel citrus fruit with a vibrant orange color and sweet, juicy segments."
+	desc = "A small, easy-to-peel citrus fruit with a vibrant orange color and sweet, juicy segments. It is most popularly known for \
+	being the predecessor to 'marmalade'; a deliciously spreadable jam, born through smothering tangerines in sugar and dousing them in boiling fat."
 	icon_state = "tangerine"
 	tastes = list("tangerine" = 1)
 	splat_color = "#FFA500"
+
+/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine/sugared
+	name = "smothered tangerine"
+	desc = "Sugared tangerines, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
+	icon_state = "tangerinesugar"
+	faretype = FARE_FINE
+	tastes = list("overpoweringly sweet" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	deep_fried_type = /obj/item/reagent_containers/food/snacks/marmalade
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/plum
 	name = "plum"
@@ -243,10 +253,19 @@
 /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry
 	name = "blackberry"
 	seed = /obj/item/seeds/blackberry
-	desc = "A small, dark fruit with a sweet and slightly tart taste. It is often used in desserts."
+	desc = "A small, dark fruit with a sweet and slightly tart taste. It is often used in desserts, or - when smothered in sugar and doused in boiling fat - jams."
 	icon_state = "blackberry"
 	tastes = list("blackberry" = 1)
 	splat_color = "#272C3F"
+
+/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
+	name = "smothered blackberry"
+	desc = "Sugared blackberries, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
+	icon_state = "blackberrysugar"
+	faretype = FARE_FINE
+	tastes = list("overpoweringly sweet" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	deep_fried_type = /obj/item/reagent_containers/food/snacks/jamtallow
 
 /obj/item/reagent_containers/food/snacks/grown/fruit/raspberry
 	name = "raspberry"
