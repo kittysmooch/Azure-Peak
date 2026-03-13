@@ -60,7 +60,7 @@
 	name = "spiced coffee beans"
 	desc = "Roasted coffee beans, nestled atop a bed of fragrant pumpkin spice. It looks perfect for brewing a particularly rich kettle of coffee."
 	icon = 'modular/Neu_Food/icons/drinks.dmi'
-	icon_state = "coffeebeans_roasted"
+	icon_state = "coffeebeans_spiced"
 	tastes = list("rich caramel smoothness" = 1, "a mouthful of cough-inducing powderiness" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)

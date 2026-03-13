@@ -365,7 +365,7 @@
 		to_chat(user, "<span class='notice'>Stuffing the bun with aged cheese...</span>")
 		if(do_after(user,short_cooktime, target = src))
 			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/bun_parmesean(loc)
+			new /obj/item/reagent_containers/food/snacks/rogue/parmesanbun(loc)
 			qdel(I)
 			qdel(src)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
@@ -797,11 +797,11 @@
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
-/obj/item/reagent_containers/food/snacks/rogue/bun_parmesean
+/obj/item/reagent_containers/food/snacks/rogue/parmesanbun
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	tastes = list("a deliciously savory and gooey treat" = 1, "pillowy dough" = 1)
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	icon_state = "raston_aged"
+	icon_state = "agedraston"
 	name = "aged raston"
 	faretype = FARE_LAVISH
 	desc = "A slice of aged cheese melted between two lightly-toasted buns. It is as stupidly simple as it is deliciously decadant."
