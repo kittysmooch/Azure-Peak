@@ -27,7 +27,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
-	desc = "The triumph of all bakers."
+	desc = "The triumph of all bakers. Smother with butter, speckle with raisins, stab with apple slices.. the possibilities are truly endless!"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "dough"
 	slices_num = 2
@@ -58,6 +58,15 @@
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/rbread_half(loc)
+				qdel(I)
+				qdel(src)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/apple_sliced))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'modular/Neu_Food/sound/kneading.ogg', 100, TRUE, -1)
+			to_chat(user, span_notice("Kneading the dough and adding apple slices..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/abread_half(loc)
 				qdel(I)
 				qdel(src)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/butterdough))
