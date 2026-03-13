@@ -604,14 +604,14 @@
 
 /obj/item/reagent_containers/food/snacks/grown/garlick/rogue
 	name = "garlick bulb"
-	desc = "Hated by the foule vampyres that lurk in the dark. Garlick."
+	desc = "Hated by the foule vampyres that lurk in the dark - garlick!"
 	icon_state = "garlick"
 	slices_num = 5
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/veg/garlick_clove
 	eat_effect = null
-	tastes = list("pungent umami" = 1)
+	tastes = list("pungent savoriness" = 1)
 	bitesize = 2
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1) //add a reagent that harms vampires later
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/water/blessed = 2)
 	rotprocess = null
 	chopping_sound = TRUE
 	seed = /obj/item/seeds/garlick
