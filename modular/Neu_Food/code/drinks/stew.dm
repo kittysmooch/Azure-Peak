@@ -77,6 +77,13 @@
 	color = "#c4be70"
 	taste_description = "creamy cheese"
 
+/datum/reagent/consumable/soup/stew/parmesan
+	name = "agedcheese soup"
+	description = "A thick aged cheese soup. Creamy and comforting."
+	color = "#A8AA70"
+	taste_description = "creamy aged cheese"
+	metabolization_rate = 0.5
+
 /datum/reagent/consumable/soup/stew/chicken
 	name = "chicken stew"
 	color = "#baa21c"
@@ -86,6 +93,12 @@
 	name = "meat stew"
 	color = "#80432a"
 	taste_description = "meat"
+
+/datum/reagent/consumable/soup/stew/viscera_broth
+	name = "offal stew"
+	color = "#B65571"
+	taste_description = "overpoweringly strange-tasting, with a mildly savory aftertaste"
+	nutriment_factor = 15
 
 /datum/reagent/consumable/soup/stew/fish
 	name = "fish stew"
@@ -103,9 +116,9 @@
 	taste_description = "shellfish"
 
 /datum/reagent/consumable/soup/stew/yucky
-	name = "yucky stew"
+	name = "strange stew"
 	color = "#9e559c"
-	taste_description = "something rancid"
+	taste_description = "overpoweringly strange-tasting, with a mildly tangy aftertaste"
 
 /datum/reagent/consumable/soup/stew/berry
 	name = "berry stew"
@@ -153,10 +166,58 @@
 	color = "#9c305b"
 	taste_description = "sweet plums"
 
+/datum/reagent/consumable/soup/stew/squash_soup
+	name = "squash soup"
+	color = "#C98C42"
+	taste_description = "autumn's loving embrace"
+	metabolization_rate = 0.8
+
 /datum/reagent/consumable/soup/stew/tangerine_marmalade
-	name = "tangerine marmalade"
+	name = "juice of tangerine"
 	color = "#f0935d"
 	taste_description = "extremely sweet tangerine"
+	hydration = 8
+	nutriment_factor = 8
+
+/datum/reagent/consumable/soup/stew/lemon
+	name = "juice of lemon"
+	color = "#FFE88F"
+	taste_description = "puckeringly bright lemoniness"
+	hydration = 8
+	nutriment_factor = 8
+
+/datum/reagent/consumable/soup/stew/lime
+	name = "juice of lime"
+	color = "#BAE88F"
+	taste_description = "puckeringly bright limeyness"
+	hydration = 8
+	nutriment_factor = 8
+
+/datum/reagent/consumable/soup/stew/pear
+	name = "juice of pear"
+	color = "#BAAE8F"
+	taste_description = "pleasantly crisp peariness"
+	hydration = 8
+	nutriment_factor = 8
+
+/datum/reagent/consumable/soup/stew/apple
+	name = "juice of apple"
+	color = "#E0BE6D"
+	taste_description = "pleasantly crisp appleness"
+	hydration = 8
+	nutriment_factor = 8
+
+/datum/reagent/consumable/soup/stew/bone_broth
+	name = "bone broth"
+	color = "#7F6556"
+	taste_description = "savory warmth"
+	nutriment_factor = 10
+
+/datum/reagent/consumable/soup/stew/survival_broth
+	name = "briquebroth"
+	color = "#693346"
+	taste_description = "heartwarmingly thick, with little bursts of sweetness"
+	nutriment_factor = 25
 
 // Copy pasted from berry poison, but stew metabolizes much faster so it is less deadly. You CAN use it as a source of hydration / nutrition if you are desperate enough???
 /datum/reagent/consumable/soup/stew/berry_poisoned/on_mob_life(mob/living/carbon/M)

@@ -253,3 +253,39 @@
 	result = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
 	craftdiff = 1
 	structurecraft = null
+
+/datum/crafting_recipe/roguetown/cooking/spicechocolate
+	name = "chocolate with pumpkin spice"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/chocolate/slice = 1,
+		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/rogue/chocolate_spiced
+	structurecraft = null
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/cooking/spicecoffee
+	name = "roasted coffee beans with pumpkin spice"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/coffeebeansroasted = 1,
+		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans_spiced
+	structurecraft = null
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/cooking/spicetea
+	name = "ground tea leaves with pumpkin spice"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground = 1,
+		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_spiced
+	structurecraft = null
+	craftdiff = 1
+
+/datum/crafting_recipe/roguetown/cooking/spicerosa
+	name = "dried rosa petals with pumpkin spice"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried = 1,
+		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_spiced
+	structurecraft = null
+	craftdiff = 1
