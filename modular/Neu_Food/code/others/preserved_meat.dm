@@ -111,6 +111,50 @@
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_POOR)
 
+// ------------ PEMMICAN - BROTHBRICK --------------
+/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican
+	name = "brothbrique"
+	desc = "A melding of dried meat, berries, and tallow that has fueled Psydonia's expeditioneers for centuries. It is \
+	denser - and arguably less appetizing - than most foodstuffs, but consequently unrivaled in terms of sheer nutritional \
+	mirth. Traditionally sliced and dropped into boiling water, in order to make a quick-yet-robust broth."
+	icon = 'modular/Neu_Food/icons/others/preserved_meat.dmi'
+	icon_state = "salumoi5"
+	eat_effect = null
+	fried_type = null
+	slices_num = 4
+	bitesize = 8
+	slice_batch = FALSE
+	faretype = FARE_POOR
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY * 2)
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/slice
+	tastes = list("salted meat" = 1)
+	rotprocess = null
+	slice_sound = TRUE
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/update_icon()
+	if(slices_num)
+		icon_state = "pemmican[slices_num]"
+	else
+		icon_state = "pemmican_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 3
+		if(bitecount == 5)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/slice
+	name = "slice of brothbrique"
+	icon_state = "saloslice"
+	bitesize = 3
+	slices_num = FALSE
+	slice_path = FALSE
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+
 // -------------- DRIED FISH FILET -----------------
 /obj/item/reagent_containers/food/snacks/rogue/meat/driedfishfilet
 	name = "dried fish filet"
