@@ -254,7 +254,7 @@
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
 
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/cheese
+/obj/item/reagent_containers/food/snacks/rogue/sandwich/parmesean
 	tastes = list("salty yet savory cheesiness" = 1,"soft dough" = 1)
 	name = "aged cheese bread"
 	desc = "A slice of toast with a rather thin wedge of aged cheese melted into the crust. For a meal so humble, you'd never imagine it to be so tasty!"
@@ -781,7 +781,7 @@
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 
-/obj/item/reagent_containers/food/snacks/rogue/bun_raston
+/obj/item/reagent_containers/food/snacks/rogue/bun_parmesean
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	tastes = list("a deliciously savory and gooey treat" = 1, "pillowy dough" = 1)
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
