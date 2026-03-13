@@ -167,6 +167,28 @@
 		M.adjustCloneLoss(-0.75  * REAGENTS_EFFECT_MULTIPLIER, 0)
 	..()
 
+/datum/reagent/consumable/chocolate
+	name = "Hot Chocolate"
+	description = "Lovignly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
+	color = "#3F291C"
+	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
+
+/datum/reagent/consumable/spiced_chocolate/on_mob_life(mob/living/carbon/M)
+	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
+		M.energy_add(1)
+	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
+		M.blood_volume = min(M.blood_volume+1, BLOOD_VOLUME_MAXIMUM)
+	var/list/wCount = M.get_wounds()
+	if(wCount.len > 0)
+		M.heal_wounds(1)
+	if(volume > 0.99)
+		M.adjustBruteLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustFireLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustOxyLoss(-0.15, 0)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.3  * REAGENTS_EFFECT_MULTIPLIER)
+		M.adjustCloneLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER, 0)
+	..()
+
 /datum/reagent/consumable/spiced_chocolate
 	name = "Spiced Chocolate"
 	description = "Impossibly smooth, velvety, and rich. Provides a generous portion of health regeneration, and minor stamina regeneration."
