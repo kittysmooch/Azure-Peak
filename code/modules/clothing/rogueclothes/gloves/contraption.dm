@@ -59,6 +59,7 @@
 	grid_width = 64
 	grid_height = 32
 	unarmed_bonus = 1.2
+	misfire_chance = 5
 	var/activate_sound = 'sound/items/stunmace_gen (2).ogg'
 	var/cdtime = 1.5 MINUTES
 	var/activetime = 5 SECONDS
@@ -147,6 +148,9 @@
 		playsound(src, 'sound/magic/magic_nulled.ogg', 100)
 		return
 	var/skill = user.get_skill_level(/datum/skill/craft/engineering)
+
+	if(skill > 1) //if they have 2 or above it won't misfire
+		misfire_chance = 0
 	// Check for misfire before activation
 	if(misfire_chance && prob(max(0, misfire_chance - user.goodluck(2) - skill)))
 		misfire(src, user)

@@ -110,7 +110,7 @@
 								return
 							else
 								I.current_charge -= 10
-								human_target.Jitter(100)
+								human_target.Jitter(25)
 								human_target.visible_message(span_notice("[human_target] shakes and sparks with a buzz!"), 
 																		span_userdanger("You shake and spark as you're tuned up!"))
 									
