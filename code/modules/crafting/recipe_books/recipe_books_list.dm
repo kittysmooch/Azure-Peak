@@ -173,7 +173,6 @@
 /obj/item/recipe_book/magic
 	name = "The Magister's Grimoire"
 	wiki_name = "Magic"
-	wiki_section = "Guides"
 	icon_state = "book4_0"
 	base_icon_state = "book4"
 
@@ -187,8 +186,6 @@
 		/datum/runeritual/binding,
 		/datum/runeritual/other,
 		)
-
-// ---- OOC-Only Guides (no physical item) ----
 
 /obj/item/recipe_book/combat_guide
 	name = "The Art of War: A Combat Primer"
@@ -221,14 +218,9 @@
 	icon_state = "book4_0"
 	base_icon_state = "book4"
 
-	types = list(
-		/datum/book_entry/spell_compendium/tier1,
-		/datum/book_entry/spell_compendium/tier2,
-		/datum/book_entry/spell_compendium/tier3,
-		/datum/book_entry/spell_compendium/tier4,
-		/datum/book_entry/spell_compendium/tier5,
-		/datum/book_entry/spell_compendium/utility,
-		)
+/obj/item/recipe_book/spell_compendium/New()
+	. = ..()
+	types = GLOB.learnable_spells.Copy()
 
 /obj/item/recipe_book/miracle_compendium
 	name = "The Divine Accord: Miracles of the Gods"
