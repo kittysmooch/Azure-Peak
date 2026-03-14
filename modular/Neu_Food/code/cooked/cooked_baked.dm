@@ -104,13 +104,6 @@
 			user.put_in_hands(sammich)
 			qdel(I)
 			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheddarslice/aged))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		if(do_after(user,short_cooktime, target = src))
-			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/parmesean/sammich= new(get_turf(user))
-			user.put_in_hands(sammich)
-			qdel(I)
-			qdel(src)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/fat/salo/slice))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
@@ -269,16 +262,6 @@
 	icon_state = "bread_cheese"
 	foodtype = GRAIN | DAIRY
 
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/parmesean
-	tastes = list("salty yet savory cheesiness" = 1,"soft dough" = 1)
-	name = "aged cheese bread"
-	desc = "A slice of toast with a rather thin wedge of aged cheese melted into the crust. For a meal so humble, you'd never imagine it to be so tasty!"
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS * 2)
-	icon_state = "bread_cheeseaged"
-	foodtype = GRAIN | DAIRY
-	faretype = FARE_FINE
-	eat_effect = /datum/status_effect/buff/greatsnackbuff
-
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/egg
 	tastes = list("cheese" = 1,"egg" = 1)
 	name = "egg toast"
@@ -360,14 +343,6 @@
 			new /obj/item/reagent_containers/food/snacks/rogue/bun_raston(loc)
 			qdel(I)
 			qdel(src)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheddarwedge/aged))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 100, TRUE, -1)
-		to_chat(user, "<span class='notice'>Stuffing the bun with aged cheese...</span>")
-		if(do_after(user,short_cooktime, target = src))
-			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
-			new /obj/item/reagent_containers/food/snacks/rogue/parmesanbun(loc)
-			qdel(I)
-			qdel(src)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		to_chat(user, span_notice("Stuffing the bun with jamtallow..."))
@@ -394,7 +369,7 @@
 	tastes = list("sweetly-sour jamminess" = 1, "a lavish break from the dae's woes" = 1)
 	icon_state = "bun_jamtallow"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
-	faretype = FARE_LAVISH
+	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
@@ -407,7 +382,7 @@
 	tastes = list("sweet-tarty jamminess" = 1, "a lavish break from the dae's woes" = 1)
 	icon_state = "bun_marmalade"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
-	faretype = FARE_LAVISH
+	faretype = FARE_FINE
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 4
 	rotprocess = SHELFLIFE_EXTREME
@@ -792,18 +767,7 @@
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raston"
 	name = "raston"
-	faretype = FARE_NEUTRAL
+	faretype = FARE_FINE
 	desc = "A slice of cheese melted between two lightly-toasted buns."
-	rotprocess = SHELFLIFE_EXTREME
-	eat_effect = /datum/status_effect/buff/greatsnackbuff
-
-/obj/item/reagent_containers/food/snacks/rogue/parmesanbun
-	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
-	tastes = list("a deliciously savory and gooey treat" = 1, "pillowy dough" = 1)
-	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	icon_state = "agedraston"
-	name = "aged raston"
-	faretype = FARE_LAVISH
-	desc = "A slice of aged cheese melted between two lightly-toasted buns. It is as stupidly simple as it is deliciously decadant."
 	rotprocess = SHELFLIFE_EXTREME
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
