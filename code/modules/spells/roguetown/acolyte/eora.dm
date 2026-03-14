@@ -581,8 +581,12 @@
 			return TRUE
 
 		var/has_water = FALSE
+		var/water_blessed = FALSE
 		if(container.reagents.has_reagent(/datum/reagent/water, 1))
 			has_water = TRUE
+		if(container.reagents.has_reagent(/datum/reagent/water/blessed))
+			has_water = TRUE
+			water_blessed = TRUE
 
 		if(!has_water)
 			to_chat(user, span_warning("The tree accepts only fresh, clean water."))
@@ -595,7 +599,10 @@
 		var/action_time = get_skill_delay(skill, fastest = 0.5, slowest = 3)
 
 		if(do_after(user, action_time, target = src))
-			container.reagents.remove_reagent(/datum/reagent/water, 1)
+			if(water_blessed)
+				container.reagents.remove_reagent(/datum/reagent/water/blessed, 1)
+			else
+				container.reagents.remove_reagent(/datum/reagent/water, 1)
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				add_sleep_experience(user, /datum/skill/labor/farming, C.STAINT * 0.5)
