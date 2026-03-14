@@ -7,7 +7,6 @@
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
-	quality = DRINK_NICE
 
 /datum/reagent/water/rosewater/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -32,7 +31,6 @@
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
-	quality = DRINK_GOOD
 
 /datum/reagent/water/rosewater_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
