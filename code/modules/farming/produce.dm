@@ -691,7 +691,7 @@
 	faretype = FARE_IMPOVERISHED //Have you ever tried eating a solid chunk of soul-meth, before?
 	tastes = list("a slightly less bad idea" = 1, "shards of fruit-tinged glass" = 1)
 	list_reagents = list(/datum/reagent/starsugar = 16, /datum/reagent/water = 6, /datum/reagent/consumable/nutriment = 6)
-	grind_results = list(/datum/reagent/starsugar = 98)
+	grind_results = list(/datum/reagent/starsugar = 98) //Add a custom reagent if you wish. I think that'd be pretty cool.
 	sellprice = 137
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
