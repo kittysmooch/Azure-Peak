@@ -6,6 +6,8 @@
 		"azure_lane" = "Noccite",
 		"azure_purple" = "Raneshen",
 		"azure_gilbranze" = "Gilbranze",
+		"azure_psydonic" = "Psydonic",
+		"azure_lingyue" = "Lingyue",
 		"trey_liam" = "Trey Liam"
 	)
 	return themes

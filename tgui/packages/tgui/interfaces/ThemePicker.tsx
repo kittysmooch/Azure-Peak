@@ -24,7 +24,7 @@ export const ThemePicker = () => {
   const { themes = [], current } = data;
 
   return (
-    <Window title="TGUI Theme" width={520} height={380} theme={current}>
+    <Window title="TGUI Theme" width={580} height={520} theme={current}>
       <Window.Content>
         <Stack fill>
           <Stack.Item basis="45%">
