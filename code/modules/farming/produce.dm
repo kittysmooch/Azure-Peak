@@ -680,7 +680,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/skysugarslab
 	name = "skysugar slab"
-	desc = "A crystalline brick that radiates with an almost-ethereal hue, yet to be broken up with a mortar and pestle. They call \
+	desc = "A crystalline brick that radiates with an almost-ethereal hue, yet to be broken up at an alchemical lab. They call \
 	it 'luchtblauw' in Old Azurian; alchemically purified starsugar, to a ninth-of-a-hundreth dram. Born of a Pestran heresy, this \
 	mysterious substance is both ludicrously potent and condemned by the Church. Even so, it's worth its weight in gold; and in the \
 	hands of a yeoman willing to 'break bad', it can be sold to an amoral Merchant or Bathmatron for a hefty sum."
