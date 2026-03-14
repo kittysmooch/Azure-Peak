@@ -513,14 +513,18 @@
 /obj/structure/eoran_pomegranate_tree/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/eoran_aril/crimson))
 		if(iscarbon(user))
+			var/mob/living/carbon/human/sacrifice = user
 			visible_message(span_danger("[user] begins altruistically channeling the crimson aril's power to restore the tree."),
 	 		 span_info("I begin channeling the crimson aril's power into the tree using my own blood."))
-			if(!do_after(user, M, time = 0.6 SECONDS, double_progress = TRUE, can_move = FALSE))
+			if(!do_after(sacrifice, 0.6 SECONDS))
 				return
 			// same blood loss as using it to heal someone
-			user.blood_volume = max(0, user.blood_volume - (BLOOD_VOLUME_NORMAL * 0.03) + (eater.blood_volume * 0.06))
+			sacrifice.blood_volume = max(0, sacrifice.blood_volume - ((BLOOD_VOLUME_NORMAL * 0.03) + (sacrifice.blood_volume * 0.06)))
 			// 50 healing; slightly more than healing a player, but you'll lose a lot of blood trying to fully heal a tree still
-			obj_integrity = min(max_integrity, obj_integrity + max_integrity / 4); 
+			obj_integrity = min(max_integrity, obj_integrity + max_integrity / 4)
+			qdel(I)
+			update_icon()
+			return TRUE
 	if(istype(I, /obj/item/ash))
 		if(iscarbon(user))
 			var/mob/living/carbon/c = user
