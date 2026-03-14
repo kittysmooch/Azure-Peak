@@ -108,6 +108,7 @@
 	craftdiff = 0
 	verbage_simple = "transmute"
 	structurecraft = null
+	always_available = FALSE
 
 /datum/crafting_recipe/roguetown/alchemy/transisdust
 	name = "sui dust"
@@ -133,7 +134,7 @@
 	verbage_simple = "mix"
 
 /datum/crafting_recipe/roguetown/alchemy/revival_potion
-	name = "Revival potion"
+	name = "revival potion"
 	category = "Table"
 	result = list(/obj/item/reagent_containers/glass/bottle/revival = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/eoran_aril/auric = 1,
@@ -145,7 +146,7 @@
 	verbage_simple = "mix"
 
 /datum/crafting_recipe/roguetown/alchemy/revival_potion_spider
-	name = "Revival potion"
+	name = "revival potion"
 	category = "Table"
 	result = list(/obj/item/reagent_containers/glass/bottle/revival = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/eoran_aril/auric = 1,
@@ -315,7 +316,7 @@
 	category = "Transmutation"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry = 1, /obj/item/reagent_containers/lux_impure = 1, /obj/item/reagent_containers/powder/starsugar = 1)
-	craftdiff = 6 //Better hope you've been practicing!
+	craftdiff = 5 //Better hope you've been practicing!
 	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/skysugar
