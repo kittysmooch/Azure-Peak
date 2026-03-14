@@ -613,7 +613,7 @@
 	color = "#f26818"
 	taste_description = "savory carrots"
 
-/datum/reagent/consumable/soup/stew/roastcarrot_stew
+/datum/reagent/consumable/soup/stew/thickcarrot_stew
 	name = "roasted carrot stew"
 	color = "#f26818"
 	taste_description = "savory and caramelized carrots"
