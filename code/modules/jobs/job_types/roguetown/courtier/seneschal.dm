@@ -83,6 +83,7 @@
 		STATKEY_LCK = 1, // Usual leadership carrot.
 		STATKEY_SPD = 1
 	)
+	age_mod = /datum/class_age_mod/seneschal
 	subclass_skills = list(
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
@@ -122,6 +123,7 @@
 		STATKEY_LCK = 1, // Usual leadership carrot.
 		STATKEY_SPD = 1
 	)
+	age_mod = /datum/class_age_mod/seneschal
 	subclass_skills = list(
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
