@@ -71,6 +71,33 @@
 	if(bitecount == 4)
 		icon_state = "jerk1"
 
+/obj/item/reagent_containers/food/snacks/rogue/lemoncoppiette
+	eat_effect = null
+	name = "lemony stickets"
+	icon = 'modular/Neu_Food/icons/others/preserved_meat.dmi'
+	icon_state = "lemonstick5"
+	desc = "'At times the world may seem an unfriendly and sinister place, but believe that there is much more good in it than \
+	bad. All you have to do is look hard enough - and what might seem to be a series of unfortunate events may in fact be the \
+	first steps of a refreshingly new journey.'"
+	faretype = FARE_POOR
+	fried_type = null
+	bitesize = 5
+	slice_path = null
+	tastes = list("lip-puckering sweetness" = 1, "unfortunate aftertaste of burnt wood" = 1)
+	rotprocess = null
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+
+/obj/item/reagent_containers/food/snacks/rogue/lemoncoppiette/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "lemonstick4"
+	if(bitecount == 2)
+		icon_state = "lemonstick3"
+	if(bitecount == 3)
+		icon_state = "lemonstick2"
+	if(bitecount == 4)
+		icon_state = "lemonstick1"
+
 // -------------- SALO (salted fat) -----------------
 /obj/item/reagent_containers/food/snacks/fat/salo
 	name = "salo"

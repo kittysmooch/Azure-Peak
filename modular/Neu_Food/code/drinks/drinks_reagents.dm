@@ -1,5 +1,5 @@
 /datum/reagent/water/rosewater
-	name = "Rose Tea"
+	name = "rosa tea"
 	description = "Steeped rose petals with mild health regeneration."
 	reagent_state = LIQUID
 	color = "#f398b6"
@@ -23,7 +23,7 @@
 				M.update_damage_overlays()
 
 /datum/reagent/water/rosewater_spiced
-	name = "Spiced Rose Tea"
+	name = "spiced rosa tea"
 	description = "Spiced rose petals that help to reinvigorate the body's humors, providing modest health regeneration."
 	reagent_state = LIQUID
 	color = "#F2638C"
@@ -48,7 +48,7 @@
 
 // Reagents system don't have the idea of solute and solvent so we need a type for each
 /datum/reagent/consumable/caffeine/
-	name = "Caffeine"
+	name = "cffeine"
 	description = "Why are you seeing this?"
 	hydration_factor = 5
 	overdose_threshold = 60
@@ -67,7 +67,7 @@
 		M.heart_attack()
 	
 /datum/reagent/consumable/caffeine/coffee
-	name = "Coffee"
+	name = "coffee"
 	description = "Coffee beans brewed into a hot drink. With a hint of bitterness. Rejuvenating."
 	reagent_state = LIQUID
 	color = "#482000"
@@ -76,7 +76,7 @@
 	alpha = 173
 
 /datum/reagent/consumable/caffeine/coffee_spiced
-	name = "Spiced Coffee"
+	name = "spiced coffee"
 	description = "Spiced offee beans brewed into a hot drink, with a hint of bitterness. Modestly rejuvenating."
 	reagent_state = LIQUID
 	color = "#8C4221"
@@ -99,7 +99,7 @@
 				M.update_damage_overlays()
 
 /datum/reagent/consumable/caffeine/tea
-	name = "Tea"
+	name = "tea"
 	description = "Tea leaves brewed into a hot drink. Slight hint of bitterness. Smooth."
 	reagent_state = LIQUID
 	color = "#508141" // Deeper green to make it look better
@@ -108,7 +108,7 @@
 	alpha = 173
 
 /datum/reagent/consumable/caffeine/tea_spiced
-	name = "Spiced Tea"
+	name = "spiced tea"
 	description = "Spiced tea leaves brewed into a hot drink. Slight hint of bitterness. Smoothly rejuvinating."
 	reagent_state = LIQUID
 	color = "#788C41" // Deeper green to make it look better
@@ -131,7 +131,7 @@
 				M.update_damage_overlays()
 
 /datum/reagent/consumable/poppy_milk
-	name = "Poppy Milk"
+	name = "poppy milk"
 	description = "Infused liquid of the Poppy, this one leaves your mouth and mind numb after drinking. Drinking more than a cup might not be good for your health..."
 	reagent_state = LIQUID
 	color = "#dbd7d5"
@@ -174,7 +174,7 @@
 	..()
 
 /datum/reagent/consumable/chocolate
-	name = "Hot Chocolate"
+	name = "hot chocolate"
 	description = "Lovignly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
 	color = "#3F291C"
 	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
@@ -196,7 +196,7 @@
 	..()
 
 /datum/reagent/consumable/spiced_chocolate
-	name = "Spiced Chocolate"
+	name = "spiced chocolate"
 	description = "Impossibly smooth, velvety, and rich. Provides a generous portion of health regeneration, and minor stamina regeneration."
 	color = "#6D472F"
 	taste_description = "an impossible blemd of richness, sweetness, and a hint of throat-tingling spiciness"

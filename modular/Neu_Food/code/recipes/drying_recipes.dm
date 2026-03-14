@@ -236,6 +236,16 @@
 	verbage_simple = "roll"
 	verbage = "rolls"
 
+/datum/crafting_recipe/roguetown/cooking/lemonystickets
+	name = "lemony stickets"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/fruit/lemon = 1,
+		/obj/item/reagent_containers/food/snacks/sugar = 1,
+		/obj/item/ash = 1)
+	result = /obj/item/reagent_containers/food/snacks/rogue/lemoncoppiette
+	structurecraft = /obj/machinery/tanningrack
+	craftdiff = 1
+
 /datum/crafting_recipe/roguetown/cooking/sugartangerine
 	name = "smothered tangerines"
 	reqs = list(
