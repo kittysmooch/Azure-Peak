@@ -73,7 +73,7 @@
 	color = "#482000"
 	taste_description = "caramelized bitterness" // coffee has so many flavors I am going for one
 	metabolization_rate = REAGENTS_METABOLISM
-	alpha = 173
+	alpha = 200
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/caffeine/coffee_spiced
@@ -83,7 +83,7 @@
 	color = "#8C4221"
 	taste_description = "caramelized spiciness"
 	metabolization_rate = 0.5
-	alpha = 173
+	alpha = 200
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/caffeine/coffee_spiced/on_mob_life(mob/living/carbon/M)
@@ -142,7 +142,7 @@
 	taste_description = "instant numbness"
 	metabolization_rate = REAGENTS_METABOLISM
 	overdose_threshold = 25 // one cup is safe, anything more and it's an OD
-	alpha = 173
+	alpha = 200
 	quality = DRINK_NICE
 
 /datum/reagent/consumable/poppy_milk/on_mob_life(mob/living/carbon/M)
@@ -162,6 +162,7 @@
 	color = "#b38e17"
 	taste_description = "herbal flavor"
 	quality = DRINK_VERYGOOD
+	alpha = 173
 
 /datum/reagent/consumable/golden_calendula_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
@@ -185,6 +186,7 @@
 	color = "#3F291C"
 	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
 	quality = DRINK_GOOD
+	alpha = 250
 
 /datum/reagent/consumable/chocolate/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
@@ -208,6 +210,7 @@
 	color = "#6D472F"
 	taste_description = "an impossible blemd of richness, sweetness, and a hint of throat-tingling spiciness"
 	quality = DRINK_VERYGOOD
+	alpha = 250
 
 /datum/reagent/consumable/spiced_chocolate/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
@@ -231,6 +234,7 @@
 	color = "#3b9146"
 	quality = DRINK_FANTASTIC
 	taste_description = "herbal flavor"
+	alpha = 173
 
 /datum/reagent/consumable/soothing_valerian_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
