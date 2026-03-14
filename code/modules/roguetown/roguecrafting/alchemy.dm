@@ -108,7 +108,6 @@
 	craftdiff = 0
 	verbage_simple = "transmute"
 	structurecraft = null
-	always_available = FALSE
 
 /datum/crafting_recipe/roguetown/alchemy/transisdust
 	name = "sui dust"
