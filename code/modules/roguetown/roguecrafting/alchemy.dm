@@ -321,7 +321,9 @@
 /datum/crafting_recipe/roguetown/alchemy/skysugar
 	name = "skysugar slab to skysugar powder (x3)"
 	category = "Transmutation"
-	result = list(/obj/item/reagent_containers/powder/starsugar/skysugar = 3)
+	result = list(/obj/item/reagent_containers/powder/starsugar/skysugar,
+					/obj/item/reagent_containers/powder/starsugar/skysugar,
+					/obj/item/reagent_containers/powder/starsugar/skysugar)
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/skysugarslab = 1)
 	craftdiff = 1 //Hard part's done. Time to break it up!
 	verbage_simple = "transmute"
