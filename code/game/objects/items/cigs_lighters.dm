@@ -496,7 +496,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A rewrapped jacksberries zig with some alchemically extracted jacksberries essence."
 
 /obj/item/clothing/mask/cigarette/rollie/jacksberriespoison
-	name = "jacksberries zig"
+	name = "jacksberries zig" // meant to have the same name as regular jacksberries zig
 	desc = "Dried westleach and jacksberries carefully wrapped in fine paper. It has a particularly smooth taste with a slight bitterness, sourness and sweetness effect."
 	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/drug/jacksberries = 12, /datum/reagent/berrypoison = 3)
 
@@ -505,12 +505,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A rewrapped jacksberries zig with some alchemically extracted jacksberries essence."
 
 /obj/item/clothing/mask/cigarette/rollie/abyss
-	name = "jacksberries zig"
-	desc = "Dried westleach and hypericum carefully wrapped in fine paper. It has a particularly smooth taste with a burns and scratches effect."
+	name = "jacksberries zig" // meant to have the same name as regular jacksberries zig
+	desc = "Dried westleach and jackberries carefully wrapped in fine paper. It has a particularly smooth taste with a burns and scratches effect."
 	list_reagents = list(/datum/reagent/drug/nicotine = 30, /datum/reagent/drug/abyss= 12)
 
 /obj/item/clothing/mask/cigarette/rollie/abyss/crafted
-	name = "handmade abyss zig"
+	name = "handmade jackberries zig"
 	desc = "A rewrapped jacksberries zig with some alchemically extracted jacksberries and salty essence."
 
 ////////////

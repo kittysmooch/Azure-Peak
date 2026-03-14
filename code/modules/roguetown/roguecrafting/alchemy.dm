@@ -489,14 +489,14 @@
 	craftdiff = 1
 	
 /datum/crafting_recipe/roguetown/alchemy/jacksberriespoison
-	name = "handmade jacksberries-poison zig"
+	name = "handmade jacksberries zig"
 	category = "Table"
 	result = list(/obj/item/clothing/mask/cigarette/rollie/jacksberriespoison/crafted)
 	reqs = list(/obj/item/clothing/mask/cigarette/rollie/nicotine = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue/poison = 2)
 	craftdiff = 1
 	
 /datum/crafting_recipe/roguetown/alchemy/abyss
-	name = "handmade jacksberries zig"
+	name = "handmade abyss zig"
 	category = "Table"
 	result = list(/obj/item/clothing/mask/cigarette/rollie/abyss/crafted)
 	reqs = list(/obj/item/clothing/mask/cigarette/rollie/nicotine = 1, /obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1, /datum/reagent/water/salty = 20, /obj/item/reagent_containers/food/snacks/fish = 3)
