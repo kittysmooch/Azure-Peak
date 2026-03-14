@@ -34,10 +34,16 @@ export const RecipeBookSidebar = memo((props: Props) => {
 
   const filtered = useMemo(() => {
     const query = search.toLowerCase();
+    const seen = new Set<string>();
     return recipes.filter((r) => {
       const matchCat = category === 'All' || r.category === category;
       const matchSearch = !query || r.name.toLowerCase().includes(query);
-      return matchCat && matchSearch;
+      if (!matchCat || !matchSearch) return false;
+      if (category === 'All') {
+        if (seen.has(r.path)) return false;
+        seen.add(r.path);
+      }
+      return true;
     });
   }, [recipes, search, category]);
 

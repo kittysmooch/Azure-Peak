@@ -127,6 +127,9 @@
 		recipe_name = temp_spell.name
 		recipe_html = temp_spell.generate_wiki_html(user)
 		qdel(temp_spell)
+		var/miracle_html = generate_miracle_granted_html(path)
+		if(miracle_html)
+			recipe_html += miracle_html
 
 	if(temp_recipe)
 		qdel(temp_recipe)

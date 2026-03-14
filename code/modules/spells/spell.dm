@@ -1020,8 +1020,8 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		s_invocations = invocations.Join(", ")
 
 	var/html = {"
-		<h2 style='border-bottom: 1px solid currentColor; padding-bottom: 4px;'>[name]</h2>
-		[desc ? "<p><em>[desc]</em></p><hr>" : ""]
+		<h2>[name]</h2>
+		[desc ? "<div class='recipe-desc'>[desc]</div>" : ""]
 		<table>
 			<tr><th>Tier</th><td>[spell_tier]</td></tr>
 			<tr><th>Spell Points</th><td>[cost]</td></tr>

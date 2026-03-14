@@ -183,8 +183,7 @@
 	var/tiles_per_second = proj_speed > 0 ? round(10 / proj_speed, 0.1) : "Instant"
 
 	html += {"
-		<hr>
-		<h3 style='border-bottom: 1px solid currentColor; padding-bottom: 4px;'>Projectile</h3>
+		<h3>Projectile</h3>
 		<table>
 			<tr><th>Projectile Range</th><td>[proj_range] tiles</td></tr>
 			<tr><th>Speed</th><td>[tiles_per_second] tiles/sec</td></tr>

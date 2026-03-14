@@ -187,29 +187,6 @@
 		/datum/runeritual/other,
 		)
 
-/obj/item/recipe_book/combat_guide
-	name = "The Art of War: A Combat Primer"
-	wiki_name = "Combat"
-	wiki_section = "Guides"
-	can_spawn = FALSE
-	icon_state = "book3_0"
-	base_icon_state = "book3"
-
-	types = list(
-		/datum/book_entry/combat/intents,
-		/datum/book_entry/combat/basic_melee,
-		/datum/book_entry/combat/weapons,
-		/datum/book_entry/combat/armor,
-		/datum/book_entry/combat/ranged,
-		/datum/book_entry/combat/stamina,
-		/datum/book_entry/combat/mounted,
-		/datum/book_entry/combat/unarmed,
-		/datum/book_entry/combat/injuries,
-		/datum/book_entry/combat/healing,
-		/datum/book_entry/combat/group_tactics,
-		/datum/book_entry/combat/advanced,
-		)
-
 /obj/item/recipe_book/spell_compendium
 	name = "The Arcyne Compendium: All Known Spells"
 	wiki_name = "Spell List"
@@ -230,21 +207,12 @@
 	icon_state = "book4_0"
 	base_icon_state = "book4"
 
-	types = list(
-		/datum/book_entry/miracle_compendium/astrata,
-		/datum/book_entry/miracle_compendium/necra,
-		/datum/book_entry/miracle_compendium/dendor,
-		/datum/book_entry/miracle_compendium/abyssor,
-		/datum/book_entry/miracle_compendium/noc,
-		/datum/book_entry/miracle_compendium/eora,
-		/datum/book_entry/miracle_compendium/pestra,
-		/datum/book_entry/miracle_compendium/ravox,
-		/datum/book_entry/miracle_compendium/malum,
-		/datum/book_entry/miracle_compendium/xylix,
-		/datum/book_entry/miracle_compendium/zizo,
-		/datum/book_entry/miracle_compendium/graggar,
-		/datum/book_entry/miracle_compendium/baotha,
-		/datum/book_entry/miracle_compendium/matthios,
-		/datum/book_entry/miracle_compendium/undivided,
-		/datum/book_entry/miracle_compendium/psydon,
-		)
+/obj/item/recipe_book/miracle_compendium/New()
+	. = ..()
+	build_miracle_registry()
+	var/list/unique_spells = list()
+	for(var/path_key in GLOB.miracle_registry)
+		var/spell_path = text2path(path_key)
+		if(spell_path && !(spell_path in unique_spells))
+			unique_spells += spell_path
+	types = unique_spells

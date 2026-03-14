@@ -95,7 +95,10 @@ GLOBAL_DATUM(recipe_wiki, /datum/recipe_wiki)
 		var/epath = entry["path"]
 		var/book_key = "[epath]"
 		if(!cached_book_recipes[book_key])
-			cached_book_recipes[book_key] = build_recipe_list(entry["types"])
+			if(entry["path"] == /obj/item/recipe_book/miracle_compendium)
+				cached_book_recipes[book_key] = build_miracle_list(entry["types"])
+			else
+				cached_book_recipes[book_key] = build_recipe_list(entry["types"])
 		book_recipes[book_key] = cached_book_recipes[book_key]
 	data["book_recipes"] = book_recipes
 
@@ -201,6 +204,34 @@ GLOBAL_DATUM(recipe_wiki, /datum/recipe_wiki)
 			"category" = recipe_category
 		))
 	return recipes
+
+/// Build miracle list with entries duplicated per patron, sorted by tier then name.
+/datum/recipe_wiki/proc/build_miracle_list(list/types)
+	var/list/entries = list()
+	for(var/spell_path in types)
+		var/path_key = "[spell_path]"
+		var/list/patrons = GLOB.miracle_registry[path_key]
+		if(!length(patrons))
+			continue
+		var/s_name = initial(spell_path:name)
+		if(!s_name)
+			continue
+		for(var/list/pentry in patrons)
+			var/tier = pentry["tier"]
+			var/tier_label = cleric_tier_to_short(tier)
+			entries += list(list(
+				"name" = "[s_name] ([tier_label])",
+				"path" = path_key,
+				"category" = pentry["patron"],
+				"tier" = tier
+			))
+	entries = sortTim(entries, GLOBAL_PROC_REF(cmp_miracle_entries))
+	return entries
+
+/proc/cmp_miracle_entries(list/a, list/b)
+	if(a["tier"] != b["tier"])
+		return a["tier"] - b["tier"]
+	return sorttext(b["name"], a["name"])
 
 /// Get or build cached recipe detail HTML.
 /datum/recipe_wiki/proc/get_cached_detail(path, mob/user)
