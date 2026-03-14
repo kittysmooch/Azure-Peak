@@ -708,7 +708,7 @@
 	volume = 38
 	list_reagents = list(/datum/reagent/starsugar = 38, /datum/reagent/consumable/nutriment = 38) //Yeah, psyence!
 	grind_results = list(/datum/reagent/starsugar = 38)
-	sellprice = 100 //Tight, tight, tight! Blue, red, green; whatever, man, just bring me more!
+	sellprice = 123 //Tight, tight, tight! Blue, red, green; whatever, man, just bring me more!
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
 /*	..................   Cucumber   ................... */
