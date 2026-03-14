@@ -419,7 +419,6 @@
 
 /datum/reagent/consumable/ethanol/cider/ambrosia/on_mob_life(mob/living/carbon/M)
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
 		if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 			M.blood_volume = min(M.blood_volume+20, BLOOD_VOLUME_NORMAL)
 	var/list/wCount = M.get_wounds()
