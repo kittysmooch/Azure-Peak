@@ -17,6 +17,16 @@
 	output = /datum/reagent/consumable/soup/porridge/thick
 	cooktime = STEW_COOKING_TIME
 
+/datum/stew_recipe/breadpudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbread_half, /obj/item/reagent_containers/food/snacks/rogue/abread_half, /obj/item/reagent_containers/food/snacks/rogue/applebreadslice, /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice)
+	output = /datum/reagent/consumable/soup/porridge/pudding
+	cooktime = STEW_COOKING_TIME
+
+/datum/stew_recipe/thickbreadpudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/raisinbread, /obj/item/reagent_containers/food/snacks/rogue/abreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/applebread)
+	output = /datum/reagent/consumable/soup/porridge/thickpudding
+	cooktime = STEW_COOKING_TIME * 2
+
 /datum/stew_recipe/oatmeal
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/oat)
 	output = /datum/reagent/consumable/soup/porridge/oatmeal
