@@ -7,6 +7,7 @@
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	quality = DRINK_NICE
 
 /datum/reagent/water/rosewater/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -31,6 +32,7 @@
 	overdose_threshold = 0
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	quality = DRINK_GOOD
 
 /datum/reagent/water/rosewater_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -74,6 +76,7 @@
 	taste_description = "caramelized bitterness" // coffee has so many flavors I am going for one
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/caffeine/coffee_spiced
 	name = "spiced coffee"
@@ -83,6 +86,7 @@
 	taste_description = "caramelized spiciness"
 	metabolization_rate = 0.5
 	alpha = 173
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/caffeine/coffee_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -106,6 +110,7 @@
 	taste_description = "smooth grassiness" // Yeah, uh.
 	metabolization_rate = REAGENTS_METABOLISM
 	alpha = 173
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/caffeine/tea_spiced
 	name = "spiced tea"
@@ -115,6 +120,7 @@
 	taste_description = "spiced grassiness"
 	metabolization_rate = 0.5
 	alpha = 173
+	quality = DRINK_GOOD
 
 /datum/reagent/consumable/caffeine/tea_spiced/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -139,6 +145,7 @@
 	metabolization_rate = REAGENTS_METABOLISM
 	overdose_threshold = 25 // one cup is safe, anything more and it's an OD
 	alpha = 173
+	quality = DRINK_NICE
 
 /datum/reagent/consumable/poppy_milk/on_mob_life(mob/living/carbon/M)
 	M.sate_addiction(/datum/charflaw/addiction/junkie)
@@ -156,6 +163,7 @@
 	description = "A refreshing tea, great to soothe wounds and relieve fatigue."
 	color = "#b38e17"
 	taste_description = "herbal flavor"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/golden_calendula_tea/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
@@ -178,8 +186,9 @@
 	description = "Lovignly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
 	color = "#3F291C"
 	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
+	quality = DRINK_GOOD
 
-/datum/reagent/consumable/spiced_chocolate/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/chocolate/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
 		M.energy_add(1)
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
@@ -200,6 +209,7 @@
 	description = "Impossibly smooth, velvety, and rich. Provides a generous portion of health regeneration, and minor stamina regeneration."
 	color = "#6D472F"
 	taste_description = "an impossible blemd of richness, sweetness, and a hint of throat-tingling spiciness"
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/spiced_chocolate/on_mob_life(mob/living/carbon/M)
 	if(!HAS_TRAIT(M,TRAIT_INFINITE_STAMINA))
