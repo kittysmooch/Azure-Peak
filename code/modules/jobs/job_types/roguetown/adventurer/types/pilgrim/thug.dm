@@ -2,7 +2,6 @@
 	name = "Goon"
 	tutorial = "You are a goon, a low-lyfe thug in a painful world - not good enough for war, not smart enough for peace. What you lack in station you make up for in daring."
 	allowed_sexes = list(MALE, FEMALE)
-	virtue_restrictions = list(/datum/virtue/utility/noble) //You're a thug. 
 	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/thug/goon
 	category_tags = list(CTAG_TOWNER)
@@ -81,7 +80,6 @@
 	name = "Wise Guy"
 	tutorial = "You're smarter than the rest, by a stone's throw - and you know better than to get up close and personal. Unlike most others, you can read."
 	allowed_sexes = list(MALE, FEMALE)
-	virtue_restrictions = list(/datum/virtue/utility/noble) //You're a thug. 
 	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/thug/wiseguy
 	category_tags = list(CTAG_TOWNER)
@@ -151,11 +149,9 @@
 		SStreasury.give_money_account(ECONOMIC_LOWER_CLASS, H, "Savings.")
 
 /datum/advclass/thug/bigman
-	name = "Big Lad"
-	f_title = "Big Lass"
+	name = "Big Fella"
 	tutorial = "More akin to a cabbage-fed monster than a normal person, your size and strength are your greatest weapons; though they hardly supplement what's missing of your brains."
 	allowed_sexes = list(MALE, FEMALE)
-	virtue_restrictions = list(/datum/virtue/utility/noble) //You're a thug. 
 	allowed_races = RACES_SHUNNED_UP
 	outfit = /datum/outfit/job/roguetown/adventurer/thug/bigman
 	category_tags = list(CTAG_TOWNER)
@@ -188,7 +184,7 @@
 /datum/outfit/job/roguetown/adventurer/thug/bigman/pre_equip(mob/living/carbon/human/H)
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/rope
-	pants = /obj/item/clothing/under/roguetown/tights/random
+	pants = /obj/item/clothing/under/roguetown/trou/leather
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	backr = /obj/item/storage/backpack/rogue/satchel
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
@@ -201,12 +197,13 @@
 				/obj/item/rogueweapon/scabbard/sheath = 1
 				)
 	if(should_wear_femme_clothes(H))
-	shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //Let's not set our ladies naked roundstart
+		shirt = /obj/item/clothing/suit/roguetown/shirt/desertbra //Let's not set our ladies naked roundstart
 
 	var/options = list("Hands-On", "Big Axe")
 	var/option_choice = input("Choose your means.", "TAKE UP ARMS") as anything in options
 	switch(option_choice) // you are big dumb guy, none of your options give you expert-level weapons skill
 		if("Hands-On")
+			ADD_TRAIT(H, TRAIT_BASHDOORS, TRAIT_GENERIC) // deal 200 damage to a door you sprint-charge into
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 			gloves = /obj/item/clothing/gloves/roguetown/bandages //not weighted
 		if("Big Axe")
