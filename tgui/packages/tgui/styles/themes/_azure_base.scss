@@ -6,6 +6,9 @@
  *
  * Color map keys:
  *   base            – body / layout background
+ *   base-light      – slightly lighter than base (top of window gradient)
+ *   base-dark       – slightly darker than base (bottom of window gradient)
+ *   section         – section panel background (translucent or subtle)
  *   text            – primary text color
  *   label           – secondary / label text
  *   accent          – section separators, dividers, input borders
@@ -15,6 +18,8 @@
  *   btn-selected    – selected-state button background
  *   btn-disabled    – disabled transparent-button text
  *   scrollbar-thumb – scrollbar thumb color
+ *   section-title   – section heading text (bright accent, like chant's col_header)
+ *   glow            – box-shadow rgba for section depth (e.g. rgba(139,85,85,0.15))
  *   link            – a:link color
  *   link-visited    – a:visited color
  *   link-hover      – a:hover / a:active color
@@ -27,11 +32,21 @@
   src: url('~roguefont/pterra.ttf');
 }
 
+@font-face {
+  font-family: 'Chiseld';
+  src: url('~roguefont/chiseld.ttf');
+}
+
+@font-face {
+  font-family: 'Blackmoor';
+  src: url('~roguefont/blackmoor.ttf');
+}
+
 @mixin azure-theme($colors, $topbar-svg) {
   // ── Core variables ──────────────────────────────────────────────
   --color-base: #{map.get($colors, 'base')};
-  --color-base-start: #{map.get($colors, 'base')};
-  --color-base-end: #{map.get($colors, 'base')};
+  --color-base-start: #{map.get($colors, 'base-light')};
+  --color-base-end: #{map.get($colors, 'base-dark')};
 
   --font-size: 14px;
   --font-family: 'Pterra';
@@ -40,6 +55,10 @@
 
   // Semantic
   --color-label: #{map.get($colors, 'label')};
+
+  // Section panels
+  --color-section: #{map.get($colors, 'section')};
+  --section-title-color: #{map.get($colors, 'section-title')};
 
   // Scrollbar
   --color-scrollbar-thumb: #{map.get($colors, 'scrollbar-thumb')};
@@ -52,6 +71,7 @@
   --input-border-color-focus: #{map.get($colors, 'accent-bright')};
 
   // Buttons
+  --button-border-radius: 3px;
   --button-background: #{map.get($colors, 'border')};
   --button-background-default: #{map.get($colors, 'border')};
   --button-background-selected: #{map.get($colors, 'btn-selected')};
@@ -61,13 +81,13 @@
     background-image: none;
   }
 
-  // ── Title Bar ───────────────────────────────────────────────────
+  // ── Title Bar — gradient border instead of rope SVG ─────────────
   .TitleBar {
-    background-image: url($topbar-svg);
-    background-repeat: repeat-x;
-    background-size: 64px;
-    background-color: #000000;
-    box-shadow: none;
+    background-image: none;
+    background-color: #{map.get($colors, 'base-dark')};
+    border-bottom: 2px solid #{map.get($colors, 'accent')};
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5),
+                0 1px 0 #{map.get($colors, 'accent-bright')};
 
     &__title {
       font-size: 1.6rem;
@@ -76,9 +96,34 @@
 
   .TitleBar__title {
     padding-left: 12px;
+    font-family: Georgia, 'Palatino Linotype', Palatino, serif;
     font-size: 15px;
-    color: #FFFFFF;
+    color: #{map.get($colors, 'section-title')};
     font-weight: bolder;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  // ── Sections — gradient bg, gradient border, glow ───────────────
+  .Section {
+    background: linear-gradient(
+      to bottom,
+      #{map.get($colors, 'section')} 0%,
+      transparent 100%
+    );
+    box-shadow: 0 0 15px #{map.get($colors, 'glow')};
+  }
+
+  // ── Section titles — letter-spacing + uppercase (chant h2/h3 style)
+  .Section__titleText {
+    font-family: Georgia, 'Palatino Linotype', Palatino, serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  // ── Emphasized text — brighter highlight like chant's col_em ──────
+  em {
+    color: #{map.get($colors, 'link-visited')};
   }
 
   // ── Buttons ─────────────────────────────────────────────────────
