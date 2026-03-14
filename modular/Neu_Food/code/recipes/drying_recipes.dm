@@ -36,7 +36,7 @@
 	craftdiff = 2
 	structurecraft = /obj/machinery/tanningrack
 
-/datum/crafting_recipe/roguetown/cooking/pemmican
+/datum/crafting_recipe/roguetown/cooking/pemmicanalt
 	name = "pemmican, alternate"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
