@@ -48,7 +48,7 @@
 
 // Reagents system don't have the idea of solute and solvent so we need a type for each
 /datum/reagent/consumable/caffeine/
-	name = "cffeine"
+	name = "caffeine"
 	description = "Why are you seeing this?"
 	hydration_factor = 5
 	overdose_threshold = 60
