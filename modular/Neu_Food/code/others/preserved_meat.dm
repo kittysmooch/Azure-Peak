@@ -83,7 +83,7 @@
 	fried_type = null
 	bitesize = 5
 	slice_path = null
-	tastes = list("lip-puckering sweetness" = 1, "unfortunate aftertaste of burnt wood" = 1)
+	tastes = list("lip-puckering sweetness" = 1, "an unfortunate aftertaste of burnt wood" = 1)
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 
