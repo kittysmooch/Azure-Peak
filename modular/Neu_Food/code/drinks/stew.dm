@@ -31,6 +31,25 @@
 	description = "Fitting for a yeoman."
 	color = "#9E6B43"
 	nutriment_factor = 25
+	alpha = 200
+
+/datum/reagent/consumable/soup/porridge/pudding
+	name = "berried porridge-pudding"
+	description = "Fitting for a nobleman."
+	color = "#8E4074"
+	nutriment_factor = 30
+	metabolization_rate = 0.8
+	alpha = 222
+	quality = DRINK_GOOD
+
+/datum/reagent/consumable/soup/porridge/thickpudding
+	name = "thick berried porridge-pudding"
+	description = "Fitting for a king."
+	color = "#8C1564"
+	nutriment_factor = 35
+	metabolization_rate = 0.6
+	alpha = 222
+	quality = DRINK_VERYGOOD
 
 /datum/reagent/consumable/soup/porridge/congee
 	name = "congee"
@@ -42,6 +61,7 @@
 	description = "Boiled rice that's been lightly fried inside of a pot. Perplexingly soft for a fried foodstuff, but a little more filling."
 	color = "#F7E2C0"
 	nutriment_factor = 20
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie
 	name = "vegetable soup"
@@ -62,6 +82,7 @@
 	taste_description = "creamy potato broth"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfrypotato
 	name = "roasted potato soup"
@@ -70,6 +91,7 @@
 	nutriment_factor = 20
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/onion
 	name = "onion soup"
@@ -82,6 +104,7 @@
 	taste_description = "savory onions"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfryonion
 	name = "roasted onion soup"
@@ -90,6 +113,7 @@
 	nutriment_factor = 20
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/cabbage
 	name = "cabbage soup"
@@ -102,6 +126,7 @@
 	taste_description = "savory cabbage"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/thickfrycabbage
 	name = "roasted cabbage soup"
@@ -110,6 +135,7 @@
 	nutriment_factor = 15
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/veggie/turnip
 	name = "turnip soup"
@@ -122,6 +148,7 @@
 	taste_description = "savory turnips"
 	nutriment_factor = 15
 	metabolization_rate = 0.8
+	alpha = 200
 
 /datum/reagent/consumable/soup/purebutter
 	name = "pure butter"
@@ -130,6 +157,7 @@
 	hydration = 1
 	nutriment_factor = 40
 	metabolization_rate = 4
+	alpha = 222
 
 /datum/reagent/consumable/soup/lemon
 	name = "juice of lemon"
@@ -212,6 +240,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 1.2 //A little quicker, for breakfast!
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfryegg
 	name = "lavish cacklehash stew"
@@ -220,6 +249,7 @@
 	nutriment_factor = 40
 	metabolization_rate = 1.2 //A little quicker, for breakfast!
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/cheese
 	name = "cheese soup"
@@ -235,6 +265,7 @@
 	nutriment_factor = 30 //You're throwing an entire wheel of cheese into this thing. It'd be criminal if you didn't get something in return!
 	metabolization_rate = 0.6
 	quality = DRINK_GOOD
+	alpha = 222
 
 /datum/reagent/consumable/soup/stew/parmesan
 	name = "aged cheese soup"
@@ -251,6 +282,7 @@
 	metabolization_rate = 0.6
 	nutriment_factor = 40
 	quality = DRINK_VERYGOOD
+	alpha = 222
 
 /datum/reagent/consumable/soup/stew/chicken
 	name = "chicken stew"
@@ -277,6 +309,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiethickchicken
 	name = "frybird stew with vegetables"
@@ -285,6 +318,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperchicken
 	name = "pepper-spiced frybird stew"
@@ -293,6 +327,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishchicken
 	name = "lavish frybird stew"
@@ -301,6 +336,7 @@
 	nutriment_factor = 40
 	metabolization_rate = 0.6
 	quality = DRINK_FANTASTIC
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/meat
 	name = "meat stew"
@@ -313,6 +349,7 @@
 	taste_description = "slow-roasted meat"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefrymeat
 	name = "brisket stew with vegetables"
@@ -321,6 +358,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperfrymeat
 	name = "pepper-spiced brisket stew"
@@ -329,6 +367,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfrymeat
 	name = "lavish brisket stew"
@@ -337,6 +376,7 @@
 	nutriment_factor = 40
 	metabolization_rate = 0.6
 	quality = DRINK_FANTASTIC
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pork
 	name = "fatty meat stew"
@@ -356,6 +396,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/thickfrypork
 	name = "crispy and fatty brisket stew"
@@ -364,6 +405,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/viscera_broth
 	name = "offal stew"
@@ -388,6 +430,7 @@
 	taste_description = "flaky fish in a gently creamy broth"
 	nutriment_factor = 25
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryfish
 	name = "roasted fish stew with vegetables"
@@ -395,6 +438,7 @@
 	taste_description = "flaky fish and slow-roasted vegetables in a gently creamy broth"
 	nutriment_factor = 30
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/pepperfryfish
 	name = "pepper-spiced fish stew"
@@ -402,6 +446,7 @@
 	taste_description = "flaky fish in a sharp, creamy broth with tongue-tingling spices"
 	nutriment_factor = 35
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfryfish
 	name = "lavish fish stew"
@@ -410,6 +455,7 @@
 	nutriment_factor = 40
 	metabolization_rate = 0.8
 	quality = DRINK_FANTASTIC
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/evilfryfish
 	name = "evil fish stew"
@@ -429,6 +475,7 @@
 	taste_description = "slow-roasted cabbit with a surprisingly pleasant aftertaste"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryrabbit
 	name = "roasted cabbit stew with vegetables"
@@ -437,6 +484,7 @@
 	metabolization_rate = 0.8
 	nutriment_factor = 30
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/volf
 	name = "volf stew"
@@ -449,6 +497,7 @@
 	taste_description = "slow-roasted and gamey meat"
 	metabolization_rate = 0.8
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/veggiefryvolf
 	name = "vriskette stew with vegetables"
@@ -457,6 +506,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/kingvolf
 	name = "king's stew"
@@ -465,6 +515,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.8
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/bisque
 	name = "bisque"
@@ -478,6 +529,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/lavishfrybisque
 	name = "lavish bisque"
@@ -486,12 +538,14 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/seafoodbroil
 	name = "seabroil chowder"
 	color = "#FFA74F"
 	taste_description = "creamy shellfish with the occassional crunch"
 	nutriment_factor = 25
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/fryseafoodbroil
 	name = "roasted seabroil chowder"
@@ -500,6 +554,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 222
 
 /datum/reagent/consumable/soup/stew/lavishfryseafoodbroil
 	name = "lavish seabroil chowder"
@@ -508,6 +563,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
+	alpha = 222
 
 /datum/reagent/consumable/soup/stew/meatrice
 	name = "fried congee with roasted meat"
@@ -516,6 +572,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/eggrice
 	name = "fried congee with cackleberries"
@@ -524,6 +581,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/shrimprice
 	name = "fried congee with roasted shrimp"
@@ -532,6 +590,7 @@
 	nutriment_factor = 30
 	metabolization_rate = 0.8
 	quality = DRINK_GOOD
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/cheeserice
 	name = "fried congee with melted cheese"
@@ -540,6 +599,7 @@
 	nutriment_factor = 25
 	metabolization_rate = 0.6
 	quality = DRINK_NICE
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/lavishfryrice
 	name = "lavish brisket-congee"
@@ -548,6 +608,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_VERYGOOD
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/yucky
 	name = "strange stew"
@@ -560,6 +621,7 @@
 	taste_description = "a pleasantly implacable meat, somewhere between volf and chicken"
 	nutriment_factor = 30
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/berry
 	name = "berry stew"
@@ -607,6 +669,7 @@
 	nutriment_factor = 35
 	metabolization_rate = 0.6
 	quality = DRINK_GOOD
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/carrot_stew
 	name = "carrot stew"
@@ -618,6 +681,7 @@
 	color = "#f26818"
 	taste_description = "savory and caramelized carrots"
 	quality = DRINK_NICE
+	alpha = 200
 
 /datum/reagent/consumable/soup/stew/nutty_stew
 	name = "nutty stew"
@@ -655,6 +719,7 @@
 	color = "#693346"
 	taste_description = "heartwarmingly thick, with little bursts of sweetness"
 	nutriment_factor = 25
+	alpha = 222
 
 // Copy pasted from berry poison, but stew metabolizes much faster so it is less deadly. You CAN use it as a source of hydration / nutrition if you are desperate enough???
 /datum/reagent/consumable/soup/stew/berry_poisoned/on_mob_life(mob/living/carbon/M)
