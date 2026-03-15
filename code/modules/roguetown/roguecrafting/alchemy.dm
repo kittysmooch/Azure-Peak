@@ -133,7 +133,7 @@
 	verbage_simple = "mix"
 
 /datum/crafting_recipe/roguetown/alchemy/revival_potion
-	name = "Revival potion"
+	name = "revival potion"
 	category = "Table"
 	result = list(/obj/item/reagent_containers/glass/bottle/revival = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/eoran_aril/auric = 1,
@@ -145,7 +145,7 @@
 	verbage_simple = "mix"
 
 /datum/crafting_recipe/roguetown/alchemy/revival_potion_spider
-	name = "Revival potion"
+	name = "revival potion"
 	category = "Table"
 	result = list(/obj/item/reagent_containers/glass/bottle/revival = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/eoran_aril/auric = 1,

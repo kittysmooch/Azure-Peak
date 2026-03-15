@@ -82,7 +82,7 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat grain"
-	desc = ""
+	desc = "Wheat grains, ready to be milled into powder."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "wheat"
 	gender = PLURAL
@@ -96,7 +96,7 @@
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
 	name = "oat grain"
-	desc = ""
+	desc = "Oat grains, ready to be milled and boiled."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "oat"
 	gender = PLURAL
@@ -343,9 +343,9 @@
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"
-	desc = "A nut with mild stimulant properties. In powderized form, it can be used to make a zig."
+	desc = "A nut with mild stimulant properties, oft-delighted with sugar and calendulas. In powderized form, it can be used to make a zig."
 	seed = /obj/item/seeds/nut
-	icon_state = "rocknut"
+	icon_state = "rocknuts"
 	tastes = list("nutty" = 1)
 	filling_color = "#6b4d18"
 	bitesize = 1
@@ -353,6 +353,15 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)
 	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 	mill_result = /obj/item/reagent_containers/powder/rocknut
+
+/obj/item/reagent_containers/food/snacks/grown/nut/sugared
+	name = "smothered rocknut"
+	desc = "Sugary rocknuts, smothered in sweetness and awaiting a baptism in boiling fat."
+	icon_state = "rocknutssugar"
+	faretype = FARE_FINE
+	tastes = list("overpoweringly sweet and nutty" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	deep_fried_type = /obj/item/reagent_containers/food/snacks/jamtallow
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
@@ -372,9 +381,38 @@
 	name = "sugar"
 	desc = "Milled sugarcane, sweet as can be."
 	icon = 'icons/roguetown/items/produce.dmi'
-	icon_state = "salt"
+	icon_state = "sugar"
 	tastes = list("sweet" = 1)
 	list_reagents = list(/datum/reagent/consumable/sugar = 15)
+	deep_fried_type = /obj/item/reagent_containers/food/snacks/caramel
+
+/obj/item/reagent_containers/food/snacks/pepper
+	name = "pepper"
+	desc = "Milled peppercorns, spicy as can be."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "pepper"
+	tastes = list("tingling spiciness" = 1, "a subtle hint of bitterness" = 1)
+	list_reagents = list(/datum/reagent/consumable/blackpepper = 1)
+
+/obj/item/reagent_containers/food/snacks/grown/pepperseed
+	name = "pepperberries"
+	desc = "A relative to the Azurian jackberry, stripped free of its fruity skin. Roasting it seems to've dulled its humor-imbalancing \
+	properties, though it'll still need to be milled down before it can be used for culinary matters."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "pepperseed"
+	foodtype = GRAIN
+	tastes = list("spiciness" = 1, "slightly less bitterness" = 1)
+	grind_results = list(/datum/reagent/consumable/blackpepper = 1)
+	mill_result = /obj/item/reagent_containers/food/snacks/pepper
+
+/obj/item/reagent_containers/food/snacks/allspice
+	name = "allspice"
+	desc = "A blend of spices that can liven up even the dreariest broths."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice_good"
+	tastes = list("fragrant spices" = 1, "a pleasantly complex aroma" = 1) //Very low nutritional content, but can be applied to add a very solid moodboost to broths. Futurecoders could add it to meals, later, too.
+	list_reagents = list(/datum/reagent/consumable/allspice = 1)
+	sellprice = 20
 
 /obj/item/reagent_containers/food/snacks/grown/vegetable/turnip
 	name = "turnip"
