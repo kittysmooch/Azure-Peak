@@ -329,6 +329,9 @@
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/dmark
 	tools = list(/obj/item/rogueweapon/huntingknife)
 	craftdiff = 4
+	verbage_simple = "sculpt"
+	verbage = "sculpts"
+	reqtable = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkp
