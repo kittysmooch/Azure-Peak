@@ -82,7 +82,7 @@
 /obj/item/reagent_containers/food/snacks/grown/wheat
 	seed = /obj/item/seeds/wheat
 	name = "wheat grain"
-	desc = ""
+	desc = "Wheat grains, ready to be milled into powder."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "wheat"
 	gender = PLURAL
@@ -96,7 +96,7 @@
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
 	name = "oat grain"
-	desc = ""
+	desc = "Oat grains, ready to be milled and boiled."
 	icon = 'icons/roguetown/items/produce.dmi'
 	icon_state = "oat"
 	gender = PLURAL
@@ -372,9 +372,27 @@
 	name = "sugar"
 	desc = "Milled sugarcane, sweet as can be."
 	icon = 'icons/roguetown/items/produce.dmi'
-	icon_state = "salt"
+	icon_state = "sugar"
 	tastes = list("sweet" = 1)
 	list_reagents = list(/datum/reagent/consumable/sugar = 15)
+	deep_fried_type = /obj/item/reagent_containers/food/snacks/caramel
+
+/obj/item/reagent_containers/food/snacks/pepper
+	name = "pepper"
+	desc = "Milled peppercorns, spicy as can be."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "pepper"
+	tastes = list("tingling spiciness" = 1, "a subtle hint of bitterness" = 1)
+	list_reagents = list(/datum/reagent/consumable/blackpepper = 1)
+
+/obj/item/reagent_containers/food/snacks/allspice
+	name = "allspice"
+	desc = "A blend of spices that can liven up even the dreariest broths."
+	icon = 'icons/roguetown/items/produce.dmi'
+	icon_state = "spice_good"
+	tastes = list("fragrant spices" = 1, "a pleasantly complex aroma" = 1) //Very low nutritional content, but can be applied to add a very solid moodboost to broths. Futurecoders could add it to meals, later, too.
+	list_reagents = list(/datum/reagent/consumable/allspice = 1)
+	sellprice = 20
 
 /obj/item/reagent_containers/food/snacks/grown/vegetable/turnip
 	name = "turnip"
