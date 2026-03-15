@@ -246,6 +246,16 @@
 	structurecraft = /obj/machinery/tanningrack
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/cooking/allspice
+	name = "blended spices"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pepper = 1,
+		/obj/item/reagent_containers/powder/salt = 1,
+		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
+	result = /obj/item/reagent_containers/food/snacks/allspice
+	structurecraft = /obj/machinery/tanningrack
+	craftdiff = 4 //A true chef never reveals his secrets!
+
 /datum/crafting_recipe/roguetown/cooking/sugartangerine
 	name = "smothered tangerines"
 	reqs = list(
