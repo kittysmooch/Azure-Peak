@@ -105,6 +105,24 @@
   }
 
   // ── Section titles — letter-spacing + uppercase (chant h2/h3 style)
+  .Section__title {
+    display: flex;
+    align-items: center;
+  }
+
+  .Section__titleText {
+    flex-grow: 1;
+  }
+
+  .Section__buttons {
+    position: static;
+    margin-top: 0;
+
+    .Button {
+      margin-right: 4px;
+    }
+  }
+
   .Section__titleText {
     font-family: Georgia, 'Palatino Linotype', Palatino, serif;
     letter-spacing: 2px;
