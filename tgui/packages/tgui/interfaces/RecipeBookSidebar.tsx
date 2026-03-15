@@ -37,7 +37,7 @@ export const RecipeBookSidebar = memo((props: Props) => {
     const seen = new Set<string>();
     return recipes.filter((r) => {
       const matchCat = category === 'All' || r.category === category;
-      const matchSearch = !query || r.name.toLowerCase().includes(query);
+      const matchSearch = !query || (r.name && r.name.toLowerCase().includes(query));
       if (!matchCat || !matchSearch) return false;
       if (category === 'All') {
         if (seen.has(r.path)) return false;
