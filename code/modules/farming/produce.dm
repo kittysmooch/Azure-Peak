@@ -343,7 +343,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/nut
 	name = "rocknut"
-	desc = "A nut with mild stimulant properties, oft-delighted with sugar and calendulas. In powderized form, it can be used to make a zig."
+	desc = "A fragrant nut with stimulating properties, oft-delighted with herbal sugar. Its powder is valuable for fashioning zigs and allspices."
 	seed = /obj/item/seeds/nut
 	icon_state = "rocknuts"
 	tastes = list("nutty" = 1)
@@ -356,7 +356,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/nut/sugared
 	name = "smothered rocknut"
-	desc = "Sugary rocknuts, smothered in sweetness and awaiting a baptism in boiling fat."
+	desc = "Sugary rocknuts, smothered in herbal sweetness and awaiting a baptism in boiling fat."
 	icon_state = "rocknutssugar"
 	faretype = FARE_FINE
 	tastes = list("overpoweringly sweet and nutty" = 1)
