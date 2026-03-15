@@ -123,3 +123,25 @@
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("stickied deliciousness" = 1, "subtle sweet-tartiness" = 1)
+
+/obj/item/reagent_containers/food/snacks/caramel
+	name = "caramel giblets"
+	icon = 'modular/Neu_Food/icons/others/sweet.dmi'
+	icon_state = "caramel3"
+	desc = "Glassy droppings of tallow-fried sugar, oft-divvied out amongst the youth by Psydonia's wisest and kindliest elders."
+	faretype = FARE_FINE
+	fried_type = null
+	bitesize = 3
+	slice_path = null
+	tastes = list("rich sugariness" = 1, "a lingering sweetness on the tongue" = 1)
+	w_class = WEIGHT_CLASS_TINY
+	rotprocess = null
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+
+/obj/item/reagent_containers/food/snacks/caramel/On_Consume(mob/living/eater)
+	..()
+	if(bitecount == 1)
+		icon_state = "caramel2"
+	if(bitecount == 2)
+		icon_state = "caramel1"
+
