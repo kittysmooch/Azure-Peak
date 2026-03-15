@@ -82,6 +82,8 @@
 	if(mob.incapacitated())
 		return
 
+	SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDOWN, object, location, control, params)
+
 	if(mob.stat != CONSCIOUS)
 		mob.atkswinging = null
 		charging = null
@@ -198,6 +200,9 @@
 	return TRUE
 
 /client/MouseUp(object, location, control, params)
+	if(SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEUP, object, location, control, params) & COMPONENT_CLIENT_MOUSEUP_INTERCEPT)
+		click_intercept_time = world.time
+
 	if(charging && isliving(mob))
 		update_to_mob(mob, 0)
 
@@ -394,6 +399,7 @@
 		selected_target[2] = params
 	if(active_mousedown_item)
 		active_mousedown_item.onMouseDrag(src_object, over_object, src_location, over_location, params, mob)
+	SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDRAG, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
 
 /obj/item/proc/onMouseDrag(src_object, over_object, src_location, over_location, params, mob)

@@ -192,6 +192,7 @@
 #include "code\__DEFINES\dcs\signals\signals_tgui.dm"
 #include "code\__DEFINES\dcs\signals\signals_tram.dm"
 #include "code\__DEFINES\dcs\signals\signals_turf.dm"
+#include "code\__DEFINES\dcs\signals\signals_mob\signals_client.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mind.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob.dm"
 #include "code\__DEFINES\dcs\signals_atoms\appearance.dm"
