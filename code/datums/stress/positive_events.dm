@@ -92,7 +92,12 @@
 /datum/stressevent/lavishstew
 	timer = 5 MINUTES
 	stressadd = -3
-	desc = list(span_green("That brew was positively divine - and that broth, so wonderful!"))
+	desc = list(span_green("That brew was positively divine - and that broth, so wonderful!"), span_green("What a symphony of flavours I just experienced!"))
+
+/datum/stressevent/juicedrink
+	timer = 15 MINUTES
+	stressadd = -1
+	desc = list(span_green("Nothing like a fresh goblet of juiced fruits to start the dae!"))
 
 /datum/stressevent/allspiced
 	timer = 5 MINUTES
