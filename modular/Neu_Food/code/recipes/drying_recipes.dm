@@ -331,7 +331,7 @@
 	craftdiff = 4
 	verbage_simple = "sculpt"
 	verbage = "sculpts"
-	reqtable = TRUE
+	req_table = TRUE
 	structurecraft = /obj/structure/table
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkp
