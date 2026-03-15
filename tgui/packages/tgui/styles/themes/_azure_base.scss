@@ -134,7 +134,7 @@
     color: #{map.get($colors, 'link-visited')};
   }
 
-  // ── Buttons — raised wood plank style ───────────────────────────
+  // ── Buttons — wood plank style ──────────────────────────────────
   .Button {
     transition: all 0.3s ease;
     --color-text: #{map.get($colors, 'btn-text')};
@@ -144,36 +144,36 @@
     border: 2px solid map.get($colors, 'accent');
     outline: 1px solid darken(map.get($colors, 'border'), 6%);
     outline-offset: -3px;
-    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-    // Raised plank: bright top-left chisel, dark bottom-right, hard drop
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+    // Raised: light top-left edge, dark bottom-right, drop shadow beneath
     box-shadow:
-      inset 1px 1px 0 rgba(255, 255, 255, 0.14),
+      inset 1px 1px 0 rgba(255, 255, 255, 0.12),
       inset -1px -1px 0 rgba(0, 0, 0, 0.2),
-      0 2px 0 darken(map.get($colors, 'border'), 12%),
-      0 3px 5px rgba(0, 0, 0, 0.3);
+      0 2px 0 darken(map.get($colors, 'border'), 10%),
+      0 3px 6px rgba(0, 0, 0, 0.25);
 
     &:hover {
-      background-color: lighten(map.get($colors, 'border'), 5%);
+      background-color: lighten(map.get($colors, 'border'), 6%);
       border-color: map.get($colors, 'accent-bright');
       outline-color: darken(map.get($colors, 'border'), 3%);
     }
 
     &:active {
-      // Pressed into surface
+      // Pressed in
       box-shadow:
-        inset 2px 2px 5px rgba(0, 0, 0, 0.55),
+        inset 2px 2px 4px rgba(0, 0, 0, 0.5),
         inset -1px -1px 0 rgba(255, 255, 255, 0.03);
       outline-offset: -2px;
       transform: translateY(1px);
     }
 
     &.Button--selected {
-      // Locked in / carved recess
+      // Carved recess
       background-color: map.get($colors, 'btn-selected');
       border-color: map.get($colors, 'accent');
       outline-color: darken(map.get($colors, 'btn-selected'), 4%);
       box-shadow:
-        inset 2px 2px 5px rgba(0, 0, 0, 0.55),
+        inset 2px 2px 4px rgba(0, 0, 0, 0.5),
         inset -1px -1px 0 rgba(255, 255, 255, 0.04);
     }
   }
@@ -182,7 +182,32 @@
     --button-background-hover: #{map.get($colors, 'border')};
     --button-background-active: #{map.get($colors, 'border')};
     --button-background-disabled: transparent;
+    background-color: transparent;
+    border: 2px solid transparent;
     outline: none;
+    box-shadow: none;
+    text-shadow: none;
+
+    &:hover {
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
+
+    &:active {
+      box-shadow: none;
+      outline: none;
+      transform: none;
+    }
+
+    &.Button--selected {
+      background-color: map.get($colors, 'btn-selected');
+      --button-color: #fff;
+      color: #fff !important;
+      border-color: transparent;
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   .Button--color--transparent.Button--disabled {
