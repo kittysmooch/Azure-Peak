@@ -54,7 +54,7 @@ export const ExaminePanel = (props) => {
       <Window.Content>
         <Stack vertical fill>
           {img_gallery.length > 0 && (
-          <Stack>
+          <Stack style={{ marginBottom: '4px' }}>
             <Stack.Item grow>
               <PageButton
               currentPage={currentPage}
