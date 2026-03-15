@@ -79,16 +79,6 @@
 	desc = list(span_green("That was a meal fit for a king!"), span_green("What an explosion of flavour \
 	I just experienced!"))
 
-/datum/stressevent/shitstew
-	timer = 3 MINUTES
-	stressadd = 3
-	desc = list(span_red("Yuck! What the hell was in that brew!?"), span_red("Augh! That brew tastes absolutely horrible!"))
-
-/datum/stressevent/mehstew
-	timer = 3 MINUTES
-	stressadd = 1
-	desc = list(span_red("Eugh, this brew just doesn't sit right with me.."), span_red("Something about that brew tastes a little funky.."))
-
 /datum/stressevent/finestew
 	timer = 5 MINUTES
 	stressadd = -1
@@ -102,7 +92,7 @@
 /datum/stressevent/lavishstew
 	timer = 5 MINUTES
 	stressadd = -3
-	desc = list(span_green("That brew was positively divine!"))
+	desc = list(span_green("That brew was positively divine - and that broth, so wonderful!"))
 
 /datum/stressevent/allspiced
 	timer = 5 MINUTES
