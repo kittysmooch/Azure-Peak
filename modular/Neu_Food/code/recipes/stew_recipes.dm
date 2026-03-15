@@ -17,6 +17,16 @@
 	output = /datum/reagent/consumable/soup/porridge/thick
 	cooktime = STEW_COOKING_TIME
 
+/datum/stew_recipe/thickporridge
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/bread)
+	output = /datum/reagent/consumable/soup/porridge/thick
+	cooktime = STEW_COOKING_TIME
+
+/datum/stew_recipe/allspice
+	inputs = list(/obj/item/reagent_containers/food/snacks/allspice)
+	output = /datum/reagent/consumable/soup/allspice
+	cooktime = STEW_COOKING_TIME * 3 //Simmers the longest, so that you have enough time to plop everything else in. Cooking-wise? Well, it's common sense to let spices stew for a long while to draw the flavor out!
+
 /datum/stew_recipe/breadpudding
 	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbread_half, /obj/item/reagent_containers/food/snacks/rogue/abread_half, /obj/item/reagent_containers/food/snacks/rogue/applebreadslice, /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice)
 	output = /datum/reagent/consumable/soup/porridge/pudding
@@ -346,6 +356,7 @@
 /datum/stew_recipe/thickfryegg
 	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/friedegg/sausage, /obj/item/reagent_containers/food/snacks/rogue/friedegg/sausagebacon, /obj/item/reagent_containers/food/snacks/rogue/friedegg/bacon)
 	output = /datum/reagent/consumable/soup/stew/thickfryegg
+	cooktime = STEW_COOKING_TIME * 2
 
 /datum/stew_recipe/lavishfryegg
 	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/friedegg/tiberian, /obj/item/reagent_containers/food/snacks/rogue/friedegg/hammerhold)
@@ -362,6 +373,7 @@
 /datum/stew_recipe/thickcucumber_soup
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/cucumber)
 	output = /datum/reagent/consumable/soup/stew/thickcucumber_soup
+	cooktime = STEW_COOKING_TIME * 2
 
 /datum/stew_recipe/eggplant_soup
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/eggplant, /obj/item/reagent_containers/food/snacks/rogue/eggplantcarved)
