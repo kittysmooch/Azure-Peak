@@ -40,19 +40,7 @@
 	if(!target || !owner)
 		return FALSE
 	var/obj/effect/proc_holder/spell/S = target
-	if(!S.skipcharge)
-		switch(S.charge_type)
-			if("recharge")
-				if(S.charge_counter < S.recharge_time)
-					return FALSE
-			if("charges")
-				if(!S.charge_counter)
-					return FALSE
-	if(owner.stat && !S.stat_allowed)
-		return FALSE
-	if(!S.ignore_cockblock && HAS_TRAIT(owner, TRAIT_SPELLCOCKBLOCK))
-		return FALSE
-	return TRUE
+	return S.can_cast(owner, feedback = FALSE)
 
 /// Updates maptext on all viewer buttons. Used by the legacy spell recharge system.
 /datum/action/spell_action/proc/update_all_maptext(cd_time)
