@@ -729,9 +729,15 @@
 	name = "briquebroth"
 	color = "#693346"
 	taste_description = "heartwarmingly thick and salty, with little bursts of sweetness"
-	nutriment_factor = 25
-	metabolization_rate = 0.8
+	nutriment_factor = 30
 	alpha = 222
+
+/datum/reagent/consumable/soup/stew/thicksurvival_broth
+	name = "thick briquebroth"
+	color = "#681936"
+	taste_description = "heartwarmingly thick and savory, with little bursts of sweetness"
+	nutriment_factor = 45
+	alpha = 250
 
 /datum/reagent/consumable/soup/stew/saltmeat_stew
 	name = "salted meat stew"
