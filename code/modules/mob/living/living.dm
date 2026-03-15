@@ -908,7 +908,7 @@
 			if(admin_revive)
 				mind.remove_antag_datum(/datum/antagonist/zombie)
 			for(var/obj/effect/proc_holder/spell/spell as anything in mind.spell_list)
-				spell.updateButtonIcon()
+				spell.action?.build_all_button_icons()
 		qdel(GetComponent(/datum/component/rot))
 
 /mob/living/proc/remove_CC(should_update_mobility = TRUE)

@@ -358,7 +358,11 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 		new_character.key = key		//now transfer the key to link the client to our new body
 	new_character.update_fov_angles()
-	SEND_SIGNAL(old_current, COMSIG_MIND_TRANSFER, new_character)
+
+	SEND_SIGNAL(src, COMSIG_MIND_TRANSFERRED, old_current)
+	SEND_SIGNAL(new_character, COMSIG_MOB_MIND_TRANSFERRED_INTO, old_current)
+	if(!isnull(old_current))
+		SEND_SIGNAL(old_current, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF, current)
 
 // adjusts the amount of available spellpoints
 /datum/mind/proc/adjust_spellpoints(points)
@@ -875,7 +879,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			if(istype(S, type))
 				continue
 		S.charge_counter = delay
-		S.updateButtonIcon()
+		S.action?.build_all_button_icons()
 		INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/effect/proc_holder/spell, start_recharge))
 
 /datum/mind/proc/get_ghost(even_if_they_cant_reenter, ghosts_with_clients)

@@ -57,7 +57,6 @@
 		var/obj/effect/R = new /obj/effect/spell_rune
 		R.icon = action_icon
 		R.icon_state = overlay_state // Weird af but that's how spells work???
-		action.overlay_alpha = overlay_alpha
 		mob_charge_effect = R
 	update_icon()
 
@@ -482,7 +481,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			if("holdervar")
 				adjust_var(user, holder_var_type, holder_var_amount)
 	if(action)
-		action.UpdateButtonIcon()
+		action.build_all_button_icons()
 	START_PROCESSING(SSfastprocess, src)
 	record_featured_stat(FEATURED_STATS_MAGES, user)
 	return TRUE
@@ -586,13 +585,13 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		charge_counter += delta
 		if(charge_counter >= recharge_time)
 			charge_counter = recharge_time
-			if(action?.button)
-				action.button.update_maptext(0)
-			action?.UpdateButtonIcon()
+			var/datum/action/spell_action/SA = action
+			SA?.update_all_maptext(0)
+			action?.build_all_button_icons()
 			STOP_PROCESSING(SSfastprocess, src)
 			return
-		if(action?.button)
-			action.button.update_maptext(recharge_time - charge_counter)
+		var/datum/action/spell_action/SA = action
+		SA?.update_all_maptext(recharge_time - charge_counter)
 
 /obj/effect/proc_holder/spell/proc/perform(list/targets, recharge = TRUE, mob/user = usr) //if recharge is started is important for the trigger spells
 	if(!ignore_los)
@@ -650,7 +649,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				var/mob/living/carbon/human/H = user
 				H.bad_guard(span_warning("I can't focus while casting spells!"), cheesy = TRUE)
 		if(action)
-			action.UpdateButtonIcon()
+			action.build_all_button_icons()
 		return TRUE
 	return FALSE
 
@@ -725,9 +724,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		if("holdervar")
 			adjust_var(user, holder_var_type, -holder_var_amount)
 	START_PROCESSING(SSfastprocess, src)
-	if(action?.button)
-		action.button.update_maptext(0)
-		action.UpdateButtonIcon()
+	if(action)
+		var/datum/action/spell_action/SA = action
+		SA?.update_all_maptext(0)
+		action.build_all_button_icons()
 	if(user.mmb_intent && user.mmb_intent.mob_light)
 		QDEL_NULL(user.mmb_intent.mob_light)
 
@@ -848,9 +848,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		return
 
 	perform(targets,user=user)
-
-/obj/effect/proc_holder/spell/proc/updateButtonIcon(status_only, force)
-	action.UpdateButtonIcon(status_only, force)
 
 /obj/effect/proc_holder/spell/proc/can_be_cast_by(mob/caster)
 	if((human_req || clothes_req) && !ishuman(caster))

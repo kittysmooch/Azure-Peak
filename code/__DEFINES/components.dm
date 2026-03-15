@@ -475,10 +475,6 @@
 #define COMSIG_AFTER_STORAGE_INSERT "storage_after_insert"				//(obj/item/inserting, obj/storage_master, mob/user)
 #define COMSIG_AFTER_STORAGE_REMOVE "storage_after_remove"				//(obj/item/removing, obj/storage_master)
 
-// /datum/action signals
-#define COMSIG_ACTION_TRIGGER "action_trigger"						//from base of datum/action/proc/Trigger(): (datum/action)
-	#define COMPONENT_ACTION_BLOCK_TRIGGER 1
-
 /*******Non-Signal Component Related Defines*******/
 
 //Redirection component init flags

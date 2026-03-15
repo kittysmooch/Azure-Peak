@@ -2324,7 +2324,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/action/innate/flight
 	name = "Toggle Flight"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
 	button_icon_state = ""
 
 /datum/action/innate/flight/Activate()

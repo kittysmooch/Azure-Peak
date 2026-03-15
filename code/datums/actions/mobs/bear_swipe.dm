@@ -13,7 +13,6 @@
 	var/dist = get_dist(owner, target)
 	if(can_see(owner, target, range) && dist < range && dist <= 1) //can see, in range and adjacent
 		owner.visible_message(span_boldwarning("[owner] rears up to swipe at [target]!"))
-		disable_cooldown_actions()
 		addtimer(CALLBACK(src, PROC_REF(do_swipe), target), cast_time)
 		StartCooldown()
 	return TRUE

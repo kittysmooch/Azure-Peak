@@ -137,7 +137,7 @@ It will also call down lightning strikes from the sky, and fling people with it'
 
 /datum/action/innate/megafauna_attack
 	name = "Megafauna Attack"
-	icon_icon = 'icons/mob/actions/actions_spells.dmi'
+	button_icon = 'icons/mob/actions/actions_spells.dmi'
 	button_icon_state = ""
 	var/mob/living/simple_animal/hostile/retaliate/rogue/voiddragon/M
 	var/chosen_message
