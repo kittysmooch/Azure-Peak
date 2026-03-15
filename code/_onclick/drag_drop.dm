@@ -195,6 +195,7 @@
 
 /mob
 	var/datum/intent/curplaying
+	var/obj/effect/spell_rune_under/spell_rune
 
 /atom/proc/should_click_on_mouse_up(var/atom/original_object)
 	return TRUE

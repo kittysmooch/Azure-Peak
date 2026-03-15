@@ -36,3 +36,7 @@
 	#define INVOCATION_MESSAGE 1
 	///index for the invocation type string
 	#define INVOCATION_TYPE 2
+
+// Projectile spell signals
+/// Sent from /datum/action/cooldown/spell/projectile/on_cast_hit() to the spell: (atom/hit, mob/firer, obj/projectile/projectile)
+#define COMSIG_SPELL_PROJECTILE_HIT "spell_projectile_hit"

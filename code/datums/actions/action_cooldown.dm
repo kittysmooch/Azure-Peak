@@ -210,6 +210,9 @@
 
 /// Intercepts client owner clicks to activate the ability
 /datum/action/cooldown/proc/InterceptClickOn(mob/living/clicker, list/modifiers, atom/target)
+	// check_click_intercept passes raw params string, not a list — parse it
+	if(istext(modifiers))
+		modifiers = params2list(modifiers)
 	if(!LAZYACCESS(modifiers, MIDDLE_CLICK))
 		return FALSE
 	if(!IsAvailable(TRUE))

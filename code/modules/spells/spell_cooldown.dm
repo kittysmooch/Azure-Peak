@@ -63,6 +63,14 @@
 	var/secondary_resource_cost = 0
 	/// Cost to learn this spell in the tree.
 	var/point_cost = 0
+	/// Tier of the spell, used to determine whether you can learn it based on class.
+	var/spell_tier = 1
+	/// If true, the spell can be refunded. Set by learnspell when learned.
+	var/refundable = FALSE
+	/// If set, the spell was learned from a pool-based system and should refund to this pool name.
+	var/learned_from_pool
+	/// If this spell is evil and can only be learned by heretics.
+	var/zizo_spell = FALSE
 
 	/// The sound played on cast.
 	var/sound = 'sound/magic/whiteflame.ogg'
@@ -149,6 +157,8 @@
 
 	/// If the spell creates visual effects.
 	var/has_visual_effects = TRUE
+	/// The color used for spell visual effects (rune, particles, wave). Each spell sets its own.
+	var/spell_color = "#FFFFFF"
 
 	/// Timer ID for the auto cancel, so we can cancel it
 	var/auto_cancel_timer = null
@@ -159,8 +169,6 @@
 		active_msg = "You prepare to use [src] on a target..."
 	if(!deactive_msg)
 		deactive_msg = "You dispel [src]."
-
-	// TODO: ranged_mousepointer for charged spells needs DMI file
 
 	if(!charge_required)
 		return
@@ -203,7 +211,8 @@
 			owner.balloon_alert(owner, "I cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
-		// TODO: mouse pointer charge icon system
+		if(ranged_mousepointer)
+			owner.client?.mouse_pointer_icon = ranged_mousepointer
 		owner.update_mouse_pointer()
 		return PROCESS_KILL
 
@@ -265,8 +274,9 @@
 	if(click_to_activate)
 		on_activation(on_who)
 
-		// TODO: mouse-based charge system needs COMSIG_CLIENT_MOUSEDOWN/UP
-		// For now, charge_required + click_to_activate spells won't have hold-release targeting
+		if(charge_required)
+			// If pointed we setup signals to override mouse down to call InterceptClickOn()
+			RegisterSignal(owner.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(start_casting))
 
 	return ..()
 
@@ -274,6 +284,9 @@
 /datum/action/cooldown/spell/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
 	if(click_to_activate)
 		on_deactivation(on_who, refund_cooldown = refund_cooldown)
+
+		if(charge_required && on_who.client)
+			UnregisterSignal(on_who.client, COMSIG_CLIENT_MOUSEDOWN)
 
 	return ..()
 
@@ -305,6 +318,9 @@
 	return TRUE
 
 /datum/action/cooldown/spell/InterceptClickOn(mob/living/clicker, list/modifiers, atom/click_target)
+	// check_click_intercept passes raw params string, not a list — parse it
+	if(istext(modifiers))
+		modifiers = params2list(modifiers)
 	if(!LAZYACCESS(modifiers, MIDDLE_CLICK))
 		return
 
@@ -624,7 +640,9 @@
 		smoke.set_up(smoke_amt, loca = get_turf(owner))
 		smoke.start()
 
-	// TODO: visual effects on cast finish
+	if(has_visual_effects)
+		var/mob/living/living_owner = owner
+		living_owner.finish_spell_visual_effects(spell_color)
 
 /// Provides feedback after a spell cast occurs, in the form of a cast sound and/or invocation
 /datum/action/cooldown/spell/proc/spell_feedback(mob/living/invoker)
@@ -678,7 +696,9 @@
 	if(charge_sound_instance)
 		playsound(owner, charge_sound_instance, 50, FALSE, channel = CHANNEL_CHARGED_SPELL)
 
-	// TODO: visual effects on charge start
+	if(has_visual_effects)
+		var/mob/living/caster = owner
+		caster.start_spell_visual_effects(spell_color)
 
 	if(charge_message)
 		owner.balloon_alert(owner, charge_message)
@@ -702,6 +722,8 @@
 
 /// End the charging cycle
 /datum/action/cooldown/spell/proc/end_charging()
+	if(owner.client)
+		UnregisterSignal(owner.client, list(COMSIG_CLIENT_MOUSEDOWN, COMSIG_CLIENT_MOUSEUP))
 	UnregisterSignal(owner, list(COMSIG_MOB_LOGOUT, COMSIG_MOB_DEATH, COMSIG_MOVABLE_MOVED))
 	currently_charging = FALSE
 	charge_started_at = null
@@ -717,9 +739,10 @@
 		// Play a null sound in to cancel the sound playing, because byond
 		playsound(owner, sound(null, repeat = 0), 50, FALSE, channel = CHANNEL_CHARGED_SPELL)
 
-	// TODO: visual effects on charge cancel
+	if(has_visual_effects)
+		var/mob/living/caster = owner
+		caster.cancel_spell_visual_effects()
 
-	// TODO: mouse pointer charge icon system
 	owner.update_mouse_pointer()
 
 /// Cancel casting and all its effects.
@@ -970,12 +993,131 @@
 		breakdown += span_smallred("  Intelligence: +[int_mod]")
 	return breakdown
 
-// TODO: Mouse-based charge casting (start_casting/try_casting) requires COMSIG_CLIENT_MOUSEDOWN/UP
-// which AP doesn't have yet. The do_after based charge path (non-click_to_activate) still works.
-// Port client mouse signals when ready to enable hold-release targeting.
+/// Try to begin the casting process on mouse down.
+/// Vanderlin ref: code/modules/spells/spell.dm L1041-1085
+/datum/action/cooldown/spell/proc/start_casting(client/source, atom/_target, turf/location, control, params)
+	SIGNAL_HANDLER
+
+	var/list/modifiers = params2list(params)
+	if(LAZYACCESS(modifiers, SHIFT_CLICKED))
+		return
+	if(LAZYACCESS(modifiers, CTRL_CLICKED))
+		return
+	if(LAZYACCESS(modifiers, LEFT_CLICK))
+		return
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		return
+	if(LAZYACCESS(modifiers, ALT_CLICKED))
+		return
+	if(!isturf(owner.loc))
+		return
+	if(charge_started_at)
+		return
+
+	if(isnull(location) || istype(_target, /atom/movable/screen))
+		if(_target.plane != CLICKCATCHER_PLANE)
+			return
+
+	// Register here because the mouse up can get triggered before the mouse down otherwise
+	RegisterSignal(source, COMSIG_CLIENT_MOUSEUP, PROC_REF(try_casting))
+	RegisterSignal(owner, list(COMSIG_MOB_DEATH, COMSIG_MOB_LOGOUT), PROC_REF(signal_cancel))
+	if(spell_requirements & SPELL_REQUIRES_NO_MOVE)
+		RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(signal_cancel), TRUE)
+
+	var/spell_timeout = 3 MINUTES
+
+	// Cancel the next click with 3 minutes timeout
+	source?.click_intercept_time = world.time + spell_timeout
+	// Failsafe to cancel casting in extreme circumstances
+	auto_cancel_timer = addtimer(CALLBACK(src, PROC_REF(cancel_casting)), spell_timeout, TIMER_STOPPABLE)
+
+	on_start_charge()
+	charge_started_at = world.time
+	charge_target_time = get_adjusted_charge_time()
+
+/// Attempt to cast the spell after the mouse up.
+/// Vanderlin ref: code/modules/spells/spell.dm L1087-1115
+/datum/action/cooldown/spell/proc/try_casting(client/source, atom/_target, turf/location, control, params)
+	SIGNAL_HANDLER
+
+	// Stop the failsafe timer
+	if(auto_cancel_timer)
+		deltimer(auto_cancel_timer)
+
+	// This can happen
+	if(!source || !charge_started_at || !can_cast_spell(TRUE))
+		cancel_casting()
+		return
+
+	var/success = world.time >= (charge_started_at + charge_target_time)
+	if(!on_end_charge(success)) // Give them another try if they mess up the timing
+		RegisterSignal(source, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(start_casting))
+		return
+
+	var/list/modifiers = params2list(params)
+
+	// At this point we DO care about the _target value
+	if(isnull(location) || istype(_target, /atom/movable/screen))
+		// Clicked on screen object / clickcatcher — resolve turf under owner as fallback
+		_target = get_turf(source.eye)
+		if(!_target)
+			cancel_casting()
+			return
+
+	// Call this directly to do all the relevant checks and aim assist
+	InterceptClickOn(owner, modifiers, _target)
+	source.click_intercept_time = 0
 
 /datum/action/cooldown/spell/proc/signal_cancel()
 	SIGNAL_HANDLER
 
 	cancel_casting()
+
+// Spell visual effects — mob-owned for safety (if spell hard-deletes, mob Destroy still cleans up).
+// AP uses per-spell color instead of Vanderlin's attunement blending.
+
+/// Start spell visual effects. Creates a rune under the caster and begins particle effects.
+/mob/living/proc/start_spell_visual_effects(spell_color = "#FFFFFF")
+	if(QDELETED(src))
+		return
+
+	if(spell_rune)
+		QDEL_NULL(spell_rune)
+
+	var/obj/effect/spell_rune_under/rune = new(null, src, spell_color)
+	vis_contents |= rune
+	spell_rune = rune
+
+	start_spell_particles(spell_color)
+
+/// Intermittent particle effect while charging. Requires spell_rune — self-repeats via timer.
+/mob/living/proc/start_spell_particles(spell_color = "#FFFFFF")
+	if(QDELETED(src) || QDELETED(spell_rune))
+		return
+
+	var/obj/effect/temp_visual/particle_up/particles = new(null, src, spell_rune)
+	vis_contents |= particles
+	particles.color = spell_color
+
+	addtimer(CALLBACK(src, PROC_REF(start_spell_particles), spell_color), 3.6 SECONDS)
+
+/// Finish spell visual effects on successful cast. Cleans up rune and creates wave_up.
+/mob/living/proc/finish_spell_visual_effects(spell_color = "#FFFFFF")
+	if(QDELETED(src))
+		return
+
+	if(spell_rune)
+		QDEL_NULL(spell_rune)
+
+	var/obj/effect/temp_visual/wave_up/wave = new(null, src)
+	vis_contents |= wave
+	wave.color = spell_color
+
+/// Cancel spell visual effects. Cleans up rune (particles auto-clean via signal).
+/mob/living/proc/cancel_spell_visual_effects()
+	if(QDELETED(src))
+		return
+
+	if(spell_rune)
+		QDEL_NULL(spell_rune)
 

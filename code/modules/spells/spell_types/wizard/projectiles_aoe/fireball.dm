@@ -5,6 +5,36 @@ in ~10 seconds). Everything in the blast radius gets knocked back 1 tile. Arcane
 only buffs the direct hit so single-target damage stays controlled. Artillery is the structural
 siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivity. */
 
+// New spell system
+/datum/action/cooldown/spell/projectile/fireball
+	name = "Fireball (V2)"
+	desc = "Shoot out a ball of fire that explodes on impact, scorching nearby targets. Consumes <b>Arcane Marks</b> for extra damage when fully stacked. \
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
+	button_icon_state = "fireball"
+	sound = 'sound/magic/fireball.ogg'
+	spell_color = GLOW_COLOR_FIRE
+
+	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
+	projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/arc
+	cast_range = 8
+	point_cost = 6
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_MAJOR_PROJECTILE
+
+	invocations = list("Sphaera Ignis!")
+	invocation_type = INVOCATION_SHOUT
+
+	charge_required = TRUE
+	charge_time = 1.5 SECONDS
+	charge_drain = 1
+	charge_slowdown = 3
+	charge_sound = 'sound/magic/charging_fire.ogg'
+	cooldown_time = 16 SECONDS
+
+	associated_skill = /datum/skill/magic/arcane
+
+// Old proc_holder system (to be removed after testing)
 /obj/effect/proc_holder/spell/invoked/projectile/fireball
 	name = "Fireball"
 	desc = "Shoot out a ball of fire that explodes on impact, scorching nearby targets. Consumes <b>Arcane Marks</b> for extra damage when fully stacked.\n\

@@ -1,3 +1,30 @@
+// New spell system
+/datum/action/cooldown/spell/projectile/arcynebolt
+	name = "Arcyne Bolt (V2)"
+	desc = "Shoot out a rapid bolt of arcyne magic. Inflicts blunt damage, and applies one stack of <b>Arcane Mark</b> on the target. At three marks, it instead does piercing damage and consumes all <b>marks</b>. \
+	Damage is increased by 50% versus simple-minded creechurs. \
+	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
+	button_icon_state = "force_dart"
+	sound = 'sound/magic/vlightning.ogg'
+	spell_color = GLOW_COLOR_ARCANE
+
+	projectile_type = /obj/projectile/energy/arcynebolt
+	projectile_type_arc = /obj/projectile/energy/arcynebolt/arc
+	cast_range = 12
+	point_cost = 3
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
+
+	invocations = list("Magicae Sagitta!")
+	invocation_type = INVOCATION_SHOUT
+
+	charge_required = FALSE
+	cooldown_time = 4 SECONDS
+
+	associated_skill = /datum/skill/magic/arcane
+
+// Old proc_holder system (to be removed after testing)
 /obj/effect/proc_holder/spell/invoked/projectile/arcynebolt
 	name = "Arcyne Bolt"
 	desc = "Shoot out a rapid bolt of arcyne magic. Inflicts blunt damage, and applies one stack of <b>Arcane Mark</b> on the target. At three marks, it instead does piercing damage and consumes all <b>marks</b> \n\

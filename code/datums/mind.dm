@@ -768,9 +768,24 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		add_antag_datum(/datum/antagonist/traitor)
 
 
-/datum/mind/proc/AddSpell(obj/effect/proc_holder/spell/S, mob/living/user)
-	if(!S)
+/datum/mind/proc/AddSpell(datum/spell_or_action, mob/living/user)
+	if(!spell_or_action)
 		return
+
+	// New action-based spell system
+	if(istype(spell_or_action, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/new_spell = spell_or_action
+		for(var/datum/action/cooldown/spell/present in spell_list)
+			if(present.name == new_spell.name && present.type == new_spell.type)
+				return
+		spell_list += new_spell
+		new_spell.Grant(current)
+		if(length(spell_list) == 1 && current)
+			addtimer(CALLBACK(src, PROC_REF(show_spell_tip)), 3 SECONDS)
+		return
+
+	// Old proc_holder spell system
+	var/obj/effect/proc_holder/spell/S = spell_or_action
 	for(var/obj/effect/proc_holder/spell/present_spell in spell_list)
 		if(present_spell.name == S.name && present_spell.type == S.type)
 			return
@@ -811,11 +826,18 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	return
 
 /datum/mind/proc/has_spell(spell_type, specific = FALSE)
+	// Extract type from instance if passed one
 	if(istype(spell_type, /obj/effect/proc_holder))
 		var/obj/instanced_spell = spell_type
 		spell_type = instanced_spell.type
-	for(var/obj/effect/proc_holder/spell as anything in spell_list)
-		if((specific && spell.type == spell_type) || istype(spell, spell_type))
+	else if(istype(spell_type, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/instanced_spell = spell_type
+		spell_type = instanced_spell.type
+
+	for(var/datum/spell as anything in spell_list)
+		if(specific && spell.type == spell_type)
+			return TRUE
+		else if(!specific && istype(spell, spell_type))
 			return TRUE
 	return FALSE
 
@@ -824,8 +846,12 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(istype(spell_type, /obj/effect/proc_holder))
 		var/obj/effect/proc_holder/instanced_spell = spell_type
 		spell_path = instanced_spell.type
-	for(var/obj/effect/proc_holder/spell as anything in spell_list)
-		if(specific && (spell.type == spell_path))
+	else if(istype(spell_type, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/instanced_spell = spell_type
+		spell_path = instanced_spell.type
+
+	for(var/datum/spell as anything in spell_list)
+		if(specific && spell.type == spell_path)
 			return spell
 		else if(!specific && istype(spell, spell_path))
 			return spell
@@ -835,21 +861,40 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	return soulOwner == src
 
 //To remove a specific spell from a mind
-/datum/mind/proc/RemoveSpell(obj/effect/proc_holder/spell/spell)
-	var/success = FALSE
+/datum/mind/proc/RemoveSpell(datum/spell)
 	if(!spell)
 		return FALSE
+
+	// Handle new action-based spells
+	if(istype(spell, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/action_spell = spell
+		for(var/datum/action/cooldown/spell/S in spell_list)
+			if(S.name == action_spell.name && S.type == action_spell.type)
+				spell_list -= S
+				qdel(S)
+				return TRUE
+		// Also try matching by type path (when passed a typepath-instantiated reference)
+		for(var/datum/action/cooldown/spell/S in spell_list)
+			if(S.type == action_spell.type)
+				spell_list -= S
+				qdel(S)
+				return TRUE
+		return FALSE
+
+	// Handle old proc_holder spells
+	var/obj/effect/proc_holder/spell/proc_spell = spell
 	for(var/X in spell_list)
+		if(!istype(X, /obj/effect/proc_holder/spell))
+			continue
 		var/obj/effect/proc_holder/spell/S = X
-		if(S.name == spell.name && S.type == spell.type) //match by name and type to avoid issues with multiple instances of the same spell
+		if(S.name == proc_spell.name && S.type == proc_spell.type)
 			spell_list -= S
 			qdel(S)
-			success = TRUE
-			return TRUE // We're deleting only one spell
-	return success
+			return TRUE
+	return FALSE
 
 /datum/mind/proc/RemoveAllSpells()
-	for(var/obj/effect/proc_holder/S in spell_list)
+	for(var/datum/S in spell_list)
 		RemoveSpell(S)
 
 /datum/mind/proc/transfer_martial_arts(mob/living/new_character)
