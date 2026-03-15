@@ -1,9 +1,0 @@
-author: "zydras"
-delete-after: True
-changes:
-  - spellcheck: "Renamed Big Man to be Big Fella (gender-neutral)"
-  - balance: "Big Fellas now have bodybuilder armor instead of a leather cuirass"
-  - balance: "Big Fellas now have the Giant virtue innately (they ARE big after all)"
-  - balance: "Big Fellas get loadout-fitting gloves"
-  - rscdel: "Removed the flint & bait bag from Big Fellas' satchels"
-  - bugfix: "Big Fellas actually lose -1FOR"

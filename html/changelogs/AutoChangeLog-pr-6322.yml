@@ -1,6 +1,0 @@
-author: "KatTheFox"
-delete-after: True
-changes:
-  - qol: "you can now heal eoran trees with your own blood using crimson arils"
-  - bugfix: "altruistic crimson arils checked the wrong player for blood"
-  - qol: "you can now water eoran trees with blessed (but not cursed) water"
