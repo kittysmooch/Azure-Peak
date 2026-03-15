@@ -361,7 +361,7 @@
 	faretype = FARE_FINE
 	tastes = list("overpoweringly sweet and nutty" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
-	deep_fried_type = /obj/item/reagent_containers/food/snacks/jamtallow
+	cooked_type = /obj/item/reagent_containers/food/snacks/dragee
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
 	seed = /obj/item/seeds/sugarcane
