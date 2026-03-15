@@ -217,7 +217,7 @@
 	output = /datum/reagent/consumable/soup/stew/pepperfrymeat
 
 /datum/stew_recipe/pork
-	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/bacon)
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/bacon, /obj/item/reagent_containers/food/snacks/fat/salo/slice)
 	output = /datum/reagent/consumable/soup/stew/pork
 
 /datum/stew_recipe/thickpork
@@ -226,7 +226,7 @@
 	cooktime = STEW_COOKING_TIME * 2
 
 /datum/stew_recipe/frypork
-	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried)
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried, /obj/item/reagent_containers/food/snacks/fat/salo)
 	output = /datum/reagent/consumable/soup/stew/frypork
 
 /datum/stew_recipe/thickfrypork
@@ -297,6 +297,14 @@
 	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/slice)
 	output = /datum/reagent/consumable/soup/stew/survival_broth
 
+/datum/stew_recipe/thickpemmican
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/pemmican)
+	output = /datum/reagent/consumable/soup/stew/thicksurvival_broth
+
+/datum/stew_recipe/saltmeat
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat/salami, /obj/item/reagent_containers/food/snacks/rogue/meat/salami/slice, /obj/item/reagent_containers/food/snacks/rogue/meat/coppiette, /obj/item/reagent_containers/food/snacks/rogue/meat/driedfishfilet)
+	output = /datum/reagent/consumable/soup/stew/saltmeat_stew
+
 // Don't alphabetically sort this list this is meant to be reached last. (You are free to change when you find a better way to do a fallback recipe)
 /datum/stew_recipe/meat
 	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/meat)
@@ -312,7 +320,7 @@
 	output = /datum/reagent/consumable/soup/stew/berry
 
 /datum/stew_recipe/lemon
-	inputs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/lemon)
+	inputs = list(/obj/item/reagent_containers/food/snacks/grown/fruit/lemon, /obj/item/reagent_containers/food/snacks/rogue/lemoncoppiette)
 	output = /datum/reagent/consumable/soup/lemon
 
 /datum/stew_recipe/lime
