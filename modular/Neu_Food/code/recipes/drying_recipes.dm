@@ -254,7 +254,7 @@
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1,
 		/obj/item/reagent_containers/powder/rocknut = 1)
 	result = /obj/item/reagent_containers/food/snacks/allspice
-	structurecraft = /obj/machinery/tanningrack
+	req_table = TRUE
 	craftdiff = 4 //A true chef never reveals his secrets!
 
 /datum/crafting_recipe/roguetown/cooking/sugartangerine
@@ -263,8 +263,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine/sugared
-	structurecraft = null
-	craftdiff = 1
+	req_table = TRUE
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/cooking/sugarblackberry
 	name = "smothered blackberries"
@@ -272,8 +272,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
-	craftdiff = 1
-	structurecraft = null
+	craftdiff = 3
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarrocknut
 	name = "smothered rocknuts"
@@ -283,7 +283,7 @@
 		/obj/item/alch/calendula = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
 	craftdiff = 4 //A treat!
-	structurecraft = null
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicechocolate
 	name = "chocolate with pumpkin spice"
@@ -291,8 +291,8 @@
 		/obj/item/reagent_containers/food/snacks/chocolate/slice = 1,
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/chocolate_spiced
-	structurecraft = null
-	craftdiff = 1
+	req_table = TRUE
+	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/cooking/spicecoffee
 	name = "roasted coffee beans with pumpkin spice"
@@ -300,8 +300,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/coffeebeansroasted = 1,
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/coffeebeans_spiced
-	structurecraft = null
-	craftdiff = 1
+	craftdiff = 3
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicetea
 	name = "ground tea leaves with pumpkin spice"
@@ -309,8 +309,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_ground = 1,
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/tealeaves_spiced
-	structurecraft = null
-	craftdiff = 1
+	craftdiff = 2
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/spicerosa
 	name = "dried rosa petals with pumpkin spice"
@@ -318,7 +318,8 @@
 		/obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_dried = 1,
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/rogue/rosa_petals_spiced
-	structurecraft = null
+	craftdiff = 1
+	req_table = TRUE
 
 //SUGARCRAFTING!!!
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkd
@@ -326,95 +327,107 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/dmark
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkp
 	name = "sugarshape, psydonic mark"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/pmark
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarkz
 	name = "sugarshape, zizonic mark"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/zmark
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarka
 	name = "sugarshape, holy mark"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/amark
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedmarks
 	name = "sugarshape, skull mark"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/smark
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuek
 	name = "sugarshape, knightly statue"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuek
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedstatuer
 	name = "sugarshape, ducal statue"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuer
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedarch
 	name = "sugarshape, bridge"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/arch
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedarchway
 	name = "sugarshape, archway"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/archway
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedtower
 	name = "sugarshape, tower"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/tower
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedtowers
 	name = "sugarshape, small tower"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/towers
-	craftdiff = 4 //A treat!
-	structurecraft = null
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
+	req_table = TRUE
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedcastle
 	name = "sugarshape, castle"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/castle
-	craftdiff = 4 //A treat!
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
 	structurecraft = null
 
 /datum/crafting_recipe/roguetown/cooking/sugarshapedflag
@@ -422,5 +435,6 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/flag
-	craftdiff = 4 //A treat!
+	tools = list(/obj/item/rogueweapon/huntingknife)
+	craftdiff = 4
 	structurecraft = null
