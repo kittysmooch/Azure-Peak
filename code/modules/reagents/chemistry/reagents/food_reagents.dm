@@ -160,6 +160,13 @@
 	// no color (ie, black)
 	taste_description = "pepper"
 
+atum/reagent/consumable/allspice
+	name = "Spice"
+	description = "A blend of various spices, used to liven food and stew."
+	reagent_state = SOLID
+	color = "#8E5A2C" 
+	taste_description = "a myriad of fragrant spices"
+
 /datum/reagent/drug/mushroomhallucinogen
 	name = "Mushroom Hallucinogen"
 	description = "A strong hallucinogenic drug derived from certain species of mushroom."
