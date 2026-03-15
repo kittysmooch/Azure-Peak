@@ -140,8 +140,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/whip
-				l_hand = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
-				backl = /obj/item/rogueweapon/scabbard/sheath
+				backl = /obj/item/rogueweapon/huntingknife/idagger/steel/parrying
 			if("Recurve Bow")
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
