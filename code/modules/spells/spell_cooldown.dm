@@ -332,7 +332,8 @@
 
 	return Activate(target)
 
-/// Adjust the base charge time based on the users stats
+/// Adjust the base charge time based on the user's skill level.
+/// Matches proc_holder's calculate_chargetime — skill only, no INT.
 /datum/action/cooldown/spell/proc/get_adjusted_charge_time()
 	if(charge_time <= 0)
 		return
@@ -340,17 +341,40 @@
 	var/mob/living/living_owner = owner
 	var/new_time = charge_time
 
-	new_time -= charge_time * living_owner.get_skill_level(associated_skill, TRUE) * 0.05
-
-	var/owner_stat = living_owner.get_stat(associated_stat)
-	if(owner_stat > 10)
-		new_time -= charge_time * (owner_stat - 10) * 0.02
-	else
-		new_time += charge_time * (10 - owner_stat) * 0.02
+	new_time -= charge_time * living_owner.get_skill_level(associated_skill, TRUE) * CHARGE_REDUCTION_PER_SKILL
 
 	return max(new_time, 1 DECISECONDS)
 
-/// Adjust a base cost value based on the caster's stats
+/// Adjust the cooldown time based on INT and armor.
+/// Matches proc_holder's calculate_cooldown from PR #6316.
+/datum/action/cooldown/spell/proc/get_adjusted_cooldown()
+	var/mob/living/living_owner = owner
+	var/base = initial(cooldown_time)
+	var/newcd = base
+
+	// INT scaling
+	if(living_owner.STAINT > SPELL_SCALING_THRESHOLD)
+		var/diff = min(living_owner.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
+		newcd -= base * diff * COOLDOWN_REDUCTION_PER_INT
+	else if(living_owner.STAINT < SPELL_SCALING_THRESHOLD)
+		var/diff = SPELL_SCALING_THRESHOLD - living_owner.STAINT
+		newcd += base * diff * COOLDOWN_REDUCTION_PER_INT
+
+	// Armor penalties on cooldown, not stamina cost
+	if(!living_owner.check_armor_skill())
+		newcd += base * UNTRAINED_ARMOR_CD_PENALTY
+	else if(ishuman(living_owner))
+		var/mob/living/carbon/human/H = living_owner
+		var/ac = H.highest_ac_worn()
+		if(ac == ARMOR_CLASS_HEAVY)
+			newcd += base * HEAVY_ARMOR_CD_PENALTY
+		else if(ac == ARMOR_CLASS_MEDIUM)
+			newcd += base * MEDIUM_ARMOR_CD_PENALTY
+
+	return newcd
+
+/// Adjust stamina cost based on INT only.
+/// Matches proc_holder's calculate_fatigue_drain from PR #6316 — no skill, no armor.
 /datum/action/cooldown/spell/proc/get_adjusted_cost(base_cost)
 	if(base_cost <= 0)
 		return 0
@@ -358,17 +382,14 @@
 	var/mob/living/living_owner = owner
 	var/new_cost = base_cost
 
-	new_cost -= base_cost * living_owner.get_skill_level(associated_skill) * 0.03
+	if(living_owner.STAINT > SPELL_SCALING_THRESHOLD)
+		var/diff = min(living_owner.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
+		new_cost -= base_cost * diff * FATIGUE_REDUCTION_PER_INT
+	else if(living_owner.STAINT < SPELL_SCALING_THRESHOLD)
+		var/diff = SPELL_SCALING_THRESHOLD - living_owner.STAINT
+		new_cost += base_cost * diff * FATIGUE_REDUCTION_PER_INT
 
-	var/owner_stat = living_owner.get_stat(associated_stat)
-	if(owner_stat > 10)
-		new_cost -= base_cost * (owner_stat - 10) * 0.02
-	else
-		new_cost += base_cost * (10 - owner_stat) * 0.02
-
-	// TODO: encumbrance cost scaling - AP doesn't have get_encumbrance() yet
-
-	return max(new_cost, 0)
+	return max(new_cost, 0.1)
 
 /// Checks if the owner of the spell can currently cast it.
 /// Does not check anything involving potential targets.
@@ -479,8 +500,8 @@
 	cast(target)
 
 	if(!(precast_result & SPELL_NO_IMMEDIATE_COOLDOWN))
-		// The entire spell is done, start the actual cooldown at its set duration
-		StartCooldown()
+		// The entire spell is done, start the actual cooldown at its adjusted duration
+		StartCooldown(get_adjusted_cooldown())
 
 	if(!(precast_result & SPELL_NO_IMMEDIATE_COST))
 		// Invoke the base cost of the spell based on primary/secondary resource types
@@ -744,12 +765,9 @@
 		return FALSE
 	return TRUE
 
-/// Check if a specific resource type has enough to cover the cost
+/// Check if a specific resource type has enough to cover the cost.
+/// INT scaling applies to stamina and energy costs. Devotion passes through raw.
 /datum/action/cooldown/spell/proc/check_resource_available(resource_type, base_cost, feedback = TRUE)
-	var/used_cost = get_adjusted_cost(base_cost)
-	if(used_cost <= 0)
-		return TRUE
-
 	var/mob/living/caster = owner
 	switch(resource_type)
 		if(SPELL_COST_NONE)
@@ -761,6 +779,9 @@
 			return TRUE
 
 		if(SPELL_COST_ENERGY)
+			var/used_cost = get_adjusted_cost(base_cost)
+			if(used_cost <= 0)
+				return TRUE
 			if(caster.energy < used_cost)
 				if(feedback)
 					owner.balloon_alert(owner, "Not enough energy to cast!")
@@ -768,8 +789,11 @@
 			return TRUE
 
 		if(SPELL_COST_DEVOTION)
+			// Devotion is not scaled by INT
+			if(base_cost <= 0)
+				return TRUE
 			var/mob/living/carbon/human/H = caster
-			if(!istype(H) || !H.devotion || H.devotion.devotion < used_cost)
+			if(!istype(H) || !H.devotion || H.devotion.devotion < base_cost)
 				if(feedback)
 					owner.balloon_alert(owner, "Devotion too weak!")
 				return FALSE
@@ -777,11 +801,7 @@
 
 	return TRUE
 
-/**
- * Charge the owner with the cost of the spell. Drains both primary and secondary resources.
- *
- * Returns total cost used (primary + secondary) for exp calculation, or null if no cost.
- */
+/// Charge the owner with the cost of the spell. Drains both primary and secondary resources.
 /datum/action/cooldown/spell/proc/invoke_cost()
 	if(!owner)
 		return
@@ -794,32 +814,161 @@
 		return
 	return total
 
-/// Drain a specific resource type by the given base cost (adjusted by stats)
+/// Drain a specific resource type by the given base cost.
+/// INT scaling applies to stamina and energy. Devotion uses raw cost.
 /datum/action/cooldown/spell/proc/invoke_resource_cost(resource_type, base_cost)
 	if(resource_type == SPELL_COST_NONE)
 		return
 
-	var/used_cost = get_adjusted_cost(base_cost)
-	if(used_cost <= 0)
-		return
-
 	switch(resource_type)
 		if(SPELL_COST_STAMINA)
+			var/used_cost = get_adjusted_cost(base_cost)
+			if(used_cost <= 0)
+				return
 			var/mob/living/caster = owner
 			caster.stamina_add(used_cost) // positive = add fatigue (drain green bar)
 			return used_cost
 
 		if(SPELL_COST_ENERGY)
+			var/used_cost = get_adjusted_cost(base_cost)
+			if(used_cost <= 0)
+				return
 			var/mob/living/caster = owner
 			caster.energy_add(-used_cost) // negative = drain blue bar
 			return used_cost
 
 		if(SPELL_COST_DEVOTION)
+			// Devotion is not scaled by INT
+			if(base_cost <= 0)
+				return
 			var/mob/living/carbon/human/H = owner
 			if(!istype(H))
 				return
-			H.devotion?.update_devotion(-used_cost)
-			return used_cost
+			H.devotion?.update_devotion(-base_cost)
+			return base_cost
+
+/// Returns a list of spell statistics for examine display.
+/// Mirrors proc_holder's get_spell_statistics.
+/datum/action/cooldown/spell/proc/get_spell_statistics(mob/living/user)
+	var/list/stats = list()
+
+	if(click_to_activate)
+		stats += span_info("Range: [cast_range] tiles")
+	else
+		stats += span_info("Range: Self")
+
+	// Charge time
+	var/base_ct = charge_time
+	if(base_ct > 0)
+		var/dynamic_ct = user ? get_adjusted_charge_time() : base_ct
+		if(dynamic_ct != base_ct)
+			stats += span_info("Charge time: [DisplayTimeText(base_ct)] (current: [DisplayTimeText(dynamic_ct)])")
+			if(user)
+				stats += get_chargetime_breakdown(user)
+		else
+			stats += span_info("Charge time: [DisplayTimeText(base_ct)]")
+	else
+		stats += span_info("Charge time: None")
+
+	// Cooldown
+	var/base_cd = initial(cooldown_time)
+	if(base_cd)
+		var/dynamic_cd = user ? get_adjusted_cooldown() : base_cd
+		if(dynamic_cd != base_cd)
+			stats += span_info("Cooldown: [DisplayTimeText(base_cd)] (current: [DisplayTimeText(dynamic_cd)])")
+			if(user)
+				stats += get_cooldown_breakdown(user)
+		else
+			stats += span_info("Cooldown: [DisplayTimeText(base_cd)]")
+
+	// Primary resource cost
+	if(primary_resource_cost > 0)
+		var/cost_label = get_resource_label(primary_resource_type)
+		if(primary_resource_type == SPELL_COST_STAMINA || primary_resource_type == SPELL_COST_ENERGY)
+			var/dynamic_cost = user ? get_adjusted_cost(primary_resource_cost) : primary_resource_cost
+			if(dynamic_cost != primary_resource_cost)
+				stats += span_info("[cost_label]: [primary_resource_cost] (current: [dynamic_cost])")
+				if(user)
+					stats += get_fatigue_breakdown(user, primary_resource_cost)
+			else
+				stats += span_info("[cost_label]: [primary_resource_cost]")
+		else
+			stats += span_info("[cost_label]: [primary_resource_cost]")
+
+	// Secondary resource cost
+	if(secondary_resource_cost > 0)
+		var/cost_label = get_resource_label(secondary_resource_type)
+		if(secondary_resource_type == SPELL_COST_STAMINA || secondary_resource_type == SPELL_COST_ENERGY)
+			var/dynamic_cost = user ? get_adjusted_cost(secondary_resource_cost) : secondary_resource_cost
+			if(dynamic_cost != secondary_resource_cost)
+				stats += span_info("[cost_label]: [secondary_resource_cost] (current: [dynamic_cost])")
+				if(user)
+					stats += get_fatigue_breakdown(user, secondary_resource_cost)
+			else
+				stats += span_info("[cost_label]: [secondary_resource_cost]")
+		else
+			stats += span_info("[cost_label]: [secondary_resource_cost]")
+
+	return stats
+
+/// Returns a human-readable label for a resource type.
+/datum/action/cooldown/spell/proc/get_resource_label(resource_type)
+	switch(resource_type)
+		if(SPELL_COST_STAMINA)
+			return "Stamina cost"
+		if(SPELL_COST_ENERGY)
+			return "Energy cost"
+		if(SPELL_COST_DEVOTION)
+			return "Devotion cost"
+	return "Cost"
+
+/// Breakdown of charge time modifiers for examine.
+/datum/action/cooldown/spell/proc/get_chargetime_breakdown(mob/living/user)
+	var/list/breakdown = list()
+	var/skill_level = user.get_skill_level(associated_skill, TRUE)
+	if(skill_level > 0)
+		var/skill_mod = charge_time * skill_level * CHARGE_REDUCTION_PER_SKILL
+		breakdown += span_smallgreen("  Skill: -[DisplayTimeText(skill_mod)]")
+	return breakdown
+
+/// Breakdown of cooldown modifiers for examine. Matches proc_holder's get_cooldown_breakdown.
+/datum/action/cooldown/spell/proc/get_cooldown_breakdown(mob/living/user)
+	var/list/breakdown = list()
+	var/base = initial(cooldown_time)
+	if(user.STAINT > SPELL_SCALING_THRESHOLD)
+		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
+		var/int_mod = base * diff * COOLDOWN_REDUCTION_PER_INT
+		breakdown += span_smallgreen("  Intelligence: -[DisplayTimeText(int_mod)]")
+	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
+		var/diff = SPELL_SCALING_THRESHOLD - user.STAINT
+		var/int_mod = base * diff * COOLDOWN_REDUCTION_PER_INT
+		breakdown += span_smallred("  Intelligence: +[DisplayTimeText(int_mod)]")
+	if(!user.check_armor_skill())
+		var/armor_mod = base * UNTRAINED_ARMOR_CD_PENALTY
+		breakdown += span_smallred("  Untrained armor: +[DisplayTimeText(armor_mod)]")
+	else if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/ac = H.highest_ac_worn()
+		if(ac == ARMOR_CLASS_HEAVY)
+			var/armor_mod = base * HEAVY_ARMOR_CD_PENALTY
+			breakdown += span_smallred("  Armor weight: +[DisplayTimeText(armor_mod)]")
+		else if(ac == ARMOR_CLASS_MEDIUM)
+			var/armor_mod = base * MEDIUM_ARMOR_CD_PENALTY
+			breakdown += span_smallred("  Armor weight: +[DisplayTimeText(armor_mod)]")
+	return breakdown
+
+/// Breakdown of stamina/energy cost modifiers for examine. INT only, matching PR #6316.
+/datum/action/cooldown/spell/proc/get_fatigue_breakdown(mob/living/user, base_cost)
+	var/list/breakdown = list()
+	if(user.STAINT > SPELL_SCALING_THRESHOLD)
+		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
+		var/int_mod = base_cost * diff * FATIGUE_REDUCTION_PER_INT
+		breakdown += span_smallgreen("  Intelligence: -[int_mod]")
+	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
+		var/diff = SPELL_SCALING_THRESHOLD - user.STAINT
+		var/int_mod = base_cost * diff * FATIGUE_REDUCTION_PER_INT
+		breakdown += span_smallred("  Intelligence: +[int_mod]")
+	return breakdown
 
 // TODO: Mouse-based charge casting (start_casting/try_casting) requires COMSIG_CLIENT_MOUSEDOWN/UP
 // which AP doesn't have yet. The do_after based charge path (non-click_to_activate) still works.
