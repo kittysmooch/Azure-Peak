@@ -1,6 +1,6 @@
 /datum/reagent/water/rosewater
 	name = "rosa tea"
-	description = "Steeped rose petals with mild health regeneration."
+	description = "Steeped rose petals with mild health regeneration and antidotal properties."
 	reagent_state = LIQUID
 	color = "#f398b6"
 	taste_description = "floral sweetness"
@@ -16,6 +16,7 @@
 		M.adjustBruteLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustFireLoss(-0.1  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustOxyLoss(-0.1, 0)
+		M.adjustToxLoss(-2, 0)
 		var/list/our_wounds = M.get_wounds()
 		if (LAZYLEN(our_wounds))
 			var/upd = M.heal_wounds(1)
@@ -24,7 +25,7 @@
 
 /datum/reagent/water/rosewater_spiced
 	name = "spiced rosa tea"
-	description = "Spiced rose petals that help to reinvigorate the body's humors, providing modest health regeneration."
+	description = "Spiced rose petals that help to reinvigorate the body's humors, providing modest health regeneration and antidotal properties."
 	reagent_state = LIQUID
 	color = "#F2638C"
 	taste_description = "floral spiciness"
@@ -39,7 +40,8 @@
 	else
 		M.adjustBruteLoss(-0.46  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustFireLoss(-0.46  * REAGENTS_EFFECT_MULTIPLIER)
-		M.adjustOxyLoss(-0.23, 0)
+		M.adjustOxyLoss(-0.2, 0)
+		M.adjustToxLoss(-3, 0)
 		var/list/our_wounds = M.get_wounds()
 		if (LAZYLEN(our_wounds))
 			var/upd = M.heal_wounds(1)
