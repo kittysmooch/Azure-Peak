@@ -8,7 +8,6 @@ type RecipeEntry = {
 };
 
 type Props = {
-  title: string;
   recipes: RecipeEntry[];
   categories: string[];
   category: string;
@@ -20,7 +19,6 @@ type Props = {
 
 export const RecipeBookSidebar = memo((props: Props) => {
   const {
-    title,
     recipes,
     categories,
     category,
@@ -47,61 +45,86 @@ export const RecipeBookSidebar = memo((props: Props) => {
     });
   }, [recipes, search, category]);
 
+  const hasCategories = categories.length > 1;
+
   return (
-    <Stack vertical fill>
-      <Stack.Item>
-        <Button fluid icon="arrow-left" onClick={onBack}>
-          Back to Library
-        </Button>
-      </Stack.Item>
-      <Stack.Item>
-        <Box bold textAlign="center" py={0.5}>
-          {title}
-        </Box>
-      </Stack.Item>
-      <Stack.Item>
-        <Input
-          fluid
-          placeholder="Search..."
-          value={search}
-          onChange={(value) => setSearch(value)}
-        />
-      </Stack.Item>
-      {categories.length > 1 && (
-        <Stack.Item>
-          <Box style={{ display: 'flex', flexWrap: 'wrap', gap: '2px' }}>
-            {categories.map((cat) => (
+    <Stack fill>
+      {hasCategories && (
+        <Stack.Item style={{ overflow: 'auto', minWidth: '130px' }}>
+          <Stack vertical fill>
+            <Stack.Item grow basis={0} style={{ overflow: 'auto' }}>
+              <Section fill scrollable title="Filter">
+                <Stack vertical>
+                  {categories.map((cat) => (
+                    <Stack.Item key={cat}>
+                      <Button
+                        fluid
+                        compact
+                        selected={category === cat}
+                        onClick={() => onCategoryChange(cat)}
+                      >
+                        {cat}
+                      </Button>
+                    </Stack.Item>
+                  ))}
+                </Stack>
+              </Section>
+            </Stack.Item>
+            <Stack.Item>
               <Button
-                key={cat}
-                selected={category === cat}
-                compact
-                onClick={() => onCategoryChange(cat)}
+                fluid
+                icon="arrow-left"
+                onClick={onBack}
               >
-                {cat}
+                Library
               </Button>
-            ))}
-          </Box>
+            </Stack.Item>
+          </Stack>
         </Stack.Item>
       )}
-      <Stack.Item grow basis={0} style={{ overflow: 'auto' }}>
-        <Section fill scrollable>
-          {filtered.length === 0 ? (
-            <Box italic color="label" textAlign="center">
-              No matching entries found.
-            </Box>
-          ) : (
-            filtered.map((recipe) => (
+      <Stack.Item grow basis={0}>
+        <Stack vertical fill>
+          <Stack.Item grow basis={0} style={{ overflow: 'auto' }}>
+            <Section fill scrollable title="Entries">
+              {filtered.length === 0 ? (
+                <Box italic color="label" textAlign="center">
+                  No matching entries found.
+                </Box>
+              ) : (
+                filtered.map((recipe) => (
+                  <Button
+                    key={recipe.path}
+                    fluid
+                    selected={selectedRecipe === recipe.path}
+                    onClick={() => onSelectRecipe(recipe.path)}
+                    style={{ whiteSpace: 'normal' }}
+                  >
+                    {recipe.name}
+                  </Button>
+                ))
+              )}
+            </Section>
+          </Stack.Item>
+          <Stack.Item>
+            <Input
+              fluid
+              placeholder="Search..."
+              value={search}
+              onChange={(value) => setSearch(value)}
+            />
+          </Stack.Item>
+          {!hasCategories && (
+            <Stack.Item>
               <Button
-                key={recipe.path}
                 fluid
-                selected={selectedRecipe === recipe.path}
-                onClick={() => onSelectRecipe(recipe.path)}
+                icon="arrow-left"
+                onClick={onBack}
               >
-                {recipe.name}
+                Back to Library
               </Button>
-            ))
+            </Stack.Item>
           )}
-        </Section>
+        </Stack>
       </Stack.Item>
     </Stack>
   );

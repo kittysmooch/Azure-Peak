@@ -32,16 +32,6 @@
   src: url('~roguefont/pterra.ttf');
 }
 
-@font-face {
-  font-family: 'Chiseld';
-  src: url('~roguefont/chiseld.ttf');
-}
-
-@font-face {
-  font-family: 'Blackmoor';
-  src: url('~roguefont/blackmoor.ttf');
-}
-
 @mixin azure-theme($colors, $topbar-svg) {
   // ── Core variables ──────────────────────────────────────────────
   --color-base: #{map.get($colors, 'base')};
@@ -126,20 +116,81 @@
     color: #{map.get($colors, 'link-visited')};
   }
 
-  // ── Buttons ─────────────────────────────────────────────────────
+  // ── Buttons — raised wood plank style ───────────────────────────
   .Button {
-    transition: all 0.5s;
+    transition: all 0.3s ease;
     --color-text: #{map.get($colors, 'btn-text')};
+    min-height: 1.667em;
+    line-height: 1.667em;
+    background-color: map.get($colors, 'border');
+    border: 2px solid map.get($colors, 'accent');
+    outline: 1px solid darken(map.get($colors, 'border'), 6%);
+    outline-offset: -3px;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+    // Raised plank: bright top-left chisel, dark bottom-right, hard drop
+    box-shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.14),
+      inset -1px -1px 0 rgba(0, 0, 0, 0.2),
+      0 2px 0 darken(map.get($colors, 'border'), 12%),
+      0 3px 5px rgba(0, 0, 0, 0.3);
+
+    &:hover {
+      background-color: lighten(map.get($colors, 'border'), 5%);
+      border-color: map.get($colors, 'accent-bright');
+      outline-color: darken(map.get($colors, 'border'), 3%);
+    }
+
+    &:active {
+      // Pressed into surface
+      box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.55),
+        inset -1px -1px 0 rgba(255, 255, 255, 0.03);
+      outline-offset: -2px;
+      transform: translateY(1px);
+    }
+
+    &.Button--selected {
+      // Locked in / carved recess
+      background-color: map.get($colors, 'btn-selected');
+      border-color: map.get($colors, 'accent');
+      outline-color: darken(map.get($colors, 'btn-selected'), 4%);
+      box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.55),
+        inset -1px -1px 0 rgba(255, 255, 255, 0.04);
+    }
   }
 
   .Button--color--transparent {
     --button-background-hover: #{map.get($colors, 'border')};
     --button-background-active: #{map.get($colors, 'border')};
     --button-background-disabled: transparent;
+    outline: none;
   }
 
   .Button--color--transparent.Button--disabled {
     --button-color: #{map.get($colors, 'btn-disabled')};
+  }
+
+  // ── Input — recessed parchment slot ───────────────────────────
+  .Input {
+    min-height: 1.667em;
+    line-height: 1.667em;
+    background-color: darken(map.get($colors, 'base'), 2%);
+    border: 2px solid map.get($colors, 'accent');
+    outline: 1px solid darken(map.get($colors, 'base'), 5%);
+    outline-offset: -3px;
+    color: #{map.get($colors, 'text')};
+    box-shadow:
+      inset 2px 2px 4px rgba(0, 0, 0, 0.4),
+      inset -1px -1px 0 rgba(255, 255, 255, 0.04);
+
+    &:focus-within {
+      border-color: map.get($colors, 'accent-bright');
+      box-shadow:
+        inset 2px 2px 4px rgba(0, 0, 0, 0.4),
+        inset -1px -1px 0 rgba(255, 255, 255, 0.04),
+        0 0 3px #{map.get($colors, 'glow')};
+    }
   }
 
   // ── Input Buttons ───────────────────────────────────────────────
