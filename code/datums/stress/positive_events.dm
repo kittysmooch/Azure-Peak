@@ -81,12 +81,12 @@
 
 /datum/stressevent/shitstew
 	timer = 3 MINUTES
-	stressadd = -3
+	stressadd = 3
 	desc = list(span_red("Yuck! What the hell was in that brew!?"), span_red("Augh! That brew tastes absolutely horrible!"))
 
 /datum/stressevent/mehstew
 	timer = 3 MINUTES
-	stressadd = -2
+	stressadd = 1
 	desc = list(span_red("Eugh, this brew just doesn't sit right with me.."), span_red("Something about that brew tastes a little funky.."))
 
 /datum/stressevent/finestew
@@ -102,12 +102,22 @@
 /datum/stressevent/lavishstew
 	timer = 5 MINUTES
 	stressadd = -3
-	desc = list(span_green("That brew was positively divine!"), span_green("It reminds me of a better time!"))
+	desc = list(span_green("That brew was positively divine!"))
 
 /datum/stressevent/allspiced
 	timer = 5 MINUTES
 	stressadd = -4
 	desc = list(span_rose("Such fragrant spices! Not even the worst brews around could hope to muddy such deliciousness!"))
+
+/datum/stressevent/hotchocolate
+	timer = 5 MINUTES
+	stressadd = -3
+	desc = list(span_green("Warm and silky chocolate soothes my mind from the dae's perils!"))
+
+/datum/stressevent/spicedchocolate
+	timer = 10 MINUTES
+	stressadd = -4
+	desc = list(span_rose("Silky and spiced chocolate soothes my mind and body, alike!"))
 
 /datum/stressevent/sweetlesser
 	timer = 4 MINUTES
