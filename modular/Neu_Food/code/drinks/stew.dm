@@ -42,9 +42,8 @@
 	alpha = 222
 	quality = DRINK_GOOD
 
-/datum/reagent/consumable/soup/porridge/pudding/on_mob_metabolize(mob/living/M)
-	var/mob/living/carbon/S = M
-	S.add_stress(/datum/stressevent/finestew)
+/datum/reagent/consumable/soup/porridge/pudding/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/finestew)
 	..()
 
 /datum/reagent/consumable/soup/porridge/thickpudding
@@ -56,9 +55,8 @@
 	alpha = 222
 	quality = DRINK_VERYGOOD
 
-/datum/reagent/consumable/soup/porridge/thickpudding/on_mob_metabolize(mob/living/M)
-	var/mob/living/carbon/S = M
-	S.add_stress(/datum/stressevent/greatstew)
+/datum/reagent/consumable/soup/porridge/thickpudding/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/buff/finestew)
 	..()
 
 /datum/reagent/consumable/soup/allspice
