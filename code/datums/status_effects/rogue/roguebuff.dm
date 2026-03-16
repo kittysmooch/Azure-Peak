@@ -175,7 +175,6 @@
 	name = "Finestew"
 	desc = ""
 	icon_state = "invisible"
-	duration = 10
 
 /datum/status_effect/buff/finestew/on_apply()
 	. = ..()
