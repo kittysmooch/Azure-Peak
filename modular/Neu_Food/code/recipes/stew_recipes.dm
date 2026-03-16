@@ -19,7 +19,7 @@
 
 /datum/stew_recipe/allspice
 	inputs = list(/obj/item/reagent_containers/food/snacks/allspice)
-	output = /datum/reagent/consumable/soup/allspice
+	output = /datum/reagent/allspice
 	cooktime = STEW_COOKING_TIME * 3 //Simmers the longest, so that you have enough time to plop everything else in. Cooking-wise? Well, it's common sense to let spices stew for a long while to draw the flavor out!
 
 /datum/stew_recipe/breadpudding
