@@ -95,10 +95,10 @@
 /obj/structure/closet/dirthole/closed/loot/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
-		if(lootroll == 1 || 3 || 5)
+		if(lootroll % 2)
 			. += span_warning("Better let this one sleep.")
 	if(HAS_TRAIT(user, TRAIT_GRAVEROBBER))
-		if(lootroll == 2 || 4 || 6)//Yeah yeah point and laugh at yander dev tier code 🙄
+		if(!lootroll % 2)
 			. += span_warning("There seem to be some loot for me here.")	
 
 /obj/structure/closet/dirthole/insertion_allowed(atom/movable/AM)
