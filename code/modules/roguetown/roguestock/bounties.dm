@@ -63,6 +63,8 @@
 		return FALSE
 	if(istype(I, /obj/item/reagent_containers/powder/starsugar/skysugar))
 		return FALSE
+	if(istype(I, /obj/item/reagent_containers/food/snacks/allspice))
+		return FALSE
 	if(istype(I, /obj/item/rogueweapon/scabbard))
 		return FALSE // If you have to sell your decorated scabbards for ozium-money, you'll have to barter.
 	if(I.get_real_price() > 0)
