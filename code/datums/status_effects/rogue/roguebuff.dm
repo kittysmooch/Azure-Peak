@@ -171,15 +171,6 @@
 	. = ..()
 	owner.add_stress(/datum/stressevent/sweet)
 
-/atom/movable/screen/alert/status_effect/buff/finestew
-	name = "Finestew"
-	desc = ""
-	icon_state = "invisible"
-
-/datum/status_effect/buff/finestew/on_apply()
-	. = ..()
-	owner.add_stress(/datum/stressevent/finestew)
-
 /datum/status_effect/buff/druqks
 	id = "druqks"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/druqks
