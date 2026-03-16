@@ -13,6 +13,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 	button_icon_state = "fireball"
 	sound = 'sound/magic/fireball.ogg'
 	spell_color = GLOW_COLOR_FIRE
+	glow_intensity = GLOW_INTENSITY_HIGH
 
 	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
 	projectile_type_arc = /obj/projectile/magic/aoe/fireball/rogue/arc

@@ -82,13 +82,17 @@
 	if(mob.incapacitated())
 		return
 
-	SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDOWN, object, location, control, params)
+	var/signal_result = SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEDOWN, object, location, control, params)
 
 	if(mob.stat != CONSCIOUS)
 		mob.atkswinging = null
 		charging = null
 		STOP_PROCESSING(SSmousecharge, src)
 		mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
+		return
+
+	// New spell system intercepted this click — skip old cursor/intent handling
+	if(signal_result & COMPONENT_CLIENT_MOUSEDOWN_INTERCEPT)
 		return
 
 	tcompare = object

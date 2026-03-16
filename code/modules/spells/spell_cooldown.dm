@@ -159,6 +159,12 @@
 	var/has_visual_effects = TRUE
 	/// The color used for spell visual effects (rune, particles, wave). Each spell sets its own.
 	var/spell_color = "#FFFFFF"
+	/// Glow intensity while casting. Uses GLOW_INTENSITY defines. 0 = no glow.
+	var/glow_intensity = 0
+	/// The overhead spell icon effect shown while casting (old rune system).
+	var/obj/effect/mob_charge_effect
+	/// Mob light reference for cleanup.
+	var/obj/effect/dummy/lighting_obj/moblight/spell_glow_light
 
 	/// Timer ID for the auto cancel, so we can cancel it
 	var/auto_cancel_timer = null
@@ -170,6 +176,13 @@
 	if(!deactive_msg)
 		deactive_msg = "You dispel [src]."
 
+	// Create overhead spell icon effect (matching old proc_holder system)
+	if(button_icon_state)
+		var/obj/effect/R = new /obj/effect/spell_rune
+		R.icon = button_icon
+		R.icon_state = button_icon_state
+		mob_charge_effect = R
+
 	if(!charge_required)
 		return
 	if(charge_time <= 0)
@@ -180,15 +193,16 @@
 		charge_sound_instance = sound(charge_sound)
 
 /datum/action/cooldown/spell/Destroy()
+	QDEL_NULL(mob_charge_effect)
+	QDEL_NULL(spell_glow_light)
 	if(charge_required && owner)
 		cancel_casting()
 	charge_sound_instance = null
 	return ..()
 
 /datum/action/cooldown/spell/process()
-	. = ..()
 	if(!currently_charging)
-		return
+		return ..() // Parent handles cooldown icon updates
 
 	if(!owner)
 		return PROCESS_KILL
@@ -204,6 +218,14 @@
 			return PROCESS_KILL
 		invoke_resource_cost(primary_resource_type, charge_drain)
 
+	// Update mouse charge pointer based on progress
+	if(owner.client && charge_started_at && charge_target_time)
+		var/progress = world.time - charge_started_at
+		var/percentage = clamp((progress / charge_target_time) * 100, 0, 100)
+		var/new_icon = SSmousecharge.access(percentage)
+		if(owner.client.mouse_pointer_icon != new_icon)
+			owner.client.mouse_pointer_icon = new_icon
+
 	// If this is true we hit our charge goal so stop invoking the cost and update the pointer
 	if(world.time > (charge_started_at + charge_target_time))
 		// We don't want that mouseUp to end in sadness
@@ -211,9 +233,10 @@
 			owner.balloon_alert(owner, "I cannot uphold the channeling!")
 			cancel_casting()
 			return PROCESS_KILL
-		if(ranged_mousepointer)
-			owner.client?.mouse_pointer_icon = ranged_mousepointer
-		owner.update_mouse_pointer()
+		// Fully charged — swap to charged icon and stop processing
+		if(owner.client)
+			owner.client.mouse_pointer_icon = 'icons/effects/mousemice/swang/acharged.dmi'
+			playsound(owner, 'sound/magic/charged.ogg', 100, TRUE)
 		return PROCESS_KILL
 
 /datum/action/cooldown/spell/Grant(mob/grant_to)
@@ -640,9 +663,21 @@
 		smoke.set_up(smoke_amt, loca = get_turf(owner))
 		smoke.start()
 
+	// Clean up overhead spell icon
+	if(mob_charge_effect)
+		owner.vis_contents -= mob_charge_effect
+
+	// Clean up glow
+	if(spell_glow_light)
+		QDEL_NULL(spell_glow_light)
+
 	if(has_visual_effects)
 		var/mob/living/living_owner = owner
 		living_owner.finish_spell_visual_effects(spell_color)
+
+	// Reset mouse pointer
+	if(owner.client)
+		owner.client.mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
 
 /// Provides feedback after a spell cast occurs, in the form of a cast sound and/or invocation
 /datum/action/cooldown/spell/proc/spell_feedback(mob/living/invoker)
@@ -696,9 +731,23 @@
 	if(charge_sound_instance)
 		playsound(owner, charge_sound_instance, 50, FALSE, channel = CHANNEL_CHARGED_SPELL)
 
+	// Overhead spell icon rune
+	if(mob_charge_effect)
+		owner.vis_contents += mob_charge_effect
+
+	// Spell glow light
+	if(glow_intensity && spell_color && isliving(owner))
+		var/mob/living/L = owner
+		spell_glow_light = L.mob_light(spell_color, glow_intensity, FLASH_LIGHT_SPELLGLOW)
+
+	// Rune-under + particles
 	if(has_visual_effects)
 		var/mob/living/caster = owner
 		caster.start_spell_visual_effects(spell_color)
+
+	// Mouse charge pointer
+	if(owner.client)
+		owner.client.mouse_pointer_icon = 'icons/effects/mousemice/swang/acharging.dmi'
 
 	if(charge_message)
 		owner.balloon_alert(owner, charge_message)
@@ -739,11 +788,21 @@
 		// Play a null sound in to cancel the sound playing, because byond
 		playsound(owner, sound(null, repeat = 0), 50, FALSE, channel = CHANNEL_CHARGED_SPELL)
 
+	// Clean up overhead spell icon
+	if(mob_charge_effect)
+		owner.vis_contents -= mob_charge_effect
+
+	// Clean up glow
+	if(spell_glow_light)
+		QDEL_NULL(spell_glow_light)
+
 	if(has_visual_effects)
 		var/mob/living/caster = owner
 		caster.cancel_spell_visual_effects()
 
-	owner.update_mouse_pointer()
+	// Reset mouse pointer
+	if(owner.client)
+		owner.client.mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
 
 /// Cancel casting and all its effects.
 /datum/action/cooldown/spell/proc/cancel_casting()
@@ -1034,6 +1093,8 @@
 	on_start_charge()
 	charge_started_at = world.time
 	charge_target_time = get_adjusted_charge_time()
+
+	return COMPONENT_CLIENT_MOUSEDOWN_INTERCEPT
 
 /// Attempt to cast the spell after the mouse up.
 /// Vanderlin ref: code/modules/spells/spell.dm L1087-1115
