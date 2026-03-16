@@ -780,6 +780,14 @@
 	STOP_PROCESSING(SSfastprocess, src)
 	build_all_button_icons(UPDATE_BUTTON_STATUS|UPDATE_BUTTON_BACKGROUND)
 
+	// When charging ends, other spells may have had their buttons stuck red
+	// because can_cast_spell() returned FALSE while we were charging.
+	// Rebuild their icons now so they re-evaluate IsAvailable().
+	for(var/datum/action/cooldown/spell/other_spell in owner?.actions)
+		if(other_spell == src)
+			continue
+		other_spell.build_all_button_icons(UPDATE_BUTTON_STATUS)
+
 	if(charge_slowdown)
 		owner.remove_movespeed_modifier(MOVESPEED_ID_SPELL_CASTING)
 
