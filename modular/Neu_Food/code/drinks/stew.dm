@@ -24,11 +24,13 @@
 /datum/reagent/consumable/soup/porridge/oatmeal
 	name = "oatmeal"
 	description = "Fitting for a peasant."
+	taste_description = "oatmeal"
 	color = "#c38553"
 
 /datum/reagent/consumable/soup/porridge/thick
 	name = "thick porridge"
 	description = "Fitting for a yeoman."
+	taste_description = "thickened porridge"
 	color = "#9E6B43"
 	nutriment_factor = 25
 	alpha = 200
@@ -222,6 +224,32 @@
 	reagent_state = LIQUID
 	nutriment_factor = 20
 	taste_mult = 4
+
+/datum/reagent/consumable/soup/stew/hardtack
+	name = "hardtack stew"
+	description = "Fitting for a soldier."
+	taste_description = "salted porridge with softened flakes of crispiness"
+	color = "#9E6B43"
+	nutriment_factor = 15
+	alpha = 200
+
+/datum/reagent/consumable/soup/stew/hardtacksalo
+	name = "balefire stew"
+	description = "Fitting for an adventurer."
+	taste_description = "salted porridge, crispy meat, and a remarkably fatty broth"
+	color = "#9E4643"
+	nutriment_factor = 15
+	metabolization_rate = 0.4 //Lowest nutriment factor for stew, but sticks to your guts like proper comfort food.
+	alpha = 220
+
+/datum/reagent/consumable/soup/stew/thickhardtacksalo
+	name = "thick balefire stew"
+	description = "Fitting for a legend."
+	taste_description = "thickly salted porridge, crispy meat, a fatty broth, and a lingering warmth in the gullet"
+	color = "#7A3534"
+	nutriment_factor = 20
+	metabolization_rate = 0.4 //Lowest nutriment factor for stew, but sticks to your guts like proper comfort food.
+	alpha = 220
 
 /datum/reagent/consumable/soup/stew/egg
 	name = "egg drop soup"
