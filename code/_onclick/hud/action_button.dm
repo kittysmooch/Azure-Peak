@@ -87,7 +87,11 @@
 		if(istype(SA))
 			SA.examine(usr)
 		else
-			examine_ui(usr)
+			var/datum/action/cooldown/spell/v2_spell = linked_action
+			if(istype(v2_spell))
+				v2_spell.examine(usr)
+			else
+				examine_ui(usr)
 		return TRUE
 	if(usr.next_click > world.time)
 		return

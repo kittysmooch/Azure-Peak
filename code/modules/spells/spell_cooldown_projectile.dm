@@ -78,6 +78,24 @@
 		return
 	arc_mode = !arc_mode
 	to_chat(user, span_notice("[name] arc mode [arc_mode ? "enabled" : "disabled"]."))
+	update_arc_maptext()
+
+/// Updates the ARC maptext indicator on the spell's action button.
+/datum/action/cooldown/spell/projectile/proc/update_arc_maptext()
+	for(var/datum/hud/hud as anything in viewers)
+		var/atom/movable/screen/movable/action_button/B = viewers[hud]
+		var/atom/movable/screen/arc_maptext_holder/arc_holder
+		for(var/atom/movable/screen/arc_maptext_holder/existing in B.vis_contents)
+			arc_holder = existing
+			break
+		if(!arc_holder)
+			arc_holder = new(B)
+			B.vis_contents.Add(arc_holder)
+		if(arc_mode)
+			arc_holder.maptext = MAPTEXT("ARC")
+			arc_holder.color = "#00ccff"
+		else
+			arc_holder.maptext = null
 
 /datum/action/cooldown/spell/projectile/get_spell_statistics(mob/living/user)
 	var/list/stats = ..(user)

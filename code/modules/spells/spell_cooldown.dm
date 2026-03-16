@@ -300,6 +300,10 @@
 		if(charge_required)
 			// If pointed we setup signals to override mouse down to call InterceptClickOn()
 			RegisterSignal(owner.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(start_casting))
+		else
+			// Non-charge spells still need to intercept middle-click MouseDown
+			// to prevent the old system from starting its charging flow
+			RegisterSignal(owner.client, COMSIG_CLIENT_MOUSEDOWN, PROC_REF(intercept_mousedown))
 
 	return ..()
 
@@ -308,7 +312,7 @@
 	if(click_to_activate)
 		on_deactivation(on_who, refund_cooldown = refund_cooldown)
 
-		if(charge_required && on_who.client)
+		if(on_who.client)
 			UnregisterSignal(on_who.client, COMSIG_CLIENT_MOUSEDOWN)
 
 	return ..()
@@ -937,6 +941,16 @@
 			H.devotion?.update_devotion(-base_cost)
 			return base_cost
 
+/// Examine the spell when shift-clicking the action button.
+/datum/action/cooldown/spell/proc/examine(mob/user)
+	var/list/inspec = list("<br><span class='notice'><b>[name]</b></span>")
+	if(desc)
+		inspec += "\n[desc]"
+	var/list/stats = get_spell_statistics(user)
+	if(length(stats))
+		inspec += "<br>" + stats.Join("<br>")
+	to_chat(user, "[inspec.Join()]")
+
 /// Returns a list of spell statistics for examine display.
 /// Mirrors proc_holder's get_spell_statistics.
 /datum/action/cooldown/spell/proc/get_spell_statistics(mob/living/user)
@@ -958,7 +972,7 @@
 		else
 			stats += span_info("Charge time: [DisplayTimeText(base_ct)]")
 	else
-		stats += span_info("Charge time: None")
+		stats += span_info("Charge time: Instant")
 
 	// Cooldown
 	var/base_cd = initial(cooldown_time)
@@ -1059,6 +1073,19 @@
 		var/int_mod = base_cost * diff * FATIGUE_REDUCTION_PER_INT
 		breakdown += span_smallred("  Intelligence: +[int_mod]")
 	return breakdown
+
+/// Intercept middle-click MouseDown for non-charge V2 spells.
+/// Prevents the old system from entering its charging flow when a V2 spell is active.
+/datum/action/cooldown/spell/proc/intercept_mousedown(client/source, atom/_target, turf/location, control, params)
+	SIGNAL_HANDLER
+
+	var/list/modifiers = params2list(params)
+	// Only intercept middle clicks — let other buttons through to normal handling
+	if(!LAZYACCESS(modifiers, MIDDLE_CLICK))
+		return
+	if(source)
+		source.mouse_pointer_icon = 'icons/effects/mousemice/human_attack.dmi'
+	return COMPONENT_CLIENT_MOUSEDOWN_INTERCEPT
 
 /// Try to begin the casting process on mouse down.
 /// Vanderlin ref: code/modules/spells/spell.dm L1041-1085
