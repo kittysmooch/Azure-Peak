@@ -315,7 +315,7 @@
 	category = "Transmutation"
 	result = list(/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/skysugarbase = 1)
 	reqs = list(/obj/item/reagent_containers/food/snacks/rogue/raisins/blackberry = 1, /obj/item/reagent_containers/lux_impure = 1, /obj/item/reagent_containers/powder/starsugar = 1)
-	craftdiff = 6 //Better hope you've been practicing!
+	craftdiff = 5 //Better hope you've been practicing!
 	verbage_simple = "transmute"
 
 /datum/crafting_recipe/roguetown/alchemy/skysugar
