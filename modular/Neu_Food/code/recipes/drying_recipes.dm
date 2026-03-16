@@ -46,6 +46,15 @@
 	craftdiff = 2
 	structurecraft = /obj/machinery/tanningrack
 
+/datum/crafting_recipe/roguetown/cooking/salotack
+	name = "salotack"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/fat/salo = 1,
+		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked = 1)
+	result = /obj/item/reagent_containers/food/snacks/balefire
+	craftdiff = 2
+	structurecraft = /obj/machinery/tanningrack
+
 /datum/crafting_recipe/roguetown/cooking/raisins
 	name = "raisins"
 	reqs = list(/obj/item/reagent_containers/food/snacks/grown/berries/rogue = 1)
