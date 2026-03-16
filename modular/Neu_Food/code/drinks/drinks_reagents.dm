@@ -204,7 +204,6 @@
 		M.adjustOxyLoss(-0.15, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER, 0)
-		M.add_stress(/datum/stressevent/hotchocolate)
 	..()
 
 /datum/reagent/consumable/spiced_chocolate
@@ -229,7 +228,6 @@
 		M.adjustOxyLoss(-0.15, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
-		M.add_stress(/datum/stressevent/spicedchocolate)
 	..()
 
 /datum/reagent/consumable/soothing_valerian_tea
