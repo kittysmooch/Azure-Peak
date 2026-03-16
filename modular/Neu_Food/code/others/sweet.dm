@@ -137,6 +137,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
 /obj/item/reagent_containers/food/snacks/caramel/On_Consume(mob/living/eater)
 	..()
@@ -159,6 +160,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/medicine/healthpot = 5) //Very light medicinal effect, equivalent to half of a vial when fully eaten. Yum!
+	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
 /obj/item/reagent_containers/food/snacks/dragee/On_Consume(mob/living/eater)
 	..()
@@ -208,6 +210,11 @@
 	desc = "A mound of sugar, shaped into a decorative mark with Psydon's sigil. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
 	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/pmark
 
+/obj/item/reagent_containers/food/snacks/grown/sugarshape/hmark
+	name = "sugarshape of heart mark"
+	desc = "A mound of sugar, shaped into a decorative heart-mark. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
+	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/hmark
+
 /obj/item/reagent_containers/food/snacks/grown/sugarshape/statuer
 	name = "sugarshape of ducal statue"
 	desc = "A mound of sugar, shaped into a decorative royaltere. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
@@ -217,6 +224,16 @@
 	name = "sugarshape of knightly statue"
 	desc = "A mound of sugar, shaped into a decorative knight. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
 	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/statuek
+
+/obj/item/reagent_containers/food/snacks/grown/sugarshape/statuey
+	name = "sugarshape of yeomannic statue"
+	desc = "A mound of sugar, shaped into a decorative yeoman. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
+	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/statuey
+
+/obj/item/reagent_containers/food/snacks/grown/sugarshape/statuel
+	name = "sugarshape of lordly statue"
+	desc = "A mound of sugar, shaped into a decorative lord. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
+	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/statuel
 
 /obj/item/reagent_containers/food/snacks/grown/sugarshape/arch
 	name = "sugarshape of arch"
@@ -248,6 +265,11 @@
 	desc = "A mound of sugar, shaped into a decorative flag. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
 	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/flag
 
+/obj/item/reagent_containers/food/snacks/grown/sugarshape/house
+	name = "sugarshape of house"
+	desc = "A mound of sugar, shaped into a decorative house. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
+	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/house
+
 /obj/item/reagent_containers/food/snacks/sugarstatue
 	name = "sugarglass statue"
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a statue. Deliciously regal!"
@@ -261,6 +283,7 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("crispy sugarglass" = 1)
 	sellprice = 15
+	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
 
 /obj/item/reagent_containers/food/snacks/sugarstatue/dmark
 	name = "ducal sugarglass mark"
@@ -292,6 +315,12 @@
 	icon_state = "sugarstatuemarkp"
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/sugarstatue/hmark
+	name = "hearted sugarglass mark"
+	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic the visage of a poem's heart. Deliciously lovely!"
+	icon_state = "sugarstatuemarkh"
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/sugarstatue/statuer
 	name = "royal sugarglass statue"
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a person of royalty. Deliciously tyrannical!"
@@ -302,6 +331,18 @@
 	name = "knightly sugarglass statue"
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a knight in shining armor. Deliciously chivalrous!"
 	icon_state = "sugarstatueknight"
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/sugarstatue/statuel
+	name = "lordly sugarglass statue"
+	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a crowned lord. Deliciously noble!"
+	icon_state = "sugarstatue"
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/sugarstatue/statuey
+	name = "yeomannic sugarglass statue"
+	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a cloaked yeoman. Deliciously dutiful!"
+	icon_state = "sugarstatueyeoman"
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/sugarstatue/arch
@@ -338,4 +379,10 @@
 	name = "sugarglass flag"
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a flag-in-motion. Deliciously decorative!"
 	icon_state = "sugarstatueflag"
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/sugarstatue/house
+	name = "sugarglass house"
+	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a humble abode. Deliciously cozy!"
+	icon_state = "sugarstatuehouse"
 	bitesize = 2

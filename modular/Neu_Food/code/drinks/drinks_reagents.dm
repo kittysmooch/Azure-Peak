@@ -184,7 +184,7 @@
 
 /datum/reagent/consumable/chocolate
 	name = "hot chocolate"
-	description = "Lovignly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
+	description = "Lovingly smooth, velvety, and rich. Provides a modest portion of health regeneration, and minor stamina regeneration."
 	color = "#3F291C"
 	taste_description = "a throat-clinging sweetness, paired with a rich and warming aftertaste"
 	quality = DRINK_GOOD
@@ -204,6 +204,7 @@
 		M.adjustOxyLoss(-0.15, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.3  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-0.3  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.add_stress(/datum/stressevent/hotchocolate)
 	..()
 
 /datum/reagent/consumable/spiced_chocolate
@@ -228,6 +229,7 @@
 		M.adjustOxyLoss(-0.15, 0)
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5  * REAGENTS_EFFECT_MULTIPLIER)
 		M.adjustCloneLoss(-0.5  * REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.add_stress(/datum/stressevent/spicedchocolate)
 	..()
 
 /datum/reagent/consumable/soothing_valerian_tea
