@@ -65,7 +65,7 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/snackbuff
-	name = "Good snack"
+	name = "Good Snack"
 	desc = "Better than plain bread. Tasty."
 	icon_state = "foodbuff"
 
@@ -108,7 +108,7 @@
 	duration = 30 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/mealbuff
-	name = "Good meal"
+	name = "Good Meal"
 	desc = "A meal a day keeps the barber away, or at least it makes it slighly easier."
 	icon_state = "foodbuff"
 
@@ -175,9 +175,9 @@
 	name = "Finestew"
 	desc = ""
 	icon_state = "invisible"
-	duration = 1 SECONDS
+	duration = 10
 
-/atom/movable/screen/alert/status_effect/buff/finestew/on_apply()
+/datum/status_effect/buff/finestew/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/finestew)
 
