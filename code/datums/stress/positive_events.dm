@@ -79,46 +79,6 @@
 	desc = list(span_green("That was a meal fit for a king!"), span_green("What an explosion of flavour \
 	I just experienced!"))
 
-/datum/stressevent/finestew
-	timer = 5 MINUTES
-	stressadd = -1
-	desc = list(span_green("That brew really hit the spot!"), span_green("A decent serving of stew, finally!"))
-
-/datum/stressevent/greatstew
-	timer = 5 MINUTES
-	stressadd = -2
-	desc = list(span_green("That brew was so rich - and that broth, so delicious!"), span_green("What a melody of flavours I just experienced!"))
-
-/datum/stressevent/lavishstew
-	timer = 5 MINUTES
-	stressadd = -3
-	desc = list(span_green("That brew was positively divine - and that broth, so wonderful!"), span_green("What a symphony of flavours I just experienced!"))
-
-/datum/stressevent/juicedrink
-	timer = 15 MINUTES
-	stressadd = -1
-	desc = list(span_green("Nothing like a fresh goblet of juiced fruits to start the dae!"))
-
-/datum/stressevent/allspiced
-	timer = 5 MINUTES
-	stressadd = -4
-	desc = list(span_rose("Such fragrant spices! Not even the worst brews around could hope to muddy such deliciousness!"))
-
-/datum/stressevent/hotchocolate
-	timer = 5 MINUTES
-	stressadd = -3
-	desc = list(span_green("Warm and silky chocolate soothes my mind from the dae's perils!"))
-
-/datum/stressevent/spicedchocolate
-	timer = 10 MINUTES
-	stressadd = -4
-	desc = list(span_rose("Silky and spiced chocolate soothes my mind and body, alike!"))
-
-/datum/stressevent/sweetlesser
-	timer = 4 MINUTES
-	stressadd = -2
-	desc = span_green("That sweet treat's really placed a pep in my step!")
-
 /datum/stressevent/sweet
 	timer = 8 MINUTES
 	stressadd = -2
