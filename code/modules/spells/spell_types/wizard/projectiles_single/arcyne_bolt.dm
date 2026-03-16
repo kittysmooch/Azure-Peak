@@ -1,6 +1,6 @@
 // New spell system
 /datum/action/cooldown/spell/projectile/arcynebolt
-	name = "Arcyne Bolt (V2)"
+	name = "Arcyne Bolt"
 	desc = "Shoot out a rapid bolt of arcyne magic. Inflicts blunt damage, and applies one stack of <b>Arcane Mark</b> on the target. At three marks, it instead does piercing damage and consumes all <b>marks</b>. \
 	Damage is increased by 50% versus simple-minded creechurs. \
 	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
@@ -23,40 +23,6 @@
 	cooldown_time = 4 SECONDS
 
 	associated_skill = /datum/skill/magic/arcane
-
-// Old proc_holder system (to be removed after testing)
-/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt
-	name = "Arcyne Bolt"
-	desc = "Shoot out a rapid bolt of arcyne magic. Inflicts blunt damage, and applies one stack of <b>Arcane Mark</b> on the target. At three marks, it instead does piercing damage and consumes all <b>marks</b> \n\
-	Damage is increased by 50% versus simple-minded creechurs.\n\
-	Toggle arc mode (Ctrl+G) while the spell is active to fire it over intervening mobs. Arced attacks deal 25% less damage."
-	clothes_req = FALSE
-	range = 12
-	projectile_type = /obj/projectile/energy/arcynebolt
-	projectile_type_arc = /obj/projectile/energy/arcynebolt/arc
-	overlay_state = "force_dart"
-	sound = list('sound/magic/vlightning.ogg')
-	active = FALSE
-	releasedrain = SPELLCOST_MINOR_PROJECTILE
-	chargedrain = 1
-	chargetime = 0
-	recharge_time = 4 SECONDS
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	spell_tier = 2
-	invocations = list("Magicae Sagitta!")
-	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
-	glow_intensity = GLOW_INTENSITY_LOW
-	charging_slowdown = 3
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane
-	cost = 3
-
-/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt/cast(list/targets, mob/user = user)
-	projectile_type = arc_mode ? projectile_type_arc : initial(projectile_type)
-	. = ..()
 
 /obj/projectile/energy/arcynebolt
 	name = "Arcyne Bolt"
