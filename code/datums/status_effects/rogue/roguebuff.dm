@@ -133,7 +133,7 @@
 	duration = 30 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/greatmealbuff
-	name = "Great meal!"
+	name = "Great Meal!"
 	desc = "That meal was something akin to a noble's feast! It's bound to keep me energized for an entire day."
 	icon_state = "foodbuff"
 
@@ -163,13 +163,23 @@
 	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/sweet
-	name = "Sweet embrace"
+	name = "Sweet Embrace"
 	desc = "Sweets are always a sign of good luck, everything goes well when you eat some of them."
 	icon_state = "foodbuff"
 
 /datum/status_effect/buff/sweet/on_apply()
 	. = ..()
 	owner.add_stress(/datum/stressevent/sweet)
+
+/atom/movable/screen/alert/status_effect/buff/finestew
+	name = "Finestew"
+	desc = ""
+	icon_state = "invisible"
+	duration = 1 SECONDS
+
+/atom/movable/screen/alert/status_effect/buff/finestew/on_apply()
+	. = ..()
+	owner.add_stress(/datum/stressevent/finestew)
 
 /datum/status_effect/buff/druqks
 	id = "druqks"
