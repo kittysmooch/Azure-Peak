@@ -377,7 +377,7 @@
 	item_state = "butlercoat"
 	detail_tag = "_detail"
 	sleeved = 'icons/roguetown/clothing/special/onmob/sleeves_maids.dmi'
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	detail_color = CLOTHING_DARK_GREY
 	slot_flags = ITEM_SLOT_ARMOR
 	armor = ARMOR_PADDED
