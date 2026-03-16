@@ -8,7 +8,7 @@
 // DO NOT SORT the list unless you know what you're doing (refactor it) - I ordered specific recipe before generic one for a reason!!
 
 /datum/stew_recipe/porridge
-	inputs = list(/obj/item/reagent_containers/food/snacks/grown/wheat, /obj/item/reagent_containers/powder/flour, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs, /obj/item/reagent_containers/food/snacks/rogue/crackerscooked, /obj/item/reagent_containers/food/snacks/rogue/breadslice, /obj/item/reagent_containers/food/snacks/rogue/bun, /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast)
+	inputs = list(/obj/item/reagent_containers/food/snacks/grown/wheat, /obj/item/reagent_containers/powder/flour, /obj/item/reagent_containers/food/snacks/rogue/toastcrumbs, /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw, /obj/item/reagent_containers/food/snacks/rogue/breadslice, /obj/item/reagent_containers/food/snacks/rogue/bun, /obj/item/reagent_containers/food/snacks/rogue/breadslice/toast)
 	output = /datum/reagent/consumable/soup/porridge
 	cooktime = STEW_COOKING_TIME / 2
 
@@ -36,6 +36,21 @@
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/oat)
 	output = /datum/reagent/consumable/soup/porridge/oatmeal
 	cooktime = STEW_COOKING_TIME / 2
+
+/datum/stew_recipe/hardtackstew
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/crackerscooked)
+	output = /datum/reagent/consumable/soup/stew/hardtack
+	cooktime = STEW_COOKING_TIME * 2
+
+/datum/stew_recipe/balefirestew
+	inputs = list(/obj/item/reagent_containers/food/snacks/balefire/slice)
+	output = /datum/reagent/consumable/soup/stew/hardtacksalo
+	cooktime = STEW_COOKING_TIME * 2
+
+/datum/stew_recipe/thickbalefirestew
+	inputs = list(/obj/item/reagent_containers/food/snacks/balefire)
+	output = /datum/reagent/consumable/soup/stew/thickhardtacksalo
+	cooktime = STEW_COOKING_TIME * 3
 
 /datum/stew_recipe/congee
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/rice)
