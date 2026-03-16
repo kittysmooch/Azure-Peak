@@ -252,9 +252,9 @@
 		/obj/item/reagent_containers/food/snacks/pepper = 1,
 		/obj/item/reagent_containers/powder/salt = 1,
 		/obj/item/reagent_containers/food/snacks/pumpkinspice = 1,
-		/obj/item/reagent_containers/powder/rocknut = 1)
+		/obj/item/reagent_containers/powder/rocknut = 1,
+		/obj/item/reagent_containers/food/snacks/sugar = 1)
 	result = /obj/item/reagent_containers/food/snacks/allspice
-	structurecraft = /obj/structure/table
 	verbage_simple = "blend"
 	verbage = "blends"
 	req_table = TRUE
