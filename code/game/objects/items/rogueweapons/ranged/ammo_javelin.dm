@@ -75,13 +75,13 @@
 
 /obj/item/ammo_casing/caseless/rogue/javelin/silver
 	name = "silver javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one appears to be tipped with a silver head. Decorative, perhaps.. or for some sort of specialized hunter."
+	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a silver head, perfect for sundering the supernatural from a safe distance."
 	icon_state = "sjavelin"
 	is_silver = TRUE
 	throwforce = 25							//Less than steel because it's.. silver. Good at killing vampires/WW's still.
 	armor_penetration = PEN_HEAVY
 	thrown_bclass = BCLASS_PICK				//Bypasses crit protection better than stabbing. Makes it better against heavy-targets.
-	smeltresult = /obj/item/ingot/silver // 2 ingots = 2 javelins so this can smelt.
+	smeltresult = null
 
 /obj/item/ammo_casing/caseless/rogue/javelin/silver/ComponentInitialize()
 	. = ..()

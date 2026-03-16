@@ -1,4 +1,4 @@
 author: "WeNeedMorePhoron"
 delete-after: True
 changes:
-  - rscadd: "Glaive regain a spear like thrust"
+  - rscadd: "Halved leyline spawn rate. Again."
