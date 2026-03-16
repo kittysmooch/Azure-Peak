@@ -43,7 +43,8 @@
 	quality = DRINK_GOOD
 
 /datum/reagent/consumable/soup/porridge/pudding/on_mob_life(mob/living/carbon/M)
-	owner.add_stress(/datum/stressevent/finestew)
+	var/mob/living/carbon/S = M
+	S.add_stress(/datum/stressevent/finestew)
 	..()
 
 /datum/reagent/consumable/soup/porridge/thickpudding
