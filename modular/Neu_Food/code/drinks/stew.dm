@@ -575,7 +575,7 @@
 	quality = DRINK_NICE
 	alpha = 200
 
-/datum/reagent/consumable/soup/stew/fryfishon_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/soup/stew/fryfish/on_mob_life(mob/living/carbon/M)
 	M.add_stress(/datum/stressevent/finestew)
 	..()
 
