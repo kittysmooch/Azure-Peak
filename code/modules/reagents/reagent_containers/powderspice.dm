@@ -248,7 +248,7 @@
 	M.visible_message(span_warning("Blood runs from [M]'s nose."))
 
 /datum/reagent/allspice
-	name = "Allspice"
+	name = "allspice"
 	description = "A blend of toasted spices, temptingly aromatic to the senses." 
 	color = "#CE8C33"
 	overdose_threshold = 0
