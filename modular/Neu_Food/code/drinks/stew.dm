@@ -53,21 +53,6 @@
 	alpha = 222
 	quality = DRINK_VERYGOOD
 
-/datum/reagent/consumable/soup/allspice
-	name = "allspice"
-	color = "#CE8C33"
-	taste_description = "fragrant spiciness" //Technically improper way to phrase it, but it works for what it's worth.
-	nutriment_factor = 1
-	hydration = 1 //Adds virtually nothing to satiate thirst and hunger.
-	alpha = 10
-	taste_mult = 10 //One handful should be enough for a whole pot.
-	metabolization_rate = 0.5
-	quality = DRINK_FANTASTIC //Main appeal; makes even the dullest meals quite palettable. Futurecoders should probably find a way to make this dynamically add +1 to drink qualities, instead of the flat increase.
-
-/datum/reagent/consumable/soup/allspice/on_mob_life(mob/living/carbon/M)
-	M.apply_status_effect(/datum/status_effect/buff/greatmealbuff)
-	..()
-
 /datum/reagent/consumable/soup/porridge/congee
 	name = "congee"
 	description = "Rice boiled in water until it is softened. Eaten by the poor and sick in the east. Here, it is considered a medicinal food."
