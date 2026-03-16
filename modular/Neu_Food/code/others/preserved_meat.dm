@@ -118,7 +118,7 @@
 	if(slices_num)
 		icon_state = "salo[slices_num]"
 	else
-		icon_state = "saloslice"
+		icon_state = "salo_slice"
 
 /obj/item/reagent_containers/food/snacks/fat/salo/On_Consume(mob/living/eater)
 	..()
@@ -149,12 +149,12 @@
 	eat_effect = null
 	fried_type = null
 	slices_num = 4
-	bitesize = 8
+	bitesize = 6
 	slice_batch = FALSE
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY * 2)
 	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/slice
-	tastes = list("salted meat" = 1)
+	tastes = list("salted meat" = 1, "dried berries" = 1, "a slightly greasy aftertaste" = 1)
 	rotprocess = null
 	slice_sound = TRUE
 
@@ -181,6 +181,49 @@
 	slices_num = FALSE
 	slice_path = FALSE
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
+
+// ------------ HELLFIRE STEW - SALO N' TACK --------------
+/obj/item/reagent_containers/food/snacks/balefire
+	name = "salotack"
+	desc = "Thick, salted biscuits and thicker, saltier slabs of pork fat; a match made in paradise. A simpler but heartier variant of the brothbrique, \
+	its portions can be further divvied up with a knife and stewed into a remarkably hearty broth."
+	icon = 'modular/Neu_Food/icons/others/preserved_meat.dmi'
+	icon_state = "balefire4"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY * 2)
+	bitesize = 4
+	slice_path = /obj/item/reagent_containers/food/snacks/balefire/slice
+	faretype = FARE_POOR
+	slices_num = 4
+	slice_batch = FALSE
+	rotprocess = null
+	slice_sound = TRUE
+	eat_effect = null
+
+/obj/item/reagent_containers/food/snacks/balefire/update_icon()
+	if(slices_num)
+		icon_state = "balefire[slices_num]"
+	else
+		icon_state = "balefire_slice"
+
+/obj/item/reagent_containers/food/snacks/balefire/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 3
+		if(bitecount == 4)
+			slices_num = 2
+		if(bitecount == 5)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/balefire/slice
+	name = "piece of salotack"
+	desc = "A salted cracker and a slice of pork fat. An adventurer can afford the tyme to sit down and stew this into a \
+	hearty meal; for most other soldiers-of-fortune, however, they might just have to settle with gnashing it on the go."
+	icon_state = "balefire_slice"
+	bitesize = 2
+	slices_num = FALSE
+	slice_path = FALSE
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT * 2)
 
 // -------------- DRIED FISH FILET -----------------
 /obj/item/reagent_containers/food/snacks/rogue/meat/driedfishfilet
