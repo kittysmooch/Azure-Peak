@@ -77,10 +77,10 @@ GLOBAL_LIST_INIT(melee_combat_skills, list( \
 		TR = SSregionthreat.get_region(AR.threat_region)
 
 	// Gate checks — can an ambush even happen right now?
-	// Region is considered "safe" when latent_ambush is at or below AMBUSH_SAFE_FLOOR.
+	// Region is considered "safe" when its danger level is SAFE (at or below DANGER_PCT_SAFE% of max).
 	// Signal horn (always=TRUE) can still dip below this floor.
 	if(TR)
-		if(TR.latent_ambush <= AMBUSH_SAFE_FLOOR && !always)
+		if(TR.get_danger_level() == DANGER_LEVEL_SAFE && !always)
 			return FALSE
 	if(TR && !(always && ignore_cooldown) && ((world.time - TR.last_natural_ambush_time) < AMBUSH_REGION_COOLDOWN))
 		return FALSE
@@ -193,14 +193,10 @@ GLOBAL_LIST_INIT(melee_combat_skills, list( \
 		total_tp_spent += pick_tp
 
 	// ——— Reduce latent_ambush by total TP spent ———
-	// Diminishing drain: each additional player only drains 50% as much as the previous.
-	// Solo drains full TP. 5-man party drains ~39% efficiency — big parties tame regions slowly.
+	// Additive group drain: first player drains at 1x, each additional player adds 0.5x.
+	// Solo = 1x, duo = 1.5x, trio = 2x, quad = 2.5x, 5-man = 3x.
 	if(TR)
-		var/drain_factor = 0
-		var/drain_weight = 1
-		for(var/i in 1 to player_count)
-			drain_factor += drain_weight
-			drain_weight *= 0.5
+		var/drain_factor = 1 + (player_count - 1) * 0.5
 		var/actual_drain = total_tp_spent * (drain_factor / player_factor)
 		TR.reduce_latent_ambush(actual_drain)
 		TR.last_natural_ambush_time = world.time
