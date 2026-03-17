@@ -5,10 +5,6 @@
 /// 0.03 = 3% → ~33 solo ambushes to drain a region from full.
 #define AMBUSH_BUDGET_PCT 0.03
 
-/// Minimum budget (in TP) for the signal horn's budget_floor parameter.
-/// budget_floor of N guarantees at least (N * AMBUSH_BUDGET_FLOOR_UNIT) TP budget.
-#define AMBUSH_BUDGET_FLOOR_UNIT 10
-
 /// Display thresholds — percentage of max_ambush for each danger level label.
 #define DANGER_PCT_SAFE 15    // 0% to this = Safe (green)
 #define DANGER_PCT_LOW 35     // to this = Low (yellow)
