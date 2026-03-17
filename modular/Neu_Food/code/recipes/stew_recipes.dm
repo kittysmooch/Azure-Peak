@@ -42,15 +42,15 @@
 	output = /datum/reagent/consumable/soup/stew/hardtack
 	cooktime = STEW_COOKING_TIME * 2
 
-/datum/stew_recipe/balefirestew
-	inputs = list(/obj/item/reagent_containers/food/snacks/balefire/slice)
-	output = /datum/reagent/consumable/soup/stew/hardtacksalo
-	cooktime = STEW_COOKING_TIME * 2
-
 /datum/stew_recipe/thickbalefirestew
 	inputs = list(/obj/item/reagent_containers/food/snacks/balefire)
 	output = /datum/reagent/consumable/soup/stew/thickhardtacksalo
 	cooktime = STEW_COOKING_TIME * 3
+
+/datum/stew_recipe/balefirestew
+	inputs = list(/obj/item/reagent_containers/food/snacks/balefire/slice)
+	output = /datum/reagent/consumable/soup/stew/hardtacksalo
+	cooktime = STEW_COOKING_TIME * 2
 
 /datum/stew_recipe/congee
 	inputs = list(/obj/item/reagent_containers/food/snacks/grown/rice)
