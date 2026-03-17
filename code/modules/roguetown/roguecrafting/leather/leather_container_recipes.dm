@@ -84,8 +84,14 @@
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
 
-/datum/crafting_recipe/roguetown/leather/container/twstrap
+/datum/crafting_recipe/roguetown/leather/container/bandolier
 	name = "bandolier"
+	result = /obj/item/clothing/cloak/bandolier
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/rope = 1)
+
+/datum/crafting_recipe/roguetown/leather/container/twstrap
+	name = "tossblade bandolier"
 	result = /obj/item/twstrap
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
@@ -105,6 +111,12 @@
 /datum/crafting_recipe/roguetown/leather/container/belt/black
 	name = "black leather belt"
 	result = /obj/item/storage/belt/rogue/leather/black
+	reqs = list(/obj/item/natural/hide/cured = 2,
+				/obj/item/natural/fibers = 2)
+
+/datum/crafting_recipe/roguetown/leather/container/belt/double
+	name = "paired belts"
+	result = /obj/item/storage/belt/rogue/leather/double
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 

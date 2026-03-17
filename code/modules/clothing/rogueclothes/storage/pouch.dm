@@ -14,6 +14,8 @@
 	bloody_icon_state = "bodyblood"
 	sewrepair = TRUE
 	resistance_flags = FIRE_PROOF
+	experimental_inhand = TRUE
+	experimental_onhip = TRUE
 	grid_height = 64
 	grid_width = 32
 	component_type = /datum/component/storage/concrete/roguetown/coin_pouch
@@ -215,6 +217,32 @@
 		if(istype(H))
 			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
 				SSwardrobe.recycle_object(H)
+
+/obj/item/storage/belt/rogue/pouch/coins/aspirantpouch/get_types_to_preload()
+	var/list/to_preload = list() 
+	to_preload += /obj/item/roguecoin/gold/aspirantpile
+	return to_preload
+
+/obj/item/storage/belt/rogue/pouch/coins/aspirantpouch/PopulateContents()
+	. = ..()
+	var/obj/item/roguecoin/gold/aspirantpile/H = SSwardrobe.provide_type(/obj/item/roguecoin/gold/aspirantpile, loc)
+	if(istype(H))
+		if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+			SSwardrobe.recycle_object(H)
+
+/obj/item/storage/belt/rogue/pouch/coins/bigandfat/get_types_to_preload()
+	var/list/to_preload = list() 
+	to_preload += /obj/item/roguecoin/gold/aspirantpile
+	return to_preload
+
+/obj/item/storage/belt/rogue/pouch/coins/bigandfat/PopulateContents()
+	. = ..()
+	for(var/i in 1 to 4)
+		var/obj/item/roguecoin/gold/aspirantpile/H = SSwardrobe.provide_type(/obj/item/roguecoin/gold/aspirantpile, loc)
+		if(istype(H))
+			if(!SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, H, null, TRUE, TRUE))
+				SSwardrobe.recycle_object(H)
+				break
 
 /obj/item/storage/belt/rogue/pouch/coins/virtuepouch/get_types_to_preload()
 	var/list/to_preload = list() 

@@ -2,7 +2,7 @@
 	name = "Mending"
 	desc = "Uses arcyne energy to mend an item. Effect of repair scales off of your Intelligence."
 	overlay_state = "mending"
-	releasedrain = 50
+	releasedrain = SPELLCOST_CANTRIP
 	chargetime = 5
 	recharge_time = 20 SECONDS
 	warnie = "spellwarning"
@@ -14,6 +14,7 @@
 	spell_tier = 1 // Utility. For repair
 	glow_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
+	ignore_los = TRUE // temp. cus it breaks if it doesnt have this maybe
 
 	miracle = FALSE
 
@@ -68,9 +69,6 @@
 			if(I.body_parts_covered_dynamic != I.body_parts_covered)
 				I.repair_coverage()
 				to_chat(user, span_info("[I]'s shorn layers mend together, completely."))
-
-	if(mob_charge_effect)
-		QDEL_NULL(mob_charge_effect)
 
 	deactivate(user)
 

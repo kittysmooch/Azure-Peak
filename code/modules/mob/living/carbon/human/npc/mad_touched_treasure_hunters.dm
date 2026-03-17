@@ -13,6 +13,8 @@
 	possible_rmb_intents = list()
 
 /mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter/ambush
+	threat_point = THREAT_ELITE
+	ambush_faction = "treasure_hunters"
 	aggressive = 1
 	wander = TRUE
 
@@ -29,6 +31,7 @@
 	ADD_TRAIT(src, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_INFINITE_STAMINA, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRIT_THRESHOLD, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_LEECHIMMUNE, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	ADD_TRAIT(src, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
@@ -134,13 +137,19 @@
 	mob_types = list(
 		/mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter/ambush = 1,
 	)
+	threat_point = THREAT_ELITE
+	faction_tag = "treasure_hunters"
 
 /datum/ambush_config/duo_treasure_hunter
 	mob_types = list(
 		/mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter/ambush = 2,
 	)
+	threat_point = 2 * THREAT_ELITE
+	faction_tag = "treasure_hunters"
 
 /datum/ambush_config/treasure_hunter_posse
 	mob_types = list(
 		/mob/living/carbon/human/species/human/northern/mad_touched_treasure_hunter/ambush = 3,
 	)
+	threat_point = 3 * THREAT_ELITE
+	faction_tag = "treasure_hunters"

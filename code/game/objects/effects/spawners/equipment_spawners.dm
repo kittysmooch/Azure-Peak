@@ -205,7 +205,7 @@
 		/obj/item/rogueweapon/sword/cutlass = 3,
 		/obj/item/rogueweapon/katar = 1,
 		/obj/item/rogueweapon/katar/punchdagger = 1,
-		/obj/item/rogueweapon/knuckles = 2,
+		/obj/item/clothing/gloves/roguetown/knuckles = 2,
 		/obj/item/rogueweapon/estoc = 1,
 		/obj/item/rogueweapon/woodstaff/quarterstaff/steel = 1,
 		/obj/item/rogueweapon/spear/billhook = 1,
@@ -250,6 +250,9 @@
 		/obj/item/rogueweapon/sword/rapier/silver = 1,
 		/obj/item/rogueweapon/whip/silver = 1,
 		/obj/item/rogueweapon/woodstaff/quarterstaff/silver = 1,
+		/obj/item/rogueweapon/sword/long/exe/silver = 1,
+		/obj/item/rogueweapon/greatsword/silver = 1,
+		/obj/item/rogueweapon/handclaw/gronn/silver = 1,
 	)
 
 /obj/effect/spawner/lootdrop/decrepit_equipment_spawner
@@ -275,7 +278,7 @@
 		/obj/item/rogueweapon/sword/short/ashort = 1,
 		/obj/item/rogueweapon/sword/short/gladius/agladius = 1,
 		/obj/item/rogueweapon/sword/sabre/alloy = 1,
-		/obj/item/rogueweapon/knuckles/aknuckles = 1,
+		/obj/item/clothing/gloves/roguetown/knuckles/decrepit = 1,
 		/obj/item/rogueweapon/spear/aalloy = 1,
 		/obj/item/rogueweapon/halberd/bardiche/aalloy = 1,
 		/obj/item/rogueweapon/greatsword/aalloy = 1,
@@ -341,9 +344,9 @@
 	loot = list(
 		/obj/item/clothing/suit/roguetown/armor/plate/full/blacksteel = 1,
 		/obj/item/clothing/suit/roguetown/armor/plate/blacksteel = 1,
-		/obj/item/clothing/shoes/roguetown/boots/blacksteel/plateboots = 1,
-		/obj/item/clothing/gloves/roguetown/blacksteel/plategloves = 1,
-		/obj/item/clothing/head/roguetown/helmet/blacksteel/bucket = 1,
+		/obj/item/clothing/shoes/roguetown/boots/armor/blacksteel = 1,
+		/obj/item/clothing/gloves/roguetown/plate/blacksteel = 1,
+		/obj/item/clothing/head/roguetown/helmet/blacksteel = 1,
 		/obj/item/clothing/under/roguetown/platelegs/blacksteel = 1,
 		/obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel = 1,
 	)

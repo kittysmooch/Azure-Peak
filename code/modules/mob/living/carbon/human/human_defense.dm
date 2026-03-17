@@ -200,7 +200,9 @@
 			P.on_hit(src, 100, def_zone)
 			return BULLET_ACT_HIT
 
-	retaliate(P.firer)
+	var/mob/living/attacker = P?.firer
+	if(attacker)
+		retaliate(attacker)
 	return ..(P, def_zone)
 
 /mob/living/carbon/human/proc/check_reflect(def_zone) //Reflection checks for anything in my l_hand, r_hand, or wear_armor based on the reflection chance of the object
@@ -904,7 +906,8 @@
 
 /mob/living/carbon/human/on_fire_stack(seconds_per_tick, datum/status_effect/fire_handler/fire_stacks/fire_handler)
 	//SEND_SIGNAL(src, COMSIG_HUMAN_BURNING)
-	burn_clothing(seconds_per_tick, fire_handler.stacks)
+	if(fire_handler.stacks >= 5)
+		burn_clothing(seconds_per_tick, fire_handler.stacks)
 	var/no_protection = FALSE
 	fire_handler.harm_human(seconds_per_tick, no_protection)
 

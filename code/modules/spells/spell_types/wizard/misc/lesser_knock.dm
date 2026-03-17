@@ -8,7 +8,7 @@
 	overlay_state = "rune4"
 	chargedrain = 0
 	chargetime = 0
-	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
+	releasedrain = SPELLCOST_CANTRIP // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	hand_path = /obj/item/melee/touch_attack/lesserknock
@@ -17,15 +17,6 @@
 	invocation_type = "whisper" // It is a fake stealth spell (lockpicking is very loud)
 	hide_charge_effect = TRUE
 	cost = 2 // Utility and needs lockpicking skills
-
-/obj/effect/proc_holder/spell/targeted/touch/lesserknock/miracle
-	name = "Matthiosan Knock"
-	desc = "A simple prayer to the free-god that forms into an instrument for lockpicking. Can be dispelled by using it on anything that isn't a locked/unlocked door." //Slightly more appropriate
-	miracle = TRUE
-	devotion_cost = 30
-	invocations = list("From One to Many")
-	invocation_type = "whisper" // It is a fake stealth spell (lockpicking is very loud)
-	associated_skill = /datum/skill/magic/holy
 
 /obj/item/melee/touch_attack/lesserknock
 	name = "Spectral Lockpick"

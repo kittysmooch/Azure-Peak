@@ -9,7 +9,7 @@
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	flags_1 = CHECK_RICOCHET_1
 	canSmoothWith = null
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	baseturfs = /turf/open/floor/rogue/naturalstone
 	opacity = 1
 	density = TRUE
 //	layer = EDGED_TURF_LAYER
@@ -69,28 +69,54 @@
 		return
 	lastminer = user
 	..()
-	if(istype(I, /obj/item/rogueweapon/pick))
+	if(istype(I, /obj/item/rogueweapon/pick)||istype(I, /obj/item/contraption/pick/drill))
 		if(!isliving(user))
 			return
 
 		var/mob/living/L = user
 		user.doing = FALSE
-		// Makes more sense for the check since they always
-		// become an open tile afterwards
-		while(density && user.Adjacent(src))
-			if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
-				..()
-				var/olddam = turf_integrity
-				if(turf_integrity && turf_integrity > 10)
-					if(turf_integrity < olddam)
-						if(prob(50))
-							if(user.Adjacent(src))
-								var/obj/item/natural/stone/S = new(src)
-								S.forceMove(get_turf(user))
-					if(!density)
-						break
-			else
-				break
+		if(istype(I, /obj/item/contraption/pick/drill)&& L.used_intent.type == /datum/intent/drill)
+			var/obj/item/contraption/pick/drill/drillitem = I
+			// we're holding a drill and on drill intent
+			if (drillitem.current_charge < 1)
+				to_chat(user, span_warning("Not enough fuel."))
+				drillitem.ungrip(user)
+				return
+			while(density && user.Adjacent(src))
+				if((L.energy > 0) && (do_after(user, CLICK_CD_RANGE, TRUE, src))&&(drillitem.current_charge > 2))
+					..()
+					drillitem.current_charge -= 1
+					user.stamina_add(-10)//not using up as much stamina for a drill, instead using up charges
+					if (drillitem.current_charge < 1)
+						drillitem.ungrip(user, "it ran out of fuel")
+					var/olddam = turf_integrity
+					if(turf_integrity && turf_integrity > 10)
+						if(turf_integrity < olddam)
+							if(prob(50))
+								if(user.Adjacent(src))
+									var/obj/item/natural/stone/S = new(src)
+									S.forceMove(get_turf(user))
+						if(!density)
+							break
+				else
+					break
+		else
+			// Makes more sense for the check since they always
+			// become an open tile afterwards
+			while(density && user.Adjacent(src))
+				if((L.energy > 0) && (do_after(user, CLICK_CD_MELEE, TRUE, src)))
+					..()
+					var/olddam = turf_integrity
+					if(turf_integrity && turf_integrity > 10)
+						if(turf_integrity < olddam)
+							if(prob(50))
+								if(user.Adjacent(src))
+									var/obj/item/natural/stone/S = new(src)
+									S.forceMove(get_turf(user))
+						if(!density)
+							break
+				else
+					break
 
 /turf/closed/mineral/attack_right(mob/user)
 	var/obj/item = user.get_active_held_item()
@@ -100,6 +126,17 @@
 				return
 			src.attackby(item, user, multiplier = 4)
 			user.stamina_add(25)
+	if(user.used_intent.type == /datum/intent/drill && (user.get_skill_level(/datum/skill/craft/engineering) >= SKILL_LEVEL_JOURNEYMAN) && (istype(item, /obj/item/contraption/pick/drill)))
+		var/obj/item/contraption/pick/drill/drillitem = item
+		if(drillitem.current_charge < 10)
+			to_chat(user, span_notice("Not enough fuel!"))
+			return
+		if(do_after(user, 2 SECONDS, TRUE, src))
+			if(!ismineralturf(src))
+				return
+			src.attackby(drillitem, user, multiplier = 5) //higherimpact
+			user.stamina_add(5) //less stamina
+			drillitem.current_charge -= 10
 	..()
 
 /turf/closed/mineral/turf_destruction(damage_flag)
@@ -198,7 +235,7 @@
 		var/path = pickweight(mineralSpawnChanceList)
 		var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 
-		if(T && ismineralturf(T))
+		if(ismineralturf(T))
 			var/turf/closed/mineral/M = T
 			M.mineralAmt = rand(1, 5)
 			M.environment_type = src.environment_type
@@ -219,7 +256,7 @@
 	canSmoothWith = list(/turf/closed/mineral/random/rogue, /turf/closed/mineral/rogue)
 	turf_type = /turf/open/floor/rogue/naturalstone
 	above_floor = /turf/open/floor/rogue/naturalstone
-	baseturfs = list(/turf/open/floor/rogue/naturalstone)
+	baseturfs = /turf/open/floor/rogue/naturalstone
 	mineralSpawnChanceList = list(
 		/turf/closed/mineral/rogue/salt = 5,
 		/turf/closed/mineral/rogue/iron = 15,

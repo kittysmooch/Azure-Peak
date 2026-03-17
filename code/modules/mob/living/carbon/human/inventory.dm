@@ -349,6 +349,10 @@
 		if(!QDELETED(src))
 			update_inv_mouth()
 
+	// Armor class warning — must run after slot vars are nulled so check_armor_skill() sees the correct state
+	if(!QDELETED(src) && istype(I, /obj/item/clothing))
+		var/obj/item/clothing/C = I
+		C.warn_armor_class(src, removed = TRUE)
 
 //	if(!QDELETED(src))
 //		if(I.eweight)
@@ -433,7 +437,7 @@
 		return
 	if(istype(stored, /obj/item/rogueweapon/scabbard))
 		var/obj/item/rogueweapon/scabbard/scab = stored
-		if(scab.sheathed)
+		if(scab.hol_comp.sheathed)
 			stored.attack_right(src)
 			return
 	stored.attack_hand(src) // take out thing from backpack
@@ -473,7 +477,7 @@
 		return
 	if(istype(stored, /obj/item/rogueweapon/scabbard))
 		var/obj/item/rogueweapon/scabbard/scab = stored
-		if(scab.sheathed)
+		if(scab.hol_comp.sheathed)
 			stored.attack_right(src)
 			return
 	stored.attack_hand(src) // take out thing from belt
@@ -513,7 +517,7 @@
         return
     if(istype(stored, /obj/item/rogueweapon/scabbard))
         var/obj/item/rogueweapon/scabbard/scab = stored
-        if(scab.sheathed)
+        if(scab.hol_comp.sheathed)
             stored.attack_right(src)
             return
     stored.attack_hand(src) // take out thing from cloak
