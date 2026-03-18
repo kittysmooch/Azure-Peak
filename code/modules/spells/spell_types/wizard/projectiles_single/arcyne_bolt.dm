@@ -23,6 +23,7 @@
 	cooldown_time = 4 SECONDS
 
 	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 2
 
 /obj/projectile/energy/arcynebolt
 	name = "Arcyne Bolt"

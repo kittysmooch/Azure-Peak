@@ -27,6 +27,7 @@
 	cooldown_time = 16 SECONDS
 
 	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 3
 
 /obj/projectile/magic/aoe/fireball/rogue
 	name = "fireball"
