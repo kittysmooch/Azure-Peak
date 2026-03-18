@@ -204,7 +204,7 @@
 /obj/item/restraints/legcuffs/beartrap/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(armed && istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/clothing/suit))
-		if(prob(10))
+		if(prob(20))
 			var/msg = "[I] triggers \the [src]."
 			if(prob(80))
 				msg += " \the [src] digs into \the [I], damaging it!"
