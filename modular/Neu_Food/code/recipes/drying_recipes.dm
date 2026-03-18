@@ -296,7 +296,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1,
 		/obj/item/alch/calendula = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
+	result = /obj/item/reagent_containers/food/snacks/grown/nut_dragee
 	craftdiff = 4 //A treat!
 	structurecraft = /obj/structure/table
 	req_table = TRUE
