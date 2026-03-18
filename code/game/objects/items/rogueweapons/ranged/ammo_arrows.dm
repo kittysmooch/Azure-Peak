@@ -117,13 +117,13 @@
 	accuracy = 60
 
 // Broadheads are high damage, low AP. Very high base damage - relies on breaking armor
-// Broadheads check against cut armor instead of piercing.
+// Broadheads check against slash armor instead of piercing.
 /obj/projectile/bullet/reusable/arrow/iron
 	name = "broadhead arrow"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 	damage = 50
 	armor_penetration = PEN_LIGHT
-	flag = "cut"
+	flag = "slash"
 	embedchance = 30
 	npc_simple_damage_mult = 2
 
@@ -134,7 +134,7 @@
 	icon_state = "ancientarrow_proj"
 	damage = 40
 	armor_penetration = PEN_LIGHT
-	flag = "cut"
+	flag = "slash"
 	embedchance = 40
 
 // Bodkins should penetrate essentially any armour in the game with decent perception, as
