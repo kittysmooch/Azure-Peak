@@ -910,14 +910,14 @@
 	desc = "Divine intervention bolsters me and aids my recovery."
 	icon_state = "buff"
 
-/atom/movable/screen/alert/status_effect/buff/convergence
-	name = "Convergence Miracle"
-	desc = "My body converges to whence it found strength and health."
+/atom/movable/screen/alert/status_effect/debuff/diminish
+	name = "Diminished"
+	desc = "Origin magick has diminished my instincts - my movements feel sluggish and predictable, and my body feels weakened."
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/stasis
-	name = "Stasis Miracle"
-	desc = "A part of me has been put in stasis."
+	name = "Reversion"
+	desc = "A part of me has been left behind - I will revert soon."
 	icon_state = "buff"
 
 /atom/movable/screen/alert/status_effect/buff/censerbuff
@@ -936,15 +936,33 @@
 	duration = 15 MINUTES
 	effectedstats = list(STATKEY_WIL = 1, STATKEY_CON = 1)
 
-/datum/status_effect/buff/convergence //Increases all healing while it lasts.
-	id = "convergence"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/convergence
+#define DIMINISH_FILTER "diminish_glow"
+/datum/status_effect/debuff/diminish
+	var/outline_colour = "#8b2fc9"
+	id = "diminish"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/diminish
 	duration = 1 MINUTES
+	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2)
 
-/datum/status_effect/buff/stasis //Increases all healing while it lasts.
+/datum/status_effect/debuff/diminish/on_apply()
+	. = ..()
+	if(!.)
+		return
+	var/filter = owner.get_filter(DIMINISH_FILTER)
+	if(!filter)
+		owner.add_filter(DIMINISH_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 50, "size" = 1))
+	ADD_TRAIT(owner, TRAIT_REVERSE_GUIDANCE, MAGIC_TRAIT)
+
+/datum/status_effect/debuff/diminish/on_remove()
+	. = ..()
+	owner.remove_filter(DIMINISH_FILTER)
+	REMOVE_TRAIT(owner, TRAIT_REVERSE_GUIDANCE, MAGIC_TRAIT)
+#undef DIMINISH_FILTER
+
+/datum/status_effect/buff/reversion
 	id = "stasis"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/stasis
-	duration = 10 SECONDS
+	duration = 15 SECONDS
 
 #define CRANKBOX_FILTER "crankboxbuff_glow"
 /atom/movable/screen/alert/status_effect/buff/churnerprotection
