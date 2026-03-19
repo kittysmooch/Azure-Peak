@@ -68,9 +68,3 @@
 /datum/intent/axe/bash/battle
 	name = "heavy bash"
 	damfactor = 0.8 //Buttstrokes, in essence. +20% damage over the standard variant.
-
-// Special Intents
-/datum/intent/axe/chop/long/graggar
-	desc = "A heavy and powerful chop, sundering through even plate armor. No chains shall bind you. And no armor shall stop your might."
-	penfactor = PEN_HEAVY
-	clickcd = CLICK_CD_HEAVY

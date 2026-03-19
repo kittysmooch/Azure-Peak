@@ -587,7 +587,7 @@
 	force = 20
 	force_wielded = 40
 	max_blade_int = 250
-	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long/graggar, /datum/intent/axe/sweep)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/sweep)
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar/Initialize()
 	. = ..()
