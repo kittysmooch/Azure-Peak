@@ -3,13 +3,30 @@
 
 /*	.................   Hardtack   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw
-	name = "raw hardtack"
-	desc = "Doughy, soft, unacceptable."
+	name = "crackerdough"
+	desc = "Doughy, soft, unacceptable - such makes it perfect for hardtack. Sprinkling in some sliced chocolate might help make it a little more palletable."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "raw_tack"
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate/slice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Adding chocolate to the crackerdough..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with chocolate!"))
+	else
+		return ..()
 
 /*	.................   Hardtack   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/crackerscooked
@@ -111,24 +128,9 @@
 			user.put_in_hands(sammich)
 			qdel(I)
 			qdel(src)
-/*	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		if(do_after(user,short_cooktime, target = src))
-			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/jamtallow/sammich= new(get_turf(user))
-			user.put_in_hands(sammich)
-			qdel(I)
-			qdel(src)*/																			//Regular bread gets duped whenever jammed toast is made. My guess is that it has something to do with the filepath.
-/*	if(istype(I, /obj/item/reagent_containers/food/snacks/marmaladeslice))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		if(do_after(user,short_cooktime, target = src))
-			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade/sammich= new(get_turf(user))
-			user.put_in_hands(sammich)
-			qdel(I)
-			qdel(src)*/
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
-			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon/sammich= new(get_turf(user))
 			user.put_in_hands(sammich)
 			qdel(I)
@@ -280,25 +282,6 @@
 	faretype = FARE_POOR
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
-
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/jamtallow
-	tastes = list("sweetly-sour richness" = 1, "a lovely start to the dae" = 1)
-	name = "jamtallowed bread"
-	desc = "'I liked it. I was good at it. And I was really.. I was alive.'"
-	faretype = FARE_FINE
-	icon_state = "bread_jamtallow"
-	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	eat_effect = /datum/status_effect/buff/snackbuff
-	foodtype = GRAIN | FRUIT
-
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade
-	tastes = list("sweet-tarty richness" = 1, "a lovely end to the dae" = 1)
-	name = "marmaladed bread"
-	desc = "'I always keep a marmalade sandwich under my sallet, just in case!'"
-	faretype = FARE_FINE
-	icon_state = "bread_marmalade"
-	eat_effect = /datum/status_effect/buff/snackbuff
-	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon
 	tastes = list("bacon" = 1)
@@ -717,7 +700,7 @@
 /*	.................   Tomatoplate  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
 	name = "tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket; all it's missing is a cold pint of \
 	ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -754,7 +737,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/meattomatoplate
 	name = "sausaged tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and crispy sasuages; all it's missing \
 	is a cold pint of ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -791,7 +774,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/fishtomatoplate
 	name = "fished tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and oily fishes; all it's missing \
 	is a cold pint of ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -828,7 +811,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/oniontomatoplate
 	name = "onioned tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and crunchy onions; all it's missing \
 	is a cold pint of ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -865,7 +848,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/truffletomatoplate
 	name = "truffled tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and decadant truffles; all it's missing \
 	is a cold pint of ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -902,7 +885,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/poisontruffletomatoplate
 	name = "truffled tomatoplate" //Like jackberried treats, this is a poisoned variant! For those who don't properly source their truffles.. or simply want to poison others!
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A culinary delight from Azuria's shores, purported to've originated from an inflow of Etruscean refugees from long ago. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and decadant truffles; all it's missing \
 	is a cold pint of ale and an ongoing game of lampternball to jeer at."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -939,7 +922,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/peartomatoplate
 	name = "pearacotta tomatoplate"
-	desc = "A culinary delight from Vanderlin's shores, purported to've originated from its large population of Tiefling refugees. The \
+	desc = "A curious spin on an Azurian classic, attributed to the hands of Vanderlin's most esteemed culinarians. The \
 	richness of the flatbread's sauced tomatoes is perfectly complemented by its cheesey blanket and sweet pears; a melody of flavors \
 	that has helped to embolden the creativity of Psydonia's artists for centuries-hence, and - hopefully - centuries-more."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
@@ -959,7 +942,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/peartomatoplate_slice
 	name = "slice of pearacotta tomatoplate"
-	desc = "You'd never imagine that such contrasting ingredients could meld together so wonderfully; and yet, they do!"
+	desc = "You'd never imagine that such contrasting ingredients could meld together so wonderfully; and yet, they do! Such is the joy of creation.."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "pear_pizza_slice"
 	faretype = FARE_FINE

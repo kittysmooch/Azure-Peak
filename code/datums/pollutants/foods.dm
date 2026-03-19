@@ -36,6 +36,10 @@
 	name = "pumpkin pie"
 	scent = "pumpkin pie"
 
+/datum/pollutant/food/cookies_chocolate
+	name = "freshly baked chocolate cookies"
+	name = "freshly baked chocolate cookies"
+
 /datum/pollutant/food/bread
 	name = "fresh baked bread"
 	scent = "fresh baked bread"

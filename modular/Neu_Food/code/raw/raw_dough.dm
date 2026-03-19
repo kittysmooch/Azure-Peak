@@ -98,7 +98,7 @@
 /*	.................   Flatdough  ................... */
 /obj/item/reagent_containers/food/snacks/rogue/flatdough
 	name = "flatdough"
-	desc = "Flattened dough, bare for all to see. A dagger's edge can halve it into crackerdough, while a "
+	desc = "Flattened dough, bare for all to see. A sharp edge can prepare the lines for a sheet of crackerdough, while a smearing of tomatoes can set the stage for a peasant's feast."
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "flatdough"
 	slices_num = null
@@ -707,7 +707,7 @@
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/fruit/pumpkin_sliced) || istype(I, /obj/item/reagent_containers/food/snacks/rogue/preserved/pumpkin_mashed) || istype(I, /obj/item/reagent_containers/food/snacks/pumpkinspice))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-			to_chat(user, span_notice("Adding pumpkin to the dough..."))
+			to_chat(user, span_notice("Adding pumpkin to the butterdough..."))
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw(loc)
@@ -715,6 +715,30 @@
 				qdel(src)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to prepare it!"))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Adding tangerines to the butterdough..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tangerinebiscuit_raw(loc)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/tangerinebiscuit_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/plum))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Adding raisins to the butterdough..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw(loc)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/raisins))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
@@ -722,10 +746,23 @@
 			if(do_after(user,short_cooktime, target = src))
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw(loc)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/biscuit_raw(loc)
 				qdel(I)
 				qdel(src)
 		else
-			to_chat(user, span_warning("You need to put [src] on a table to roll it out!"))
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with fruits!"))
+	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate) || istype(I, /obj/item/reagent_containers/food/snacks/chocolate/slice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Adding chocolate to the dough..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/chocolatebiscuit_raw(loc)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/chocolatebiscuit_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with chocolate!"))
 	if(I.get_sharpness())
 		if(!isdwarf(user))
 			to_chat(user, span_warning("You lack knowledge of dwarven pastries!"))
@@ -733,7 +770,7 @@
 		else
 			if(isturf(loc)&& (found_table))
 				playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
-				to_chat(user, span_notice("Cutting the dough in strips and making a prezzel..."))
+				to_chat(user, span_notice("Cutting the butterdough in strips and making a prezzel..."))
 				if(do_after(user,short_cooktime, target = src))
 					add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 					new /obj/item/reagent_containers/food/snacks/rogue/foodbase/prezzel_raw(loc)

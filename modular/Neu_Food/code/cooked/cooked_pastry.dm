@@ -17,7 +17,7 @@
 	name = "uncooked raisin biscuit"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "biscuit_raw"
-	color = "#ecce61"
+	color = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/biscuit
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
@@ -27,16 +27,177 @@
 	desc = "A crispy buttery pastry with chewy raisins inside."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "biscuit"
-	faretype = FARE_POOR
+	faretype = FARE_NEUTRAL
 	filling_color = "#F0E68C"
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + SNACK_POOR)
 	w_class = WEIGHT_CLASS_NORMAL
 	bitesize = 3
 	tastes = list("crispy butterdough" = 1, "raisins" = 1)
 	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/chocolatebiscuit_raw
+	name = "uncooked chocolate biscuit"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "chocolatebiscuit_raw"
+	color = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/biscuit
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+
+/obj/item/reagent_containers/food/snacks/rogue/chocolatebiscuit
+	name = "chocolate biscuit"
+	desc = "A crispy buttery pastry with gooey specklings of chocolate inside."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "chocolatebiscuit"
+	faretype = FARE_LAVISH
+	filling_color = "#F0E68C"
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + SNACK_DECENT)
+	w_class = WEIGHT_CLASS_NORMAL
+	bitesize = 3
+	tastes = list("crispy butterdough" = 1, "richly sweet and molten chocolate" = 1)
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	foodtype = GRAIN| DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw
+	name = "uncooked plum biscuit"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "plumbiscuit_raw"
+	color = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/biscuit
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+
+/obj/item/reagent_containers/food/snacks/rogue/plumbiscuit
+	name = "plum biscuit"
+	desc = "A crispy buttery pastry with streaked frosting and tender plums."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "plumbiscuit"
+	faretype = FARE_FINE
+	filling_color = "#F0E68C"
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + SNACK_POOR)
+	w_class = WEIGHT_CLASS_NORMAL
+	bitesize = 3
+	tastes = list("crispy butterdough" = 1, "tangy frosting" = 1, "sweetly baked plums" = 1)
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/tangerinebiscuit_raw
+	name = "uncooked tangerine biscuit"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "tangerinebiscuit_raw"
+	color = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/biscuit
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+
+/obj/item/reagent_containers/food/snacks/rogue/tangerinebiscuit
+	name = "tangerine biscuit"
+	desc = "A crispy buttery pastry with caked frosting and ripe tangerines."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "tangerinebiscuit"
+	faretype = FARE_FINE
+	filling_color = "#F0E68C"
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + SNACK_POOR)
+	w_class = WEIGHT_CLASS_NORMAL
+	bitesize = 3
+	tastes = list("crispy butterdough" = 1, "zesty frosting" = 1, "lightly jammed and juicy tangerines" = 1)
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/*	.................   Cookies  ................... */
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw
+	name = "slab of half-done cookiedough"
+	desc = "Doughy, soft, and speckled with chocolate. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more chocolate, to round it out?"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_halfcookiedough"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/chocolate/slice))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Finishing the chocolate-speckled cookiedough with more chocolate..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookie_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with chocolate!"))
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/cookie_raw
+	name = "slab of cookiedough"
+	desc = "Doughy, soft, and drenched in chocolate. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_cookiedough"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookie
+	cooked_smell = /datum/pollutant/food/cookies_chocolate
+	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookie
+	name = "baked slab of cookiedough"
+	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of home - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedough6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
+	bitesize = 8
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookieslice
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_LONG
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookie/update_icon()
+	if(slices_num)
+		icon_state = "cookiedough[slices_num]"
+	else
+		icon_state = "cookiedough_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/cookie/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/cookieslice
+	name = "cookie"
+	desc = "Crispy, moist, sweet and savory; a sliver of ontological goodness, cradled in the palm of your hand."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedough_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY + SNACK_POOR)
+	bitesize = 2
+	rotprocess = SHELFLIFE_LONG
+	dropshrink = 0.8
+	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
+	foodtype = GRAIN | DAIRY
 
 // MISSING RECIPE
-/obj/item/reagent_containers/food/snacks/rogue/cookie		//It's a biscuit.......
+/obj/item/reagent_containers/food/snacks/rogue/cookie_unused		//It's a biscuit.......
 	name = "cookie of smiles"
 	desc = "It looks less like a happy smile and more like a tortured grimace."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
