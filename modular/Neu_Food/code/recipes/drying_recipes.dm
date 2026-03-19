@@ -296,8 +296,20 @@
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1,
 		/obj/item/alch/calendula = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/nut_dragee
+	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
 	craftdiff = 4 //A treat!
+	structurecraft = /obj/structure/table
+	req_table = TRUE
+
+/datum/crafting_recipe/roguetown/cooking/sugarrocknut
+	name = "smothered rocknuts, alternate"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
+		/obj/item/reagent_containers/food/snacks/sugar = 1,
+		/obj/item/alch/calendula = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
+	craftdiff = 5 //Slightly harder to make than a regular Cook, but allows well-trained physicians to give out the medieval equivalent of lollipops to well-behaved patients.
+	skillcraft = /datum/skill/misc/medicine
 	structurecraft = /obj/structure/table
 	req_table = TRUE
 
