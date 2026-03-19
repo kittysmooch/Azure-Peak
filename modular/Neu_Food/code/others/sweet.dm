@@ -16,7 +16,7 @@
 	tastes = list("sugary richness" = 1)
 	faretype = FARE_LAVISH
 	rotprocess = null
-	eat_effect = /datum/status_effect/buff/snackbuff
+	eat_effect = /datum/status_effect/buff/sweet
 	chopping_sound = TRUE
 
 /obj/item/reagent_containers/food/snacks/chocolate/On_Consume(mob/living/eater)
@@ -51,6 +51,7 @@
 	bitesize = 6
 	slice_sound = TRUE
 	tastes = list("stickied deliciousness" = 1, "subtle sour-tartiness" = 1)
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/jamtallow/update_icon()
 	if(slices_num)
@@ -80,6 +81,7 @@
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("stickied deliciousness" = 1, "subtle sour-tartiness" = 1)
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/marmalade
 	name = "stick of marmalade"
@@ -94,6 +96,7 @@
 	bitesize = 6
 	slice_sound = TRUE
 	tastes = list("stickied deliciousness" = 1, "subtle sweet-tartiness" = 1)
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/marmalade/update_icon()
 	if(slices_num)
@@ -123,6 +126,7 @@
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	tastes = list("stickied deliciousness" = 1, "subtle sweet-tartiness" = 1)
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/caramel
 	name = "caramel giblets"
@@ -138,6 +142,7 @@
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT)
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/caramel/On_Consume(mob/living/eater)
 	..()
@@ -161,6 +166,7 @@
 	rotprocess = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_DECENT, /datum/reagent/medicine/healthpot = 5) //Very light medicinal effect, equivalent to half of a vial when fully eaten. Yum!
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/dragee/On_Consume(mob/living/eater)
 	..()
@@ -184,6 +190,7 @@
 	tastes = list("a mouthful of sugar" = 1)
 	mill_result = /obj/item/reagent_containers/food/snacks/sugar
 	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/grown/sugarshape/dmark
 	name = "sugarshape of ducal mark"
@@ -284,6 +291,7 @@
 	tastes = list("crispy sugarglass" = 1)
 	sellprice = 15
 	drop_sound = 'sound/foley/dropsound/glass_drop.ogg'
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/sugarstatue/dmark
 	name = "ducal sugarglass mark"
