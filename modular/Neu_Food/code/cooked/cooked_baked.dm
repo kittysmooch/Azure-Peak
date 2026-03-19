@@ -111,24 +111,9 @@
 			user.put_in_hands(sammich)
 			qdel(I)
 			qdel(src)
-/*	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		if(do_after(user,short_cooktime, target = src))
-			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/jamtallow/sammich= new(get_turf(user))
-			user.put_in_hands(sammich)
-			qdel(I)
-			qdel(src)*/																			//Regular bread gets duped whenever jammed toast is made. My guess is that it has something to do with the filepath.
-/*	if(istype(I, /obj/item/reagent_containers/food/snacks/marmaladeslice))
-		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
-		if(do_after(user,short_cooktime, target = src))
-			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade/sammich= new(get_turf(user))
-			user.put_in_hands(sammich)
-			qdel(I)
-			qdel(src)*/
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
-			user.adjust_experience(/datum/skill/craft/cooking, user.STAINT * 0.8)
 			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon/sammich= new(get_turf(user))
 			user.put_in_hands(sammich)
 			qdel(I)
@@ -280,25 +265,6 @@
 	faretype = FARE_POOR
 	icon_state = "bread_salo"
 	foodtype = GRAIN | MEAT
-
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/jamtallow
-	tastes = list("sweetly-sour richness" = 1, "a lovely start to the dae" = 1)
-	name = "jamtallowed bread"
-	desc = "'I liked it. I was good at it. And I was really.. I was alive.'"
-	faretype = FARE_FINE
-	icon_state = "bread_jamtallow"
-	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
-	eat_effect = /datum/status_effect/buff/snackbuff
-	foodtype = GRAIN | FRUIT
-
-/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade
-	tastes = list("sweet-tarty richness" = 1, "a lovely end to the dae" = 1)
-	name = "marmaladed bread"
-	desc = "'I always keep a marmalade sandwich under my sallet, just in case!'"
-	faretype = FARE_FINE
-	icon_state = "bread_marmalade"
-	eat_effect = /datum/status_effect/buff/snackbuff
-	foodtype = GRAIN | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/sandwich/bacon
 	tastes = list("bacon" = 1)
