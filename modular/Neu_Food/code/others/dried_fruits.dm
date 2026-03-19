@@ -304,6 +304,7 @@
 	tastes = list("glassy jackberries" = 1, "sugary shards of sweetness" = 1)
 	faretype = FARE_LAVISH
 	color = "#A060FF" //Placeholder until someone wants to twiddle it for themselves. Should be fine, otherwise.
+	eat_effect = /datum/status_effect/buff/sweet
 
 /obj/item/reagent_containers/food/snacks/rogue/raisins/sweetglass/On_Consume(mob/living/eater)
 	..()
