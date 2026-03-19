@@ -380,7 +380,7 @@
 	no_early_release = TRUE
 	antimagic_allowed = FALSE
 	movement_interrupt = TRUE
-	recharge_time = 30 SECONDS
+	recharge_time = 35 SECONDS
 	range = 1
 
 /obj/effect/proc_holder/spell/invoked/barter/cast(list/targets, mob/user)
@@ -395,7 +395,7 @@
 		to_chat(user, span_warning("This thing is worthless."))
 		return FALSE
 	if(I.GetComponent(/datum/component/martyrweapon))
-		to_chat(user, span_danger("The relic recoils! I cannot do this!"))
+		to_chat(user, span_danger("My divine energies recoil from the relic! It resists!"))
 		return TRUE	//why did you try this? Go on full CD, bad.
 	if(I.toggle_state)	//-some- reskinned triumph kit weapons / -some- donor weapons, active martyr weapon
 		revert_cast()
@@ -407,6 +407,10 @@
 			revert_cast()
 			to_chat(user, span_warning("I should empty it, first."))
 			return FALSE
+	if(istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/clothing))
+		revert_cast()
+		to_chat(user, span_warning("Weapons and clothing do not appease my Patron, He is not lacking in fashion."))
+		return FALSE
 
 	var/delay = 1 SECONDS
 	delay += round((I.sellprice / 50) SECONDS)
@@ -416,9 +420,8 @@
 				var/ratio = 0.4 + ((user.get_skill_level(associated_skill)) * 0.05)
 				var/mammonreward = round(I.sellprice * ratio)
 				var/turf/T = get_turf(I)
-				budget2change(mammonreward, user, putinhands = FALSE, custom_turf = T)
-				playsound(T, 'sound/effects/matth_barter.ogg', 100, TRUE)
 				new /obj/effect/temp_visual/barter_fx(T)
+				addtimer(CALLBACK(src, PROC_REF(process_barter), mammonreward, user, T), 0.3 SECONDS)	//fluffy delay to make it sync up with the barter_fx.
 				if(I.GetComponent(/datum/component/storage))
 					var/datum/component/storage/ST = I.GetComponent(/datum/component/storage)
 					if(!ST.do_quick_empty(T))
@@ -426,6 +429,9 @@
 						return FALSE
 				qdel(I)
 
+/obj/effect/proc_holder/spell/invoked/barter/proc/process_barter(mammon, mob/user, turf/target_turf)
+	playsound(target_turf, 'sound/effects/matth_barter.ogg', 100, TRUE)
+	budget2change(mammon, user, putinhands = FALSE, custom_turf = target_turf)
 
 //T3 COUNT WEALTH, HURT TARGET/APPLY EFFECTS BASED ON AMOUNT OF WEALTH. AT 500+, OLD STYLE CHURNS THE TARGET.
 
