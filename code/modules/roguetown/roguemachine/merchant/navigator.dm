@@ -136,7 +136,7 @@
 			record_round_statistic(STATS_TRADE_VALUE_EXPORTED, budgie)
 			if(budgie > 0)
 				play_sound=TRUE
-				E.budget2change(budgie)
+				budget2change(budgie)
 				budgie = 0
 		if(play_sound)
 			playsound(src.loc, 'sound/misc/hiss.ogg', 100, FALSE, -1)

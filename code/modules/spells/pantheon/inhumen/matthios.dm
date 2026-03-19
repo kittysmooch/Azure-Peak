@@ -362,6 +362,71 @@
 	owner.remove_filter(EQUALIZED_GLOW)
 	to_chat(owner, "<font color='yellow'>My fire returns!</font>")
 
+
+/obj/effect/proc_holder/spell/invoked/barter
+	name = "Barter"
+	desc = "Offer the targeted item to your patron, in exchange for a sum of mammon, scaling with my expertise in holy skill. The capricious nature of Matthios makes this a poor value exchange, all in all."
+	clothes_req = FALSE
+	action_icon = 'icons/mob/actions/matthiosmiracles.dmi'
+	overlay_icon = 'icons/mob/actions/matthiosmiracles.dmi'
+	overlay_state = "barter"
+	miracle = TRUE
+	devotion_cost = 20
+	associated_skill = /datum/skill/magic/holy
+	chargedloop = /datum/looping_sound/invokeascendant
+	chargedrain = 0
+	chargetime = 1 SECONDS
+	releasedrain = 30
+	no_early_release = TRUE
+	antimagic_allowed = FALSE
+	movement_interrupt = TRUE
+	recharge_time = 30 SECONDS
+	range = 1
+
+/obj/effect/proc_holder/spell/invoked/barter/cast(list/targets, mob/user)
+	. = ..()
+	if(!istype(targets[1], /obj/item))
+		revert_cast()
+		to_chat(user, span_warning("This is not a suitable item to Barter with."))
+		return FALSE
+	var/obj/item/I = targets[1]
+	if(I.sellprice < 2 || isnull(I.sellprice))
+		revert_cast()
+		to_chat(user, span_warning("This thing is worthless."))
+		return FALSE
+	if(I.GetComponent(/datum/component/martyrweapon))
+		to_chat(user, span_danger("The relic recoils! I cannot do this!"))
+		return TRUE	//why did you try this? Go on full CD, bad.
+	if(I.toggle_state)	//-some- reskinned triumph kit weapons / -some- donor weapons, active martyr weapon
+		revert_cast()
+		to_chat(user, span_warning("This thing has been glamoured or changed -- its value is too unclear."))
+		return FALSE
+	if(I.GetComponent(/datum/component/holster))
+		var/datum/component/holster/SC = I.GetComponent(/datum/component/holster)
+		if(SC.sheathed)
+			revert_cast()
+			to_chat(user, span_warning("I should empty it, first."))
+			return FALSE
+
+	var/delay = 1 SECONDS
+	delay += round((I.sellprice / 50) SECONDS)
+	if(I.Adjacent(user))
+		if(do_after(user, delay))
+			if(I.Adjacent(user))	//We make sure it didnt' get yoinked after the delay.
+				var/ratio = 0.4 + ((user.get_skill_level(associated_skill)) * 0.05)
+				var/mammonreward = round(I.sellprice * ratio)
+				var/turf/T = get_turf(I)
+				budget2change(mammonreward, user, putinhands = FALSE, custom_turf = T)
+				playsound(T, 'sound/effects/matth_barter.ogg', 100, TRUE)
+				new /obj/effect/temp_visual/barter_fx(T)
+				if(I.GetComponent(/datum/component/storage))
+					var/datum/component/storage/ST = I.GetComponent(/datum/component/storage)
+					if(!ST.do_quick_empty(T))
+						revert_cast()
+						return FALSE
+				qdel(I)
+
+
 //T3 COUNT WEALTH, HURT TARGET/APPLY EFFECTS BASED ON AMOUNT OF WEALTH. AT 500+, OLD STYLE CHURNS THE TARGET.
 
 /obj/effect/proc_holder/spell/invoked/matthios_churn
