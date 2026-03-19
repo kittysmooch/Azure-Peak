@@ -1,6 +1,6 @@
 /datum/reagent/water/rosewater
 	name = "rosa tea"
-	description = "Steeped rose petals with mild health regeneration and antidotal properties."
+	description = "Steeped rosa petals with mild health regeneration and antidotal properties."
 	reagent_state = LIQUID
 	color = "#f398b6"
 	taste_description = "floral sweetness"
