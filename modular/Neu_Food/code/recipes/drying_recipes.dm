@@ -27,7 +27,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/pemmican
-	name = "pemmican"
+	name = "brothbrique"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
@@ -37,7 +37,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/pemmicanalt
-	name = "pemmican, alternate"
+	name = brothbrique, alternate"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
@@ -301,7 +301,7 @@
 	structurecraft = /obj/structure/table
 	req_table = TRUE
 
-/datum/crafting_recipe/roguetown/cooking/sugarrocknut
+/datum/crafting_recipe/roguetown/cooking/sugarrocknutalt
 	name = "smothered rocknuts, alternate"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
