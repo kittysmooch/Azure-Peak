@@ -280,9 +280,19 @@
 /obj/item/reagent_containers/food/snacks/grown/fruit/tomato
 	name = "tomato"
 	seed = /obj/item/seeds/tomato
-	desc = "A plump, red fruit with juicy flesh and a balanced sweet-tart flavor, essential in salads and sauces."
+	desc = "A plump, red fruit with juicy flesh and a balanced sweet-tart flavor, essential in salads and sauces. A seasoned culinarian knowns to always split their tomatoes, in order to fashion the smoothest sauces."
 	icon_state = "tomato"
 	tastes = list("tomato" = 1)
+	splat_color = "#CD5320"
+	slice_path = /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced
+	slices_num = 1
+
+/obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced
+	name = "split tomato"
+	seed = /obj/item/seeds/tomato
+	desc = "Split halves of a plump, red fruit with juicy flesh and a balanced sweet-tart flavor. Ruptured skin cradles a deliciously silky surprise, merely a palm away from being smeared into sauce atop flatdough."
+	icon_state = "tomato_split"
+	tastes = list("to" = 1, "mato" = 1)
 	splat_color = "#CD5320"
 
 /obj/item/reagent_containers/food/snacks/grown/berries/rogue
