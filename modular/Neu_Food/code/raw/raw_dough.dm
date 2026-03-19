@@ -124,7 +124,7 @@
 				qdel(src)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to score it into crackerdough!"))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Meticulously crushing the tomatoes into a thick, chunky sauce..."))
@@ -135,7 +135,7 @@
 				qdel(src)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to smear the flatdough with sauced tomatoes!"))
-	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/grown/fruit/tomato_sliced))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Crushing the sliced tomatoes into a thick, velvety sauce..."))
