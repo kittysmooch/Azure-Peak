@@ -1377,6 +1377,7 @@
 /datum/status_effect/buff/clash/proc/process_touch(mob/living/carbon/human/parent, mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
 	var/obj/item/I = defender.get_active_held_item()
 	defender.process_clash(attacker, I, null)
+	return COMPONENT_HAND_NO_ATTACK
 
 /datum/status_effect/buff/clash/proc/process_attack(mob/living/parent, mob/living/target, mob/user, obj/item/I)
 	var/bad_guard = FALSE
@@ -1675,6 +1676,7 @@
 	if(attacker && check_zone(attacker.zone_selected) == protected_zone)
 		var/obj/item/I = defender.get_active_held_item()
 		defender.process_clash(attacker, I, null)	//This will strike at their hand, but not clear away the effect. They tried to grab the protected limb.
+		return COMPONENT_HAND_NO_ATTACK
 
 /datum/status_effect/buff/clash/limbguard/apply_cooldown()
 	owner.apply_status_effect(/datum/status_effect/debuff/specialcd, 60 SECONDS)
