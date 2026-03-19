@@ -26,23 +26,23 @@
 	craftdiff = 1
 	structurecraft = /obj/machinery/tanningrack
 
-/datum/crafting_recipe/roguetown/cooking/pemmican
+/datum/crafting_recipe/roguetown/cooking/brothbrique
 	name = "brothbrique"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami = 1)
-	result = /obj/item/reagent_containers/food/snacks/rogue/meat/pemmican
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/brothbrique
 	craftdiff = 2
 	structurecraft = /obj/machinery/tanningrack
 
-/datum/crafting_recipe/roguetown/cooking/pemmicanalt
+/datum/crafting_recipe/roguetown/cooking/brothbriquealt
 	name = "brothbrique, alternate"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette = 1)
-	result = /obj/item/reagent_containers/food/snacks/rogue/meat/pemmican
+	result = /obj/item/reagent_containers/food/snacks/rogue/meat/brothbrique
 	craftdiff = 2
 	structurecraft = /obj/machinery/tanningrack
 
@@ -50,6 +50,7 @@
 	name = "salotack"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/fat/salo = 1,
+		/obj/item/reagent_containers/food/snacks/pepper = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked = 1)
 	result = /obj/item/reagent_containers/food/snacks/balefire
 	craftdiff = 2
