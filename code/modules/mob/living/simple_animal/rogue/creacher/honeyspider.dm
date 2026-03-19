@@ -65,7 +65,8 @@
 	icon_living = "skallax"
 	icon_dead = "skallax-dead"
 	base_intents = list(/datum/intent/simple/bite)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 2,
+					/obj/item/reagent_containers/food/snacks/rogue/honey/spider = 1,
 					/obj/item/natural/hide = 1)
 	health = 130
 	maxHealth = 130
