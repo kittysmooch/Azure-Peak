@@ -1119,6 +1119,13 @@
 	if(atkswinging)
 		stop_attack(FALSE)
 
+	// Deselect any active spell on resist
+	if(ranged_ability)
+		ranged_ability.deactivate(src)
+	var/datum/action/cooldown/active_cooldown = click_intercept
+	if(istype(active_cooldown))
+		active_cooldown.unset_click_ability(src, refund_cooldown = TRUE)
+
 	SEND_SIGNAL(src, COMSIG_LIVING_RESIST, src)
 	//resisting grabs (as if it helps anyone...)
 	if(pulledby)
