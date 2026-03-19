@@ -13,12 +13,14 @@
 	vision_range = 5
 	aggro_vision_range = 9
 	base_intents = list(/datum/intent/simple/bite/honeyspider)
-	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 1,
+	botched_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1)
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 1,
 							/obj/item/natural/silk = 2,
+							/obj/item/reagent_containers/food/snacks/rogue/honey/spider = 1,
 							/obj/item/alch/viscera = 1)
-	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/steak = 2,
+	perfect_butcher_results = list(/obj/item/reagent_containers/food/snacks/rogue/meat/spider = 2,
 							/obj/item/natural/silk = 3,
+							/obj/item/reagent_containers/food/snacks/rogue/honey/spider = 2,
 							/obj/item/alch/viscera = 1)
 	head_butcher = /obj/item/natural/head/honeyspider
 	faction = list("spiders")
@@ -126,6 +128,7 @@
 				visible_message(span_alertalien("[src] creates some honey."))
 				var/turf/T = get_turf(src)
 				playsound(T, pick('sound/vo/mobs/spider/speak (1).ogg','sound/vo/mobs/spider/speak (2).ogg','sound/vo/mobs/spider/speak (3).ogg','sound/vo/mobs/spider/speak (4).ogg'), 100, TRUE, -1)
+				new /obj/item/reagent_containers/food/snacks/rogue/honey/spider(T)
 				new /obj/item/reagent_containers/food/snacks/rogue/honey/spider(T)
 	if(pulledby && !tame)
 		if(HAS_TRAIT(pulledby, TRAIT_WEBWALK))
