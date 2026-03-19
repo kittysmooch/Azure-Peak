@@ -37,7 +37,7 @@
 	structurecraft = /obj/machinery/tanningrack
 
 /datum/crafting_recipe/roguetown/cooking/pemmicanalt
-	name = brothbrique, alternate"
+	name = "brothbrique, alternate"
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/tallow = 1,
 		/obj/item/reagent_containers/food/snacks/rogue/raisins = 1,
