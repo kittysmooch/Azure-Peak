@@ -160,7 +160,7 @@
 	cooked_smell = /datum/pollutant/food/tomatoplate
 	foodtype = GRAIN | FRUIT
 
-/obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_rawattackby(obj/item/I, mob/living/user, params)
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	update_cooktime(user)
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
