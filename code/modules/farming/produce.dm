@@ -225,11 +225,12 @@
 	tastes = list("tangerine" = 1)
 	splat_color = "#FFA500"
 
-/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine/sugared
+/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine_sugared
 	name = "smothered tangerine"
 	desc = "Sugared tangerines, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
 	icon_state = "tangerinesugar"
 	faretype = FARE_FINE
+	splat_color = "#FFA500"
 	tastes = list("overpoweringly sweet" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/marmalade
@@ -259,11 +260,12 @@
 	tastes = list("blackberry" = 1)
 	splat_color = "#272C3F"
 
-/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
+/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry_sugared
 	name = "smothered blackberry"
 	desc = "Sugared blackberries, smothered in sweetness and awaiting to be baptized in a pot of boiling fat."
 	icon_state = "blackberrysugar"
 	faretype = FARE_FINE
+	splat_color = "#272C3F"
 	tastes = list("overpoweringly sweet" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/jamtallow
@@ -366,13 +368,15 @@
 	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 	mill_result = /obj/item/reagent_containers/powder/rocknut
 
-/obj/item/reagent_containers/food/snacks/grown/nut/sugared
+/obj/item/reagent_containers/food/snacks/grown/nut_sugared
 	name = "smothered rocknut"
 	desc = "Sugary rocknuts, smothered in herbal sweetness and awaiting a baptism in boiling fat."
 	icon_state = "rocknutssugar"
 	faretype = FARE_FINE
 	tastes = list("overpoweringly sweet and nutty" = 1)
+	filling_color = "#6b4d18"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_NUTRITIOUS)
+	grind_results = list(/datum/reagent/consumable/acorn_powder = 4)
 	deep_fried_type = /obj/item/reagent_containers/food/snacks/dragee
 	eat_effect = /datum/status_effect/buff/sweet
 
