@@ -275,7 +275,7 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/tangerine = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine/sugared
+	result = /obj/item/reagent_containers/food/snacks/grown/fruit/tangerine_sugared
 	structurecraft = /obj/structure/table
 	req_table = TRUE
 	craftdiff = 3
@@ -285,7 +285,7 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/grown/fruit/blackberry = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry/sugared
+	result = /obj/item/reagent_containers/food/snacks/grown/fruit/blackberry_sugared
 	craftdiff = 3
 	structurecraft = /obj/structure/table
 	req_table = TRUE
@@ -296,7 +296,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1,
 		/obj/item/alch/calendula = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
+	result = /obj/item/reagent_containers/food/snacks/grown/nut_sugared
 	craftdiff = 4 //A treat!
 	structurecraft = /obj/structure/table
 	req_table = TRUE
@@ -307,7 +307,7 @@
 		/obj/item/reagent_containers/food/snacks/grown/nut = 1,
 		/obj/item/reagent_containers/food/snacks/sugar = 1,
 		/obj/item/alch/calendula = 1)
-	result = /obj/item/reagent_containers/food/snacks/grown/nut/sugared
+	result = /obj/item/reagent_containers/food/snacks/grown/nut_sugared
 	craftdiff = 5 //Slightly harder to make than a regular Cook, but allows well-trained physicians to give out the medieval equivalent of lollipops to well-behaved patients.
 	skillcraft = /datum/skill/misc/medicine
 	structurecraft = /obj/structure/table
