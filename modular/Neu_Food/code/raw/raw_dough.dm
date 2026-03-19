@@ -163,7 +163,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_rawattackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
 	update_cooktime(user)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/cheese))
 		if(isturf(loc)&& (found_table))
 			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
 			to_chat(user, span_notice("Ripping the fresh cheese apart and sprinkling the tomato-sauced flatdough..."))
