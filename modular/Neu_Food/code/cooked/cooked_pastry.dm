@@ -68,7 +68,7 @@
 /*	.............   Pumpkin balls   ................ */
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw
 	name = "uncooked pumpkin ball"
-	desc = "A simple "
+	desc = "A simple ball of dough, yearning to be cookied or fried."
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "pumpkinball"
 	color = "#d17624"
@@ -159,7 +159,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	faretype = FARE_NEUTRAL
 	cooked_type = null
-	tastes = list("sweetbread" = 1,"pumpkin" = 1)
+	tastes = list("sweetbread" = 1, "pumpkin" = 1)
 	bitesize = 2
 	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
@@ -427,3 +427,675 @@
 	icon_state = "strudel_sugar_slice"
 	tastes = list("crispy apples" = 1, "rocknut" = 1 ,"sugar" = 1)
 	faretype = FARE_LAVISH
+
+/*	.................   Tarts  ................... */
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart
+	name = "dot tart"
+	desc = "A small pastry filled with jammed fruits, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	bitesize = 3
+	faretype = FARE_FINE
+	foodtype = GRAIN | FRUIT | DAIRY
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGHSLICE_NUTRITION + SNACK_DECENT)
+	tastes = list("crispy dough" = 1)
+	rotprocess = SHELFLIFE_LONG
+	dropshrink = 1
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/tangerine
+	name = "tangerine dot tart"
+	desc = "A small pastry filled with jammed tangerines, for when a whole pie would be inappropiate for canapes. </br>'If we're kind and polite, the world will be right.'"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "tangerine jam with a hint of tarty-sweetness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/plum
+	name = "plum dot tart"
+	desc = "A small pastry filled with jammed plums, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "plum jam with a hint of honey-sweetness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
+	name = "blackberry dot tart"
+	desc = "A small pastry filled with jammed blackberries, for when a whole pie would be inappropiate for canapes. </br>'I did it for me. I liked it.. I was good at it. And I felt.. alive.'"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "blackberry jam with a hint of sour-sweetness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/raspberry
+	name = "raspberry dot tart"
+	desc = "A small pastry filled with jammed raspberries, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "raspberry jam with a hint of tartness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/strawberry
+	name = "strawberry dot tart"
+	desc = "A small pastry filled with jammed strawberries, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "strawberry jam with a hint of sweetness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/pear
+	name = "pear dot tart"
+	desc = "A small pastry filled with jammed pears, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "pear jam with a hint of tarty-honeyiness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/apple
+	name = "apple dot tart"
+	desc = "A small pastry filled with jammed apples, for when a whole pie would be inappropiate for canapes."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	tastes = list("crispy dough" = 1, "caramelized apples with a hint of tartness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple
+	name = "ambrosia dot tart"
+	desc = "A small pastry filled with the jam of a divine fruit, for when a whole pie would be inappropiate for canapes. </br>'Why must the most forbidden fruits taste the sweetest?'"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "dottart"
+	list_reagents = list(/datum/reagent/medicine/stronghealth = 10)
+	tastes = list("crispy dough" = 1, "divinely fruity sweetness" = 1)
+
+/obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple/Initialize()
+  ..()
+  add_filter(FORCE_FILTER, 2, list("type" = "outline", "color" = GLOW_COLOR_LIGHTNING, "alpha" = 155, "size" = 1))
+
+/*	.................   Bookbread   ................... */
+/obj/item/reagent_containers/food/snacks/rogue/bookbread
+	name = "bookbread loaf"
+	desc = "On the days when Noc's reign lengthens to its apex, all proper Pantheon-fearing folk huddle by their warm hearths, exchanging both books and pastries such as this."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_AVERAGE)
+	faretype = FARE_NEUTRAL
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread/update_icon()
+	if(slices_num)
+		icon_state = "bookbread[slices_num]"
+	else
+		icon_state = "bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice
+	name = "sliced bookbread"
+	desc = "About the same size and taste as an encyclopedia."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "bookbread_slice"
+	faretype = FARE_NEUTRAL
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice/attackby(obj/item/I, mob/living/user, params)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/jamtallowslice))
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
+		if(do_after(user,short_cooktime, target = src))
+			var/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_jamtallowed/sammich= new(get_turf(user))
+			user.put_in_hands(sammich)
+			qdel(I)
+			qdel(src)																		
+	if(istype(I, /obj/item/reagent_containers/food/snacks/marmaladeslice))
+		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
+		if(do_after(user,short_cooktime, target = src))
+			var/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_marmaladed/sammich= new(get_turf(user))
+			user.put_in_hands(sammich)
+			qdel(I)
+			qdel(src)
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_jamtallowed
+	name = "slice of jamtallowed bookbread"
+	desc = "'Don't think that I'd forget, or I'd regret, the special love I had for you - my baby blue!'"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "bookbread_slice_jamtallow"
+	faretype = FARE_LAVISH
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly-sour jamminess" = 1, "a lavish start to the dae" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	foodtype = GRAIN | DAIRY | FRUIT
+
+/obj/item/reagent_containers/food/snacks/rogue/bookbread_slice_marmaladed
+	name = "slice of marmaladed bookbread"
+	desc = "'I always keep a marmalade sandwich under my sallet, just in case!'"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "bookbread_slice_marmalade"
+	faretype = FARE_LAVISH
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweet-tarty jamminess" = 1, "a lavish start to the dae" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	foodtype = GRAIN | DAIRY | FRUIT
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/pearbookbread
+	name = "pear bookbread"
+	desc = "Children on Nocsmas are traditionally granted both book and pastry without expectation of exchange, this variety is prefered by most little ones."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "pear_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/pearbookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly caramelized pears" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/pearbookbread/update_icon()
+	if(slices_num)
+		icon_state = "pear_bookbread[slices_num]"
+	else
+		icon_state = "pear_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/pearbookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/pearbookbread_slice
+	name = "sliced pear bookbread"
+	desc = "Evokes the sweetness of younger, simpler times, and simpler books."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "pear_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly caramelized pears" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/plumbookbread
+	name = "plum bookbread"
+	desc = "The origin of Nocsmas are shrouded in mystery, perhaps intentionally so, though some theorize it may have had its origins as an originally Psydonian holidae."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "plum_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/plumbookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted plums" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/plumbookbread/update_icon()
+	if(slices_num)
+		icon_state = "plum_bookbread[slices_num]"
+	else
+		icon_state = "plum_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/plumbookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/plumbookbread_slice
+	name = "sliced plum bookbread"
+	desc = "A subtle flavor, best for enjoying subtler books. Mysteries prefered."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "plum_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted plums" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/lemonbookbread
+	name = "lemon bookbread"
+	desc = "Though many followers of Her find the holidae laughable, it's undeniably an important respite from the doom and gloom of the darkest month."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "lemon_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/lemonbookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted lemons" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/lemonbookbread/update_icon()
+	if(slices_num)
+		icon_state = "lemon_bookbread[slices_num]"
+	else
+		icon_state = "lemon_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/lemonbookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/lemonbookbread_slice
+	name = "sliced lemon bookbread"
+	desc = "Sweet but a little sour, like a good Xylixian comedy."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "lemon_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted lemons" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread
+	name = "tangerine bookbread"
+	desc = "Even the coldest, darkest nites end eventually. Better to weather them with friends than to hide away."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "tangerine_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly jellied tangerines" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread/update_icon()
+	if(slices_num)
+		icon_state = "tangerine_bookbread[slices_num]"
+	else
+		icon_state = "tangerine_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread_slice
+	name = "sliced tangerine bookbread"
+	desc = "Fills one with heroic vigor and hopeful enthusiasm, similar to historic-fantasies of old."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "tangerine_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly jellied tangerines" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread
+	name = "blackberry bookbread"
+	desc = "Following Her ascension, the great exchanging of books has met steady decline, as neighbor suspects neighbor more and more. Yet, even such prejudices could never hope to fully smother the spirit of Nocmas."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "blackberry_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted blackberries" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread/update_icon()
+	if(slices_num)
+		icon_state = "blackberry_bookbread[slices_num]"
+	else
+		icon_state = "blackberry_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread_slice
+	name = "sliced blackberry bookbread"
+	desc = "It evokes a feeling of contrasting fascination and dread, not unlike novels that may foretell a doom similar to what befell this very berry."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "blackberry_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted blackberries" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread
+	name = "raspberry bookbread"
+	desc = "Spending the long cold months in academic rather than intimate pursuit is preferable for most devout Noccians."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raspberry_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted raspberries" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread/update_icon()
+	if(slices_num)
+		icon_state = "raspberry_bookbread[slices_num]"
+	else
+		icon_state = "raspberry_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread_slice
+	name = "sliced raspberry bookbread"
+	desc = "Has a taste that puts one in the mood for a good romance novel. For obvious reasons, this flavor isnt very popular with mages."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "raspberry_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted raspberries" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread
+	name = "jackberried bookbread"
+	desc = "As Nocsmas gained broader appeal, more and more commonfolk with poor access to books instead chose to simply forego their exchanging, focusing instead on the preparation of food."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "jacksberry_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly frosted jackberries" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread/update_icon()
+	if(slices_num)
+		icon_state = "jackberry_bookbread[slices_num]"
+	else
+		icon_state = "jackberry_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread_slice
+	name = "sliced jackberried bookbread"
+	desc = "Has an earthy taste that reminds the eater of growth cycles and rainfall percentages. Like a delicious almanac."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "jacksberry_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted jackberries" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread
+	name = "jackberried bookbread"
+	desc = "As Nocsmas gained broader appeal, more and more commonfolk with poor access to books instead chose to simply forego their exchanging, focusing instead on the preparation of food."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "jacksberry_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD, /datum/reagent/berrypoison = 12)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "bitterly frosted jackberries" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread/update_icon()
+	if(slices_num)
+		icon_state = "jackberry_bookbread[slices_num]"
+	else
+		icon_state = "jackberry_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/poisonberrybookbread_slice
+	name = "sliced jackberried bookbread"
+	desc = "Has an earthy taste that reminds the eater of growth cycles and rainfall percentages. Like a delicious almanac."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "jacksberry_bookbread_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "bitterly frosted jackberries" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT, /datum/reagent/berrypoison = 12)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/snackbuff
+	foodtype = GRAIN | FRUIT | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread
+	name = "chocolate bookbread"
+	desc = "Nocsmas is not only a holiday for children and commoners, for Noccians are found most concentrated in the upper echelons of society. For these academics, it provies a much needed opportunity to share their secrets."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "chocolate_bookbread5"
+	slices_num = 5
+	bitesize = 8
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread_slice
+	list_reagents = list(/datum/reagent/consumable/nutriment = MEAL_GOOD + SNACK_DECENT)
+	faretype = FARE_LAVISH
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough" = 1, "rich and gooey chocolate" = 1)
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_EXTREME
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread/update_icon()
+	if(slices_num)
+		icon_state = "chocolate_bookbread[slices_num]"
+	else
+		icon_state = "chocolate_bookbread_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread_slice
+	name = "sliced chocolate bookbread"
+	desc = "As thick and rich as a child's bedtyme story."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
+	icon_state = "chocolate_bookbread_slice"
+	faretype = FARE_LAVISH
+	w_class = WEIGHT_CLASS_NORMAL
+	tastes = list("chewy, crispy-edged butterdough", "rich and gooey chocolate" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_CHUNKY)
+	bitesize = 3
+	rotprocess = null
+	dropshrink = 0.8
+	eat_effect = /datum/status_effect/buff/greatsnackbuff
+	foodtype = GRAIN | DAIRY
