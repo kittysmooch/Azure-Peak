@@ -294,6 +294,13 @@
 	if(currently_charging)
 		return FALSE
 
+	// Clear any existing mmb_intent (specials, kick, etc.) so they don't fire alongside the spell
+	if(on_who.mmb_intent)
+		qdel(on_who.mmb_intent)
+		on_who.mmb_intent = null
+		if(on_who.hud_used)
+			on_who.hud_used.quad_intents?.switch_intent(null)
+
 	if(click_to_activate)
 		on_activation(on_who)
 
