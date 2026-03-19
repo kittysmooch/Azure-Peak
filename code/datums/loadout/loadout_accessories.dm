@@ -150,6 +150,10 @@
 	name = "Reformist Psydonian Cross"
 	path = /obj/item/clothing/neck/roguetown/psicross/reform
 
+/datum/loadout_item/psicross/naledi
+	name = "Naledian psy-bracelet"
+	path = /obj/item/clothing/neck/roguetown/psicross/naledi
+
 /datum/loadout_item/psicross/astrata
 	name = "Amulet of Astrata"
 	path = /obj/item/clothing/neck/roguetown/psicross/astrata
