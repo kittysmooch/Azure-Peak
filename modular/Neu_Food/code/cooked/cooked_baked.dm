@@ -124,7 +124,7 @@
 			var/obj/item/reagent_containers/food/snacks/rogue/sandwich/marmalade/sammich= new(get_turf(user))
 			user.put_in_hands(sammich)
 			qdel(I)
-			qdel(src)*/																			//Low priority, but could be reinstated by a better coder than me later - once they fix the issue in question.
+			qdel(src)*/
 	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/meat/bacon/fried))
 		playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 50, TRUE, -1)
 		if(do_after(user,short_cooktime, target = src))
