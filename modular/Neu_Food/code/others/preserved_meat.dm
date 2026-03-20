@@ -185,7 +185,7 @@
 // ------------ HELLFIRE STEW - SALO N' TACK --------------
 /obj/item/reagent_containers/food/snacks/balefire
 	name = "salotack"
-	desc = "Thick, salted biscuits and thicker, saltier slabs of pork fat; a match made in paradise. A spicier but heartier variant of the brothbrique, \
+	desc = "Thick, salted biscuits and thicker, saltier slabs of pork fat, and a sprinkling of pepper; a match made in paradise. A spicier but heartier variant of the brothbrique, \
 	its portions can be further divvied up with a knife and stewed into a remarkably hearty broth."
 	icon = 'modular/Neu_Food/icons/others/preserved_meat.dmi'
 	icon_state = "balefire4"
@@ -217,7 +217,7 @@
 
 /obj/item/reagent_containers/food/snacks/balefire/slice
 	name = "piece of salotack"
-	desc = "A salted cracker and a slice of pork fat, smothered in spice. An adventurer can afford the tyme to sit down and stew this into a \
+	desc = "A salted cracker and a slice of pork fat, smothered in pepper. An adventurer can afford the tyme to sit down and stew this into a \
 	hearty meal; for most other soldiers-of-fortune, however, they might just have to settle with gnashing it on the go."
 	icon_state = "balefire_slice"
 	bitesize = 2
