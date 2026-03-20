@@ -75,6 +75,26 @@
 	alpha = 222
 	quality = DRINK_VERYGOOD
 
+/datum/reagent/consumable/soup/porridge/poisonfrostedpudding //Evil variant for poisoned jackberry treats.
+	name = "frosted porridge-pudding"
+	description = "Fitting for a nobleman."
+	taste_description = "spongey-sweet doughiness and bitter-tasting frosting"
+	color = "#8C88C6"
+	nutriment_factor = 35
+	metabolization_rate = 0.8
+	alpha = 222
+	quality = DRINK_GOOD
+
+/datum/reagent/consumable/soup/porridge/thickpoisonfrostedpudding //Ditto.
+	name = "thick frosted porridge-pudding"
+	description = "Fitting for a king."
+	taste_description = "spongey-sweet doughiness, bitter-tasting frosting, and a hint of burning"
+	color = "#604E8E"
+	nutriment_factor = 40
+	metabolization_rate = 0.6
+	alpha = 222
+	quality = DRINK_VERYGOOD
+
 /datum/reagent/consumable/soup/porridge/fudgepudding
 	name = "chocolate porridge-pudding"
 	description = "Fitting for a nobleman."
@@ -813,6 +833,26 @@
 			M.adjustToxLoss(0.5)
 		else
 			M.add_nausea(3) // so one berry or one dose (one clunk of extracted poison, 5u) will make you really sick and a hair away from crit.
+			M.adjustToxLoss(2)
+	return ..()
+
+/datum/reagent/consumable/soup/porridge/poisonfrostedpudding/on_mob_life(mob/living/carbon/M)
+	if(volume > 0.09)
+		if(isdwarf(M))
+			M.add_nausea(1)
+			M.adjustToxLoss(0.5)
+		else
+			M.add_nausea(3)
+			M.adjustToxLoss(2)
+	return ..()
+
+/datum/reagent/consumable/soup/porridge/thickpoisonfrostedpudding/on_mob_life(mob/living/carbon/M)
+	if(volume > 0.09)
+		if(isdwarf(M))
+			M.add_nausea(1)
+			M.adjustToxLoss(0.5)
+		else
+			M.add_nausea(3)
 			M.adjustToxLoss(2)
 	return ..()
 
