@@ -49,6 +49,8 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	/// Wizard mode & "Give Spell" badmin button.
 	var/list/spell_list = list()
+	/// Whether this mind has arcyne momentum (persists through death)
+	var/has_arcyne_momentum = FALSE
 
 	var/spell_points
 	var/used_spell_points
