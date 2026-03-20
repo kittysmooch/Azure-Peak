@@ -55,6 +55,46 @@
 	alpha = 222
 	quality = DRINK_VERYGOOD
 
+/datum/reagent/consumable/soup/porridge/frostedpudding
+	name = "frosted porridge-pudding"
+	description = "Fitting for a nobleman."
+	taste_description = "spongey-sweet doughiness and velvety frosting"
+	color = "#8C88C6"
+	nutriment_factor = 35
+	metabolization_rate = 0.8
+	alpha = 222
+	quality = DRINK_GOOD
+
+/datum/reagent/consumable/soup/porridge/thickfrostedpudding
+	name = "thick frosted porridge-pudding"
+	description = "Fitting for a king."
+	taste_description = "spongey-sweet doughiness, velvety frosting, and a hint of fruitiness"
+	color = "#604E8E"
+	nutriment_factor = 40
+	metabolization_rate = 0.6
+	alpha = 222
+	quality = DRINK_VERYGOOD
+
+/datum/reagent/consumable/soup/porridge/fudgepudding
+	name = "chocolate porridge-pudding"
+	description = "Fitting for a nobleman."
+	taste_description = "spongey-sweet doughiness and creamy fudge"
+	color = "#6B4A51"
+	nutriment_factor = 35
+	metabolization_rate = 0.8
+	alpha = 222
+	quality = DRINK_GOOD
+
+/datum/reagent/consumable/soup/porridge/thickfudgepudding
+	name = "thick chocolate porridge-pudding"
+	description = "Fitting for a king."
+	taste_description = "spongey-sweet doughiness, creamy fudge, and a hint of herbiness"
+	color = "#44242A"
+	nutriment_factor = 40
+	metabolization_rate = 0.6
+	alpha = 222
+	quality = DRINK_VERYGOOD
+
 /datum/reagent/consumable/soup/porridge/congee
 	name = "congee"
 	description = "Rice boiled in water until it is softened. Eaten by the poor and sick in the east. Here, it is considered a medicinal food."
@@ -747,14 +787,14 @@
 /datum/reagent/consumable/soup/stew/survival_broth
 	name = "briquebroth"
 	color = "#693346"
-	taste_description = "heartwarmingly thick and salty, with little bursts of sweetness"
+	taste_description = "heartwarmingly thick and salty, with little bursts of sweetness and pepperiness"
 	nutriment_factor = 30
 	alpha = 222
 
 /datum/reagent/consumable/soup/stew/thicksurvival_broth
 	name = "thick briquebroth"
 	color = "#681936"
-	taste_description = "heartwarmingly thick and savory, with little bursts of sweetness"
+	taste_description = "heartwarmingly thick and savory, with bursts of sweetness and pepperiness"
 	nutriment_factor = 45
 	alpha = 250
 
