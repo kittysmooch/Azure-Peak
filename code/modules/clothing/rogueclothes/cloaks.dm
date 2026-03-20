@@ -162,9 +162,9 @@
 	desc = " A tabard with a light sleeve and pauldron sewn on, it lacks the explicit detailing of other tabards in exchange."
 	color = null 
 	boobed = TRUE
-	icon_state = "sleevedtabard"
-	item_state = "sleevedtabard"
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/detailed/tabards.dmi'
+	icon_state = "halfsurcoat"
+	item_state = "halfsurcoat"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/abyssortabard
 	name = "abyssorite tabard"
@@ -1687,11 +1687,12 @@
 	desc = "A light cloak covered in shimmering metal scales. Beautiful even if too light to protect it's wearer from more than other travel cloaks."
 	icon_state = "scalecloak"
 	item_state = "scalecloak"
-	alternate_worn_layer = TABARD_LAYER
+	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	boobed = FALSE
-	flags_inv = HIDECROTCH|HIDEBOOB
 	slot_flags = ITEM_SLOT_CLOAK|ITEM_SLOT_BACK_R|ITEM_SLOT_BACK_L
 	sleeved = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
 	nodismemsleeves = TRUE
+	inhand_mod = TRUE
 	detail_tag = "_detail"
-	detail_color = CLOTHING_WHITE
+	detail_color = "#405996"
