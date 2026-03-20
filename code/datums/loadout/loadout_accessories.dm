@@ -146,6 +146,10 @@
 	path = /obj/item/clothing/neck/roguetown/psicross
 	sort_category = "Accessories"
 
+/datum/loadout_item/psicross/decrepit
+	name = "Decrepit Psycross"
+	path = /obj/item/clothing/neck/roguetown/psicross/aalloy
+
 /datum/loadout_item/psicross/reform
 	name = "Reformist Psydonian Cross"
 	path = /obj/item/clothing/neck/roguetown/psicross/reform
