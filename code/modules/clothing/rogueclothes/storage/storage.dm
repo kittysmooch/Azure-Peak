@@ -431,7 +431,6 @@
 /obj/item/storage/belt/rogue/leather/silkbelt
 	name = "Giltsilk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
-	icon = null
 	icon_state = "silkbelt"
 	var/max_storage = 5
 	sewrepair = TRUE
