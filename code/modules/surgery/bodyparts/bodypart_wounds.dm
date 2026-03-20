@@ -142,7 +142,7 @@
 			acheck_dflag = "blunt"
 		if(BCLASS_CHOP, BCLASS_CUT, BCLASS_LASHING, BCLASS_PUNISH)
 			acheck_dflag = "slash"
-		if(BCLASS_PICK, BCLASS_STAB)
+		if(BCLASS_PICK, BCLASS_STAB, BCLASS_BITE)
 			acheck_dflag = "stab"
 		if(BCLASS_PIERCE)
 			acheck_dflag = "piercing"

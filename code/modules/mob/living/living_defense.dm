@@ -1,5 +1,5 @@
 
-/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration, penetrated_text, damage, blade_dulling, intdamfactor, used_weapon = null)
+/mob/living/proc/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration = PEN_NONE, penetrated_text, damage, blade_dulling, intdamfactor, used_weapon = null)
 	var/armor_tier = getarmor(def_zone, attack_flag, damage, armor_penetration, blade_dulling, intdamfactor, used_weapon)
 
 	// Tier-based armor system.
@@ -10,30 +10,34 @@
 	//   pen > armor  = 100% through (full penetration)
 	//   pen == armor = 20% through (partial penetration)
 	//   pen < armor  = fully blocked
+	// Safety: if damage wasn't passed, blocked math would return 0 (null * anything = 0 in DM),
+	// silently making armor do nothing. Use a safe fallback for the blocked calculation only —
+	// don't feed it into checkarmor (which already ran above and handles null damage fine).
+	var/block_damage = damage || 999
 	var/blocked = 0
 	if(attack_flag in ARMOR_DR_ABSORB_TYPES)
 		// Blunt: armor absorbs all HP damage. DR reduces integrity damage to armor (in checkarmor).
 		if(armor_tier > 0)
-			blocked = damage
+			blocked = block_damage
 	else if(attack_flag in ARMOR_DR_PIERCE_TYPES)
 		// Fire/Acid: DR reduces damage, but reduced damage still reaches HP.
 		if(armor_tier > 0)
 			var/dr_mult = 1 / (1 + 0.2 * armor_tier)
-			blocked = damage * (1 - dr_mult)
+			blocked = block_damage * (1 - dr_mult)
 	else
 		// Penetration: tier comparison
 		if(armor_tier > 0)
 			if(armor_penetration > armor_tier)
 				// Full penetration — all damage through
-				blocked = damage * (1 - PEN_PASSTHROUGH_OVER)
+				blocked = block_damage * (1 - PEN_PASSTHROUGH_OVER)
 				if(penetrated_text)
 					to_chat(src, span_danger("[penetrated_text]"))
 			else if(armor_penetration == armor_tier)
 				// Same tier — 20% gets through
-				blocked = damage * (1 - PEN_PASSTHROUGH_SAME)
+				blocked = block_damage * (1 - PEN_PASSTHROUGH_SAME)
 			else
 				// Fully blocked
-				blocked = damage * 10
+				blocked = block_damage * 10
 				if(absorb_text)
 					to_chat(src, span_notice("[absorb_text]"))
 

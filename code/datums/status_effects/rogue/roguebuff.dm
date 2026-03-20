@@ -1965,7 +1965,7 @@
 	if(!HAS_TRAIT(target, TRAIT_OUTLAW) || (!(target.name in user.mind.known_people)))
 		return
 
-	var/armor_block = target.run_armor_check(user.zone_selected, item.d_type)
+	var/armor_block = target.run_armor_check(user.zone_selected, item.d_type, armor_penetration = PEN_NONE, damage = 1)
 	if(armor_block > 0)
 		return
 

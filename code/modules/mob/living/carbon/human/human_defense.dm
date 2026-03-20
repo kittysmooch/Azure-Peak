@@ -1,4 +1,4 @@
-/mob/living/carbon/human/getarmor(def_zone, type, damage, armor_penetration, blade_dulling, intdamfactor, used_weapon)
+/mob/living/carbon/human/getarmor(def_zone, type, damage, armor_penetration = PEN_NONE, blade_dulling, intdamfactor, used_weapon)
 	var/armorval = 0
 	var/organnum = 0
 
@@ -14,7 +14,7 @@
 	return (armorval/max(organnum, 1))
 
 
-/mob/living/carbon/human/proc/checkarmor(def_zone, d_type, damage, armor_penetration, blade_dulling, intdamfactor = 1, obj/item/used_weapon)
+/mob/living/carbon/human/proc/checkarmor(def_zone, d_type, damage, armor_penetration = PEN_NONE, blade_dulling, intdamfactor = 1, obj/item/used_weapon)
 	if(!d_type)
 		return 0
 	if(isbodypart(def_zone))
@@ -361,7 +361,7 @@
 			if(check_shields(M, damage, "the [M.name]"))
 				return 0
 			if(stat != DEAD)
-				apply_damage(damage, BRUTE, affecting, run_armor_check(affecting, "slash", damage = damage))
+				apply_damage(damage, BRUTE, affecting, run_armor_check(affecting, "slash", armor_penetration = PEN_NONE, damage = damage))
 		return 1
 
 
