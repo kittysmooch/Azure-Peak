@@ -441,7 +441,7 @@
 	icon_state = "inpick"
 	attack_verb = list("drills","augers")
 	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
-	penfactor = 80
+	penfactor = PEN_BSTEEL
 	animname = "strike"
 	item_d_type = "stab"
 	blade_class = BCLASS_DRILL
