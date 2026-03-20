@@ -165,6 +165,9 @@
 	icon_state = "halfsurcoat"
 	item_state = "halfsurcoat"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_cloaks.dmi'
+	sleevetype = "shirt"
+	
 
 /obj/item/clothing/cloak/tabard/abyssortabard
 	name = "abyssorite tabard"
