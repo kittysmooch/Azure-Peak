@@ -13,7 +13,7 @@
 	cooktime = STEW_COOKING_TIME / 2
 
 /datum/stew_recipe/thickporridge
-	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/bread)
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/bread, /obj/item/reagent_containers/food/snacks/rogue/bookbread, /obj/item/reagent_containers/food/snacks/rogue/bookbread_slice)
 	output = /datum/reagent/consumable/soup/porridge/thick
 	cooktime = STEW_COOKING_TIME
 
@@ -23,13 +23,33 @@
 	cooktime = STEW_COOKING_TIME * 3 //Simmers the longest, so that you have enough time to plop everything else in. Cooking-wise? Well, it's common sense to let spices stew for a long while to draw the flavor out!
 
 /datum/stew_recipe/breadpudding
-	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbread_half, /obj/item/reagent_containers/food/snacks/rogue/abread_half, /obj/item/reagent_containers/food/snacks/rogue/applebreadslice, /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice)
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbread_half, /obj/item/reagent_containers/food/snacks/rogue/abread_half, /obj/item/reagent_containers/food/snacks/rogue/applebreadslice, /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice, /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinloaf_raw, /obj/item/reagent_containers/food/snacks/rogue/pumpkinloafslice, /obj/item/reagent_containers/food/snacks/rogue/pumpkinball, /obj/item/reagent_containers/food/snacks/rogue/foodbase/pumpkinball_raw)
 	output = /datum/reagent/consumable/soup/porridge/pudding
 	cooktime = STEW_COOKING_TIME
 
 /datum/stew_recipe/thickbreadpudding
-	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/raisinbread, /obj/item/reagent_containers/food/snacks/rogue/abreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/applebread)
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/rbreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/raisinbread, /obj/item/reagent_containers/food/snacks/rogue/abreaduncooked, /obj/item/reagent_containers/food/snacks/rogue/applebread, /obj/item/reagent_containers/food/snacks/rogue/pumpkinloaf)
 	output = /datum/reagent/consumable/soup/porridge/thickpudding
+	cooktime = STEW_COOKING_TIME * 2
+
+/datum/stew_recipe/frostedpudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/pearbread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/plumbread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/lemonbread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/tangerinebread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/blackberrybread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/raspberrybread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/jackberrybread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/pearbookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/plumbookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/lemonbookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread_slice)
+	output = /datum/reagent/consumable/soup/porridge/frostedpudding
+	cooktime = STEW_COOKING_TIME
+
+/datum/stew_recipe/thickfrostedpudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/pearbookbread, /obj/item/reagent_containers/food/snacks/rogue/plumbookbread, /obj/item/reagent_containers/food/snacks/rogue/lemonbookbread, /obj/item/reagent_containers/food/snacks/rogue/tangerinebookbread, /obj/item/reagent_containers/food/snacks/rogue/blackberrybookbread, /obj/item/reagent_containers/food/snacks/rogue/raspberrybookbread, /obj/item/reagent_containers/food/snacks/rogue/jackberrybookbread)
+	output = /datum/reagent/consumable/soup/porridge/thickfrostedpudding
+	cooktime = STEW_COOKING_TIME * 2
+
+/datum/stew_recipe/chocolatepudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread_slice, /obj/item/reagent_containers/food/snacks/rogue/chocolatebread_uncooked, /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw, /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookie_raw, /obj/item/reagent_containers/food/snacks/rogue/cookieslice)
+	output = /datum/reagent/consumable/soup/porridge/fudgepudding
+	cooktime = STEW_COOKING_TIME
+
+/datum/stew_recipe/thickchocolatepudding
+	inputs = list(/obj/item/reagent_containers/food/snacks/rogue/cookie, /obj/item/reagent_containers/food/snacks/rogue/chocolatebookbread)
+	output = /datum/reagent/consumable/soup/porridge/thickfudgepudding
 	cooktime = STEW_COOKING_TIME * 2
 
 /datum/stew_recipe/oatmeal
