@@ -1685,8 +1685,8 @@
 /obj/item/clothing/cloak/scaledcloak
 	name = "Scaled Cloak"
 	desc = "A light cloak covered in shimmering metal scales. Beautiful even if too light to protect it's wearer from more than other travel cloaks."
-	icon_state = "scaledcloak"
-	item_state = "scaledcloak"
+	icon_state = "scalecloak"
+	item_state = "scalecloak"
 	alternate_worn_layer = TABARD_LAYER
 	boobed = FALSE
 	flags_inv = HIDECROTCH|HIDEBOOB
