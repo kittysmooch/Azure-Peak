@@ -28,7 +28,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/dough
 	name = "dough"
-	desc = "The triumph of all bakers. Smother with butter, speckle with raisins, stab with apple slices.. the possibilities are truly endless!"
+	desc = "The triumph of all bakers. Smother with butter, roll it flat with a rolling pin, speckle it with apples and raisins.. the possibilities are truly endless!"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "dough"
 	slices_num = 2
