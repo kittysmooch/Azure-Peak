@@ -153,7 +153,7 @@
 	slice_batch = FALSE
 	faretype = FARE_POOR
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY * 2)
-	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/pemmican/slice
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/meat/brothbrique/slice
 	tastes = list("salted meat" = 1, "dried berries" = 1, "a slightly greasy aftertaste" = 1)
 	rotprocess = null
 	slice_sound = TRUE
