@@ -248,7 +248,7 @@
 	alternate_worn_layer = TABARD_LAYER
 	boobed = TRUE
 	name = "pestran tabard"
-	desc = "A simple covering of green cloth, meant to keep rot and blood alike off it's wearer."
+	desc = "A simple covering of green cloth, meant to keep rot and blood alike off its wearer."
 	icon_state = "pestratabard"
 
 /obj/item/clothing/cloak/templar/eoran

@@ -613,7 +613,7 @@
 
 /obj/item/rogueweapon/spear/billhook
 	name = "billhook"
-	desc = "A neat hook. Used to pull riders from horses, as well as defend against said horses when used in a proper formation. The reinforcements along it's shaft grant it higher durability against attacks."
+	desc = "A neat hook. Used to pull riders from horses, as well as defend against said horses when used in a proper formation. The reinforcements along its shaft grant it higher durability against attacks."
 	icon_state = "billhook"
 	smeltresult = /obj/item/ingot/steel
 	max_blade_int = 230
