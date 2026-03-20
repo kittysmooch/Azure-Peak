@@ -78,7 +78,7 @@
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "plumbiscuit_raw"
 	color = null
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/plumbiscuit_raw
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/plumbiscuit
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 
