@@ -541,3 +541,14 @@
 	verbage = "sculpts"
 	req_table = TRUE
 	structurecraft = /obj/structure/table
+
+/datum/crafting_recipe/roguetown/cooking/sugarshapedtree
+	name = "sugarshape, tree"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/sugar = 1)
+	result = /obj/item/reagent_containers/food/snacks/grown/sugarshape/tree
+	craftdiff = 4
+	verbage_simple = "sculpt"
+	verbage = "sculpts"
+	req_table = TRUE
+	structurecraft = /obj/structure/table
