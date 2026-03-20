@@ -365,16 +365,29 @@
 
 	return Activate(target)
 
-/// Adjust the base charge time based on the user's skill level.
-/// Matches proc_holder's calculate_chargetime — skill only, no INT.
+/// Adjust the base charge time based on the user's skill level, spellbook, and staff.
+/// Matches proc_holder's calculate_chargetime.
 /datum/action/cooldown/spell/proc/get_adjusted_charge_time()
 	if(charge_time <= 0)
-		return
+		return charge_time
 
 	var/mob/living/living_owner = owner
+	if(!living_owner)
+		return charge_time
 	var/new_time = charge_time
 
+	// Skill reduction
 	new_time -= charge_time * living_owner.get_skill_level(associated_skill, TRUE) * CHARGE_REDUCTION_PER_SKILL
+
+	// Spellbook cast time reduction
+	var/obj/item/book/spellbook/sbook = living_owner.is_holding_item_of_type(/obj/item/book/spellbook)
+	if(sbook && sbook.open)
+		new_time -= charge_time * sbook.get_castred()
+
+	// Staff cast time reduction
+	var/obj/item/rogueweapon/staff = living_owner.is_holding_item_of_type(/obj/item/rogueweapon/)
+	if(staff && staff.cast_time_reduction)
+		new_time -= charge_time * staff.cast_time_reduction
 
 	return max(new_time, 1 DECISECONDS)
 
@@ -963,10 +976,13 @@
 	var/base_ct = charge_time
 	if(base_ct > 0)
 		var/dynamic_ct = user ? get_adjusted_charge_time() : base_ct
-		if(dynamic_ct != base_ct)
-			stats += span_info("Charge time: [DisplayTimeText(base_ct)] (current: [DisplayTimeText(dynamic_ct)])")
+		var/ct_modified = (dynamic_ct < base_ct - 0.5)
+		if(ct_modified)
+			stats += span_info("Charge time: [DisplayTimeText(base_ct)] (current: [dynamic_ct < 1 ? "instant" : DisplayTimeText(dynamic_ct)])")
 			if(user)
-				stats += get_chargetime_breakdown(user)
+				var/list/ct_breakdown = get_chargetime_breakdown(user)
+				if(length(ct_breakdown))
+					stats += ct_breakdown
 		else
 			stats += span_info("Charge time: [DisplayTimeText(base_ct)]")
 	else
@@ -976,10 +992,12 @@
 	var/base_cd = initial(cooldown_time)
 	if(base_cd)
 		var/dynamic_cd = user ? get_adjusted_cooldown() : base_cd
-		if(dynamic_cd != base_cd)
+		if(abs(dynamic_cd - base_cd) > 0.5) // Meaningful change threshold
 			stats += span_info("Cooldown: [DisplayTimeText(base_cd)] (current: [DisplayTimeText(dynamic_cd)])")
 			if(user)
-				stats += get_cooldown_breakdown(user)
+				var/list/cd_breakdown = get_cooldown_breakdown(user)
+				if(length(cd_breakdown))
+					stats += cd_breakdown
 		else
 			stats += span_info("Cooldown: [DisplayTimeText(base_cd)]")
 
@@ -1030,7 +1048,18 @@
 	var/skill_level = user.get_skill_level(associated_skill, TRUE)
 	if(skill_level > 0)
 		var/skill_mod = charge_time * skill_level * CHARGE_REDUCTION_PER_SKILL
-		breakdown += span_smallgreen("  Skill: -[DisplayTimeText(skill_mod)]")
+		if(skill_mod > 0)
+			breakdown += span_smallgreen("  Skill: -[DisplayTimeText(skill_mod)]")
+	var/obj/item/book/spellbook/sbook = user.is_holding_item_of_type(/obj/item/book/spellbook)
+	if(sbook && sbook.open)
+		var/book_mod = charge_time * sbook.get_castred()
+		if(book_mod > 0)
+			breakdown += span_smallgreen("  Spellbook: -[DisplayTimeText(book_mod)]")
+	var/obj/item/rogueweapon/staff = user.is_holding_item_of_type(/obj/item/rogueweapon/)
+	if(staff && staff.cast_time_reduction)
+		var/staff_mod = charge_time * staff.cast_time_reduction
+		if(staff_mod > 0)
+			breakdown += span_smallgreen("  Staff: -[DisplayTimeText(staff_mod)]")
 	return breakdown
 
 /// Breakdown of cooldown modifiers for examine. Matches proc_holder's get_cooldown_breakdown.
