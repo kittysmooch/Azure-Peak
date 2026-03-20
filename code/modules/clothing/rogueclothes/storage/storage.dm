@@ -428,10 +428,11 @@
 		knives += K
 	update_icon()
 
-/obj/item/storage/belt/rogue/leather/exoticsilkbelt
-	name = "exotic silk belt"
+/obj/item/storage/belt/rogue/leather/silkbelt
+	name = "Giltsilk belt"
 	desc = "A gold adorned belt with the softest of silks barely concealing one's bits."
-	icon_state = "exoticsilkbelt"
+	icon = null
+	icon_state = "silkbelt"
 	var/max_storage = 5
 	sewrepair = TRUE
 
