@@ -59,7 +59,7 @@
 
 /obj/item/clothing/neck/roguetown/luckcharm/mercmedal/blackoak
 	name = "guardian's seedpouch"
-	desc = "A pouch, sealed tight, bearing the acorn of an oak native to the Azure Basin. May your end be a new beginning for Azurea."
+	desc = "A pouch, sealed tight, bearing the acorn of an oak native to the Azure Basin. May your end be a new beginning for Azuria."
 	icon_state = "blackoak_pouch"
 
 /obj/item/clothing/neck/roguetown/luckcharm/mercmedal/condottiero

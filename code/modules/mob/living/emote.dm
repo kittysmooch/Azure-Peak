@@ -811,7 +811,7 @@
 
 /datum/emote/living/scream/strain
 	key = "strain"
-	message = "strains themselves!"
+	message = "strains themself!"
 	emote_type = EMOTE_AUDIBLE
 	only_forced_audio = TRUE
 	show_runechat = FALSE

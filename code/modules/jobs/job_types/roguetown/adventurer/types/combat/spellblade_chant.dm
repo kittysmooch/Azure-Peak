@@ -355,7 +355,7 @@ a.choose-btn:hover {
 <p>Mages! Knights! Demons! All fell before our blade.</p>
 <p class="loud">THEN — SHE ASCENDED, ALL WAS LOST.</p>
 <p class="loud">OR WAS IT?</p>
-<p>O! Blade of Azurea!</p>
+<p>O! Blade of Azuria!</p>
 <p class="closing">[preamble_closing]</p>
 </div>
 </div>

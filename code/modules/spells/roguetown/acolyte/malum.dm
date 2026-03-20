@@ -122,7 +122,7 @@
 
 /obj/effect/proc_holder/spell/invoked/craftercovenant
 	name = "The Crafter’s Covenant"
-	desc = "Melt a pile of valuables and convert them into a single item. Sacrifice is accepted even if its not valuable enough to make anything."
+	desc = "Melt a pile of valuables and convert them into a single item. Sacrifice is accepted even if it's not valuable enough to make anything."
 	action_icon = 'icons/mob/actions/malummiracles.dmi'
 	overlay_icon = 'icons/mob/actions/malummiracles.dmi'
 	overlay_state = "craftercovenant"
