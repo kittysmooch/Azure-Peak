@@ -281,7 +281,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_meat
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/meattomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_fish
@@ -292,7 +292,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_fish
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/fishtomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY | MEAT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_truffles
@@ -303,7 +303,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_truffle
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/truffletomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_poisontruffles
@@ -315,7 +315,7 @@
 	eat_effect = null
 	list_reagents = list(/datum/reagent/berrypoison = 5)
 	cooked_smell = /datum/pollutant/food/tomatoplate_truffle
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/poisontruffletomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_onion
@@ -326,7 +326,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_onion
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/oniontomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/tomatoplate_raw_pear
@@ -337,7 +337,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
 	cooked_smell = /datum/pollutant/food/tomatoplate_pear
-	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/tomatoplate
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/peartomatoplate
 	foodtype = GRAIN | FRUIT | DAIRY
 
 /*	.................   Smalldough   ................... */
