@@ -159,3 +159,12 @@
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/t/undivided
 	sort_category = "Cloaks"
 
+/datum/loadout_item/scaledcloak
+	name = "Scaled Cloak"
+	path = /obj/item/clothing/cloak/scaledcloak
+	sort_category = "Cloaks"
+
+/datum/loadout_item/sleevedtabard
+	name = "Tabard, Sleeved"
+	path = /obj/item/clothing/cloak/tabard/sleevedtabard
+	sort_category = "Cloaks"
