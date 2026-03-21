@@ -65,7 +65,8 @@
 		return ..()
 
 	if(!isturf(I.loc))
-		return ..()
+		to_chat(user, span_info("This should be on the floor, lest I spill it onto myself."))
+		return
 
 	if(!istype(I, /obj/item/rogueweapon))
 		return ..()
