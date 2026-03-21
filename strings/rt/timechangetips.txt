@@ -158,7 +158,7 @@ Nobody in Otava owns a thesaurus. No synonym for 'endure' will ever be used.
 Graggar, in his ascendancy, broke the chains of many monsters, and set them loose on the world. Some slaves pray to Graggar, too, that their chains may be broken.
 The glittering black gemstones of onyxa are said to prized by warlocks and drow for black rituals. The face reflected in its shard is never your own.
 The cult of Matthios, the thief-of-fire, idolizes greed as a virtue. While often at odds with Zizoid cults, on one thing they agree- to want more is only reasonable.
-Eating fyritus flower will prevent infection by werewolves.
+Eating the fyritus flower will prevent one from being infected by werewolves.
 Pestran witchcovens developed the art of potion-making in ancient times. Modern alchemy bears little resemblance to its oldest forms, but the stereotype of the wart-nosed witch remains, for better or worse.
 The famous Raneshi 'desert riders' are among the most skilled swordsmen in the world. They'd all kill their own mother for a piece of coin.
 Presdigitation is often known as the apprentice's friend, as it helps remove char and soot before the Magos notices.
@@ -238,24 +238,63 @@ A stew is only as good as its ingredients - the better they are, the more fillin
 Most food eventually spoils if kept outside of a chest for long enough, unless packed in ration wrapping paper. Just one piece from the Inn is enough to keep even the most extravagent cakes and finemeals fresh until the week's end; a blessing for those who want to subsist off more than hardtack and coppiette, while adventuring abroad.
 Nocmas is the most cherished holidae amongst the elders and youth of Psydonia, where the harshest nites of the winter solstice are countered with freshly-baked pastries and freely-exchanged books. Naturally, the Holy Psydonic Inquisition has barred Nocmas from being practiced within Otava's borders, on the grounds of it 'corrupting the youth with unholy thoughts of progress.'
 Amongst many pre-Orthodoxic denominations of Psydonism, it is traditional to not invoke His name; for to do so outside of the gravest circumstances would be to dishonor His sacrifice. Instead, they honor Him as 'the Weeping God' - most adrently, through grand and elaborate rituals performed on the winter solstice.
+Worship of the Archdevil is rumored, but scarely proven. Ushering in the complete annihilation of reality, as it turns out, is the only line that not even the most ardent Ascendants or Psydonians will dare to cross.
+The Northern Empty's landscape has been irreversably altered by the calamities that had been hosted upon its soil; the birth of the Archdevil's invasion, and the death of Zizo's celestial empire.
+Better known as the Fjalls, the Northern Empty is rumored to hide Psydonia's most well-sought truths beneath its permafrost. The few Fjallic natives who've embarked southward rarely entertain such rumors, however.
+In ancient tymes, the Archdevil's worshippers symbolized their faith with a blazing vortex. Purportances of it instead representing the Sun, preceding Astrata's reign, are harshly punished by the Church's scholars.
+Whirlwinds, though rare, are unmatched in terms of sheer devastation. Worshippers of the Pantheon oft-attribute them as conduits of divine retribution, while Psydonians fear them as spasms of Archdevyllic magicka.
+Corrupted silver burns the unanointed palm, and sunders the lyving without mercy. Such is born from dark magycks, known best by the lyches and necromancers of Zizo.
+Zizo sacrificed the entirety of Her people to ascend, but something went terribly wrong. Now, a million are one; and in the darkest nites, they say you can see Her crimson vortex screaming through the dimmest stars.
+Zizo sought to save Her people from an infertilizing ailment that would soon doom them to extinction. All that She needed was a sliver of His power; yet even She could've never accounted for how weak the filament was.
+Zaelarion, Adonai, Vheslyn. You will know these names, in due tyme.
+Acid is an unnatural ichor that is rarely found elsewhere, beyond the Underdark's most deepest pits. It needs only a moment to turn even the hardiest vessels into naught-but-ash.
+Mount Golgatha once hosted the final battle between the mortal vessels of Ravox and Graggar. When His blow cleaved Graggar's neck asunder, Ravox sought to bury the decapitated remains within its magmatic depths.
+Mount Decapitation is always blanketed in a thick layer of snow, owing to its elevation. It cradles many secrets and riches beneath the snow, yet plenty of perils as well.
+The Tomb of Alotheos is a massive dungeon, found in the thickets of Mount Decaptation's northern treelines. It is the cause for Azuria's unusually high amount of visiting Adventurers; after all, a seemingly untouched catacomb with hundreds of treasure-stuffed rooms almost sounds too good to be true.
+No one is actually quite sure as to who Alotheos was, though there are plenty of rumors to pick from. Some say it was an ancient king, others purport it to've been a long-forgotten architect, while a few even purport it to be the true name of Matthios - before His ascension, of course.
+Strange dreams seem to trail all who inhabit Azuria. To hear someone remarking about a 'week' with unusual and unfortunate fates isn't uncommon, but one should be wary to discern whatever facts might've been laced into such fiction.
+Azuria cradles the remains of the Comet - and with it, the power to alter the very fate of Psydonia itself.
+Some say that the Psydonites of the future have created TYME-MACHINES, in order to prevent the eternal darkness from coming to pass.
+If you are staying in a wayside inn and two men force entry to your room? Kill them with your crossbow.
+The evil ZYDON sent down his COMET to destroy the GREAT WORM, and for thousands of yils you will pay the price.
+Fire is orange-red, and sometimes sylver-white. If you see any other colors of fire, please inform the Inquisition immediately.
+Insert the needle into your eye. Open your mind to the truth - that this world must fall, and all within it rendered to ash.
+TRIUMPHS can be earned through either surviving a week's trials, or by completing whatever tribulations sprout up along the way. These can be exchanged in the LOADOUT for a wide variety of cosmetic decorations.
+I love you. I love you. I love you. 
+Dwarves.
+Dwarves like to blow stuff up!
+You are a knave!
+It's a tough fight ahead, but happiness has to be fought for.
+The Duchy of Azuria beat back the Hammerholdian Border Reivers in 1430 at a great cost. Some still lurk in the forests, biding their tyme.
+You now face divine judgement. May it extend eternally.
+BAITING is a suboptimal combat strategy. Never use it. Instead, stab your foe in the chest until they perish.
+FEINT attack the SKELETONS!
+BEWARE those who venerate the ARCHDEVIL. The INSANE, the BROKEN, the SADISTIC, and YOU.
+BEWARE those who venerate the WEEPER. The INSANE, the ZEALOUS, the FOOLISH, and YOU.
+BEWARE those who venerate the TEN. The INSANE, the VAINGLORIOUS, the DELUDED, and YOU.
+THE PROFANE SABBATH DRAWS CLOSE. SEND WORD; THE END IS NIGH.
+A SEA OF PHLOGISTON. A RAINBOW CASTLE IN THE SKIES. THE FINAL VOYAGE.
+A WEEPING PSICROSS. A RING OF DRAGONSTONE. A FLAMING DORPEL.
+A BURNING WORLD. A CLENCHED FIST. A STAINED BLADE.
+A DREAMER'S MAZE. A MOUNTAIN OF CORPSES. AN ILLUSIONARY TRUTH.
+PLACES, EVERYBODY! WE'RE BACK ON THE STAGE IN FIVE MINUTES!
+..AND THAT'S A WRAP!
+..AND THAT'S ALL SHE WROTE!
+VESTUMED ACTOR, DID YOU REMEMBER TO REHEARSE YOUR LINES?
+ENJOYING THE WEEK? REFILL YOUR POTIONS - YOU'LL LOVE WHAT'S COMING NEXT.
+THE CURTAINS BEGIN TO CLOSE, AND I TAKE A BOW; YET THE AUDIENCE ROARS - 'ENCORE, ENCORE!'
+GODMACHINE, I BESEECH YOU! RUPTURE THE FILAMENT, AND GIFT ME THE POWER THAT HE HAD LEFT BEHIND!
+ADAMANTIUM? MITHRIL? POPPYCOCK!
 SEVEN DAES. SEVEN DAES ARE ALL I CAN SPARE TO PARLAY WITH THEE.
 REBOLT. RECALIBRATE. REENAGE.
 WHEN WAS THE LAST TIME YOU SAW A SAIGA WILDKIN?
 A CLEAVED HEAD NO LONGER PLOTS.
 STRIKE FAST AND STRIKE TRUE: THE BLADE IS MY GOD.
 IT'S OVER!
-BEWARE those who venerate the ARCH-DEVIL. The INSANE, the BROKEN, the SADISTIC, and YOU.
+IT BEGINS!
 LET CHAOS TAKE THE WORLD.
-Some say that the Psydonites of the future have created Tyme-Machines, to prevent the eternal darkness from coming to pass. 
-If you are staying in a wayside inn and two men force entry to your room? Kill them with your crossbow.
-The evil ZYDON sent down his COMET to destroy the GREAT WORM, and for thousands of yils you will pay the price.
-Fire is orange-red, and sometimes sylver-white. If you see any other colors of fire, please inform the Inquisition immediately.
-Insert the needle into your eye. Open your mind to the truth - that this world must fall, and all within it rendered to ash.
-BAITING is a suboptimal combat strategy. Never use it. Instead, stab your foe in the chest until they perish.
-I love you. I love you. I love you. 
-Dwarves.
-The Duchy of Azuria beat back the Hammerholdian Border Reivers in 1430 at a great cost. Some still lurk in the forests, biding their tyme.
-You now face divine judgement. May it extend eternally.
 FIX YOUR HEART OR DIE.
 HELL IS REAL.
+LIMIT?! I GOT YOUR LIMIT RIGHT HERE!
 YOU WILL KNOW HIM WHEN HE COMES.
+I AM %HERO%.
