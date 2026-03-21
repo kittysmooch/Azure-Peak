@@ -277,6 +277,11 @@
 	desc = "A mound of sugar, shaped into a decorative house. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
 	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/house
 
+/obj/item/reagent_containers/food/snacks/grown/sugarshape/tree
+	name = "sugarshape of tree"
+	desc = "A mound of sugar, shaped into a decorative tree. It yearns to be completed beneath an oven's heat, or to be milled back down into sugarpowder."
+	cooked_type = /obj/item/reagent_containers/food/snacks/sugarstatue/tree
+
 /obj/item/reagent_containers/food/snacks/sugarstatue
 	name = "sugarglass statue"
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a statue. Deliciously regal!"
@@ -394,3 +399,9 @@
 	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a humble abode. Deliciously cozy!"
 	icon_state = "sugarstatuehouse"
 	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/sugarstatue/tree
+	name = "sugarglass tree"
+	desc = "A decorative piece of sugarglass, meticulously fashioned to mimic a thriving tree. Deliciously natural!"
+	icon_state = "sugarstatuetree"
+	bitesize = 3
