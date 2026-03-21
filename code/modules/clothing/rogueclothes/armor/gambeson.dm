@@ -272,7 +272,7 @@
 	detail_tag = "_detail"
 	detail_color = "#6e423a"
 	armor = ARMOR_MAILLE
-	slot_flags = ITEM_SLOT_SHIRT
+	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	sellprice = 250
 	shiftable = FALSE
 	unenchantable = TRUE
