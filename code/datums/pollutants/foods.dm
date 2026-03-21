@@ -40,6 +40,18 @@
 	name = "freshly baked chocolate cookies"
 	name = "freshly baked chocolate cookies"
 
+/datum/pollutant/food/cookies_caramel
+	name = "freshly baked caramelized cookies"
+	name = "freshly baked caramelized cookies"
+
+/datum/pollutant/food/cookies_dragee
+	name = "freshly baked herbal cookies"
+	name = "freshly baked herbal cookies"
+
+/datum/pollutant/food/cookies_raisins
+	name = "freshly baked raisined cookies"
+	name = "freshly baked raisined cookies"
+
 /datum/pollutant/food/bread
 	name = "fresh baked bread"
 	scent = "fresh baked bread"
