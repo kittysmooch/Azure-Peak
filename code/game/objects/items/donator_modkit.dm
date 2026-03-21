@@ -365,7 +365,7 @@
 		)
 	result_item = null
 
-/obj/item/enchantingkit/triumph_weaponkit_rock
+/obj/item/enchantingkit/weapon/triumph_weaponkit_rock
 	name = "'Rockhillian' longsword morphing elixir"
 	desc = "A small container of special morphing dust, perfect to make a specific item. It can be used to alter the appearance of.. </br>..a Steel Longsword.. </br>..a Steel Broadsword.. </br>..or an Executioner Sword."
 	target_items = list(
