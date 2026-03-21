@@ -7,6 +7,7 @@
 	icon_state = "enchanting_kit"
 	w_class = WEIGHT_CLASS_SMALL	//So can fit in a bag, we don't need these large. They're just used to apply to items.
 	var/list/target_items = list()
+	/// Result item we'll exchange it to. Currently /weapon/ type kits use this as an example they'll copy all the visual data from. Keep this in mind if this never gets properly refactored!
 	var/result_item = null
 
 /obj/item/enchantingkit/pre_attack(obj/item/I, mob/user)
