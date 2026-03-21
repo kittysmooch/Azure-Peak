@@ -63,6 +63,8 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 	var/channel
 	var/datum/sound_group/sound_group
 	var/starttime // A world.time snapshot of when the loop was started.
+	/// Which bitflag pref we check for when playing this to listeners, if any. This will check for its ABSENCE, not its presence.
+	var/filter_pref	
 
 /datum/looping_sound/New(_parent, start_immediately=FALSE, _direct=FALSE, _channel = 0)
 /*	if(!mid_sounds)
@@ -240,7 +242,9 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 		var/mob/M = C.mob
 		if(!M)
 			continue
-
+		if(filter_pref)
+			if(!(C.prefs.toggles & filter_pref))
+				continue
 		M.playsound_local(null, soundfile, 0, vary, frequency, falloff, channel, FALSE, null, src) 
 
 /datum/looping_sound/proc/begin_loop()
