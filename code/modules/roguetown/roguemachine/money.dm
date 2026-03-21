@@ -206,7 +206,8 @@ GLOBAL_VAR(moneymaster)
 */
 /obj/structure/roguemachine/money/obj_break(damage_flag)
 	..()
-	budget2change(budget)
+	var/turf/T = get_turf(src)
+	budget2change(budget, custom_turf = T)
 	budget = 0
 	update_icon()
 
@@ -219,7 +220,8 @@ GLOBAL_VAR(moneymaster)
 
 /obj/structure/roguemachine/money/Destroy()
 	set_light(0)
-	budget2change(budget)
+	var/turf/T = get_turf(src)
+	budget2change(budget, custom_turf = T)
 	budget = 0
 	return ..()
 
