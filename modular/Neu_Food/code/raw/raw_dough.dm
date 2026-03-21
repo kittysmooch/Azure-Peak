@@ -120,7 +120,6 @@
 				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw(loc)
 				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/hardtack_raw(loc)
-				qdel(I)
 				qdel(src)
 		else
 			to_chat(user, span_warning("You need to put [src] on a table to score it into crackerdough!"))
