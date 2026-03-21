@@ -151,7 +151,7 @@
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedough6"
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
-	faretype = FARE_FINE
+	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_TINY
 	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
 	bitesize = 8
@@ -187,7 +187,7 @@
 	desc = "Crispy, moist, sweet and savory; a sliver of ontological goodness, cradled in the palm of your hand."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
 	icon_state = "cookiedough_slice"
-	faretype = FARE_FINE
+	faretype = FARE_LAVISH
 	w_class = WEIGHT_CLASS_NORMAL
 	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY + SNACK_POOR)
 	bitesize = 2
@@ -195,6 +195,282 @@
 	dropshrink = 0.8
 	tastes = list("rich and gooey chocolate" = 1, "crispy dough with a hint of butteriness" = 1)
 	foodtype = GRAIN | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw
+	name = "slab of half-done dragéelidough"
+	desc = "Doughy, soft, and speckled with dragée dropplings. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more dragée, to round it out?"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_halfcookiedoughd"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/dragee))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Finishing the dragée-speckled cookiedough with more dragée..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookied_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with dragée!"))
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/cookied_raw
+	name = "slab of dragéelidough"
+	desc = "Doughy, soft, and drenched in dragée. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_cookiedoughd"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookied
+	cooked_smell = /datum/pollutant/food/cookies_dragee
+	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of oddly balanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookied
+	name = "baked slab of dragéelidough"
+	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of your youth - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughd6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("shards of candied herbiness" = 1, "crispy dough with a hint of butteriness" = 1)
+	bitesize = 8
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookiesliced
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_LONG
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookied/update_icon()
+	if(slices_num)
+		icon_state = "cookiedoughd[slices_num]"
+	else
+		icon_state = "cookiedoughd_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/cookied/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/cookiesliced
+	name = "dragéelie"
+	desc = "Crispy, moist, sweet and savory.. and in this case, oozing with sweetened lifeblood; a sliver of ontological goodness, cradled in the palm of your hand."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughd_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY + SNACK_POOR, /datum/reagent/medicine/healthpot = 5)
+	bitesize = 2
+	rotprocess = SHELFLIFE_LONG
+	dropshrink = 0.8
+	tastes = list("shards of candied herbiness" = 1, "crispy dough with a hint of butteriness" = 1)
+	foodtype = GRAIN | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw
+	name = "slab of half-done carameliedough"
+	desc = "Doughy, soft, and speckled with caramel dropplings. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more caramel, to round it out?"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_halfcookiedoughc"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	tastes = list("raw dough and carameliness" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/caramel))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Finishing the caramel-speckled cookiedough with more caramel dropplings..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookiec_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with caramel!"))
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/cookiec_raw
+	name = "slab of carameliedough"
+	desc = "Doughy, soft, and drenched in caramel. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_cookiedoughc"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookiec
+	cooked_smell = /datum/pollutant/food/cookies_caramel
+	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookiec
+	name = "baked slab of carameliedough"
+	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of times abroad - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughc6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("tooth-grippingly sweet caramel" = 1, "crispy dough with a hint of butteriness" = 1)
+	bitesize = 8
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookieslicec
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_LONG
+	foodtype = GRAIN | DAIRY
+
+/obj/item/reagent_containers/food/snacks/rogue/cookiec/update_icon()
+	if(slices_num)
+		icon_state = "cookiedoughc[slices_num]"
+	else
+		icon_state = "cookiedoughc_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/cookiec/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/cookieslicec
+	name = "caramelie"
+	desc = "Crispy, moist, sweet and savory.. and a bit stickier than usual; a sliver of ontological goodness, cradled in the palm of your hand."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughc_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY + SNACK_POOR)
+	bitesize = 2
+	rotprocess = SHELFLIFE_LONG
+	dropshrink = 0.8
+	tastes = list("tooth-grippingly sweet caramel" = 1, "crispy dough with a hint of butteriness" = 1)
+	foodtype = GRAIN | DAIRY
+
+//
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw
+	name = "slab of half-done raelseinidough"
+	desc = "Doughy, soft, and speckled with raisins. A little less than 'unacceptable', but still far too raw to peck at.. maybe some more raisins, to round it out?"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_halfcookiedoughr"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY | FRUIT
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw/attackby(obj/item/I, mob/living/user, params)
+	var/found_table = locate(/obj/structure/table) in (loc)
+	update_cooktime(user)
+	if(istype(I, /obj/item/reagent_containers/food/snacks/rogue/raisins))
+		if(isturf(loc)&& (found_table))
+			playsound(get_turf(user), 'sound/foley/dropsound/food_drop.ogg', 40, TRUE, -1)
+			to_chat(user, span_notice("Finishing the raisin-speckled cookiedough with more raisins..."))
+			if(do_after(user,short_cooktime, target = src))
+				add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
+				new /obj/item/reagent_containers/food/snacks/rogue/foodbase/cookier_raw(loc)
+				qdel(I)
+				qdel(src)
+		else
+			to_chat(user, span_warning("You need to put [src] on a table to stuff it with raisins!"))
+	else
+		return ..()
+
+/obj/item/reagent_containers/food/snacks/rogue/foodbase/cookier_raw
+	name = "slab of raelseinidough"
+	desc = "Doughy, soft, and drenched in raisins. Now that is acceptable, through-and-through! Time for a stint in the oven, first!"
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "raw_cookiedoughr"
+	w_class = WEIGHT_CLASS_NORMAL
+	eat_effect = null
+	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookier
+	cooked_smell = /datum/pollutant/food/cookies_raisins
+	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
+	foodtype = GRAIN | DAIRY | FRUIT
+
+/obj/item/reagent_containers/food/snacks/rogue/cookier
+	name = "baked slab of raelseinidough"
+	desc = "The inverse to hardtack; both in reputation and taste. Just a passing whiff reminds you of warmer daes - though, perhaps it wouldn't hurt to bring out a knife and share that feeling with some friends."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughr6"
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY)
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_TINY
+	tastes = list("little bursts of fruity sweetness" = 1, "crispy dough with a hint of butteriness" = 1)
+	bitesize = 8
+	slices_num = 6
+	slice_path = /obj/item/reagent_containers/food/snacks/rogue/cookieslicer
+	slice_batch = FALSE
+	slice_sound = TRUE
+	rotprocess = SHELFLIFE_LONG
+	foodtype = GRAIN | DAIRY | FRUIT
+
+/obj/item/reagent_containers/food/snacks/rogue/cookier/update_icon()
+	if(slices_num)
+		icon_state = "cookiedoughr[slices_num]"
+	else
+		icon_state = "cookiedoughr_slice"
+
+/obj/item/reagent_containers/food/snacks/rogue/cookier/On_Consume(mob/living/eater)
+	..()
+	if(slices_num)
+		if(bitecount == 3)
+			slices_num = 5
+		if(bitecount == 4)
+			slices_num = 4
+		if(bitecount == 5)
+			slices_num = 3
+		if(bitecount == 6)
+			slices_num = 2
+		if(bitecount == 7)
+			changefood(slice_path, eater)
+
+/obj/item/reagent_containers/food/snacks/rogue/cookieslicer
+	name = "raelseini"
+	desc = "Crispy, moist, sweet and savory.. and the dreams of a warmer tomorrow; a sliver of ontological goodness, cradled in the palm of your hand."
+	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
+	icon_state = "cookiedoughr_slice"
+	faretype = FARE_FINE
+	w_class = WEIGHT_CLASS_NORMAL
+	list_reagents = list(/datum/reagent/consumable/nutriment = SNACK_CHUNKY + SNACK_POOR)
+	bitesize = 2
+	rotprocess = SHELFLIFE_LONG
+	dropshrink = 0.8
+	tastes = list("little bursts of fruity sweetness" = 1, "crispy dough with a hint of butteriness" = 1)
+	foodtype = GRAIN | DAIRY | FRUIT
 
 // MISSING RECIPE
 /obj/item/reagent_containers/food/snacks/rogue/cookie_unused		//It's a biscuit.......
@@ -594,7 +870,7 @@
 	name = "dot tart"
 	desc = "A small pastry filled with jammed fruits, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "baked_dottart"
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	bitesize = 3
 	faretype = FARE_FINE
@@ -608,56 +884,56 @@
 	name = "tangerine dot tart"
 	desc = "A small pastry filled with jammed tangerines, for when a whole pie would be inappropiate for canapes. </br>'If we're kind and polite, the world will be right.'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "tangerine_dottart"
 	tastes = list("crispy dough" = 1, "tangerine jam with a hint of tarty-sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/plum
 	name = "plum dot tart"
 	desc = "A small pastry filled with jammed plums, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "plum_dottartt"
 	tastes = list("crispy dough" = 1, "plum jam with a hint of honey-sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
 	name = "blackberry dot tart"
 	desc = "A small pastry filled with jammed blackberries, for when a whole pie would be inappropiate for canapes. </br>'I did it for me. I liked it.. I was good at it. And I felt.. alive.'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "blackberry_dottart"
 	tastes = list("crispy dough" = 1, "blackberry jam with a hint of sour-sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/raspberry
 	name = "raspberry dot tart"
 	desc = "A small pastry filled with jammed raspberries, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "raspberry_dottart"
 	tastes = list("crispy dough" = 1, "raspberry jam with a hint of tartness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/strawberry
 	name = "strawberry dot tart"
 	desc = "A small pastry filled with jammed strawberries, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "strawberry_dottart"
 	tastes = list("crispy dough" = 1, "strawberry jam with a hint of sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/pear
 	name = "pear dot tart"
 	desc = "A small pastry filled with jammed pears, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "pear_dottart"
 	tastes = list("crispy dough" = 1, "pear jam with a hint of tarty-honeyiness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/apple
 	name = "apple dot tart"
 	desc = "A small pastry filled with jammed apples, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "apple_dottart"
 	tastes = list("crispy dough" = 1, "caramelized apples with a hint of tartness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/goldapple
 	name = "ambrosia dot tart"
 	desc = "A small pastry filled with the jam of a divine fruit, for when a whole pie would be inappropiate for canapes. </br>'Why must the most forbidden fruits taste the sweetest?'"
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "dottart"
+	icon_state = "gapple_dottart"
 	list_reagents = list(/datum/reagent/medicine/stronghealth = 10)
 	tastes = list("crispy dough" = 1, "divinely fruity sweetness" = 1)
 
