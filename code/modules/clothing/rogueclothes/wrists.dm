@@ -426,6 +426,6 @@
 	icon = 'icons/roguetown/clothing/special/hand.dmi'
 	icon_state = "bracersheath"
 
-/obj/item/clothing/wrists/roguetown/bracers/leather/heavy/hand/ComponentInitialize()
+/obj/item/clothing/wrists/roguetown/bracers/brigandine/hand/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/holster, /obj/item/rogueweapon/huntingknife, null, list(/obj/item/rogueweapon/huntingknife/idagger/stake, /obj/item/rogueweapon/huntingknife/idagger/silver/stake))
