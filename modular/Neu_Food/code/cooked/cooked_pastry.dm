@@ -113,7 +113,6 @@
 	icon_state = "raw_halfcookiedough"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw/attackby(obj/item/I, mob/living/user, params)
@@ -142,7 +141,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookie
 	cooked_smell = /datum/pollutant/food/cookies_chocolate
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookie
@@ -205,7 +203,6 @@
 	icon_state = "raw_halfcookiedoughd"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw/attackby(obj/item/I, mob/living/user, params)
@@ -234,7 +231,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookied
 	cooked_smell = /datum/pollutant/food/cookies_dragee
-	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of oddly balanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookied
@@ -297,7 +293,6 @@
 	icon_state = "raw_halfcookiedoughc"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and carameliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw/attackby(obj/item/I, mob/living/user, params)
@@ -326,7 +321,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookiec
 	cooked_smell = /datum/pollutant/food/cookies_caramel
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookiec
@@ -389,7 +383,6 @@
 	icon_state = "raw_halfcookiedoughr"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw/attackby(obj/item/I, mob/living/user, params)
@@ -418,7 +411,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookier
 	cooked_smell = /datum/pollutant/food/cookies_raisins
-	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/cookier
@@ -891,7 +883,7 @@
 	name = "plum dot tart"
 	desc = "A small pastry filled with jammed plums, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "plum_dottartt"
+	icon_state = "plum_dottart"
 	tastes = list("crispy dough" = 1, "plum jam with a hint of honey-sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
@@ -956,7 +948,7 @@
 	tastes = list("chewy, crispy-edged butterdough" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
-	rotprocess = SHELFLIFE_EXTREME
+	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY
 
@@ -990,7 +982,7 @@
 	tastes = list("chewy, crispy-edged butterdough" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | DAIRY
@@ -1022,7 +1014,7 @@
 	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly-sour jamminess" = 1, "a lavish start to the dae" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | DAIRY | FRUIT
@@ -1037,7 +1029,7 @@
 	tastes = list("chewy, crispy-edged butterdough" = 1, "sweet-tarty jamminess" = 1, "a lavish start to the dae" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_EXTREME
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | DAIRY | FRUIT
@@ -1058,7 +1050,7 @@
 	tastes = list("chewy, crispy-edged butterdough" = 1, "sweetly caramelized pears" = 1)
 	slice_batch = FALSE
 	slice_sound = TRUE
-	rotprocess = SHELFLIFE_EXTREME
+	rotprocess = SHELFLIFE_LONG
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
 
@@ -1092,7 +1084,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly caramelized pears" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1147,7 +1139,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted plums" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1202,7 +1194,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted lemons" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1257,7 +1249,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly jellied tangerines" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1312,7 +1304,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted blackberries" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1367,7 +1359,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted raspberries" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1422,7 +1414,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "sweetly frosted jackberries" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1477,7 +1469,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "bitterly frosted jackberries" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_DECENT, /datum/reagent/berrypoison = 12)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/snackbuff
 	foodtype = GRAIN | FRUIT | DAIRY
@@ -1532,7 +1524,7 @@
 	tastes = list("chewy, crispy-edged butterdough", "rich and gooey chocolate" = 1)
 	list_reagents = list(/datum/reagent/consumable/nutriment = BUTTERDOUGH_NUTRITION + SNACK_CHUNKY)
 	bitesize = 3
-	rotprocess = null
+	rotprocess = SHELFLIFE_LONG
 	dropshrink = 0.8
 	eat_effect = /datum/status_effect/buff/greatsnackbuff
 	foodtype = GRAIN | DAIRY
