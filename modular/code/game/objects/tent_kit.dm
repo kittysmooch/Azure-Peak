@@ -42,7 +42,7 @@
 /obj/item/tent_kit/proc/get_max_walls()
     var/list/ground_coords = get_wall_coordinates(null, NORTH)
     var/list/upper_coords = get_upper_wall_coordinates(null, NORTH)
-    return ground_coords.len + upper_coords.len
+    return ground_coords.len + upper_coords.len - get_max_doors()
 
 /obj/item/tent_kit/Initialize(mapload)
     . = ..()
@@ -441,3 +441,37 @@
 	if(confirm == "Yes" && get_dist(user, src) <= 1)
 		parent_tent.disassemble_tent(user)
 	return TRUE
+
+/obj/item/tent_kit/examine(mob/user)
+	. = ..()
+	if(assembled)
+		. += span_notice("This tent kit is currently assembled as a [tent_width]x[tent_length] tent.")
+	else
+		. += span_notice("This tent kit is packed and ready for assembly.")
+	if(repair_debt_cloth > 0 || repair_debt_silk > 0)
+		. += span_warning("The tent requires [repair_debt_cloth] cloth and [repair_debt_silk] silk to be fully functional.")
+
+	// Show condition of tent components
+	var/total_walls = 0
+	var/damaged_walls = 0
+	for(var/obj/structure/tent_wall/wall in tent_walls)
+		total_walls++
+		if(wall && wall.obj_integrity < wall.max_integrity)
+			damaged_walls++
+
+	var/total_doors = 0
+	var/damaged_doors = 0
+	for(var/obj/structure/roguetent/door in tent_doors)
+		total_doors++
+		if(door && door.obj_integrity < door.max_integrity)
+			damaged_doors++
+
+	if(damaged_walls > 0)
+		. += span_warning("[damaged_walls] of [total_walls] tent walls are damaged.")
+	else
+		. += span_notice("All [total_walls] tent walls are in good condition.")
+
+	if(damaged_doors > 0)
+		. += span_warning("[damaged_doors] of [total_doors] tent doors are damaged.")
+	else
+		. += span_notice("All [total_doors] tent doors are in good condition.")
