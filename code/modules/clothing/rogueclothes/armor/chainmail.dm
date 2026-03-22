@@ -126,6 +126,7 @@
 	armor_class = ARMOR_CLASS_LIGHT //wearable by spymaster and advisor
 	armor = ARMOR_BRIGANDINE //only chest armour which uses this
 	sellprice = 250
+	unenchantable = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/hand/advisor
 	detail_color = "#6678c9"
