@@ -6,7 +6,7 @@
 
 // === TENT KIT ITEM ===
 /obj/item/tent_kit
-    name = "small tent kit"
+    name = "Small Tent Kit"
     desc = "A compact kit containing everything needed to set up a weatherproof tent. The tent will be oriented based on the direction you're facing when assembling."
     icon = 'icons/roguetown/misc/structure.dmi'
     icon_state = "tent_kit"
@@ -121,27 +121,16 @@
                 to_chat(user, span_warning("[O] is blocking the tent perimeter!"))
                 return FALSE
 
-    // Upper level checks are soft - tent can work ground-only
-    var/can_build_above = TRUE
+    // Upper level is checked per-tile during assembly, just inform the user
+    var/any_blocked = FALSE
     var/list/upper_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
     for(var/turf/check_turf in upper_coords)
         if(!check_turf || !is_openspace(check_turf))
-            can_build_above = FALSE
-            break
-        if(check_turf.density)
-            can_build_above = FALSE
+            any_blocked = TRUE
             break
 
-    if(can_build_above)
-        var/list/upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
-        for(var/turf/check_turf in upper_wall_coords)
-            if(!check_turf) continue
-            if(check_turf.density)
-                can_build_above = FALSE
-                break
-
-    if(!can_build_above)
-        to_chat(user, span_notice("No room above - tent will provide overhead protection via roof coverage."))
+    if(any_blocked)
+        to_chat(user, span_notice("Some overhead space is blocked - the tent roof will be built where possible."))
     return TRUE
 
 /obj/item/tent_kit/proc/get_wall_coordinates(turf/center_turf, assembly_dir)
@@ -264,34 +253,10 @@
         to_chat(user, span_warning("This kit is too damaged! Repair it with cloth and silk first."))
         return
 
-    // Check if upper level is buildable
-    var/can_build_above = TRUE
-    var/turf/above_turf = GET_TURF_ABOVE(center_turf)
-    if(!above_turf || !is_openspace(above_turf))
-        can_build_above = FALSE
-
     var/list/door_coords = get_door_coordinates(center_turf, assembly_dir)
     var/list/wall_coords = get_wall_coordinates(center_turf, assembly_dir)
-    var/list/roof_floor_coords = list()
-    var/list/upper_wall_coords = list()
-
-    if(can_build_above)
-        roof_floor_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
-        upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
-        // Verify upper level is actually clear
-        for(var/turf/check_turf in roof_floor_coords)
-            if(!check_turf || !is_openspace(check_turf))
-                can_build_above = FALSE
-                roof_floor_coords = list()
-                upper_wall_coords = list()
-                break
-        if(can_build_above)
-            for(var/turf/check_turf in upper_wall_coords)
-                if(!check_turf || check_turf.density)
-                    can_build_above = FALSE
-                    roof_floor_coords = list()
-                    upper_wall_coords = list()
-                    break
+    var/list/roof_floor_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
+    var/list/upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
 
     var/list/available_walls = tent_walls.Copy()
     var/list/available_doors = tent_doors.Copy()
@@ -305,7 +270,6 @@
         wall.dir = get_wall_dir(center_turf, wall_turf)
         wall.invisibility = 0
         wall.alpha = 255
-        wall_turf.reassess_stack()
         RegisterSignal(wall, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
         RegisterSignal(wall, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
 
@@ -316,18 +280,18 @@
         var/turf/new_roof_turf = roof_floor_turf.ChangeTurf(/turf/open/floor/rogue/twig, flags = CHANGETURF_INHERIT_AIR)
         roof_turfs += new_roof_turf
 
-    // --- ROOF WALLS ---
+    // --- ROOF WALLS (only where openspace exists above) ---
     for(var/turf/upper_wall_turf in upper_wall_coords)
         if(!available_walls.len) break
+        if(!is_openspace(upper_wall_turf)) continue
 
         var/obj/structure/tent_wall/wall = available_walls[1]
         available_walls.Cut(1, 2)
         wall.forceMove(upper_wall_turf)
         wall.dir = get_wall_dir(center_turf, upper_wall_turf)
-        wall.name = "tent roof wall"
+        wall.name = "Tent Roof Wall"
         wall.invisibility = 0
         wall.alpha = 255
-        upper_wall_turf.reassess_stack()
         RegisterSignal(wall, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
         RegisterSignal(wall, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
 
@@ -341,13 +305,19 @@
         door.alpha = 255
         door.density = TRUE
         door.update_icon()
-        door_turf.reassess_stack()
         RegisterSignal(door, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
         RegisterSignal(door, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
 
-    visible_message(span_notice("[user] assembles [src] into a [can_build_above ? "full tent structure" : "ground-level shelter"]."))
+    var/built_above = (roof_turfs.len > 0)
+    visible_message(span_notice("[user] assembles [src] into a [built_above ? "full tent structure" : "ground-level shelter"]."))
 
-    // --- INTERNAL ROOF LOGIC ---
+    // --- REASSESS STACKS (after all components placed, before pseudo_roof) ---
+    for(var/turf/T in wall_coords + door_coords)
+        T.reassess_stack()
+    for(var/turf/T in upper_wall_coords)
+        if(T) T.reassess_stack()
+
+    // --- INTERNAL ROOF LOGIC (must be after reassess_stack to avoid reset) ---
     var/list/internal_coords = get_tent_coordinates(center_turf, assembly_dir)
     for(var/turf/T in internal_coords)
         T.pseudo_roof = TRUE
@@ -429,7 +399,7 @@
 // === TENT WALL ===
 /obj/structure/tent_wall
     parent_type = /obj/structure/tent_component // Inherits from base
-    name = "tent wall"
+    name = "Tent Wall"
     desc = "A sturdy fabric wall. Shift-click from the inside to pack the tent."
     icon = 'icons/turf/roguewall.dmi'
     icon_state = "tent"
@@ -467,7 +437,7 @@
 
 // === GER KIT ===
 /obj/item/tent_kit/ger
-    name = "ger kit"
+    name = "Ger Kit"
     desc = "A large circular tent kit bundled together. Very durable and often used by nomadic travellers of the steppes."
     icon_state = "tent_kit"
     tent_width = 5
@@ -481,7 +451,7 @@
 
 // === YURT KIT ===
 /obj/item/tent_kit/yurt
-    name = "yurt kit"
+    name = "Yurt Kit"
     desc = "A very large circular tent kit bundled together. Spacious and durable, and often used by nomadic families of the steppes."
     icon_state = "tent_kit"
     tent_width = 7
