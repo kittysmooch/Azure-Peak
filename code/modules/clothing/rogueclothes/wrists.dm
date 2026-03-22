@@ -418,7 +418,7 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
-/obj/item/clothing/wrists/roguetown/bracers/leather/heavy/hand
+/obj/item/clothing/wrists/roguetown/bracers/brigandine/hand
 	name = "hand's bracers"
 	desc = "Discretion had always been the better part of valour, and nobody understands that better than the one holding an ace up their sleeve."
 	color = null
