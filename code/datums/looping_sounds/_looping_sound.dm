@@ -171,9 +171,12 @@ GLOBAL_LIST_EMPTY(created_sound_groups)
 	if(direct)
 		if(ismob(thing))
 			var/mob/mob = thing
+			if(filter_pref && mob.client)
+				if(!(mob.client.prefs.toggles & filter_pref))
+					return
 			mob.playsound_local(mob, S, volume, vary, frequency, falloff, repeat = src, channel = channel)
 	else
-		var/list/R = playsound(thing, S, volume, vary, extra_range, falloff, frequency, channel, ignore_walls = ignore_walls, repeat = src)
+		var/list/R = playsound(thing, S, volume, vary, extra_range, falloff, frequency, channel, ignore_walls = ignore_walls, repeat = src, pref_toggle = (filter_pref ? filter_pref : null))
 		if(!R || !R.len)
 			R = list()
 		for(var/datum/weakref/listener_ref in thingshearing)

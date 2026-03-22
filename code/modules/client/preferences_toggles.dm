@@ -66,7 +66,7 @@
 	if(prefs)
 		prefs.toggles ^= SOUND_INSTRUMENTS
 		prefs.save_preferences()
-	to_chat(src, "You will[prefs.toggles & SOUND_INSTRUMENTS ? "" : " no longer"] hear instrument-played songs.")
+	to_chat(src, "You will[(prefs.toggles & SOUND_INSTRUMENTS) ? "" : " no longer"] hear instrument-played songs.")
 
 /client/verb/toggle_midis()
 	set category = "Options"
