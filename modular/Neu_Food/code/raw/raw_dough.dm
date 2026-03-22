@@ -7,7 +7,6 @@
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi' // I know but we are following Raw as a pre-pender
 	icon_state = "dough_base"
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dough_base/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -37,7 +36,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bread
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -107,7 +105,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/frybread
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/flatdough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -348,7 +345,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/bun
 	cooked_smell = /datum/pollutant/food/bun
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/doughslice/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -423,7 +419,6 @@
 	cooked_smell = /datum/pollutant/food/bookbread
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/butterdough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
@@ -677,7 +672,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/pastry
 	cooked_smell = /datum/pollutant/food/pastry
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 // Dough + rolling pin on table = flat dough. RT got some similar proc for this.
 /obj/item/reagent_containers/food/snacks/rogue/butterdoughslice/attackby(obj/item/I, mob/living/user, params)
@@ -789,7 +783,6 @@
 	cooked_smell = /datum/pollutant/food/muffin
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /*	.................   Piedough   ................... */
 /obj/item/reagent_containers/food/snacks/rogue/piedough
@@ -800,7 +793,6 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/foodbase/piebottom
 	cooked_smell = /datum/pollutant/food/pie_base
 	w_class = WEIGHT_CLASS_NORMAL
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/piedough/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -845,7 +837,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
 	process_step = 1
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/strudeldough/attackby(obj/item/I, mob/living/user, params)
 	update_cooktime(user)
@@ -883,7 +874,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slice_sound = TRUE
 	process_step = 1
-	tastes = list("raw dough" = 1, "a faint hint of imbalanced humors" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/tartdough/attackby(obj/item/I, mob/living/user, params)
 	var/found_table = locate(/obj/structure/table) in (loc)
