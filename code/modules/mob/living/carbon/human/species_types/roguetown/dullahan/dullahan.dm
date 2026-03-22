@@ -140,7 +140,7 @@
 		/datum/language/common,
 	)
 
-	restricted_virtues = list(/datum/virtue/utility/noble, /datum/virtue/utility/deathless)
+	restricted_virtues = list(/datum/virtue/utility/noble, /datum/virtue/utility/hollow)
 
 	stress_examine = TRUE
 	stress_desc = span_red("Accursed. I should keep my distance...")
