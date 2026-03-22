@@ -618,7 +618,7 @@
 /obj/item/reagent_containers/food/snacks/rogue/raspberrybread_uncooked
 	name = "raspberry-stuffed butterdough"
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
-	icon_state = "raspberry_dottart_base"
+	icon_state = "butterdough_raspberry"
 	desc = "A mound of raspberry-speckled butterdough, yet to be elevated with the knowledge of an oven's warmth."
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
