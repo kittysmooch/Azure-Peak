@@ -61,10 +61,24 @@
         tent_doors += door
 
 /obj/item/tent_kit/Destroy()
+    if(assembled)
+        // Clean up roof state without do_after or forceMove
+        for(var/obj/structure/tent_wall/wall in tent_walls)
+            UnregisterSignal(wall, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+        for(var/obj/structure/roguetent/door in tent_doors)
+            UnregisterSignal(door, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
+        for(var/turf/T in roof_tiles)
+            T.pseudo_roof = FALSE
+        for(var/turf/RT in roof_turfs)
+            RT.ChangeTurf(/turf/open/transparent/openspace, flags = CHANGETURF_INHERIT_AIR)
+        roof_turfs.Cut()
+        roof_tiles.Cut()
     for(var/obj/structure/tent_wall/wall in tent_walls)
         if(wall) qdel(wall)
     for(var/obj/structure/roguetent/door in tent_doors)
         if(door) qdel(door)
+    tent_walls.Cut()
+    tent_doors.Cut()
     return ..()
 
 /obj/item/tent_kit/proc/clean_components()
@@ -90,6 +104,7 @@
     to_chat(user, span_notice("You begin assembling the [name]..."))
     if(!do_after(user, setup_time, target = src))
         return
+    if(!check_assembly_space(setup_turf, user, assembly_dir)) return
     assemble_tent(setup_turf, user, assembly_dir)
 
 /obj/item/tent_kit/proc/check_assembly_space(turf/center_turf, mob/user, assembly_dir)
@@ -106,10 +121,27 @@
                 to_chat(user, span_warning("[O] is blocking the tent perimeter!"))
                 return FALSE
 
+    // Upper level checks are soft - tent can work ground-only
+    var/can_build_above = TRUE
     var/list/upper_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
     for(var/turf/check_turf in upper_coords)
-        if(!check_turf) continue
-        if(check_turf.density) return FALSE
+        if(!check_turf || !is_openspace(check_turf))
+            can_build_above = FALSE
+            break
+        if(check_turf.density)
+            can_build_above = FALSE
+            break
+
+    if(can_build_above)
+        var/list/upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
+        for(var/turf/check_turf in upper_wall_coords)
+            if(!check_turf) continue
+            if(check_turf.density)
+                can_build_above = FALSE
+                break
+
+    if(!can_build_above)
+        to_chat(user, span_notice("No room above - tent will provide overhead protection via roof coverage."))
     return TRUE
 
 /obj/item/tent_kit/proc/get_wall_coordinates(turf/center_turf, assembly_dir)
@@ -232,10 +264,34 @@
         to_chat(user, span_warning("This kit is too damaged! Repair it with cloth and silk first."))
         return
 
+    // Check if upper level is buildable
+    var/can_build_above = TRUE
+    var/turf/above_turf = GET_TURF_ABOVE(center_turf)
+    if(!above_turf || !is_openspace(above_turf))
+        can_build_above = FALSE
+
     var/list/door_coords = get_door_coordinates(center_turf, assembly_dir)
     var/list/wall_coords = get_wall_coordinates(center_turf, assembly_dir)
-    var/list/roof_floor_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
-    var/list/upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
+    var/list/roof_floor_coords = list()
+    var/list/upper_wall_coords = list()
+
+    if(can_build_above)
+        roof_floor_coords = get_upper_floor_coordinates(center_turf, assembly_dir)
+        upper_wall_coords = get_upper_wall_coordinates(center_turf, assembly_dir)
+        // Verify upper level is actually clear
+        for(var/turf/check_turf in roof_floor_coords)
+            if(!check_turf || !is_openspace(check_turf))
+                can_build_above = FALSE
+                roof_floor_coords = list()
+                upper_wall_coords = list()
+                break
+        if(can_build_above)
+            for(var/turf/check_turf in upper_wall_coords)
+                if(!check_turf || check_turf.density)
+                    can_build_above = FALSE
+                    roof_floor_coords = list()
+                    upper_wall_coords = list()
+                    break
 
     var/list/available_walls = tent_walls.Copy()
     var/list/available_doors = tent_doors.Copy()
@@ -249,7 +305,9 @@
         wall.dir = get_wall_dir(center_turf, wall_turf)
         wall.invisibility = 0
         wall.alpha = 255
+        wall_turf.reassess_stack()
         RegisterSignal(wall, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
+        RegisterSignal(wall, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
 
     // --- ROOF TILES (The Flooring) ---
     for(var/turf/roof_floor_turf in roof_floor_coords)
@@ -269,7 +327,9 @@
         wall.name = "tent roof wall"
         wall.invisibility = 0
         wall.alpha = 255
+        upper_wall_turf.reassess_stack()
         RegisterSignal(wall, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
+        RegisterSignal(wall, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
 
     // --- DOORS ---
     for(var/turf/door_turf in door_coords)
@@ -281,7 +341,11 @@
         door.alpha = 255
         door.density = TRUE
         door.update_icon()
+        door_turf.reassess_stack()
         RegisterSignal(door, COMSIG_PARENT_QDELETING, PROC_REF(part_destroyed))
+        RegisterSignal(door, COMSIG_MOVABLE_MOVED, PROC_REF(part_moved))
+
+    visible_message(span_notice("[user] assembles [src] into a [can_build_above ? "full tent structure" : "ground-level shelter"]."))
 
     // --- INTERNAL ROOF LOGIC ---
     var/list/internal_coords = get_tent_coordinates(center_turf, assembly_dir)
@@ -302,16 +366,28 @@
         to_chat(user, span_notice("You begin packing away the [name]..."))
         if(!do_after(user, 8 SECONDS, target = src)) return
 
+    if(user)
+        visible_message(span_notice("[user] disassembles the tent and packs it away."))
+
     for(var/obj/structure/tent_wall/wall in tent_walls)
-        UnregisterSignal(wall, COMSIG_PARENT_QDELETING)
+        var/turf/old_turf = get_turf(wall)
+        UnregisterSignal(wall, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
         wall.forceMove(src)
         wall.name = initial(wall.name)
+        wall.desc = initial(wall.desc)
         wall.alpha = initial(wall.alpha)
+        if(wall.damaged)
+            wall.damaged = FALSE
+            wall.opacity = initial(wall.opacity)
+        old_turf?.reassess_stack()
     for(var/obj/structure/roguetent/door in tent_doors)
-        UnregisterSignal(door, COMSIG_PARENT_QDELETING)
+        var/turf/old_turf = get_turf(door)
+        UnregisterSignal(door, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
         door.forceMove(src)
+        old_turf?.reassess_stack()
     for(var/turf/T in roof_tiles)
         T.pseudo_roof = FALSE
+        T.reassess_stack()
 
     // CLEANUP ROOF TURFS: Revert twig floors back to openspace
     for(var/turf/RT in roof_turfs)
@@ -319,6 +395,7 @@
     roof_turfs.Cut()
     roof_tiles.Cut()
 
+    parts_destroyed_count = 0
     assembled = FALSE
     anchored = FALSE
     invisibility = initial(invisibility)
@@ -327,12 +404,15 @@
     setup_cooldown_end = world.time + cooldown_duration
 
 /obj/item/tent_kit/proc/part_destroyed(obj/source)
+    UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED))
     parts_destroyed_count++
 
     if(istype(source, /obj/structure/tent_wall))
+        tent_walls -= source
         repair_debt_cloth += 2
         repair_debt_silk += 1
     else
+        tent_doors -= source
         repair_debt_cloth += 2
 
     if(parts_destroyed_count >= collapse_threshold)
@@ -340,6 +420,11 @@
         disassemble_tent(null, TRUE)
     else
         visible_message(span_danger("A support on the [name] was destroyed! It's leaning heavily..."))
+
+/obj/item/tent_kit/proc/part_moved(obj/source, atom/old_loc)
+    if(source && source.loc != src)
+        visible_message(span_warning("A tent component has been moved! The tent automatically packs itself up."))
+        disassemble_tent(null, TRUE)
 
 // === TENT WALL ===
 /obj/structure/tent_wall
@@ -350,6 +435,18 @@
     icon_state = "tent"
     density = TRUE
     opacity = TRUE
+    max_integrity = 300
+    blade_dulling = DULLING_BASHCHOP
+    attacked_sound = list('sound/combat/hits/onwood/woodimpact (1).ogg','sound/combat/hits/onwood/woodimpact (2).ogg')
+    destroy_sound = 'sound/combat/hits/onwood/destroywalldoor.ogg'
+    weatherproof = TRUE
+    var/damaged = FALSE
+
+/obj/structure/tent_wall/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
+    . = ..()
+    if(obj_integrity < max_integrity * 0.75 && !damaged)
+        damaged = TRUE
+        opacity = FALSE
 
 /obj/structure/tent_wall/ShiftClick(mob/user)
     if(!parent_tent || !parent_tent.assembled) return ..()
@@ -400,18 +497,24 @@
 // === CRAFTING ===
 /datum/crafting_recipe/roguetown/sewing/tentkit
     name = "Small Tent Kit"
+    category = "Misc"
+    tools = list(/obj/item/needle)
     result = list(/obj/item/tent_kit)
     reqs = list(/obj/item/natural/cloth = 10, /obj/item/natural/fibers = 6, /obj/item/natural/silk = 6, /obj/item/grown/log/tree/stick = 10)
     craftdiff = 3
 
 /datum/crafting_recipe/roguetown/sewing/gerkit
     name = "Ger Kit"
+    category = "Misc"
+    tools = list(/obj/item/needle)
     result = list(/obj/item/tent_kit/ger)
     reqs = list(/obj/item/natural/cloth = 15, /obj/item/natural/fibers = 6, /obj/item/natural/silk = 6, /obj/item/grown/log/tree/stick = 15)
     craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/yurtkit
     name = "Yurt Kit"
+    category = "Misc"
+    tools = list(/obj/item/needle)
     result = list(/obj/item/tent_kit/yurt)
     reqs = list(/obj/item/natural/cloth = 20, /obj/item/natural/fibers = 12, /obj/item/natural/silk = 12, /obj/item/grown/log/tree/stick = 20)
     craftdiff = 5
@@ -441,6 +544,37 @@
 	if(confirm == "Yes" && get_dist(user, src) <= 1)
 		parent_tent.disassemble_tent(user)
 	return TRUE
+
+/obj/item/tent_kit/attackby(obj/item/W, mob/user)
+    if(istype(W, /obj/item/natural/cloth) && repair_debt_cloth > 0)
+        repair_debt_cloth--
+        qdel(W)
+        to_chat(user, span_notice("You reinforce part of the tent with cloth. ([repair_debt_cloth] remaining)"))
+        check_repair_completion(user)
+        return TRUE
+    if(istype(W, /obj/item/natural/silk) && repair_debt_silk > 0)
+        repair_debt_silk--
+        qdel(W)
+        to_chat(user, span_notice("You reinforce the tent roof with silk. ([repair_debt_silk] remaining)"))
+        check_repair_completion(user)
+        return TRUE
+    return ..()
+
+/obj/item/tent_kit/proc/check_repair_completion(mob/user)
+    if(repair_debt_cloth > 0 || repair_debt_silk > 0)
+        return
+    clean_components()
+    var/max_walls = get_max_walls()
+    var/max_doors = get_max_doors()
+    while(tent_walls.len < max_walls)
+        var/obj/structure/tent_wall/wall = new(src)
+        wall.parent_tent = src
+        tent_walls += wall
+    while(tent_doors.len < max_doors)
+        var/obj/structure/roguetent/door = new(src)
+        door.parent_tent = src
+        tent_doors += door
+    to_chat(user, span_notice("The tent has been fully restored and is ready for assembly."))
 
 /obj/item/tent_kit/examine(mob/user)
 	. = ..()
