@@ -48,7 +48,7 @@ siege variant; Greater Fireball is fireball tuned to 11 for court-mage exclusivi
 	npc_simple_damage_mult = 3 // Intentionally higher than other fireballs due to arcyne mark disparity
 	accuracy = 40 // Lower base — burn bypasses armor
 	nodamage = FALSE
-	flag = "magic"
+	flag = "fire"
 	hitsound = 'sound/blank.ogg'
 	aoe_range = 0
 	/// Radius for AOE arcyne_strike blast around impact point. 0 = no AOE.
