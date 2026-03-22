@@ -113,7 +113,6 @@
 	icon_state = "raw_halfcookiedough"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookie_raw/attackby(obj/item/I, mob/living/user, params)
@@ -142,7 +141,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookie
 	cooked_smell = /datum/pollutant/food/cookies_chocolate
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookie
@@ -205,7 +203,6 @@
 	icon_state = "raw_halfcookiedoughd"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookied_raw/attackby(obj/item/I, mob/living/user, params)
@@ -297,7 +294,6 @@
 	icon_state = "raw_halfcookiedoughc"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and carameliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookiec_raw/attackby(obj/item/I, mob/living/user, params)
@@ -326,7 +322,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookiec
 	cooked_smell = /datum/pollutant/food/cookies_caramel
-	tastes = list("raw dough and chocolateliness" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookiec
@@ -389,7 +384,6 @@
 	icon_state = "raw_halfcookiedoughr"
 	w_class = WEIGHT_CLASS_NORMAL
 	eat_effect = null
-	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/foodbase/halfcookier_raw/attackby(obj/item/I, mob/living/user, params)
@@ -418,7 +412,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookier
 	cooked_smell = /datum/pollutant/food/cookies_raisins
-	tastes = list("raw dough and chewy raisins" = 1, "a faint hint of imbalanced humors" = 1)
 	foodtype = GRAIN | DAIRY | FRUIT
 
 /obj/item/reagent_containers/food/snacks/rogue/cookier
@@ -891,7 +884,7 @@
 	name = "plum dot tart"
 	desc = "A small pastry filled with jammed plums, for when a whole pie would be inappropiate for canapes."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pastry.dmi'
-	icon_state = "plum_dottartt"
+	icon_state = "plum_dottart"
 	tastes = list("crispy dough" = 1, "plum jam with a hint of honey-sweetness" = 1)
 
 /obj/item/reagent_containers/food/snacks/rogue/dot_tart/blackberry
