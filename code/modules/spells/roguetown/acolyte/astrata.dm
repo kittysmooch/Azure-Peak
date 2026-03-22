@@ -96,7 +96,7 @@
 	if(rechargefast)
 		charge_counter = max(recharge_time - (1.5 SECONDS), 0)
 		if(action)
-			action.UpdateButtonIcon()
+			action.build_all_button_icons()
 		STOP_PROCESSING(SSfastprocess, src)
 		return
 	. = ..()

@@ -109,9 +109,9 @@
 
 /datum/coven_power/demonic/psychomachia/post_gain()
 	. = ..()
-	owner.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball/baali)
+	owner.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/baali_fireball)
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/baali
+/obj/effect/proc_holder/spell/invoked/projectile/baali_fireball
 	name = "Infernal Fireball"
 	desc = "This spell fires an explosive fireball at a target."
 	school = "evocation"

@@ -13,7 +13,6 @@
 	var/dist = get_dist(owner, target)
 	if(can_see(owner, target, range) && dist < range && dist > 1) //can see, in range and not adjacent
 		owner.visible_message(span_alert("[owner] reaches towards the ground, eyeing [target]."))
-		disable_cooldown_actions()
 		addtimer(CALLBACK(src, PROC_REF(prepare_stone), target), cast_time)
 		StartCooldown()
 	return TRUE
