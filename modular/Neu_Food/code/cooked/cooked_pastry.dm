@@ -231,7 +231,6 @@
 	eat_effect = null
 	cooked_type = /obj/item/reagent_containers/food/snacks/rogue/cookied
 	cooked_smell = /datum/pollutant/food/cookies_dragee
-	tastes = list("raw dough and candied herbiness" = 1, "a faint hint of oddly balanced humors" = 1)
 	foodtype = GRAIN | DAIRY
 
 /obj/item/reagent_containers/food/snacks/rogue/cookied
