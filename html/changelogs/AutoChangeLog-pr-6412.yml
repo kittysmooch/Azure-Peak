@@ -1,0 +1,6 @@
+author: "Ollanius"
+delete-after: True
+changes:
+  - code_imp: "Boo!"
+  - rscadd: "Tailors now spawn with a wooden hammer and a pouch of scrap, allowing them to better practice the craft of leather-reinforcement."
+  - rscadd: "Blacksmiths can now forge two pieces of scrap from an Iron ingot."
