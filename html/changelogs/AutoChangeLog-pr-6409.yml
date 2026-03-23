@@ -1,7 +1,0 @@
-author: "eirenxiv"
-delete-after: True
-changes:
-  - balance: "changed hand armour to hauberk subtype"
-  - balance: "made unique hand armour brigandine armour"
-  - balance: "modified coverage on armour, combination with bracers still gives full coverage"
-  - balance: "replaced hand light haubergeon with padded gambeson"
