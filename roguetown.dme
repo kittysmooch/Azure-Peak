@@ -472,6 +472,8 @@
 #include "code\controllers\subsystem\rogue\triumphs\triumph_buy_menu.dm"
 #include "code\controllers\subsystem\rogue\triumphs\triumphs.dm"
 #include "code\controllers\subsystem\rogue\triumphs\triumphs_unsorted.dm"
+#include "code\controllers\subsystem\rogue\triumphs\triumph_modkit.dm"
+#include "code\controllers\subsystem\rogue\triumphs\triumph_rewards.dm"
 #include "code\controllers\subsystem\rogue\triumphs\triumph_buy_datums\triumph_buy_datums.dm"
 #include "code\controllers\subsystem\rogue\triumphs\triumph_buy_datums\character\pick_any_class.dm"
 #include "code\controllers\subsystem\rogue\triumphs\triumph_buy_datums\misc\wipe_triumphs.dm"
