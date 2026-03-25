@@ -1853,7 +1853,7 @@
 	attempt_message_list = list(
 		"tries to maintain their composure...",
 		"attempts to appear impressive...",
-		"contemplating their next move...",
+		"starts contemplating their next move...",
 	)
 
 	success_message_list = list(
