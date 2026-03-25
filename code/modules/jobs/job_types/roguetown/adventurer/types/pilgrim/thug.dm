@@ -214,9 +214,15 @@
 	var/prefixs = list(
 		"Skinny" = "Skinny", // Why
 		"Big" = "Big", // Yes, There is two cases where if someone calls themselves "Boss", we need to explode them.
+		"Small" = "Small",
+		"Little" = "Little",
 		"Wide" = "Wide",
+		"Huge" = "Huge",
 		"Thick" = "Thick",
 		"Long" = "Long",
+		"Slug" = "Slug",
+		"Molasses" = "Molasses",
+		"Stony" = "Stony",
 		"Quick" = "Quick"
 		)
 	var/prefixchoice = input(H, "What did people start calling you.", "YOU BIG FELLA") as anything in prefixs
