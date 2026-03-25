@@ -655,15 +655,6 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
 
-/obj/item/clothing/suit/roguetown/armor/plate/scale/knight
-	name = "coat of plates"
-	desc = "A heavyweight coat-of-plates, adorned with a pair of steel vambraces and faulds."
-	icon_state = "coat_of_plates"
-	blocksound = PLATEHIT
-	smelt_bar_num = 2
-	armor_class = ARMOR_CLASS_HEAVY
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE + 50
-
 /obj/item/clothing/suit/roguetown/armor/plate/scale/marshal
 	name = "coat of the commander"
 	desc = "A coat of plates concealed beneath a heavy leather surcoat. Only the most battle-hardened of Azuria's commanders can hope to bear its burden, both metaphorically and quite literally."

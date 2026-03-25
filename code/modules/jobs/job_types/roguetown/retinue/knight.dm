@@ -165,7 +165,7 @@
 
 		var/armors = list(
 			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/plate/scale/knight,
+			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/heavy,
 			"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
 			"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted,
 		)
@@ -260,7 +260,7 @@
 
 		var/armors = list(
 			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/plate/scale/knight,
+			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/heavy,
 			"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
 			"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted,
 		)
@@ -384,7 +384,7 @@
 
 		var/armors = list(
 			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/plate/scale/knight,
+			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/heavy,
 			"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
 			"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted,
 		)
@@ -684,7 +684,7 @@
 			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/retinue
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 		if("Coat of Plates")
-			armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/knight
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/heavy
 			pants = /obj/item/clothing/under/roguetown/chainlegs
 		if("Fluted Cuirass")
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted
