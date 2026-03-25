@@ -213,13 +213,16 @@
 
 	var/prefixs = list(
 		"Skinny" = "Skinny", // Why
+		"Fat" = "Fat",
 		"Big" = "Big", // Yes, There is two cases where if someone calls themselves "Boss", we need to explode them.
 		"Small" = "Small",
-		"Little" = "Little",
-		"Wide" = "Wide",
 		"Huge" = "Huge",
+		"Little" = "Little",
 		"Thick" = "Thick",
+		"Thin" = "Thin",
 		"Long" = "Long",
+		"Short" = "Short",
+		"Wide" = "Wide",
 		"Slug" = "Slug",
 		"Molasses" = "Molasses",
 		"Stony" = "Stony",
