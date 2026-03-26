@@ -231,6 +231,11 @@
 	desc = "Sheared burlap and cloth, meticulously fashioned around the forearms. Naledian-trained monks rarely share the same fatalistic mindset as their Otavan cousins, and - consequency - tend to be averse with binding their wrists in jagged thorns. Unbloodied fingers tend to work far better with the arcyne, too. </br>'..And so, the great tears that they wept when it took it's last breath, the rain of the Weeper, is what marked this era of silence. Fools would tell you that Psydon has died, that they splintered into ‘ten smaller fragments', but that does not make sense. They are everything within and without, they are beyond size and shape. How can everything become something? No, they have merely turned their ear from us. They mourn, for their greatest child and their worst..'"
 	color = "#48443B"
 
+/obj/item/clothing/wrists/roguetown/bracers/cloth/gladiator
+	name = "padded wrappings"
+	desc = "Sheared burlap and cloth, meticulously fashioned around the forearms. Taut fibers turn weeping gashes into mere tears along the cloth. </br>"
+	color = "#BFB8A9"
+
 //Queensleeves
 /obj/item/clothing/wrists/roguetown/royalsleeves
 	name = "royal sleeves"

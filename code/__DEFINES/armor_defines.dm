@@ -78,7 +78,7 @@
 // HEAVY
 #define ARMOR_INT_CHEST_PLATE_ANTAG 700
 #define ARMOR_INT_CHEST_PLATE_BLACKSTEEL 600
-#define ARMOR_INT_CHEST_PLATE_BRONZE 550 //More integrity, less protection.
+#define ARMOR_INT_CHEST_PLATE_BRONZE 300
 #define ARMOR_INT_CHEST_PLATE_STEEL 500
 #define ARMOR_INT_CHEST_PLATE_STEELLIGHT 450
 #define ARMOR_INT_CHEST_PLATE_PSYDON 400 // You get free training, less int
@@ -90,7 +90,7 @@
 #define ARMOR_INT_CHEST_PLATE_DECREPITLIGHT 200
 
 // MEDIUM
-#define ARMOR_INT_CHEST_MEDIUM_BRONZE 350 //More integrity, less protection.
+#define ARMOR_INT_CHEST_MEDIUM_BRONZE 250
 #define ARMOR_INT_CHEST_MEDIUM_STEEL 300
 #define ARMOR_INT_CHEST_MEDIUM_IRON 225
 #define ARMOR_INT_CHEST_MEDIUM_SCALE 200 // More coverage, less integrity
@@ -108,9 +108,10 @@
 #define ARMOR_INT_LEG_BLACKSTEEL 500
 #define ARMOR_INT_LEG_STEEL_PLATE 400
 #define ARMOR_INT_LEG_IRON_PLATE 300
+#define ARMOR_INT_LEG_BRONZE 250
 #define ARMOR_INT_LEG_DECREPIT_PLATE 200
 #define ARMOR_INT_LEG_STEEL_CHAIN 300
-#define ARMOR_INT_LEG_BRIGANDINE 250 // Iron grade but whatever.
+#define ARMOR_INT_LEG_BRIGANDINE 250
 #define ARMOR_INT_LEG_IRON_CHAIN 225
 #define ARMOR_INT_LEG_DECREPIT_CHAIN 150
 #define ARMOR_INT_LEG_HARDLEATHER 250
@@ -120,7 +121,7 @@
 // SIDE PIECES - Non-Chest armor
 #define ARMOR_INT_SIDE_ANTAG 500 // Integrity for antag pieces
 #define ARMOR_INT_SIDE_BLACKSTEEL 400 // Integrity for blacksteel pieces
-#define ARMOR_INT_SIDE_BRONZE 350 // Integrity for bronze pieces
+#define ARMOR_INT_SIDE_BRONZE 250 // Integrity for bronze pieces
 #define ARMOR_INT_SIDE_STEEL 300 // Integrity for steel pieces
 #define ARMOR_INT_SIDE_IRON 225 // Integrity for iron pieces
 #define ARMOR_INT_SIDE_HARDLEATHER 250 // Integrity for hardened leather pieces
@@ -157,6 +158,9 @@
 // BRIGANDINE — All brigandine parts. Better blunt and arrow padding than plate, but sword stabs and above will pen. Best light armor gets for melee. Medium/heavy classes should still wear maille under it!
 #define ARMOR_BRIGANDINE list("blunt" = DR_HEAVY, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_MEDIUM, "piercing" = DBLOCK_HEAVY, "fire" = DR_NONE, "acid" = DR_NONE)
 
+// BRONZE - All bronze armor. Not particularly good against any specialized AP intent, but uniquely resistant to fire damage from mage spells and the like. THIS SHOULD BE USING IRON INTEGRITY.
+#define ARMOR_BRONZE list("blunt" = DR_MEDIUM, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_MEDIUM, "piercing" = DBLOCK_MEDIUM, "fire" = DR_LIGHT, "acid" = DR_LIGHT)
+
 // MAILLE — Chainmail. Medium: Plate level protection but weak vs Bodkin (100% through)
 #define ARMOR_MAILLE list("blunt" = DR_MEDIUM, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_LIGHT, "fire" = DR_NONE, "acid" = DR_NONE)
 
@@ -178,7 +182,6 @@
 #define ARMOR_GNOLL_STANDARD list("blunt" = DR_SUPER, "slash" = DBLOCK_HEAVY, "stab" = DBLOCK_HEAVY, "piercing" = DBLOCK_HEAVY, "fire" = DR_MEDIUM, "acid" = DR_NONE)
 #define ARMOR_GNOLL_STRONG list("blunt" = DR_MEDIUM, "slash" = DBLOCK_BSTEEL, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_HEAVY, "fire" = DR_MEDIUM, "acid" = DR_NONE)
 #define ARMOR_BLACKOAK list("blunt" = DR_ULTRA, "slash" = DBLOCK_LIGHT, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_MEDIUM, "fire" = DR_NONE, "acid" = DR_NONE) // Wood: great vs blunt/stab, bad vs slash
-#define ARMOR_BRONZE list("blunt" = DR_MEDIUM, "slash" = DBLOCK_MEDIUM, "stab" = DBLOCK_MEDIUM, "piercing" = DBLOCK_MEDIUM, "fire" = DR_NONE, "acid" = DR_NONE)
 
 // Indestructible / Meme
 #define ARMOR_INDESTRUCTIBLE list("blunt" = DR_ULTRA, "slash" = DBLOCK_BSTEEL, "stab" = DBLOCK_BSTEEL, "piercing" = DBLOCK_BSTEEL, "fire" = DR_ULTRA, "acid" = DR_ULTRA) // Magical / indestructible items
