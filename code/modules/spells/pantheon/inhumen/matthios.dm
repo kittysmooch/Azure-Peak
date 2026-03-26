@@ -382,6 +382,28 @@
 	movement_interrupt = TRUE
 	recharge_time = 35 SECONDS
 	range = 1
+	//This is an EXPLICIT list of paths that we CAN Barter. We do not istype() here, it's a .type == .type check.
+	var/static/list/barter_whitelist = list(
+		/obj/item/clothing/ring,
+		/obj/item/clothing/ring/gold,
+		/obj/item/clothing/ring/blacksteel,
+		/obj/item/clothing/ring/coral,
+		/obj/item/clothing/ring/opal,
+		/obj/item/clothing/ring/jade,
+		/obj/item/clothing/ring/aalloy,
+		/obj/item/clothing/ring/amber,
+		/obj/item/clothing/ring/band,
+		/obj/item/clothing/ring/bronze,
+		/obj/item/clothing/ring/diamond,
+		/obj/item/clothing/ring/diamonds,
+		/obj/item/clothing/ring/diamondbs,
+		/obj/item/clothing/ring/dragon_ring,
+		/obj/item/clothing/ring/emerald,
+		/obj/item/clothing/ring/emeraldbs,
+		/obj/item/clothing/ring/emeralds
+		/obj/item/clothing/ring/signet,
+		/obj/item/clothing/ring/signet/silver,
+	)
 
 /obj/effect/proc_holder/spell/invoked/barter/cast(list/targets, mob/user)
 	. = ..()
@@ -407,10 +429,11 @@
 			revert_cast()
 			to_chat(user, span_warning("I should empty it, first."))
 			return FALSE
-	if(istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/clothing))
-		revert_cast()
-		to_chat(user, span_warning("Weapons and clothing do not appease my Patron, He is not lacking in fashion."))
-		return FALSE
+	if((istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/clothing)))
+		if(!(I.type in barter_whitelist))
+			revert_cast()
+			to_chat(user, span_warning("Weapons and clothing do not appease my Patron, He is not lacking in fashion."))
+			return FALSE
 
 	var/delay = 1 SECONDS
 	delay += round((I.sellprice / 50) SECONDS)
