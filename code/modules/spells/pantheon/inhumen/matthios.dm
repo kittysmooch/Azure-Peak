@@ -400,7 +400,7 @@
 		/obj/item/clothing/ring/dragon_ring,
 		/obj/item/clothing/ring/emerald,
 		/obj/item/clothing/ring/emeraldbs,
-		/obj/item/clothing/ring/emeralds
+		/obj/item/clothing/ring/emeralds,
 		/obj/item/clothing/ring/signet,
 		/obj/item/clothing/ring/signet/silver,
 	)
