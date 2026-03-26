@@ -26,6 +26,24 @@
 	req_bar = /obj/item/ingot/aalloy
 	created_item = /obj/item/roguestatue/aalloy
 
+/datum/anvil_recipe/valuables/noccrossaalloy
+	name = "Amulet of Knowledge, Decrepit"
+	req_bar = /obj/item/ingot/aalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/aalloy
+	craftdiff = 2
+
+/datum/anvil_recipe/valuables/noccrosspaalloy
+	name = "Amulet of Knowledge, Ancient"
+	req_bar = /obj/item/ingot/aalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/paalloy
+	craftdiff = 2
+
+/datum/anvil_recipe/valuables/noccrossbronze
+	name = "Amulet of Knowledge, Bronze"
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/bronze
+	craftdiff = 2
+
 /datum/anvil_recipe/valuables/steel
 	name = "Statue, Steel"
 	req_bar = /obj/item/ingot/steel
@@ -95,6 +113,12 @@
 	name = "Amulet of Creation, Bronze"
 	req_bar = /obj/item/ingot/bronze
 	created_item = /obj/item/clothing/neck/roguetown/psicross/malum/bronze
+	craftdiff = 2
+
+/datum/anvil_recipe/valuables/noccrossbronze
+	name = "Amulet of Knowledge, Bronze"
+	req_bar = /obj/item/ingot/bronze
+	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/bronze
 	craftdiff = 2
 
 /datum/anvil_recipe/valuables/statuebronze
