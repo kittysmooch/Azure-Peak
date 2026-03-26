@@ -30,13 +30,37 @@
 	name = "Amulet of Knowledge, Decrepit"
 	req_bar = /obj/item/ingot/aalloy
 	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/aalloy
-	craftdiff = 2
+	craftdiff = 3
 
 /datum/anvil_recipe/valuables/noccrosspaalloy
 	name = "Amulet of Knowledge, Ancient"
-	req_bar = /obj/item/ingot/aalloy
+	req_bar = /obj/item/ingot/paalloy
 	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/paalloy
-	craftdiff = 2
+	craftdiff = 3
+
+/datum/anvil_recipe/valuables/psycrossaalloy
+	name = "Amulet of Psydonia, Decrepit"
+	req_bar = /obj/item/ingot/aalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/aalloy
+	craftdiff = 3
+
+/datum/anvil_recipe/valuables/psycrosspaalloy
+	name = "Amulet of Psydonia, Ancient"
+	req_bar = /obj/item/ingot/paalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/paalloy
+	craftdiff = 3
+
+/datum/anvil_recipe/valuables/zcrossaalloy
+	name = "Amulet of Ascension, Decrepit"
+	req_bar = /obj/item/ingot/aalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/inhumen/aalloy
+	craftdiff = 3
+
+/datum/anvil_recipe/valuables/zcrosspaalloy
+	name = "Amulet of Ascension, Ancient"
+	req_bar = /obj/item/ingot/paalloy
+	created_item = /obj/item/clothing/neck/roguetown/psicross/inhumen/paalloy
+	craftdiff = 3
 
 /datum/anvil_recipe/valuables/noccrossbronze
 	name = "Amulet of Knowledge, Bronze"
@@ -86,7 +110,7 @@
 	craftdiff = 2
 
 /datum/anvil_recipe/valuables/zcrossbronze
-	name = "Amulet of Inhumenity, Bronze"
+	name = "Amulet of Ascension, Bronze"
 	req_bar = /obj/item/ingot/bronze
 	created_item = /obj/item/clothing/neck/roguetown/psicross/inhumen/bronze
 	craftdiff = 2
