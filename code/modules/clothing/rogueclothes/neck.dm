@@ -754,52 +754,6 @@
     . = ..()
     . += span_info("Silver amulets protect against most unholy curses, hexes, and other mind-altering spells.")
 
-//
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil
-	name = "unholy amulet"
-	desc = "<font color='FF0000'>I am the violence and hatred that lives in the hearts of all.</font> </br>‎  <font color='FF0000'>I am of no age or place. I am that which I Am.</font> </br>‎  <font color='FF0000'>I am only an icon, a vision - making present a truth you cannot begin to grasp.</font>"
-	icon_state = "archdevil"
-	var/active_item
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil/aalloy
-	name = "decrepit unholy amulet"
-	desc = "<font color='FF0000'>You will slay this form, but this will not end.</font> </br>‎  <font color='FF0000'>You will destroy the world, but this will not end.</font> </br>‎  <font color='FF0000'>You will suffer untold agonies for your sacrifice, but this will not end.</font>"
-	icon_state = "archdevil_a"
-	chunkcolor = "#532e25"
-	material_category = ARMOR_MAT_PLATE
-	resistance_flags = FIRE_PROOF
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil/paalloy
-	name = "ancient unholy amulet"
-	desc = "<font color='FF0000'>You will slay this form, but this will not end.</font> </br>‎  <font color='FF0000'>You will destroy the world, but this will not end.</font> </br>‎  <font color='FF0000'>You will suffer untold agonies for your sacrifice, but this will not end.</font>"
-	icon_state = "archdevil_a"
-	chunkcolor = "#532e25"
-	material_category = ARMOR_MAT_PLATE
-	resistance_flags = FIRE_PROOF
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil/examine()
-	. = ..()
-	. += span_suicide("I SEE YOU.")
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil/equipped(mob/living/user, slot)
-	. = ..()
-	if(slot == SLOT_NECK)
-		active_item = TRUE
-		to_chat(user, span_suicide("UNWORTHY."))
-		ADD_TRAIT(user, TRAIT_PSYCHOSIS, TRAIT_GENERIC)
-	return
-
-/obj/item/clothing/neck/roguetown/psicross/archdevil/dropped(mob/living/user)
-	..()
-	if(active_item)
-		to_chat(user, span_monkeyhive("..was it all a dream?"))
-		REMOVE_TRAIT(user, TRAIT_PSYCHOSIS, TRAIT_GENERIC)
-		active_item = FALSE
-	return
-
-//
-
 /obj/item/clothing/neck/roguetown/psicross/pearl //put it as a psycross so it can be used for miracles
 	name = "pearl amulet"
 	icon_state = "pearlcross"
