@@ -418,14 +418,14 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
 
-/obj/item/clothing/wrists/roguetown/bracers/brigandine/hand
+/obj/item/clothing/wrists/roguetown/bracers/hand
 	name = "hand's bracers"
 	desc = "Discretion had always been the better part of valour, and nobody understands that better than the one holding an ace up their sleeve."
 	color = null
-	sellprice = 250
+	armor = ARMOR_MAILLE //chausses parity, unique
 	icon = 'icons/roguetown/clothing/special/hand.dmi'
 	icon_state = "bracersheath"
 
-/obj/item/clothing/wrists/roguetown/bracers/brigandine/hand/ComponentInitialize()
+/obj/item/clothing/wrists/roguetown/bracers/hand/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/holster, /obj/item/rogueweapon/huntingknife, null, list(/obj/item/rogueweapon/huntingknife/idagger/stake, /obj/item/rogueweapon/huntingknife/idagger/silver/stake))
