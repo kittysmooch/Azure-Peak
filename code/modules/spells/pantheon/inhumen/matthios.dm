@@ -228,7 +228,7 @@
 				heal_effect.healing_on_tick = helditemvalue / 2
 			playsound(user, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
 			if(istype(held_item, /obj/item/rogueweapon))
-				to_chat(user, "<font color='yellow'>[held_item] melts at it's very fabric turning it into a heap of scrap. My transaction is accepted.</font>")
+				to_chat(user, "<font color='yellow'>[held_item] melts at its very fabric turning it into a heap of scrap. My transaction is accepted.</font>")
 				held_item.obj_break(TRUE)
 				held_item.sellprice = 1
 			else
@@ -239,7 +239,7 @@
 			target.adjustFireLoss(helditemvalue/2)
 			playsound(user, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
 			if(istype(held_item, /obj/item/rogueweapon))
-				to_chat(user, "<font color='yellow'>[held_item] melts at it's very fabric turning it into a heap of scrap. My transaction is accepted.</font>")
+				to_chat(user, "<font color='yellow'>[held_item] melts at its very fabric turning it into a heap of scrap. My transaction is accepted.</font>")
 				held_item.obj_break(TRUE)
 				held_item.sellprice = 1
 			else
