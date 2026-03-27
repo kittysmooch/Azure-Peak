@@ -34,7 +34,7 @@
 
 /datum/anvil_recipe/valuables/noccrosspaalloy
 	name = "Amulet of Knowledge, Ancient"
-	req_bar = /obj/item/ingot/paalloy
+	req_bar = /obj/item/ingot/purifiedaalloy
 	created_item = /obj/item/clothing/neck/roguetown/psicross/noc/paalloy
 	craftdiff = 3
 
@@ -46,7 +46,7 @@
 
 /datum/anvil_recipe/valuables/psycrosspaalloy
 	name = "Amulet of Psydonia, Ancient"
-	req_bar = /obj/item/ingot/paalloy
+	req_bar = /obj/item/ingot/purifiedaalloy
 	created_item = /obj/item/clothing/neck/roguetown/psicross/paalloy
 	craftdiff = 3
 
@@ -58,7 +58,7 @@
 
 /datum/anvil_recipe/valuables/zcrosspaalloy
 	name = "Amulet of Ascension, Ancient"
-	req_bar = /obj/item/ingot/paalloy
+	req_bar = /obj/item/ingot/purifiedaalloy
 	created_item = /obj/item/clothing/neck/roguetown/psicross/inhumen/paalloy
 	craftdiff = 3
 
