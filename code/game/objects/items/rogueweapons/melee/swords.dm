@@ -176,6 +176,7 @@
 	desc = "A long-bladed sword with a specialized thrusting tip. These are often produced without \
 	a cutting edge, especially in munitions grade examples as weary armorers try and prevent their \
 	levies from dulling swords on chopping firewood."
+	icon_state = "tuck"
 	force = 20
 	force_wielded = 25
 	possible_item_intents = list(
