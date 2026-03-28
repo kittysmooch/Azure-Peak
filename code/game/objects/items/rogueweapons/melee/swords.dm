@@ -171,6 +171,24 @@
 	. = ..()
 	AddComponent(/datum/component/skill_blessed, TRAIT_LONGSWORDSMAN, /datum/skill/combat/swords, SKILL_LEVEL_MASTER)
 
+/obj/item/rogueweapon/sword/long/tuck
+	name = "\improper Azurean tuck"
+	desc = "A long-bladed sword with a specialized thrusting tip. These are often produced without \
+	a cutting edge, especially in munitions grade examples as weary armorers try and prevent their \
+	levies from dulling swords on chopping firewood."
+	force = 20
+	force_wielded = 25
+	possible_item_intents = list(
+		/datum/intent/sword/thrust,
+		/datum/intent/sword/strike,
+	)
+	gripped_intents = list(
+		/datum/intent/sword/thrust/estoc,
+		/datum/intent/sword/thrust/estoc/lunge,
+		/datum/intent/sword/strike,
+	)
+	wdefense = 3
+
 /obj/item/rogueweapon/sword/long/broadsword
 	name = "broadsword"
 	desc = "A lethal and well-balanced weapon. The broadsword - better known as a 'hand-and-a-halfer' - has dutifully served the \
